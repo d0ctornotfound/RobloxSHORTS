@@ -14,6 +14,7 @@ def arguments():
     parser.add_argument("--profile", choices=("preview", "full"), default="preview")
     parser.add_argument("--output", default="render")
     parser.add_argument("--still", action="store_true")
+    parser.add_argument("--duration", type=int, choices=(5, 10), default=10)
     return parser.parse_args(sys.argv[sys.argv.index("--") + 1:] if "--" in sys.argv else [])
 
 
@@ -98,17 +99,19 @@ def main():
     output.mkdir(parents=True, exist_ok=True)
     bpy.ops.wm.read_factory_settings(use_empty=True)
     scene = bpy.context.scene
-    fps, width, height, samples = (12, 360, 640, 4) if args.profile == "preview" else (24, 1080, 1920, 16)
+    fps, width, height, samples = (12, 360, 640, 8) if args.profile == "preview" else (24, 1080, 1920, 16)
     scene.render.engine = "CYCLES"
     scene.cycles.device = "CPU"
     scene.cycles.samples = samples
-    scene.cycles.use_denoising = True
+    scene.cycles.use_denoising = False  # Ubuntu Blender can lack OpenImageDenoiser
+    scene.render.use_persistent_data = True
+    scene.cycles.max_bounces = 4
     scene.render.resolution_x = width
     scene.render.resolution_y = height
     scene.render.resolution_percentage = 100
     scene.render.fps = fps
     scene.frame_start = 1
-    scene.frame_end = fps * 10
+    scene.frame_end = fps * args.duration
     scene.render.image_settings.file_format = "PNG"
     scene.render.filepath = str(output / "frame_")
     scene.world = bpy.data.worlds.new("Daylight")
@@ -148,7 +151,7 @@ def main():
     # Bake poses and camera at the actual output frame rate. All characters
     # stay within a conservative central safe area, including their limbs.
     for frame in range(1, scene.frame_end + 1):
-        t = (frame - 1) / fps
+        t = (frame - 1) / fps * (10.0 / args.duration)
         approach = min(t / 4.0, 1.0)
         stride = math.sin(t * math.tau * 1.3) * 0.48 if t < 4 else 0
         for index, (root, arms, legs, _) in enumerate((a, b)):

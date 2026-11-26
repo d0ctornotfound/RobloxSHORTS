@@ -10,6 +10,11 @@ on:
           - preview
           - full
         default: preview
+      duration:
+        description: Duration in seconds
+        type: choice
+        options: ["5", "10"]
+        default: "5"
   push:
     branches: [main]
     paths:
@@ -29,6 +34,7 @@ jobs:
     timeout-minutes: 45
     env:
       PROFILE: ${{ inputs.profile || 'preview' }}
+      DURATION: ${{ inputs.duration || '5' }}
     steps:
       - uses: actions/checkout@v4
       - name: Install Blender and FFmpeg
@@ -40,7 +46,7 @@ jobs:
       - name: Render animation
         run: |
           python3 -m py_compile scripts/render_demo.py
-          blender -b --python-exit-code 1 --python scripts/render_demo.py -- --profile "$PROFILE" --output render
+          blender -b --python-exit-code 1 --python scripts/render_demo.py -- --profile "$PROFILE" --duration "$DURATION" --output render
       - name: Encode and validate MP4
         run: |
           fps=12
@@ -56,14 +62,15 @@ jobs:
           width, height, fps = (1080, 1920, 24) if os.environ["PROFILE"] == "full" else (360, 640, 12)
           assert (stream["width"], stream["height"]) == (width, height), stream
           assert Fraction(stream["avg_frame_rate"]) == fps, stream
-          assert int(stream["nb_frames"]) == fps * 10, stream
-          assert abs(float(data["format"]["duration"]) - 10) < 0.1, data
-          print(f"Validated {width}x{height}, {fps} fps, 10 seconds")
+          duration = int(os.environ["DURATION"])
+          assert int(stream["nb_frames"]) == fps * duration, stream
+          assert abs(float(data["format"]["duration"]) - duration) < 0.1, data
+          print(f"Validated {width}x{height}, {fps} fps, {duration} seconds")
           PY
       - name: Upload video and Blender project
         uses: actions/upload-artifact@v4
         with:
-          name: roblox-demo-${{ env.PROFILE }}
+          name: roblox-demo-${{ env.PROFILE }}-${{ env.DURATION }}s
           path: |
             render/demo.mp4
             render/scene.blend
