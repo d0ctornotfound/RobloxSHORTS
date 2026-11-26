@@ -15,8 +15,8 @@ from stage_b_interaction import GripAttachment,ExpressionTrack,aim_arm,key_arm,s
 def plane_mesh():
     root=empty("Paper plane grip origin",(0,0,0))
     # Nose points along local -Y; the grip is beneath the central folded keel.
-    v=[(0,-.58,.06),(0,.31,.06),(-.38,.27,.12),(-.13,.35,.07),
-       (.38,.27,.12),(.13,.35,.07),(0,.27,-.10)]
+    v=[(0,-.58,.06),(0,.42,.06),(-.48,.38,.16),(-.16,.46,.07),
+       (.48,.38,.16),(.16,.46,.07),(0,.36,-.10)]
     faces=[(0,2,3,1),(0,1,5,4),(0,6,3),(0,5,6)]
     m=bpy.data.meshes.new("Four folded paper panels");m.from_pydata(v,[],faces);m.update()
     ob=bpy.data.objects.new("Folded paper plane",m);bpy.context.collection.objects.link(ob);ob.parent=root
@@ -42,16 +42,17 @@ def main():
     fps,w,h,samples=(12,432,768,24) if a.profile=="preview" else (24,1080,1920,96)
     scene=configure(a.profile);scene.cycles.samples=samples;scene.cycles.adaptive_threshold=.065 if fps==12 else .02
     scene.cycles.max_bounces=4;scene.cycles.diffuse_bounces=2;scene.render.use_persistent_data=True
-    scene.view_settings.view_transform="AgX";scene.view_settings.look="AgX - Medium High Contrast";scene.view_settings.exposure=.25
-    scene.world.node_tree.nodes.get("Background").inputs[1].default_value=.35
+    scene.view_settings.view_transform="AgX";scene.view_settings.look="AgX - Medium High Contrast";scene.view_settings.exposure=.05
+    scene.world.node_tree.nodes.get("Background").inputs[0].default_value=(.42,.31,.21,1)
+    scene.world.node_tree.nodes.get("Background").inputs[1].default_value=.30
     scene.render.resolution_x=w;scene.render.resolution_y=h;scene.render.fps=fps;scene.frame_start=1;scene.frame_end=round(spec["duration"]*fps)
     build();p=teacher_palette(palette())
     lead=Character("lead",p,True);friend=Character("friend",p,False);teacher=Teacher(p)
-    seated(lead,-1.05,4.0);seated(friend,.85,4.0)
+    seated(lead,-.78,4.0);seated(friend,.78,4.0)
     teacher.root.location=(0,-5.55,0);teacher.root.rotation_euler.z=0
     actors={"lead":lead,"friend":friend,"teacher":teacher}
     extras=[]
-    for i,(x,y) in enumerate([(-3.2,1.8),(3.2,1.8),(-3.2,4),(3.2,4)]):
+    for i,(x,y) in enumerate([(-2.9,1.8),(1.05,1.8),(-1.05,-.4),(3.2,4)]):
         extra=Character("student "+str(i),p,False,role="patron_green" if i%2 else "patron_blue")
         seated(extra,x,y);extras.append(extra)
     pivots={n:head_pivot(o) for n,o in actors.items()}
@@ -59,8 +60,8 @@ def main():
     plane,mesh=plane_mesh()
     # Head socket aligns the paper nose with the side of the actual bun.
     # Local nose ends at y=-.58; center lies on the visible side of the bun.
-    support=empty("Teacher bun paper support",(.28,.80,.531),pivots["teacher"])
-    support.rotation_euler=(0,0,-.55)
+    support=empty("Teacher bun paper support",(.82,.28,.65),pivots["teacher"])
+    support.rotation_euler=(0,.12,-math.pi/2)
     bpy.context.view_layer.update()
     bun=teacher.bun
     # Nose must lie inside or close to the bun geometry in its local coordinates.
@@ -79,7 +80,7 @@ def main():
     for f in range(1,scene.frame_end+1):
         scene.frame_set(f);t=frame_time(f,fps)
         teacher.root.rotation_euler.z=teacher_yaw(t);teacher.root.keyframe_insert("rotation_euler",frame=f)
-        expressions={"lead":"neutral" if t<3 else "happy" if t<9.5 else "shocked",
+        expressions={"lead":"neutral" if t<3 else "happy" if t<10.55 else "shocked",
                      "friend":"neutral" if t<5 else "happy",
                      "teacher":"neutral" if t<7.75 else "shocked" if t<9.5 else "neutral"}
         for name,actor in actors.items():
@@ -88,13 +89,17 @@ def main():
                                   -.18 if name=="friend" and t<5 else 0)
             # Teacher support is fixed in the final head orientation, so avoid tilt after impact.
             if name=="teacher":pivot.rotation_euler=(0,0,0)
+            if name=="friend" and t>=9.5:pivot.rotation_euler=(-.22-.05*math.sin(t*10),0,-.13)
+            if name=="lead" and t>=10.7:pivot.rotation_euler=(.05,0,.10)
             pivot.keyframe_insert("rotation_euler",frame=f)
             for i in (0,1):
                 d=Vector((.24 if i==0 else -.24,-.66,-.55))
                 closed=False
                 if name=="lead":
-                    if i==0:
-                        fold=Vector((.35+.13*math.sin(t*5),-.78,-.38))
+                    if t>=10.55:
+                        d=Vector((.48 if i==0 else -.48,-.42,.40))
+                    elif i==0:
+                        fold=Vector((.48+.08*math.sin(t*5),-.68,-.16))
                         wind=Vector((-.15,.30,.90))
                         throw=Vector((.12,-.92,.34))
                         if t<2.8:d=fold
@@ -102,9 +107,9 @@ def main():
                         elif t<4.25:d=blend_direction(wind,throw,(t-3.7)/.55)
                         else:d=blend_direction(throw,(.15,-.22,-.9),(t-4.25)/.65)
                         closed=f<launch
-                    elif t<2.8:d=Vector((-.55,-.65,-.45+.10*math.sin(t*5)))
+                    elif t<2.8:d=Vector((-.67,-.62,-.18+.10*math.sin(t*5)))
                     elif t>=9.5:d=Vector((-.15,-.50,.60))
-                elif name=="friend" and t>=8:d=Vector((.2 if i==0 else -.2,-.65,.35+.12*math.sin(t*8)))
+                elif name=="friend" and t>=8:d=Vector((.32,-.78,-.28) if i==0 else (-.10,-.38,.72+.10*math.sin(t*8)))
                 elif name=="teacher":
                     d=Vector((0,-.8,.30)) if i==1 and t<6.4 else Vector((.05 if i==0 else -.05,-.12,-1))
                     if t>=9.5:d=Vector((.38 if i==0 else -.38,-.65,-.38))
@@ -119,7 +124,7 @@ def main():
         elif f<land:
             if start is None:start=hand.release();start_rot=hand.last_world.to_euler()
             u=(f-launch)/(land-launch)
-            pos=start.lerp(end,u);pos.z+=.75*math.sin(math.pi*u)
+            pos=start.lerp(end,u);pos.z+=.16*math.sin(math.pi*u)
             rot=start_rot.copy();rot.z=start_rot.z+(end_rot.z-start_rot.z)*smoothstep(u);rot.x+=.12*math.sin(math.tau*u)
             hand.independent(f,pos,rot);hair.constraint.influence=0;hair.constraint.keyframe_insert("influence",frame=f);state="flight"
         else:
@@ -166,7 +171,7 @@ def main():
                 rows=[];bounds=[];widths=[]
                 for f,prop,body,safe,center in sampleset:
                     if kind=="03_glide":
-                        cam.location=center+Vector((2.65,1.0,1.05));point_at(cam,center+Vector((0,0,-.18)))
+                        cam.location=center+Vector((-2.35,.48,.52));point_at(cam,center+Vector((0,0,-.48)))
                     bpy.context.view_layer.update()
                     pp=[world_to_camera_view(scene,cam,v) for v in prop]
                     widths.append(max(v.x for v in pp)-min(v.x for v in pp))
@@ -184,23 +189,23 @@ def main():
                 cam.data.lens=48
                 result=measure()
                 for f,prop,body,safe,center in sampleset:
-                    scene.frame_set(f);cam.location=center+Vector((2.65,1.0,1.05));point_at(cam,center+Vector((0,0,-.18)))
+                    scene.frame_set(f);cam.location=center+Vector((-2.35,.48,.52));point_at(cam,center+Vector((0,0,-.48)))
                     cam.keyframe_insert("location",frame=f);cam.keyframe_insert("rotation_euler",frame=f)
             elif kind=="teacher_impact":
-                cam.location=(2.5,-2.9,2.8);cam.data.lens=40;point_at(cam,(0,-5.35,2.15));result=measure()
+                cam.location=(-2.7,-2.65,2.65);cam.data.lens=44;point_at(cam,(-.22,-5.35,2.25));result=measure()
             else:
                 # Frontal compressed perspective; fixed lens throughout shot.
                 # Search physical positions and aim, using the whole segment's bounds.
                 cam.data.lens=48
-                cx=-1.05 if kind=="02_throw" else 0
+                cx=-.78 if kind=="02_throw" else 0
                 best=None
-                for dx in (0,-.8,.8,-1.6,1.6):
-                    for dist in (3.4,4.0,4.6,5.2,5.8,6.4):
-                        for z in (2.0,2.5,3.0):
+                for dx in (0,-.55,.55,-1.1,1.1):
+                    for dist in (2.7,3.1,3.5,3.9,4.3,4.7):
+                        for z in (1.48,1.75,2.0):
                             for aimx in (-.25,0,.25):
-                                cam.location=(cx+dx,4-dist,z);point_at(cam,(cx+aimx,3.8,1.35))
+                                cam.location=(cx+dx,4-dist,z);point_at(cam,(cx+aimx,3.85,1.40))
                                 m=measure();cov,ok,penalty,_,_=m
-                                score=(ok and min(cov.values())>=.40,ok,min(cov.values())-penalty*4)
+                                score=(ok and min(cov.values())>=.40,min(cov.values())-penalty*12,ok)
                                 if best is None or score>best[0]:best=(score,cam.location.copy(),cam.rotation_euler.copy(),m)
                 _,pos,rot,result=best;cam.location=pos;cam.rotation_euler=rot
             cov,ok,penalty,bounds,widths=result
