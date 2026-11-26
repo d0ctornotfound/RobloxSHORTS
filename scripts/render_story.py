@@ -10,6 +10,7 @@ import bpy
 from mathutils import Vector
 from bpy_extras.object_utils import world_to_camera_view
 from render_demo import empty,point_at
+from stage_a_cafe import light
 from render_stills import configure
 from quality_character import Character,palette
 from quality_cafe import build as build_cafe
@@ -111,6 +112,15 @@ def main():
     scene.frame_end=round(spec["duration"]*fps)
     for cup in build_cafe():
         set_visible(cup,False)
+    # Extend the opaque envelope, keep the dressed rear wall and window.
+    floor=bpy.data.objects.get("Tiled floor")
+    floor.scale.y*=2.2;floor.location.y=-3.0
+    for ob in bpy.data.objects:
+        if ob.name.startswith(("Left enclosed café wall","Right enclosed café wall","Side wall wooden wainscot","Side wall chair rail","High café ceiling")):
+            ob.scale.y*=2.1;ob.location.y=-3.4;ob.visible_camera=True
+    light("Integration neutral frontal bounce",(0,-3.0,3.4),(0,1.0,1.65),290,4.2,(1,.94,.87))
+    light("Integration rear set wash",(0,-.65,4.8),(0,2.4,2.5),170,3.5,(1,.93,.83))
+    scene.world.node_tree.nodes.get("Background").inputs[1].default_value=.30
     p=palette()
     actors={name:Character(name,p,cfg["lead"]) for name,cfg in spec["characters"].items()}
     for name,actor in actors.items():
@@ -121,8 +131,11 @@ def main():
     lead_hair=next(o for o in actors["lead"].meshes if "spiky hair" in o.name)
     hair_vertices=[lead_hair.matrix_world@v.co for v in lead_hair.data.vertices]
     highest=max(hair_vertices,key=lambda v:v.z)
-    head_support_z=highest.z
-    head_local=highest-actors["lead"].root.location
+    head_local=Vector((.075,-.24,2.64))
+    head_support_z=head_local.z
+    assert highest.z-head_support_z>=.20
+    near=[v for v in hair_vertices if abs(v.x-(actors["lead"].root.location.x+head_local.x))<.24 and abs(v.y-(actors["lead"].root.location.y+head_local.y))<.24 and v.z>=head_support_z-.045]
+    assert near,"No crown geometry adjacent to embedded cake base"
     pivots={name:head_pivot(actor) for name,actor in actors.items()}
     # Static seated background customers, same builder, no new story beats.
     patrons=[]
@@ -157,6 +170,7 @@ def main():
     slice_bind=GripAttachment(cake,plate_top)
     head_socket=empty("Lead / cake landing support",tuple(head_local-Vector((0,0,2.029))),pivots["lead"])
     # A second attachment on the same prop is enabled only after landing.
+    head_socket.rotation_euler=(.10,-.13,math.pi/2)
     head_bind=GripAttachment(cake,head_socket)
     action=spec["actions"]
     contact=frame_at(action["lead_contact"],fps)
@@ -287,6 +301,11 @@ def main():
             "slice_bottom":list(pos),"plate_bottom":list(plate.matrix_world.translation),
             "lead_expression":sample(spec["expressions"]["lead"],t,True),
             "friend_expression":sample(spec["expressions"]["friend"],t,True)})
+    for patron in patrons:
+        for ob in patron.meshes:
+            ob.hide_render=False;ob.keyframe_insert("hide_render",frame=1)
+            ob.hide_render=True;ob.keyframe_insert("hide_render",frame=frame_at(spec["shots"][1]["start"],fps))
+            constant_action(ob,["hide_render"])
     for bind in (plate_bind,slice_bind,head_bind):
         bind.constant_switches()
     for track in tracks.values():
@@ -300,10 +319,7 @@ def main():
     # Every camera is built from shot data; one shared animation timeline,
     # no reconstruction or object teleport between shot cuts.
     shot_records=[]
-    # Cameras look through the open front and side cutaways; retain shadow rays.
-    for ob in bpy.data.objects:
-        if ob.name.startswith(("Left enclosed café wall","Right enclosed café wall","Side wall wooden wainscot","Side wall chair rail")):
-            ob.visible_camera=False
+    # Keep all cameras within the physical opaque enclosure.
     for shot in spec["shots"]:
         first=frame_at(shot["start"],fps)
         last=frame_at(shot["end"],fps)-1
@@ -320,32 +336,33 @@ def main():
             for name in shot["characters"]:
                 actor=actors[name]
                 hero[name]=[v for ob in actor.meshes if ob.type=="MESH" and ob!=actor.face for v in corners(ob)]
-                selected=[ob for ob in actor.meshes if any(k in ob.name for k in ("head","hair","beanie","torso" if two else "head"))]
+                selected=[ob for ob in actor.meshes if any(k in ob.name for k in ("head","hair","beanie"))]
+                if shot["id"]=="02_reach":
+                    active=actor.arms[reach_index[name]]
+                    selected.extend(ob for ob in active.children_recursive if ob.type=="MESH" and ("palm" in ob.name or "finger" in ob.name))
                 safe.extend(v for ob in selected for v in corners(ob))
                 # Face center is separate from the large hair bounds; disallow
                 # a camera that puts the two face centers on top of each other.
                 face=actor.face
                 faces[name]=sum(corners(face),Vector())/8
-            if two:
+            if two and shot["id"]!="04_payoff":
                 safe.extend(v for ob in plate.children_recursive if ob.type=="MESH" for v in corners(ob))
             if f>=land or (f<launch and two):
                 safe.extend(v for ob in cake.children_recursive if ob.type=="MESH" for v in corners(ob))
             camera_samples.append((hero,safe,faces))
         bpy.ops.object.camera_add();cam=bpy.context.object
         cam.name="Camera / "+shot["id"];cam.data.sensor_fit="HORIZONTAL"
-        # Long-lens perspective first; orthographic is a deliberate fallback
-        # for the two-avatar portrait geometry, not a change to the action.
+        # Prioritize frontal readable two-shots, no cutaway cameras.
         candidates=[]
         if two:
             sign=-1 if shot["id"]=="02_reach" else 1
-            preferred={"01_notice":48,"02_reach":52,"04_payoff":55}[shot["id"]]
-            for angle in (preferred,preferred+5,preferred+10,43,60):
-                for mode in ("PERSP","ORTHO"):
-                    r=12 if mode=="PERSP" else 8
-                    theta=math.radians(angle)*sign
-                    candidates.append((mode,(r*math.sin(theta),.92-r*math.cos(theta),2.35),(0,.92,1.75),135 if mode=="PERSP" else 2.65))
+            target_z={"01_notice":1.74,"02_reach":1.88,"04_payoff":2.08}[shot["id"]]
+            for angle in (0,8,15,20,25):
+                r=4.4
+                theta=math.radians(angle)*sign
+                candidates.append(("PERSP",(r*math.sin(theta),1.08-r*math.cos(theta),2.42 if shot["id"]=="02_reach" else 2.30),(0,1.08,target_z),57))
         else:
-            candidates=[("PERSP",(-1.16,-1.8,2.50),(-1.16,1.08,2.40),52)]
+            candidates=[("PERSP",(-1.16,-1.85,2.45),(-1.16,1.08,2.43),53)]
         best=None;best_failed=None
         for mode,pos,target,lens in candidates:
             cam.location=pos;cam.data.type=mode;point_at(cam,target)
@@ -372,16 +389,19 @@ def main():
             score=min(mincov.values())
             rec=(score,mode,pos,target,cam.data.lens,cam.data.ortho_scale,mincov,bounds,min(separations,default=1))
             if best_failed is None or score>best_failed[0]:best_failed=rec
-            if score>=.45 and rec[-1]>=.18:
+            if rec[-1]>=.18 and score>=.45:
                 best=rec;break
+            if rec[-1]>=.18 and score>=.30 and best is None:
+                best=rec
         if best is None:
             raise RuntimeError("Framing failed "+shot["id"]+" best="+str(best_failed[:7] if best_failed else None))
         _,mode,pos,target,lens,ortho,mincov,bounds,face_separation=best
         cam.location=pos;cam.data.type=mode;cam.data.lens=lens;cam.data.ortho_scale=ortho;point_at(cam,target)
-        print("SHOT_COVERAGE",shot["id"],mincov,"mode",mode,"face separation",face_separation,flush=True)
+        assert abs(pos[0])<3.70 and -6.0<pos[1]<2.30
+        print("SHOT_COVERAGE",shot["id"],mincov,"mode",mode,"face separation",face_separation,"position",pos,flush=True)
         marker=scene.timeline_markers.new(shot["id"],frame=first)
         marker.camera=cam
-        shot_records.append({"id":shot["id"],"first":first,"last":last,"lens":cam.data.lens,"camera_type":mode,"ortho_scale":ortho if mode=="ORTHO" else None,"min_face_separation":face_separation,
+        shot_records.append({"id":shot["id"],"first":first,"last":last,"lens":cam.data.lens,"camera_type":mode,"ortho_scale":ortho if mode=="ORTHO" else None,"min_face_separation":face_separation,"camera_position":list(pos),"patrons_visible":shot["id"]=="01_notice","coverage_goal_met":min(mincov.values())>=.45,
                              "bounds":[min(v.x for v in bounds),max(v.x for v in bounds),min(v.y for v in bounds),max(v.y for v in bounds)],"min_hero_vertical_coverage":mincov})
     # Re-evaluate animation after all keys, not just during authoring.
     for item in manifest_frames:
@@ -393,7 +413,7 @@ def main():
             assert [n for n,o in track.decals.items() if not o.hide_render]==[item[name+"_expression"]]
     manifest={"story":spec["id"],"resolution":[width,height],"fps":fps,"duration":spec["duration"],
               "frame_count":scene.frame_end,"samples":samples,"shots":shot_records,"max_grip_error":max_error,
-              "launch_frame":launch,"landing_frame":land,"head_support_z":head_support_z,"max_friend_rim_error":max_friend_rim_error,"rig":"Sprint 2 quality","patrons":2,
+              "launch_frame":launch,"landing_frame":land,"head_support_z":head_support_z,"hair_highest_z":highest.z,"cake_embed_depth_below_tip":highest.z-head_support_z,"max_friend_rim_error":max_friend_rim_error,"rig":"Sprint 2 quality","patrons":2,
               "payoff_hold_seconds":(scene.frame_end-frame_at(action["payoff"],fps)+1)/fps,
               "timeline":manifest_frames}
     (output/"story_manifest.json").write_text(json.dumps(manifest,indent=2)+"\n")
