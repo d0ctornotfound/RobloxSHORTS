@@ -1,0 +1,297 @@
+{
+  "id": "the_last_slice",
+  "title": "The Last Slice",
+  "location": "cafe",
+  "duration": 12,
+  "narration": "We both saw the last slice at the same time. I reached for it. He reached for it. The plate decided neither of us deserved it.",
+  "characters": {
+    "lead": {
+      "position": [
+        -0.92,
+        0.76,
+        0
+      ],
+      "lead": true,
+      "reach_arm": 1
+    },
+    "friend": {
+      "position": [
+        0.92,
+        0.76,
+        0
+      ],
+      "lead": false,
+      "reach_arm": 0
+    }
+  },
+  "props": {
+    "plate": {
+      "type": "ceramic_plate",
+      "support_z": 1.18,
+      "radius": 0.29
+    },
+    "slice": {
+      "type": "layer_cake",
+      "plate_offset": [
+        0,
+        0,
+        0.065
+      ],
+      "head_support": 2.525
+    }
+  },
+  "shots": [
+    {
+      "id": "01_notice",
+      "start": 0,
+      "end": 2.5,
+      "kind": "wide_two",
+      "camera": {
+        "position": [
+          0,
+          -5.15,
+          2.45
+        ],
+        "target": [
+          0,
+          0.4,
+          1.98
+        ],
+        "lens": 44
+      },
+      "characters": [
+        "lead",
+        "friend"
+      ],
+      "action": "notice",
+      "caption": "We both saw the last slice at the same time."
+    },
+    {
+      "id": "02_reach",
+      "start": 2.5,
+      "end": 7,
+      "kind": "medium_two",
+      "camera": {
+        "position": [
+          0,
+          -4.35,
+          2.25
+        ],
+        "target": [
+          0,
+          0.4,
+          1.94
+        ],
+        "lens": 43
+      },
+      "characters": [
+        "lead",
+        "friend"
+      ],
+      "action": "reach_and_launch",
+      "caption": "I reached for it. He reached for it."
+    },
+    {
+      "id": "03_impact",
+      "start": 7,
+      "end": 9.5,
+      "kind": "close_up",
+      "camera": {
+        "position": [
+          -0.91,
+          -2.7,
+          2.48
+        ],
+        "target": [
+          -0.92,
+          0.76,
+          2.23
+        ],
+        "lens": 60
+      },
+      "characters": [
+        "lead"
+      ],
+      "action": "cake_lands"
+    },
+    {
+      "id": "04_payoff",
+      "start": 9.5,
+      "end": 12,
+      "kind": "reaction_two",
+      "camera": {
+        "position": [
+          0,
+          -4.6,
+          2.26
+        ],
+        "target": [
+          0,
+          0.4,
+          1.95
+        ],
+        "lens": 44
+      },
+      "characters": [
+        "lead",
+        "friend"
+      ],
+      "action": "payoff"
+    }
+  ],
+  "captions": [
+    {
+      "start": 0,
+      "end": 2.5,
+      "text": "We both saw the last slice at the same time."
+    },
+    {
+      "start": 2.5,
+      "end": 7,
+      "text": "I reached for it. He reached for it."
+    },
+    {
+      "start": 7,
+      "end": 12,
+      "text": "The plate decided neither of us deserved it."
+    }
+  ],
+  "expressions": {
+    "lead": [
+      [
+        0,
+        "neutral"
+      ],
+      [
+        0.65,
+        "happy"
+      ],
+      [
+        6.5,
+        "shocked"
+      ],
+      [
+        8.65,
+        "sad"
+      ]
+    ],
+    "friend": [
+      [
+        0,
+        "neutral"
+      ],
+      [
+        0.65,
+        "happy"
+      ],
+      [
+        6.5,
+        "shocked"
+      ],
+      [
+        9.5,
+        "happy"
+      ]
+    ]
+  },
+  "head_turns": {
+    "lead": [
+      [
+        0,
+        0,
+        0
+      ],
+      [
+        0.65,
+        0.33,
+        0.16
+      ],
+      [
+        1.8,
+        0.33,
+        0.16
+      ],
+      [
+        2.5,
+        0.14,
+        0.08
+      ],
+      [
+        5.5,
+        0.14,
+        0.08
+      ],
+      [
+        6.5,
+        0,
+        0
+      ]
+    ],
+    "friend": [
+      [
+        0,
+        0,
+        0
+      ],
+      [
+        0.65,
+        -0.33,
+        0.16
+      ],
+      [
+        1.8,
+        -0.33,
+        0.16
+      ],
+      [
+        2.5,
+        -0.14,
+        0.08
+      ],
+      [
+        5.5,
+        -0.14,
+        0.08
+      ],
+      [
+        6.5,
+        0,
+        0
+      ],
+      [
+        9.5,
+        -0.12,
+        0
+      ]
+    ]
+  },
+  "actions": {
+    "notice": 0.65,
+    "lead_reach_start": 2.65,
+    "lead_contact": 4.1,
+    "friend_reach_start": 4.35,
+    "friend_contact": 5.75,
+    "spin_start": 5.75,
+    "launch": 6.55,
+    "landing": 7.55,
+    "payoff": 9.5
+  },
+  "sfx": [
+    {
+      "kind": "ding",
+      "time": 0.65
+    },
+    {
+      "kind": "slide",
+      "time": 5.75
+    },
+    {
+      "kind": "whoosh",
+      "time": 6.55
+    },
+    {
+      "kind": "thud",
+      "time": 7.55
+    }
+  ]
+}
