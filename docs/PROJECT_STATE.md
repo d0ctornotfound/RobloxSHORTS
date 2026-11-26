@@ -1,6 +1,6 @@
 # Project State
 
-Current milestone: Integration sprint — short #1 production-complete; awaiting supervisor visual review. No short #2 started.
+Current milestone: Integrated short #1 NOT APPROVED; targeted supervisor correction pass underway; short #2 paused.
 
 Successful preview run: [45811466419](https://github.com/d0ctornotfound/RobloxSHORTS/actions/runs/45811466419), commit `c043c3cd322c274108726203bab3c16a6e8b8689`, artifact `roblox-demo-preview-5s`.
 
@@ -49,3 +49,5 @@ Supervisor Sprint 2 verdict: CHARACTER STANDARD APPROVED. Locked ratios 95% head
 Run [45876531786](https://github.com/d0ctornotfound/RobloxSHORTS/actions/runs/45876531786) completed successfully on render commit `120f93f17d1538d8548a1d31ce4d66e23ce03205`. All four render jobs (140104900984, 140104901666, 140104901445, 140104901520) and edit job 140110482776 succeeded. Final artifact [roblox-the-last-slice-integrated-preview-12s](https://github.com/d0ctornotfound/RobloxSHORTS/actions/runs/45876531786/artifacts/15146306456), ID 15146306456, 20,841,572 bytes. Archive SHA-256 `5df16b94a57904e2d8a0fe8c30427432fe55dfa5528ce9099c2acf20fc5fb801`; independently downloaded and matched. MP4 SHA-256 `62841de992e3b7a7dc1f8b897fd34fba2a8ed686d5039511042d39dd4062369c`, 1,760,225 bytes. Independent ffprobe: H.264 432×768, 12 fps, 144 frames, 12.000 s; mono AAC 48 kHz, 12.000 s. 24 Cycles samples, FFmpeg hqdn3d, 26 burned-in words, original procedural music and four SFX; narration absent, optional slot tested successfully. Four MP4-derived frame grabs packaged at 1.5, 5.9, 8.2 and 10.7 s.
 
 Final manifest: minimum projected vertical hero coverage lead/friend notice 46.49%/48.21%, reach 53.93%/47.22%, impact 66.80% lead, payoff 45.90%/47.13%. Zero attachment error; friend rim error .03002; launch frame 80, landing frame 92, hair support 2.91408, payoff 2.5 s. Geometry checks are not image segmentation or proof of visible contact. Actual frame-grab inspection shows improved cast and fabric, but prominent cutaway/set edges and dark voids, foreground patron/arm occlusion in reach and impact, and cake balanced on a high hair tip so it reads as perched/floating. Orthographic reach and oblique views are visibly compromised. Some grain persists and window view is not clearly established in these grabs. Production-complete, visual approval pending, not a benchmark-quality claim. Original Stage C is superseded for production by this integrated short; no short #2 work initiated.
+
+Supervisor rejected initial integrated video; correct four defects only. See INTEGRATION_SPRINT.md. Corrected video pending CI and visual review.

@@ -15,6 +15,7 @@ on:
       - 'scripts/stage_c_*.py'
       - 'scripts/quality_*.py'
       - 'scripts/edit_story.py'
+      - 'scripts/validate_story_pixels.py'
       - '.github/workflows/story-render.yml'
 
 permissions:
@@ -98,13 +99,14 @@ jobs:
           cp render/story/story_manifest.json render/story/story.blend render/final/
           cp stories/the_last_slice.json render/final/
           mkdir -p render/final/frame_grabs
-          for item in 01_notice:1.5 02_reach:5.9 03_impact:8.2 04_payoff:10.7; do
+          for item in 01_notice_1p5:1.5 02_reach_4p0:4.0 02_reach_5p9:5.9 03_impact_7p0:7.0 03_impact_8p2:8.2 04_payoff_10p7:10.7; do
             ffmpeg -hide_banner -loglevel error -ss "${item#*:}" -i render/final/the_last_slice.mp4 -frames:v 1 "render/final/frame_grabs/${item%:*}.png"
           done
+          python3 scripts/validate_story_pixels.py --video render/final/the_last_slice.mp4 --manifest render/final/story_manifest.json --output render/final/pixel_validation.json
       - name: Upload finished short and reproducibility files
         uses: actions/upload-artifact@v4
         with:
-          name: roblox-the-last-slice-integrated-${{ env.PROFILE }}-12s
+          name: roblox-the-last-slice-corrected-${{ env.PROFILE }}-12s
           path: render/final/
           if-no-files-found: error
           retention-days: 7
