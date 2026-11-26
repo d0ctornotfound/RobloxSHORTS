@@ -70,7 +70,7 @@ def face_canvas(expression):
         # Classic two bold oval eyes and a broad single curved smile.
         for x in (.32,.68):
             c.ellipse(x,.65,.046,.078,ink)
-        c.line([(.27,.40),(.31,.34),(.39,.30),(.50,.285),(.61,.30),(.69,.34),(.73,.40)],.052,ink)
+        c.line([(x,.285+.115*((x-.5)/.23)**2) for x in (.27+i*.46/40 for i in range(41))],.052,ink)
     elif expression=="shocked":
         for x in (.32,.68):
             c.ellipse(x,.64,.057,.092,ink)

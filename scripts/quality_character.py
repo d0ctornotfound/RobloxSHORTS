@@ -28,13 +28,17 @@ def skin_material(name,color):
 
 def palette():
     p={k:illustrated_material(k) for k in ("sweater","sleeve","tee","tee_sleeve","denim","hat")}
-    p.update({"skin":skin_material("Honey skin",(.70,.40,.18)),
-              "skin2":skin_material("Peach skin",(.85,.56,.30)),
-              "hair":material("Espresso molded hair",(.045,.019,.008)),
+    p.update({"skin":skin_material("Honey skin",(.55,.29,.105)),
+              "skin2":skin_material("Peach skin",(.73,.43,.20)),
+              "hair":material("Espresso molded hair",(.028,.012,.005)),
               "shoe":material("Black canvas shoes",(.023,.027,.031)),
               "sole":material("Cream rubber",(.72,.67,.52)),
               "faces":{k:face_material(k) for k in ("neutral","happy","shocked","sad")}})
-    p["hair"].node_tree.nodes.get("Principled BSDF").inputs["Roughness"].default_value=.39
+    ns,ls=p["hair"].node_tree.nodes,p["hair"].node_tree.links
+    bs=ns.get("Principled BSDF");bs.inputs["Roughness"].default_value=.48
+    wave=ns.new("ShaderNodeTexWave");wave.bands_direction="X";wave.inputs["Scale"].default_value=18;wave.inputs["Distortion"].default_value=2.2
+    bump=ns.new("ShaderNodeBump");bump.inputs["Strength"].default_value=.14;bump.inputs["Distance"].default_value=.009
+    ls.new(wave.outputs["Color"],bump.inputs["Height"]);ls.new(bump.outputs[0],bs.inputs["Normal"])
     return p
 
 
@@ -53,39 +57,46 @@ def block_uv(obj):
 
 
 def hair_mass(name,root,mat):
-    # Single closed, smooth molded shell with an asymmetric hairline.
-    # Rounded-superellipse rings wrap around a squared head, sweeping into
-    # a single curved front fringe instead of individual rectangular tufts.
+    """One molded swept shell, with an open underside and deliberate hairline.
+    The lower rings lie outside the head's maximum half-width/depth, so the
+    sculpt cannot be clipped into a jagged silhouette by the head."""
     verts=[]; faces=[]
-    N=64
-    rings=[(1.00,1.00,0),(1.05,1.04,.10),(1.01,1.01,.25),(.82,.85,.39),(.44,.47,.46)]
-    for ri,(sx,sy,dz) in enumerate(rings):
+    N=96
+    # Keep two closely spaced boundary rings outside the head, then curve
+    # upward over the crown before tapering to a softly rounded top.
+    rings=[(1.0,1.0,0),(1.005,1.005,.025),(1.025,1.025,.10),
+           (1.005,1.005,.23),(.94,.95,.35),(.68,.72,.42),(.32,.36,.46)]
+    for ri,(sx,sy,lift) in enumerate(rings):
         for j in range(N):
             theta=math.tau*j/N
             co,si=math.cos(theta),math.sin(theta)
-            x=.46*sx*math.copysign(abs(co)**.57,co)
-            y=.405*sy*math.copysign(abs(si)**.57,si)
-            front=max(0,-si)
-            back=max(0,si)
-            # Front hairline higher than sides/back, swept down at one temple.
-            fringe=front**3*(.18+.095*math.sin(2*theta+.7))
-            z=2.02+fringe-.12*back+dz
-            if ri>=2:
-                z=(1-(ri-1)/4)*z+((ri-1)/4)*(2.37+dz*.27)
-            verts.append((x,y,z))
+            x=.505*sx*math.copysign(abs(co)**.52,co)
+            y=.451*sy*math.copysign(abs(si)**.52,si)
+            front=max(0,-si);back=max(0,si)
+            # A smooth asymmetric sweep, high on the right and lower at the
+            # left temple, with sideburns and a low nape.
+            bottom=2.055+.205*front**3+.075*front**3*co-.13*back**2
+            crown=2.52+.085*(-co)+.045*front
+            if ri<=3:
+                z=bottom+lift
+                if ri==3:z=max(z,2.405)
+            else:
+                z=crown+(lift-.42)*.85
+            verts.append((x-.035*(ri/6)**2,y+.025*(ri/6),z))
     for r in range(len(rings)-1):
         for j in range(N):
             a=r*N+j;b=r*N+(j+1)%N
             faces.append((a,b,b+N,a+N))
-    faces.append(tuple(reversed(range(N))))
-    faces.append(tuple(range((len(rings)-1)*N,len(rings)*N)))
-    mesh=bpy.data.meshes.new(name+" / continuous hair mesh")
+    top=len(verts);verts.append((-.055,.025,2.61))
+    for j in range(N):faces.append(((len(rings)-1)*N+j,(len(rings)-1)*N+(j+1)%N,top))
+    mesh=bpy.data.meshes.new(name+" / continuous swept shell")
     mesh.from_pydata(verts,[],faces);mesh.update()
     obj=bpy.data.objects.new(name+" / sculpted hair",mesh)
     bpy.context.collection.objects.link(obj);obj.parent=root
     obj.data.materials.append(mat)
     for p in mesh.polygons:p.use_smooth=True
     sub=obj.modifiers.new("Smooth molded silhouette","SUBSURF");sub.levels=2;sub.render_levels=2
+    shell=obj.modifiers.new("Hair edge thickness","SOLIDIFY");shell.thickness=.016
     return obj
 
 
@@ -106,6 +117,7 @@ class Character(LegacyCharacter):
             return obj
         box("torso",(0,0,1.20),self.PROPORTIONS["torso"],shirt,bevel=.035,uv=True)
         self.head=box("head",(0,0,2.00),self.PROPORTIONS["head"],skin,bevel=.095)
+        self.head.modifiers.get("Soft edges").segments=8
         verts=[(-.385,-.402,1.68),(.385,-.402,1.68),(.385,-.402,2.32),(-.385,-.402,2.32)]
         mesh=bpy.data.meshes.new(name+" face UV");mesh.from_pydata(verts,[],[(0,1,2,3)]);mesh.update()
         uv=mesh.uv_layers.new(name="Face UV")

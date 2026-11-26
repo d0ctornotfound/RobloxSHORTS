@@ -29,14 +29,14 @@ def main():
     # Ubuntu Blender 4.0.2 is built without any Cycles denoiser backend.
     # Render clean high-sample input, then use a real spatial denoiser.
     scene.cycles.use_denoising=False
-    denoiser="FFmpeg nlmeans (s=2.0:p=7:r=15)"
-    scene.cycles.adaptive_threshold=.012
+    denoiser="FFmpeg nlmeans (s=3.5:p=7:r=15)"
+    scene.cycles.adaptive_threshold=.008
     scene.cycles.max_bounces=7
     scene.cycles.diffuse_bounces=4
     scene.cycles.transparent_max_bounces=10
     scene.view_settings.view_transform="AgX"
     scene.view_settings.look="AgX - Medium High Contrast"
-    scene.view_settings.exposure=.25
+    scene.view_settings.exposure=.05
     scene.world.node_tree.nodes.get("Background").inputs[0].default_value=(.42,.31,.21,1)
     scene.world.node_tree.nodes.get("Background").inputs[1].default_value=.20
     # Mild grade, no glow filter to muddy the faces.
@@ -81,7 +81,7 @@ def main():
             scene.render.filepath=str(raw)
             bpy.ops.render.render(write_still=True)
             subprocess.run(["ffmpeg","-y","-hide_banner","-loglevel","error","-i",str(raw),
-                "-vf","nlmeans=s=2.0:p=7:r=15","-frames:v","1","-threads","1",str(out/(name+".png"))],check=True)
+                "-vf","nlmeans=s=3.5:p=7:r=15","-frames:v","1","-threads","1",str(out/(name+".png"))],check=True)
         print("QUALITY_DENOISE_COMPLETE",name,denoiser,flush=True)
         records.append({"file":name+".png","bounds":bounds,"lens":camera.data.lens,"dof":dof})
         print("QUALITY_RENDERED",name,bounds,flush=True)

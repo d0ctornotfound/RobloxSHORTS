@@ -10,4 +10,6 @@ Local render:
 blender -b --python-exit-code 1 --python scripts/render_quality_stills.py -- --profile preview --output render/quality
 ```
 
-Preview 720×1280, 128 CPU Cycles samples, FFmpeg spatial non-local means (nlmeans=s=2.0:p=7:r=15), AgX medium-high contrast, subtle saturation grade. Full 1080×1920, 192 samples. The close-up has shallow depth of field. GitHub Actions workflow Quality sprint hero stills renders the three independent shots in parallel and packages their actual PNGs and manifest. No paid services or external visual assets. Requires FFmpeg. The Ubuntu Blender 4.0.2 package exposed no Cycles denoiser backend (run 45851196119); the separate FFmpeg filter replaces OIDN.
+Preview 720×1280, 128 CPU Cycles samples, FFmpeg spatial non-local means (nlmeans=s=3.5:p=7:r=15), AgX medium-high contrast, subtle saturation grade. Full 1080×1920, 192 samples. The close-up has shallow depth of field. GitHub Actions workflow Quality sprint hero stills renders the three independent shots in parallel and packages their actual PNGs and manifest. No paid services or external visual assets. Requires FFmpeg. The Ubuntu Blender 4.0.2 package exposed no Cycles denoiser backend (run 45851196119); the separate FFmpeg filter replaces OIDN.
+
+Portrait review refinement: non-intersecting swept hair shell, eight-segment head bevel, smooth curved mouth, adjusted skin/exposure and stronger spatial noise reduction.
