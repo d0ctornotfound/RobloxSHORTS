@@ -2,7 +2,7 @@
 
 ## Production skill — start here
 
-Read [SKILL.md](SKILL.md) for the current end-to-end animated story production system: approved quality characters, story schema, Blender render, edit, validation and evidence delivery. The Last Slice is approved at preview quality; see [project state](docs/PROJECT_STATE.md). To reuse in ChatGPT, start a fresh chat, connect/authorize this repository and point it at SKILL.md; the file does not install itself. The story renderer is currently café/cake-specific and requires adaptation for new choreography. The demo below is historical, not the current production entry point.
+Read [SKILL.md](SKILL.md) for the current end-to-end animated story production system: supplied R6 character rebuild (approval pending), story schema, Blender render, edit, validation and evidence delivery. The Last Slice is historically approved at preview quality; the old character standard has since been rejected. New R6 approval stills must be approved before either short is rerendered; see [project state](docs/PROJECT_STATE.md). To reuse in ChatGPT, start a fresh chat, connect/authorize this repository and point it at SKILL.md; the file does not install itself. The story renderer is currently café/cake-specific and requires adaptation for new choreography. The demo below is historical, not the current production entry point.
 
 ## Blender cloud rendering
 

@@ -1,53 +1,58 @@
 ---
 name: roblox-shorts
-description: Build, render, edit and verify original vertical R6-inspired animated story shorts using this repository's Blender quality rig, procedural sets and GitHub Actions. Use when asked to make a Roblox-style story short or continue this production system.
+description: Build, render, edit and verify original vertical R6-inspired animated story shorts using the supplied R6 armature, procedural sets and GitHub Actions. Use when asked to make a Roblox-style story short or continue this production system.
 ---
 
 # Roblox Shorts production skill
 
 ## Start here
 
-This repository makes original, vertical 9:16, narrated-story-style 3D shorts using procedural Blender geometry, textures, animation and an FFmpeg edit. The production output is an H.264 MP4 with burned-in single-word captions, original synthesized music/SFX, and an optional user-supplied narration WAV. The default deliverable has no spoken audio. Read [the reference benchmark](docs/REFERENCE_BENCHMARK.md), [current project state](docs/PROJECT_STATE.md), [approved character development](docs/QUALITY_SPRINT_2.md), and [integration evidence](docs/INTEGRATION_SPRINT.md). Treat the latest supervisor verdict as authoritative when older development notes conflict.
+This repository makes original, vertical 9:16, narrated-story-style 3D shorts using an imported R6 armature, procedural Blender sets, textures, animation and an FFmpeg edit. The production output is an H.264 MP4 with burned-in single-word captions, original synthesized music/SFX, and an optional user-supplied narration WAV. The default deliverable has no spoken audio. Read [the reference benchmark](docs/REFERENCE_BENCHMARK.md), [current project state](docs/PROJECT_STATE.md), [historical rejected character development](docs/QUALITY_SPRINT_2.md), and [integration evidence](docs/INTEGRATION_SPRINT.md). Treat the latest supervisor verdict as authoritative when older development notes conflict.
 
 A fresh ChatGPT chat or another agent must have access to this repository and a way to execute Blender locally or access authorized GitHub Actions. **A repository SKILL.md does not auto-install a ChatGPT skill or grant tool permissions.** The user starts a fresh chat, connects/authorizes this repo and points the agent to this root file. Read the actual source before changing it. No external visual assets, paid AI services or ElevenLabs usage without explicit user authorization. Never assume Actions is unlimited or free: check runner type, repo visibility, quotas and billing before execution; prefer existing standard CPU runners. Do not promise background work or invent render results. The scope is the user's requested short, not unsolicited further shorts or a separate look-development sprint.
 
 ## Visual and story grammar
 
-- Reference target: classic R6-inspired chunky blocks, textured clothing, low small expression decals, recurring lead, warm cinematic but legible lighting, fully dressed environments, physical interactions with visible contact. Use original authored characters and props rather than copied reference assets.
+- Reference target: classic supplied R6 block geometry, simple matte clothing, large centered expression decals, recurring lead, warm cinematic but legible lighting, fully dressed environments, physical interactions with visible contact. Use the exact supplied CC BY R6 rig, original material/accessory variations and original props.
 - Keep the story immediately comprehensible: surreal premise/hook in the first seconds, concrete escalation, a physical gag or consequential interaction, and a payoff recalling an earlier detail. Visuals must depict the narration beat, not merely share its topic.
 - Prefer purposeful cuts every 1–3 seconds, medium shots dominant, emotional close-ups, wide shots only to establish a location or necessary interaction. Keep characters large in the lower two-thirds, faces and active hands inside the frame, critical props unobscured, captions readable. Avoid empty ceiling/floor and set edges. Prefer enclosed frontal staging over oblique cutaways. The first approved preview has longer holds and wider two-shots than this aspirational grammar.
 - Bold white single-word captions with black outline near bottom, timed continuously across the narration; do not cover the gag or crop the text. Music/SFX must support, not overpower, narration.
 
-## Locked character system
+## Authoritative character standard — supplied R6 armature (approval pending)
 
-Use [scripts/quality_character.py](scripts/quality_character.py) and [scripts/quality_textures.py](scripts/quality_textures.py), not the old Stage A character or the demo. The six-primary-part R6-inspired rig is original procedural geometry, not an imported Roblox R6 skeleton. Preserve its public root, head, face, arms, wrists, grips, fingers, legs and meshes interfaces.
+**Supervisor directive 2026-11-26:** the previous procedural soft-toy character standard is rejected. Use [assets/r6_rigged.glb](assets/r6_rigged.glb) for every new character. Exact uploaded binary (149064 bytes, SHA-256 3a0f310faf09cf161f7036a4c0df1a20202b967683700badc4440309c0a7d95a, Git blob 5068dbb4ee2509336b1623dedf3da68a47e7c6da). Source attribution: Roblox-r6-rigged (1) by hopewell664, CC BY 4.0; see [assets/R6_ATTRIBUTION.md](assets/R6_ATTRIBUTION.md). The old quality_character.py and its procedural body/proportion spec are retired for new work; retain legacy files only to reproduce the historical previews.
 
-| Body component | XYZ dimensions (Blender scene units) |
+| Source rest-pose measurement | Native units (width × depth × height) |
 |---|---|
-| Head | 1.064 × 0.78 × 0.502 |
-| Torso | 1.12 × 0.65 × 0.889 |
-| Arm | 0.56 × 0.65 × 1.26 |
-| Leg | 0.56 × 0.64 × 0.889 |
-| Bare body height, excluding hair | 2.28 |
+| Head | approximately 1.2 × 1.2 × 1.2 |
+| Torso | 2 × 1 × 2 |
+| Arms | approximately 1 × 1 × 2 each |
+| Legs | approximately 1 × 1 × 2 each |
+| Bare avatar total height | 5.1 (approximately 5.10125) |
+| Head width / torso width | approximately 0.60 |
 
-Measured head width / torso width = 0.9500; head height / bare body height = 0.22018. Tolerance ±0.01 for each ratio. Keep thick arms reaching approximately mid-thigh, short wide head, rounded block edges, no realistic anatomical limbs. Matte skin roughness 0.87–0.96, specular IOR level 0.04. Face is a 1024² transparent texture/decal, not geometry or lip-sync. Ink scaled to 60% of the earlier face design and shifted low (UV center approximately 0.50, 0.36); expression names neutral, happy, shocked, sad. Swap actual image decals per beat with ExpressionTrack; do not enlarge faces for camera convenience.
+One imported armature with _rootJoint, Torso_00, Head_01, Left Arm_02, Right Arm_03, Left Leg_04, Right Leg_05 and end bones (12 joints total), two original skinned meshes, no source animation clips. Keep geometry, tiny source bevels, rigid vertex weights and native proportions intact. [scripts/r6_character.py](scripts/r6_character.py) validates the exact asset hash, armature, dimensions and skin bindings, then applies a uniform normalization to a 2.28-unit bare avatar height solely to match existing set scale (about .447×). This is not a change to proportions. Skin, clothing and accessories use flat matte plastic (roughness 1, specular IOR level 0). Simple colored torso and legs or restrained clothing textures; do not create puffy clothing or realistic limbs.
 
-Recurring lead: voluminous swept espresso spiky hair mesh with chunky locks and fringe, matte roughness .91 / specular .035, no beanie; red enamel star pin on chest, textured teal knit sweater and blue denim. Friend: fitted knitted beanie wraps temples/nape, cream printed tee and golden yellow denim (base texture RGB 255,221,0); no lead pin. Background variants patron_green and patron_blue use short spiky hair and green/blue tees. Retain silhouette identities across shorts unless user approves a change. Verify colors in rendered lighting, not just texture values.
+Identity: lead has blocky espresso hair, teal shirt, navy trousers and the red star chest pin; friend has a blocky ochre beanie with folded cuff, cream shirt and golden yellow trousers; teacher has simple dark block bun and open rectangular burgundy glasses, mauve shirt and dark trousers. Extras use the same source rig and simple alternate materials/accessories. Hair, hats, glasses and face plane are parented to the real Head_01 bone; the lead pin is on Torso_00. Never replace the imported body with generated geometry. No invented wrist/finger bones: the source has rigid R6 arms, not articulated hands.
 
-Create a variant with the quality builder, e.g. inside Blender Python (from a script with scripts/ on sys.path):
+Generate the six transparent 1024² expression PNGs with system Python + Pillow: python3 scripts/r6_faces.py --output assets/r6_faces. Neutral, happy (two black oval eyes and large curved smile), shocked, sad, unimpressed and laughing use large centered classic black ink, inspired by the supplied bundled face, not the retired low/small face rule. Apply as a transparent front decal and swap per beat with the existing ExpressionTrack or its bone-aware equivalent; the actual decal follows Head_01.
 
 ~~~python
-from quality_character import Character, palette
-p = palette()
-lead = Character("lead", p, lead=True)
-friend = Character("friend", p, lead=False)
-extra = Character("extra", p, lead=False, role="patron_green",
-                  wardrobe=("blue_tee", "blue_sleeve", "denim"))
+from r6_character import R6Character
+lead = R6Character("lead", "lead")
+friend = R6Character("friend", "friend")
+teacher = R6Character("teacher", "teacher")
+extra = R6Character("extra", "patron_green", shirt=(.15,.28,.75))
 extra.root.location = (2.4, 1.8, 0)
-extra.pose("happy")
+lead.pose("happy")
+lead.set_bone("head", (.0,.0,.15), frame=1)
+lead.aim_arm(1, (.1,-.95,-.15), frame=1)
+# lead.grips[1] is a real bone-parented socket, not a free-floating hand.
 ~~~
 
-Wardrobe tuple is shirt, matching sleeve, pants. Available shirt/sleeve pairs: sweater/sleeve, tee/tee_sleeve, green_tee/green_sleeve, blue_tee/blue_sleeve. Pants: denim, yellow_denim. Hat material: hat. Extend cloth_canvas and illustrated_material in quality_textures.py and palette in quality_character.py for new original variants; preserve 1024² UV panels, visible fabric/seams/prints, matched sleeves and matte lighting. For a new role add a default wardrobe and an explicit hair/accessory branch in Character (existing default lookup only supports four roles); keep the locked measurements, wrist/decal/mesh interfaces and unique silhouette. The JSON story currently does not pass role or wardrobe overrides to the builder; wire them in explicitly if needed. Inherited sleeve geometry depends on role, so coordinate garment geometry with the chosen texture. Test neutral full-body, happy portrait and reaction under intended lighting before claiming a new look works. The manual quality still workflow can verify proportions and framing; no separate stills round unless needed/requested.
+All character joint motion must key pose bones through set_bone / aim_arm (index 0 = negative-X/right arm, index 1 = positive-X/left arm). Leg/torso/head posing uses actual bones; do not animate independent meshes, use artificial wrists/fingers, or reparent the skinned head to an empty. The existing GripAttachment COPY_TRANSFORMS can bind to the new arm-bone socket; re-evaluate world-space contact and release. A rigid arm cannot close fingers. Bone-parented contact sockets on Head_01 support cake/bun payoffs; calibrate them against actual new accessory meshes. Use evaluated/deformed vertices (mesh_points and group_points) for framing and occlusion; object rest bounds do not describe posed skinned geometry.
+
+**Approval gate:** do not rerender either story or start another short until supervisor explicitly approves the new stills. [R6 approval still workflow](.github/workflows/r6-approval.yml) runs only three stills: full-body neutral studio lineup, lead+friend café, lead+teacher classroom. It tests original skinned-mesh deformation, grip socket movement, world attachment error and head-decal following. It uses the existing set builders, not a short render. The current legacy render_story.py and render_classroom.py still depend on the retired procedural Character/Teacher interface: the required production migration is to instantiate R6Character, replace old head pivots and shoulder/wrist/finger transforms with pose bones and bone-parented sockets, retarget contact geometry/seated poses/prop support and use evaluated skin bounds for the existing camera gates. Story timing, sets, camera rules, validation thresholds, captions and edit pipeline carry over unchanged. Do not claim migrated shorts are validated until their own new-rig runs pass. Preserve old renderers only as historical reproduction paths during this approval stage; do not run them.
 
 ## Story data and actual implementation boundary
 
@@ -57,12 +62,12 @@ The worked example is [stories/the_last_slice.json](stories/the_last_slice.json)
 |---|---|
 | id | Unique snake_case identifier; output file id.mp4 |
 | title | Human-readable story title |
-| location | Scene identifier; currently cafe only |
+| location | Scene identifier; café and classroom have existing set builders |
 | duration | Positive seconds; example 12 |
 | narration | Exact complete spoken script, including punctuation; whitespace-normalized token join must match |
 | characters | Object keyed by character ID; existing driver requires lead and friend |
 | characters.ID.position | Three-number XYZ nominal root position |
-| characters.ID.lead | Boolean passed to quality Character; controls recurring lead vs friend |
+| characters.ID.lead | Legacy Boolean identifying recurring lead vs friend; map to R6Character role when migrating |
 | characters.ID.reach_arm | 0 = negative-X shoulder, 1 = positive-X shoulder in actor-local coordinates |
 | props.plate.type | ceramic_plate in example; semantic prop identifier |
 | props.plate.support_z | Plate base/table support height, 1.18 in example |
@@ -89,11 +94,11 @@ Current action keys: notice (reaction cue), lead_reach_start, lead_contact, frie
 
 **Not a generic script-to-video engine yet.** The current renderer accepts --story but is specialized to this two-person café cake gag. Root positions, shot camera candidates, patron visibility, embedded landing support, plate/cake builders and action choreography are hard-coded/retargeted; nominal JSON position, camera and head_support values and semantic labels do not automatically drive arbitrary scenes or actions. The GitHub workflow also hard-codes the example file/default, four shot IDs, frame-grab timestamps, filename and artifact name. Merely changing JSON or narration will not create a different physical story.
 
-For the fresh-chat reuse test: design a distinct second short from the requested premise, map each narrated beat to visible action, save a separate JSON spec, then deliberately adapt/extend the story driver and props, shot camera blocking and action validation to that story. Reuse the quality builder, set, reusable interaction/expression systems, editor and pixel gate. Prefer extracting story-specific drivers/configuration or adding a separate driver/selector over breaking the approved example. Parameterize the workflow story selection, shot matrix, expected chunk count, renderer/editor --story, output filenames, timestamps and artifact naming consistently before triggering a different story. If preserving the old workflow, create a new story-specific workflow or explicitly select the new driver. Keep existing demo and approved story regression paths intact. Do not claim a generalized capability until it has rendered and been reviewed. No second short exists at packaging time.
+For the fresh-chat reuse test: design a distinct second short from the requested premise, map each narrated beat to visible action, save a separate JSON spec, then deliberately adapt/extend the story driver and props, shot camera blocking and action validation to that story. Reuse the supplied R6 builder, set, reusable interaction/expression systems, editor and pixel gate. Prefer extracting story-specific drivers/configuration or adding a separate driver/selector over breaking the approved example. Parameterize the workflow story selection, shot matrix, expected chunk count, renderer/editor --story, output filenames, timestamps and artifact naming consistently before triggering a different story. If preserving the old workflow, create a new story-specific workflow or explicitly select the new driver. Keep existing demo and approved story regression paths intact. Do not claim a generalized capability until it has rendered and been reviewed. Short #2 was implemented in a fresh chat on the old rig; new-rig approval is now the blocking milestone.
 
 ## Production pipeline
 
-Dependencies: Blender 4.0-compatible Python/bpy (CI tested Ubuntu 24.04 package Blender 4.0.2), Python 3, FFmpeg + ffprobe with libass/libx264, DejaVu Sans font. From repo root, for the verified example:
+Dependencies: Blender 4.0-compatible Python/bpy (CI tested Ubuntu 24.04 package Blender 4.0.2), Python 3, FFmpeg + ffprobe with libass/libx264, DejaVu Sans font. Historical reproduction commands for the previously verified example (DO NOT run either short while R6 approval is pending; update the drivers to the new rig before production resumes):
 
 ~~~sh
 # 1. Build continuous animation and render all frames into a clean directory.
@@ -143,7 +148,7 @@ Use matching narration length/timing and listen; caption timings are distributed
 
 [Integrated quality story short](.github/workflows/story-render.yml) runs on pushes to main touching stories/**, render_story.py, stage_c_*.py, quality_*.py, edit_story.py, validate_story_pixels.py or the workflow itself. Manual dispatch accepts preview/full; default is preview. Current matrix four example shots, CPU Ubuntu 24.04, 60 min per render job; edit 15 min. Check Actions permission and billing before dispatch. If a connector lacks dispatch, authorized relevant push triggers workflow; do not push meaningless changes to force runs. Fetch actual run status, failed job logs and artifact IDs. Intermediate story-frames-<shot> artifacts (1-day retention) hold frames + story_manifest.json, plus packed story.blend in first shot. Edit verifies identical manifests and complete unique frames, runs the editor, extracts six grabs and enforces pixel gate. Final roblox-the-last-slice-corrected-<profile>-12s (7 days) includes the_last_slice.mp4, story.blend, story_manifest.json, source JSON, metadata.json, word_timing.json, captions.ass, music.wav, sfx.wav, mix.wav, frame_grabs/, pixel_validation.json. Raw frames are in intermediate archives, not final package. Download promptly; expired artifacts require reproduction, not invented links.
 
-[Quality sprint hero stills](.github/workflows/quality-stills.yml) is manual only; four-shot matrix and package roblox-quality-sprint2-hero-<profile>, with quality_manifest.json. Local equivalent: blender -b --python-exit-code 1 --python scripts/render_quality_stills.py -- --profile preview --shot all --output render/quality. Historical [demo workflow](.github/workflows/blender-render.yml) is not the production short; keep its regression path separate. Documentation-only commits do not trigger the story workflow.
+Historical [Quality sprint hero stills](.github/workflows/quality-stills.yml) is manual only (retired character standard; do not use for new approval); four-shot matrix and package roblox-quality-sprint2-hero-<profile>, with quality_manifest.json. Local equivalent: blender -b --python-exit-code 1 --python scripts/render_quality_stills.py -- --profile preview --shot all --output render/quality. Historical [demo workflow](.github/workflows/blender-render.yml) is not the production short; keep its regression path separate. Documentation-only commits do not trigger the story workflow.
 
 ## Validation: numeric AND visual
 
@@ -169,4 +174,4 @@ Short #1 The Last Slice corrected preview: supervisor APPROVED preview-complete.
 
 Known gaps: preview grain at 24 samples; approved frontal two-shots ~30–37% character span versus >=45% goal and reference lower-two-thirds composition; airborne cake slightly cropped at 7.0s; analytical upright/tilted prop flight and socket constraints, not full rigid-body collision simulation or IK; no general lip sync, no universal automatic script-to-shot conversion, only one dressed café location proven for production. Full profile unproven. New locations, props and story actions require actual implementation and verification. These limitations must not be hidden or treated as authorization to regress further.
 
-Next milestone: fresh-chat reuse test, short #2 from this file and the repository alone. Do not start it during skill packaging.
+Next milestone: supervisor approval of the exact supplied R6 rig stills, then separately migrate and verify the story renderers. Both existing previews are frozen; no new short render is authorized.

@@ -1,6 +1,6 @@
 # Project State
 
-Current milestone: Short #1 APPROVED, preview-complete. Short #2 fresh-chat reuse test in progress; production implementation and two camera corrections committed; no supervisor approval yet.
+Current milestone: CHARACTER REBUILD — supplied R6 rig replaces rejected procedural standard. Three approval stills in CI; both shorts frozen until supervisor approval.
 
 Successful preview run: [45811466419](https://github.com/d0ctornotfound/RobloxSHORTS/actions/runs/45811466419), commit `c043c3cd322c274108726203bab3c16a6e8b8689`, artifact `roblox-demo-preview-5s`.
 
@@ -115,3 +115,8 @@ Run [45902470116](https://github.com/d0ctornotfound/RobloxSHORTS/actions/runs/45
 ### Frame 95 targeted repair
 
 Run 45904808741 at 8551dab: all four renders and preflight succeeded, edit 140203995079 failed final pixel gate. Max near-black fold 1.254762%, throw 1.223717%, glide 2.213542% frame 95, payoff 1.678241%. Downloaded all four raw artifacts and inspected frames 19/49/79/103/129 plus glide 90–95. Foreground extras removed in fold/reaction, but lead hair obscures folding face and raised arms cover reaction face; glide shows plane above a student's head but not multiple rows; teacher plane visibly lodged, expression small and angle oblique. Raw frame 95 RGB<=24 2.174961%; magenta mask concentrates on teacher lower clothing and floor shadow beside board, not obstruction. Supervisor directed local glide-only fill, unchanged strict 2% final gate, no changes to other shots/story. New render uses a localized keyed bounce light before teacher cut; workflow reuses exact baseline fold/throw/payoff chunks from run 45904808741, renders glide only, and re-edits all frames. Updated packed scene from glide included. Outcome pending.
+
+
+## R6 character rebuild directive (2026-11-26)
+
+Supervisor rejected the prior soft-vinyl look. Exact user GLB committed at assets/r6_rigged.glb (source SHA-256 3a0f310faf09cf161f7036a4c0df1a20202b967683700badc4440309c0a7d95a, Git blob 5068dbb4ee2509336b1623dedf3da68a47e7c6da; CC BY 4.0 attribution preserved). R6Character imports original armature + two skinned meshes, normalized uniformly to existing set scale; head/torso width ratio ~0.6. Three roles, block hair/hat/bun/glasses, red star pin, six centered transparent 1024² classic expressions; pose-bone API and bone-parented grip sockets. Root SKILL.md replaces old character specification. Approval run 45910469283 only renders stills. No short re-render started; historical drivers remain frozen pending approval and require migration to the new bone/contact interface. Prior short #1 approval and short #2 evidence are historical and do not approve this new character rig.
