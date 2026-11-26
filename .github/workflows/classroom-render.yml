@@ -95,6 +95,11 @@ jobs:
           python3 scripts/edit_story.py --story stories/the_perfect_throw.json --profile "$PROFILE" --frames render/story --output render/final --verify-slot
           cp render/story/story_manifest.json render/story/story.blend render/final/
           cp stories/the_perfect_throw.json render/final/
+          mkdir -p render/final/preflight
+          for chunk in render/chunks/story-frames-*; do
+            cp "$chunk/preflight.json" "render/final/preflight/${chunk##*/}.json"
+            cp "$chunk"/preflight_*.png render/final/preflight/
+          done
           mkdir -p render/final/frame_grabs
           for item in 01_fold_1p5:1.5 02_throw_4p0:4.0 03_glide_6p5:6.5 04_payoff_8p5:8.5 04_payoff_10p7:10.7 04_payoff_11p8:11.8; do
             ffmpeg -hide_banner -loglevel error -ss "${item#*:}" -i render/final/the_perfect_throw.mp4 -frames:v 1 "render/final/frame_grabs/${item%:*}.png"

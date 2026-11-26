@@ -193,6 +193,13 @@ def main():
                     cam.keyframe_insert("location",frame=f);cam.keyframe_insert("rotation_euler",frame=f)
             elif kind=="teacher_impact":
                 cam.location=(-2.7,-2.65,2.65);cam.data.lens=44;point_at(cam,(-.22,-5.35,2.25));result=measure()
+            elif kind=="02_throw":
+                # Exact known non-black camera recovered from the packed blend
+                # of run 45890838253 (artifact 15152761142). No search.
+                cam.data.lens=48
+                cam.location=(-1.850000023841858,0,2.5)
+                cam.rotation_euler=(1.2797887325286865,-7.346073527259023e-09,-.14373868703842163)
+                result=measure()
             else:
                 # Frontal compressed perspective; fixed lens throughout shot.
                 # Search physical positions and aim, using the whole segment's bounds.
@@ -223,6 +230,36 @@ def main():
             if image.source=="GENERATED" and not image.packed_file:image.pack()
         bpy.ops.wm.save_as_mainfile(filepath=str(out/"story.blend"))
     selected=[r for r in records if a.shot in ("all",r["id"])];assert selected
+    # Pre-flight the selected shot's camera(s) before any full animation render.
+    # Use a real PNG, loaded as non-color data so the threshold is the same
+    # 8-bit display RGB <=24 as the encoded-video gate. Keep evidence separately
+    # from the shared timeline manifest (each matrix runner owns its own tests).
+    preflight=[]
+    old_samples=scene.cycles.samples;old_pct=scene.render.resolution_percentage
+    old_path=scene.render.filepath
+    for rec in selected:
+        for part in rec["segments"]:
+            f=(part["first"]+part["last"])//2
+            scene.frame_set(f);bpy.context.view_layer.update()
+            scene.render.resolution_percentage=50;scene.cycles.samples=8
+            filename=out/("preflight_"+part["segment"]+".png")
+            scene.render.filepath=str(filename)
+            bpy.ops.render.render(write_still=True)
+            im=bpy.data.images.load(str(filename),check_existing=False)
+            im.colorspace_settings.name="Non-Color"
+            from array import array
+            pixels=array("f",[0])*(im.size[0]*im.size[1]*4)
+            im.pixels.foreach_get(pixels)
+            count=len(pixels)//4
+            pct=100*sum(max(pixels[i:i+3])<=24/255 for i in range(0,len(pixels),4))/count
+            bpy.data.images.remove(im)
+            row={"segment":part["segment"],"frame":f,"near_black_percent":pct,"threshold_percent":2,"pass":pct<=2}
+            preflight.append(row)
+            print("CAMERA_PREFLIGHT",json.dumps(row),flush=True)
+            (out/"preflight.json").write_text(json.dumps(preflight,indent=2)+"\n")
+            if pct>2:raise RuntimeError("Camera pre-flight near-black gate failed: "+str(row))
+    scene.cycles.samples=old_samples;scene.render.resolution_percentage=old_pct
+    scene.render.filepath=old_path
     scene.frame_start=selected[0]["first"];scene.frame_end=selected[-1]["last"];scene.frame_set(scene.frame_start)
     bpy.ops.render.render(animation=True)
 if __name__=="__main__":main()
