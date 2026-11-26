@@ -239,11 +239,21 @@ def main():
         for part in parts:
             for n,v in part["min_hero_vertical_coverage"].items():combined[n]=min(combined.get(n,1),v)
         records.append({"id":sid,"first":first,"last":last,"segments":parts,"min_hero_vertical_coverage":combined,"coverage_goal_met":all(p["coverage_goal_met"] for p in parts),"supervisor_minimum_met":all(p["supervisor_minimum_met"] for p in parts),"safe_bounds_met":all(p["safe_bounds_met"] for p in parts)})
+    # Localized bounce for the last glide frames only; no change to the
+    # other shots, camera, prop timeline, or final pixel acceptance gate.
+    from stage_a_cafe import light
+    light("Glide landing shadow fill",(-3.2,-4.4,2.6),(0,-5.85,.65),180,2.5,(1,.86,.72))
+    lamp=bpy.data.objects.get("Glide landing shadow fill")
+    for t,power in ((0,0),(7.0,0),(7.5,180),(8.0,0),(12,0)):
+        lamp.data.energy=power;lamp.data.keyframe_insert("energy",frame=frame_at(t,fps))
+    # Keep the light off at the teacher cut, not a gradual cross-shot fade.
+    lamp.data.animation_data.action.fcurves[0].keyframe_points[-3].interpolation="CONSTANT"
+    scene.frame_set(1)
     manifest={"story":spec["id"],"resolution":[w,h],"fps":fps,"duration":12,"frame_count":scene.frame_end,"samples":samples,"shots":records,"timeline":timeline,"max_grip_error":max(errors),"launch_frame":launch,"landing_frame":land,"payoff_hold_seconds":(scene.frame_end-land+1)/fps,"bun_contact_local":list(local),"rig":"Sprint 2 quality"}
     (out/"story_manifest.json").write_text(json.dumps(manifest,indent=2)+"\n")
     print("CLASSROOM_VALIDATION",json.dumps({k:v for k,v in manifest.items() if k!="timeline"}),flush=True)
     scene.frame_set(1);scene.render.filepath=str(out/"frame_")
-    if a.shot in ("all",records[0]["id"]):
+    if a.shot in ("all",records[0]["id"],"03_glide"):
         for image in bpy.data.images:
             if image.source=="GENERATED" and not image.packed_file:image.pack()
         bpy.ops.wm.save_as_mainfile(filepath=str(out/"story.blend"))

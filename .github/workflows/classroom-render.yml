@@ -18,6 +18,7 @@ on:
 
 permissions:
   contents: read
+  actions: read
 
 jobs:
   render:
@@ -26,7 +27,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        shot: [01_fold, 02_throw, 03_glide, 04_payoff]
+        shot: [03_glide]
     env:
       PROFILE: ${{ inputs.profile || 'preview' }}
       SHOT: ${{ matrix.shot }}
@@ -65,6 +66,18 @@ jobs:
         with:
           pattern: story-frames-*
           path: render/chunks
+      - uses: actions/download-artifact@v4
+        with:
+          github-token: ${{ github.token }}
+          run-id: 45904808741
+          pattern: story-frames-*
+          path: render/baseline
+      - name: Reuse unchanged shot chunks
+        run: |
+          for shot in 01_fold 02_throw 04_payoff; do
+            cp -a "render/baseline/story-frames-$shot" render/chunks/
+          done
+          rm -f render/chunks/story-frames-01_fold/story.blend
       - name: Assemble frames and cross-check timelines
         run: |
           python3 - <<'PY'
