@@ -54,51 +54,7 @@ jobs:
         run: |
           mode="${REQUESTED:-animation}"
           if [ "$GITHUB_EVENT_NAME" = push ] && [ -n "$BEFORE" ]; then
-            if git diff --name-only "$BEFORE" "$GITHUB_SHA" | grep -Eq '^scripts/(render_stills\.py|stage_a_.*\.py)
-      - name: Install Blender and FFmpeg
-        run: |
-          sudo apt-get update
-          sudo apt-get install -y --no-install-recommends blender ffmpeg
-          blender --version
-          ffmpeg -version
-      - name: Render animation
-        if: steps.mode.outputs.value == 'animation'
-        run: |
-          python3 -m py_compile scripts/render_demo.py
-          blender -b --python-exit-code 1 --python scripts/render_demo.py -- --profile "$PROFILE" --duration "$DURATION" --output render
-      - name: Encode and validate MP4
-        if: steps.mode.outputs.value == 'animation'
-        run: |
-          fps=12
-          if [ "$PROFILE" = full ]; then fps=24; fi
-          ffmpeg -hide_banner -loglevel error -framerate "$fps" -start_number 1 -i render/frame_%04d.png -c:v libx264 -crf 18 -pix_fmt yuv420p -movflags +faststart render/demo.mp4
-          ffprobe -v error -select_streams v:0 -show_streams -show_format -of json render/demo.mp4 > render/metadata.json
-          python3 - <<'PY'
-          import json, os
-          from fractions import Fraction
-          from pathlib import Path
-          data = json.loads(Path("render/metadata.json").read_text())
-          stream = data["streams"][0]
-          width, height, fps = (1080, 1920, 24) if os.environ["PROFILE"] == "full" else (360, 640, 12)
-          assert (stream["width"], stream["height"]) == (width, height), stream
-          assert Fraction(stream["avg_frame_rate"]) == fps, stream
-          duration = int(os.environ["DURATION"])
-          assert int(stream["nb_frames"]) == fps * duration, stream
-          assert abs(float(data["format"]["duration"]) - duration) < 0.1, data
-          print(f"Validated {width}x{height}, {fps} fps, {duration} seconds")
-          PY
-      - name: Upload video and Blender project
-        if: steps.mode.outputs.value == 'animation'
-        uses: actions/upload-artifact@v4
-        with:
-          name: roblox-demo-${{ env.PROFILE }}-${{ env.DURATION }}s
-          path: |
-            render/demo.mp4
-            render/scene.blend
-            render/metadata.json
-          if-no-files-found: error
-          retention-days: 7
-; then mode=stills; fi
+            if git diff --name-only "$BEFORE" "$GITHUB_SHA" | grep -Eq '^scripts/(render_stills\.py|stage_a_.*\.py)$'; then mode=stills; fi
           fi
           echo "value=$mode" >> "$GITHUB_OUTPUT"
           echo "Selected render mode: $mode"
@@ -109,10 +65,12 @@ jobs:
           blender --version
           ffmpeg -version
       - name: Render animation
+        if: steps.mode.outputs.value == 'animation'
         run: |
           python3 -m py_compile scripts/render_demo.py
           blender -b --python-exit-code 1 --python scripts/render_demo.py -- --profile "$PROFILE" --duration "$DURATION" --output render
       - name: Encode and validate MP4
+        if: steps.mode.outputs.value == 'animation'
         run: |
           fps=12
           if [ "$PROFILE" = full ]; then fps=24; fi
@@ -133,6 +91,7 @@ jobs:
           print(f"Validated {width}x{height}, {fps} fps, {duration} seconds")
           PY
       - name: Upload video and Blender project
+        if: steps.mode.outputs.value == 'animation'
         uses: actions/upload-artifact@v4
         with:
           name: roblox-demo-${{ env.PROFILE }}-${{ env.DURATION }}s

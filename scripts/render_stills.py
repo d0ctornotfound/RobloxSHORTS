@@ -1,4 +1,4 @@
-"""Render three vertical Stage A stills with original procedural assets."""
+"""Render three vertical Stage A stills with original procedural assets (CI entry point)."""
 import argparse
 import json
 import sys
