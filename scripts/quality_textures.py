@@ -87,7 +87,19 @@ def face_canvas(expression):
         for x in (.32,.68):
             c.ellipse(x,.65,.045,.075,ink)
         c.line([(.34,.36),(.44,.335),(.56,.335),(.66,.36)],.040,ink)
-    return c
+    # Scale all ink (not the head) to 60% about its visual center,
+    # then lower the center to 36% of the UV panel height.
+    small=Canvas(1024)
+    n=c.n
+    for y in range(n):
+        sy=round((y/n-.36)/.60*n+.53*n)
+        if not 0<=sy<n:continue
+        for x in range(n):
+            sx=round((x/n-.50)/.60*n+.50*n)
+            if 0<=sx<n:
+                i=(sy*n+sx)*4;j=(y*n+x)*4
+                small.data[j:j+4]=c.data[i:i+4]
+    return small
 
 
 def face_material(expression):
@@ -113,7 +125,7 @@ def face_material(expression):
 
 def cloth_canvas(kind):
     colors={"sweater":(24,105,91,255),"sleeve":(24,105,91,255),"tee":(239,222,181,255),
-            "tee_sleeve":(239,222,181,255),"denim":(34,61,103,255),"hat":(195,114,29,255)}
+            "tee_sleeve":(239,222,181,255),"denim":(34,61,103,255),"hat":(195,114,29,255),"green_tee":(29,171,51,255),"green_sleeve":(29,171,51,255),"yellow_denim":(245,191,17,255),"blue_tee":(34,105,213,255),"blue_sleeve":(34,105,213,255)}
     c=Canvas(1024,colors[kind])
     dark=(14,64,58,255)
     cream=(241,207,138,255)
@@ -137,11 +149,11 @@ def cloth_canvas(kind):
         if kind=="sweater":
             c.line([(.29,.99),(.33,.91),(.42,.865),(.50,.85),(.58,.865),(.67,.91),(.71,.99)],.06,dark)
             c.line([(.30,.99),(.35,.92),(.50,.875),(.65,.92),(.70,.99)],.012,cream)
-    elif kind in ("tee","tee_sleeve"):
-        seam=(176,154,118,255)
+    elif kind in ("tee","tee_sleeve","green_tee","green_sleeve","blue_tee","blue_sleeve"):
+        seam=(176,154,118,255) if kind.startswith("tee") else (23,66,43,255) if kind.startswith("green") else (21,49,104,255)
         c.rect(0,0,1,.035,seam)
         c.line([(.03,.07),(.97,.07)],.007,(249,236,202,255))
-        if kind=="tee":
+        if kind in ("tee","green_tee","blue_tee"):
             c.line([(.31,1),(.36,.90),(.50,.86),(.64,.90),(.69,1)],.055,(45,85,105,255))
             # Original screen-printed mountain/sun badge with layered ink.
             c.ellipse(.50,.49,.245,.26,(33,77,98,255))
@@ -155,13 +167,16 @@ def cloth_canvas(kind):
         else:
             c.rect(0,.05,1,.10,(45,85,105,255))
     else:
-        c.rect(0,.93,1,1,(24,44,80,255))
+        if kind=="yellow_denim":
+            c.rect(0,.93,1,1,(187,117,10,255))
+        else:
+            c.rect(0,.93,1,1,(24,44,80,255))
         for x in (.055,.945):
-            c.line([(x,.04),(x,.95)],.014,(18,36,66,255))
+            c.line([(x,.04),(x,.95)],.014,(163,103,11,255) if kind=="yellow_denim" else (18,36,66,255))
             for y in range(5,96,4):
                 c.rect(x-.006,y/100,x+.006,y/100+.017,(192,136,68,255))
-        c.line([(.15,.87),(.22,.76),(.38,.72)],.014,(20,39,70,255))
-        c.line([(.62,.72),(.78,.76),(.85,.87)],.014,(20,39,70,255))
+        c.line([(.15,.87),(.22,.76),(.38,.72)],.014,(163,103,11,255) if kind=="yellow_denim" else (20,39,70,255))
+        c.line([(.62,.72),(.78,.76),(.85,.87)],.014,(163,103,11,255) if kind=="yellow_denim" else (20,39,70,255))
         c.line([(.48,.96),(.48,.73)],.01,(192,136,68,255))
         c.ellipse(.5,.955,.024,.024,(205,151,73,255))
     # Baked illustrated stitch marks and soft edge shading, not only a shader stripe.

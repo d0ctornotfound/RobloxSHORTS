@@ -15,22 +15,26 @@ def skin_material(name,color):
     m=material(name,color)
     ns,ls=m.node_tree.nodes,m.node_tree.links
     bs=ns.get("Principled BSDF")
-    bs.inputs["Roughness"].default_value=.47
+    bs.inputs["Roughness"].default_value=.91
+    bs.inputs["Specular IOR Level"].default_value=.04
     noise=ns.new("ShaderNodeTexNoise")
     noise.inputs["Scale"].default_value=19
     ramp=ns.new("ShaderNodeMapRange")
-    ramp.inputs["To Min"].default_value=.43
-    ramp.inputs["To Max"].default_value=.57
+    ramp.inputs["To Min"].default_value=.87
+    ramp.inputs["To Max"].default_value=.96
     ls.new(noise.outputs["Fac"],ramp.inputs["Value"])
     ls.new(ramp.outputs["Result"],bs.inputs["Roughness"])
     return m
 
 
 def palette():
-    p={k:illustrated_material(k) for k in ("sweater","sleeve","tee","tee_sleeve","denim","hat")}
+    p={k:illustrated_material(k) for k in ("sweater","sleeve","tee","tee_sleeve","denim","hat","green_tee","green_sleeve","yellow_denim","blue_tee","blue_sleeve")}
     p.update({"skin":skin_material("Honey skin",(.55,.29,.105)),
               "skin2":skin_material("Peach skin",(.73,.43,.20)),
               "hair":material("Espresso molded hair",(.028,.012,.005)),
+              "hair2":material("Patron auburn hair",(.17,.049,.013)),
+              "badge":material("Signature red enamel pin",(.62,.022,.012)),
+              "badge_center":material("Signature cream star",(.94,.76,.37)),
               "shoe":material("Black canvas shoes",(.023,.027,.031)),
               "sole":material("Cream rubber",(.72,.67,.52)),
               "faces":{k:face_material(k) for k in ("neutral","happy","shocked","sad")}})
@@ -56,91 +60,139 @@ def block_uv(obj):
             uv.data[li].uv=((co[u]-lo[u])/max(hi[u]-lo[u],1e-5),(co[v]-lo[v])/max(hi[v]-lo[v],1e-5))
 
 
-def hair_mass(name,root,mat):
-    """One molded swept shell, with an open underside and deliberate hairline.
-    The lower rings lie outside the head's maximum half-width/depth, so the
-    sculpt cannot be clipped into a jagged silhouette by the head."""
-    verts=[]; faces=[]
-    N=96
-    # Keep two closely spaced boundary rings outside the head, then curve
-    # upward over the crown before tapering to a softly rounded top.
-    rings=[(1.0,1.0,0),(1.005,1.005,.025),(1.025,1.025,.10),
-           (1.005,1.005,.23),(.94,.95,.35),(.68,.72,.42),(.32,.36,.46)]
-    for ri,(sx,sy,lift) in enumerate(rings):
+def hair_mass(name,root,mat,variant="swept"):
+    """Closed sculpted base plus curved tapered locks, joined into one mesh.
+    Hair is explicitly NOT a hat, and never uses a textile material.
+    """
+    parts=[]
+    # Wide low head: top z=2.28, half width .532, depth .39.
+    # Base follows the forehead and wraps the ears/nape.
+    N=64;verts=[];faces=[]
+    for ri,(sx,sy,lift) in enumerate([(1,1,0),(1.03,1.02,.09),(.95,.95,.21),(.62,.65,.30)]):
         for j in range(N):
-            theta=math.tau*j/N
-            co,si=math.cos(theta),math.sin(theta)
-            x=.505*sx*math.copysign(abs(co)**.52,co)
-            y=.451*sy*math.copysign(abs(si)**.52,si)
-            front=max(0,-si);back=max(0,si)
-            # A smooth asymmetric sweep, high on the right and lower at the
-            # left temple, with sideburns and a low nape.
-            bottom=2.055+.205*front**3+.075*front**3*co-.13*back**2
-            crown=2.52+.085*(-co)+.045*front
-            if ri<=3:
-                z=bottom+lift
-                if ri==3:z=max(z,2.405)
-            else:
-                z=crown+(lift-.42)*.85
-            verts.append((x-.035*(ri/6)**2,y+.025*(ri/6),z))
-    for r in range(len(rings)-1):
+            t=math.tau*j/N;co,si=math.cos(t),math.sin(t)
+            x=.575*sx*math.copysign(abs(co)**.54,co)
+            y=.435*sy*math.copysign(abs(si)**.54,si)
+            z=2.00+.19*max(0,-si)**4-.10*max(0,si)**2+lift
+            if ri>=2:z=max(z,2.30+(ri-2)*.08)
+            verts.append((x,y,z))
+    for r in range(3):
         for j in range(N):
-            a=r*N+j;b=r*N+(j+1)%N
-            faces.append((a,b,b+N,a+N))
-    top=len(verts);verts.append((-.055,.025,2.61))
-    for j in range(N):faces.append(((len(rings)-1)*N+j,(len(rings)-1)*N+(j+1)%N,top))
-    mesh=bpy.data.meshes.new(name+" / continuous swept shell")
-    mesh.from_pydata(verts,[],faces);mesh.update()
-    obj=bpy.data.objects.new(name+" / sculpted hair",mesh)
-    bpy.context.collection.objects.link(obj);obj.parent=root
-    obj.data.materials.append(mat)
-    for p in mesh.polygons:p.use_smooth=True
-    sub=obj.modifiers.new("Smooth molded silhouette","SUBSURF");sub.levels=2;sub.render_levels=2
-    shell=obj.modifiers.new("Hair edge thickness","SOLIDIFY");shell.thickness=.016
-    return obj
+            a=r*N+j;b=r*N+(j+1)%N;faces.append((a,b,b+N,a+N))
+    faces.append(tuple(reversed(range(N))))
+    faces.append(tuple(range(3*N,4*N)))
+    def obj_from(v,f,label):
+        me=bpy.data.meshes.new(label);me.from_pydata(v,[],f);me.update()
+        ob=bpy.data.objects.new(label,me);bpy.context.collection.objects.link(ob)
+        ob.data.materials.append(mat)
+        for poly in me.polygons:poly.use_smooth=True
+        return ob
+    base=obj_from(verts,faces,name+" / hair base");parts.append(base)
+    def lock(start,mid,end,width,depth,label):
+        # Swept lock is an elliptical tube tapering to a pointed tip.
+        start,mid,end=map(Vector,(start,mid,end));v=[];f=[];sides=12
+        for i in range(9):
+            t=i/8;center=(1-t)**2*start+2*t*(1-t)*mid+t*t*end
+            tangent=(2*(1-t)*(mid-start)+2*t*(end-mid)).normalized()
+            cross=tangent.cross(Vector((0,1,0))).normalized()
+            if cross.length<.01:cross=Vector((1,0,0))
+            other=tangent.cross(cross).normalized()
+            taper=(1-t)**.65*.95+.035
+            for j in range(sides):
+                ang=math.tau*j/sides
+                v.append(tuple(center+cross*(width*taper*math.cos(ang))+other*(depth*taper*math.sin(ang))))
+        for i in range(8):
+            for j in range(sides):
+                a=i*sides+j;b=i*sides+(j+1)%sides;f.append((a,b,b+sides,a+sides))
+        f.append(tuple(reversed(range(sides))));f.append(tuple(range(8*sides,9*sides)))
+        parts.append(obj_from(v,f,name+" / "+label))
+    # Thick swept silhouette and overlapping tapered front fringe; no slabs.
+    if variant=="swept":
+        for i,(x,y,tipx,tipy,tipz) in enumerate([
+            (-.40,-.08,-.76,-.12,2.49),(-.29,-.09,-.66,-.18,2.76),
+            (-.10,-.04,-.36,-.10,2.91),(.12,.02,-.04,-.03,2.86),
+            (.33,.06,.20,.07,2.75),(.45,.08,.62,.06,2.58),
+            (-.32,.20,-.64,.30,2.58),(.03,.24,-.18,.40,2.72),
+            (.34,.24,.49,.43,2.56)]):
+            lock((x,y,2.27),(x-.13,y-.03,2.65),(tipx,tipy,tipz),.23,.21,"crown lock "+str(i))
+        for i,(x,tx,tz) in enumerate([(-.41,-.58,2.07),(-.23,-.43,2.11),(-.04,-.20,2.16),(.15,.02,2.21),(.34,.22,2.22),(.46,.47,2.15)]):
+            lock((x,-.31,2.40),(x-.08,-.52,2.39),(tx,-.49,tz),.18,.135,"fringe lock "+str(i))
+    else:
+        for i in range(7):
+            t=math.tau*i/7;x=.39*math.cos(t);y=.28*math.sin(t)
+            lock((x,y,2.25),(x*1.2,y*1.25,2.49),(x*1.46,y*1.36,2.46),.19,.17,"short lock "+str(i))
+    bpy.ops.object.select_all(action="DESELECT")
+    for ob in parts:ob.select_set(True)
+    bpy.context.view_layer.objects.active=base
+    bpy.ops.object.join()
+    base.name=name+" / swept spiky hair";base.parent=root
+    return base
+
+
+def signature_pin(name,root,p):
+    # Recurring red enamel star on the lead's left chest, leaves hair exposed.
+    from stage_a_cafe import cylinder
+    disk=cylinder(name+" / signature red pin",(-.34,-.336,1.58),.083,.028,p["badge"],root)
+    disk.rotation_euler.x=math.pi/2
+    v=[]
+    for i in range(10):
+        a=math.pi/2+i*math.pi/5;r=.061 if i%2==0 else .027
+        v.append((-.34+r*math.cos(a),-.353,1.58+r*math.sin(a)))
+    me=bpy.data.meshes.new(name+" star");me.from_pydata(v,[],[tuple(range(10))]);me.update()
+    ob=bpy.data.objects.new(name+" / signature gold star",me);bpy.context.collection.objects.link(ob);ob.parent=root
+    ob.data.materials.append(p["badge_center"])
+    return [disk,ob]
 
 
 class Character(LegacyCharacter):
     """Six chunky primary body parts, legacy-compatible wrist and decal controls."""
-    PROPORTIONS={"head":[.90,.80,.80],"torso":[1.12,.61,.80],"arm":[.56,.59,.80],"leg":[.55,.60,.80]}
-    def __init__(self,name,p,lead=True):
+    PROPORTIONS={"head":[1.064,.78,.502],"torso":[1.12,.65,.889],"arm":[.56,.65,1.26],"leg":[.56,.64,.889]}
+    BODY_HEIGHT=2.28
+    def __init__(self,name,p,lead=True,role=None,wardrobe=None):
+        role=role or ("lead" if lead else "friend")
+        self.role=role
+        self.legs=[]
         self.root=empty(name,(0,0,0))
         self.meshes=[];self.arms=[];self.wrists=[];self.grips=[];self.fingers=[]
         self.face_materials=p["faces"]
         skin=p["skin" if lead else "skin2"]
-        shirt=p["sweater" if lead else "tee"]
-        sleeve=p["sleeve" if lead else "tee_sleeve"]
+        default={"lead":("sweater","sleeve","denim"),"friend":("tee","tee_sleeve","yellow_denim"),"patron_green":("green_tee","green_sleeve","denim"),"patron_blue":("blue_tee","blue_sleeve","yellow_denim")}
+        self.wardrobe=wardrobe or default[role]
+        shirt,sleeve,pants=(p[k] for k in self.wardrobe)
         def box(label,loc,dims,mat,parent=None,bevel=.025,uv=False):
             obj=cube(name+" / "+label,loc,dims,mat,parent or self.root,bevel)
             self.meshes.append(obj)
             if uv:block_uv(obj)
             return obj
-        box("torso",(0,0,1.20),self.PROPORTIONS["torso"],shirt,bevel=.035,uv=True)
-        self.head=box("head",(0,0,2.00),self.PROPORTIONS["head"],skin,bevel=.095)
+        box("torso",(0,0,1.3335),self.PROPORTIONS["torso"],shirt,bevel=.035,uv=True)
+        self.head=box("head",(0,0,2.029),self.PROPORTIONS["head"],skin,bevel=.065)
         self.head.modifiers.get("Soft edges").segments=8
-        verts=[(-.385,-.402,1.68),(.385,-.402,1.68),(.385,-.402,2.32),(-.385,-.402,2.32)]
+        verts=[(-.46,-.392,1.82),(.46,-.392,1.82),(.46,-.392,2.24),(-.46,-.392,2.24)]
         mesh=bpy.data.meshes.new(name+" face UV");mesh.from_pydata(verts,[],[(0,1,2,3)]);mesh.update()
         uv=mesh.uv_layers.new(name="Face UV")
         for loop in mesh.loops:uv.data[loop.index].uv=[(0,0),(1,0),(1,1),(0,1)][loop.vertex_index]
         self.face=bpy.data.objects.new(name+" / expression decal",mesh)
         bpy.context.collection.objects.link(self.face);self.face.parent=self.root
         self.meshes.append(self.face);self.face.data.materials.append(p["faces"]["neutral"])
-        if lead:
-            self.meshes.append(hair_mass(name,self.root,p["hair"]))
-        else:
+        if role=="lead":
+            self.meshes.append(hair_mass(name,self.root,p["hair"],"swept"))
+            self.meshes.extend(signature_pin(name,self.root,p))
+        elif role=="friend":
             # One rounded crown and a knitted folded cuff.
-            crown=box("beanie crown",(0,.015,2.37),(.96,.86,.36),p["hat"],bevel=.15,uv=True)
+            crown=box("beanie crown",(0,.015,2.34),(1.13,.86,.32),p["hat"],bevel=.15,uv=True)
             crown.modifiers.get("Soft edges").segments=8
-            cuff=box("beanie cuff",(0,.01,2.20),(.99,.88,.16),p["hat"],bevel=.065,uv=True)
+            cuff=box("beanie cuff",(0,.01,2.20),(1.16,.89,.13),p["hat"],bevel=.065,uv=True)
             cuff.modifiers.get("Soft edges").segments=6
+        else:
+            self.meshes.append(hair_mass(name,self.root,p["hair2" if role=="patron_green" else "hair"],"short"))
         for side in (-1,1):
-            arm=empty(name+" / shoulder",(side*.84,0,1.60),self.root)
-            if lead:
-                box("sleeve",(0,0,-.26),(.56,.59,.52),sleeve,arm,bevel=.035,uv=True)
+            arm=empty(name+" / shoulder",(side*.84,0,1.778),self.root)
+            if role=="lead":
+                box("sleeve",(0,0,-.49),(.56,.65,.98),sleeve,arm,bevel=.035,uv=True)
             else:
-                box("short sleeve",(0,0,-.13),(.56,.59,.26),sleeve,arm,bevel=.035,uv=True)
-                box("bare forearm",(0,0,-.39),(.55,.57,.28),skin,arm,bevel=.035)
-            wrist=empty(name+" / wrist",(0,0,-.65),arm)
+                box("short sleeve",(0,0,-.19),(.56,.65,.38),sleeve,arm,bevel=.035,uv=True)
+                box("bare forearm",(0,0,-.68),(.55,.63,.60),skin,arm,bevel=.035)
+            wrist=empty(name+" / wrist",(0,0,-1.115),arm)
             box("palm",(0,.075,0),(.53,.22,.27),skin,wrist,bevel=.045)
             digits=[]
             for sign in (-1,1):
@@ -148,7 +200,8 @@ class Character(LegacyCharacter):
                 digits.append(digit)
             socket=empty(name+" / cup grip",(0,-.137,-.145),wrist)
             self.arms.append(arm);self.wrists.append(wrist);self.grips.append(socket);self.fingers.append(digits)
-            leg=empty(name+" / hip",(side*.28,0,.80),self.root)
-            box("denim leg",(0,0,-.32),(.55,.60,.64),p["denim"],leg,bevel=.032,uv=True)
-            box("sneaker",(0,-.065,-.71),(.56,.69,.13),p["shoe"],leg,bevel=.025)
-            box("rubber sole",(0,-.065,-.775),(.57,.70,.05),p["sole"],leg,bevel=.012)
+            leg=empty(name+" / hip",(side*.28,0,.889),self.root)
+            self.legs.append(leg)
+            box("denim leg",(0,0,-.38),(.56,.64,.76),pants,leg,bevel=.032,uv=True)
+            box("sneaker",(0,-.065,-.80),(.57,.72,.13),p["shoe"],leg,bevel=.025)
+            box("rubber sole",(0,-.065,-.864),(.58,.73,.05),p["sole"],leg,bevel=.012)
