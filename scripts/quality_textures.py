@@ -1,0 +1,201 @@
+"""Original high-resolution illustrated UV textures. No external art or fonts."""
+from array import array
+import math
+import bpy
+
+
+def linear(v):
+    v=v/255
+    return v/12.92 if v<=.04045 else ((v+.055)/1.055)**2.4
+
+
+class Canvas:
+    def __init__(self,n=1024,color=(0,0,0,0)):
+        self.n=n
+        self.data=bytearray(bytes(color)*(n*n))
+
+    def rect(self,x0,y0,x1,y1,c):
+        n=self.n
+        a,b=max(0,int(x0*n)),min(n,math.ceil(x1*n))
+        row=bytes(c)*max(0,b-a)
+        for y in range(max(0,int(y0*n)),min(n,math.ceil(y1*n))):
+            self.data[(y*n+a)*4:(y*n+b)*4]=row
+
+    def ellipse(self,cx,cy,rx,ry,c):
+        n=self.n
+        for y in range(max(0,int((cy-ry)*n)),min(n,math.ceil((cy+ry)*n))):
+            h=1-((y/n-cy)/ry)**2
+            if h>=0:
+                w=rx*math.sqrt(h)
+                self.rect(cx-w,y/n,cx+w,(y+1)/n,c)
+
+    def line(self,pts,width,c):
+        for (a,b),(d,e) in zip(pts,pts[1:]):
+            steps=max(1,math.ceil(math.hypot(d-a,e-b)*self.n/3))
+            for i in range(steps+1):
+                f=i/steps
+                self.ellipse(a+(d-a)*f,b+(e-b)*f,width/2,width/2,c)
+
+    def polygon(self,pts,c):
+        n=self.n
+        for iy in range(max(0,int(min(y for x,y in pts)*n)),min(n,math.ceil(max(y for x,y in pts)*n))):
+            y=(iy+.5)/n
+            xs=[]
+            for (a,b),(d,e) in zip(pts,pts[1:]+pts[:1]):
+                if min(b,e)<=y<max(b,e):
+                    xs.append(a+(y-b)*(d-a)/(e-b))
+            xs.sort()
+            for x0,x1 in zip(xs[::2],xs[1::2]):
+                self.rect(x0,iy/n,x1,(iy+1)/n,c)
+
+    def image(self,name):
+        # Blender generated images store linear RGB; explicitly convert the
+        # illustrated sRGB palette and preserve straight alpha.
+        lut=[linear(i) for i in range(256)]
+        pixels=array("f")
+        for r,g,b,a in zip(self.data[0::4],self.data[1::4],self.data[2::4],self.data[3::4]):
+            pixels.extend((lut[r],lut[g],lut[b],a/255))
+        im=bpy.data.images.new(name,width=self.n,height=self.n,alpha=True)
+        im.pixels.foreach_set(pixels)
+        im.update()
+        return im
+
+
+def face_canvas(expression):
+    c=Canvas(1024)
+    ink=(22,16,13,255)
+    white=(255,248,231,255)
+    tongue=(239,105,93,255)
+    if expression=="happy":
+        # Classic two bold oval eyes and a broad single curved smile.
+        for x in (.32,.68):
+            c.ellipse(x,.65,.046,.078,ink)
+        c.line([(.27,.40),(.31,.34),(.39,.30),(.50,.285),(.61,.30),(.69,.34),(.73,.40)],.052,ink)
+    elif expression=="shocked":
+        for x in (.32,.68):
+            c.ellipse(x,.64,.057,.092,ink)
+            c.line([(x-.073,.79),(x,.82),(x+.073,.79)],.032,ink)
+        c.ellipse(.50,.35,.104,.132,ink)
+        c.ellipse(.50,.286,.057,.035,tongue)
+    elif expression=="sad":
+        for x in (.32,.68):
+            c.ellipse(x,.63,.042,.071,ink)
+        c.line([(.245,.75),(.38,.80)],.032,ink)
+        c.line([(.62,.80),(.755,.75)],.032,ink)
+        c.line([(.32,.29),(.39,.35),(.50,.375),(.61,.35),(.68,.29)],.046,ink)
+    else:
+        for x in (.32,.68):
+            c.ellipse(x,.65,.045,.075,ink)
+        c.line([(.34,.36),(.44,.335),(.56,.335),(.66,.36)],.040,ink)
+    return c
+
+
+def face_material(expression):
+    im=face_canvas(expression).image("Hero face 1024 / "+expression)
+    mat=bpy.data.materials.new("Hero face / "+expression)
+    mat.use_nodes=True
+    ns,ls=mat.node_tree.nodes,mat.node_tree.links
+    ns.clear()
+    out=ns.new("ShaderNodeOutputMaterial")
+    mix=ns.new("ShaderNodeMixShader")
+    clear=ns.new("ShaderNodeBsdfTransparent")
+    # Ink is softly lit, not emissive; thick marks stay legible under key light.
+    ink=ns.new("ShaderNodeBsdfDiffuse")
+    tex=ns.new("ShaderNodeTexImage")
+    tex.image=im
+    ls.new(tex.outputs["Alpha"],mix.inputs[0])
+    ls.new(tex.outputs["Color"],ink.inputs[0])
+    ls.new(clear.outputs[0],mix.inputs[1])
+    ls.new(ink.outputs[0],mix.inputs[2])
+    ls.new(mix.outputs[0],out.inputs["Surface"])
+    return mat
+
+
+def cloth_canvas(kind):
+    colors={"sweater":(24,105,91,255),"sleeve":(24,105,91,255),"tee":(239,222,181,255),
+            "tee_sleeve":(239,222,181,255),"denim":(34,61,103,255),"hat":(195,114,29,255)}
+    c=Canvas(1024,colors[kind])
+    dark=(14,64,58,255)
+    cream=(241,207,138,255)
+    orange=(190,73,31,255)
+    if kind in ("sweater","sleeve","hat"):
+        if kind=="hat":
+            dark=(133,68,17,255)
+            cream=(224,151,50,255)
+            orange=cream
+        # Wide ribbed hem/cuff, and actual drawn Fair Isle diamond motif.
+        c.rect(0,0,1,.09,dark)
+        for x in range(0,100,2):
+            c.rect(x/100,0,x/100+.006,.09,cream if kind=="hat" else (35,128,111,255))
+        for y in (.30,.66):
+            c.rect(0,y-.075,1,y+.075,dark)
+            c.rect(0,y-.085,1,y-.074,orange)
+            c.rect(0,y+.074,1,y+.085,orange)
+            for x in (.08,.25,.42,.59,.76,.93):
+                c.polygon([(x,y+.066),(x+.065,y),(x,y-.066),(x-.065,y)],cream)
+                c.polygon([(x,y+.036),(x+.035,y),(x,y-.036),(x-.035,y)],orange)
+        if kind=="sweater":
+            c.line([(.29,.99),(.33,.91),(.42,.865),(.50,.85),(.58,.865),(.67,.91),(.71,.99)],.06,dark)
+            c.line([(.30,.99),(.35,.92),(.50,.875),(.65,.92),(.70,.99)],.012,cream)
+    elif kind in ("tee","tee_sleeve"):
+        seam=(176,154,118,255)
+        c.rect(0,0,1,.035,seam)
+        c.line([(.03,.07),(.97,.07)],.007,(249,236,202,255))
+        if kind=="tee":
+            c.line([(.31,1),(.36,.90),(.50,.86),(.64,.90),(.69,1)],.055,(45,85,105,255))
+            # Original screen-printed mountain/sun badge with layered ink.
+            c.ellipse(.50,.49,.245,.26,(33,77,98,255))
+            c.ellipse(.50,.49,.222,.237,(226,158,73,255))
+            c.ellipse(.57,.58,.095,.10,(246,213,122,255))
+            c.polygon([(.29,.39),(.43,.64),(.52,.50),(.61,.58),(.71,.39)],(34,78,92,255))
+            c.polygon([(.43,.64),(.40,.52),(.47,.55)],(249,236,202,255))
+            c.polygon([(.31,.36),(.69,.36),(.64,.30),(.36,.30)],(33,77,98,255))
+            for x in (.40,.46,.52,.58):
+                c.rect(x,.325,x+.025,.337,(245,220,165,255))
+        else:
+            c.rect(0,.05,1,.10,(45,85,105,255))
+    else:
+        c.rect(0,.93,1,1,(24,44,80,255))
+        for x in (.055,.945):
+            c.line([(x,.04),(x,.95)],.014,(18,36,66,255))
+            for y in range(5,96,4):
+                c.rect(x-.006,y/100,x+.006,y/100+.017,(192,136,68,255))
+        c.line([(.15,.87),(.22,.76),(.38,.72)],.014,(20,39,70,255))
+        c.line([(.62,.72),(.78,.76),(.85,.87)],.014,(20,39,70,255))
+        c.line([(.48,.96),(.48,.73)],.01,(192,136,68,255))
+        c.ellipse(.5,.955,.024,.024,(205,151,73,255))
+    # Baked illustrated stitch marks and soft edge shading, not only a shader stripe.
+    n=c.n
+    for y in range(n):
+        v=y/(n-1)
+        for x in range(n):
+            u=x/(n-1)
+            i=(y*n+x)*4
+            edge=.84+.16*min(1,min(u,1-u)*9)
+            stitch=1+.055*math.sin(x*.67)*math.cos(y*.96)+.025*math.sin(x*.31+y*.4)
+            shade=edge*stitch*(.96+.04*math.sin(v*math.pi))
+            for k in (0,1,2):
+                c.data[i+k]=min(255,int(c.data[i+k]*shade))
+    return c
+
+
+def illustrated_material(kind):
+    im=cloth_canvas(kind).image("Original illustrated UV / "+kind)
+    mat=bpy.data.materials.new("Hero cloth / "+kind)
+    mat.use_nodes=True
+    ns,ls=mat.node_tree.nodes,mat.node_tree.links
+    bs=ns.get("Principled BSDF")
+    bs.inputs["Roughness"].default_value=.84
+    bs.inputs["Sheen Weight"].default_value=.19
+    tex=ns.new("ShaderNodeTexImage")
+    tex.image=im
+    ls.new(tex.outputs["Color"],bs.inputs["Base Color"])
+    noise=ns.new("ShaderNodeTexNoise")
+    noise.inputs["Scale"].default_value=135
+    noise.inputs["Detail"].default_value=2
+    bump=ns.new("ShaderNodeBump")
+    bump.inputs["Strength"].default_value=.13
+    bump.inputs["Distance"].default_value=.014
+    ls.new(noise.outputs["Fac"],bump.inputs["Height"])
+    ls.new(bump.outputs[0],bs.inputs["Normal"])
+    return mat
