@@ -342,8 +342,8 @@ def main():
             for angle in (preferred,preferred+5,preferred+10,43,60):
                 for mode in ("PERSP","ORTHO"):
                     r=12 if mode=="PERSP" else 8
-                    a=math.radians(angle)*sign
-                    candidates.append((mode,(r*math.sin(a),.92-r*math.cos(a),2.35),(0,.92,1.75),135 if mode=="PERSP" else 2.65))
+                    theta=math.radians(angle)*sign
+                    candidates.append((mode,(r*math.sin(theta),.92-r*math.cos(theta),2.35),(0,.92,1.75),135 if mode=="PERSP" else 2.65))
         else:
             candidates=[("PERSP",(-1.16,-1.8,2.50),(-1.16,1.08,2.40),52)]
         best=None;best_failed=None
