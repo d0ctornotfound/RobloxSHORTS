@@ -1,4 +1,5 @@
 name: Blender render
+# A workflow-only push deliberately exercises the unchanged default demo path.
 
 on:
   workflow_dispatch:
