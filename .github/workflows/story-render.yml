@@ -44,7 +44,7 @@ jobs:
       - name: Install Blender
         run: |
           sudo apt-get update
-          sudo apt-get install -y --no-install-recommends blender python3-pil
+          sudo apt-get install -y --no-install-recommends blender python3-pil python3-numpy
           /usr/bin/python3 scripts/r6_faces.py --output assets/r6_faces
           blender --version
       - name: Build and render continuous story timeline
