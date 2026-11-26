@@ -25,7 +25,7 @@ def configure(profile):
     scene=bpy.context.scene
     scene.render.engine="CYCLES"
     scene.cycles.device="CPU"
-    scene.cycles.samples=16 if profile=="preview" else 48
+    scene.cycles.samples=24 if profile=="preview" else 48
     scene.cycles.use_denoising=False
     scene.cycles.max_bounces=5
     scene.cycles.transparent_max_bounces=8
@@ -96,16 +96,19 @@ def main():
     face_subjects=[o for o in lead.meshes if any(k in o.name for k in ("head","hair","fringe","decal"))]
     render("01_happy_closeup","happy",(.10,-3.65,2.72),(0,-.65,2.30),62,face_subjects)
     # Medium: raised free hand and a drink physically adjacent to the other hand.
-    lead.root.location=(-.83,-.30,0)
+    lead.root.location=(-.63,-.30,0)
     lead.root.rotation_euler.z=.04
-    lead.pose("shocked",((-1.05,-.70,0),(-1.14,.07,0)))
+    lead.pose("shocked",((-1.65,.12,0),(-1.14,.07,0)))
     set_visible(held,True)
     hold()
+    table_cup.location.x=-.10
     upper=[o for o in lead.meshes if not any(k in o.name for k in ("denim leg","sneaker","sole"))]
     props=[*held.children_recursive,*table_cup.children_recursive]
-    render("02_shocked_medium","shocked",(.22,-5.1,3.00),(-.33,-.22,1.88),48,upper+props)
+    render("02_shocked_medium","shocked",(-.40,-4.15,2.65),(-.48,-.30,2.35),48,upper+props)
     # Wide: standing actors, two cups and furniture share a complete portrait shot.
     friend.visible(True)
+    lead.root.location=(-1.02,-.35,0)
+    table_cup.location.x=.22
     friend.root.location=(1.22,-.35,0)
     friend.root.rotation_euler.z=-.14
     friend.pose("sad",((-.20,-.08,0),(-.28,.10,0)))

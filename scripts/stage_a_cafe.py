@@ -123,6 +123,10 @@ def build_cafe():
     cube("Tiled floor",(0,-.7,-.10),(7.8,8.0,.20),p["floor"],bevel=0)
     cube("Rear brick wall",(0,2.6,2.35),(7.8,.22,4.7),p["brick"],bevel=0)
     cube("Left brick return",(-3.88,.55,2.35),(.18,4.1,4.7),p["brick"],bevel=0)
+    # Continuous indoor ceiling prevents the open-world horizon in wide shots.
+    cube("Cream plaster ceiling",(0,-3.1,4.79),(7.8,11.6,.18),p["cream"],bevel=0)
+    for y in (-.5,-2.5,-4.5):
+        cube("Ceiling timber beam",(0,y,4.58),(7.7,.18,.21),p["wood"])
     cube("Wall baseboard",(0,2.44,.13),(7.8,.12,.24),p["teal"])
     # Framed window inset, stylized glass with exterior silhouette.
     cube("Window glass",(1.47,2.455,3.10),(2.25,.045,1.70),p["sky"])
@@ -148,7 +152,7 @@ def build_cafe():
     cylinder("Cafe table top",(.04,-.03,1.12),.65,.12,p["oak"])
     cylinder("Table pedestal",(.04,-.03,.56),.085,1.05,p["black"])
     cylinder("Table foot",(.04,-.03,.055),.35,.09,p["black"])
-    for i,(x,y,angle) in enumerate([(-.91,.89,-.42),(1.00,.89,.42)]):
+    for i,(x,y,angle) in enumerate([(-1.30,.91,-.42),(1.45,.89,.42)]):
         root=empty("Chair "+str(i+1),(x,y,0))
         root.rotation_euler.z=angle
         cube("Chair seat",(0,0,.62),(.58,.58,.10),p["oak"],root)
@@ -169,7 +173,7 @@ def build_cafe():
         leaf.rotation_euler.x=.55*math.sin(i*1.26)
     table_cup=cup("Table drink",(.22,-.12,1.18),p)
     held=cup("Held drink",(0,0,0),p)
-    light("Window / warm soft key",(1.9,-3.5,5.1),(0,0,1.7),850,4,(1,.82,.62))
+    light("Window / warm soft key",(1.9,-3.5,4.35),(0,0,1.7),850,4,(1,.82,.62))
     light("Soft fill",(-3.0,-3.5,3.6),(0,0,1.8),400,3.8,(.72,.83,1))
     light("Rim through window",(2.4,1.7,4.1),(0,-.5,1.8),450,2.5,(1,.72,.43))
     light("Pendant pool",(.04,-.03,3.48),(.04,-.03,1),85,.5,(1,.64,.34))
