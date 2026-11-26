@@ -1,0 +1,72 @@
+name: Blender render
+
+on:
+  workflow_dispatch:
+    inputs:
+      profile:
+        description: Render quality
+        type: choice
+        options:
+          - preview
+          - full
+        default: preview
+  push:
+    branches: [main]
+    paths:
+      - 'scripts/render_demo.py'
+      - '.github/workflows/blender-render.yml'
+
+permissions:
+  contents: read
+
+concurrency:
+  group: blender-render-${{ github.ref }}
+  cancel-in-progress: false
+
+jobs:
+  render:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 45
+    env:
+      PROFILE: ${{ inputs.profile || 'preview' }}
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install Blender and FFmpeg
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y --no-install-recommends blender ffmpeg
+          blender --version
+          ffmpeg -version
+      - name: Render animation
+        run: |
+          python3 -m py_compile scripts/render_demo.py
+          blender -b --python-exit-code 1 --python scripts/render_demo.py -- --profile "$PROFILE" --output render
+      - name: Encode and validate MP4
+        run: |
+          fps=12
+          if [ "$PROFILE" = full ]; then fps=24; fi
+          ffmpeg -hide_banner -loglevel error -framerate "$fps" -start_number 1 -i render/frame_%04d.png -c:v libx264 -crf 18 -pix_fmt yuv420p -movflags +faststart render/demo.mp4
+          ffprobe -v error -select_streams v:0 -show_streams -show_format -of json render/demo.mp4 > render/metadata.json
+          python3 - <<'PY'
+          import json, os
+          from fractions import Fraction
+          from pathlib import Path
+          data = json.loads(Path("render/metadata.json").read_text())
+          stream = data["streams"][0]
+          width, height, fps = (1080, 1920, 24) if os.environ["PROFILE"] == "full" else (360, 640, 12)
+          assert (stream["width"], stream["height"]) == (width, height), stream
+          assert Fraction(stream["avg_frame_rate"]) == fps, stream
+          assert int(stream["nb_frames"]) == fps * 10, stream
+          assert abs(float(data["format"]["duration"]) - 10) < 0.1, data
+          print(f"Validated {width}x{height}, {fps} fps, 10 seconds")
+          PY
+      - name: Upload video and Blender project
+        uses: actions/upload-artifact@v4
+        with:
+          name: roblox-demo-${{ env.PROFILE }}
+          path: |
+            render/demo.mp4
+            render/scene.blend
+            render/metadata.json
+          if-no-files-found: error
+          retention-days: 7
