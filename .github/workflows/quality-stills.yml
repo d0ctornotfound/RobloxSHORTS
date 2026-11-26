@@ -21,7 +21,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        shot: [01_portrait, 02_cup_reaction, 03_cafe_wide]
+        shot: [00_lineup, 01_portrait, 02_cup_reaction, 03_cafe_wide]
     env:
       PROFILE: ${{ inputs.profile || 'preview' }}
       SHOT: ${{ matrix.shot }}
@@ -52,6 +52,12 @@ jobs:
           assert m["samples"]>=128 and m["tables"]>=3
           assert m["face_texture_size"]==1024 and m["clothing_texture_size"]==1024
           assert len(m["shots"])==1 and m["shots"][0]["file"]==shot+".png"
+          assert abs(m["measurements"]["head_width_over_torso"]-.95)<.01
+          assert abs(m["measurements"]["head_height_over_body"]-.22)<.01
+          if shot in ("02_cup_reaction","03_cafe_wide"):
+              assert m["shots"][0]["ceiling"]["ceiling_area_fraction"]<=.10
+              assert m["shots"][0]["ceiling"]["max_top_ceiling_band"]<=.10
+          if shot=="03_cafe_wide":assert m["shots"][0]["patrons"]==2
           print("VERIFIED",shot,size,len(png),m["samples"],m["denoise"])
           PY
       - uses: actions/upload-artifact@v4
@@ -81,14 +87,14 @@ jobs:
               if ref is None:ref=m
               else:assert ref==m
               for f in chunk.glob("*.png"):shutil.copy2(f,dest/f.name)
-          assert len(shots)==3
+          assert len(shots)==4
           ref["shots"]=shots
           (dest/"quality_manifest.json").write_text(json.dumps(ref,indent=2)+"\n")
           print("QUALITY_PACKAGE_VALIDATED",json.dumps(ref))
           PY
       - uses: actions/upload-artifact@v4
         with:
-          name: roblox-quality-sprint1-hero-${{ inputs.profile || 'preview' }}
+          name: roblox-quality-sprint2-hero-${{ inputs.profile || 'preview' }}
           path: hero/
           if-no-files-found: error
           retention-days: 7

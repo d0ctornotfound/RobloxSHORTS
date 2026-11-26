@@ -102,7 +102,7 @@ def build():
     # Window aperture x=.31..2.63, z=2.20..4.00.
     for name,loc,dims in [
         ("Brick below window",(0,2.6,1.10),(7.8,.22,2.20)),
-        ("Brick above window",(0,2.6,4.75),(7.8,.22,1.50)),
+        ("Brick above window",(0,2.6,5.25),(7.8,.22,2.50)),
         ("Brick left of window",(-1.795,2.6,3.10),(4.21,.22,1.80)),
         ("Brick right of window",(3.265,2.6,3.10),(1.27,.22,1.80))]:
         cube(name,loc,dims,brickmat,bevel=0)
@@ -112,9 +112,9 @@ def build():
     for obj in list(bpy.data.objects):
         if obj.name.startswith(("Left brick return","Cream plaster ceiling","Ceiling timber beam")):
             obj.hide_render=True
-    cube("Left enclosed café wall",(-3.88,-.40,2.75),(.20,6.0,5.5),sidebrick,bevel=0)
-    cube("Right enclosed café wall",(3.88,-.40,2.75),(.20,6.0,5.5),sidebrick,bevel=0)
-    cube("High café ceiling",(0,-.40,5.60),(7.8,6.0,.18),p["cream"],bevel=0)
+    cube("Left enclosed café wall",(-3.88,-.40,3.25),(.20,6.0,6.5),sidebrick,bevel=0)
+    cube("Right enclosed café wall",(3.88,-.40,3.25),(.20,6.0,6.5),sidebrick,bevel=0)
+    cube("High café ceiling",(0,-.40,6.60),(7.8,6.0,.18),p["cream"],bevel=0)
     for x in (-3.76,3.76):
         cube("Side wall wooden wainscot",(x,-.30,.66),(.08,5.9,1.32),p["wood"])
         cube("Side wall chair rail",(x,-.30,1.34),(.12,5.9,.10),p["oak"])
@@ -195,6 +195,25 @@ def build():
     plant("Floor plant left",(-3.28,1.52,0),1.5,p)
     plant("Floor plant right",(3.35,.25,0),1.65,p)
     pendant("Window pendant",2.45,1.30,p);pendant("Side pendant",-2.35,.55,p)
+    # Additional edge dressing: chalkboard, narrow shelving, pastries,
+    # wall sconces, picture frames and coat hooks.
+    cube("Left side tall shelf",(-3.55,1.05,1.76),(.42,1.10,2.10),p["wood"])
+    for z in (1.02,1.48,1.95,2.40):
+        cube("Left shelf plank",(-3.30,1.05,z),(.56,1.14,.065),p["oak"])
+        for j in range(3):
+            cylinder("Shelf tea tin",(-3.27,.70+j*.34,z+.13),.085,.20,p["cream"] if j==1 else p["teal"])
+    for x in (-3.35,3.35):
+        cube("Wall sconce plate",(x,2.31,3.80),(.23,.10,.37),p["gold"])
+        sphere("Wall sconce bulb",(x,2.18,3.80),(.19,.19,.24),p["glow"])
+        light("Sconce warm pool",(x,2.06,3.73),(x,1.75,2.7),35,.28,(1,.73,.40))
+    for x,y in [(-2.35,.55),(2.45,1.30)]:
+        cylinder("Side table saucer",(x+.02,y-.20,1.198),.16,.025,p["cream"])
+        sphere("Side table pastry",(x+.02,y-.20,1.26),(.23,.18,.11),p["pastry"])
+        cube("Side table folded napkin",(x-.21,y-.13,1.202),(.18,.19,.025),p["cream"])
+    cube("Edge standing chalk sign",(-3.12,-.73,.74),(.56,.10,1.10),p["wood"])
+    cube("Edge chalkboard",(-3.12,-.80,.74),(.46,.035,.95),p["board"])
+    text("Daily special top","TODAY",(-3.12,-.825,.99),.09,p["chalk"])
+    text("Daily special bottom","CAKE",(-3.12,-.825,.76),.10,p["chalk"])
     # Drop old even fill; directional warm key and controlled cool window rim.
     for name in ("Window / warm soft key","Soft fill","Rim through window","Pendant pool"):
         ob=bpy.data.objects.get(name)

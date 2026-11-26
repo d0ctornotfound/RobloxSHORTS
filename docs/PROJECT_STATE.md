@@ -1,6 +1,6 @@
 # Project State
 
-Current milestone: Quality Sprint 1 — hero stills; new story/animation work paused.
+Current milestone: Quality Sprint 2 — measured proportions and four hero stills; story/animation paused.
 
 Successful preview run: [45811466419](https://github.com/d0ctornotfound/RobloxSHORTS/actions/runs/45811466419), commit `c043c3cd322c274108726203bab3c16a6e8b8689`, artifact `roblox-demo-preview-5s`.
 
@@ -36,3 +36,6 @@ Quality Sprint 1: versioned character/café builders, three hero stills, 1024px 
 
 
 Quality Sprint 1 visual review: faces are cleaner, body is chunkier, hairline no longer intersects the head, clothing prints and café dressing are visible. Still NOT benchmark-approved: hair reads like a molded cap, cloth looks graphic rather than fully textile-realistic, grain remains in some background regions, medium reads medium-long and wide crops/hides much side furniture while retaining a ceiling band. Outdoor view remains simplified. The written benchmark guided the artistic proportions; actual reference-video measurements were not available in this sprint. New builder is versioned; original animations remain unchanged and new proportions require contact/animation revalidation before migration. Next action: supervisor review of three attached hero images; no new stories or animation until look approval.
+
+
+Supervisor Sprint 1 verdict: real progress, NOT approved. Sprint 2 targets: head width/torso .95, head height/body .22 (excluding hair); low small faces, spiky lead hair and single beanie friend, matte skin, bold clothing, two seated patrons and <=10% ceiling. Sprint 2 rendering pending. See [QUALITY_SPRINT_2.md](QUALITY_SPRINT_2.md).
