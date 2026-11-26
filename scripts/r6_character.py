@@ -87,8 +87,11 @@ class R6Character:
         rigs=[o for o in imported if o.type=="ARMATURE"]
         assert len(rigs)==1,len(rigs)
         self.armature=rigs[0];self.armature.name=name+" / R6 armature"
-        self.skinned=[o for o in imported if o.type=="MESH"]
-        assert len(self.skinned)==2,len(self.skinned)
+        self.skinned=[o for o in imported if o.type=="MESH" and any(m.type=="ARMATURE" and m.object==self.armature for m in o.modifiers)]
+        assert len(self.skinned)==2,[(o.name,o.type,[(m.name,m.type) for m in o.modifiers]) for o in imported]
+        # The glTF importer may add an unskinned custom-shape display mesh.
+        for ob in imported:
+            if ob.type=="MESH" and ob not in self.skinned:ob.hide_render=True;ob.hide_viewport=True
         for ob in imported:
             if ob.parent is None:
                 world=ob.matrix_world.copy();ob.parent=self.rig_space;ob.matrix_world=world
