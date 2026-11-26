@@ -62,7 +62,7 @@ def main():
     for shot in SHOTS:
         if a.shot not in ("all",shot):continue
         scene=configure(a.profile)
-        scene.render.resolution_x,scene.render.resolution_y=(720,1280) if a.profile=="preview" else (1080,1920)
+        scene.render.resolution_x,scene.render.resolution_y=((1280,900) if a.profile=="preview" else (1920,1350)) if shot=="00_lineup" else ((720,1280) if a.profile=="preview" else (1080,1920))
         scene.cycles.samples=128 if a.profile=="preview" else 192
         scene.cycles.use_denoising=False
         scene.cycles.adaptive_threshold=.008
@@ -84,8 +84,8 @@ def main():
             floor=material("Neutral studio seamless",(.24,.27,.29))
             cube("Studio floor",(0,0,-.08),(30,30,.16),floor,bevel=0)
             cube("Studio neutral backdrop",(0,5,4),(30,.15,12),floor,bevel=0)
-            light("Studio key",(-3,-4,5),(0,0,1.4),650,4,(1,.94,.86))
-            light("Studio fill",(3,-4,3),(0,0,1.4),400,4,(.87,.94,1))
+            light("Studio key",(-3,-4,5),(0,0,1.4),650,4,(1,.98,.94))
+            light("Studio fill",(3,-4,3),(0,0,1.4),400,4,(.94,.98,1))
         else:
             table_cup,held=build()
         p=palette()
@@ -130,7 +130,8 @@ def main():
         if shot=="00_lineup":
             lead.root.location=(-1.22,0,0);friend.root.location=(1.22,0,0)
             neutral(lead);neutral(friend)
-            bounds=fit((0,-10,1.45),(0,0,1.45),4.42,lead.meshes+friend.meshes,ortho=True)
+            bounds=fit((0,-10,2.12),(0,0,1.45),5.05,lead.meshes+friend.meshes,margin=.035,ortho=True)
+            assert bounds[3]-bounds[2]>=.70, bounds
         elif shot=="01_portrait":
             lead.root.location=(0,-.6,.025);lead.root.rotation_euler.z=-.10
             lead.pose("happy",((-.06,.03,0),(-.10,-.03,0)))
@@ -194,9 +195,9 @@ def main():
             bpy.ops.render.render(write_still=True)
             subprocess.run(["ffmpeg","-y","-hide_banner","-loglevel","error","-i",str(raw),
                 "-vf","nlmeans=s=3.5:p=7:r=15","-frames:v","1","-threads","1",str(out/(shot+".png"))],check=True)
-        rec={"file":shot+".png","bounds":bounds,"lens":camera.data.lens,"dof":dof,"ceiling":ceiling,"patrons":patron_count}
+        rec={"file":shot+".png","resolution":[scene.render.resolution_x,scene.render.resolution_y],"bounds":bounds,"lens":camera.data.lens if camera.data.type=="PERSP" else None,"ortho_scale":camera.data.ortho_scale if camera.data.type=="ORTHO" else None,"dof":dof,"ceiling":ceiling,"patrons":patron_count}
         records.append(rec);print("QUALITY_RENDERED",json.dumps(rec),flush=True)
-    manifest={"resolution":[scene.render.resolution_x,scene.render.resolution_y],"samples":scene.cycles.samples,
+    manifest={"resolution":[720,1280] if a.profile=="preview" else [1080,1920],"lineup_resolution":[1280,900] if a.profile=="preview" else [1920,1350],"samples":scene.cycles.samples,
        "denoise":denoiser,"face_texture_size":1024,"clothing_texture_size":1024,"face_ink_scale":.60,
        "expressions":["neutral","happy","shocked","sad"],"proportions":Character.PROPORTIONS,
        "measurements":measurements,"tables":3,"signature":"red enamel star chest pin","shots":records}

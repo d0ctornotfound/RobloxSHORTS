@@ -10,4 +10,4 @@ Four independent stills (studio lineup, portrait, reaction, wide). Existing stor
 blender -b --python-exit-code 1 --python scripts/render_quality_stills.py -- --profile preview --output render/quality
 ```
 
-Workflow: Quality sprint hero stills. Preview visual approval pending.
+Workflow: Quality sprint hero stills. Original Sprint 2 run [45862909811](https://github.com/d0ctornotfound/RobloxSHORTS/actions/runs/45862909811) succeeded at `1e95da5`, all four jobs and packaging. Artifact `roblox-quality-sprint2-hero-preview`, ID 15140365069. Measured ceiling: reaction 6%, wide 4%; both maximum top band and sampled area. Supervisor accepted proportion/face/hair progress but requested lineup framing and yellow colour corrections. Follow-up renders all four shots with consistent lemon-yellow texture and neutral studio light; lineup is landscape 1280×900 (full 1920×1350) to use height without cutting off side-by-side full bodies. Café shots remain vertical. Final corrected workflow pending.

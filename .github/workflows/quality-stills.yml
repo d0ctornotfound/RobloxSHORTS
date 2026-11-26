@@ -43,7 +43,7 @@ jobs:
           from pathlib import Path
           root=Path("render/quality")
           shot=os.environ["SHOT"]
-          size=(1080,1920) if os.environ["PROFILE"]=="full" else (720,1280)
+          size=((1920,1350) if os.environ["PROFILE"]=="full" else (1280,900)) if shot=="00_lineup" else ((1080,1920) if os.environ["PROFILE"]=="full" else (720,1280))
           png=(root/(shot+".png")).read_bytes()
           assert png[:8]==b"\x89PNG\r\n\x1a\n"
           assert struct.unpack(">II",png[16:24])==size
@@ -58,6 +58,10 @@ jobs:
               assert m["shots"][0]["ceiling"]["ceiling_area_fraction"]<=.10
               assert m["shots"][0]["ceiling"]["max_top_ceiling_band"]<=.10
           if shot=="03_cafe_wide":assert m["shots"][0]["patrons"]==2
+          if shot=="00_lineup":
+              bounds=m["shots"][0]["bounds"]
+              assert bounds[3]-bounds[2]>=.70
+          assert m["shots"][0]["resolution"]==list(size)
           print("VERIFIED",shot,size,len(png),m["samples"],m["denoise"])
           PY
       - uses: actions/upload-artifact@v4
