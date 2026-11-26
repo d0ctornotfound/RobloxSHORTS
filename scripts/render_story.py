@@ -352,7 +352,8 @@ def main():
         # optimizes both framing and minimum hero coverage before any render.
         two=shot["kind"]!="close_up"
         def corners(ob):
-            return mesh_points(ob)
+            lo,hi=bounds(mesh_points(ob))
+            return [Vector((x,y,z)) for x in (lo.x,hi.x) for y in (lo.y,hi.y) for z in (lo.z,hi.z)]
         camera_samples=[]
         for f in range(first,last+1):
             scene.frame_set(f);bpy.context.view_layer.update()
@@ -453,6 +454,33 @@ def main():
             if image.source=="GENERATED" and not image.packed_file:
                 image.pack()
         bpy.ops.wm.save_as_mainfile(filepath=str(output/"story.blend"))
+    # The same representative reduced-resolution camera gate used by the
+    # classroom driver, but only for the cafe's selected shot.
+    from camera_visibility import visibility_gate
+    from array import array
+    old_samples=scene.cycles.samples;old_pct=scene.render.resolution_percentage;old_path=scene.render.filepath
+    preflight=[]
+    check_times={"01_notice":1.5,"02_reach":5.9,"03_impact":8.5,"04_payoff":10.7}
+    for rec in selected:
+        f=min(rec["last"],max(rec["first"],frame_at(check_times[rec["id"]],fps)))
+        scene.frame_set(f);bpy.context.view_layer.update()
+        scene.render.resolution_percentage=50;scene.cycles.samples=32
+        filename=output/("preflight_"+rec["id"]+".png")
+        scene.render.filepath=str(filename)
+        bpy.ops.render.render(write_still=True)
+        im=bpy.data.images.load(str(filename),check_existing=False);im.colorspace_settings.name="Non-Color"
+        pixels=array("f",[0])*(im.size[0]*im.size[1]*4);im.pixels.foreach_get(pixels)
+        count=len(pixels)//4
+        pct=100*sum(max(pixels[i:i+3])<=24/255 for i in range(0,len(pixels),4))/count
+        bpy.data.images.remove(im)
+        groups={name:[o for o in actors[name].meshes if o.type=="MESH" and o!=actors[name].face] for name in rec["min_hero_vertical_coverage"]}
+        visibility=visibility_gate(scene,output,rec["id"],groups)
+        row={"shot":rec["id"],"frame":f,"near_black_percent":pct,"threshold_percent":10,"visibility":visibility,"pass":pct<=10 and all(v["pass"] for v in visibility.values())}
+        preflight.append(row)
+        print("CAMERA_PREFLIGHT",json.dumps(row),flush=True)
+        (output/"preflight.json").write_text(json.dumps(preflight,indent=2)+"\n")
+        if not row["pass"]:raise RuntimeError("Camera preflight failed: "+str(row))
+    scene.cycles.samples=old_samples;scene.render.resolution_percentage=old_pct;scene.render.filepath=old_path
     scene.frame_start=selected[0]["first"]
     scene.frame_end=selected[-1]["last"]
     scene.frame_set(scene.frame_start)

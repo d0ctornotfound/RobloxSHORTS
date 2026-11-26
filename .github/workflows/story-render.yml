@@ -14,12 +14,19 @@ on:
       - 'scripts/render_story.py'
       - 'scripts/stage_c_*.py'
       - 'scripts/quality_*.py'
+      - 'scripts/r6_character.py'
+      - 'scripts/r6_faces.py'
+      - 'assets/r6_rigged.glb'
       - 'scripts/edit_story.py'
       - 'scripts/validate_story_pixels.py'
       - '.github/workflows/story-render.yml'
 
 permissions:
   contents: read
+
+concurrency:
+  group: cafe-r6-story-${{ github.ref }}
+  cancel-in-progress: true
 
 jobs:
   render:
@@ -45,6 +52,7 @@ jobs:
           python3 -m py_compile scripts/render_story.py scripts/stage_c_props.py scripts/edit_story.py
           blender -b --python-exit-code 1 --python scripts/render_story.py -- --profile "$PROFILE" --shot "$SHOT" --output render/story
       - name: Upload shot frames
+        if: always()
         uses: actions/upload-artifact@v4
         with:
           name: story-frames-${{ matrix.shot }}
@@ -89,6 +97,15 @@ jobs:
               for frame in chunk.glob("frame_*.png"):
                   assert not (dest/frame.name).exists()
                   shutil.copy2(frame,dest/frame.name)
+              for evidence in chunk.glob("preflight_*.png"):
+                  shutil.copy2(evidence,dest/evidence.name)
+              for evidence in chunk.glob("id_*.exr"):
+                  shutil.copy2(evidence,dest/evidence.name)
+              if (chunk/"preflight.json").exists():
+                  rows=json.loads((chunk/"preflight.json").read_text())
+                  assert rows and all(row["pass"] for row in rows)
+                  (dest/("preflight_"+shot["id"]+".json")).write_text(json.dumps(rows,indent=2)+"\n")
+              else:raise RuntimeError("Missing preflight evidence")
               if (chunk/"story.blend").exists():
                   shutil.copy2(chunk/"story.blend",dest/"story.blend")
           assert len(list(dest.glob("frame_*.png")))==ref["frame_count"]
@@ -99,6 +116,8 @@ jobs:
           python3 scripts/edit_story.py --profile "$PROFILE" --frames render/story --output render/final --verify-slot
           cp render/story/story_manifest.json render/story/story.blend render/final/
           cp stories/the_last_slice.json render/final/
+          mkdir -p render/final/preflight
+          cp render/story/preflight_*.json render/story/preflight_*.png render/story/id_*.exr render/final/preflight/
           mkdir -p render/final/frame_grabs
           for item in 01_notice_1p5:1.5 02_reach_4p0:4.0 02_reach_6p5:6.5 03_impact_8p5:8.5 04_payoff_10p7:10.7; do
             ffmpeg -hide_banner -loglevel error -ss "${item#*:}" -i render/final/the_last_slice.mp4 -frames:v 1 "render/final/frame_grabs/${item%:*}.png"
