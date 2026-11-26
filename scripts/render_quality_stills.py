@@ -95,22 +95,23 @@ def main():
     friend.visible(False);set_visible(held,False)
     render("01_portrait",(.12,-3.05,2.14),(0,-.55,1.92),74,heads(lead),True,(0,-.90,2.02),1.5)
     # Side-by-side, with modest depth stagger; frame both upper bodies and cup.
-    lead.root.location=(-.91,.29,.025);lead.root.rotation_euler.z=-.05
-    friend.root.location=(.98,.50,.025);friend.root.rotation_euler.z=.08
+    lead.root.location=(-.68,-.20,.025);lead.root.rotation_euler.z=-.10
+    friend.root.location=(.78,.62,.025);friend.root.rotation_euler.z=.14
     friend.visible(True)
     lead.expression("shocked");friend.expression("happy")
-    aim_arm(lead,0,(.16,-.48,.27));aim_arm(lead,1,(.08,-.50,-.33))
-    lead.attach_cup(held,0);set_visible(held,True)
-    aim_arm(friend,0,(-.12,-.15,-.63));aim_arm(friend,1,(.12,-.18,-.63))
-    table_cup.location=(.28,-.18,1.18)
-    render("02_cup_reaction",(0,-4.10,2.08),(.02,.10,1.65),43,upper(lead)+upper(friend)+list(held.children_recursive),True,(0,.23,1.85),7.0)
+    aim_arm(lead,0,(0,-.10,-.65));aim_arm(lead,1,(-.10,-.54,.23))
+    lead.attach_cup(held,1);set_visible(held,True)
+    aim_arm(friend,0,(-.18,-.18,-.60));aim_arm(friend,1,(-.10,-.13,-.63))
+    table_cup.location=(.32,.12,1.18)
+    # Medium is an intentional waist-up crop, with both heads and the active cup protected.
+    torso_friend=[o for o in friend.meshes if "torso" in o.name]
+    render("02_cup_reaction",(.15,-3.20,2.05),(.08,.12,2.07),58,heads(lead)+heads(friend)+torso_friend+list(held.children_recursive),True,(.0,.12,1.92),8.0)
     # Establishing shot: reveal three tables, counter, real window, and both actors.
-    lead.root.location=(-.91,-.10,.025);lead.root.rotation_euler.z=-.04
-    friend.root.location=(.97,.18,.025);friend.root.rotation_euler.z=.06
+    lead.root.location=(-.94,-.48,.025);lead.root.rotation_euler.z=-.05
+    friend.root.location=(.96,.10,.025);friend.root.rotation_euler.z=.10
     lead.expression("happy");friend.expression("neutral")
-    aim_arm(lead,0,(.12,-.55,.18));lead.attach_cup(held,0)
-    aim_arm(lead,1,(.10,-.16,-.62))
-    render("03_cafe_wide",(0,-6.65,3.17),(0,.55,2.03),31,heads(lead)+heads(friend),False)
+    aim_arm(lead,0,(0,-.12,-.65));aim_arm(lead,1,(-.10,-.54,.23));lead.attach_cup(held,1)
+    render("03_cafe_wide",(0,-5.1,2.48),(0,.4,2.35),43,heads(lead)+heads(friend),False)
     manifest={"resolution":[scene.render.resolution_x,scene.render.resolution_y],"samples":scene.cycles.samples,
        "denoise":denoiser,"face_texture_size":1024,"clothing_texture_size":1024,
        "expressions":["neutral","happy","shocked","sad"],"proportions":Character.PROPORTIONS,

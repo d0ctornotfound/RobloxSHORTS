@@ -129,8 +129,10 @@ class Character(LegacyCharacter):
             self.meshes.append(hair_mass(name,self.root,p["hair"]))
         else:
             # One rounded crown and a knitted folded cuff.
-            box("beanie crown",(0,.015,2.32),(.96,.86,.30),p["hat"],bevel=.14,uv=True)
-            box("beanie cuff",(0,.01,2.20),(.99,.88,.14),p["hat"],bevel=.045,uv=True)
+            crown=box("beanie crown",(0,.015,2.37),(.96,.86,.36),p["hat"],bevel=.15,uv=True)
+            crown.modifiers.get("Soft edges").segments=8
+            cuff=box("beanie cuff",(0,.01,2.20),(.99,.88,.16),p["hat"],bevel=.065,uv=True)
+            cuff.modifiers.get("Soft edges").segments=6
         for side in (-1,1):
             arm=empty(name+" / shoulder",(side*.84,0,1.60),self.root)
             if lead:

@@ -53,6 +53,27 @@ def pendant(name,x,y,p):
     light(name+" practical pool",(x,y,3.52),(x,y,1.15),65,.55,(1,.68,.34))
 
 
+def wall_brick(name,axis):
+    # Use physical local mesh coordinates, so brick size is consistent on
+    # separate wall pieces instead of stretched across normalized bounds.
+    m=material(name,(.23,.065,.036))
+    ns,ls=m.node_tree.nodes,m.node_tree.links
+    co=ns.new("ShaderNodeTexCoord");sep=ns.new("ShaderNodeSeparateXYZ");comb=ns.new("ShaderNodeCombineXYZ")
+    ls.new(co.outputs["Object"],sep.inputs[0]);ls.new(sep.outputs[axis],comb.inputs["X"]);ls.new(sep.outputs["Z"],comb.inputs["Y"])
+    b=ns.new("ShaderNodeTexBrick")
+    b.inputs["Color1"].default_value=(.17,.042,.025,1)
+    b.inputs["Color2"].default_value=(.32,.086,.046,1)
+    b.inputs["Mortar"].default_value=(.18,.13,.09,1)
+    b.inputs["Scale"].default_value=1
+    b.inputs["Brick Width"].default_value=.43;b.inputs["Row Height"].default_value=.18
+    b.inputs["Mortar Size"].default_value=.013
+    ls.new(comb.outputs[0],b.inputs["Vector"])
+    shader=ns.get("Principled BSDF");ls.new(b.outputs["Color"],shader.inputs["Base Color"])
+    bump=ns.new("ShaderNodeBump");bump.invert=True;bump.inputs["Strength"].default_value=.26;bump.inputs["Distance"].default_value=.032
+    ls.new(b.outputs["Fac"],bump.inputs["Height"]);ls.new(bump.outputs[0],shader.inputs["Normal"])
+    return m
+
+
 def build():
     table_cup,held=base_cafe()
     p={"wood":wood("Hero walnut",(.055,.018,.006),(.31,.145,.045)),
@@ -75,16 +96,33 @@ def build():
        "sky":emission("Exterior sky",(.34,.64,.92),.72)}
     # Replace blank pane with a genuine opening, preserving the window frame.
     wall=bpy.data.objects.get("Rear brick wall")
-    brickmat=wall.data.materials[0]
+    brickmat=wall_brick("Consistent terracotta running bond","X")
+    sidebrick=wall_brick("Side running bond","Y")
     wall.hide_render=True
     # Window aperture x=.31..2.63, z=2.20..4.00.
     for name,loc,dims in [
         ("Brick below window",(0,2.6,1.10),(7.8,.22,2.20)),
-        ("Brick above window",(0,2.6,4.35),(7.8,.22,.70)),
+        ("Brick above window",(0,2.6,4.75),(7.8,.22,1.50)),
         ("Brick left of window",(-1.795,2.6,3.10),(4.21,.22,1.80)),
         ("Brick right of window",(3.265,2.6,3.10),(1.27,.22,1.80))]:
         cube(name,loc,dims,brickmat,bevel=0)
     bpy.data.objects.get("Window glass").hide_render=True
+    # Enclose the set on both sides and above. A taller back wall prevents
+    # the portrait wide shot from being dominated by a close ceiling.
+    for obj in list(bpy.data.objects):
+        if obj.name.startswith(("Left brick return","Cream plaster ceiling","Ceiling timber beam")):
+            obj.hide_render=True
+    cube("Left enclosed café wall",(-3.88,-.40,2.75),(.20,6.0,5.5),sidebrick,bevel=0)
+    cube("Right enclosed café wall",(3.88,-.40,2.75),(.20,6.0,5.5),sidebrick,bevel=0)
+    cube("High café ceiling",(0,-.40,5.60),(7.8,6.0,.18),p["cream"],bevel=0)
+    for x in (-3.76,3.76):
+        cube("Side wall wooden wainscot",(x,-.30,.66),(.08,5.9,1.32),p["wood"])
+        cube("Side wall chair rail",(x,-.30,1.34),(.12,5.9,.10),p["oak"])
+    cube("High wall oak sign board",(0,2.38,4.62),(3.05,.12,.60),p["wood"])
+    text("Cafe wall sign","THE CORNER CAFE",(0,2.305,4.65),.24,p["chalk"])
+    for x in (-2.95,2.95):
+        cube("High wall vertical beam",(x,2.40,4.65),(.15,.18,1.38),p["wood"])
+    # Exterior geometry is visible only through the real window opening.
     # Background is geometry rather than a flat photograph.
     cube("Exterior sky backcloth",(0,12,5.4),(25,.12,13),p["sky"],bevel=0)
     grass=material("Exterior grass",(.065,.22,.045))
@@ -133,7 +171,7 @@ def build():
         sphere("Wall art sun",(x+.06,2.32,z+.04),(.13,.025,.13),p["rust"])
         cube("Wall art abstract stripe",(x,2.31,z-.09),(.29,.02,.07),p["teal"])
     # Additional tables behind and to the side of the hero table.
-    for label,x,y in [("Window table",2.63,1.07),("Side table",-2.50,-.20)]:
+    for label,x,y in [("Window table",2.45,1.30),("Side table",-2.35,.55)]:
         cylinder(label+" top",(x,y,1.12),.49,.12,p["oak"])
         cylinder(label+" pedestal",(x,y,.56),.075,1.05,p["black"])
         cylinder(label+" foot",(x,y,.05),.27,.09,p["black"])
@@ -156,13 +194,13 @@ def build():
     cube("Window banquette back",(2.81,2.38,.89),(1.62,.20,.64),p["rust"],bevel=.065)
     plant("Floor plant left",(-3.28,1.52,0),1.5,p)
     plant("Floor plant right",(3.35,.25,0),1.65,p)
-    pendant("Window pendant",2.55,1.07,p);pendant("Side pendant",-2.50,-.20,p)
+    pendant("Window pendant",2.45,1.30,p);pendant("Side pendant",-2.35,.55,p)
     # Drop old even fill; directional warm key and controlled cool window rim.
     for name in ("Window / warm soft key","Soft fill","Rim through window","Pendant pool"):
         ob=bpy.data.objects.get(name)
         if ob:ob.hide_render=True
-    light("Hero warm key",(-2.8,-3.5,3.95),(-.3,.0,1.8),650,2.6,(1,.80,.59))
-    light("Gentle bounce fill",(2.8,-3.5,2.85),(0,0,1.65),125,3.4,(.82,.90,1))
+    light("Hero warm key",(-2.6,-3.1,3.95),(-.3,.0,1.8),540,2.5,(1,.86,.71))
+    light("Gentle bounce fill",(2.8,-3.5,2.85),(0,0,1.65),92,3.4,(.83,.91,1))
     light("Window daylight rim",(1.55,2.05,3.65),(0,-.4,1.55),480,1.9,(.76,.87,1))
     light("Hero pendant contact pool",(.04,-.03,3.48),(.04,-.03,1),75,.46,(1,.65,.30))
     light("Counter warm accent",(-2.0,.9,3.60),(-1.8,2,1.8),85,1.0,(1,.69,.40))
