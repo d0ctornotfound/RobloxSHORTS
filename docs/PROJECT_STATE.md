@@ -1,6 +1,6 @@
 # Project State
 
-Current milestone: Stage A — visual foundation
+Current milestone: Stage A2 — visual foundation corrections
 
 Successful preview run: [45811466419](https://github.com/d0ctornotfound/RobloxSHORTS/actions/runs/45811466419), commit `c043c3cd322c274108726203bab3c16a6e8b8689`, artifact `roblox-demo-preview-5s`.
 
@@ -14,4 +14,8 @@ Successful preview run: [45811466419](https://github.com/d0ctornotfound/RobloxSH
 - Story: surreal premise in the first seconds, escalation through concrete incidents, payoff that calls back an early small detail.
 Current demo gap: render_demo.py is flat-colour, one static smile, no textures/props/expressions/captions/audio, orthographic camera. It is an execution skeleton only.
 
-Next action: Stage A stills
+Stage A v1: successful [run 45815611125](https://github.com/d0ctornotfound/RobloxSHORTS/actions/runs/45815611125), commit `db24a46`, artifact `roblox-stage-a-stills-preview`. Supervisor verified output; requested framing, warm saturated colour, clean sampling, grip contact and chunkier proportions.
+
+A2: 64 preview samples, updated lighting/materials, portrait composition, wider shorter R6 body, wrist grip socket with wrapping fingers. Awaiting A2 CI and image review.
+
+Next action: Stage B — café cup interaction animation and original demo regression.

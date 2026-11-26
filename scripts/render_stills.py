@@ -25,7 +25,7 @@ def configure(profile):
     scene=bpy.context.scene
     scene.render.engine="CYCLES"
     scene.cycles.device="CPU"
-    scene.cycles.samples=24 if profile=="preview" else 48
+    scene.cycles.samples=64 if profile=="preview" else 128
     scene.cycles.use_denoising=False
     scene.cycles.max_bounces=5
     scene.cycles.transparent_max_bounces=8
@@ -36,8 +36,10 @@ def configure(profile):
     scene.world=bpy.data.worlds.new("Warm café ambient")
     scene.world.use_nodes=True
     bg=scene.world.node_tree.nodes.get("Background")
-    bg.inputs[0].default_value=(.44,.53,.65,1)
-    bg.inputs[1].default_value=.34
+    bg.inputs[0].default_value=(.55,.34,.18,1)
+    bg.inputs[1].default_value=.22
+    scene.view_settings.view_transform="Standard"
+    scene.view_settings.exposure=-.35
     return scene
 
 
@@ -83,41 +85,38 @@ def main():
         bpy.ops.render.render(write_still=True)
         records.append({"file":name+".png","lead_expression":expr,"framing":framing})
         print("STAGE_A_RENDERED",name,framing,flush=True)
-    def hold():
-        hand=lead.hand_position(1)
-        held.location=hand+Vector((.08,-.19,-.10))
-        bpy.context.view_layer.update()
-    # Close-up: face and fringe are the intentional safe-area subject.
+    # Close-up: preserve the readable decal while adapting to chunkier proportions.
     lead.root.location=(0,-.65,0)
-    lead.root.rotation_euler.z=0
     lead.pose("happy",((-.13,-.10,0),(-.18,.10,0)))
     friend.visible(False)
     set_visible(held,False)
     face_subjects=[o for o in lead.meshes if any(k in o.name for k in ("head","hair","fringe","decal"))]
-    render("01_happy_closeup","happy",(.10,-3.65,2.72),(0,-.65,2.30),62,face_subjects)
-    # Medium: raised free hand and a drink physically adjacent to the other hand.
-    lead.root.location=(-.63,-.30,0)
+    render("01_happy_closeup","happy",(.10,-3.55,2.34),(0,-.65,1.97),62,face_subjects)
+    # Medium: stagger drinks across the frame, cup held in a true wrist socket.
+    lead.root.location=(-.59,-.05,0)
     lead.root.rotation_euler.z=.04
-    lead.pose("shocked",((-1.65,.12,0),(-1.14,.07,0)))
+    lead.pose("shocked",((-.93,.28,0),(-1.10,.10,0)))
     set_visible(held,True)
-    hold()
-    table_cup.location.x=-.10
+    lead.attach_cup(held,1)
+    table_cup.location=(.49,.18,1.18)
+    # Table rim and legs can crop; the face, hand and both drinks must fit.
     upper=[o for o in lead.meshes if not any(k in o.name for k in ("denim leg","sneaker","sole"))]
     props=[*held.children_recursive,*table_cup.children_recursive]
-    render("02_shocked_medium","shocked",(-.40,-4.15,2.65),(-.48,-.30,2.35),48,upper+props)
-    # Wide: standing actors, two cups and furniture share a complete portrait shot.
+    render("02_shocked_medium","shocked",(-.35,-4.45,2.05),(-.30,-.10,1.58),49,upper+props)
+    # Portrait environmental shot: stagger depth instead of fitting the entire room horizontally.
     friend.visible(True)
-    lead.root.location=(-1.02,-.35,0)
-    table_cup.location.x=.22
-    friend.root.location=(1.22,-.35,0)
-    friend.root.rotation_euler.z=-.14
+    lead.root.location=(-.58,-.50,0)
+    lead.root.rotation_euler.z=.06
+    friend.root.location=(.69,.83,0)
+    friend.root.rotation_euler.z=-.16
     friend.pose("sad",((-.20,-.08,0),(-.28,.10,0)))
-    lead.pose("neutral",((-.13,-.06,0),(-1.14,.07,0)))
-    hold()
-    set_objects=[o for o in bpy.context.scene.objects if o.type=="MESH" and
-                 any(k in o.name for k in ("Cafe table top","Chair seat","Window glass","Pendant shade","Counter carcass"))]
-    render("03_cafe_wide","neutral",(.15,-8.9,3.95),(0,.65,2.16),36,
-           lead.meshes+friend.meshes+props+set_objects)
+    lead.pose("neutral",((-.13,-.06,0),(-1.10,.10,0)))
+    lead.attach_cup(held,1)
+    # Deliberately crop peripheral architecture, not faces; foreground table fills lower frame.
+    wide_subjects=[o for actor in (lead,friend) for o in actor.meshes
+                   if any(k in o.name for k in ("head","hair","fringe","decal","beanie","torso"))]
+    render("03_cafe_wide","neutral",(.10,-5.65,2.20),(.07,.02,1.52),43,
+           wide_subjects+props)
     (output/"manifest.json").write_text(json.dumps({"profile":a.profile,"resolution":[scene.render.resolution_x,scene.render.resolution_y],
         "face_swaps_tested":["neutral","happy","shocked","sad"],"shots":records},indent=2)+"\n")
     print("STAGE_A_COMPLETE",flush=True)

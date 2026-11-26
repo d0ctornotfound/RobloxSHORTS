@@ -107,16 +107,16 @@ def set_visible(root, visible):
 
 def build_cafe():
     p={
-        "brick":brick("Terracotta running bond",((.37,.115,.065),(.60,.25,.13),(.56,.45,.32)),"Z",9,.62,.27),
-        "floor":brick("Sandstone checker tile",((.24,.23,.19),(.55,.49,.37),(.12,.11,.095)),"Y",6,.55,.55),
+        "brick":brick("Terracotta running bond",((.25,.045,.019),(.52,.12,.035),(.29,.19,.105)),"Z",9,.62,.27),
+        "floor":brick("Sandstone checker tile",((.10,.085,.06),(.30,.19,.095),(.065,.045,.028)),"Y",6,.55,.55),
         "wood":wood("Walnut grain",(.095,.033,.014),(.39,.20,.075)),
         "oak":wood("Honey oak grain",(.32,.14,.045),(.68,.43,.20)),
-        "teal":material("Deep teal painted wood",(.025,.18,.17)),
-        "cream":material("Ivory ceramic",(.84,.75,.57)),
+        "teal":material("Deep teal painted wood",(.008,.125,.095)),
+        "cream":material("Ivory ceramic",(.64,.43,.22)),
         "black":material("Dark steel",(.045,.052,.049)),
         "kraft":material("Kraft sleeve",(.37,.18,.075)),
-        "red":material("Coral straw",(.69,.08,.035)),
-        "sky":emission("Window blue glass",(.20,.46,.58),.5),
+        "red":material("Coral straw",(.72,.025,.012)),
+        "sky":emission("Window blue glass",(.035,.24,.35),.38),
         "lamp":emission("Warm lamp diffuser",(1,.67,.30),3),
         "green":material("Plant leaves",(.085,.29,.11)),
     }
@@ -173,8 +173,8 @@ def build_cafe():
         leaf.rotation_euler.x=.55*math.sin(i*1.26)
     table_cup=cup("Table drink",(.22,-.12,1.18),p)
     held=cup("Held drink",(0,0,0),p)
-    light("Window / warm soft key",(1.9,-3.5,4.35),(0,0,1.7),850,4,(1,.82,.62))
-    light("Soft fill",(-3.0,-3.5,3.6),(0,0,1.8),400,3.8,(.72,.83,1))
-    light("Rim through window",(2.4,1.7,4.1),(0,-.5,1.8),450,2.5,(1,.72,.43))
-    light("Pendant pool",(.04,-.03,3.48),(.04,-.03,1),85,.5,(1,.64,.34))
+    light("Window / warm soft key",(1.9,-3.5,4.35),(0,0,1.7),650,3.2,(1,.73,.46))
+    light("Soft fill",(-3.0,-3.5,3.6),(0,0,1.8),155,3.4,(1,.86,.70))
+    light("Rim through window",(2.4,1.7,4.1),(0,-.5,1.8),310,2.3,(1,.62,.30))
+    light("Pendant pool",(.04,-.03,3.48),(.04,-.03,1),120,.65,(1,.65,.30))
     return table_cup,held

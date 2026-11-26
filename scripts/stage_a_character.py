@@ -146,15 +146,15 @@ def face_material(expression):
 
 def palette():
     return {
-        "skin": material("Warm skin", (.72,.43,.23)),
-        "skin2": material("Peach skin", (.86,.60,.40)),
-        "lead": fabric("Lead / teal cream rust knit", ((.035,.28,.27),(.75,.66,.43),(.65,.18,.075)), True),
-        "friend": fabric("Friend / berry oat knit", ((.41,.07,.12),(.83,.66,.45),(.18,.08,.10)), True),
-        "denim": fabric("Indigo denim", ((.024,.055,.12),(.13,.24,.39))),
+        "skin": material("Warm skin", (.69,.36,.14)),
+        "skin2": material("Peach skin", (.84,.51,.27)),
+        "lead": fabric("Lead / teal cream rust knit", ((.008,.19,.15),(.68,.41,.14),(.56,.055,.012)), True),
+        "friend": fabric("Friend / berry oat knit", ((.35,.015,.045),(.75,.43,.18),(.10,.012,.035)), True),
+        "denim": fabric("Indigo denim", ((.008,.025,.09),(.045,.12,.32))),
         "shoe": material("Charcoal sneaker", (.045,.05,.055)),
         "sole": material("Cream rubber sole", (.65,.63,.55)),
         "hair": material("Lead / espresso hair", (.07,.032,.014)),
-        "hat": fabric("Friend / mustard beanie knit", ((.45,.22,.03),(.90,.58,.12))),
+        "hat": fabric("Friend / mustard beanie knit", ((.45,.15,.008),(.85,.38,.025))),
         "faces": {name:face_material(name) for name in EXPRESSIONS},
     }
 
@@ -164,6 +164,9 @@ class Character:
         self.root = empty(name, (0,0,0))
         self.meshes = []
         self.arms = []
+        self.wrists = []
+        self.grips = []
+        self.fingers = []
         self.face_materials = p["faces"]
         skin = p["skin" if lead else "skin2"]
         shirt = p["lead" if lead else "friend"]
@@ -171,10 +174,10 @@ class Character:
             o = cube(name+" / "+label, loc, dims, mat, parent or self.root, bevel)
             self.meshes.append(o)
             return o
-        box("torso", (0,0,1.70), (.90,.48,.90), shirt)
-        self.head = box("head", (0,0,2.48), (.68,.61,.66), skin, bevel=.055)
+        box("torso", (0,0,1.36), (1.02,.57,.77), shirt)
+        self.head = box("head", (0,0,2.10), (.79,.67,.70), skin, bevel=.055)
         # A UV-mapped transparent face plane slightly in front of the head.
-        verts = [(-.295,-.310,2.20),(.295,-.310,2.20),(.295,-.310,2.76),(-.295,-.310,2.76)]
+        verts = [(-.34,-.341,1.80),(.34,-.341,1.80),(.34,-.341,2.40),(-.34,-.341,2.40)]
         mesh = bpy.data.meshes.new(name+" face UV")
         mesh.from_pydata(verts, [], [(0,1,2,3)])
         mesh.update()
@@ -187,23 +190,32 @@ class Character:
         self.meshes.append(self.face)
         self.face.data.materials.append(p["faces"]["neutral"])
         if lead:
-            box("hair cap", (0,.015,2.79), (.73,.65,.19), p["hair"], bevel=.055)
-            for i,(x,z,w) in enumerate([(-.25,2.72,.19),(-.09,2.75,.22),(.10,2.78,.23),(.25,2.78,.16)]):
-                tuft=box("swept fringe "+str(i),(x,-.255,z),(w,.19,.18),p["hair"],bevel=.035)
+            box("hair cap", (0,.015,2.43), (.84,.72,.19), p["hair"], bevel=.055)
+            for i,(x,z,w) in enumerate([(-.29,2.36,.22),(-.10,2.39,.24),(.12,2.42,.25),(.29,2.42,.19)]):
+                tuft=box("swept fringe "+str(i),(x,-.30,z),(w,.19,.18),p["hair"],bevel=.035)
                 tuft.rotation_euler.y=-.24
-            box("back hair", (0,.26,2.61), (.70,.16,.37),p["hair"])
+            box("back hair", (0,.29,2.25), (.81,.16,.37),p["hair"])
         else:
-            box("beanie crown",(0,.015,2.82),(.74,.68,.28),p["hat"],bevel=.09)
-            box("beanie cuff",(0,.01,2.72),(.77,.70,.12),p["hat"],bevel=.035)
+            box("beanie crown",(0,.015,2.46),(.85,.74,.28),p["hat"],bevel=.09)
+            box("beanie cuff",(0,.01,2.36),(.88,.76,.12),p["hat"],bevel=.035)
         for side in (-1,1):
-            arm = empty(name+" / shoulder",(side*.68,0,2.13), self.root)
-            box("sleeve",(0,0,-.28),(.36,.44,.56),shirt,arm)
-            box("hand",(0,0,-.70),(.35,.43,.30),skin,arm)
+            arm = empty(name+" / shoulder",(side*.74,0,1.72), self.root)
+            box("sleeve",(0,0,-.28),(.43,.52,.56),shirt,arm)
+            wrist=empty(name+" / wrist",(0,0,-.70),arm)
+            box("palm",(0,.07,0),(.35,.17,.30),skin,wrist)
+            digits=[]
+            for sign in (-1,1):
+                digit=box("grip finger",(sign*.155,-.095,0),(.09,.24,.17),skin,wrist,bevel=.025)
+                digits.append(digit)
+            socket=empty(name+" / cup grip",(0,-.137,-.145),wrist)
             self.arms.append(arm)
-            leg=empty(name+" / hip",(side*.235,0,1.25),self.root)
-            box("denim leg",(0,0,-.52),(.43,.45,1.04),p["denim"],leg)
-            box("sneaker",(0,-.075,-1.10),(.45,.60,.22),p["shoe"],leg)
-            box("rubber sole",(0,-.075,-1.205),(.46,.61,.065),p["sole"],leg,bevel=.012)
+            self.wrists.append(wrist)
+            self.grips.append(socket)
+            self.fingers.append(digits)
+            leg=empty(name+" / hip",(side*.265,0,.98),self.root)
+            box("denim leg",(0,0,-.405),(.50,.54,.81),p["denim"],leg)
+            box("sneaker",(0,-.075,-.875),(.52,.65,.19),p["shoe"],leg)
+            box("rubber sole",(0,-.075,-.956),(.53,.66,.048),p["sole"],leg,bevel=.012)
 
     def expression(self, name):
         self.face.data.materials[0] = self.face_materials[name]
@@ -219,4 +231,28 @@ class Character:
 
     def hand_position(self, index):
         bpy.context.view_layer.update()
-        return self.arms[index].matrix_world @ Vector((0,0,-.70))
+        return self.wrists[index].matrix_world.translation.copy()
+
+    def upright_grip(self, index):
+        """Keep cup axis vertical independently of shoulder angle."""
+        bpy.context.view_layer.update()
+        wrist=self.wrists[index]
+        wrist.rotation_mode="QUATERNION"
+        wrist.rotation_quaternion=self.arms[index].matrix_world.to_quaternion().inverted()
+        bpy.context.view_layer.update()
+        return self.grips[index]
+
+    def grip_closed(self, index, closed=True):
+        for sign,digit in zip((-1,1),self.fingers[index]):
+            digit.location.x=sign*(.155 if closed else .20)
+            digit.rotation_euler.z=0 if closed else sign*.30
+
+    def attach_cup(self, cup, index):
+        socket=self.upright_grip(index)
+        self.grip_closed(index)
+        cup.parent=socket
+        cup.matrix_parent_inverse.identity()
+        cup.location=(0,0,0)
+        cup.rotation_euler=(0,0,0)
+        bpy.context.view_layer.update()
+        return socket
