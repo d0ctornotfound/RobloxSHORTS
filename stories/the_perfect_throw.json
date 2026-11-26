@@ -1,0 +1,74 @@
+{
+  "id": "the_perfect_throw",
+  "title": "The Perfect Throw",
+  "location": "classroom",
+  "duration": 12,
+  "narration": "I folded it in maths class. I waited for the perfect moment. It flew past everyone. And landed right in the teacher's hair.",
+  "captions": [
+    {
+      "start": 0,
+      "end": 3,
+      "text": "I folded it in maths class."
+    },
+    {
+      "start": 3,
+      "end": 5,
+      "text": "I waited for the perfect moment."
+    },
+    {
+      "start": 5,
+      "end": 8,
+      "text": "It flew past everyone."
+    },
+    {
+      "start": 8,
+      "end": 12,
+      "text": "And landed right in the teacher's hair."
+    }
+  ],
+  "shots": [
+    {
+      "id": "01_fold",
+      "start": 0,
+      "end": 3
+    },
+    {
+      "id": "02_throw",
+      "start": 3,
+      "end": 5
+    },
+    {
+      "id": "03_glide",
+      "start": 5,
+      "end": 8
+    },
+    {
+      "id": "04_payoff",
+      "start": 8,
+      "end": 12
+    }
+  ],
+  "actions": {
+    "launch": 4.25,
+    "landing": 7.75,
+    "payoff": 8
+  },
+  "sfx": [
+    {
+      "kind": "slide",
+      "time": 0.7
+    },
+    {
+      "kind": "whoosh",
+      "time": 4.25
+    },
+    {
+      "kind": "thud",
+      "time": 7.75
+    },
+    {
+      "kind": "ding",
+      "time": 9.5
+    }
+  ]
+}
