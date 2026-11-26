@@ -19,11 +19,11 @@ EXPRESSIONS=("neutral","happy","shocked","sad","unimpressed","laughing")
 # Keep the native dimensions, scale uniformly only to fit the existing sets.
 SCENE_HEIGHT=2.28
 ROLE_COLORS={
-    "lead":((.84,.60,.29),(.045,.39,.34),(.045,.12,.29)),
-    "friend":((.93,.69,.43),(.88,.79,.61),(.96,.64,.015)),
-    "teacher":((.88,.64,.42),(.46,.12,.29),(.17,.19,.24)),
-    "patron_green":((.86,.58,.33),(.09,.55,.13),(.06,.15,.33)),
-    "patron_blue":((.92,.70,.48),(.06,.24,.73),(.95,.66,.015)),
+    "lead":((.84,.60,.29),(.008,.23,.15),(.005,.045,.32)),
+    "friend":((.93,.69,.43),(.88,.79,.61),(.95,.48,.001)),
+    "teacher":((.88,.64,.42),(.46,.025,.15),(.17,.19,.24)),
+    "patron_green":((.86,.58,.33),(.015,.31,.04),(.012,.07,.36)),
+    "patron_blue":((.92,.70,.48),(.01,.10,.58),(.96,.50,.002)),
 }
 
 def matte(name,color):
@@ -143,6 +143,13 @@ class R6Character:
             axis=(self.armature.matrix_world@pb.matrix).to_3x3().inverted()@(end-joint)
             self.arm_axes.append(axis.normalized())
             self.grips.append(self.attach_at(name+" / "+pb.name+" grip",pb,end))
+        self.leg_axes=[]
+        for pb in self.legs:
+            blo,bhi=bounds(group_points(self.body,pb.name))
+            center=(blo+bhi)/2;end=Vector((center.x,center.y,blo.z+.04*self.scale))
+            joint=self.armature.matrix_world@pb.head
+            axis=(self.armature.matrix_world@pb.matrix).to_3x3().inverted()@(end-joint)
+            self.leg_axes.append(axis.normalized())
         self.face_materials={e:face_material(e,face_dir) for e in EXPRESSIONS}
         self.face=self._decal()
         self._accessories()
@@ -199,18 +206,18 @@ class R6Character:
             for x,z,a in [(-.43,.73,-.30),(-.13,.83,-.25),(.17,.78,-.22),(.43,.69,-.20)]:
                 block("head hair rectangular lock",x,-.13,z,.31,.76,.30,hair,angle=a)
             block("head fringe",-.35,-.51,.40,.43,.20,.26,hair,angle=-.15)
-            # Flat red square badge and a gold star, both torso-bone parented.
+            # Oversized saturated red signature star, torso-bone parented.
             tlo,thi=self.torso_bounds;tc=(tlo+thi)/2
-            red=matte(self.root.name+" / red star badge",(.71,.018,.014));gold=matte(self.root.name+" / gold star",(.98,.72,.13))
+            red=matte(self.root.name+" / saturated red star",(.84,.004,.006));base=matte(self.root.name+" / dark red pin backing",(.19,.006,.009))
             x=tc.x-.29*s;y=tlo.y-.012;z=tc.z+.42*s
-            pin=cube(self.root.name+" / signature red pin",(x,y,z),(.34*s,.07*s,.34*s),red,bevel=.005*s)
+            pin=cube(self.root.name+" / signature red pin",(x,y,z),(.39*s,.07*s,.39*s),base,bevel=.005*s)
             self.attach_mesh(pin,"torso")
             verts=[]
             for i in range(10):
-                a=math.pi/2+i*math.pi/5;r=(.135 if i%2==0 else .061)*s
+                a=math.pi/2+i*math.pi/5;r=(.207 if i%2==0 else .091)*s
                 verts.append((x+r*math.cos(a),y-.019,z+r*math.sin(a)))
             me=bpy.data.meshes.new("R6 star");me.from_pydata(verts,[],[tuple(range(10))]);me.update()
-            star=bpy.data.objects.new(self.root.name+" / signature gold star",me);bpy.context.collection.objects.link(star);star.data.materials.append(gold)
+            star=bpy.data.objects.new(self.root.name+" / signature red star",me);bpy.context.collection.objects.link(star);star.data.materials.append(red)
             self.attach_mesh(star,"torso")
         elif self.role=="friend":
             hat=matte(self.root.name+" / ochre block beanie",(.78,.29,.045));cuff=matte(self.root.name+" / folded beanie cuff",(.57,.16,.025))
@@ -242,20 +249,25 @@ class R6Character:
         if frame is not None:pb.keyframe_insert("rotation_euler",frame=frame)
         bpy.context.view_layer.update()
 
-    def aim_arm(self,index,direction,frame=None):
-        """Aim rigid R6 arm bone, not a mesh transform. Direction in actor axes."""
-        pb=self.arms[index];pb.rotation_mode="QUATERNION"
+    def _aim(self,pb,axis,direction,frame=None):
+        """Aim rigid R6 pose bone. Direction in actor axes."""
+        pb.rotation_mode="QUATERNION"
         parent=pb.parent
         base=parent.matrix@parent.bone.matrix_local.inverted()@pb.bone.matrix_local if parent else pb.bone.matrix_local
         world=self.root.matrix_world.to_3x3()@Vector(direction)
         armspace=self.armature.matrix_world.to_3x3().inverted()@world
         base=base@self.bind_basis[pb.name]
         local=base.to_3x3().inverted()@armspace
-        delta=self.arm_axes[index].rotation_difference(local.normalized())
+        delta=axis.rotation_difference(local.normalized())
         pb.matrix_basis=self.bind_basis[pb.name]@delta.to_matrix().to_4x4()
         if frame is not None:pb.keyframe_insert("rotation_quaternion",frame=frame)
         bpy.context.view_layer.update()
+    def aim_arm(self,index,direction,frame=None):
+        self._aim(self.arms[index],self.arm_axes[index],direction,frame)
         return self.grips[index]
+
+    def aim_leg(self,index,direction,frame=None):
+        self._aim(self.legs[index],self.leg_axes[index],direction,frame)
 
     def reset(self):
         for pb in self.armature.pose.bones:pb.matrix_basis=self.bind_basis[pb.name].copy()

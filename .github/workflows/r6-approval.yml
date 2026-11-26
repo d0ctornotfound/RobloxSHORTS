@@ -1,15 +1,6 @@
 name: R6 source rig approval stills
 on:
   workflow_dispatch:
-  push:
-    branches: [main]
-    paths:
-      - 'assets/r6_rigged.glb'
-      - 'assets/r6_faces/**'
-      - 'scripts/r6_character.py'
-      - 'scripts/r6_faces.py'
-      - 'scripts/render_r6_stills.py'
-      - '.github/workflows/r6-approval.yml'
 permissions:
   contents: read
 jobs:
