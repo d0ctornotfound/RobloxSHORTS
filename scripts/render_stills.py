@@ -101,10 +101,10 @@ def main():
     lead.root.rotation_euler.z=.04
     lead.pose("shocked")
     aim_arm(lead,0,(.33,-.55,.27))
-    aim_arm(lead,1,(-.27,-.30,-.56))
+    aim_arm(lead,1,(-.30,-.42,.48))
     set_visible(held,True)
     lead.attach_cup(held,0)
-    table_cup.location=(.43,.04,1.18)
+    table_cup.location=(.36,-.35,1.18)
     # Table rim and legs can crop; the face, hand and both drinks must fit.
     upper=[o for o in lead.meshes if any(k in o.name for k in ("head","hair","fringe","decal","torso","palm","grip finger"))]
     props=[*held.children_recursive,*table_cup.children_recursive]
@@ -118,7 +118,7 @@ def main():
     friend.pose("sad",((-.20,-.08,0),(-.28,.10,0)))
     lead.expression("neutral")
     aim_arm(lead,0,(.31,-.55,.28))
-    aim_arm(lead,1,(-.10,-.10,-.68))
+    aim_arm(lead,1,(-.32,-.15,-.60))
     lead.attach_cup(held,0)
     # Deliberately crop peripheral architecture, not faces; foreground table fills lower frame.
     wide_subjects=[o for actor in (lead,friend) for o in actor.meshes
