@@ -1,6 +1,6 @@
 # Project State
 
-Current milestone: Short #1 correction production-complete; awaiting supervisor visual approval. No short #2 started.
+Current milestone: Short #1 APPROVED, preview-complete; root skill packaging complete. Next: fresh-chat reuse test for short #2. Short #2 has not been started.
 
 Successful preview run: [45811466419](https://github.com/d0ctornotfound/RobloxSHORTS/actions/runs/45811466419), commit `c043c3cd322c274108726203bab3c16a6e8b8689`, artifact `roblox-demo-preview-5s`.
 
@@ -69,3 +69,10 @@ All 144 final decoded frames independently checked, identical to pixel_validatio
 All pass <=2%. No black clamp. Six final MP4-derived grabs at 1.5, 4.0, 5.9, 7.0, 8.2, 10.7 s packaged and inspected. Frontal cameras show enclosed café with no large dark set-edge void; patrons only in notice (still intrude at left/right edges in that shot), no patron occlusion in reach/impact/payoff. At 5.9s both hands/arms and plate read clearly. Cake visible in crown at 8.2 and 10.7, base lowered .274082 below highest tip, attachment remains active throughout hold. Actual launch/land frames 80/92, zero attachment error, friend rim error .030018, hold 2.5s.
 
 Remaining limitations: frontal two-shot coverage regressed below prior 45% target, notice lead/friend 34.85%/30.09%, reach 35.47%/30.62%, payoff 36.75%/31.76%, impact lead 66.20%. This is a deliberate tradeoff for frontal readable composition but is NOT a claim that earlier 45% gate passes. Reach remains wide rather than tight medium, foreground rug and upper wall consume substantial space. Notice patrons overlap the outer actor arms at frame edges. Airborne cake partly clipped at right edge at 7.0s, cake contact still stylized; payoff cake visible but small. Lighting is brighter and grain persists. Dark pixel gate alone does not prove visual quality. Correction production complete, awaiting supervisor approval; previous integrated artifact rejected, no short #2 started.
+
+
+## Supervisor approval and skill packaging
+
+Supervisor approved corrected short #1 (preview-complete) after independently verifying the MP4 hash and decoding all six comparison timestamps. Voids gone, patrons out of hero shots, cake visible in hair at impact and payoff, reaction split readable. Nonblocking gaps: two-shots wider than reference (~30–37% coverage), slight airborne cake crop at 7.0s, 24-sample preview grain. Supervisor reports a locally mixed narration master, sidechain-ducked, −17.9 LUFS; that master is not in the GitHub artifact and was not independently inspected here. The approved artifact remains run 45880102202, ID 15147751306, render commit 9edaa643a6ea10a797d072861967d79f6ccabb98, MP4 SHA-256 8948e8e23d0af97de8226029d3c9a0e0d296667c67794f70dd75f807d3009679.
+
+Packaging complete: root [SKILL.md](../SKILL.md) is the standalone agent entry point, README points to it. Documents locked standard, full current JSON schema and its hard-coded driver boundaries, commands/profiles/workflows, gate semantics, review/attachment loop and known limitations. No renderer or workflow changed, no new render or short #2 started. Fresh-chat test is pending: connect this repository in a new chat, instruct the agent to read SKILL.md, and build a second distinct short from repository context alone. The skill file does not auto-install into ChatGPT.
