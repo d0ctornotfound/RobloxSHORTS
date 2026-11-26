@@ -43,21 +43,21 @@ def main():
     p=palette()
     lead=Character("Series lead",p,True)
     friend=Character("Cafe friend",p,False)
-    lead.root.location=(-1.04,.30,0)
-    friend.root.location=(.57,1.12,0)
+    lead.root.location=(-.80,.30,0)
+    friend.root.location=(.55,1.78,0)
     friend.root.rotation_euler.z=-.12
     lead_track=ExpressionTrack(lead)
     friend_track=ExpressionTrack(friend)
 
     # Find an exact, reachable tabletop position for the wrist socket.
     support_z=1.18
-    dx=.24
+    dx=.10
     dz=support_z+.145-1.72
     dy=-math.sqrt(.70**2-dx**2-dz**2)
     reach=Vector((dx,dy,dz)).normalized()
     idle=Vector((.04,-.11,-.69)).normalized()
-    lift=Vector((.43,-.49,.26)).normalized()
-    fumble=Vector((.39,-.53,.23)).normalized()
+    lift=Vector((-.20,-.52,.42)).normalized()
+    fumble=Vector((-.15,-.55,.40)).normalized()
     recoil=Vector((-.12,-.48,.49)).normalized()
     socket=aim_arm(lead,1,reach)
     start_cup=socket.matrix_world.translation.copy()
@@ -148,16 +148,18 @@ def main():
 
     # One perspective shot. Legs may crop for medium composition, faces,
     # grip, moving cup and table top must stay within the portrait safe area.
-    bpy.ops.object.camera_add(location=(-.46,-4.25,2.03))
+    bpy.ops.object.camera_add(location=(-1.18,-3.60,2.00))
     camera=bpy.context.object
     scene.camera=camera
     camera.data.type="PERSP"
-    camera.data.lens=39
-    point_at(camera,(-.42,.10,1.83))
+    camera.data.lens=48
+    point_at(camera,(-.43,.10,1.94))
     table=bpy.data.objects.get("Cafe table top")
     safe=[o for o in lead.meshes if any(k in o.name for k in ("head","hair","fringe","torso"))]
     safe += [o for o in friend.meshes if any(k in o.name for k in ("head","beanie"))]
-    safe += list(cup.children_recursive)+[table]
+    safe += list(cup.children_recursive)
+    # Keep the tabletop center and action visible, not the peripheral table rim;
+    # intentional lower-body/outer-arm cropping defines this portrait medium shot.
     safe += [o for o in lead.meshes if o.parent==lead.wrists[1]]
     for _ in range(24):
         bounds=[]
