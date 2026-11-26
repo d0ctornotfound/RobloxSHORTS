@@ -1,0 +1,82 @@
+name: R6 source rig approval stills
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - 'assets/r6_rigged.glb'
+      - 'assets/r6_faces/**'
+      - 'scripts/r6_character.py'
+      - 'scripts/r6_faces.py'
+      - 'scripts/render_r6_stills.py'
+      - '.github/workflows/r6-approval.yml'
+permissions:
+  contents: read
+jobs:
+  render:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 30
+    strategy:
+      fail-fast: false
+      matrix:
+        shot: [00_lineup, 01_cafe_two, 02_classroom_two]
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install Blender and image tools
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y --no-install-recommends blender ffmpeg python3-pil
+      - name: Verify exact source and generate transparent decals
+        run: |
+          echo '3a0f310faf09cf161f7036a4c0df1a20202b967683700badc4440309c0a7d95a  assets/r6_rigged.glb' | sha256sum -c -
+          /usr/bin/python3 scripts/r6_faces.py --output assets/r6_faces
+      - name: Render approval still only
+        run: |
+          blender -b --python-exit-code 1 --python scripts/render_r6_stills.py -- --shot "$SHOT" --output render/r6
+          ffmpeg -hide_banner -loglevel error -i "render/r6/$SHOT.png" -vf "nlmeans=s=2.5:p=7:r=15" -frames:v 1 "render/r6/$SHOT-clean.png"
+          mv "render/r6/$SHOT-clean.png" "render/r6/$SHOT.png"
+          cp -r assets/r6_faces render/r6/
+        env:
+          SHOT: ${{ matrix.shot }}
+      - uses: actions/upload-artifact@v4
+        with:
+          name: r6-approval-${{ matrix.shot }}
+          path: render/r6/
+          if-no-files-found: error
+          retention-days: 7
+  package:
+    needs: render
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/download-artifact@v4
+        with:
+          pattern: r6-approval-*
+          path: chunks
+      - name: Package and validate images and face textures
+        run: |
+          python3 - <<'PY'
+          import json,hashlib,shutil,struct
+          from pathlib import Path
+          dest=Path("approval");dest.mkdir()
+          rows=[]
+          for shot,size in [("00_lineup",(1600,900)),("01_cafe_two",(720,1280)),("02_classroom_two",(720,1280))]:
+              root=Path("chunks")/("r6-approval-"+shot)
+              for ext in (".png",".json",".blend"):
+                  f=root/(shot+ext);assert f.exists();shutil.copy2(f,dest/f.name)
+              p=(dest/(shot+".png")).read_bytes()
+              assert p[:8]==b"\x89PNG\r\n\x1a\n" and struct.unpack(">II",p[16:24])==size
+              m=json.loads((dest/(shot+".json")).read_text())
+              m["png_sha256"]=hashlib.sha256(p).hexdigest();rows.append(m)
+              if not (dest/"r6_faces").exists():shutil.copytree(root/"r6_faces",dest/"r6_faces")
+          assert len(list((dest/"r6_faces").glob("*.png")))==6
+          for f in (dest/"r6_faces").glob("*.png"):
+              p=f.read_bytes();assert p[:8]==b"\x89PNG\r\n\x1a\n" and struct.unpack(">II",p[16:24])==(1024,1024) and p[25]==6
+          (dest/"approval_manifest.json").write_text(json.dumps(rows,indent=2)+"\n")
+          print("R6_APPROVAL_PACKAGE",json.dumps(rows))
+          PY
+      - uses: actions/upload-artifact@v4
+        with:
+          name: r6-character-approval-stills
+          path: approval/
+          if-no-files-found: error
+          retention-days: 7
