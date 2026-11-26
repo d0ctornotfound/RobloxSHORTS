@@ -138,33 +138,49 @@ def main():
         for name,track in tracks.items():assert [n for n,o in track.decals.items() if not o.hide_render]==[row["expressions"][name]]
     # Preserve one animated timeline; cameras cut through timeline markers.
     # The last shot uses a teacher close-up with students behind her in depth.
+    # Fixed focal lengths, no automatic lens widening. The folding camera
+    # looks across the desks at a diagonal to compress their horizontal spread.
     designs=[
-        ((2.8,-.8,2.9),(-.65,3.5,1.45),38,["lead","friend"]),
-        ((-3.0,1.05,2.8),(-1.05,3.6,1.85),42,["lead"]),
-        ((4.8,-1.0,3.45),(0,-1,2.25),28,[]),
+        ((-4.4,1.25,2.35),(-.05,3.86,1.25),48,["lead","friend"]),
+        ((-3.0,1.60,2.25),(-1.05,3.85,1.45),48,["lead"]),
+        ((4.8,-1.0,3.45),(0,-1,2.25),48,[]),
         ((2.5,-2.9,2.8),(0,-5.35,2.15),40,["teacher"])]
     records=[]
     for shot,(position,target,lens,heroes) in zip(spec["shots"],designs):
         first=frame_at(shot["start"],fps);last=frame_at(shot["end"],fps)-1
         bpy.ops.object.camera_add();cam=bpy.context.object;cam.name=shot["id"];cam.location=position;cam.data.sensor_fit="HORIZONTAL";cam.data.lens=lens;point_at(cam,target)
-        sampleset=[]
+        marker=scene.timeline_markers.new(shot["id"],frame=first);marker.camera=cam
+        scene.camera=cam
+        coverage_rows=[];bounds=[];plane_widths=[];plane_bounds=[]
         for f in range(first,last+1):
             scene.frame_set(f);bpy.context.view_layer.update()
-            safe=corners(mesh)
-            body={}
+            if shot["id"]=="03_glide":
+                # Follow the actual evaluated plane. Look sideways across the
+                # classroom, not down the flight axis; keep background parallax.
+                center=plane.matrix_world.translation.copy()
+                cam.location=center+Vector((2.65,1.0,1.05))
+                point_at(cam,center+Vector((0,0,-.18)))
+                cam.keyframe_insert("location",frame=f);cam.keyframe_insert("rotation_euler",frame=f)
+            bpy.context.view_layer.update()
+            pp=[world_to_camera_view(scene,cam,v) for v in corners(mesh)]
+            plane_widths.append(max(v.x for v in pp)-min(v.x for v in pp))
+            plane_bounds.extend(pp)
+            safe=[]
+            # The plane can exit the throw frame AFTER release; the next
+            # shot owns its flight. Keep it protected during wind-up/release.
+            if shot["id"]!="02_throw" or f<=launch:safe.extend(corners(mesh))
+            row={}
             for n in heroes:
                 actor=actors[n]
-                body[n]=[v for ob in actor.meshes if ob.type=="MESH" and ob!=actor.face for v in corners(ob)]
+                body=[v for ob in actor.meshes if ob.type=="MESH" and ob!=actor.face for v in corners(ob)]
+                vs=[world_to_camera_view(scene,cam,v) for v in body]
+                row[n]=max(0,min(1,max(v.y for v in vs))-max(0,min(v.y for v in vs)))
                 safe.extend(v for ob in actor.meshes if any(k in ob.name for k in ("head","hair","beanie","palm","finger")) for v in corners(ob))
-            sampleset.append((safe,body))
-        for i in range(100):
-            bpy.context.view_layer.update()
-            bounds=[world_to_camera_view(scene,cam,v) for safe,_ in sampleset for v in safe]
-            if all(v.z>0 and .035<=v.x<=.965 and .045<=v.y<=.97 for v in bounds):break
-            cam.data.lens*=.97
-        coverage={n:min(max(0,min(1,max(v.y for v in vs))-max(0,min(v.y for v in vs))) for vs in ([world_to_camera_view(scene,cam,v) for v in body[n]] for _,body in sampleset)) for n in heroes}
-        marker=scene.timeline_markers.new(shot["id"],frame=first);marker.camera=cam
-        records.append({"id":shot["id"],"first":first,"last":last,"lens":cam.data.lens,"min_hero_vertical_coverage":coverage,"coverage_goal_met":all(v>=.45 for v in coverage.values()),"safe_bounds_met":all(v.z>0 and .035<=v.x<=.965 and .045<=v.y<=.97 for v in bounds),"bounds":[min(v.x for v in bounds),max(v.x for v in bounds),min(v.y for v in bounds),max(v.y for v in bounds)]})
+            coverage_rows.append(row)
+            bounds.extend(world_to_camera_view(scene,cam,v) for v in safe)
+        coverage={n:min(row[n] for row in coverage_rows) for n in heroes}
+        minimum=.40 if shot["id"] in ("01_fold","02_throw") else .45
+        records.append({"id":shot["id"],"first":first,"last":last,"lens":cam.data.lens,"min_hero_vertical_coverage":coverage,"coverage_goal_met":all(v>=.45 for v in coverage.values()),"supervisor_minimum_met":all(v>=minimum for v in coverage.values()),"safe_bounds_met":all(v.z>0 and .035<=v.x<=.965 and .045<=v.y<=.97 for v in bounds),"bounds":[min(v.x for v in bounds),max(v.x for v in bounds),min(v.y for v in bounds),max(v.y for v in bounds)],"min_plane_projected_width":min(plane_widths),"plane_exit_allowed_after_release":shot["id"]=="02_throw","camera_tracks_plane":shot["id"]=="03_glide"})
     manifest={"story":spec["id"],"resolution":[w,h],"fps":fps,"duration":12,"frame_count":scene.frame_end,"samples":samples,"shots":records,"timeline":timeline,"max_grip_error":max(errors),"launch_frame":launch,"landing_frame":land,"payoff_hold_seconds":(scene.frame_end-land+1)/fps,"bun_contact_local":list(local),"rig":"Sprint 2 quality"}
     (out/"story_manifest.json").write_text(json.dumps(manifest,indent=2)+"\n")
     print("CLASSROOM_VALIDATION",json.dumps({k:v for k,v in manifest.items() if k!="timeline"}),flush=True)
