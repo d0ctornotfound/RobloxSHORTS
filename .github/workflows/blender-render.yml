@@ -3,6 +3,11 @@ name: Blender render
 on:
   workflow_dispatch:
     inputs:
+      mode:
+        description: Render animation or Stage A stills
+        type: choice
+        options: [animation, stills]
+        default: animation
       profile:
         description: Render quality
         type: choice
@@ -19,6 +24,8 @@ on:
     branches: [main]
     paths:
       - 'scripts/render_demo.py'
+      - 'scripts/render_stills.py'
+      - 'scripts/stage_a_*.py'
       - '.github/workflows/blender-render.yml'
 
 permissions:
@@ -37,6 +44,64 @@ jobs:
       DURATION: ${{ inputs.duration || '5' }}
     steps:
       - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Select render mode
+        id: mode
+        env:
+          REQUESTED: ${{ inputs.mode || '' }}
+          BEFORE: ${{ github.event.before || '' }}
+        run: |
+          mode="${REQUESTED:-animation}"
+          if [ "$GITHUB_EVENT_NAME" = push ] && [ -n "$BEFORE" ]; then
+            if git diff --name-only "$BEFORE" "$GITHUB_SHA" | grep -Eq '^scripts/(render_stills\.py|stage_a_.*\.py)
+      - name: Install Blender and FFmpeg
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y --no-install-recommends blender ffmpeg
+          blender --version
+          ffmpeg -version
+      - name: Render animation
+        if: steps.mode.outputs.value == 'animation'
+        run: |
+          python3 -m py_compile scripts/render_demo.py
+          blender -b --python-exit-code 1 --python scripts/render_demo.py -- --profile "$PROFILE" --duration "$DURATION" --output render
+      - name: Encode and validate MP4
+        if: steps.mode.outputs.value == 'animation'
+        run: |
+          fps=12
+          if [ "$PROFILE" = full ]; then fps=24; fi
+          ffmpeg -hide_banner -loglevel error -framerate "$fps" -start_number 1 -i render/frame_%04d.png -c:v libx264 -crf 18 -pix_fmt yuv420p -movflags +faststart render/demo.mp4
+          ffprobe -v error -select_streams v:0 -show_streams -show_format -of json render/demo.mp4 > render/metadata.json
+          python3 - <<'PY'
+          import json, os
+          from fractions import Fraction
+          from pathlib import Path
+          data = json.loads(Path("render/metadata.json").read_text())
+          stream = data["streams"][0]
+          width, height, fps = (1080, 1920, 24) if os.environ["PROFILE"] == "full" else (360, 640, 12)
+          assert (stream["width"], stream["height"]) == (width, height), stream
+          assert Fraction(stream["avg_frame_rate"]) == fps, stream
+          duration = int(os.environ["DURATION"])
+          assert int(stream["nb_frames"]) == fps * duration, stream
+          assert abs(float(data["format"]["duration"]) - duration) < 0.1, data
+          print(f"Validated {width}x{height}, {fps} fps, {duration} seconds")
+          PY
+      - name: Upload video and Blender project
+        if: steps.mode.outputs.value == 'animation'
+        uses: actions/upload-artifact@v4
+        with:
+          name: roblox-demo-${{ env.PROFILE }}-${{ env.DURATION }}s
+          path: |
+            render/demo.mp4
+            render/scene.blend
+            render/metadata.json
+          if-no-files-found: error
+          retention-days: 7
+; then mode=stills; fi
+          fi
+          echo "value=$mode" >> "$GITHUB_OUTPUT"
+          echo "Selected render mode: $mode"
       - name: Install Blender and FFmpeg
         run: |
           sudo apt-get update
@@ -75,5 +140,38 @@ jobs:
             render/demo.mp4
             render/scene.blend
             render/metadata.json
+          if-no-files-found: error
+          retention-days: 7
+      - name: Render Stage A stills
+        if: steps.mode.outputs.value == 'stills'
+        run: |
+          python3 -m py_compile scripts/render_stills.py scripts/stage_a_character.py scripts/stage_a_cafe.py
+          blender -b --python-exit-code 1 --python scripts/render_stills.py -- --profile "$PROFILE" --output render/stills
+      - name: Validate Stage A stills
+        if: steps.mode.outputs.value == 'stills'
+        run: |
+          python3 - <<'PY'
+          import json, os, struct
+          from pathlib import Path
+          root = Path("render/stills")
+          expected = {"01_happy_closeup.png", "02_shocked_medium.png", "03_cafe_wide.png"}
+          assert {p.name for p in root.glob("*.png")} == expected
+          size = (1080,1920) if os.environ["PROFILE"] == "full" else (540,960)
+          for name in sorted(expected):
+              data = (root/name).read_bytes()
+              assert data[:8] == b"\x89PNG\r\n\x1a\n"
+              assert struct.unpack(">II",data[16:24]) == size
+              assert len(data) > 10000
+              print(f"Validated {name}: {size}, {len(data)} bytes")
+          manifest = json.loads((root/"manifest.json").read_text())
+          assert set(manifest["face_swaps_tested"]) == {"neutral","happy","shocked","sad"}
+          assert {shot["file"] for shot in manifest["shots"]} == expected
+          PY
+      - name: Upload Stage A stills
+        if: steps.mode.outputs.value == 'stills'
+        uses: actions/upload-artifact@v4
+        with:
+          name: roblox-stage-a-stills-${{ env.PROFILE }}
+          path: render/stills/
           if-no-files-found: error
           retention-days: 7
