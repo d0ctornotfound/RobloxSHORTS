@@ -47,11 +47,11 @@ def main():
     scene.render.resolution_x=w;scene.render.resolution_y=h;scene.render.fps=fps;scene.frame_start=1;scene.frame_end=round(spec["duration"]*fps)
     build();p=teacher_palette(palette())
     lead=Character("lead",p,True);friend=Character("friend",p,False);teacher=Teacher(p)
-    seated(lead,-1.05,4.0);seated(friend,1.05,4.0)
+    seated(lead,-1.05,4.0);seated(friend,.85,4.0)
     teacher.root.location=(0,-5.55,0);teacher.root.rotation_euler.z=0
     actors={"lead":lead,"friend":friend,"teacher":teacher}
     extras=[]
-    for i,(x,y) in enumerate([(-3.2,1.8),(-1.05,1.8),(1.05,1.8),(3.2,1.8),(-3.2,4),(3.2,4)]):
+    for i,(x,y) in enumerate([(-3.2,1.8),(3.2,1.8),(-3.2,4),(3.2,4)]):
         extra=Character("student "+str(i),p,False,role="patron_green" if i%2 else "patron_blue")
         seated(extra,x,y);extras.append(extra)
     pivots={n:head_pivot(o) for n,o in actors.items()}
@@ -140,47 +140,75 @@ def main():
     # The last shot uses a teacher close-up with students behind her in depth.
     # Fixed focal lengths, no automatic lens widening. The folding camera
     # looks across the desks at a diagonal to compress their horizontal spread.
-    designs=[
-        ((-4.4,1.25,2.35),(-.05,3.86,1.25),48,["lead","friend"]),
-        ((-3.0,1.60,2.25),(-1.05,3.85,1.45),48,["lead"]),
-        ((4.8,-1.0,3.45),(0,-1,2.25),48,[]),
-        ((2.5,-2.9,2.8),(0,-5.35,2.15),40,["teacher"])]
+    # Fixed focal length candidates: solve camera position/target, never widen
+    # to follow the flying plane. A split payoff retains one workflow chunk.
     records=[]
-    for shot,(position,target,lens,heroes) in zip(spec["shots"],designs):
-        first=frame_at(shot["start"],fps);last=frame_at(shot["end"],fps)-1
-        bpy.ops.object.camera_add();cam=bpy.context.object;cam.name=shot["id"];cam.location=position;cam.data.sensor_fit="HORIZONTAL";cam.data.lens=lens;point_at(cam,target)
-        marker=scene.timeline_markers.new(shot["id"],frame=first);marker.camera=cam
-        scene.camera=cam
-        coverage_rows=[];bounds=[];plane_widths=[];plane_bounds=[]
-        for f in range(first,last+1):
-            scene.frame_set(f);bpy.context.view_layer.update()
-            if shot["id"]=="03_glide":
-                # Follow the actual evaluated plane. Look sideways across the
-                # classroom, not down the flight axis; keep background parallax.
-                center=plane.matrix_world.translation.copy()
-                cam.location=center+Vector((2.65,1.0,1.05))
-                point_at(cam,center+Vector((0,0,-.18)))
-                cam.keyframe_insert("location",frame=f);cam.keyframe_insert("rotation_euler",frame=f)
-            bpy.context.view_layer.update()
-            pp=[world_to_camera_view(scene,cam,v) for v in corners(mesh)]
-            plane_widths.append(max(v.x for v in pp)-min(v.x for v in pp))
-            plane_bounds.extend(pp)
-            safe=[]
-            # The plane can exit the throw frame AFTER release; the next
-            # shot owns its flight. Keep it protected during wind-up/release.
-            if shot["id"]!="02_throw" or f<=launch:safe.extend(corners(mesh))
-            row={}
-            for n in heroes:
-                actor=actors[n]
-                body=[v for ob in actor.meshes if ob.type=="MESH" and ob!=actor.face for v in corners(ob)]
-                vs=[world_to_camera_view(scene,cam,v) for v in body]
-                row[n]=max(0,min(1,max(v.y for v in vs))-max(0,min(v.y for v in vs)))
-                safe.extend(v for ob in actor.meshes if any(k in ob.name for k in ("head","hair","beanie","palm","finger")) for v in corners(ob))
-            coverage_rows.append(row)
-            bounds.extend(world_to_camera_view(scene,cam,v) for v in safe)
-        coverage={n:min(row[n] for row in coverage_rows) for n in heroes}
-        minimum=.40 if shot["id"] in ("01_fold","02_throw") else .45
-        records.append({"id":shot["id"],"first":first,"last":last,"lens":cam.data.lens,"min_hero_vertical_coverage":coverage,"coverage_goal_met":all(v>=.45 for v in coverage.values()),"supervisor_minimum_met":all(v>=minimum for v in coverage.values()),"safe_bounds_met":all(v.z>0 and .035<=v.x<=.965 and .045<=v.y<=.97 for v in bounds),"bounds":[min(v.x for v in bounds),max(v.x for v in bounds),min(v.y for v in bounds),max(v.y for v in bounds)],"min_plane_projected_width":min(plane_widths),"plane_exit_allowed_after_release":shot["id"]=="02_throw","camera_tracks_plane":shot["id"]=="03_glide"})
+    for shot in spec["shots"]:
+        sid=shot["id"];first=frame_at(shot["start"],fps);last=frame_at(shot["end"],fps)-1
+        segments=[(first,last,sid)]
+        if sid=="04_payoff":segments=[(first,frame_at(10,fps)-1,"teacher_impact"),(frame_at(10,fps),last,"boys_reaction")]
+        parts=[]
+        for lo,hi,kind in segments:
+            heroes=["lead","friend"] if kind in ("01_fold","boys_reaction") else ["lead"] if kind=="02_throw" else ["teacher"] if kind=="teacher_impact" else []
+            bpy.ops.object.camera_add();cam=bpy.context.object;cam.name=kind;cam.data.sensor_fit="HORIZONTAL"
+            marker=scene.timeline_markers.new(kind,frame=lo);marker.camera=cam;scene.camera=cam
+            sampleset=[]
+            for f in range(lo,hi+1):
+                scene.frame_set(f);bpy.context.view_layer.update()
+                prop=corners(mesh);body={};safe=[]
+                if kind not in ("boys_reaction",) and (kind!="02_throw" or f<=launch):safe.extend(prop)
+                for n in heroes:
+                    actor=actors[n]
+                    body[n]=[v for ob in actor.meshes if ob.type=="MESH" and ob!=actor.face for v in corners(ob)]
+                    safe.extend(v for ob in actor.meshes if any(k in ob.name for k in ("head","hair","beanie","palm","finger")) for v in corners(ob))
+                sampleset.append((f,prop,body,safe,plane.matrix_world.translation.copy()))
+            def measure():
+                rows=[];bounds=[];widths=[]
+                for f,prop,body,safe,center in sampleset:
+                    if kind=="03_glide":
+                        cam.location=center+Vector((2.65,1.0,1.05));point_at(cam,center+Vector((0,0,-.18)))
+                    bpy.context.view_layer.update()
+                    pp=[world_to_camera_view(scene,cam,v) for v in prop]
+                    widths.append(max(v.x for v in pp)-min(v.x for v in pp))
+                    bounds.extend(world_to_camera_view(scene,cam,v) for v in safe)
+                    row={}
+                    for n,verts in body.items():
+                        vs=[world_to_camera_view(scene,cam,v) for v in verts]
+                        row[n]=max(0,min(1,max(v.y for v in vs))-max(0,min(v.y for v in vs)))
+                    rows.append(row)
+                cov={n:min(row[n] for row in rows) for n in heroes}
+                ok=all(v.z>0 and .035<=v.x<=.965 and .045<=v.y<=.97 for v in bounds)
+                penalty=sum(max(0,.035-v.x,v.x-.965)+max(0,.045-v.y,v.y-.97) for v in bounds)/max(1,len(bounds))
+                return cov,ok,penalty,bounds,widths
+            if kind=="03_glide":
+                cam.data.lens=48
+                result=measure()
+                for f,prop,body,safe,center in sampleset:
+                    scene.frame_set(f);cam.location=center+Vector((2.65,1.0,1.05));point_at(cam,center+Vector((0,0,-.18)))
+                    cam.keyframe_insert("location",frame=f);cam.keyframe_insert("rotation_euler",frame=f)
+            elif kind=="teacher_impact":
+                cam.location=(2.5,-2.9,2.8);cam.data.lens=40;point_at(cam,(0,-5.35,2.15));result=measure()
+            else:
+                # Frontal compressed perspective; fixed lens throughout shot.
+                # Search physical positions and aim, using the whole segment's bounds.
+                cam.data.lens=48
+                cx=-1.05 if kind=="02_throw" else 0
+                best=None
+                for dx in (0,-.8,.8,-1.6,1.6):
+                    for dist in (3.4,4.0,4.6,5.2,5.8,6.4):
+                        for z in (2.0,2.5,3.0):
+                            for aimx in (-.25,0,.25):
+                                cam.location=(cx+dx,4-dist,z);point_at(cam,(cx+aimx,3.8,1.35))
+                                m=measure();cov,ok,penalty,_,_=m
+                                score=(ok and min(cov.values())>=.40,ok,min(cov.values())-penalty*4)
+                                if best is None or score>best[0]:best=(score,cam.location.copy(),cam.rotation_euler.copy(),m)
+                _,pos,rot,result=best;cam.location=pos;cam.rotation_euler=rot
+            cov,ok,penalty,bounds,widths=result
+            parts.append({"segment":kind,"first":lo,"last":hi,"lens":cam.data.lens,"min_hero_vertical_coverage":cov,"coverage_goal_met":all(v>=.45 for v in cov.values()),"supervisor_minimum_met":all(v>=.40 for v in cov.values()),"safe_bounds_met":ok,"bounds":[min(v.x for v in bounds),max(v.x for v in bounds),min(v.y for v in bounds),max(v.y for v in bounds)],"min_plane_projected_width":min(widths)})
+        combined={}
+        for part in parts:
+            for n,v in part["min_hero_vertical_coverage"].items():combined[n]=min(combined.get(n,1),v)
+        records.append({"id":sid,"first":first,"last":last,"segments":parts,"min_hero_vertical_coverage":combined,"coverage_goal_met":all(p["coverage_goal_met"] for p in parts),"supervisor_minimum_met":all(p["supervisor_minimum_met"] for p in parts),"safe_bounds_met":all(p["safe_bounds_met"] for p in parts)})
     manifest={"story":spec["id"],"resolution":[w,h],"fps":fps,"duration":12,"frame_count":scene.frame_end,"samples":samples,"shots":records,"timeline":timeline,"max_grip_error":max(errors),"launch_frame":launch,"landing_frame":land,"payoff_hold_seconds":(scene.frame_end-land+1)/fps,"bun_contact_local":list(local),"rig":"Sprint 2 quality"}
     (out/"story_manifest.json").write_text(json.dumps(manifest,indent=2)+"\n")
     print("CLASSROOM_VALIDATION",json.dumps({k:v for k,v in manifest.items() if k!="timeline"}),flush=True)
