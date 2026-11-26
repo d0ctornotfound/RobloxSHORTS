@@ -1,6 +1,6 @@
 # Project State
 
-Current milestone: Stage B — animation foundation rendered; A2 and B awaiting supervisor visual approval
+Current milestone: Stage C — The Last Slice (A2 and B approved by supervisor)
 
 Successful preview run: [45811466419](https://github.com/d0ctornotfound/RobloxSHORTS/actions/runs/45811466419), commit `c043c3cd322c274108726203bab3c16a6e8b8689`, artifact `roblox-demo-preview-5s`.
 
@@ -23,4 +23,6 @@ Stage B: initial successful [run 45818670418](https://github.com/d0ctornotfound/
 
 Remaining review points: the wide still is fuller but retains some ceiling and floor; the final animation is medium-long rather than strict waist-up and the cup briefly partially obscures the friend's face. Preview animation uses eight samples and is visibly noisy. The release is an upright analytic drop onto a supported surface, not general rigid-body simulation. No external visual assets or paid render services were used. `render_demo.py` remains unchanged.
 
-Next action: Supervisor review of final A2 and Stage B artifacts; tighten shot blocking/animation polish before adding story, captions or audio.
+Supervisor verdict: A2 and Stage B APPROVED as foundations. Local rerender from f33843b matched interaction validation. Carried issues: friend occlusion, upright cup drop, preview grain.
+
+Stage C: story spec, four-shot continuous cake gag, original sound and single-word caption edit, optional narration WAV slot. Preview render and verification pending. See [STAGE_C_STORY.md](STAGE_C_STORY.md) for exact local preview and full-quality regeneration commands.

@@ -1,0 +1,105 @@
+name: Stage C story short
+on:
+  workflow_dispatch:
+    inputs:
+      profile:
+        description: Render quality
+        type: choice
+        options: [preview, full]
+        default: preview
+  push:
+    branches: [main]
+    paths:
+      - 'stories/**'
+      - 'scripts/render_story.py'
+      - 'scripts/stage_c_*.py'
+      - 'scripts/edit_story.py'
+      - '.github/workflows/story-render.yml'
+
+permissions:
+  contents: read
+
+jobs:
+  render:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 45
+    strategy:
+      fail-fast: false
+      matrix:
+        shot: [01_notice, 02_reach, 03_impact, 04_payoff]
+    env:
+      PROFILE: ${{ inputs.profile || 'preview' }}
+      SHOT: ${{ matrix.shot }}
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install Blender
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y --no-install-recommends blender
+          blender --version
+      - name: Build and render continuous story timeline
+        run: |
+          python3 -m py_compile scripts/render_story.py scripts/stage_c_props.py scripts/edit_story.py
+          blender -b --python-exit-code 1 --python scripts/render_story.py -- --profile "$PROFILE" --shot "$SHOT" --output render/story
+      - name: Upload shot frames
+        uses: actions/upload-artifact@v4
+        with:
+          name: story-frames-${{ matrix.shot }}
+          path: render/story/
+          if-no-files-found: error
+          retention-days: 1
+  edit:
+    needs: render
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    env:
+      PROFILE: ${{ inputs.profile || 'preview' }}
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install FFmpeg and caption font
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y --no-install-recommends ffmpeg fonts-dejavu-core
+      - uses: actions/download-artifact@v4
+        with:
+          pattern: story-frames-*
+          path: render/chunks
+      - name: Assemble frames and cross-check timelines
+        run: |
+          python3 - <<'PY'
+          import json, shutil
+          from pathlib import Path
+          dest=Path("render/story")
+          dest.mkdir(parents=True,exist_ok=True)
+          chunks=sorted(Path("render/chunks").glob("story-frames-*"))
+          assert len(chunks)==4
+          ref=None
+          for chunk in chunks:
+              manifest=json.loads((chunk/"story_manifest.json").read_text())
+              if ref is None:
+                  ref=manifest
+              else:
+                  assert manifest==ref, "Shot timelines disagree"
+              shot=next(s for s in manifest["shots"] if chunk.name.endswith(s["id"]))
+              expected={f"frame_{i:04d}.png" for i in range(shot["first"],shot["last"]+1)}
+              assert {p.name for p in chunk.glob("frame_*.png")}==expected
+              for frame in chunk.glob("frame_*.png"):
+                  assert not (dest/frame.name).exists()
+                  shutil.copy2(frame,dest/frame.name)
+              if (chunk/"story.blend").exists():
+                  shutil.copy2(chunk/"story.blend",dest/"story.blend")
+          assert len(list(dest.glob("frame_*.png")))==ref["frame_count"]
+          (dest/"story_manifest.json").write_text(json.dumps(ref,indent=2)+"\n")
+          PY
+      - name: Burn single-word captions and mix procedural audio
+        run: |
+          python3 scripts/edit_story.py --profile "$PROFILE" --frames render/story --output render/final --verify-slot
+          cp render/story/story_manifest.json render/story/story.blend render/final/
+          cp stories/the_last_slice.json render/final/
+      - name: Upload finished short and reproducibility files
+        uses: actions/upload-artifact@v4
+        with:
+          name: roblox-the-last-slice-${{ env.PROFILE }}-12s
+          path: render/final/
+          if-no-files-found: error
+          retention-days: 7
