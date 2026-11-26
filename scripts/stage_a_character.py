@@ -2,7 +2,7 @@
 import math
 
 import bpy
-import numpy as np
+from array import array
 from mathutils import Vector
 
 from render_demo import cube, empty, material
@@ -79,17 +79,24 @@ def fabric(name, colors, striped=False):
 def face_image(expression):
     """RGBA decal from analytic strokes, not imported art. UV origin is lower left."""
     size = 512
-    y, x = np.mgrid[0:size, 0:size].astype(np.float32) / (size - 1)
-    alpha = np.zeros((size, size), dtype=np.float32)
+    alpha = array("f", [0.0]) * (size * size)
+    def raster(x0, y0, x1, y1, coverage):
+        for iy in range(max(0, math.floor(y0*(size-1))), min(size, math.ceil(y1*(size-1))+1)):
+            y = iy/(size-1)
+            for ix in range(max(0, math.floor(x0*(size-1))), min(size, math.ceil(x1*(size-1))+1)):
+                x = ix/(size-1)
+                i = iy*size+ix
+                alpha[i] = max(alpha[i], min(1.0, max(0.0, coverage(x,y))))
     def ellipse(cx, cy, rx, ry):
-        d = np.sqrt(((x-cx)/rx)**2 + ((y-cy)/ry)**2)
-        np.maximum(alpha, np.clip((1-d)*min(rx,ry)*size, 0, 1), out=alpha)
+        raster(cx-rx, cy-ry, cx+rx, cy+ry,
+               lambda x,y: (1-math.hypot((x-cx)/rx,(y-cy)/ry))*min(rx,ry)*size)
     def stroke(points, width=.014):
         for (ax, ay), (bx, by) in zip(points, points[1:]):
             dx, dy = bx-ax, by-ay
-            t = np.clip(((x-ax)*dx+(y-ay)*dy)/(dx*dx+dy*dy), 0, 1)
-            d = np.sqrt((x-ax-t*dx)**2+(y-ay-t*dy)**2)
-            np.maximum(alpha, np.clip((width-d)*size, 0, 1), out=alpha)
+            def coverage(x,y):
+                t = min(1.0,max(0.0,((x-ax)*dx+(y-ay)*dy)/(dx*dx+dy*dy)))
+                return (width-math.hypot(x-ax-t*dx,y-ay-t*dy))*size
+            raster(min(ax,bx)-width,min(ay,by)-width,max(ax,bx)+width,max(ay,by)+width,coverage)
     for cx in (.33, .67):
         if expression == "happy":
             stroke([(cx-.055,.61),(cx-.035,.66),(cx,.68),(cx+.035,.66),(cx+.055,.61)], .017)
@@ -109,11 +116,10 @@ def face_image(expression):
         stroke([(.37,.34),(.43,.40),(.50,.42),(.57,.40),(.63,.34)], .020)
     else:
         stroke([(.42,.39),(.50,.38),(.58,.39)], .017)
-    rgba = np.empty((size,size,4), dtype=np.float32)
-    rgba[:,:,:3] = (.028,.016,.012)
-    rgba[:,:,3] = alpha
+    rgba = array("f", [.028,.016,.012,0.0]) * (size*size)
+    rgba[3::4] = alpha
     img = bpy.data.images.new("Original face / "+expression, width=size, height=size, alpha=True)
-    img.pixels.foreach_set(rgba.ravel())
+    img.pixels.foreach_set(rgba)
     img.update()
     return img
 
