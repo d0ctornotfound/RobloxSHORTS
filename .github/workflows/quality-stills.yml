@@ -1,0 +1,94 @@
+name: Quality sprint hero stills
+on:
+  workflow_dispatch:
+    inputs:
+      profile:
+        type: choice
+        options: [preview, full]
+        default: preview
+  push:
+    branches: [main]
+    paths:
+      - 'scripts/quality_*.py'
+      - 'scripts/render_quality_stills.py'
+      - '.github/workflows/quality-stills.yml'
+permissions:
+  contents: read
+jobs:
+  render:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 45
+    strategy:
+      fail-fast: false
+      matrix:
+        shot: [01_portrait, 02_cup_reaction, 03_cafe_wide]
+    env:
+      PROFILE: ${{ inputs.profile || 'preview' }}
+      SHOT: ${{ matrix.shot }}
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install Blender
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y --no-install-recommends blender
+          blender --version
+      - name: Render hero still
+        run: |
+          python3 -m py_compile scripts/quality_*.py scripts/render_quality_stills.py
+          blender -b --python-exit-code 1 --python scripts/render_quality_stills.py -- --profile "$PROFILE" --shot "$SHOT" --output render/quality
+      - name: Verify hero PNG
+        run: |
+          python3 - <<'PY'
+          import json, os, struct
+          from pathlib import Path
+          root=Path("render/quality")
+          shot=os.environ["SHOT"]
+          size=(1080,1920) if os.environ["PROFILE"]=="full" else (720,1280)
+          png=(root/(shot+".png")).read_bytes()
+          assert png[:8]==b"\x89PNG\r\n\x1a\n"
+          assert struct.unpack(">II",png[16:24])==size
+          m=json.loads((root/"quality_manifest.json").read_text())
+          assert m["denoise"]=="OPENIMAGEDENOISE"
+          assert m["samples"]>=96 and m["tables"]>=3
+          assert m["face_texture_size"]==1024 and m["clothing_texture_size"]==1024
+          assert len(m["shots"])==1 and m["shots"][0]["file"]==shot+".png"
+          print("VERIFIED",shot,size,len(png),m["samples"],m["denoise"])
+          PY
+      - uses: actions/upload-artifact@v4
+        with:
+          name: hero-shot-${{ matrix.shot }}
+          path: render/quality/
+          if-no-files-found: error
+          retention-days: 1
+  package:
+    needs: render
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/download-artifact@v4
+        with:
+          pattern: hero-shot-*
+          path: chunks
+      - name: Assemble hero stills
+        run: |
+          python3 - <<'PY'
+          from pathlib import Path
+          import json,shutil
+          dest=Path("hero");dest.mkdir()
+          ref=None;shots=[]
+          for chunk in sorted(Path("chunks").glob("hero-shot-*")):
+              m=json.loads((chunk/"quality_manifest.json").read_text())
+              shots.extend(m.pop("shots"))
+              if ref is None:ref=m
+              else:assert ref==m
+              for f in chunk.glob("*.png"):shutil.copy2(f,dest/f.name)
+          assert len(shots)==3
+          ref["shots"]=shots
+          (dest/"quality_manifest.json").write_text(json.dumps(ref,indent=2)+"\n")
+          print("QUALITY_PACKAGE_VALIDATED",json.dumps(ref))
+          PY
+      - uses: actions/upload-artifact@v4
+        with:
+          name: roblox-quality-sprint1-hero-${{ inputs.profile || 'preview' }}
+          path: hero/
+          if-no-files-found: error
+          retention-days: 7

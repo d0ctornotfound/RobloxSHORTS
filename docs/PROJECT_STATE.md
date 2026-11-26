@@ -1,6 +1,6 @@
 # Project State
 
-Current milestone: Stage C — The Last Slice rendered and submitted for supervisor review (A2 and B approved)
+Current milestone: Quality Sprint 1 — hero stills; new story/animation work paused.
 
 Successful preview run: [45811466419](https://github.com/d0ctornotfound/RobloxSHORTS/actions/runs/45811466419), commit `c043c3cd322c274108726203bab3c16a6e8b8689`, artifact `roblox-demo-preview-5s`.
 
@@ -30,4 +30,6 @@ Stage C: story spec, four-shot continuous cake gag, original sound and single-wo
 
 Stage C review limitations: portrait two-shots still read as medium-long/full-body, with peripheral outer sleeves clipped at frame edges; head turns are subtle; launch is a stylized ballistic gag, not collision-driven physics; cake lands upright by design and Stage B cup physics are unchanged. Preview is 16 Cycles samples (twice Stage B), but grain remains visible. Full-quality profile is 1080×1920, 24 fps, 64 samples; documented but not rendered or independently verified. Caption timings are evenly distributed rather than speech-aligned; real narration WAV not supplied. The story engine is data-driven for this two-actor plate-reach template, not a universal action planner.
 
-Next action: Supervisor review of Stage C final artifact; if approved, use the story spec and caption/audio pipeline for the next short, with tighter blocking and render denoising as polish priorities.
+Supervisor quality reset: Stage C is BUILT but NOT benchmark-approved. References require more convincing classic R6 silhouettes, crisp faces, illustrated clothes, shaped hair, inhabited environments and warm directional lighting. No new stories or animation until look approval.
+
+Quality Sprint 1: versioned character/café builders, three hero stills, 1024px drawn UV textures, warm lighting, OIDN and AgX grade. CI and image review pending.
