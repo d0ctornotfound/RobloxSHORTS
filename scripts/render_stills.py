@@ -92,30 +92,38 @@ def main():
     set_visible(held,False)
     face_subjects=[o for o in lead.meshes if any(k in o.name for k in ("head","hair","fringe","decal"))]
     render("01_happy_closeup","happy",(.10,-3.55,2.34),(0,-.65,1.97),62,face_subjects)
-    # Medium: stagger drinks across the frame, cup held in a true wrist socket.
-    lead.root.location=(-.59,-.05,0)
+    def aim_arm(actor,index,direction):
+        arm=actor.arms[index]
+        arm.rotation_mode="QUATERNION"
+        arm.rotation_quaternion=Vector(direction).normalized().to_track_quat("-Z","Y")
+    # Medium: grip with screen-left hand, table drink on screen-right.
+    lead.root.location=(-.40,.05,0)
     lead.root.rotation_euler.z=.04
-    lead.pose("shocked",((-.93,.28,0),(-1.10,.10,0)))
+    lead.pose("shocked")
+    aim_arm(lead,0,(.33,-.55,.27))
+    aim_arm(lead,1,(-.27,-.30,-.56))
     set_visible(held,True)
-    lead.attach_cup(held,1)
-    table_cup.location=(.49,.18,1.18)
+    lead.attach_cup(held,0)
+    table_cup.location=(.43,.04,1.18)
     # Table rim and legs can crop; the face, hand and both drinks must fit.
-    upper=[o for o in lead.meshes if not any(k in o.name for k in ("denim leg","sneaker","sole"))]
+    upper=[o for o in lead.meshes if any(k in o.name for k in ("head","hair","fringe","decal","torso","palm","grip finger"))]
     props=[*held.children_recursive,*table_cup.children_recursive]
-    render("02_shocked_medium","shocked",(-.35,-4.45,2.05),(-.30,-.10,1.58),49,upper+props)
+    render("02_shocked_medium","shocked",(-.25,-3.75,2.13),(-.26,.05,1.85),40,upper+props)
     # Portrait environmental shot: stagger depth instead of fitting the entire room horizontally.
     friend.visible(True)
-    lead.root.location=(-.58,-.50,0)
+    lead.root.location=(-.43,-.50,0)
     lead.root.rotation_euler.z=.06
     friend.root.location=(.69,.83,0)
     friend.root.rotation_euler.z=-.16
     friend.pose("sad",((-.20,-.08,0),(-.28,.10,0)))
-    lead.pose("neutral",((-.13,-.06,0),(-1.10,.10,0)))
-    lead.attach_cup(held,1)
+    lead.expression("neutral")
+    aim_arm(lead,0,(.31,-.55,.28))
+    aim_arm(lead,1,(-.10,-.10,-.68))
+    lead.attach_cup(held,0)
     # Deliberately crop peripheral architecture, not faces; foreground table fills lower frame.
     wide_subjects=[o for actor in (lead,friend) for o in actor.meshes
                    if any(k in o.name for k in ("head","hair","fringe","decal","beanie","torso"))]
-    render("03_cafe_wide","neutral",(.10,-5.65,2.20),(.07,.02,1.52),43,
+    render("03_cafe_wide","neutral",(.10,-5.65,2.20),(.07,.02,1.69),43,
            wide_subjects+props)
     (output/"manifest.json").write_text(json.dumps({"profile":a.profile,"resolution":[scene.render.resolution_x,scene.render.resolution_y],
         "face_swaps_tested":["neutral","happy","shocked","sad"],"shots":records},indent=2)+"\n")
