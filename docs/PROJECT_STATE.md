@@ -1,6 +1,6 @@
 # Project State
 
-Current milestone: Stage C — The Last Slice (A2 and B approved by supervisor)
+Current milestone: Stage C — The Last Slice rendered and submitted for supervisor review (A2 and B approved)
 
 Successful preview run: [45811466419](https://github.com/d0ctornotfound/RobloxSHORTS/actions/runs/45811466419), commit `c043c3cd322c274108726203bab3c16a6e8b8689`, artifact `roblox-demo-preview-5s`.
 
@@ -25,4 +25,9 @@ Remaining review points: the wide still is fuller but retains some ceiling and f
 
 Supervisor verdict: A2 and Stage B APPROVED as foundations. Local rerender from f33843b matched interaction validation. Carried issues: friend occlusion, upright cup drop, preview grain.
 
-Stage C: story spec, four-shot continuous cake gag, original sound and single-word caption edit, optional narration WAV slot. Preview render and verification pending. See [STAGE_C_STORY.md](STAGE_C_STORY.md) for exact local preview and full-quality regeneration commands.
+Stage C: story spec, four-shot continuous cake gag, original sound and single-word caption edit, optional narration WAV slot. Preview rendered successfully in [run 45824411188](https://github.com/d0ctornotfound/RobloxSHORTS/actions/runs/45824411188), commit `35d0749963159908829c9c9f0b78dc5f421714f3`. Final artifact `roblox-the-last-slice-preview-12s`, ID 15118979571. All four shot jobs and final edit succeeded on first attempt. Independent download and FFprobe: H.264, 360×640, 12 fps, 144 frames, exactly 12.000 s; AAC mono, 48 kHz, exactly 12.000 s. 26 burned single-word captions match the fixed narration text; original music, four synced SFX; no narration included. Optional narration mix passed synthetic WAV test. MP4 SHA-256 `8988822755baf33d95371a5432482014b998f74d838756a64b48c188956ef030`. Timeline: launch frame 80, landing frame 92, head support Z 2.525, maximum grip-position error 0, payoff 2.5 s. Actual downloaded frames inspected across all four shots; two faces are unobstructed, the plate stays on the table, and the cake is visibly supported by the hair through the payoff. See [STAGE_C_STORY.md](STAGE_C_STORY.md) for exact local preview and full-quality regeneration commands.
+
+
+Stage C review limitations: portrait two-shots still read as medium-long/full-body, with peripheral outer sleeves clipped at frame edges; head turns are subtle; launch is a stylized ballistic gag, not collision-driven physics; cake lands upright by design and Stage B cup physics are unchanged. Preview is 16 Cycles samples (twice Stage B), but grain remains visible. Full-quality profile is 1080×1920, 24 fps, 64 samples; documented but not rendered or independently verified. Caption timings are evenly distributed rather than speech-aligned; real narration WAV not supplied. The story engine is data-driven for this two-actor plate-reach template, not a universal action planner.
+
+Next action: Supervisor review of Stage C final artifact; if approved, use the story spec and caption/audio pipeline for the next short, with tighter blocking and render denoising as polish priorities.
