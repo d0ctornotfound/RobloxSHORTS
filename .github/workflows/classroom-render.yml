@@ -13,6 +13,7 @@ on:
       - 'stories/the_perfect_throw.json'
       - 'scripts/classroom_set.py'
       - 'scripts/render_classroom.py'
+      - 'scripts/camera_visibility.py'
       - '.github/workflows/classroom-render.yml'
 
 permissions:
@@ -38,9 +39,10 @@ jobs:
           blender --version
       - name: Build and render continuous story timeline
         run: |
-          python3 -m py_compile scripts/render_classroom.py scripts/classroom_set.py scripts/edit_story.py
+          python3 -m py_compile scripts/render_classroom.py scripts/classroom_set.py scripts/camera_visibility.py scripts/edit_story.py
           blender -b --python-exit-code 1 --python scripts/render_classroom.py -- --story stories/the_perfect_throw.json --profile "$PROFILE" --shot "$SHOT" --output render/story
       - name: Upload shot frames
+        if: always()
         uses: actions/upload-artifact@v4
         with:
           name: story-frames-${{ matrix.shot }}
@@ -99,6 +101,7 @@ jobs:
           for chunk in render/chunks/story-frames-*; do
             cp "$chunk/preflight.json" "render/final/preflight/${chunk##*/}.json"
             cp "$chunk"/preflight_*.png render/final/preflight/
+            cp "$chunk"/id_*.exr render/final/preflight/
           done
           mkdir -p render/final/frame_grabs
           for item in 01_fold_1p5:1.5 02_throw_4p0:4.0 03_glide_6p5:6.5 04_payoff_8p5:8.5 04_payoff_10p7:10.7 04_payoff_11p8:11.8; do

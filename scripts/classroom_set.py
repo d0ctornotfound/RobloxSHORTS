@@ -77,9 +77,9 @@ def build():
             for dy in (-d*.37,d*.37):
                 cube(name+" leg",(x+dx,y+dy,h/2),(.085,.085,h),p["steel"])
         cube(name+" apron",(x,y-d*.4,h-.19),(w*.87,.09,.23),p["wood"])
-    for y in (1.0,3.2,5.4):
-        for x in ((-3.2,-.78,.78,3.2) if y==3.2 else (-3.2,-1.05,1.05,3.2)):
-            desk("Student desk",x,y)
+    for y in (-.8,1.4,3.6,5.4):
+        for x in ((-.78,.78) if y==-.8 else (-3.2,-.78,.78,3.2)):
+            desk("Student desk",x,y,w=1.48 if abs(x)<1 else 1.65)
             chair("Student chair",x,y+.79,0,p)
             cube("Exercise book",(x+.46,y,1.22),(.35,.45,.04),p["paper"])
     desk("Teacher desk",3.35,-5.65,2.6,1.0,1.35)

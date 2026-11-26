@@ -48,11 +48,11 @@ def main():
     scene.render.resolution_x=w;scene.render.resolution_y=h;scene.render.fps=fps;scene.frame_start=1;scene.frame_end=round(spec["duration"]*fps)
     build();p=teacher_palette(palette())
     lead=Character("lead",p,True);friend=Character("friend",p,False);teacher=Teacher(p)
-    seated(lead,-.78,4.0);seated(friend,.78,4.0)
-    teacher.root.location=(0,-5.55,0);teacher.root.rotation_euler.z=0
+    seated(lead,-.78,0.0);seated(friend,.78,0.0)
+    teacher.root.location=(0,-5.85,0);teacher.root.rotation_euler.z=0
     actors={"lead":lead,"friend":friend,"teacher":teacher}
     extras=[]
-    for i,(x,y) in enumerate([(-2.9,1.8),(1.05,1.8),(-1.05,-.4),(3.2,4)]):
+    for i,(x,y) in enumerate([(-.78,2.2),(.78,2.2),(-.78,4.4),(.78,4.4)]):
         extra=Character("student "+str(i),p,False,role="patron_green" if i%2 else "patron_blue")
         seated(extra,x,y);extras.append(extra)
     pivots={n:head_pivot(o) for n,o in actors.items()}
@@ -60,8 +60,8 @@ def main():
     plane,mesh=plane_mesh()
     # Head socket aligns the paper nose with the side of the actual bun.
     # Local nose ends at y=-.58; center lies on the visible side of the bun.
-    support=empty("Teacher bun paper support",(.82,.28,.65),pivots["teacher"])
-    support.rotation_euler=(0,.12,-math.pi/2)
+    support=empty("Teacher bun paper support",(.68,.28,.68),pivots["teacher"])
+    support.rotation_euler=(.32,0,-math.pi/2)
     bpy.context.view_layer.update()
     bun=teacher.bun
     # Nose must lie inside or close to the bun geometry in its local coordinates.
@@ -72,9 +72,9 @@ def main():
     launch=frame_at(spec["actions"]["launch"],fps);land=frame_at(spec["actions"]["landing"],fps)
     timeline=[];errors=[];start=None;start_rot=None
     # The teacher turns through 180 degrees during flight, then stays turned.
-    def teacher_yaw(t):return math.pi*smoothstep((t-6.4)/1.25)
+    def teacher_yaw(t):return (math.pi-.28)*smoothstep((t-6.4)/1.25)
     # Calculate the landing support in its final world pose in advance.
-    teacher.root.rotation_euler.z=math.pi;bpy.context.view_layer.update()
+    teacher.root.rotation_euler.z=math.pi-.28;bpy.context.view_layer.update()
     end=support.matrix_world.translation.copy();end_rot=support.matrix_world.to_euler()
     teacher.root.rotation_euler.z=0
     for f in range(1,scene.frame_end+1):
@@ -100,8 +100,8 @@ def main():
                         d=Vector((.48 if i==0 else -.48,-.42,.40))
                     elif i==0:
                         fold=Vector((.48+.08*math.sin(t*5),-.68,-.16))
-                        wind=Vector((-.15,.30,.90))
-                        throw=Vector((.12,-.92,.34))
+                        wind=Vector((-.15,-.25,.90))
+                        throw=Vector((.12,.90,.34))
                         if t<2.8:d=fold
                         elif t<3.7:d=blend_direction(fold,wind,(t-2.8)/.9)
                         elif t<4.25:d=blend_direction(wind,throw,(t-3.7)/.55)
@@ -124,8 +124,19 @@ def main():
         elif f<land:
             if start is None:start=hand.release();start_rot=hand.last_world.to_euler()
             u=(f-launch)/(land-launch)
-            pos=start.lerp(end,u);pos.z+=.16*math.sin(math.pi*u)
-            rot=start_rot.copy();rot.z=start_rot.z+(end_rot.z-start_rot.z)*smoothstep(u);rot.x+=.12*math.sin(math.tau*u)
+            # Smooth curved route above the rear rows, then toward the board.
+            points=[start,Vector((-.78,2.2,3.05)),Vector((-.78,4.4,3.12)),Vector((2.15,3.8,3.10)),Vector((1.8,-.5,3.05)),end]
+            times=[0,.22,.42,.57,.76,1]
+            j=next((i for i in range(len(times)-1) if u<=times[i+1]),len(times)-2)
+            v=(u-times[j])/(times[j+1]-times[j]);dt=times[j+1]-times[j]
+            def tangent(i):
+                if i==0:return (points[1]-points[0])/(times[1]-times[0])
+                if i==len(points)-1:return (points[i]-points[i-1])/(times[i]-times[i-1])
+                return (points[i+1]-points[i-1])/(times[i+1]-times[i-1])
+            pos=(2*v**3-3*v*v+1)*points[j]+(v**3-2*v*v+v)*dt*tangent(j)+(-2*v**3+3*v*v)*points[j+1]+(v**3-v*v)*dt*tangent(j+1)
+            velocity=(6*v*v-6*v)*points[j]+(3*v*v-4*v+1)*dt*tangent(j)+(-6*v*v+6*v)*points[j+1]+(3*v*v-2*v)*dt*tangent(j+1)
+            target_rot=velocity.to_track_quat("-Y","Z")
+            rot=start_rot.to_quaternion().slerp(target_rot,smoothstep(u/.12)).slerp(end_rot.to_quaternion(),smoothstep((u-.83)/.17)).to_euler()
             hand.independent(f,pos,rot);hair.constraint.influence=0;hair.constraint.keyframe_insert("influence",frame=f);state="flight"
         else:
             hand.independent(f,support.matrix_world.translation,support.matrix_world.to_euler())
@@ -141,6 +152,13 @@ def main():
         scene.frame_set(row["frame"]);bpy.context.view_layer.update()
         assert (plane.matrix_world.translation-Vector(row["plane"])).length<.001
         for name,track in tracks.items():assert [n for n,o in track.decals.items() if not o.hide_render]==[row["expressions"][name]]
+    # Extras appear only in throw and glide.
+    from render_story import constant_action
+    for extra in extras:
+        for ob in extra.meshes:
+            for t,visible in ((0,False),(3,True),(8,False)):
+                ob.hide_render=not visible;ob.keyframe_insert("hide_render",frame=frame_at(t,fps))
+            constant_action(ob,["hide_render"])
     # Preserve one animated timeline; cameras cut through timeline markers.
     # The last shot uses a teacher close-up with students behind her in depth.
     # Fixed focal lengths, no automatic lens widening. The folding camera
@@ -171,7 +189,7 @@ def main():
                 rows=[];bounds=[];widths=[]
                 for f,prop,body,safe,center in sampleset:
                     if kind=="03_glide":
-                        cam.location=center+Vector((-2.35,.48,.52));point_at(cam,center+Vector((0,0,-.48)))
+                        cam.location=center+Vector((-3.05,-.32,-.10));point_at(cam,center+Vector((0,0,-.85)))
                     bpy.context.view_layer.update()
                     pp=[world_to_camera_view(scene,cam,v) for v in prop]
                     widths.append(max(v.x for v in pp)-min(v.x for v in pp))
@@ -189,16 +207,16 @@ def main():
                 cam.data.lens=48
                 result=measure()
                 for f,prop,body,safe,center in sampleset:
-                    scene.frame_set(f);cam.location=center+Vector((-2.35,.48,.52));point_at(cam,center+Vector((0,0,-.48)))
+                    scene.frame_set(f);cam.location=center+Vector((-3.05,-.32,-.10));point_at(cam,center+Vector((0,0,-.85)))
                     cam.keyframe_insert("location",frame=f);cam.keyframe_insert("rotation_euler",frame=f)
             elif kind=="teacher_impact":
-                cam.location=(-2.7,-2.65,2.65);cam.data.lens=44;point_at(cam,(-.22,-5.35,2.25));result=measure()
+                cam.location=(-1.65,-3.35,2.45);cam.data.lens=47;point_at(cam,(-.30,-5.82,2.35));result=measure()
             elif kind=="02_throw":
                 # Exact known non-black camera recovered from the packed blend
                 # of run 45890838253 (artifact 15152761142). No search.
                 cam.data.lens=48
-                cam.location=(-1.850000023841858,0,2.5)
-                cam.rotation_euler=(1.2797887325286865,-7.346073527259023e-09,-.14373868703842163)
+                cam.location=(-1.85,-4.0,2.5)
+                point_at(cam,(-.78,-.15,1.65))
                 result=measure()
             else:
                 # Frontal compressed perspective; fixed lens throughout shot.
@@ -207,10 +225,10 @@ def main():
                 cx=-.78 if kind=="02_throw" else 0
                 best=None
                 for dx in (0,-.55,.55,-1.1,1.1):
-                    for dist in (2.7,3.1,3.5,3.9,4.3,4.7):
+                    for dist in (3.1,3.5,3.9,4.3,4.7):
                         for z in (1.48,1.75,2.0):
                             for aimx in (-.25,0,.25):
-                                cam.location=(cx+dx,4-dist,z);point_at(cam,(cx+aimx,3.85,1.40))
+                                cam.location=(cx+dx,-dist,z);point_at(cam,(cx+aimx,-.15,1.40))
                                 m=measure();cov,ok,penalty,_,_=m
                                 score=(ok and min(cov.values())>=.40,min(cov.values())-penalty*12,ok)
                                 if best is None or score>best[0]:best=(score,cam.location.copy(),cam.rotation_euler.copy(),m)
@@ -235,6 +253,7 @@ def main():
     # 8-bit display RGB <=24 as the encoded-video gate. Keep evidence separately
     # from the shared timeline manifest (each matrix runner owns its own tests).
     preflight=[]
+    from camera_visibility import visibility_gate
     old_samples=scene.cycles.samples;old_pct=scene.render.resolution_percentage
     old_path=scene.render.filepath
     for rec in selected:
@@ -253,11 +272,14 @@ def main():
             count=len(pixels)//4
             pct=100*sum(max(pixels[i:i+3])<=24/255 for i in range(0,len(pixels),4))/count
             bpy.data.images.remove(im)
-            row={"segment":part["segment"],"frame":f,"near_black_percent":pct,"threshold_percent":2,"pass":pct<=2}
+            groups={n:[o for o in actors[n].meshes if o.type=="MESH" and o!=actors[n].face] for n in part["min_hero_vertical_coverage"]}
+            if part["segment"]=="03_glide":groups={"plane":[mesh]}
+            visibility=visibility_gate(scene,out,part["segment"],groups)
+            row={"segment":part["segment"],"frame":f,"near_black_percent":pct,"threshold_percent":2,"visibility":visibility,"pass":pct<=2 and all(v["pass"] for v in visibility.values())}
             preflight.append(row)
             print("CAMERA_PREFLIGHT",json.dumps(row),flush=True)
             (out/"preflight.json").write_text(json.dumps(preflight,indent=2)+"\n")
-            if pct>2:raise RuntimeError("Camera pre-flight near-black gate failed: "+str(row))
+            if not row["pass"]:raise RuntimeError("Camera pre-flight darkness or occlusion gate failed: "+str(row))
     scene.cycles.samples=old_samples;scene.render.resolution_percentage=old_pct
     scene.render.filepath=old_path
     scene.frame_start=selected[0]["first"];scene.frame_end=selected[-1]["last"];scene.frame_set(scene.frame_start)
