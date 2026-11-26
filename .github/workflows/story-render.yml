@@ -1,4 +1,4 @@
-name: Stage C story short
+name: Integrated quality story short
 on:
   workflow_dispatch:
     inputs:
@@ -13,6 +13,7 @@ on:
       - 'stories/**'
       - 'scripts/render_story.py'
       - 'scripts/stage_c_*.py'
+      - 'scripts/quality_*.py'
       - 'scripts/edit_story.py'
       - '.github/workflows/story-render.yml'
 
@@ -22,7 +23,7 @@ permissions:
 jobs:
   render:
     runs-on: ubuntu-24.04
-    timeout-minutes: 45
+    timeout-minutes: 60
     strategy:
       fail-fast: false
       matrix:
@@ -96,10 +97,14 @@ jobs:
           python3 scripts/edit_story.py --profile "$PROFILE" --frames render/story --output render/final --verify-slot
           cp render/story/story_manifest.json render/story/story.blend render/final/
           cp stories/the_last_slice.json render/final/
+          mkdir -p render/final/frame_grabs
+          for item in 01_notice:1.5 02_reach:5.9 03_impact:8.2 04_payoff:10.7; do
+            ffmpeg -hide_banner -loglevel error -ss "${item#*:}" -i render/final/the_last_slice.mp4 -frames:v 1 "render/final/frame_grabs/${item%:*}.png"
+          done
       - name: Upload finished short and reproducibility files
         uses: actions/upload-artifact@v4
         with:
-          name: roblox-the-last-slice-${{ env.PROFILE }}-12s
+          name: roblox-the-last-slice-integrated-${{ env.PROFILE }}-12s
           path: render/final/
           if-no-files-found: error
           retention-days: 7

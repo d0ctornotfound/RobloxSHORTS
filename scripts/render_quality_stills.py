@@ -93,7 +93,7 @@ def main():
         friend=Character("Cafe friend",p,lead=False,role="friend")
         assert len([o for o in lead.meshes if "swept spiky hair" in o.name])==1
         assert not any("beanie" in o.name for o in lead.meshes)
-        assert len([o for o in friend.meshes if "beanie" in o.name])==2
+        assert len([o for o in friend.meshes if "beanie" in o.name])==1
         assert not any("beanie" in o.name for o in lead.meshes)
         assert len([o for o in lead.meshes if "signature" in o.name])==2
         assert all("Hero cloth" not in m.name for o in lead.meshes if "spiky hair" in o.name for m in o.data.materials)

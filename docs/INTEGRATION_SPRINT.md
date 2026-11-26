@@ -1,0 +1,5 @@
+# Integrated Last Slice — short #1
+
+Port of unchanged stories/the_last_slice.json, timing, action and narration text. Quality character and café modules replace Stage A assets. Retargeted actor roots, shoulder length, plate rim offset, friend reach, actual highest hair mesh vertex for head contact. Existing GripAttachment, GravityDrop, ExpressionTrack and editor retained. Static seated patrons, matte hair, fitted knitted wrap, corrected yellow and no legacy window crossbars. Camera retarget uses horizontal sensor fit, per-frame per-hero clipped vertical projected bounds (not pixel area). Minimum .45 required. Preview 432×768, 12 fps, 24 Cycles samples, adaptive threshold .065; FFmpeg hqdn3d before captions (OIDN unavailable on CI). Full 1080×1920, 24fps, 96 samples. No voice audio supplied; optional narration WAV remains.
+
+CI pending. Local: `blender -b --python-exit-code 1 --python scripts/render_story.py -- --profile preview --output render/story` then `python3 scripts/edit_story.py --profile preview --frames render/story --output render/final --verify-slot`.

@@ -39,7 +39,9 @@ def palette():
               "sole":material("Cream rubber",(.72,.67,.52)),
               "faces":{k:face_material(k) for k in ("neutral","happy","shocked","sad")}})
     ns,ls=p["hair"].node_tree.nodes,p["hair"].node_tree.links
-    bs=ns.get("Principled BSDF");bs.inputs["Roughness"].default_value=.48
+    bs=ns.get("Principled BSDF");bs.inputs["Roughness"].default_value=.91;bs.inputs["Specular IOR Level"].default_value=.035
+    p["hair2"].node_tree.nodes.get("Principled BSDF").inputs["Roughness"].default_value=.92
+    p["hair2"].node_tree.nodes.get("Principled BSDF").inputs["Specular IOR Level"].default_value=.035
     wave=ns.new("ShaderNodeTexWave");wave.bands_direction="X";wave.inputs["Scale"].default_value=18;wave.inputs["Distortion"].default_value=2.2
     bump=ns.new("ShaderNodeBump");bump.inputs["Strength"].default_value=.14;bump.inputs["Distance"].default_value=.009
     ls.new(wave.outputs["Color"],bump.inputs["Height"]);ls.new(bump.outputs[0],bs.inputs["Normal"])
@@ -90,14 +92,14 @@ def hair_mass(name,root,mat,variant="swept"):
     base=obj_from(verts,faces,name+" / hair base");parts.append(base)
     def lock(start,mid,end,width,depth,label):
         # Swept lock is an elliptical tube tapering to a pointed tip.
-        start,mid,end=map(Vector,(start,mid,end));v=[];f=[];sides=12
+        start,mid,end=map(Vector,(start,mid,end));v=[];f=[];sides=9
         for i in range(9):
             t=i/8;center=(1-t)**2*start+2*t*(1-t)*mid+t*t*end
             tangent=(2*(1-t)*(mid-start)+2*t*(end-mid)).normalized()
             cross=tangent.cross(Vector((0,1,0))).normalized()
             if cross.length<.01:cross=Vector((1,0,0))
             other=tangent.cross(cross).normalized()
-            taper=(1-t)**.65*.95+.035
+            taper=(1-t)**.47*.95+.035
             for j in range(sides):
                 ang=math.tau*j/sides
                 v.append(tuple(center+cross*(width*taper*math.cos(ang))+other*(depth*taper*math.sin(ang))))
@@ -114,9 +116,9 @@ def hair_mass(name,root,mat,variant="swept"):
             (.33,.06,.20,.07,2.75),(.45,.08,.62,.06,2.58),
             (-.32,.20,-.64,.30,2.58),(.03,.24,-.18,.40,2.72),
             (.34,.24,.49,.43,2.56)]):
-            lock((x,y,2.27),(x-.13,y-.03,2.65),(tipx,tipy,tipz),.23,.21,"crown lock "+str(i))
+            lock((x,y,2.27),(x-.13,y-.03,2.65),(tipx,tipy,tipz) ,.26,.235,"crown lock "+str(i))
         for i,(x,tx,tz) in enumerate([(-.41,-.58,2.07),(-.23,-.43,2.11),(-.04,-.20,2.16),(.15,.02,2.21),(.34,.22,2.22),(.46,.47,2.15)]):
-            lock((x,-.31,2.40),(x-.08,-.52,2.39),(tx,-.49,tz),.18,.135,"fringe lock "+str(i))
+            lock((x,-.31,2.40),(x-.08,-.52,2.39),(tx,-.49,tz) ,.205,.15,"fringe lock "+str(i))
     else:
         for i in range(7):
             t=math.tau*i/7;x=.39*math.cos(t);y=.28*math.sin(t)
@@ -179,10 +181,30 @@ class Character(LegacyCharacter):
             self.meshes.extend(signature_pin(name,self.root,p))
         elif role=="friend":
             # One rounded crown and a knitted folded cuff.
-            crown=box("beanie crown",(0,.015,2.34),(1.13,.86,.32),p["hat"],bevel=.15,uv=True)
-            crown.modifiers.get("Soft edges").segments=8
-            cuff=box("beanie cuff",(0,.01,2.20),(1.16,.89,.13),p["hat"],bevel=.065,uv=True)
-            cuff.modifiers.get("Soft edges").segments=6
+            # Continuous rounded cap with a fitted lower edge, wrapping temples
+            # and nape while leaving the low face ink unobstructed.
+            v=[];f=[];N=64
+            for i,(sx,sy,lift) in enumerate([(1,1,0),(1.025,1.025,.045),(1.02,1.02,.12),(.98,.98,.25),(.75,.78,.36),(.35,.38,.405)]):
+                for j in range(N):
+                    a=math.tau*j/N;co,si=math.cos(a),math.sin(a)
+                    bottom=1.99+.18*max(0,-si)**4-.065*max(0,si)**2
+                    z=bottom+lift if i<3 else max(bottom+lift,2.31+(i-3)*.075)
+                    v.append((.56*sx*math.copysign(abs(co)**.55,co),.422*sy*math.copysign(abs(si)**.55,si),z))
+            for i in range(5):
+                for j in range(N):
+                    a=i*N+j;b=i*N+(j+1)%N;f.append((a,b,b+N,a+N))
+            f.append(tuple(range(5*N,6*N)))
+            mesh=bpy.data.meshes.new(name+" fitted knit");mesh.from_pydata(v,[],f);mesh.update()
+            uv=mesh.uv_layers.new(name="Knitted wrap")
+            for poly in mesh.polygons:
+                poly.use_smooth=True
+                for li in poly.loop_indices:
+                    idx=mesh.loops[li].vertex_index
+                    uv.data[li].uv=((idx%N)/N,(idx//N)/5)
+            cap=bpy.data.objects.new(name+" / wrapped beanie",mesh);bpy.context.collection.objects.link(cap);cap.parent=self.root
+            cap.data.materials.append(p["hat"]);self.meshes.append(cap)
+            sub=cap.modifiers.new("Rounded knit","SUBSURF");sub.levels=1;sub.render_levels=1
+            shell=cap.modifiers.new("Knit thickness","SOLIDIFY");shell.thickness=.022
         else:
             self.meshes.append(hair_mass(name,self.root,p["hair2" if role=="patron_green" else "hair"],"short"))
         for side in (-1,1):

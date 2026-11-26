@@ -107,6 +107,12 @@ def build():
         ("Brick right of window",(3.265,2.6,3.10),(1.27,.22,1.80))]:
         cube(name,loc,dims,brickmat,bevel=0)
     bpy.data.objects.get("Window glass").hide_render=True
+    # Remove legacy internal crossbars; keep only dark perimeter trim.
+    for ob in list(bpy.data.objects):
+        if (ob.name.startswith("Window vertical mullion") and abs(ob.location.x-1.47)<.01) or (ob.name.startswith("Window horizontal mullion") and abs(ob.location.z-3.10)<.01):
+            ob.hide_render=True
+        elif ob.name.startswith(("Window vertical mullion","Window horizontal mullion","Window sill")):
+            ob.data.materials.clear();ob.data.materials.append(p["wood"])
     # Enclose the set on both sides and above. A taller back wall prevents
     # the portrait wide shot from being dominated by a close ceiling.
     for obj in list(bpy.data.objects):
@@ -218,7 +224,7 @@ def build():
     for name in ("Window / warm soft key","Soft fill","Rim through window","Pendant pool"):
         ob=bpy.data.objects.get(name)
         if ob:ob.hide_render=True
-    light("Hero warm key",(-2.6,-3.1,3.95),(-.3,.0,1.8),540,2.5,(1,.86,.71))
+    light("Hero warm key",(-2.6,-3.1,3.95),(-.3,.0,1.8),540,2.5,(1,.91,.80))
     light("Gentle bounce fill",(2.8,-3.5,2.85),(0,0,1.65),92,3.4,(.83,.91,1))
     light("Window daylight rim",(1.55,2.05,3.65),(0,-.4,1.55),480,1.9,(.76,.87,1))
     light("Hero pendant contact pool",(.04,-.03,3.48),(.04,-.03,1),75,.46,(1,.65,.30))

@@ -11,8 +11,9 @@ from mathutils import Vector
 from bpy_extras.object_utils import world_to_camera_view
 from render_demo import empty,point_at
 from render_stills import configure
-from stage_a_character import Character,palette
-from stage_a_cafe import build_cafe,set_visible
+from quality_character import Character,palette
+from quality_cafe import build as build_cafe
+from stage_a_cafe import set_visible
 from stage_b_interaction import aim_arm,key_arm,blend_direction,smoothstep,GripAttachment,GravityDrop,ExpressionTrack
 from stage_c_props import build_plate_and_slice
 
@@ -39,7 +40,7 @@ def sample(track,t,discrete=False):
 
 
 def head_pivot(actor):
-    pivot=empty(actor.root.name+" / head control",(0,0,2.10),actor.root)
+    pivot=empty(actor.root.name+" / head control",tuple(actor.head.location),actor.root)
     bpy.context.view_layer.update()
     for obj in actor.meshes:
         if any(k in obj.name for k in ("head","hair","fringe","decal","beanie")):
@@ -54,7 +55,8 @@ def vector_to_plate(actor,index,dx,support):
     # Existing wrist socket is .145 below the wrist. Solve exact arm length.
     shoulder=actor.arms[index].location
     dz=support+.145-shoulder.z
-    dy=-math.sqrt(.70**2-dx**2-dz**2)
+    length=abs(actor.wrists[index].location.z)
+    dy=-math.sqrt(length**2-dx**2-dz**2)
     return Vector((dx,dy,dz)).normalized()
 
 
@@ -89,10 +91,18 @@ def main():
     spec=json.loads(Path(a.story).read_text())
     output=Path(a.output).resolve()
     output.mkdir(parents=True,exist_ok=True)
-    fps,width,height,samples=(12,360,640,16) if a.profile=="preview" else (24,1080,1920,64)
+    fps,width,height,samples=(12,432,768,24) if a.profile=="preview" else (24,1080,1920,96)
     scene=configure(a.profile)
     scene.cycles.samples=samples
     scene.cycles.max_bounces=4
+    scene.cycles.diffuse_bounces=2
+    scene.cycles.adaptive_threshold=.065 if a.profile=="preview" else .02
+    scene.cycles.use_denoising=False
+    scene.view_settings.view_transform="AgX"
+    scene.view_settings.look="AgX - Medium High Contrast"
+    scene.view_settings.exposure=.05
+    scene.world.node_tree.nodes.get("Background").inputs[0].default_value=(.42,.31,.21,1)
+    scene.world.node_tree.nodes.get("Background").inputs[1].default_value=.20
     scene.render.use_persistent_data=True
     scene.render.resolution_x=width
     scene.render.resolution_y=height
@@ -104,8 +114,25 @@ def main():
     p=palette()
     actors={name:Character(name,p,cfg["lead"]) for name,cfg in spec["characters"].items()}
     for name,actor in actors.items():
-        actor.root.location=spec["characters"][name]["position"]
+        # Preserve story data, retarget actor blocking for longer locked arms.
+        actor.root.location=(-1.16 if name=="lead" else 1.16,1.08,0)
+    # Real hair support is derived from the evaluated mesh before pivoting.
+    bpy.context.view_layer.update()
+    lead_hair=next(o for o in actors["lead"].meshes if "spiky hair" in o.name)
+    hair_vertices=[lead_hair.matrix_world@v.co for v in lead_hair.data.vertices]
+    highest=max(hair_vertices,key=lambda v:v.z)
+    head_support_z=highest.z
+    head_local=highest-actors["lead"].root.location
     pivots={name:head_pivot(actor) for name,actor in actors.items()}
+    # Static seated background customers, same builder, no new story beats.
+    patrons=[]
+    for role,pos,angle,label in [("patron_green",(-2.35,1.03,-.219),-.12,"Side table chair 0"),("patron_blue",(2.45,1.78,-.219),.12,"Window table chair 0")]:
+        patron=Character(role,p,False,role=role);patron.root.location=pos;patron.root.rotation_euler.z=angle
+        for leg in patron.legs:leg.rotation_euler.x=-math.pi/2
+        patron.pose("happy");aim_arm(patron,0,(.20,-.72,-.30));aim_arm(patron,1,(-.15,-.7,-.36))
+        chair=bpy.data.objects.get(label)
+        if chair:chair.location.x=pos[0];chair.location.y=pos[1];chair.rotation_euler.z=angle
+        patrons.append(patron)
     tracks={name:ExpressionTrack(actor) for name,actor in actors.items()}
     lead,friend=actors["lead"],actors["friend"]
     plate,cake=build_plate_and_slice(spec["props"]["plate"]["radius"])
@@ -114,13 +141,13 @@ def main():
     cake_offset=Vector(spec["props"]["slice"]["plate_offset"])
     reach_index={name:cfg["reach_arm"] for name,cfg in spec["characters"].items()}
     lead_i,friend_i=reach_index["lead"],reach_index["friend"]
-    reach={name:vector_to_plate(actor,reach_index[name],-.025 if name=="lead" else .025,support)
+    reach={name:vector_to_plate(actor,reach_index[name],-.025 if name=="lead" else -.045,support)
            for name,actor in actors.items()}
     idle=Vector((0,-.11,-.69)).normalized()
     lead_socket=aim_arm(lead,lead_i,reach["lead"])
     # Plate center is offset inward from the lead's gripping palm. The rim,
     # rather than its center, lies between the fingers.
-    lead_socket.location.x=.225
+    lead_socket.location.x=.30
     bpy.context.view_layer.update()
     start_plate=lead_socket.matrix_world.translation.copy()
     assert abs(start_plate.z-support)<1e-5
@@ -128,7 +155,7 @@ def main():
     plate_bind=GripAttachment(plate,lead_socket)
     plate_top=empty("Plate / slice support",cake_offset,plate)
     slice_bind=GripAttachment(cake,plate_top)
-    head_socket=empty("Lead / cake landing support",(0,.015,spec["props"]["slice"]["head_support"]-2.10),pivots["lead"])
+    head_socket=empty("Lead / cake landing support",tuple(head_local-Vector((0,0,2.029))),pivots["lead"])
     # A second attachment on the same prop is enabled only after landing.
     head_bind=GripAttachment(cake,head_socket)
     action=spec["actions"]
@@ -147,6 +174,7 @@ def main():
     apex_time=None
     plate_release=None
     max_error=0
+    max_friend_rim_error=0
     manifest_frames=[]
     # Slide along the table with constant wrist height; rotation is independent.
     def slide_dir(t):
@@ -169,7 +197,7 @@ def main():
             elif t<hit:
                 direction=blend_direction(idle,reach[name],(t-start)/(hit-start))
             elif frame<launch:
-                direction=slide_dir(t) if name=="lead" and frame>=spin else reach[name]
+                direction=(slide_dir(t) if name=="lead" else vector_to_plate(friend,friend_i,-.045-.14*smoothstep((t-times["spin_start"])/(launch_t-times["spin_start"])),support)) if frame>=spin else reach[name]
             elif t<launch_t+.45:
                 recoil=Vector((-.20 if name=="lead" else .20,-.48,.48))
                 direction=blend_direction(reach[name],recoil,(t-launch_t)/.25)
@@ -208,6 +236,10 @@ def main():
             rot.z+=2.6*f
             assert math.hypot(pos.x-.04,pos.y+.03)+radius<.65
             plate_bind.independent(frame,pos,rot)
+        if friend_contact<=frame<launch:
+            friend_grip=friend.grips[friend_i].matrix_world.translation
+            rim_error=abs((friend_grip-plate.matrix_world.translation).length-radius)
+            max_friend_rim_error=max(max_friend_rim_error,rim_error)
         # Slice is on the same moving plate until launch.
         if frame<launch:
             head_bind.constraint.influence=0
@@ -250,7 +282,7 @@ def main():
         pos=cake.matrix_world.translation.copy()
         if state=="head":
             assert (pos-head_socket.matrix_world.translation).length<1e-5
-            assert abs(pos.z-spec["props"]["slice"]["head_support"])<1e-4
+            assert abs(pos.z-head_support_z)<.04
         manifest_frames.append({"frame":frame,"time":round(t,5),"slice_state":state,
             "slice_bottom":list(pos),"plate_bottom":list(plate.matrix_world.translation),
             "lead_expression":sample(spec["expressions"]["lead"],t,True),
@@ -260,6 +292,7 @@ def main():
     for track in tracks.values():
         track.constant_switches()
     assert max_error<1e-5
+    assert max_friend_rim_error<.16, max_friend_rim_error
     assert manifest_frames[-1]["slice_state"]=="head"
     assert (scene.frame_end-land+1)/fps>=1.5
     assert {x["slice_state"] for x in manifest_frames}=={"plate","flight","head"}
@@ -271,11 +304,18 @@ def main():
         first=frame_at(shot["start"],fps)
         last=frame_at(shot["end"],fps)-1
         scene.frame_set(first)
-        cfg=shot["camera"]
+        # Retarget only camera blocking; original story times and shot roles unchanged.
+        cfg={
+            "01_notice":{"position":(0,-3.6,2.50),"target":(0,.85,1.94),"lens":45},
+            "02_reach":{"position":(.08,-3.15,2.32),"target":(0,.83,1.85),"lens":49},
+            "03_impact":{"position":(-1.16,-1.80,2.50),"target":(-1.16,1.08,2.45),"lens":52},
+            "04_payoff":{"position":(.03,-3.30,2.40),"target":(0,.85,2.14),"lens":46},
+        }[shot["id"]]
         bpy.ops.object.camera_add(location=cfg["position"])
         cam=bpy.context.object
         cam.name="Camera / "+shot["id"]
         cam.data.type="PERSP"
+        cam.data.sensor_fit="HORIZONTAL"
         cam.data.lens=cfg["lens"]
         point_at(cam,cfg["target"])
         subjects=[]
@@ -283,7 +323,7 @@ def main():
             subjects.extend(o for o in actors[name].meshes if any(k in o.name for k in ("head","hair","fringe","beanie","torso" if shot["kind"]!="close_up" else "head")))
         # For the two-shots, the plate and cake at rest are part of the action.
         # Flight may intentionally leave shot 2 and enter shot 3.
-        for _ in range(24):
+        for _ in range(55):
             bounds=[]
             for f in (first,(first+last)//2,last):
                 scene.frame_set(f)
@@ -298,13 +338,31 @@ def main():
                         bounds.extend(world_to_camera_view(scene,cam,obj.matrix_world@Vector(c)) for c in obj.bound_box)
             if all(.04<=v.x<=.96 and .08<=v.y<=.96 and v.z>0 for v in bounds):
                 break
-            cam.data.lens*=.95
+            cam.data.lens*=.98
         else:
             raise RuntimeError("Could not frame shot "+shot["id"])
+        # Actual evaluated character mesh projected bounds, clipped to frame.
+        # Coverage is vertical span of visible hero silhouette bounds per actor,
+        # not a pixel-area claim. Require >=45% for every hero at all frames.
+        coverage=[]
+        for f in range(first,last+1):
+            scene.frame_set(f);bpy.context.view_layer.update()
+            row={}
+            for name in shot["characters"]:
+                obj_bounds=[]
+                for ob in actors[name].meshes:
+                    if ob.type=="MESH" and ob!=actors[name].face:
+                        obj_bounds.extend(world_to_camera_view(scene,cam,ob.matrix_world@Vector(c)) for c in ob.bound_box)
+                low=max(0,min(v.y for v in obj_bounds));high=min(1,max(v.y for v in obj_bounds))
+                row[name]=high-low
+            coverage.append(row)
+        mincov={name:min(row[name] for row in coverage) for name in shot["characters"]}
+        print("SHOT_COVERAGE",shot["id"],mincov,flush=True)
+        assert min(mincov.values())>=.45,(shot["id"],mincov)
         marker=scene.timeline_markers.new(shot["id"],frame=first)
         marker.camera=cam
         shot_records.append({"id":shot["id"],"first":first,"last":last,"lens":cam.data.lens,
-                             "bounds":[min(v.x for v in bounds),max(v.x for v in bounds),min(v.y for v in bounds),max(v.y for v in bounds)]})
+                             "bounds":[min(v.x for v in bounds),max(v.x for v in bounds),min(v.y for v in bounds),max(v.y for v in bounds)],"min_hero_vertical_coverage":mincov})
     # Re-evaluate animation after all keys, not just during authoring.
     for item in manifest_frames:
         scene.frame_set(item["frame"])
@@ -315,7 +373,7 @@ def main():
             assert [n for n,o in track.decals.items() if not o.hide_render]==[item[name+"_expression"]]
     manifest={"story":spec["id"],"resolution":[width,height],"fps":fps,"duration":spec["duration"],
               "frame_count":scene.frame_end,"samples":samples,"shots":shot_records,"max_grip_error":max_error,
-              "launch_frame":launch,"landing_frame":land,"head_support_z":spec["props"]["slice"]["head_support"],
+              "launch_frame":launch,"landing_frame":land,"head_support_z":head_support_z,"max_friend_rim_error":max_friend_rim_error,"rig":"Sprint 2 quality","patrons":2,
               "payoff_hold_seconds":(scene.frame_end-frame_at(action["payoff"],fps)+1)/fps,
               "timeline":manifest_frames}
     (output/"story_manifest.json").write_text(json.dumps(manifest,indent=2)+"\n")

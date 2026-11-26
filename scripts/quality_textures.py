@@ -125,7 +125,7 @@ def face_material(expression):
 
 def cloth_canvas(kind):
     colors={"sweater":(24,105,91,255),"sleeve":(24,105,91,255),"tee":(239,222,181,255),
-            "tee_sleeve":(239,222,181,255),"denim":(34,61,103,255),"hat":(195,114,29,255),"green_tee":(29,171,51,255),"green_sleeve":(29,171,51,255),"yellow_denim":(240,250,14,255),"blue_tee":(34,105,213,255),"blue_sleeve":(34,105,213,255)}
+            "tee_sleeve":(239,222,181,255),"denim":(34,61,103,255),"hat":(195,114,29,255),"green_tee":(29,171,51,255),"green_sleeve":(29,171,51,255),"yellow_denim":(255,221,0,255),"blue_tee":(34,105,213,255),"blue_sleeve":(34,105,213,255)}
     c=Canvas(1024,colors[kind])
     dark=(14,64,58,255)
     cream=(241,207,138,255)
@@ -168,15 +168,15 @@ def cloth_canvas(kind):
             c.rect(0,.05,1,.10,(45,85,105,255))
     else:
         if kind=="yellow_denim":
-            c.rect(0,.93,1,1,(166,156,8,255))
+            c.rect(0,.93,1,1,(191,142,0,255))
         else:
             c.rect(0,.93,1,1,(24,44,80,255))
         for x in (.055,.945):
-            c.line([(x,.04),(x,.95)],.014,(139,132,10,255) if kind=="yellow_denim" else (18,36,66,255))
+            c.line([(x,.04),(x,.95)],.014,(170,126,0,255) if kind=="yellow_denim" else (18,36,66,255))
             for y in range(5,96,4):
                 c.rect(x-.006,y/100,x+.006,y/100+.017,(192,136,68,255))
-        c.line([(.15,.87),(.22,.76),(.38,.72)],.014,(139,132,10,255) if kind=="yellow_denim" else (20,39,70,255))
-        c.line([(.62,.72),(.78,.76),(.85,.87)],.014,(139,132,10,255) if kind=="yellow_denim" else (20,39,70,255))
+        c.line([(.15,.87),(.22,.76),(.38,.72)],.014,(170,126,0,255) if kind=="yellow_denim" else (20,39,70,255))
+        c.line([(.62,.72),(.78,.76),(.85,.87)],.014,(170,126,0,255) if kind=="yellow_denim" else (20,39,70,255))
         c.line([(.48,.96),(.48,.73)],.01,(192,136,68,255))
         c.ellipse(.5,.955,.024,.024,(205,151,73,255))
     # Baked illustrated stitch marks and soft edge shading, not only a shader stripe.
@@ -202,6 +202,9 @@ def illustrated_material(kind):
     bs=ns.get("Principled BSDF")
     bs.inputs["Roughness"].default_value=.84
     bs.inputs["Sheen Weight"].default_value=.19
+    if kind=="yellow_denim":
+        bs.inputs["Sheen Weight"].default_value=.03
+        bs.inputs["Specular IOR Level"].default_value=.08
     tex=ns.new("ShaderNodeTexImage")
     tex.image=im
     ls.new(tex.outputs["Color"],bs.inputs["Base Color"])

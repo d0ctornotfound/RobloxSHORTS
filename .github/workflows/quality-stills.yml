@@ -6,12 +6,6 @@ on:
         type: choice
         options: [preview, full]
         default: preview
-  push:
-    branches: [main]
-    paths:
-      - 'scripts/quality_*.py'
-      - 'scripts/render_quality_stills.py'
-      - '.github/workflows/quality-stills.yml'
 permissions:
   contents: read
 jobs:

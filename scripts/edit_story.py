@@ -162,7 +162,7 @@ def main():
     output=Path(a.output).resolve()
     output.mkdir(parents=True,exist_ok=True)
     frames=Path(a.frames).resolve()
-    fps,w,h=(12,360,640) if a.profile=="preview" else (24,1080,1920)
+    fps,w,h=(12,432,768) if a.profile=="preview" else (24,1080,1920)
     count=round(spec["duration"]*fps)
     assert {f.name for f in frames.glob("frame_*.png")}=={f"frame_{i:04d}.png" for i in range(1,count+1)}
     captions(spec,fps,output)
@@ -175,7 +175,7 @@ def main():
     os.chdir(output)
     filename=spec["id"]+".mp4"
     run(["ffmpeg","-y","-hide_banner","-loglevel","error","-framerate",fps,"-start_number","1",
-         "-i",frames/"frame_%04d.png","-i","mix.wav","-vf","ass=captions.ass","-map","0:v:0","-map","1:a:0",
+         "-i",frames/"frame_%04d.png","-i","mix.wav","-vf","hqdn3d=2.5:2:3:2.5,ass=captions.ass","-map","0:v:0","-map","1:a:0",
          "-c:v","libx264","-crf","18","-pix_fmt","yuv420p","-c:a","aac","-b:a","160k",
          "-t",spec["duration"],"-movflags","+faststart",filename])
     data=probe(filename)

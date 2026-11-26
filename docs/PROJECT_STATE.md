@@ -1,6 +1,6 @@
 # Project State
 
-Current milestone: Quality Sprint 2 — four final hero stills rendered and verified; awaiting supervisor review. Story/animation paused.
+Current milestone: Integration sprint — The Last Slice port onto approved Sprint 2 quality system; render verification pending.
 
 Successful preview run: [45811466419](https://github.com/d0ctornotfound/RobloxSHORTS/actions/runs/45811466419), commit `c043c3cd322c274108726203bab3c16a6e8b8689`, artifact `roblox-demo-preview-5s`.
 
@@ -39,3 +39,6 @@ Quality Sprint 1 visual review: faces are cleaner, body is chunkier, hairline no
 
 
 Supervisor Sprint 1 verdict: real progress, NOT approved. Sprint 2 targets: head width/torso .95, head height/body .22 (excluding hair); low small faces, spiky lead hair and single beanie friend, matte skin, bold clothing, two seated patrons and <=10% ceiling. Initial Sprint 2 run [45862909811](https://github.com/d0ctornotfound/RobloxSHORTS/actions/runs/45862909811) succeeded (artifact 15140365069, four stills). Geometry measured 95.00% and 22.02%; reaction 6% and wide 4% ceiling by ray sampling. Supervisor requested lineup framing and yellow correction only. Revised four-still run [45864864639](https://github.com/d0ctornotfound/RobloxSHORTS/actions/runs/45864864639) succeeded at `596aceee4e8dfc0f29825770461f400bcc1e808f`; final artifact `roblox-quality-sprint2-hero-preview`, ID 15140261957. Four downloaded PNGs independently inspected and byte-matched to final package. Lineup is 1280×900 landscape, projected character height 83.52% vs 31.97%; three café shots remain 720×1280. Reaction ceiling 6%, wide 4%, two patrons. Trousers now lemon/greenish yellow rather than orange, but pale in studio and olive in café shadow, not an exact reference colour match. Medium remains medium-long, wide retains foreground floor and partial patron occlusion. No new stories/animation. Awaiting supervisor verdict; see Sprint 2 doc for hashes and evidence. See [QUALITY_SPRINT_2.md](QUALITY_SPRINT_2.md).
+
+
+Supervisor Sprint 2 verdict: CHARACTER STANDARD APPROVED. Locked ratios 95% head/torso width and 22% head/body height, small low faces, matte skin, distinct silhouettes. Polish: matte chunkier hair, fitted beanie, saturated yellow fabric, clear window and stronger story framing. Stage C legacy renderer superseded by integrated quality port pending CI evidence; narration text, shot schedule and edit contract unchanged.
