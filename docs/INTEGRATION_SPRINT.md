@@ -19,4 +19,22 @@ Final manifest: minimum projected vertical hero coverage lead/friend notice 46.4
 
 
 ## Supervisor correction pass
-Prior video NOT APPROVED: dark set edges, patron occlusion, cake missing in payoff, cluttered reach. Restored opaque expanded enclosure and neutral bounce; frontal perspective cameras inside set; protect hands, faces, and cake; hide patrons after notice; lower cake into crown (2.64) with tilt and broad side facing viewer. Coverage goal 45% retained, frontal readable two-shot may trade full projected body span (hard floor 30%, explicitly reported) to protect faces/active hands. New decoded MP4 pixel gate: all frames, near-black max RGB channel <=24/255, including captions, maximum 2% per shot. No black-level clamp. Six requested comparison grabs. CI pending; previous artifact not approved.
+Prior video NOT APPROVED: dark set edges, patron occlusion, cake missing in payoff, cluttered reach. Restored opaque expanded enclosure and neutral bounce; frontal perspective cameras inside set; protect hands, faces, and cake; hide patrons after notice; lower cake into crown (2.64) with tilt and broad side facing viewer. Coverage goal 45% retained, frontal readable two-shot may trade full projected body span (hard floor 30%, explicitly reported) to protect faces/active hands. New decoded MP4 pixel gate: all frames, near-black max RGB channel <=24/255, including captions, maximum 2% per shot. No black-level clamp. Six requested comparison grabs. CI completed; see correction evidence below. Previous artifact not approved.
+
+
+### Correction pass — completed evidence
+
+Run [45880102202](https://github.com/d0ctornotfound/RobloxSHORTS/actions/runs/45880102202) succeeded, all five jobs. Render commit 9edaa643a6ea10a797d072861967d79f6ccabb98. Artifact [roblox-the-last-slice-corrected-preview-12s](https://github.com/d0ctornotfound/RobloxSHORTS/actions/runs/45880102202/artifacts/15147751306), ID 15147751306, 22,479,321 bytes. Archive SHA-256 db0de4ad2f9f87b266d338065c000408f616ca6ce6ac863822bdf78d6039c90c, independently downloaded and matched. MP4 SHA-256 8948e8e23d0af97de8226029d3c9a0e0d296667c67794f70dd75f807d3009679, 1,739,459 bytes. ffprobe independently confirmed H.264 432x768, 12 fps, 144 frames, 12.000 s, AAC mono 48kHz. 24 Cycles samples, unchanged music/SFX/captions and no narration; narration slot tested.
+
+All 144 final decoded frames independently checked, identical to pixel_validation.json. Max-channel RGB <=24/255 including caption outlines. Worst-frame percentages:
+
+| Shot | Rejected original | Corrected maximum | Corrected mean | Worst frame |
+|---|---:|---:|---:|---:|
+| Notice | 4.304% | 0.857808% | 0.774951% | 28 |
+| Reach | 10.549% | 0.798732% | 0.513220% | 67 |
+| Impact | 1.884% | 0.899101% | 0.804057% | 93 |
+| Payoff | 4.409% | 0.888551% | 0.546302% | 133 |
+
+All pass <=2%. No black clamp. Six final MP4-derived grabs at 1.5, 4.0, 5.9, 7.0, 8.2, 10.7 s packaged and inspected. Frontal cameras show enclosed café with no large dark set-edge void; patrons only in notice (still intrude at left/right edges in that shot), no patron occlusion in reach/impact/payoff. At 5.9s both hands/arms and plate read clearly. Cake visible in crown at 8.2 and 10.7, base lowered .274082 below highest tip, attachment remains active throughout hold. Actual launch/land frames 80/92, zero attachment error, friend rim error .030018, hold 2.5s.
+
+Remaining limitations: frontal two-shot coverage regressed below prior 45% target, notice lead/friend 34.85%/30.09%, reach 35.47%/30.62%, payoff 36.75%/31.76%, impact lead 66.20%. This is a deliberate tradeoff for frontal readable composition but is NOT a claim that earlier 45% gate passes. Reach remains wide rather than tight medium, foreground rug and upper wall consume substantial space. Notice patrons overlap the outer actor arms at frame edges. Airborne cake partly clipped at right edge at 7.0s, cake contact still stylized; payoff cake visible but small. Lighting is brighter and grain persists. Dark pixel gate alone does not prove visual quality. Correction production complete, awaiting supervisor approval; previous integrated artifact rejected, no short #2 started.
