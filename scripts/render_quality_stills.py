@@ -1,5 +1,5 @@
 """Three hero stills, independent of the historic animation paths."""
-import argparse,json,sys,math
+import argparse,json,sys,math,subprocess,tempfile
 from pathlib import Path
 sys.path.insert(0,str(Path(__file__).resolve().parent))
 import bpy
@@ -25,10 +25,11 @@ def main():
     a=arguments();out=Path(a.output).resolve();out.mkdir(parents=True,exist_ok=True)
     scene=configure(a.profile)
     scene.render.resolution_x,scene.render.resolution_y=(720,1280) if a.profile=="preview" else (1080,1920)
-    scene.cycles.samples=96 if a.profile=="preview" else 160
-    scene.cycles.use_denoising=True
-    scene.cycles.denoiser="OPENIMAGEDENOISE"
-    scene.cycles.denoising_input_passes="RGB_ALBEDO_NORMAL"
+    scene.cycles.samples=128 if a.profile=="preview" else 192
+    # Ubuntu Blender 4.0.2 is built without any Cycles denoiser backend.
+    # Render clean high-sample input, then use a real spatial denoiser.
+    scene.cycles.use_denoising=False
+    denoiser="FFmpeg nlmeans (s=2.0:p=7:r=15)"
     scene.cycles.adaptive_threshold=.012
     scene.cycles.max_bounces=7
     scene.cycles.diffuse_bounces=4
@@ -38,7 +39,7 @@ def main():
     scene.view_settings.exposure=.25
     scene.world.node_tree.nodes.get("Background").inputs[0].default_value=(.42,.31,.21,1)
     scene.world.node_tree.nodes.get("Background").inputs[1].default_value=.20
-    # Mild grade after OIDN, no glow filter to muddy the faces.
+    # Mild grade, no glow filter to muddy the faces.
     scene.use_nodes=True
     ns,ls=scene.node_tree.nodes,scene.node_tree.links
     ns.clear()
@@ -74,9 +75,14 @@ def main():
             camera.data.dof.focus_distance=(camera.location-Vector(focus)).length
             camera.data.dof.aperture_fstop=fstop
             camera.data.dof.aperture_blades=7
-        scene.render.filepath=str(out/(name+".png"))
-        print("QUALITY_RENDER_BEGIN",name,scene.cycles.denoiser,scene.cycles.samples,flush=True)
-        bpy.ops.render.render(write_still=True)
+        print("QUALITY_RENDER_BEGIN",name,denoiser,scene.cycles.samples,flush=True)
+        with tempfile.TemporaryDirectory() as tmp:
+            raw=Path(tmp)/"raw.png"
+            scene.render.filepath=str(raw)
+            bpy.ops.render.render(write_still=True)
+            subprocess.run(["ffmpeg","-y","-hide_banner","-loglevel","error","-i",str(raw),
+                "-vf","nlmeans=s=2.0:p=7:r=15","-frames:v","1","-threads","1",str(out/(name+".png"))],check=True)
+        print("QUALITY_DENOISE_COMPLETE",name,denoiser,flush=True)
         records.append({"file":name+".png","bounds":bounds,"lens":camera.data.lens,"dof":dof})
         print("QUALITY_RENDERED",name,bounds,flush=True)
     def heads(actor):
@@ -106,7 +112,7 @@ def main():
     aim_arm(lead,1,(.10,-.16,-.62))
     render("03_cafe_wide",(0,-6.65,3.17),(0,.55,2.03),31,heads(lead)+heads(friend),False)
     manifest={"resolution":[scene.render.resolution_x,scene.render.resolution_y],"samples":scene.cycles.samples,
-       "denoise":scene.cycles.denoiser,"face_texture_size":1024,"clothing_texture_size":1024,
+       "denoise":denoiser,"face_texture_size":1024,"clothing_texture_size":1024,
        "expressions":["neutral","happy","shocked","sad"],"proportions":Character.PROPORTIONS,
        "tables":3,"shots":records}
     (out/"quality_manifest.json").write_text(json.dumps(manifest,indent=2)+"\n")

@@ -30,7 +30,7 @@ jobs:
       - name: Install Blender
         run: |
           sudo apt-get update
-          sudo apt-get install -y --no-install-recommends blender
+          sudo apt-get install -y --no-install-recommends blender ffmpeg
           blender --version
       - name: Render hero still
         run: |
@@ -48,8 +48,8 @@ jobs:
           assert png[:8]==b"\x89PNG\r\n\x1a\n"
           assert struct.unpack(">II",png[16:24])==size
           m=json.loads((root/"quality_manifest.json").read_text())
-          assert m["denoise"]=="OPENIMAGEDENOISE"
-          assert m["samples"]>=96 and m["tables"]>=3
+          assert m["denoise"]=="FFmpeg nlmeans (s=2.0:p=7:r=15)"
+          assert m["samples"]>=128 and m["tables"]>=3
           assert m["face_texture_size"]==1024 and m["clothing_texture_size"]==1024
           assert len(m["shots"])==1 and m["shots"][0]["file"]==shot+".png"
           print("VERIFIED",shot,size,len(png),m["samples"],m["denoise"])

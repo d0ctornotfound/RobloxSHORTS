@@ -32,4 +32,4 @@ Stage C review limitations: portrait two-shots still read as medium-long/full-bo
 
 Supervisor quality reset: Stage C is BUILT but NOT benchmark-approved. References require more convincing classic R6 silhouettes, crisp faces, illustrated clothes, shaped hair, inhabited environments and warm directional lighting. No new stories or animation until look approval.
 
-Quality Sprint 1: versioned character/café builders, three hero stills, 1024px drawn UV textures, warm lighting, OIDN and AgX grade. CI and image review pending.
+Quality Sprint 1: versioned character/café builders, three hero stills, 1024px drawn UV textures, warm lighting and AgX grade. Initial CI run [45851196119](https://github.com/d0ctornotfound/RobloxSHORTS/actions/runs/45851196119) failed because the distribution Blender 4.0.2 exposes no Cycles denoiser enum. Replaced OIDN with FFmpeg spatial non-local means and raised samples to 128 preview / 192 full. CI and image review pending.
