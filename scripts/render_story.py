@@ -12,7 +12,7 @@ from bpy_extras.object_utils import world_to_camera_view
 from render_demo import empty,point_at
 from stage_a_cafe import light
 from render_stills import configure
-from r6_character import R6Character,mesh_points,group_points,bounds,SOURCE_SHA256
+from r6_character import R6Character,mesh_points,group_points,bounds as mesh_bounds,SOURCE_SHA256
 from quality_cafe import build as build_cafe
 from stage_a_cafe import set_visible
 from stage_b_interaction import blend_direction,smoothstep,GripAttachment,GravityDrop,ExpressionTrack
@@ -173,7 +173,7 @@ def main():
     # Rest hair top derived from actual imported-rig accessory mesh vertices.
     hair_vertices=[v for ob in lead.accessories if "head hair" in ob.name or "head fringe" in ob.name for v in mesh_points(ob)]
     highest=max(hair_vertices,key=lambda v:v.z)
-    headlo,headhi=bounds(mesh_points(lead.head))
+    headlo,headhi=mesh_bounds(mesh_points(lead.head))
     crown=(headlo+headhi)/2
     head_support_z=highest.z-.045
     cake_site=Vector((crown.x+.025,crown.y-.025,head_support_z))
@@ -352,7 +352,7 @@ def main():
         # optimizes both framing and minimum hero coverage before any render.
         two=shot["kind"]!="close_up"
         def corners(ob):
-            lo,hi=bounds(mesh_points(ob))
+            lo,hi=mesh_bounds(mesh_points(ob))
             return [Vector((x,y,z)) for x in (lo.x,hi.x) for y in (lo.y,hi.y) for z in (lo.z,hi.z)]
         camera_samples=[]
         for f in range(first,last+1):
