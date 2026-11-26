@@ -16,6 +16,6 @@ Current demo gap: render_demo.py is flat-colour, one static smile, no textures/p
 
 Stage A v1: successful [run 45815611125](https://github.com/d0ctornotfound/RobloxSHORTS/actions/runs/45815611125), commit `db24a46`, artifact `roblox-stage-a-stills-preview`. Supervisor verified output; requested framing, warm saturated colour, clean sampling, grip contact and chunkier proportions.
 
-A2: 64 preview samples, updated lighting/materials, portrait composition, wider shorter R6 body, wrist grip socket with wrapping fingers. Awaiting A2 CI and image review.
+A2: 64 preview samples, updated lighting/materials, portrait composition, wider shorter R6 body, wrist grip socket with wrapping fingers. First A2 [run 45817680479](https://github.com/d0ctornotfound/RobloxSHORTS/actions/runs/45817680479) succeeded; artifact `roblox-stage-a-stills-preview` (ID 15115963946). Image review identified overlapping cups; follow-up framing correction `a1ce036` is rendering.
 
-Next action: Stage B — café cup interaction animation and original demo regression.
+Current implementation: Stage B — café cup interaction animation. CI and original demo regression pending.

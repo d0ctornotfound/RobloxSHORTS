@@ -8,6 +8,11 @@ on:
         type: choice
         options: [animation, stills]
         default: animation
+      scene:
+        description: Animation scene (ignored for stills)
+        type: choice
+        options: [demo, cafe]
+        default: demo
       profile:
         description: Render quality
         type: choice
@@ -26,13 +31,16 @@ on:
       - 'scripts/render_demo.py'
       - 'scripts/render_stills.py'
       - 'scripts/stage_a_*.py'
+      - 'scripts/stage_b_*.py'
+      - 'scripts/render_cafe_interaction.py'
       - '.github/workflows/blender-render.yml'
 
 permissions:
   contents: read
 
 concurrency:
-  group: blender-render-${{ github.ref }}
+  # Isolate evidence runs by commit, allowing the demo regression and cafe preview to run independently.
+  group: blender-render-${{ github.ref }}-${{ github.sha }}
   cancel-in-progress: false
 
 jobs:
@@ -50,13 +58,18 @@ jobs:
         id: mode
         env:
           REQUESTED: ${{ inputs.mode || '' }}
+          REQUESTED_SCENE: ${{ inputs.scene || 'demo' }}
           BEFORE: ${{ github.event.before || '' }}
         run: |
           mode="${REQUESTED:-animation}"
+          scene="$REQUESTED_SCENE"
           if [ "$GITHUB_EVENT_NAME" = push ] && [ -n "$BEFORE" ]; then
+            if git diff --name-only "$BEFORE" "$GITHUB_SHA" | grep -Eq '^scripts/(render_cafe_interaction\.py|stage_b_.*\.py)$'; then scene=cafe; fi
             if git diff --name-only "$BEFORE" "$GITHUB_SHA" | grep -Eq '^scripts/(render_stills\.py|stage_a_.*\.py)$'; then mode=stills; fi
           fi
           echo "value=$mode" >> "$GITHUB_OUTPUT"
+          echo "scene=$scene" >> "$GITHUB_OUTPUT"
+          echo "Selected animation scene: $scene"
           echo "Selected render mode: $mode"
       - name: Install Blender and FFmpeg
         run: |
@@ -65,12 +78,12 @@ jobs:
           blender --version
           ffmpeg -version
       - name: Render animation
-        if: steps.mode.outputs.value == 'animation'
+        if: steps.mode.outputs.value == 'animation' && steps.mode.outputs.scene == 'demo'
         run: |
           python3 -m py_compile scripts/render_demo.py
           blender -b --python-exit-code 1 --python scripts/render_demo.py -- --profile "$PROFILE" --duration "$DURATION" --output render
       - name: Encode and validate MP4
-        if: steps.mode.outputs.value == 'animation'
+        if: steps.mode.outputs.value == 'animation' && steps.mode.outputs.scene == 'demo'
         run: |
           fps=12
           if [ "$PROFILE" = full ]; then fps=24; fi
@@ -91,7 +104,7 @@ jobs:
           print(f"Validated {width}x{height}, {fps} fps, {duration} seconds")
           PY
       - name: Upload video and Blender project
-        if: steps.mode.outputs.value == 'animation'
+        if: steps.mode.outputs.value == 'animation' && steps.mode.outputs.scene == 'demo'
         uses: actions/upload-artifact@v4
         with:
           name: roblox-demo-${{ env.PROFILE }}-${{ env.DURATION }}s
@@ -132,5 +145,47 @@ jobs:
         with:
           name: roblox-stage-a-stills-${{ env.PROFILE }}
           path: render/stills/
+          if-no-files-found: error
+          retention-days: 7
+      - name: Render Stage B cafe interaction
+        if: steps.mode.outputs.value == 'animation' && steps.mode.outputs.scene == 'cafe'
+        run: |
+          python3 -m py_compile scripts/render_cafe_interaction.py scripts/stage_b_interaction.py
+          blender -b --python-exit-code 1 --python scripts/render_cafe_interaction.py -- --profile "$PROFILE" --output render/cafe
+      - name: Encode and validate cafe MP4
+        if: steps.mode.outputs.value == 'animation' && steps.mode.outputs.scene == 'cafe'
+        run: |
+          fps=12
+          if [ "$PROFILE" = full ]; then fps=24; fi
+          ffmpeg -hide_banner -loglevel error -framerate "$fps" -start_number 1 -i render/cafe/frame_%04d.png -c:v libx264 -crf 18 -pix_fmt yuv420p -movflags +faststart render/cafe/cafe_interaction.mp4
+          ffprobe -v error -select_streams v:0 -show_streams -show_format -of json render/cafe/cafe_interaction.mp4 > render/cafe/metadata.json
+          python3 - <<'PY'
+          import json, os
+          from fractions import Fraction
+          from pathlib import Path
+          root = Path("render/cafe")
+          data = json.loads((root/"metadata.json").read_text())
+          stream = data["streams"][0]
+          w,h,fps = (1080,1920,24) if os.environ["PROFILE"] == "full" else (360,640,12)
+          assert (stream["width"],stream["height"]) == (w,h)
+          assert Fraction(stream["avg_frame_rate"]) == fps
+          assert int(stream["nb_frames"]) == fps*5
+          assert abs(float(data["format"]["duration"])-5)<.1
+          interaction=json.loads((root/"interaction.json").read_text())
+          assert interaction["max_grip_error"]<1e-5
+          assert interaction["timeline"][-1]["state"]=="rest"
+          assert abs(interaction["timeline"][-1]["cup_bottom"][2]-interaction["support_z"])<1e-5
+          print(f"Validated cafe MP4: {w}x{h}, {fps} fps, 5 seconds")
+          PY
+      - name: Upload Stage B cafe preview
+        if: steps.mode.outputs.value == 'animation' && steps.mode.outputs.scene == 'cafe'
+        uses: actions/upload-artifact@v4
+        with:
+          name: roblox-cafe-${{ env.PROFILE }}-5s
+          path: |
+            render/cafe/cafe_interaction.mp4
+            render/cafe/cafe_interaction.blend
+            render/cafe/metadata.json
+            render/cafe/interaction.json
           if-no-files-found: error
           retention-days: 7
