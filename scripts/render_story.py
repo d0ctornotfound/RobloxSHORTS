@@ -300,68 +300,88 @@ def main():
     # Every camera is built from shot data; one shared animation timeline,
     # no reconstruction or object teleport between shot cuts.
     shot_records=[]
+    # Cameras look through the open front and side cutaways; retain shadow rays.
+    for ob in bpy.data.objects:
+        if ob.name.startswith(("Left enclosed café wall","Right enclosed café wall","Side wall wooden wainscot","Side wall chair rail")):
+            ob.visible_camera=False
     for shot in spec["shots"]:
         first=frame_at(shot["start"],fps)
         last=frame_at(shot["end"],fps)-1
         scene.frame_set(first)
-        # Retarget only camera blocking; original story times and shot roles unchanged.
-        cfg={
-            "01_notice":{"position":(0,-3.6,2.50),"target":(0,.85,1.94),"lens":45},
-            "02_reach":{"position":(.08,-3.15,2.32),"target":(0,.83,1.85),"lens":49},
-            "03_impact":{"position":(-1.16,-1.80,2.50),"target":(-1.16,1.08,2.45),"lens":52},
-            "04_payoff":{"position":(.03,-3.30,2.40),"target":(0,.85,2.14),"lens":46},
-        }[shot["id"]]
-        bpy.ops.object.camera_add(location=cfg["position"])
-        cam=bpy.context.object
-        cam.name="Camera / "+shot["id"]
-        cam.data.type="PERSP"
-        cam.data.sensor_fit="HORIZONTAL"
-        cam.data.lens=cfg["lens"]
-        point_at(cam,cfg["target"])
-        subjects=[]
-        for name in shot["characters"]:
-            subjects.extend(o for o in actors[name].meshes if any(k in o.name for k in ("head","hair","fringe","beanie","torso" if shot["kind"]!="close_up" else "head")))
-        # For the two-shots, the plate and cake at rest are part of the action.
-        # Flight may intentionally leave shot 2 and enter shot 3.
-        for _ in range(55):
-            bounds=[]
-            for f in (first,(first+last)//2,last):
-                scene.frame_set(f)
-                bpy.context.view_layer.update()
-                objs=list(subjects)
-                if shot["kind"]!="close_up":
-                    objs+=list(plate.children_recursive)
-                if f>=land or (f<launch and shot["kind"]!="close_up"):
-                    objs+=list(cake.children_recursive)
-                for obj in objs:
-                    if obj.type=="MESH":
-                        bounds.extend(world_to_camera_view(scene,cam,obj.matrix_world@Vector(c)) for c in obj.bound_box)
-            if all(.04<=v.x<=.96 and .08<=v.y<=.96 and v.z>0 for v in bounds):
-                break
-            cam.data.lens*=.98
-        else:
-            raise RuntimeError("Could not frame shot "+shot["id"])
-        # Actual evaluated character mesh projected bounds, clipped to frame.
-        # Coverage is vertical span of visible hero silhouette bounds per actor,
-        # not a pixel-area claim. Require >=45% for every hero at all frames.
-        coverage=[]
+        # Cache true animated world bounds for all frames, so the search
+        # optimizes both framing and minimum hero coverage before any render.
+        two=shot["kind"]!="close_up"
+        def corners(ob):
+            return [ob.matrix_world@Vector(c) for c in ob.bound_box]
+        samples=[]
         for f in range(first,last+1):
             scene.frame_set(f);bpy.context.view_layer.update()
-            row={}
+            hero={};safe=[];faces={}
             for name in shot["characters"]:
-                obj_bounds=[]
-                for ob in actors[name].meshes:
-                    if ob.type=="MESH" and ob!=actors[name].face:
-                        obj_bounds.extend(world_to_camera_view(scene,cam,ob.matrix_world@Vector(c)) for c in ob.bound_box)
-                low=max(0,min(v.y for v in obj_bounds));high=min(1,max(v.y for v in obj_bounds))
-                row[name]=high-low
-            coverage.append(row)
-        mincov={name:min(row[name] for row in coverage) for name in shot["characters"]}
-        print("SHOT_COVERAGE",shot["id"],mincov,flush=True)
-        assert min(mincov.values())>=.45,(shot["id"],mincov)
+                actor=actors[name]
+                hero[name]=[v for ob in actor.meshes if ob.type=="MESH" and ob!=actor.face for v in corners(ob)]
+                selected=[ob for ob in actor.meshes if any(k in ob.name for k in ("head","hair","beanie","torso" if two else "head"))]
+                safe.extend(v for ob in selected for v in corners(ob))
+                # Face center is separate from the large hair bounds; disallow
+                # a camera that puts the two face centers on top of each other.
+                face=actor.face
+                faces[name]=sum(corners(face),Vector())/8
+            if two:
+                safe.extend(v for ob in plate.children_recursive if ob.type=="MESH" for v in corners(ob))
+            if f>=land or (f<launch and two):
+                safe.extend(v for ob in cake.children_recursive if ob.type=="MESH" for v in corners(ob))
+            samples.append((hero,safe,faces))
+        bpy.ops.object.camera_add();cam=bpy.context.object
+        cam.name="Camera / "+shot["id"];cam.data.sensor_fit="HORIZONTAL"
+        # Long-lens perspective first; orthographic is a deliberate fallback
+        # for the two-avatar portrait geometry, not a change to the action.
+        candidates=[]
+        if two:
+            sign=-1 if shot["id"]=="02_reach" else 1
+            preferred={"01_notice":48,"02_reach":52,"04_payoff":55}[shot["id"]]
+            for angle in (preferred,preferred+5,preferred+10,43,60):
+                for mode in ("PERSP","ORTHO"):
+                    r=12 if mode=="PERSP" else 8
+                    a=math.radians(angle)*sign
+                    candidates.append((mode,(r*math.sin(a),.92-r*math.cos(a),2.35),(0,.92,1.75),135 if mode=="PERSP" else 2.65))
+        else:
+            candidates=[("PERSP",(-1.16,-1.8,2.50),(-1.16,1.08,2.40),52)]
+        best=None;best_failed=None
+        for mode,pos,target,lens in candidates:
+            cam.location=pos;cam.data.type=mode;point_at(cam,target)
+            if mode=="ORTHO":cam.data.ortho_scale=lens
+            else:cam.data.lens=lens
+            for _ in range(75):
+                bpy.context.view_layer.update()
+                bounds=[world_to_camera_view(scene,cam,v) for _,safe,_ in samples for v in safe]
+                if all(.035<=v.x<=.965 and .045<=v.y<=.97 and v.z>0 for v in bounds):break
+                if mode=="ORTHO":cam.data.ortho_scale*=1.025
+                else:cam.data.lens*=.98
+            else:continue
+            coverage=[];separations=[]
+            for hero,safe,faces in samples:
+                row={}
+                for name,verts in hero.items():
+                    vv=[world_to_camera_view(scene,cam,v) for v in verts]
+                    row[name]=min(1,max(v.y for v in vv))-max(0,min(v.y for v in vv))
+                coverage.append(row)
+                if two:
+                    v1,v2=[world_to_camera_view(scene,cam,faces[k]) for k in shot["characters"]]
+                    separations.append(abs(v1.x-v2.x))
+            mincov={name:min(row[name] for row in coverage) for name in shot["characters"]}
+            score=min(mincov.values())
+            rec=(score,mode,pos,target,cam.data.lens,cam.data.ortho_scale,mincov,bounds,min(separations,default=1))
+            if best_failed is None or score>best_failed[0]:best_failed=rec
+            if score>=.45 and rec[-1]>=.18:
+                best=rec;break
+        if best is None:
+            raise RuntimeError("Framing failed "+shot["id"]+" best="+str(best_failed[:7] if best_failed else None))
+        _,mode,pos,target,lens,ortho,mincov,bounds,face_separation=best
+        cam.location=pos;cam.data.type=mode;cam.data.lens=lens;cam.data.ortho_scale=ortho;point_at(cam,target)
+        print("SHOT_COVERAGE",shot["id"],mincov,"mode",mode,"face separation",face_separation,flush=True)
         marker=scene.timeline_markers.new(shot["id"],frame=first)
         marker.camera=cam
-        shot_records.append({"id":shot["id"],"first":first,"last":last,"lens":cam.data.lens,
+        shot_records.append({"id":shot["id"],"first":first,"last":last,"lens":cam.data.lens,"camera_type":mode,"ortho_scale":ortho if mode=="ORTHO" else None,"min_face_separation":face_separation,
                              "bounds":[min(v.x for v in bounds),max(v.x for v in bounds),min(v.y for v in bounds),max(v.y for v in bounds)],"min_hero_vertical_coverage":mincov})
     # Re-evaluate animation after all keys, not just during authoring.
     for item in manifest_frames:
