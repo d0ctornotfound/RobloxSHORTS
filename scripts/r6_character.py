@@ -132,6 +132,7 @@ class R6Character:
         self.head_bounds=bounds(mesh_points(self.head))
         self.torso_bounds=bounds(group_points(self.body,"Torso_00"))
         self.bones={k:self.armature.pose.bones[v] for k,v in BONES.items()}
+        self.bind_basis={pb.name:pb.matrix_basis.copy() for pb in self.armature.pose.bones}
         self.arms=[self.bones["right_arm"],self.bones["left_arm"]]
         self.legs=[self.bones["right_leg"],self.bones["left_leg"]]
         self.grips=[];self.arm_axes=[]
@@ -236,7 +237,8 @@ class R6Character:
         self.face.data.materials[0]=self.face_materials[expression]
 
     def set_bone(self,bone,rotation,frame=None):
-        pb=self.bones[bone];pb.rotation_mode="XYZ";pb.rotation_euler=rotation
+        pb=self.bones[bone];pb.rotation_mode="XYZ"
+        pb.matrix_basis=self.bind_basis[pb.name]@Euler(rotation).to_matrix().to_4x4()
         if frame is not None:pb.keyframe_insert("rotation_euler",frame=frame)
         bpy.context.view_layer.update()
 
@@ -247,12 +249,14 @@ class R6Character:
         base=parent.matrix@parent.bone.matrix_local.inverted()@pb.bone.matrix_local if parent else pb.bone.matrix_local
         world=self.root.matrix_world.to_3x3()@Vector(direction)
         armspace=self.armature.matrix_world.to_3x3().inverted()@world
+        base=base@self.bind_basis[pb.name]
         local=base.to_3x3().inverted()@armspace
-        pb.rotation_quaternion=self.arm_axes[index].rotation_difference(local.normalized())
+        delta=self.arm_axes[index].rotation_difference(local.normalized())
+        pb.matrix_basis=self.bind_basis[pb.name]@delta.to_matrix().to_4x4()
         if frame is not None:pb.keyframe_insert("rotation_quaternion",frame=frame)
         bpy.context.view_layer.update()
         return self.grips[index]
 
     def reset(self):
-        for pb in self.armature.pose.bones:pb.matrix_basis=Matrix.Identity(4)
+        for pb in self.armature.pose.bones:pb.matrix_basis=self.bind_basis[pb.name].copy()
         bpy.context.view_layer.update()

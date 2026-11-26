@@ -16,6 +16,7 @@ from stage_b_interaction import GripAttachment
 
 SHOTS=("00_lineup","01_cafe_two","02_classroom_two")
 def smoke(actor):
+    rest=[v.copy() for ob in actor.skinned for v in mesh_points(ob)]
     before=group_points(actor.body,actor.arms[1].name)
     grip=actor.grips[1];start=grip.matrix_world.translation.copy()
     actor.aim_arm(1,(.08,-.95,-.15))
@@ -31,7 +32,10 @@ def smoke(actor):
     face_delta=(actor.face.matrix_world.translation-face_before).length
     assert face_delta>.005,face_delta
     actor.reset()
-    return {"arm_vertex_displacement":delta,"grip_socket_displacement":socket_delta,"attachment_error":err,"head_decal_displacement":face_delta}
+    restored=[v for ob in actor.skinned for v in mesh_points(ob)]
+    reset_error=max((a-b).length for a,b in zip(rest,restored))
+    assert reset_error<1e-5,reset_error
+    return {"bind_reset_error":reset_error,"arm_vertex_displacement":delta,"grip_socket_displacement":socket_delta,"attachment_error":err,"head_decal_displacement":face_delta}
 
 def camera(scene,pos,target,lens,ortho=False):
     bpy.ops.object.camera_add(location=pos);cam=bpy.context.object
@@ -97,6 +101,8 @@ def main():
         if cam.data.type=="ORTHO":cam.data.ortho_scale*=1.035
         else:cam.data.lens*=.97
     else:raise RuntimeError(("camera failed",protected))
+    if a.shot=="00_lineup":
+        assert all(b[3]-b[2]>.60 for b in protected),("not upright",protected)
     rec={"shot":a.shot,"source_sha256":SOURCE_SHA256,"source_size":ASSET.stat().st_size,"samples":scene.cycles.samples,
          "resolution":[scene.render.resolution_x,scene.render.resolution_y],
          "characters":[{"role":x.role,"bones":list(x.armature.pose.bones.keys()),"skinned_mesh_count":len(x.skinned),"measurements":x.measurements,
