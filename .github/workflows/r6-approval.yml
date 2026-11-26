@@ -25,7 +25,7 @@ jobs:
       - name: Install Blender and image tools
         run: |
           sudo apt-get update
-          sudo apt-get install -y --no-install-recommends blender ffmpeg python3-pil
+          sudo apt-get install -y --no-install-recommends blender ffmpeg python3-pil python3-numpy
       - name: Verify exact source and generate transparent decals
         run: |
           echo '3a0f310faf09cf161f7036a4c0df1a20202b967683700badc4440309c0a7d95a  assets/r6_rigged.glb' | sha256sum -c -
