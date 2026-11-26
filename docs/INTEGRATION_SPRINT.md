@@ -5,3 +5,5 @@ Port of unchanged stories/the_last_slice.json, timing, action and narration text
 CI pending. Local: `blender -b --python-exit-code 1 --python scripts/render_story.py -- --profile preview --output render/story` then `python3 scripts/edit_story.py --profile preview --frames render/story --output render/final --verify-slot`.
 
 First CI [45875679636](https://github.com/d0ctornotfound/RobloxSHORTS/actions/runs/45875679636) failed the frontal notice framing gate (lead 35.19%, friend 30.64%). Replaced frontal blocking with tested oblique long-lens candidates and orthographic fallback; every animated frame is checked for protected subject bounds, hero vertical coverage and face separation. Side cutaways preserve lighting/shadow rays.
+
+Second CI run 45876003484 passed all four framing gates (notice 46.49%/48.21%, reach 53.93%/47.22%, impact 66.80%, payoff 45.90%/47.13%) but failed manifest JSON because the camera sampling list shadowed the integer render sample count. Renamed the list; retry pending.

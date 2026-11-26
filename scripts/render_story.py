@@ -313,7 +313,7 @@ def main():
         two=shot["kind"]!="close_up"
         def corners(ob):
             return [ob.matrix_world@Vector(c) for c in ob.bound_box]
-        samples=[]
+        camera_samples=[]
         for f in range(first,last+1):
             scene.frame_set(f);bpy.context.view_layer.update()
             hero={};safe=[];faces={}
@@ -330,7 +330,7 @@ def main():
                 safe.extend(v for ob in plate.children_recursive if ob.type=="MESH" for v in corners(ob))
             if f>=land or (f<launch and two):
                 safe.extend(v for ob in cake.children_recursive if ob.type=="MESH" for v in corners(ob))
-            samples.append((hero,safe,faces))
+            camera_samples.append((hero,safe,faces))
         bpy.ops.object.camera_add();cam=bpy.context.object
         cam.name="Camera / "+shot["id"];cam.data.sensor_fit="HORIZONTAL"
         # Long-lens perspective first; orthographic is a deliberate fallback
@@ -353,13 +353,13 @@ def main():
             else:cam.data.lens=lens
             for _ in range(75):
                 bpy.context.view_layer.update()
-                bounds=[world_to_camera_view(scene,cam,v) for _,safe,_ in samples for v in safe]
+                bounds=[world_to_camera_view(scene,cam,v) for _,safe,_ in camera_samples for v in safe]
                 if all(.035<=v.x<=.965 and .045<=v.y<=.97 and v.z>0 for v in bounds):break
                 if mode=="ORTHO":cam.data.ortho_scale*=1.025
                 else:cam.data.lens*=.98
             else:continue
             coverage=[];separations=[]
-            for hero,safe,faces in samples:
+            for hero,safe,faces in camera_samples:
                 row={}
                 for name,verts in hero.items():
                     vv=[world_to_camera_view(scene,cam,v) for v in verts]
