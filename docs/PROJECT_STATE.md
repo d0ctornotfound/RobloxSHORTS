@@ -524,3 +524,43 @@ Run 46003241746 then completed 13/13 Lead expressions in EEVEE with all stills a
 **Visual QA finding:** Lead's shocked and surprised renders are pixel-identical (ImageChops difference bbox is empty), although they are separately named decal entries. All other expressions render and are visually distinguishable in the contact sheet. Treat the pilot as a technical render pass, but hold expansion to the remaining characters until the supervisor decides whether shocked should be a distinct expression or an intentional alias of surprised. Do not launch the remaining-character, blink or emotional-beat batches yet.
 
 The previous 960×540 pilot (run 46003241746, artifact 15199427136) is superseded. Use 46003877916 / artifact 15199816632 as the approved-resolution pilot evidence.
+
+
+## Chapter 2 — FINAL APPROVED / CLOSED (2026-11-27)
+
+Supervisor final verdict: blink system APPROVED; emotional beats APPROVED; shocked-versus-surprised differentiation APPROVED on all seven characters. The final expression differentiation pass is complete. Chapter 2 is CLOSED.
+
+### Final public expression inventory
+
+All seven reusable character configurations (Lead, Friend, Teacher, Dad, Librarian, Student Green, Student Blue) carry 13 public decals each: neutral, happy, smug, tired, worried, laughing, shocked, surprised, sad, unimpressed, embarrassed, angry and sleep_closed. This is 91 actor/decal bindings across the seven configurations. blink_half is a generated internal transition decal, not a public expression slot.
+
+### Final differentiation corrections and QA
+
+The six affected sheets were re-rendered in workflow 46016634372 (EEVEE, 1280×720). All six jobs succeeded:
+- Lead — job 140565318595, artifact 15206715400: 13/13; no exact duplicates; only neutral/sleep_closed near-pair, accepted as open versus closed eyes.
+- Dad — job 140565318528, artifact 15206138503: 13/13; no exact duplicates; only neutral/sleep_closed near-pair, accepted.
+- Teacher — job 140565318262, artifact 15205649040: 13/13; no exact or near duplicates.
+- Librarian — job 140565318742, artifact 15206118662: 13/13; no exact or near duplicates.
+- Student Blue — job 140565318682, artifact 15205214297: 13/13; no exact or near duplicates.
+- Student Green — job 140565319111, artifact 15206775103: 13/13; no exact or near duplicates.
+
+Lead/Dad worried now has raised inner brows and a compressed tense mouth; sad has the deeper frown and changed brow slope. Teacher/Librarian happy has a broader, deeper tooth smile. Student tired uses heavy drooping lids and a slack mouth; unimpressed uses flatter half-lids and a sideways mouth. Pixel QA's only remaining near-pair is neutral/sleep_closed for Lead and Dad, explicitly accepted by supervisor because open versus closed eyes is the intended distinction. All 13 expressions are present in every refreshed sheet; no missing decals or exact duplicates.
+
+The unchanged Friend sheet remains the approved prior render from run 46008612615; its worried/sad pair was separately corrected in the earlier batch and passed pixel QA.
+
+### Approved blink system and paired acting standard
+
+Source: scripts/facial_expressions.py. Reusable API:
+```python
+from facial_expressions import enable_blinking, disable_blinking
+schedules = enable_blinking(scene, actors, seed=123)
+disable_blinking(scene, actors)  # selected actors
+disable_blinking(scene)          # all registered actors in scene
+```
+R6Character enables blinking by default. Scene-time irregular starts are approximately 2–5 seconds apart; closed lids last 0.12–0.15 seconds. The sleep_closed decal is the closed frame, with a one-frame blink_half transition on closing and opening. The frame-change handler layers the blink over any active movement/expression. Lead's 10-second demo (run 46011106287, artifact 15204760142) passed: 240 frames at 24fps, three blinks, closure 0.133–0.143s, strip clearly open → closing → closed → open. Publication commit 935aba7 published the demo after a rebase-safe commit job.
+
+Major emotion changes must pair expression with body reaction through scripts/library_acting.py: Lead surprise recoil/torso lean, sustained rocking laugh, and Friend embarrassed head bow/torso fold/arms inward. Paired review clip (corrected run 46014166312) was approved after camera framing repair. Published review evidence commit 935aba7.
+
+### Final sheet publication
+
+The six refreshed contact sheets, per-character QA JSON and manifests are staged for publication by `.github/workflows/publish-chapter2-expression-refresh.yml`, using completed batch run 46016634372. After that workflow succeeds, the final evidence commit is recorded in the repository history. Final contact sheets are shown in the supervisor review chat. The seven-character expression library and blink API are the standard for subsequent story production; Chapter 2 has no open tasks.
