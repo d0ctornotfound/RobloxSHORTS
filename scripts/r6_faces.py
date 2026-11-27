@@ -38,7 +38,11 @@ def build_faces(output):
                 oval(x,.39,.071,.085)
                 if i==0:curve((x-.09,.285),(x,.305),(x+.09,.345),.045)
                 else:curve((x-.09,.345),(x,.305),(x+.09,.285),.045)
-            elif expr in ("shocked","surprised"):
+            elif expr=="shocked":
+                oval(x,.39,.112,.215)
+                oval(x-.018,.35,.024,.034,(255,255,255,235))
+                curve((x-.095,.205),(x,.175),(x+.095,.205),.025)
+            elif expr=="surprised":
                 oval(x,.39,.083,.165)
                 oval(x-.012,.365,.018,.025,(255,255,255,235))
                 curve((x-.09,.275),(x,.245),(x+.09,.275),.025)
@@ -55,7 +59,10 @@ def build_faces(output):
             oval(.5,.675,.37,.255)
             d.rounded_rectangle(box(.355,.585,.645,.625),radius=round(.016*S),fill=(255,255,255,255))
             oval(.5,.755,.13,.05,(175,64,68,255))
-        elif expr in ("shocked","surprised"):
+        elif expr=="shocked":
+            oval(.5,.68,.265,.305)
+            oval(.5,.765,.155,.060,(175,64,68,255))
+        elif expr=="surprised":
             oval(.5,.68,.205,.235)
             oval(.5,.742,.12,.045,(175,64,68,255))
         elif expr=="happy":
