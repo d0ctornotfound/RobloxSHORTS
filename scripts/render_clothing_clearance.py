@@ -28,6 +28,7 @@ def main():
     scene.eevee.taa_render_samples=24
     scene.render.fps=30;scene.frame_start=1;scene.frame_end=60
     actor=build_actor(args.actor)
+    light_origins={ob:ob.location.copy() for ob in scene.objects if ob.type=="LIGHT"}
     mode=args.motion;yaw=.20
     art=None;clothes=None;feet=None;seat=None;landing=None;lock=None
     if mode=="walk":
@@ -64,7 +65,13 @@ def main():
         # fixed scale and anatomical angles across the strip.
         lo,hi=bounds(v for ob in actor.skinned for v in mesh_points(ob))
         center=(lo+hi)*.5
-        for view,direction in (("front",Vector((0,-6,0))),("side",Vector((6,0,0)))):
+        if mode=="walk":
+            # Follow the moving actor with the studio rig, not just camera.
+            # This is presentation only; the approved StrideLock path stays.
+            shift=actor.root.location.copy();shift.z=0
+            for light,original in light_origins.items():light.location=original+shift
+            bpy.context.view_layer.update()
+        for view,direction in (("front",Vector((0,-6,0))),("side",Vector((-6,0,0)))):
             from mathutils import Matrix
             d=Matrix.Rotation(yaw,3,"Z")@direction
             path=out/("%s_%02d.png"%(view,f+1))

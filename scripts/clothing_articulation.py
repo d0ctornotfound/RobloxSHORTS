@@ -16,7 +16,7 @@ def filter_shell(ob, selected):
     bm.to_mesh(ob.data); bm.free(); ob.data.update()
     return count
 
-def make_piece_shell(actor, source, cutoff=None, rim=True):
+def make_piece_shell(actor, source, cutoff=None, rim=True, dynamic=False):
     ob = source.copy(); ob.data = source.data.copy()
     bpy.context.collection.objects.link(ob)
     ob.name = source.name + " / articulated garment shell"
@@ -29,6 +29,17 @@ def make_piece_shell(actor, source, cutoff=None, rim=True):
         if not count:
             bpy.data.objects.remove(ob, do_unlink=True)
             return None
+    if not dynamic:
+        # The locked adapter emits separate vertices for each clipped face.
+        # Weld only the disposable outer cloth copy, preserving per-loop UVs.
+        # Otherwise Solidify produces independent triangle rims and quilt-like
+        # shading. The original motion piece remains untouched.
+        bm = bmesh.new(); bm.from_mesh(ob.data)
+        bmesh.ops.remove_doubles(bm, verts=list(bm.verts), dist=1e-5)
+        bmesh.ops.recalc_face_normals(bm, faces=list(bm.faces))
+        bm.to_mesh(ob.data); bm.free(); ob.data.update()
+        for p in ob.data.polygons:
+            p.use_smooth = False
     # Same world thickness as the original weighted shell: the source
     # GLB is scaled down, while articulated geometry is in scene units.
     solid = ob.modifiers.new("Articulated garment thickness", "SOLIDIFY")
@@ -59,7 +70,7 @@ class ArticulatedClothes:
                 if shell is not None:
                     self.pieces.append((shell, source, False))
             if limb.fabric is not None:
-                shell = make_piece_shell(actor, limb.fabric, rim=False)
+                shell = make_piece_shell(actor, limb.fabric, rim=False, dynamic=True)
                 self.pieces.append((shell, limb.fabric, True))
             key = next(k for k,b in actor.bones.items() if b.name == group)
             for trim in actor.accessories:
