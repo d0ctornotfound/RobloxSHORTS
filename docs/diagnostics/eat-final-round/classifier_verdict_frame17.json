@@ -1,0 +1,50 @@
+{
+  "workflow_run": 45989006460,
+  "artifact_id": 15192977216,
+  "frame": 17,
+  "approved_reference": true,
+  "classifier_pass": true,
+  "arm_body_intersections": 29,
+  "head_arm_intersections": 42,
+  "body_contact_pairs": 30,
+  "body_outside_pairs": 0,
+  "head_contact_pairs": 42,
+  "head_outside_pairs": 0,
+  "torso_accessory_intersections": 1,
+  "central_face_pairs": 0,
+  "central_face_rays": 0,
+  "peripheral_obstruction_rays": 1,
+  "frame_gates": {
+    "head_food_no_intersections": true,
+    "food_arm_no_intersections": true,
+    "food_body_no_intersections": true,
+    "exact_endcap_support": true,
+    "grip_contact": true,
+    "support_clearance": true,
+    "food_tip_alignment": true,
+    "food_tip_normal_gap": true,
+    "segment_length": true,
+    "joint_continuity": true,
+    "framing": true,
+    "arm_body_localized": true,
+    "head_arm_localized": true,
+    "opposite_arm_clear": true,
+    "central_face_clear": true,
+    "peripheral_face_limit": true,
+    "exact_transition_solver": true
+  },
+  "zones": {
+    "body": {
+      "min": [-0.586000369489193, -0.5619919538497925, -0.2110271543264389],
+      "max": [-0.08539463989436627, 0.09771766662597656, 0.23005829155445098],
+      "pad": 0.025
+    },
+    "head": {
+      "min": [-1.1485951086235682, -1.1058024709463237, -0.27469923309981825],
+      "max": [-0.22416484583474477, -0.3102009192649585, 0.004987677186727525],
+      "pad": 0.025
+    },
+    "reference_frame": 17,
+    "method": "Axis-aligned anatomical envelopes derived from every approved frame-17 contact polygon pair; any contact outside the envelopes fails; central-face prism and camera rays remain hard fails."
+  }
+}
