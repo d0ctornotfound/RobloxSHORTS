@@ -6,7 +6,7 @@ from PIL import Image,ImageDraw,ImageFilter
 import numpy as np
 
 EXPRESSIONS=("neutral","happy","smug","tired","worried","laughing","shocked","sad","unimpressed")
-SKINS={"honey":(.83,.54,.27),"warm_tan":(.68,.38,.18),"peach":(.93,.66,.39),"dad_tan":(.79,.51,.28)}
+SKINS={"honey":(.83,.54,.27),"warm_tan":(.60,.32,.13),"peach":(.93,.66,.39),"dad_tan":(.68,.40,.19)}
 def srgb(c):return tuple(round(255*(12.92*x if x<=.0031308 else 1.055*x**(1/2.4)-.055)) for x in c)
 
 def face(expr,identity="young"):
@@ -67,14 +67,14 @@ def facial_hair(kind):
     def ellipse(x,y,w,h,c):d.ellipse(tuple(round(v*S) for v in (x-w/2,y-h/2,x+w/2,y+h/2)),fill=c)
     if kind=="beard":
         d.polygon([(round(x*S),round(y*S)) for x,y in [(.19,.53),(.30,.61),(.35,.76),(.5,.81),(.65,.76),(.70,.61),(.81,.53),(.78,.82),(.64,.92),(.36,.92),(.22,.82)]],fill=(49,32,23,184))
-    for i in range(1500 if kind=="beard" else 920):
+    for i in range(2300 if kind=="beard" else 2100):
         x=r.uniform(.18,.82);y=r.uniform(.54,.90)
         # Moustache, chin and jaw, excluding the expression's mouth.
-        moustache=((x-.5)/.23)**2+((y-.59)/.06)**2<1 and abs(x-.5)>.025
+        moustache=((x-.5)/.23)**2+((y-.585)/.075)**2<1 and abs(x-.5)>.025
         jaw=((x-.5)/.31)**2+((y-.69)/.24)**2<1 and (y>.765 or abs(x-.5)>.205)
         if moustache or jaw:
-            a=r.randint(65,190) if kind=="stubble" else r.randint(115,225)
-            w=r.uniform(.003,.009);ellipse(x,y,w,w*r.uniform(1.1,2.8),(38,27,21,a))
+            a=r.randint(115,235) if kind=="stubble" else r.randint(115,225)
+            w=r.uniform(.003,.0105);ellipse(x,y,w,w*r.uniform(1.1,2.8),(38,27,21,a))
     return im.resize((1024,1024),Image.Resampling.LANCZOS)
 
 # Garment atlas: top-left front, top-right back, bottom-left sides, bottom-right caps.
@@ -87,7 +87,14 @@ def cloth(kind,skin=None):
     for panel in range(4):
         # Fine textile grain plus broader tonal fold shading; use panel-local UVs.
         g=rng.normal(0,2.6,(S,S))+2.0*np.sin(x*S*math.pi/2)+1.2*np.cos(y*S*math.pi/2)
-        folds=5*np.sin(15*x+3*y)+4*np.sin(22*y+4*x)+7*np.exp(-((x-.43-.12*y)/.15)**2)-8*np.exp(-((x-.82+.07*y)/.06)**2)
+        # Asymmetric creases instead of regular inflated waves; diffuse cloth.
+        folds=3*np.sin(13*x+3*y)+2*np.sin(18*y+4*x)
+        for a,b,c,amp,spread in ((.13,.23,.13,-11,.045),(.85,.70,-.13,-15,.065),(.35,.52,.16,8,.12),(.48,.83,-.22,-9,.055),(.70,.14,.14,8,.07)):
+            center=a+c*(y-b)
+            folds+=amp*np.exp(-((x-center)/spread)**2-((y-b)/.19)**2)
+        if kind in ("jeans","blue_denim","yellow_denim"):
+            folds+=20*np.exp(-((x-.53)/.26)**2)*np.exp(-((y-.45)/.42)**2)
+            g+=4*np.sin((x+y*.5)*S*math.pi*.74)+rng.normal(0,2.1,(S,S))
         arr=np.clip(np.array(base)[None,None,:]+(g+folds)[...,None],0,255).astype("uint8")
         im=Image.fromarray(arr);d=ImageDraw.Draw(im)
         dark=tuple(max(0,c-35) for c in base);lit=tuple(min(255,c+27) for c in base);seam=tuple(max(0,c-18) for c in base)
@@ -99,6 +106,10 @@ def cloth(kind,skin=None):
             poly([(x0,y0),(x1,y0),(x1,y1-.045),((x0+x1)/2,y1),(x0,y1-.045)],dark)
             poly([(x0+.012,y0+.012),(x1-.012,y0+.012),(x1-.012,y1-.053),((x0+x1)/2,y1-.014),(x0+.012,y1-.053)],base)
             line([(x0+.023,y0+.035),(x1-.023,y0+.035)],lit,.005)
+        def stitch(x0,y0,x1,y1,c=lit):
+            for i in range(18):
+                a=i/18;b=a+.028
+                line([(x0+(x1-x0)*a,y0+(y1-y0)*a),(x0+(x1-x0)*b,y0+(y1-y0)*b)],c,.0035)
         # Panel hem and fold creases.
         line([(.025,.92),(.35,.945),(.68,.925),(.975,.94)],dark,.018)
         line([(.025,.903),(.35,.927),(.68,.907),(.975,.92)],lit,.008)
@@ -116,6 +127,7 @@ def cloth(kind,skin=None):
                 poly([(.28,.61),(.72,.61),(.81,.84),(.19,.84)],dark)
                 poly([(.30,.63),(.70,.63),(.78,.82),(.22,.82)],base)
                 line([(.29,.65),(.22,.80)],lit,.012);line([(.71,.65),(.78,.80)],lit,.012)
+            stitch(.30,.625,.70,.625);stitch(.24,.827,.76,.827)
             elif panel==1:poly([(.12,.02),(.88,.02),(.78,.24),(.5,.37),(.22,.24)],dark)
         elif kind=="jacket":
             if panel==0:
@@ -125,11 +137,17 @@ def cloth(kind,skin=None):
                     line([(a,.04),(a,.98)],dark,.018)
                     poly([(a,.02),(a+(-.12 if k==0 else .12),.02),(a+(-.035 if k==0 else .035),.26)],(224,207,176))
                 pocket(.075,.30,.29,.54);pocket(.71,.30,.925,.54)
+                for x0,x1 in ((.075,.29),(.71,.925)):
+                    rect((x0,.30,x1,.36),dark);rect((x0+.009,.306,x1-.009,.349),base)
+                    stitch(x0+.018,.373,x1-.018,.373,lit)
+                    d.ellipse(q(((x0+x1)/2-.012,.325,(x0+x1)/2+.012,.349)),fill=(222,209,184))
+                stitch(.035,.08,.035,.91);stitch(.965,.08,.965,.91)
                 for yy in (.31,.49,.67,.85):d.ellipse(q((.315,yy,.34,yy+.025)),fill=(219,208,183))
             elif panel==1:line([(.12,.2),(.5,.28),(.88,.2)],dark,.014)
         elif kind in ("jeans","yellow_denim","blue_denim","stripe_pants"):
             line([(.06,.02),(.06,.98)],dark,.012);line([(.078,.02),(.078,.98)],lit,.005)
             line([(.94,.02),(.94,.98)],dark,.011)
+            stitch(.085,.04,.085,.94);stitch(.922,.04,.922,.94)
             if kind=="stripe_pants":
                 if panel in (0,2):line([(.12,.02),(.12,.98)],(225,226,219),.018)
             else:

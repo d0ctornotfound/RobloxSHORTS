@@ -9,7 +9,7 @@ from render_demo import cube
 
 ROOT=Path(__file__).resolve().parents[1]/"assets"/"r6_variants"
 EXPRESSIONS=("neutral","happy","smug","tired","worried","laughing","shocked","sad","unimpressed")
-SKINS={"honey":(.83,.54,.27),"warm_tan":(.68,.38,.18),"peach":(.93,.66,.39),"dad_tan":(.79,.51,.28)}
+SKINS={"honey":(.83,.54,.27),"warm_tan":(.60,.32,.13),"peach":(.93,.66,.39),"dad_tan":(.68,.40,.19)}
 ROLE_COLORS["dad"]=(SKINS["dad_tan"],(.50,.31,.15),(.025,.027,.035))
 GARMENTS={"lead":("hoodie","jeans","warm_tan","young"),"friend":("tee","yellow_denim","peach","friend"),"teacher":("cardigan","stripe_pants","honey","teacher"),"dad":("jacket","stripe_pants","dad_tan","dad")}
 
@@ -21,8 +21,8 @@ def texture_mat(name,path):
 
 def fiber_mat(name,color,knit=False):
     m=matte(name,color);nt=m.node_tree;bs=nt.nodes.get("Principled BSDF")
-    bs.inputs["Roughness"].default_value=.86 if knit else .74
-    bs.inputs["Specular IOR Level"].default_value=.025
+    bs.inputs["Roughness"].default_value=.90 if knit else .83
+    bs.inputs["Specular IOR Level"].default_value=.015
     tex=nt.nodes.new("ShaderNodeTexCoord");scale=nt.nodes.new("ShaderNodeVectorMath");scale.operation="MULTIPLY"
     scale.inputs[1].default_value=(28,13,42) if knit else (58,3,1)
     nt.links.new(tex.outputs["Generated" if knit else "UV"],scale.inputs[0])
@@ -69,7 +69,7 @@ def apply_garments(actor,shirt,pants):
 def hair_style(actor,style):
     c=sum(actor.head_bounds,Vector())/2;s=actor.scale
     rng=random.Random(81 if style=="lead" else 52)
-    color=(.075,.040,.024) if style=="lead" else (.028,.025,.023)
+    color=(.019,.010,.006) if style=="lead" else (.009,.008,.007)
     mats=[fiber_mat(actor.role+" / directional strands "+str(i),tuple(v*f for v in color)) for i,f in enumerate((.70,.90,1.12,1.35))]
     # A low fitted cap, not a large spherical puff: cuboid-like cross-section
     # curves around the back, ears and upper forehead.
@@ -116,7 +116,7 @@ def hair_style(actor,style):
         for j in range(8):
             x=-.54+j*.154+rng.uniform(-.025,.025)
             if style=="lead":
-                tip=(x+rng.uniform(-.22,.22),yy-.11+rng.uniform(-.10,.10),.88+rng.uniform(-.08,.20))
+                tip=(x+rng.uniform(-.26,.26),yy+.03+rng.uniform(-.20,.20),.86+rng.uniform(-.05,.20))
                 mid=(x-.10,yy-.035,.91+rng.uniform(0,.12))
             else:
                 tip=(x-.18,yy-.22,.72+rng.uniform(-.04,.13));mid=(x-.04,yy-.04,.89)
@@ -160,11 +160,11 @@ class VariantCharacter(R6Character):
                     self.accessories.remove(ob);self.meshes.remove(ob);bpy.data.objects.remove(ob,do_unlink=True)
             hair_style(self,self.role)
         elif self.role=="friend":
-            m=fiber_mat("Ochre rib-knit beanie",(.60,.23,.035),True)
-            cuff=fiber_mat("Dark rib-knit cuff",(.42,.12,.018),True)
+            m=fiber_mat("Ochre rib-knit beanie",(.46,.13,.013),True)
+            cuff=fiber_mat("Dark rib-knit cuff",(.30,.065,.009),True)
             for ob in self.accessories:
                 if "beanie" in ob.name:ob.data.materials[0]=cuff if "cuff" in ob.name else m
         elif self.role=="teacher":
-            m=fiber_mat("Teacher dark strand hair",(.049,.026,.016))
+            m=fiber_mat("Teacher dark strand hair",(.025,.012,.007))
             for ob in self.accessories:
                 if "hair" in ob.name or "bun" in ob.name:ob.data.materials[0]=m

@@ -23,13 +23,13 @@ def main():
     if a.shot=="00_variant_lineup":
         scene.render.resolution_x,scene.render.resolution_y=1920,1080
         gray=matte("Neutral studio",(.30,.32,.35))
-        cube("Studio floor",(0,0,-.08),(35,35,.16),gray,bevel=0)
+        cube("Studio floor",(0,0,-.08),(500,500,.16),gray,bevel=0)
         cube("Studio background",(0,4,4),(35,.2,9),gray,bevel=0)
         light("Studio key",(-3,-4,5),(0,0,1.25),700,4,(1,.96,.91))
         light("Studio fill",(3,-4,3.2),(0,0,1.25),470,5,(.91,.96,1))
         light("Studio rim",(0,2.8,4.8),(0,0,1.25),320,3,(1,1,1))
         roles=("lead","friend","teacher","dad");positions=((-2.82,0,0),(-.94,0,0),(.94,0,0),(2.82,0,0))
-        cam=camera(scene,(0,-10,1.65),(0,0,1.30),8.0,True)
+        cam=camera(scene,(0,-10,2.65),(0,0,1.30),8.0,True)
     else:
         scene.render.resolution_x,scene.render.resolution_y=720,1280
         for drink in cafe():set_visible(drink,False)
