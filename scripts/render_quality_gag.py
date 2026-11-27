@@ -56,15 +56,15 @@ def render(scene,out,name):
 
 def main():
     p=argparse.ArgumentParser();p.add_argument("--part",type=int,required=True,help="-1 runs complete geometric preflight, no animation rendering");p.add_argument("--output",required=True);p.add_argument("--reuse-insert",type=Path,help="Exact original chunk 4 PNGs from run 45936954946")
-    p.add_argument("--test-profile",choices=("low","medium","high","restaged","singles_proof","wide_grid"),help="Supervisor lighting review only; no production renders")
+    p.add_argument("--test-profile",choices=("low","medium","high","restaged","singles_proof","wide_grid","shadow_a","shadow_b"),help="Supervisor lighting review only; no production renders")
     args=p.parse_args(sys.argv[sys.argv.index("--")+1:]);out=Path(args.output).resolve();out.mkdir(parents=True,exist_ok=True)
     if args.test_profile:
         assert args.part==-1 and not args.reuse_insert
     # Exact trial values, never applied to production mode before approval.
-    trials={"low":(230,70,.48),"medium":(340,100,.60),"high":(450,145,.74),"restaged":(85,0,.74),"singles_proof":(85,0,.74),"wide_grid":(85,0,.74)}
-    singles_proof=args.test_profile=="singles_proof"
+    trials={"low":(230,70,.48),"medium":(340,100,.60),"high":(450,145,.74),"restaged":(85,0,.74),"singles_proof":(85,0,.74),"wide_grid":(85,0,.74),"shadow_a":(85,0,.74),"shadow_b":(85,0,.74)}
+    singles_proof=args.test_profile in ("singles_proof","shadow_a","shadow_b")
     wide_grid=args.test_profile=="wide_grid"
-    restaged=args.test_profile in ("restaged","singles_proof","wide_grid")
+    restaged=args.test_profile in ("restaged","singles_proof","wide_grid","shadow_a","shadow_b")
     test_frames={61,166} if singles_proof else {1,11,21} if wide_grid else {1,11,21,61,166} if restaged else {1,11,21,61,116,166} if args.test_profile else set()
     trial_lower,trial_torso,trial_world=trials[args.test_profile] if args.test_profile else (780,480,.34)
     scene,atm,cam,lead=street_scene(48,540,960);scene.render.fps=FPS;scene.render.fps_base=1
@@ -310,6 +310,9 @@ def main():
             point_at(lower_fill,base+Vector((0,0,.52)));lower_fill.data.energy=115
         if restaged and shot in ("approach_single","wave_notice_single","recoil_single"):
             atm.sun.data.energy=1.7;atm.fill.data.energy=90;scene.view_settings.exposure=-.15
+            # Exactly one shadow-floor variable per supervisor trial.
+            if args.test_profile=="shadow_a":ambient.default_value=.44
+            if args.test_profile=="shadow_b":scene.view_settings.exposure=0.0
         if shot in ("approach_single","wave_notice_single","recoil_single"):
             x,y,_=lead.root.location
             a=heading(t) if t<2.4 else yaw
