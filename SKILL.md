@@ -185,3 +185,7 @@ Use [library_locomotion.py](scripts/library_locomotion.py) StrideLock over origi
 
 ### Actual renderer comparison, library run 45927465057
 Café artifact 15166768289: Cycles preview 16.362s/frame, matched 1080p Cycles 95.627s, Eevee 1080p 75.614s (1.265x faster matched). Street artifact 15167695479: 2.367s, 19.110s, 34.947s (Eevee 1.83x slower matched). Blender 4.0.2 software graphics CI. Actual comparison stills show smoother grain-free Eevee but different shadow/indirect-light look. Not a fraction of time across scenes, so do not adopt as universal final profile on current runners. Motion tests pending. Earlier two-shot 54.57/53.80% projected coverage and ~99.46/97.16% in-frame visibility, but arms cropped horizontally: rejected as full-body default, strict body bounds added. No approved short changed by library updates.
+
+
+### Depth-staged two-shots
+When side-by-side full-body framing cannot reach >=45% projected height for both standing subjects, place one actor nearer the camera and the other behind, with lateral separation and readable faces. Search world positions and camera jointly; maintain all-body margins, per-subject 45% minimum, face and object-ID visibility. Do not waive the gates. Gag depth-staging test is pending actual render evidence.

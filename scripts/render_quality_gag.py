@@ -57,17 +57,32 @@ def main():
     print("STRIDE_VALIDATION",json.dumps({k:{a:b for a,b in v.items() if a!="records"} for k,v in (("walk",walk),("run",run_rec))}),flush=True)
     # Use derived travel, not arbitrary speed. Translate entire path so it
     # ends at the marked stage position, preserving contact velocity.
-    finish=Vector((-.46,-.24,0));end=Vector(walk["records"][-1]["root"]);offset=finish-end;offset.z=0
-    pose(lead,"idle",0,finish,yaw)
-    other=Vector((.48,.46,0));pose(friend,"idle",0,other,-.12)
+    end=Vector(walk["records"][-1]["root"])
+    # Supervisor-authorized depth staging: friend foreground, lead behind.
+    # Search actual blocking rather than weakening the coverage or body gate.
+    fit=None;attempts=[]
+    for lx,ly,fx,fy in ((-.38,.72,.34,-.56),(-.43,.70,.37,-.70),(-.28,.95,.37,-.60),(-.54,.88,.30,-.52),(-.35,.80,.22,-.74)):
+        finish=Vector((lx,ly,0));other=Vector((fx,fy,0))
+        act(lead,"recoil",.72,finish,yaw);act(friend,"recoil",.72,other,-.12)
+        try:
+            candidate=fit_two_shot(scene,cam,[lead,friend],target=((lx+fx)/2,(ly+fy)/2,1.28),minimum=.45,
+                allowed=lambda p,q:(other-p).length<(finish-p).length-.25)
+        except RuntimeError as e:
+            attempts.append({"lead":list(finish),"friend":list(other),"failure":str(e)})
+            continue
+        candidate["lead_position"]=list(finish);candidate["friend_position"]=list(other)
+        candidate["depth_difference"]=(finish-cam.location).length-(other-cam.location).length
+        attempts.append(candidate);fit=candidate;break
+    save(out,"depth_staging.json",attempts)
+    if fit is None:raise RuntimeError("No depth-staged full-body >=45% two-shot")
+    offset=finish-end;offset.z=0
+    pose(lead,"idle",0,finish,yaw);pose(friend,"idle",0,other,-.12)
     p=palette();gift=build("gift_box","Surprise gift",pos=(.12,-.64,0),scale=.78,p=p)
     ball=build("ball","Surprise ball",pos=(.12,-.64,.16),scale=.75,p=p)
     lid=[o for o in gift.children if any(k in o.name for k in ("lid","ribbon","bow"))];original={o:o.location.copy() for o in lid}
     # The ball sits inside the closed opaque box until the lid releases.
     for o in ball.children:o.hide_render=True
-    # Solve the static two-shot with widest meaningful gesture at payoff.
-    act(lead,"recoil",.72,finish,yaw);act(friend,"recoil",.72,other,-.12)
-    fit=fit_two_shot(scene,cam,[lead,friend],target=(0,.10,1.28),minimum=.45)
+    # The fixed two-shot uses the depth-staged solution found above.
     print("GAG_TWO_SHOT",json.dumps(fit),flush=True)
     # Sequential playback ensures stance detection is the same on every runner.
     lock=StrideLock(ret,"walk_cycle",FPS,rate,start,walk_yaw)
