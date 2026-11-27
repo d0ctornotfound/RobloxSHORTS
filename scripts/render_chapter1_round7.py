@@ -115,8 +115,15 @@ def verify(scene,cam,actor,partner,art,other,cup,name,f,p,row,layout):
             gn=Vector(row["grip_normal"]);gq=Vector(row["grip_anchor"])
             cap=(limb.lower.matrix_world.to_3x3()@Vector((0,0,-1))).normalized()
             support=min((v-gq).dot(gn) for v in hand[0])
-            capalign=cap.dot(-gn);row.update(cap_alignment=capalign,support_clearance=support)
-            g.update(cup_end_cap_support=capalign>=.90 and support>=-.001,
+            capalign=cap.dot(-gn)
+            elbow=limb.upper.matrix_world@Vector((0,0,-limb.a));shoulder=limb.joint()
+            end=limb.lower.matrix_world@Vector((0,0,-limb.b));axis=(end-shoulder).normalized()
+            linepoint=shoulder+axis*(elbow-shoulder).dot(axis)
+            outward=(actor.root.matrix_world.to_3x3()@Vector((1,0,0))).normalized()
+            elbow_out=(elbow-linepoint).dot(outward);exact=bool(row.get("endcap_exact_solution",False))
+            row.update(cap_alignment=capalign,support_clearance=support,elbow_outward=elbow_out)
+            g.update(cup_end_cap_support=exact and capalign>=.90 and support>=-.001,
+                     endcap_exact_solution=exact,elbow_outside_torso=elbow_out>=.10,
                      cup_below_mouth=not contact or below<=.002,cup_grip_contact=grip<=.02,cup_arm_no_intersections=ci==0,
                      cup_body_no_intersections=cb==0,arm_body_no_intersections=ab==0,arm_other_no_intersections=ao==0)
         row.update(lateral_alignment=lat,normal_gap=normal,contact_center=center,head_surface_intersections=headhits,
@@ -164,7 +171,9 @@ def report(name,rows,attempts,layout):
                                    max_arm_other_intersections=max(r["arm_other_intersections"] for r in rows),
                                    max_cup_body_above_mouth=max((r["cup_body_above_mouth"] for r in contacts),default=None),
                                    min_cap_alignment=min(r["cap_alignment"] for r in rows),
-                                   min_support_clearance=min(r["support_clearance"] for r in rows))
+                                   min_support_clearance=min(r["support_clearance"] for r in rows),
+                                   min_elbow_outward=min(r["elbow_outward"] for r in rows),
+                                   endcap_exact_solution_frames=sum(bool(r.get("endcap_exact_solution")) for r in rows))
     if name=="hug":q.update(max_cross_body_surface_intersections=max(r["intersections"] for r in rows),
                              max_engaged_hand_gap=max((max(r["hand_surface_gaps"]) for r in contacts),default=None))
     return q

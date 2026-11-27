@@ -69,34 +69,35 @@ def search_eat(scene,cam,a,art,yaw,baseline,N):
     print("EAT7_HEAD_SEARCH",json.dumps({"tested":len(candidates),"best":best[0]}),flush=True)
     return best[1],candidates
 
-def cup_support(arm,gq,gn,pole,yaw,roll,clear,branch,fu,fv):
-    # Exact plane solve: distal cap local -Z normal faces the cup base,
-    # selected actual cap point touches an offset plane under the cup.
+def cup_support(arm,gq,gn,pole,yaw,roll,clear,branch,fu,fv,outward,diagnostic=False):
+    # Distal cap local -Z must face -gn (toward the cup base). The old
+    # unconstrained IK fallback could flip this normal by ~180 degrees.
+    # Exact surface-plane IK is used for search; fallback is diagnostic only.
     sol=flat_contact(arm,gq,gn,yaw,(2,-1,fu,fv,branch,clear,Vector((0,0,0))))
+    exact=sol is not None
     if sol is None:
-        # Diagnostic/alternate rigid IK with an outward half-thickness
-        # correction. Never accept unless actual end cap supports the base.
-        sol=arm.solve(gq,gn,pole,yaw,roll,1.,clear)
+        if not diagnostic:return None
+        sol=arm.solve(gq,pole,yaw,roll,1.,clear)
     lm=Matrix(sol["matrices"][1])
     cap=(lm.to_3x3()@Vector((0,0,-1))).normalized()
     sol["cap_alignment"]=cap.dot(-gn)
-    # Cup is above the entire distal hand surface on its base plane.
+    elbow=Matrix(sol["matrices"][0])@Vector((0,0,-arm.l.a))
+    shoulder=arm.l.joint();end=Vector(sol["endpoint"]);axis=(end-shoulder).normalized()
+    linepoint=shoulder+axis*(elbow-shoulder).dot(axis)
+    sol["elbow_outward"]=(elbow-linepoint).dot(outward)
+    sol["endcap_exact_solution"]=exact
     sol["support_clearance"]=min((v-gq).dot(gn) for v in sol["hand"][0])
     return sol
 
-def drink_eval(actor,art,cam,cup,p,yaw,params,prepared=None):
+def drink_eval(actor,art,cam,cup,p,yaw,params,prepared=None,diagnostic=False):
     raw=p["mouth_action"];w=min(1.,raw/.90);contact=raw>=.90
     decal,anchor,n,up,side,heads,other,body,extras=prepared or prep(actor,art)
     side_sign,tilt,az,offset,corner,grip,gripz,poleangle,poledepth,roll,way,drop=params
     arm=ArmSolver(art.arms[0]);l=arm.l
-    # Rim centre stays centred in face plane at contact. Axis tips inward
-    # so the cup base remains outside and below the face. Side approach
-    # comes from beside the cheek, not across the face front.
-    z=Vector((0,0,1));horizontal=n-z*n.dot(z);horizontal.normalize()
-    lateral=z.cross(horizontal)
+    # Keep the existing 0.7 cup and rim pose/approach exactly unchanged.
+    z=Vector((0,0,1));horizontal=n-z*n.dot(z);horizontal.normalize();lateral=z.cross(horizontal)
     axis=(z*math.cos(tilt)+(-horizontal*math.cos(az)+lateral*math.sin(az))*math.sin(tilt)).normalized()
-    rot=z.rotation_difference(axis)
-    center=decal+n*offset+side*corner
+    rot=z.rotation_difference(axis);center=decal+n*offset+side*corner
     final=center-rot@Vector((0,0,.07))
     rest=l.transform()@l.end+side*side_sign*.12+n*.16+z*.04
     waypoint=final+side*side_sign*way+n*.12-up*drop
@@ -105,39 +106,124 @@ def drink_eval(actor,art,cam,cup,p,yaw,params,prepared=None):
     else:
         b=ramp(w,.55,1);pos=waypoint.lerp(final,b);fraction=.35+.65*b
     cm=Matrix.Translation(pos)@z.rotation_difference(z).slerp(rot,fraction).to_matrix().to_4x4()
-    cg=world(data(cup),cm);nonrim=cup_nonrim(cup,cm)
-    lat,normal,rc=rim_contact(cup,cm,decal,n)
-    # Grip variables now select a point on the measured bottom disc,
-    # not a location inside its wall. Cup sits on the distal end cap.
+    cg=world(data(cup),cm);nonrim=cup_nonrim(cup,cm);lat,normal,rc=rim_contact(cup,cm,decal,n)
+    # Actual underside disc is z=-0.10; the old z=-0.07 point was on
+    # the cup wall. This is a grip-only correction; rim transform is intact.
     gn=-(cm.to_3x3()@Vector((0,0,1))).normalized()
     radius=.045*max(0,min(1,abs(gripz)/.07))
-    gq=cm@Vector((radius*math.cos(grip),radius*math.sin(grip),-.07))
+    gq=cm@Vector((radius*math.cos(grip),radius*math.sin(grip),-.10))
     pole=side*math.cos(poleangle)+up*math.sin(poleangle)+n*poledepth
     branch=1 if math.sin(poleangle)>=0 else -1
     fu=.15+.70*(.5+.5*math.cos(grip));fv=.15+.70*(.5+.5*math.sin(grip))
-    sol=cup_support(arm,gq,gn,pole,yaw,roll,.004,branch,fu,fv)
+    outward=(actor.root.matrix_world.to_3x3()@Vector((1,0,0))).normalized()
+    sol=cup_support(arm,gq,gn,pole,yaw,roll,.004,branch,fu,fv,outward,diagnostic)
+    if sol is None:
+        return None,{"geometry_pass":False,"search_constraints_pass":False,
+            "search_rejection":"no reachable exact distal end-cap solution",
+            "cup_matrix":matlist(cm),"mouth_action":raw,"contact":contact,
+            "cup_rim_to_mouth":rim_distance(cup,cm,decal),"lateral_alignment":lat,
+            "normal_gap":normal,"cup_body_above_mouth":max(v.z-decal.z for j,v in enumerate(cg[0]) if not 32<=j<96)}
     geoms=[sol["upper"],sol["lower"]]
     heads_n=sum(overlap(g,heads) for g in geoms+other)+overlap(cg,heads)
     cup_arm=overlap(cg,geoms+other);cup_body=overlap(cg,[body]+extras)
-    # Native shoulder attachment overlap is intentional; exclude only
-    # its proximal quarter against own torso. All other collisions tested.
+    # Exclude only the proximal quarter of the upper arm from own-torso test.
     from chapter1_drink_path import sliced
     upper_distal=world(sliced(l.upper,-.25*l.a),Matrix(sol["matrices"][0]))
     arm_body=overlap(upper_distal,[body])+overlap(sol["lower"],[body])
     arm_other=sum(overlap(g,other+extras) for g in geoms)
     face=rays(cam,actor,[body]+other+geoms+[nonrim])
     gripgap=sol["gap"];below=max(v.z-decal.z for j,v in enumerate(cg[0]) if not 32<=j<96)
-    valid=heads_n==cup_arm==cup_body==arm_body==arm_other==face==0 and gripgap<=.02 and sol["cap_alignment"]>=.90 and sol["support_clearance"]>=-.001 and (not contact or (contact_ok(lat,normal) and below<=.002))
-    score=(int(not valid),heads_n+cup_arm+cup_body+arm_body+arm_other,face,max(0,lat-LAT)+max(0,abs(normal)-GAP) if contact else 0,max(0,gripgap-.02)+max(0,.90-sol["cap_alignment"])+max(0,-sol["support_clearance"]-.001))
-    return score,{"geometry_pass":valid,"arm_matrices":sol["matrices"],"cup_matrix":matlist(cm),"parameters":list(params),
+    search_constraints=(sol["endcap_exact_solution"] and sol["cap_alignment"]>=.90
+                        and sol["elbow_outward"]>=.10 and arm_body==0)
+    valid=(search_constraints and heads_n==cup_arm==cup_body==arm_other==face==0
+           and gripgap<=.02 and sol["support_clearance"]>=-.001
+           and (not contact or (contact_ok(lat,normal) and below<=.002)))
+    row={"geometry_pass":valid,"search_constraints_pass":search_constraints,
+        "endcap_exact_solution":sol["endcap_exact_solution"],"arm_matrices":sol["matrices"],
+        "cup_matrix":matlist(cm),"parameters":list(params),
         "face_body_blocked_samples":face,"head_surface_intersections":heads_n,"cup_arm_intersections":cup_arm,
         "cup_body_intersections":cup_body,"arm_body_intersections":arm_body,"arm_other_intersections":arm_other,
         "cup_body_above_mouth":below,"grip_gap":gripgap,"grip_anchor":list(gq),
-        "cap_alignment":sol["cap_alignment"],"support_clearance":sol["support_clearance"],"grip_normal":list(gn),
+        "cap_alignment":sol["cap_alignment"],"support_clearance":sol["support_clearance"],
+        "elbow_outward":sol["elbow_outward"],"grip_normal":list(gn),
         "measured_half_thickness":sol["half_thickness"],
         "cup_rim_to_mouth":rim_distance(cup,cm,decal),"mouth_action":raw,"contact":contact,
         "lateral_alignment":lat,"normal_gap":normal,"contact_center":rc,"mouth_decal_anchor":list(decal)}
+    # Hard orientation/path constraints are discarded before candidate scoring.
+    if not search_constraints:return None,row
+    score=(int(not valid),heads_n+cup_arm+cup_body+arm_body+arm_other,face,
+        max(0,lat-LAT)+max(0,abs(normal)-GAP) if contact else 0,
+        max(0,gripgap-.02)+max(0,-sol["support_clearance"]-.001))
+    return score,row
+
 def search_drink(scene,cam,a,art,cup,yaw,N):
+    # Keep the 0.7 cup, rim target, profile, tilt candidates and lip gates.
+    scene.frame_set(30);p,angle=profile_base(a,art,29/59,29/30,yaw);prepared=prep(a,art)
+    decal,anchor,n,up,side,heads,other,body,extras=prepared
+    z=Vector((0,0,1));hn=n-z*n.dot(z);hn.normalize();hs=z.cross(hn);opts=[]
+    for tilt,az,offset,corner in itertools.product(map(math.radians,(35,40,45)),(-.45,0,.45),(.035,.045,.055,.059),(-.025,0,.025)):
+        axis=(z*math.cos(tilt)+(-hn*math.cos(az)+hs*math.sin(az))*math.sin(tilt)).normalized()
+        rot=z.rotation_difference(axis);center=decal+n*offset+side*corner
+        cm=Matrix.Translation(center-rot@Vector((0,0,.07)))@rot.to_4x4()
+        cg=world(data(cup),cm);lat,norm,rc=rim_contact(cup,cm,decal,n)
+        below=max(v.z-decal.z for j,v in enumerate(cg[0]) if not 32<=j<96)
+        score=(overlap(cg,heads)+overlap(cg,[body]+extras),rays(cam,a,[cup_nonrim(cup,cm)]),
+               int(not contact_ok(lat,norm)),max(0,below-.002))
+        opts.append((score,(tilt,az,offset,corner)))
+    opts.sort();clean=[x for x in opts if x[0]==(0,0,0,0)]
+    ranked=[];tested=0;peak_clean=0;hard_rejections=0;diagnostic_seed=None
+    for _,cp in (clean[:18] if clean else opts[:8]):
+        for ss,grip,gz,pa,pd,roll in itertools.product((-1,1),[i*math.tau/8 for i in range(8)],
+                (-.07,-.025,.02),[i*math.tau/8 for i in range(8)],(.2,.8),(0,math.pi/2,-math.pi/2)):
+            config=(ss,)+cp+(grip,gz,pa,pd,roll,.22,.22)
+            if diagnostic_seed is None:diagnostic_seed=config
+            score,row=drink_eval(a,art,cam,cup,p,angle,config,prepared,False);tested+=1
+            if score is None or row is None:
+                hard_rejections+=1;continue
+            ranked.append((score,config));peak_clean+=int(row["geometry_pass"])
+            if peak_clean>=24:break
+        if peak_clean>=24:break
+    attempts=[{"cup_candidates":len(opts),"clean_cup_candidates":len(clean),"arm_candidates":tested,
+        "peak_geometry_clean":peak_clean,"hard_constraint_rejections":hard_rejections,"best_peak":ranked[:3]}]
+    if not ranked:
+        rows=[];config=diagnostic_seed
+        for f in range(N):
+            scene.frame_set(f+1);p,angle=profile_base(a,art,f/59,f/30,yaw)
+            _,row=drink_eval(a,art,cam,cup,p,angle,config,prepared=None,diagnostic=True);rows.append(row)
+        attempts[0]["no_eligible_peak_candidate"]=True
+        return rows,attempts
+    best=None;best_diagnostic=None
+    for _,c in ranked[:24]:
+        rows=[];hard_frames=[]
+        for f in range(N):
+            scene.frame_set(f+1);p,angle=profile_base(a,art,f/59,f/30,yaw)
+            score,row=drink_eval(a,art,cam,cup,p,angle,c,diagnostic=False)
+            if score is None:
+                hard_frames.append(f+1)
+                _,row=drink_eval(a,art,cam,cup,p,angle,c,diagnostic=True)
+            rows.append(row)
+        if hard_frames:
+            attempts.append({"parameters":list(c),"hard_constraint_failed_frames":hard_frames})
+            if best_diagnostic is None or len(hard_frames)<best_diagnostic[0]:
+                best_diagnostic=(len(hard_frames),rows,c)
+            continue
+        contacts=[r for r in rows if r["contact"]]
+        score=(sum(not r["geometry_pass"] for r in rows),
+            max(r["head_surface_intersections"] for r in rows),
+            max(r["cup_arm_intersections"] for r in rows),
+            max(r["arm_body_intersections"] for r in rows),
+            max(r["lateral_alignment"] for r in contacts))
+        attempts.append({"parameters":list(c),"score":list(score)})
+        if best is None or score<best[0]:best=(score,rows)
+        if score[0]==0:break
+    if best is not None:return best[1],attempts
+    if best_diagnostic is not None:return best_diagnostic[1],attempts
+    rows=[];config=diagnostic_seed
+    for f in range(N):
+        scene.frame_set(f+1);p,angle=profile_base(a,art,f/59,f/30,yaw)
+        _,row=drink_eval(a,art,cam,cup,p,angle,config,diagnostic=True);rows.append(row)
+    return rows,attempts
+scene,cam,a,art,cup,yaw,N):
     # Test contact cup geometry alone before full arm search.
     scene.frame_set(30);p,angle=profile_base(a,art,29/59,29/30,yaw);prepared=prep(a,art)
     decal,anchor,n,up,side,heads,other,body,extras=prepared
