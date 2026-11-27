@@ -1,5 +1,9 @@
 name: The Perfect Throw classroom short
 on:
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/classroom-render.yml'
   workflow_dispatch:
     inputs:
       profile:

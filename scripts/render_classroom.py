@@ -3,7 +3,7 @@ import argparse,json,math,sys
 from pathlib import Path
 sys.path.insert(0,str(Path(__file__).resolve().parent))
 import bpy
-from mathutils import Vector,Euler
+from mathutils import Vector,Euler,Matrix
 from bpy_extras.object_utils import world_to_camera_view
 from render_demo import empty,point_at,material
 from render_stills import configure
@@ -89,7 +89,10 @@ def main():
     bpy.context.view_layer.update()
     local=bun.matrix_world.inverted()@(support.matrix_world@Vector((0,-.58,.06)))
     assert local.length<.8,list(local)
-    grip=lead.grips[0];hand=GripAttachment(plane,grip);hair=GripAttachment(plane,support)
+    grip=lead.grips[0]
+    paper_socket=empty("Lead paper orientation socket",(0,0,0),grip)
+    paper_socket.rotation_mode="QUATERNION"
+    hand=GripAttachment(plane,paper_socket);hair=GripAttachment(plane,support)
     launch=frame_at(spec["actions"]["launch"],fps);land=frame_at(spec["actions"]["landing"],fps)
     timeline=[];errors=[];start=None;start_rot=None;desk_errors=[];desk_targets={}
     lengths=[arm_length(lead,i) for i in (0,1)]
@@ -126,7 +129,7 @@ def main():
                         target,d=desk_contact(actor,i,lengths[i],-.78)
                         closed=True
                     elif i==0:
-                        fold=Vector((.48+.08*math.sin(t*5),-.68,-.16))
+                        fold=Vector((.48+.08*math.sin(t*5),-.68,-.40))
                         wind=Vector((-.15,-.25,.90))
                         throw=Vector((.12,.90,.34))
                         if t<2.8:d=fold
@@ -134,7 +137,7 @@ def main():
                         elif t<4.25:d=blend_direction(wind,throw,(t-3.7)/.55)
                         else:d=blend_direction(throw,(.15,-.22,-.9),(t-4.25)/.65)
                         closed=f<launch
-                    elif t<2.8:d=Vector((-.67,-.62,-.18+.10*math.sin(t*5)))
+                    elif t<2.8:d=Vector((-.67,-.62,-.38+.08*math.sin(t*5)))
                     elif t>=9.5:d=Vector((-.15,-.50,.60))
                 elif name=="friend" and t>=10:
                     # Laugh with the head tilted back and hands below the face.
@@ -152,6 +155,15 @@ def main():
             tracks[name].key(f,expressions[name])
         bpy.context.view_layer.update()
         if f<launch:
+            # Keep the folding paper horizontal and below the face while
+            # preserving actual grip translation; blend to original hand
+            # orientation before the throw, no release teleport.
+            grip_world=grip.matrix_world.copy()
+            orient=Euler((0,0,-.35)).to_quaternion().slerp(grip_world.to_quaternion(),smoothstep((t-2.65)/.35))
+            paper_socket.matrix_world=Matrix.Translation(grip_world.translation)@orient.to_matrix().to_4x4()
+            for field in ("location","rotation_quaternion","scale"):paper_socket.keyframe_insert(field,frame=f)
+            bpy.context.view_layer.update()
+            assert (paper_socket.matrix_world.translation-grip_world.translation).length<1e-5
             hair.constraint.influence=0;hair.constraint.keyframe_insert("influence",frame=f)
             plane.location=(0,0,0);plane.rotation_euler=(0,0,0)
             plane.keyframe_insert("location",frame=f);plane.keyframe_insert("rotation_euler",frame=f)
@@ -259,14 +271,14 @@ def main():
             else:
                 # Frontal compressed perspective; fixed lens throughout shot.
                 # Search physical positions and aim, using the whole segment's bounds.
-                cam.data.lens=48
+                cam.data.lens=52 if kind=="01_fold" else 48
                 cx=-.78 if kind=="02_throw" else 0
                 best=None
                 for dx in (0,-.55,.55,-1.1,1.1):
                     for dist in (3.1,3.5,3.9,4.3,4.7):
-                        for z in (1.48,1.75,2.0):
+                        for z in ((2.1,2.35,2.65) if kind=="01_fold" else (1.48,1.75,2.0)):
                             for aimx in (-.25,0,.25):
-                                cam.location=(cx+dx,-dist,z);point_at(cam,(cx+aimx,-.15,1.40))
+                                cam.location=(cx+dx,-dist,z);point_at(cam,(cx+aimx,-.15,1.73 if kind=="01_fold" else 1.40))
                                 m=measure();cov,ok,penalty,_,_=m
                                 score=(ok and min(cov.values())>=.40,min(cov.values())-penalty*12,ok)
                                 if best is None or score>best[0]:best=(score,cam.location.copy(),cam.rotation_euler.copy(),m)
