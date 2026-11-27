@@ -1,0 +1,53 @@
+name: Library camera and Eevee quality review
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/library-quality.yml'
+permissions:
+  contents: read
+  actions: read
+jobs:
+  test:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 60
+    strategy:
+      fail-fast: false
+      matrix:
+        job: [camera0, camera1, camera2, cafe_still, street_still, cafe_motion, street_motion]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/download-artifact@v4
+        if: startsWith(matrix.job, 'cafe')
+        with:
+          github-token: ${{ github.token }}
+          run-id: 45924174087
+          name: roblox-the-last-slice-r6-preview-12s
+          path: approved
+      - name: Install CPU render tools
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y --no-install-recommends blender ffmpeg python3-pil python3-numpy xvfb xauth libgl1-mesa-dri mesa-utils
+          /usr/bin/python3 -m py_compile scripts/library_camera.py scripts/render_library_quality.py
+          /usr/bin/python3 scripts/library_character_assets.py
+      - name: Render library evidence
+        env:
+          JOB: ${{ matrix.job }}
+          LIBGL_ALWAYS_SOFTWARE: '1'
+          LP_NUM_THREADS: '4'
+        run: |
+          xvfb-run -a -s '-screen 0 1920x1080x24' glxinfo -B
+          xvfb-run -a -s '-screen 0 1920x1080x24' blender -b -t 4 --python-exit-code 1 --python scripts/render_library_quality.py -- --job "$JOB" --output "render/quality"
+          if [[ "$JOB" == *_motion ]]; then
+            ffmpeg -v error -y -framerate 30 -i render/quality/frame_%04d.png -c:v libx264 -pix_fmt yuv420p -movflags +faststart render/quality/motion.mp4
+            ffprobe -v error -show_streams -show_format -of json render/quality/motion.mp4 > render/quality/ffprobe.json
+            rm render/quality/frame_*.png
+          fi
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: quality-${{ matrix.job }}
+          path: render/quality/
+          if-no-files-found: warn
+          retention-days: 7

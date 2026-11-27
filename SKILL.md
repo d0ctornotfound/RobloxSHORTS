@@ -155,3 +155,24 @@ Prior approved character base and lead/dad/friend/teacher variants: runs 4591096
 
 ### Supervisor-approved locomotion and final showcase
 Imported Walk and Sprint retargeting approved (run 45920470758, artifact 15164113448). Source credit godofsun95, license not established; see assets/R6_ATTRIBUTION.md and assets/animations/SOURCE.md. Remove redundant red pin backing slab in VariantCharacter, keep chest star; final showcase asserts star height is within evaluated torso bounds on every frame. The final street showcase uses Retarget.at('walk_cycle',seconds*rate), original timing and stride calibration, 20 scene units over 143/12 seconds, 144 frames, 360×640, 12 fps, 16 samples. Six independent frame chunks, native source cycle sampled without modifying endpoints. No procedural gait in the clip. Prior approval stills from run 45919789293 are retained as library evidence; final imported walk/run strips are regenerated after backing removal. Supervisor accepted the final functional showcase (6.62% global near-black, diagnostic for dark atmosphere) and approved dusk, closing the library sprint. Lit-scene gates remain unchanged. Proof Short #1 rerender authorized; classroom port code-only until separate approval.
+
+
+## 8. Camera library and final profile quality pass
+
+Source [library_camera.py](scripts/library_camera.py). World positions in scene units, lens mm, angles degrees, normalized phase t. apply(camera,kind,t,position,target,lens=48,**params) evaluates a deterministic absolute pose; optional frame keys. For motion sample at every final frame, use actual subject locations, no automatic zoom. No collision avoidance: check camera inside physical set, all hero/face/prop bounds and rendered ID visibility. Head/face safe framing is mandatory; deliberate crop of lower body/foreground may be used only with readable action.
+
+| Move | Parameters beyond position/target/lens | Use |
+|---|---|---|
+| static | none | dialogue, readable action |
+| push_in | distance scene units, smooth phase | emphasis |
+| pull_back | distance scene units | reveal |
+| pan | end_target world point | reveal across space |
+| tracking_follow | subject_start, subject_now world points | follow actual locomotion |
+| orbit | angle degrees, smooth phase | reveal depth |
+| over_shoulder | shoulder world anchor, position-target offset | dialogue reverse |
+| pov | eye and look world points | subject view; hide own obstructing body only |
+| close_up_punch_in | punch_lens, ease across first quarter | reaction |
+
+fit_two_shot(scene,camera,[a,b],target,minimum=.45) searches physical positions and fixed focal lengths, requires both projected vertical coverages >=45%, safe head bounds and >=.20 normalized face separation. Stagger/block actors instead of lowering target. Optional allowed(position,target) checks room constraints; object-ID render still mandatory. No universal success claim. Library demos start/end frames and measured gate pending.
+
+Quality comparison [library-quality.yml](.github/workflows/library-quality.yml) is isolated: approved cafe packed blend sampled at original frame 49 and street imported Walk at midday. Baseline Cycles preview and same-resolution 1080x1920 Cycles (same samples) compared against Eevee 1080x1920, 30fps, 64 TAA samples if supported, GTAO/soft shadows when available. Mesa CPU software renderer on GitHub, not a GPU speed estimate. Wall-clock timings include PNG writing. Separate one-second actual 30Hz motion tests, cafe sampled from original 12fps keyed timeline (not new story choreography) and street from imported animation. Final profile decision pending actual visual and timing comparison; keep existing Cycles proof workflow unchanged. Never claim 30fps improves source motion if only duplicated frames; validate final ffprobe and actual frames.
