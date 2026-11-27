@@ -118,9 +118,24 @@ class GravityDrop:
 
 
 class ExpressionTrack:
-    """Key actual image-decals, not shape keys or a drawn facial approximation."""
+    """Actual image decals with deterministic blink override and paired reactions."""
+    MAJOR_REACTIONS={
+        "shocked":((-.22,0,.035),(-.14,0,-.035)),
+        "surprised":((-.24,0,.045),(-.15,0,-.04)),
+        "laughing":((-.17,0,.075),(-.11,0,.035)),
+        "happy":((-.075,0,.045),(-.045,0,.02)),
+        "embarrassed":((.18,0,-.055),(.095,0,-.035)),
+        "angry":((-.075,0,.06),(-.065,0,.015)),
+        "worried":((.12,0,-.035),(.06,0,-.02)),
+        "sad":((.16,0,.015),(.085,0,.005)),
+        "smug":((-.045,0,.13),(-.035,0,.035)),
+    }
     def __init__(self,actor):
+        self.actor=actor
         self.decals={}
+        self.expression_keys={}
+        self._reaction_expression="neutral"
+        self._reaction_start_frame=None
         for expression,mat in actor.face_materials.items():
             obj=actor.face.copy()
             obj.data=actor.face.data.copy()
@@ -129,14 +144,40 @@ class ExpressionTrack:
             obj.data.materials[0]=mat
             self.decals[expression]=obj
         actor.face.hide_render=True
+        if not hasattr(actor,"_expression_tracks"):actor._expression_tracks=[]
+        actor._expression_tracks.append(self)
+
+    def expression_at(self,frame):
+        eligible=[f for f in self.expression_keys if f<=frame]
+        return self.expression_keys[max(eligible)] if eligible else "neutral"
+
+    def reaction(self,frame,expression,fps):
+        """Return short head/torso recoil when a major decal changes."""
+        if expression!=self._reaction_expression:
+            self._reaction_expression=expression
+            self._reaction_start_frame=frame if expression in self.MAJOR_REACTIONS else None
+        if self._reaction_start_frame is None or expression not in self.MAJOR_REACTIONS:
+            return {"head":(0,0,0),"torso":(0,0,0),"expression":expression,"weight":0.0}
+        elapsed=max(0.0,(frame-self._reaction_start_frame)/max(1.0,float(fps)))
+        weight=smoothstep(elapsed/.12)*(1-smoothstep(max(0.0,(elapsed-.16)/.38)))
+        head,torso=self.MAJOR_REACTIONS[expression]
+        return {"head":tuple(v*weight for v in head),
+                "torso":tuple(v*weight for v in torso),
+                "expression":expression,"weight":weight}
 
     def key(self,frame,expression):
+        if expression not in self.decals:raise KeyError("Missing expression decal: "+expression)
+        self.expression_keys[int(frame)]=expression
+        self.actor.current_expression=expression
         for name,obj in self.decals.items():
             obj.hide_render=name!=expression
             obj.keyframe_insert("hide_render",frame=frame)
+        from facial_expressions import refresh_expression
+        refresh_expression(self.actor)
 
     def constant_switches(self):
         for obj in self.decals.values():
-            for curve in obj.animation_data.action.fcurves:
-                for k in curve.keyframe_points:
-                    k.interpolation="CONSTANT"
+            if obj.animation_data and obj.animation_data.action:
+                for curve in obj.animation_data.action.fcurves:
+                    for k in curve.keyframe_points:
+                        k.interpolation="CONSTANT"
