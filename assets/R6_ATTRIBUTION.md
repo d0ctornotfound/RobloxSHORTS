@@ -10,3 +10,5 @@
 
 ## MCRD San Diego static map harvest
 Original builder **LoneWolf_Alfa**, [MCRD San Diego](https://builtbybit.com/resources/mcrd-san-diego.62883/) (free release, Free EULA, attribution required). User-provided RBXL SHA-256 0d383e8e4ee0b3162e79f856efc22e8fa00a213b477fd2a496b36f500388eed1. 10 primitive-model GLBs / 187 visible parts; source RGB/CFrames retained, PBR approximation. User confirmed Free EULA redistribution with attribution; publish the static GLBs under their original EULA, no relicensing. Raw place and scripts excluded. Third-party Roblox mesh/texture dependencies require separate access and rights. See [harvest README](harvest/README.md).
+
+Second-pass map-associated mesh references: Roblox asset IDs 474380310 (office chair), 1448149233 (dead leaves), 1448151321 (green leaves). Original map attribution retained; individual mesh authorship not independently identified. No new license granted. Two leaves are incomplete components, not complete trees.

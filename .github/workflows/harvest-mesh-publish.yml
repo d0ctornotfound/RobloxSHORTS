@@ -1,0 +1,39 @@
+name: Publish resolved MCRD mesh components
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/harvest-mesh-publish.yml'
+permissions:
+  contents: write
+  actions: read
+jobs:
+  publish:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+      - uses: actions/download-artifact@v4
+        with:
+          name: mcrd-priority-mesh-probe
+          run-id: 45932967828
+          github-token: ${{ github.token }}
+          path: mesh_probe
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: pip install 'numpy==2.3.5' 'trimesh==4.11.1' requests pillow
+      - run: python scripts/assemble_harvest_meshes.py
+      - name: Commit verified components with source references
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add assets/harvest/furniture/office_desk_chair.glb assets/harvest/vegetation_components/ assets/harvest/second_pass_manifest.json assets/harvest/mesh_resolution.json
+          git diff --cached --quiet || git commit -m "assets: publish three resolved MCRD mesh components"
+          git push origin HEAD:main
+      - uses: actions/upload-artifact@v4
+        with:
+          name: mcrd-second-pass
+          path: assets/harvest/
