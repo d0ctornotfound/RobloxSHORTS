@@ -51,7 +51,7 @@ class BlinkController:
                         break
                     gap = rng.uniform(*self.interval)
             last_gap = gap
-            cursor += length + gap
+            cursor += gap
 
     def is_closed(self, scene, frame):
         self._build(scene)
