@@ -141,9 +141,17 @@ def resolve_bites(scene,cam,a,art,food,yaw,bites,out):
     keys=sorted(bites);peak=keys[len(keys)//4]
     base(scene,a,art,peak,yaw);ctx=prep(a,art);arm=ArmSolver(art.arms[0])
     configs=list(itertools.product([i/20 for i in range(1,20)],[i/20 for i in range(1,20)],(-1,1)))
-    accepted=[];reasons={};best_rejected=None
+    accepted=[];reasons={};best_rejected=None;peak_candidate_rows=[]
     for cfg in configs:
         row,reason=bite_candidate(a,art,ctx,arm,bites[peak],yaw,cfg)
+        if row is not None:
+            # Re-evaluate the NEW arm matrices against every R9 bite-frame
+            # gate. bite_candidate inherits several diagnostic fields from
+            # the old R9 row, so those values must never be reported as if
+            # they described this newly solved arm pose.
+            row=check(scene,cam,a,art,food,peak,yaw,row)
+            row["search_rejection"]=reason
+            peak_candidate_rows.append({k:v for k,v in row.items() if k not in ("arm_matrices","food_matrix")})
         if reason is not None:
             reasons[reason]=reasons.get(reason,0)+1
             if row is not None:
@@ -152,7 +160,7 @@ def resolve_bites(scene,cam,a,art,food,yaw,bites,out):
             continue
         accepted.append(cfg)
     audit={"peak_frame":peak+1,"tested":len(configs),"hard_rejections":reasons,"eligible_peak":len(accepted),
-           "best_rejected_exact":best_rejected,"full_contact_attempts":[]}
+           "best_rejected_exact":best_rejected,"peak_candidate_rows":peak_candidate_rows,"full_contact_attempts":[]}
     write(out/"bite_search.json",audit)
     print("EAT_DOWN_OUT_PEAK",json.dumps({k:v for k,v in audit.items() if k!="best_rejected_exact"}),flush=True)
     best=None
