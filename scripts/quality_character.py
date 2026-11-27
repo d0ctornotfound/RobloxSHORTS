@@ -37,7 +37,7 @@ def palette():
               "badge_center":material("Signature cream star",(.94,.76,.37)),
               "shoe":material("Black canvas shoes",(.023,.027,.031)),
               "sole":material("Cream rubber",(.72,.67,.52)),
-              "faces":{k:face_material(k) for k in ("neutral","happy","shocked","sad")}})
+              "faces":{k:face_material(k) for k in ("neutral","happy","smug","tired","worried","laughing","shocked","surprised","sad","unimpressed","embarrassed","angry","sleep_closed")}})
     ns,ls=p["hair"].node_tree.nodes,p["hair"].node_tree.links
     bs=ns.get("Principled BSDF");bs.inputs["Roughness"].default_value=.91;bs.inputs["Specular IOR Level"].default_value=.035
     p["hair2"].node_tree.nodes.get("Principled BSDF").inputs["Roughness"].default_value=.92
@@ -157,6 +157,7 @@ class Character(LegacyCharacter):
         self.root=empty(name,(0,0,0))
         self.meshes=[];self.arms=[];self.wrists=[];self.grips=[];self.fingers=[]
         self.face_materials=p["faces"]
+        self.current_expression="neutral";self._expression_tracks=[]
         skin=p["skin" if lead else "skin2"]
         default={"lead":("sweater","sleeve","denim"),"friend":("tee","tee_sleeve","yellow_denim"),"patron_green":("green_tee","green_sleeve","denim"),"patron_blue":("blue_tee","blue_sleeve","yellow_denim")}
         self.wardrobe=wardrobe or default[role]
@@ -227,3 +228,5 @@ class Character(LegacyCharacter):
             box("denim leg",(0,0,-.38),(.56,.64,.76),pants,leg,bevel=.032,uv=True)
             box("sneaker",(0,-.065,-.80),(.57,.72,.13),p["shoe"],leg,bevel=.025)
             box("rubber sole",(0,-.065,-.864),(.58,.73,.05),p["sole"],leg,bevel=.012)
+        from facial_expressions import enable_blinking
+        enable_blinking(bpy.context.scene,[self])
