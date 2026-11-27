@@ -1,0 +1,88 @@
+name: Quality feedback acceptance gag
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/quality-gag.yml'
+permissions:
+  contents: read
+jobs:
+  render:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 60
+    strategy:
+      fail-fast: false
+      matrix:
+        part: [0, 1, 2, 3, 4, 5, 6, 7]
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install Blender
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y --no-install-recommends blender python3-pil python3-numpy
+          /usr/bin/python3 scripts/library_character_assets.py
+          python3 -m py_compile scripts/library_locomotion.py scripts/library_acting.py scripts/library_camera.py scripts/library_sets.py scripts/render_quality_gag.py
+      - name: Render contact-corrected acting gag chunk
+        run: blender -b --python-exit-code 1 --python scripts/render_quality_gag.py -- --part ${{ matrix.part }} --output render/gag
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: gag-chunk-${{ matrix.part }}
+          path: render/gag/
+          if-no-files-found: warn
+          retention-days: 7
+  edit:
+    needs: render
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/download-artifact@v4
+        with:
+          pattern: gag-chunk-*
+          path: chunks
+      - name: Assemble all 240 actual frames and validate
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y --no-install-recommends ffmpeg
+          mkdir -p render/frames render/final/grabs
+          python3 - <<'PY'
+          import json,shutil
+          from pathlib import Path
+          rows=[];reference=None
+          for p in sorted(Path("chunks").glob("gag-chunk-*")):
+              m=json.loads((p/"manifest.json").read_text())
+              assert m["stride"]["pass"] and m["run_stride"]["pass"]
+              signature=(m["stride"],m["run_stride"],m["two_shot"])
+              if reference is None:reference=signature
+              else:assert signature==reference
+              rows+=m["rows"]
+              for f in p.glob("frame_*.png"):
+                  target=Path("render/frames")/f.name;assert not target.exists();shutil.copy2(f,target)
+          assert len(rows)==240 and [r["frame"] for r in rows]==list(range(1,241))
+          assert all(r["body_pass"] and r["face_pass"] and r["lamp_pass"] for r in rows)
+          assert len(list(Path("render/frames").glob("frame_*.png")))==240
+          assert all(v["pass"] for r in rows if "visibility" in r for v in r["visibility"].values())
+          Path("render/final/gag_manifest.json").write_text(json.dumps({"fps":30,"frame_count":240,"resolution":[540,960],"stride":reference[0],"run_stride":reference[1],"two_shot":reference[2],"rows":rows},indent=2))
+          PY
+          ffmpeg -v error -y -framerate 30 -i render/frames/frame_%04d.png -c:v libx264 -crf 17 -pix_fmt yuv420p -movflags +faststart render/final/surprise_gift.mp4
+          for n in 0016 0088 0116 0136 0186 0226; do cp "render/frames/frame_$n.png" "render/final/grabs/$n.png"; done
+          ffprobe -v error -show_streams -show_format -of json render/final/surprise_gift.mp4 > render/final/ffprobe.json
+          python3 - <<'PY'
+          import json,subprocess,hashlib
+          from pathlib import Path
+          p=Path("render/final/surprise_gift.mp4");data=subprocess.check_output(["ffmpeg","-v","error","-i",str(p),"-f","rawvideo","-pix_fmt","rgb24","-"])
+          import array
+          n=540*960*3;assert len(data)==240*n
+          dark=[100*sum(max(data[i:i+3])<=24 for i in range(f*n,(f+1)*n,3))/(n//3) for f in range(240)]
+          Path("render/final/pixel_validation.json").write_text(json.dumps({"frames":len(dark),"max_near_black_percent":max(dark),"pass":max(dark)<=2,"sha256":hashlib.sha256(p.read_bytes()).hexdigest()},indent=2))
+          assert max(dark)<=2,max(dark)
+          PY
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: quality-surprise-gift-gag
+          path: render/final/
+          if-no-files-found: warn
+          retention-days: 7

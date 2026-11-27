@@ -219,3 +219,7 @@ Correction launched [run 45927563552](https://github.com/d0ctornotfound/RobloxSH
 
 ## User quality-feedback extension
 User reports floaty steps, stiff face-only acting, waves obscure face, unfinished repetitive streets, excess road/sky/crops and lamps compete with faces. Implemented StrideLock sole-phase root correction and measured support velocity, acting beats and lateral wave/face ray gate, solid gables and varied façades/roofs/fences/hedges/signage, strict full-body two-shot fit. Code pending gag execution. Earlier benchmark stills inspected; Eevee cleaner but only 1.265x faster cafe and 1.83x slower street at same resolution on CI. No universal final profile switch. Earlier camera full-body solver failed real crop despite >=45% coverage; tightened. Classroom second fold failed .583258 vs .60, independent of library; no claim of proof completion.
+
+
+### Acceptance gag launched
+New isolated 8s/30fps, 540x960 denoised Cycles proof 'The Surprise Gift': grounded imported walk approach, lateral wave, anticipate gift, spring lid and ball, body recoil, embarrassed/laughing payoff. Four beat cameras; per-frame body safe >=45%, face ray/arm overlap, lamp overlap, representative actual ID visibility, stride lock walk/run diagnostics, final lit darkness <=2%. Eight fresh 30-frame chunks, encoded 240 unique timeline samples, no paid narration or captions (visual-only system test). Gag runtime/visual review pending. Prior Eevee profile decision remains benchmark-based, not assumed.
