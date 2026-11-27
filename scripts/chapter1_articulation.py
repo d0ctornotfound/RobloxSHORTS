@@ -2,7 +2,7 @@
 Never edits the source GLB, original skeleton or imported animation. The
 runtime duplicate splits selected rigid limbs at mid-length, retaining
 source material and interpolated garment UVs. Only round-two tests use it."""
-import math,bmesh,bpy
+import math,os,bmesh,bpy
 from mathutils import Vector,Matrix
 from mathutils.bvhtree import BVHTree
 from r6_character import mesh_points,dominant_group,bounds,group_points
@@ -20,7 +20,7 @@ def clip(poly,z,above):
             result.append((a[0].lerp(b[0],t),a[1].lerp(b[1],t)))
     return result
 
-def make_piece(name,polys,origin,materials,cut,above):
+def make_piece(name,polys,origin,materials,cut,above,cap=True):
     verts=[];faces=[];uv=[];mi=[];smooth=[]
     cutpoints=[]
     for points,mat,sm in polys:
@@ -38,7 +38,7 @@ def make_piece(name,polys,origin,materials,cut,above):
     for v,t in cutpoints:uniq[tuple(round(float(x),5) for x in v)]=(v,t)
     pts=list(uniq.values());c=sum((v for v,t in pts),Vector())/len(pts)
     pts.sort(key=lambda p:math.atan2(p[0].y-c.y,p[0].x-c.x),reverse=above)
-    if len(pts)>=3:
+    if cap and len(pts)>=3:
         indices=[]
         for v,t in pts:indices.append(len(verts));verts.append(v-origin);uv.append(t)
         faces.append(indices);mi.append(mi[0]);smooth.append(False)
@@ -51,6 +51,31 @@ def make_piece(name,polys,origin,materials,cut,above):
     ob=bpy.data.objects.new(name,me);bpy.context.collection.objects.link(ob)
     return ob
 
+def make_fabric_band(name,polys,materials,mid,half):
+    """Continuous source UVs across the bend, with eight short cloth strips.
+    No exposed cut caps. Each strip is evaluated in the same world geometry
+    used by the contact and framing measurements."""
+    verts=[];faces=[];uv=[];indices=[]
+    for j in range(8):
+        bottom=mid-half+2*half*j/8;top=mid-half+2*half*(j+1)/8
+        for points,mat,sm in polys:
+            p=clip(clip(points,bottom,True),top,False)
+            if len(p)<3:continue
+            # Discard degenerate faces from clipping existing horizontal faces.
+            if sum((p[i][0]-p[0][0]).cross(p[i+1][0]-p[0][0]).length for i in range(1,len(p)-1))<1e-10:continue
+            faces.append(list(range(len(verts),len(verts)+len(p))))
+            indices.append(mat)
+            for v,t in p:verts.append(v.copy());uv.append(t.copy())
+    assert verts and faces,name
+    me=bpy.data.meshes.new(name);me.from_pydata(verts,[],faces);me.update()
+    for m in materials:me.materials.append(m)
+    layer=me.uv_layers.new(name="Continuous source garment UV");layer.active_render=True
+    for p,m in zip(me.polygons,indices):
+        p.material_index=m;p.use_smooth=False
+        for li in p.loop_indices:layer.data[li].uv=uv[me.loops[li].vertex_index]
+    ob=bpy.data.objects.new(name,me);bpy.context.collection.objects.link(ob)
+    return ob,verts
+
 class Limb:
     def __init__(self,actor,bone,polys):
         self.actor=actor;self.bone=bone
@@ -62,16 +87,36 @@ class Limb:
         self.bind=(actor.armature.matrix_world@bone.matrix).inverted()
         materials=list(actor.body.data.materials)
         overlap=min(.025,self.a*.06)
-        self.upper=make_piece(actor.root.name+" / "+bone.name+" upper",polys,self.top,materials,self.mid.z-overlap,True)
-        self.lower=make_piece(actor.root.name+" / "+bone.name+" lower",polys,self.mid,materials,self.mid.z+overlap,False)
-        self.objects=[self.upper,self.lower];actor.meshes.extend(self.objects);actor.skinned.extend(self.objects)
+        self.fabric=None
+        # Experiment only, selected by the separate sit/stand workflow.
+        # Leave elbow/arm meshes, frozen motions and default behaviour intact.
+        if os.environ.get("R6_KNEE_BLEND")=="1" and bone in actor.legs:
+            self.band_half=min(.16,.40*min(self.a,self.b))
+            self.upper=make_piece(actor.root.name+" / "+bone.name+" upper",polys,self.top,materials,self.mid.z+self.band_half,True,cap=False)
+            self.lower=make_piece(actor.root.name+" / "+bone.name+" lower",polys,self.mid,materials,self.mid.z-self.band_half,False,cap=False)
+            self.fabric,self.fabric_rest=make_fabric_band(actor.root.name+" / "+bone.name+" continuous cloth",polys,materials,self.mid.z,self.band_half)
+        else:
+            self.upper=make_piece(actor.root.name+" / "+bone.name+" upper",polys,self.top,materials,self.mid.z-overlap,True)
+            self.lower=make_piece(actor.root.name+" / "+bone.name+" lower",polys,self.mid,materials,self.mid.z+overlap,False)
+        self.objects=[self.upper,self.lower]+([self.fabric] if self.fabric else [])
+        actor.meshes.extend(self.objects);actor.skinned.extend(self.objects)
         self.stretch=0
     def transform(self):return self.actor.armature.matrix_world@self.bone.matrix@self.bind
     def joint(self):return self.transform()@self.top
+    def update_fabric(self):
+        if self.fabric is None:return
+        self.fabric.matrix_world=Matrix.Identity(4)
+        for vert,p in zip(self.fabric.data.vertices,self.fabric_rest):
+            t=max(0,min(1,(self.mid.z+self.band_half-p.z)/(2*self.band_half)))
+            t=t*t*(3-2*t)
+            a=self.upper.matrix_world@(p-self.top);b=self.lower.matrix_world@(p-self.mid)
+            vert.co=a.lerp(b,t)
+        self.fabric.data.update()
     def rigid(self):
         t=self.transform()
         self.upper.matrix_world=t@Matrix.Translation(self.top)
         self.lower.matrix_world=t@Matrix.Translation(self.mid)
+        self.update_fabric()
         self.stretch=0
     def place(self,ob,start,end,length,rot):
         vec=end-start;d=vec.length
@@ -85,6 +130,7 @@ class Limb:
         knee=foot+Vector((0,0,self.b))
         self.stretch=self.place(self.upper,self.joint(),knee,self.a,rot)
         self.lower.matrix_world=Matrix.Translation(knee)@rot.to_4x4()
+        self.update_fabric()
     def solve(self,target,pole,rot):
         start=self.joint();delta=target-start;distance=delta.length
         axis=delta.normalized() if distance>1e-7 else rot@DOWN
