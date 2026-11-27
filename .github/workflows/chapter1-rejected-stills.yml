@@ -1,0 +1,140 @@
+name: One-off rejected EAT DRINK diagnostic stills
+on:
+  push:
+    branches: [main]
+    paths: ['.github/workflows/chapter1-rejected-stills.yml']
+permissions:
+  contents: write
+  actions: read
+jobs:
+  diagnostic:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 30
+    env:
+      R6_KNEE_BLEND: '0'
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/checkout@v4
+        with:
+          ref: 50a054f14181539ecbb3134b7e969427da87d4b1
+          path: historical-eat
+      - uses: actions/checkout@v4
+        with:
+          ref: 73cf7c33d7037c923ccd53ad66957a1fc2a9fd91
+          path: historical-drink
+      - uses: actions/download-artifact@v4
+        with:
+          name: chapter1-round11-geometry-eat-food
+          run-id: 45982930320
+          github-token: ${{ github.token }}
+          path: diagnostic-source/eat
+      - uses: actions/download-artifact@v4
+        with:
+          name: chapter1-round10-geometry-drink
+          run-id: 45979260915
+          github-token: ${{ github.token }}
+          path: diagnostic-source/drink
+      - name: Install Blender
+        run: |
+          sudo apt-get update -o Dir::Etc::sourceparts=/dev/null -o Dir::Etc::sourcelist=/etc/apt/sources.list.d/ubuntu.sources
+          sudo apt-get install -y --no-install-recommends blender python3-pil python3-numpy ffmpeg fonts-dejavu-core
+      - name: Replay rejected poses only and render six stills
+        run: |
+          cat > "$RUNNER_TEMP/rejected_stills.py" <<'PY'
+          import os,sys,json,math
+          from pathlib import Path
+          sys.path.insert(0,str(Path.cwd()/"scripts"))
+          import bpy
+          from mathutils import Matrix,Vector
+          from render_demo import point_at
+          from chapter1_round4_solver import restore,matlist
+          mode=os.environ["DIAG_MODE"]
+          out=Path(os.environ["DIAG_OUTPUT"])
+          src=Path(os.environ["DIAG_SOURCE"])
+          out.mkdir(parents=True,exist_ok=True)
+          if mode=="eat":
+              from chapter1_eat_pole import setup,Food,check
+              scene,cam,a,_,art,__,___,yaw=setup("eat")
+              food=Food()
+              report=json.loads((src/"bite_search.json").read_text())
+              original=report["best_rejected_exact"][2]
+              frame=report["peak_frame"]
+              row=check(scene,cam,a,art,food,frame-1,yaw,dict(original))
+              keys=("head_arm_intersections","head_food_intersections","food_arm_intersections","food_body_intersections","arm_body_intersections","arm_other_intersections","nonexempt_obstruction","elbow_outward","grip_gap","support_clearance","lateral_alignment","normal_gap")
+              for k in keys: assert abs(row[k]-original[k])<1e-5,(k,row[k],original[k])
+              assert not row["geometry_pass"]
+              method="exact stored arm and food matrices"
+              prop=food.root
+          else:
+              from render_chapter1_drink_sidewall import setup
+              from chapter1_round6_solver import profile_base,prep
+              from chapter1_drink_sidewall import drink_eval
+              scene,cam,a,_,art,__,cup,yaw=setup("drink")
+              original=json.loads((src/"search_report.json").read_text())["search_attempts"][0]["best_rejected_exact_peak"]
+              frame=30
+              scene.frame_set(frame)
+              p,angle=profile_base(a,art,29/59,29/30,yaw)
+              score,row=drink_eval(a,art,cam,cup,p,angle,original["parameters"],prep(a,art))
+              assert score is None and not row["geometry_pass"]
+              # The original exporter removed matrices. Re-evaluate only the
+              # recorded parameter set, never search or optimize.
+              for k,v in original.items():
+                  if isinstance(v,bool) or isinstance(v,str): assert row[k]==v,(k,row[k],v)
+                  elif isinstance(v,(int,float)): assert abs(row[k]-v)<1e-5,(k,row[k],v)
+                  elif isinstance(v,list): assert len(row[k])==len(v) and max(abs(x-y) for x,y in zip(row[k],v))<1e-5,(k,row[k],v)
+              restore(art.arms[0],row["arm_matrices"])
+              cup.matrix_world=Matrix(row["cup_matrix"])
+              bpy.context.view_layer.update()
+              method="single original parameter set reconstructed; original matrices not archived; all archived metrics matched"
+              prop=cup
+          assert not scene.cycles.use_denoising
+          target=Vector((0,0,1.35))
+          original_cam=cam.matrix_world.copy()
+          original_loc=cam.location.copy()
+          shoulder=art.arms[0].joint()
+          outward=shoulder-a.root.matrix_world.translation
+          outward.z=0
+          outward.normalize()
+          forward=a.root.matrix_world.to_3x3()@Vector((0,-1,0))
+          forward.z=0
+          forward.normalize()
+          distance=(original_loc-target).xy.length
+          height=original_loc.z
+          cameras={}
+          for label,direction in (("front_production",None),("side_profile",outward),("three_quarter",(forward+outward).normalized())):
+              if direction is None:cam.matrix_world=original_cam
+              else:
+                  cam.location=target+direction*distance
+                  cam.location.z=height
+                  point_at(cam,target)
+              bpy.context.view_layer.update()
+              cameras[label]={"matrix_world":matlist(cam.matrix_world),"ortho_scale":cam.data.ortho_scale}
+              scene.render.filepath=str(out/f"{mode}_{label}.png")
+              bpy.ops.render.render(write_still=True)
+              assert Path(scene.render.filepath).is_file()
+          record={"action":mode,"frame":frame,"status":"REJECTED_DIAGNOSTIC_ONLY","method":method,"source_original":original,"replayed_row":row,"camera_transforms":cameras,"denoising":False,"root_matrix":matlist(a.root.matrix_world),"prop_matrix_world":matlist(prop.matrix_world),"all_arm_matrices":[[matlist(l.upper.matrix_world),matlist(l.lower.matrix_world)] for l in art.arms]}
+          (out/f"{mode}_transforms.json").write_text(json.dumps(record,indent=2,allow_nan=False)+"\n")
+          
+          PY
+          export DIAG_OUTPUT="$GITHUB_WORKSPACE/docs/diagnostics/rejected-eat-drink"
+          for mode in eat drink; do
+            export DIAG_MODE="$mode"
+            export DIAG_SOURCE="$GITHUB_WORKSPACE/diagnostic-source/$mode"
+            (cd "historical-$mode" && /usr/bin/python3 scripts/library_character_assets.py && blender -b --python-exit-code 1 --python "$RUNNER_TEMP/rejected_stills.py")
+          done
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: rejected-eat-drink-stills-and-transforms
+          path: docs/diagnostics/rejected-eat-drink/
+          if-no-files-found: warn
+      - name: Commit diagnostic output only
+        run: |
+          test "$(find docs/diagnostics/rejected-eat-drink -name '*.png' | wc -l)" -eq 6
+          test "$(find docs/diagnostics/rejected-eat-drink -name '*_transforms.json' | wc -l)" -eq 2
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add docs/diagnostics/rejected-eat-drink/
+          git commit -m 'Diagnostic only: rejected EAT R11 and DRINK R10 contact stills and transforms'
+          git push origin HEAD:main
+          git rev-parse HEAD
