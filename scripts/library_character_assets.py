@@ -7,7 +7,7 @@ def main():
     build_faces(Path("assets/r6_faces"))
     out=Path("assets/r6_variants");generate(out)
     dest=out/"librarian";dest.mkdir(exist_ok=True)
-    for e in EXPRESSIONS:
+    for e in (*EXPRESSIONS,"blink_half"):
         im=character_face(e,"teacher")
         # Small freckles create a distinct repeatable identity across every expression.
         d=ImageDraw.Draw(im)
