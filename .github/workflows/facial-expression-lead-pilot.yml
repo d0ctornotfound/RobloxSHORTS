@@ -1,11 +1,5 @@
 name: Chapter 2 — Lead EEVEE expression pilot
 on:
-  push:
-    branches: [main]
-    paths:
-      - '.github/workflows/facial-expression-lead-pilot.yml'
-      - 'scripts/render_expression_sections.py'
-      - 'scripts/build_expression_contact_sheet.py'
   workflow_dispatch:
 permissions:
   contents: read
