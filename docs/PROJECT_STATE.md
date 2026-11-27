@@ -234,3 +234,7 @@ Classroom second run 45927563552 completed with failure (fold), throw/glide/payo
 
 ### Supervisor follow-up: gag depth staging
 Run 45929103557 failed the original framing gate on all chunks, edit skipped. Calibration log: walk .03862549 RMS, max .22135075, contact gap .01392123, floor error 8.525e-7, mean speed 2.76265; run .05307604 RMS, max .39209359, gap .01306930, floor error 4.863e-7, mean speed 1.97720; both numerical contact tests passed but run slower than walk and no visual verdict. Supervisor authorized depth staging; now searches friend foreground / lead background with strict existing 45% each and full-body bounds; saves attempts, chosen stage and depth difference. Classroom correction 45929103399 still running; no seated-shot change until actual failure. No unrelated work.
+
+
+## Run calibration anomaly correction
+Actual downloaded calibration 15167603837: old run 20/60 negative forward speeds, worst -9.50427, max +13.22162; walk zero negative, max +5.82487. Incorrect forced lowest-foot lock during forward swing caused backward root travel. Run-only stance/flight distinction and positive flight continuation implemented, regression samples 181 frames each at same rate .72, checks contact, penetration, backward samples and faster run. Regression numerical validation pending; no restart of currently running gag 45929553151 or classroom 45929103399; approved cafe unchanged.

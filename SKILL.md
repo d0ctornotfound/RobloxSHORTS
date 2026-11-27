@@ -189,3 +189,7 @@ Café artifact 15166768289: Cycles preview 16.362s/frame, matched 1080p Cycles 9
 
 ### Depth-staged two-shots
 When side-by-side full-body framing cannot reach >=45% projected height for both standing subjects, place one actor nearer the camera and the other behind, with lateral separation and readable faces. Search world positions and camera jointly; maintain all-body margins, per-subject 45% minimum, face and object-ID visibility. Do not waive the gates. Gag depth-staging test is pending actual render evidence.
+
+
+### Running contact correction (regression pending)
+Old run calibration (45929103557) incorrectly locked lowest foot even during forward swing: 20/60 moving samples moved backwards, worst -9.504 units/s; mean 1.977 vs walk 2.763 at rate .72. This is a root-motion bug, not evidence of a slower authored run. Run support now requires actual backward sweep of a low sole, otherwise inferred flight with median observed stance speed (positive calibration fallback), brief ballistic lift until next inferred plant, no forced low-foot anchoring. Measure stance and flight separately; report backward samples, penetration, flight count, and flight height. Gate zero unintended backward frames and run faster than walk at equal rate for these clips. Do not claim flight classification is source-authored or visual acceptance until inspected. Active gag workflow retains previous checkout, walking behavior unchanged.

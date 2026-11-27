@@ -1,0 +1,28 @@
+name: Run contact regression
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/run-contact-regression.yml'
+permissions:
+  contents: read
+jobs:
+  contact:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install Blender
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y --no-install-recommends blender python3-pil python3-numpy
+          /usr/bin/python3 scripts/library_character_assets.py
+      - name: Test actual imported walk and run, equal playback rate
+        run: blender -b --python-exit-code 1 --python scripts/test_run_contact.py
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: run-contact-regression
+          path: render/run_contact/
+          if-no-files-found: warn

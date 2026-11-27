@@ -17,6 +17,8 @@ class StrideLock:
             low=min(pts[i].z for i in ids)
             self.soles.append([i for i in ids if pts[i].z<=low+.025])
         self.pos=self.start.copy();self.prev=None;self.last=None;self.support=None;self.records=[]
+        self.flight_elapsed=0.;self.flight_duration=0.;self.stance_speeds=[]
+        self.flight_speed=retarget.calibrate(name)["speed_scene_units_per_second"]*rate if name=="run_cycle" else 0.
     def sample_local(self,t,settle=0):
         a=self.actor;a.root.location=(0,0,0);a.root.rotation_euler=(0,0,0)
         c=self.ret.clips[self.name];phase=t*self.rate/c["duration"]
@@ -49,21 +51,44 @@ class StrideLock:
             def score(i):
                 sweep=(local[i].y-self.prev[i].y)*self.fps
                 return sweep+(0.12 if i==self.support else 0)
-            support=max(eligible,key=score)
-            delta=old_rot@self.prev[support]-self.rot@local[support];delta.z=0
+            # A low foot sweeping forward is in swing, not support. Running
+            # may have no valid plant; never force the lowest swing foot to
+            # drag the root backwards. Walk retains its proven correction.
+            if self.name=="run_cycle" and settle==0:
+                eligible=[i for i in eligible if (local[i].y-self.prev[i].y)*self.fps>.05]
+            support=max(eligible,key=score) if eligible else None
+            if support is None:
+                if self.flight_elapsed==0:
+                    # Find the next valid plant from actual imported samples.
+                    prev=local
+                    for k in range(1,13):
+                        nxt=self.sample_local(t+k/self.fps)
+                        if any(nxt[i].z<=min(p.z for p in nxt)+.018 and (nxt[i].y-prev[i].y)*self.fps>.05 for i in range(2)):break
+                        prev=nxt
+                    self.flight_duration=(k+1)/self.fps
+                    local=self.sample_local(t,settle)
+                self.flight_elapsed+=1/self.fps
+                speed=statistics.median(self.stance_speeds[-20:]) if self.stance_speeds else self.flight_speed
+                delta=self.rot@Vector((0,-speed/self.fps,0))
+            else:
+                self.flight_elapsed=0.;self.flight_duration=0.
+                delta=old_rot@self.prev[support]-self.rot@local[support];delta.z=0
+                speed=-((self.rot.inverted()@delta).y)*self.fps
+                if self.name=="run_cycle" and speed>0:self.stance_speeds.append(speed)
             self.pos+=delta
-            speed=-((self.rot.inverted()@delta).y)*self.fps
-        self.pos.z=self.start.z-low
+        # Ballistic lift only during inferred flight; source poses unchanged.
+        lift=.5*9.81*self.flight_elapsed*max(0,self.flight_duration-self.flight_elapsed)
+        self.pos.z=self.start.z-low+lift
         a=self.actor;a.root.location=self.pos;a.root.rotation_euler.z=self.yaw
         bpy.context.view_layer.update()
         pts=mesh_points(a.body)
         actual=[Vector((sum(pts[i].x for i in ids)/len(ids),sum(pts[i].y for i in ids)/len(ids),min(pts[i].z for i in ids))) for ids in self.soles]
-        old_world=None if self.prev is None else self.prev_world[support]
-        velocity=0 if old_world is None else (actual[support]-old_world).length*self.fps
-        continuing=self.support==support and self.prev is not None
+        old_world=None if self.prev is None or support is None else self.prev_world[support]
+        velocity=None if support is None else 0 if old_world is None else (actual[support]-old_world).length*self.fps
+        continuing=support is not None and self.support==support and self.prev is not None
         floor=min(p.z for p in actual)-self.start.z
-        gap=actual[support].z-self.start.z
-        row={"time":t,"support":support,"continuing":continuing,"contact_world":list(actual[support]),"velocity":velocity,"floor_error":floor,"contact_gap":gap,"forward_speed":speed,"root":list(self.pos),"settle":settle}
+        gap=None if support is None else actual[support].z-self.start.z
+        row={"time":t,"support":support,"continuing":continuing,"contact_world":list(actual[support]) if support is not None else None,"flight":support is None,"velocity":velocity,"floor_error":floor,"contact_gap":gap,"forward_speed":speed,"root":list(self.pos),"settle":settle}
         self.records.append(row);self.prev=local;self.prev_world=actual;self.support=support;self.last=t
         return row
     def report(self):
@@ -72,7 +97,10 @@ class StrideLock:
         assert stance and moving
         speed=sum(x["forward_speed"] for x in moving)/len(moving)
         rms=math.sqrt(sum(x["velocity"]**2 for x in stance)/len(stance))
-        gap=max(abs(x["contact_gap"]) for x in self.records)
-        floor=max(abs(x["floor_error"]) for x in self.records)
+        gap=max(abs(x["contact_gap"]) for x in self.records if x["support"] is not None)
+        floor=max(abs(x["floor_error"]) for x in self.records if x["support"] is not None)
+        backward=sum(x["forward_speed"]<-.01 for x in moving)
+        airborne=[x for x in moving if x["support"] is None]
+        penetration=max(0,-min(x["floor_error"] for x in self.records))
         # Threshold is a 3D support-proxy velocity, not toe-point velocity.
-        return {"cycle":self.name,"fps":self.fps,"rate":self.rate,"mean_forward_speed":speed,"derived_stride":speed*self.ret.clips[self.name]["duration"]/self.rate,"stance_samples":len(stance),"stance_velocity_rms":rms,"max_continuing_velocity":max(x["velocity"] for x in stance),"max_contact_gap":gap,"max_floor_error":floor,"pass":speed>.15 and rms<=.18 and gap<=.02 and floor<=.002,"records":self.records}
+        return {"cycle":self.name,"fps":self.fps,"rate":self.rate,"mean_forward_speed":speed,"derived_stride":speed*self.ret.clips[self.name]["duration"]/self.rate,"stance_samples":len(stance),"stance_velocity_rms":rms,"max_continuing_velocity":max(x["velocity"] for x in stance),"max_contact_gap":gap,"max_floor_error":floor,"backward_frames":backward,"flight_frames":len(airborne),"max_airborne_height":max((x["floor_error"] for x in airborne),default=0),"max_penetration":penetration,"pass":speed>.15 and rms<=.18 and gap<=.02 and floor<=.002 and penetration<=.002 and backward==0 and (self.name!="run_cycle" or bool(airborne)),"records":self.records}
