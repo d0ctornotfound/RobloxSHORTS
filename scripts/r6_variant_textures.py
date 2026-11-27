@@ -114,7 +114,11 @@ def character_face(expr,identity):
             curve((x-.082,y-.040),(x,y-.052),(x+.082,y-.040),.026)
         elif expr=="angry":
             oval(x,y,.086 if comic else .065,.085,dark)
-        elif expr in ("shocked","surprised"):
+        elif expr=="shocked":
+            # Wider/taller eyes and a higher brow read as alarm, not mild surprise.
+            oval(x,y,.150 if comic else .108,.235 if comic else .205)
+            oval(x-.022,y-.043,.031,.041,(254,245,222,255))
+        elif expr=="surprised":
             oval(x,y,.113 if comic else .085,.176 if comic else .158)
             oval(x-.018,y-.036,.026,.034,(254,245,222,255))
         elif expr in ("unimpressed","tired","smug"):
@@ -132,11 +136,14 @@ def character_face(expr,identity):
             a=(x-.093,.315 if i==0 else .245);b=(x+.093,.245 if i==0 else .315)
         elif expr=="angry":
             a=(x-.093,.235 if i==0 else .315);b=(x+.093,.315 if i==0 else .235)
-        elif expr in ("shocked","surprised"):a=(x-.09,.235);b=(x+.09,.225)
+        elif expr=="shocked":a=(x-.095,.175);b=(x+.095,.165)
+        elif expr=="surprised":a=(x-.09,.235);b=(x+.09,.225)
         elif expr in ("unimpressed","smug"):
             a=(x-.095,.295 if i==0 else .255);b=(x+.09,.270 if i==0 else .285)
         else:a=(x-.095,.285);b=(x+.095,.29)
-        if comic:curve(a,(x,.225 if expr in ("happy","laughing","shocked","surprised") else .267),b,.037,brow)
+        if comic:
+            brow_y=.155 if expr=="shocked" else .225 if expr in ("happy","laughing","surprised") else .267
+            curve(a,(x,brow_y),b,.037,brow)
         else:
             # Distinct tapered, arched eyebrows, not the dad's heavy rectangles.
             poly([a,(x-.025,min(a[1],b[1])-.028),(x+.04,min(a[1],b[1])-.018),b,(x+.025,b[1]+.017),(x-.025,a[1]+.018)],brow)
@@ -153,7 +160,10 @@ def character_face(expr,identity):
         else:
             poly([(.24,.61),(.47,.655),(.76,.594),(.70,.722),(.54,.766),(.37,.744)])
             poly([(.28,.631),(.48,.675),(.716,.619),(.674,.695),(.51,.726),(.37,.71)],(253,246,229,255))
-    elif expr in ("shocked","surprised"):
+    elif expr=="shocked":
+        oval(.50,.693,.305 if comic else .215,.315 if comic else .225)
+        oval(.5,.765 if comic else .752,.175 if comic else .115,.067 if comic else .052,(159,70,62,255))
+    elif expr=="surprised":
         oval(.50,.693,.236 if comic else .165,.255 if comic else .172)
         oval(.5,.75 if comic else .731,.14 if comic else .09,.056,(159,70,62,255))
     elif expr=="angry":curve((.31,.70),(.5,.575),(.69,.70),.030)
