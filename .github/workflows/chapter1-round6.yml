@@ -1,0 +1,66 @@
+name: Chapter 1 round six contact and phased hug
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/chapter1-round6.yml'
+permissions:
+  contents: read
+  actions: read
+jobs:
+  geometry-and-conditional-render:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 90
+    strategy:
+      fail-fast: false
+      matrix:
+        motion: [eat,drink,hug]
+    steps:
+      - uses: actions/checkout@v4
+      - name: Get prior collision-free eat approach
+        if: matrix.motion == 'eat'
+        uses: actions/download-artifact@v4
+        with:
+          name: chapter1-round4-followup-eat-geometry
+          run-id: 45968639335
+          github-token: ${{ github.token }}
+          path: render/baseline
+      - name: Install Blender from Ubuntu repositories
+        run: |
+          sudo apt-get update -o Dir::Etc::sourceparts=/dev/null -o Dir::Etc::sourcelist=/etc/apt/sources.list.d/ubuntu.sources
+          sudo apt-get install -y --no-install-recommends blender python3-pil python3-numpy ffmpeg fonts-dejavu-core
+          /usr/bin/python3 scripts/library_character_assets.py
+          python3 -m py_compile scripts/chapter1_round6_solver.py scripts/render_chapter1_round6.py
+      - name: Solve and verify 60 frames without rendering
+        run: |
+          extra=()
+          if [ "${{ matrix.motion }}" = "eat" ]; then extra=(--baseline render/baseline/geometry_plan.json); fi
+          blender -b --python-exit-code 1 --python scripts/render_chapter1_round6.py -- --motion ${{ matrix.motion }} --output render/geometry --geometry-only "${extra[@]}"
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: chapter1-round6-geometry-${{ matrix.motion }}
+          path: render/geometry/
+          if-no-files-found: warn
+      - name: Independently replay all solved frames before any render
+        run: blender -b --python-exit-code 1 --python scripts/render_chapter1_round6.py -- --motion ${{ matrix.motion }} --output render/motion --plan render/geometry/geometry_plan.json
+      - name: Encode and retain actual rendered evidence
+        run: |
+          mkdir -p render/review
+          for dir in render/motion/*/; do
+            name=$(basename "$dir")
+            ffmpeg -v error -y -framerate 30 -i "$dir/frame_%04d.png" -c:v libx264 -crf 18 -pix_fmt yuv420p "render/review/$name.mp4"
+            cp "$dir/metrics.json" "render/review/$name.json"
+            for f in 0001 0012 0022 0025 0034 0045 0060; do cp "$dir/frame_$f.png" "render/review/${name}_$f.png"; done
+          done
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: chapter1-round6-render-${{ matrix.motion }}
+          path: |
+            render/review/
+            render/motion/replay_geometry.json
+          if-no-files-found: ignore
+      - name: Enforce performance after evidence upload
+        run: python3 -c 'import json,glob; r=json.load(open(glob.glob("render/review/*.json")[0])); print(r["near_static"]); assert all(r["correction_gates"].values())'
