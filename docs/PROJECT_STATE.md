@@ -487,3 +487,11 @@ Strict food/head and food/arm, food-tip alignment and normal gap, grip, end-cap,
 **Major emotional acting rule:** do not make a major emotional beat a naked face swap. Use library_acting.act() for expression + head/torso/arm reaction, and sustained_laugh() for a continuous laugh reaction. The reel uses Lead neutral → surprise → laugh and Friend neutral → embarrassed, with body reactions.
 
 **Reel:** .github/workflows/facial-expressions.yml, scripts/render_expression_reel.py. Neutral studio, Cycles denoising OFF; 13 expression close-ups per character, 10-second seven-character neutral blink grid, and two paired emotional beats. Full render is in progress; no reel or visual approval is claimed until the workflow uploads the MP4 and the rendered pixels are inspected and shown inline.
+
+
+
+### Decal inventory — generated-asset verification (run 45998731264, 2026-11-27)
+
+The successful smoke job ran both decal generators and then constructed all seven reel characters in Blender. The actual character constructor loads one face material for every member of the 13-entry EXPRESSIONS tuple from a PNG path; missing files raise FileNotFoundError. The seven-character smoke build passed, and the uploaded smoke.json records all seven character IDs and the 13 expression names. Thus the runtime-loaded inventory is **13 decal materials per actor (91 actor-material bindings across seven actors)**.
+
+The generation routines produce **78 unique decal PNG files** in six sets: 13 generic images in assets/r6_faces; 13 each in assets/r6_variants/young, friend, teacher, dad and librarian. Lead/Friend/Teacher/Dad/Librarian load their matching identity set. Student Green and Student Blue each load all 13 generic decals from the shared assets/r6_faces set; they do not need duplicate copies of those same generic PNGs. The smoke artifact is facial-expression-smoke (artifact 15196803122); it contains smoke.json and smoke.png, not the individual decal PNGs. The full render job has generated its role-specific assets successfully but remains in the render step; its reel/contact-sheet artifact has not yet been uploaded.
