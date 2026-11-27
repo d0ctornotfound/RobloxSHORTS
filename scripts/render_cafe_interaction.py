@@ -183,7 +183,9 @@ def main():
         if item["state"] in ("grip","lift","fumble"):
             assert (cup.matrix_world.translation-socket.matrix_world.translation).length<1e-5
         for track,key in ((lead_track,"lead_expression"),(friend_track,"friend_expression")):
-            assert [name for name,obj in track.decals.items() if not obj.hide_render]==[item[key]]
+            blink=track.actor._blink_controller.is_closed(scene,item["frame"])
+            expected="sleep_closed" if blink else item[key]
+            assert [name for name,obj in track.decals.items() if not obj.hide_render]==[expected]
     manifest={"resolution":[width,height],"fps":fps,"duration_seconds":duration,
               "frames":scene.frame_end,"samples":samples,"grip_frame":grip_frame,
               "release_frame":release_frame,"max_grip_error":max_error,
