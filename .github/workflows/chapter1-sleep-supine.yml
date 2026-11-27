@@ -1,0 +1,70 @@
+name: Chapter 1 sleep supine follow-up only
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/chapter1-sleep-supine.yml'
+permissions:
+  contents: read
+jobs:
+  smoke:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install Blender and generate existing character textures
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y --no-install-recommends blender python3-pil python3-numpy ffmpeg fonts-dejavu-core
+          /usr/bin/python3 scripts/library_character_assets.py
+          python3 -m py_compile scripts/sleep_supine.py scripts/character_motion_correction.py scripts/render_sleep_supine.py
+      - name: Render actual profile smoke at final supine pose
+        run: blender -b --python-exit-code 1 --python scripts/render_sleep_supine.py -- --output render/smoke --smoke
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: chapter1-sleep-supine-smoke
+          path: render/smoke/
+          if-no-files-found: error
+          retention-days: 30
+  sleep:
+    needs: smoke
+    runs-on: ubuntu-24.04
+    timeout-minutes: 90
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install Blender and generate existing character textures
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y --no-install-recommends blender python3-pil python3-numpy ffmpeg fonts-dejavu-core
+          /usr/bin/python3 scripts/library_character_assets.py
+      - name: Render only corrected supine sleep at 30 fps
+        run: blender -b --python-exit-code 1 --python scripts/render_sleep_supine.py -- --output render/sleep
+      - name: Encode sleep clip and actual pose strip
+        run: |
+          mkdir -p render/review
+          ffmpeg -v error -y -framerate 30 -i render/sleep/frame_%04d.png -c:v libx264 -crf 18 -pix_fmt yuv420p render/review/sleep_supine.mp4
+          ffprobe -v error -show_streams -show_format -of json render/review/sleep_supine.mp4 > render/review/ffprobe.json
+          cp render/sleep/metrics.json render/review/metrics.json
+          /usr/bin/python3 - <<'PY'
+          from pathlib import Path
+          from PIL import Image,ImageDraw
+          import shutil
+          frames=[1,15,31,45,62,80,97,120]
+          sheet=Image.new("RGB",(4*320,2*264),(24,24,24));d=ImageDraw.Draw(sheet)
+          for i,n in enumerate(frames):
+              src=Path(f"render/sleep/frame_{n:04d}.png");shutil.copy(src,"render/review/")
+              im=Image.open(src).convert("RGB");im.thumbnail((320,240))
+              x=(i%4)*320;y=(i//4)*264;sheet.paste(im,(x,y));d.text((x+5,y+242),f"Frame {n} | {(n-1)/30:.2f}s",fill="white")
+          sheet.save("render/review/sleep_pose_strip.png")
+          PY
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: chapter1-sleep-supine-review
+          path: render/review/
+          if-no-files-found: warn
+          retention-days: 30
+      - name: Enforce numerical gates after evidence upload
+        run: python3 -c 'import json; r=json.load(open("render/review/metrics.json")); print(r["supine"],r["correction_gates"]); assert all(r["correction_gates"].values()),r["correction_gates"]'

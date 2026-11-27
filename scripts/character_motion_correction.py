@@ -5,6 +5,7 @@ from mathutils import Vector
 from character_motion import weighted_params,jump_params,ramp,pulse,mix,D,floor,soles
 from r6_character import group_points,bounds
 from library_animation import parameters
+from sleep_supine import apply_sleep_supine
 
 def corrected_params(name,u,t):
     p=weighted_params(name,u,t)
@@ -60,8 +61,8 @@ def corrected_params(name,u,t):
     elif name=="high_five":
         p["torso"]=(.13*q,.16*q,-.12*q);p["head"]=(-.13*q,-.08*q,.19*q)
         p["legs"]=[(-.08,-.07*q,-1),(.08,.07*q,-1)]
-    elif name in ("fall","sleep"):
-        slow=name=="sleep";b=ramp(u,.03,.30 if slow else .20)
+    elif name=="fall":
+        slow=False;b=ramp(u,.03,.30 if slow else .20)
         lower=ramp(u,.20,.75 if slow else .60);settle=ramp(u,.63,.99);sign=1 if slow else -1
         p["pitch"]=sign*math.pi/2*lower
         p["legs"]=[(-.12,-.55*b*(1-lower),-1),(.12,.40*b*(1-lower),-1)]
@@ -82,6 +83,7 @@ def corrected_params(name,u,t):
     return p
 
 def apply_corrected(actor,name,u,t,position=(0,0,0),yaw=0,anchor=None):
+    if name=="sleep":return apply_sleep_supine(actor,u,t,position,yaw)
     p=corrected_params(name,u,t)
     actor.reset();actor.root.location=position;actor.root.rotation_euler=(p["pitch"],0,yaw)
     if name in ("sit","stand_up"):
