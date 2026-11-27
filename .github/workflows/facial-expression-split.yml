@@ -1,10 +1,5 @@
 name: Chapter 2 — split facial expression renders
 on:
-  push:
-    branches: [main]
-    paths:
-      - '.github/workflows/facial-expression-split.yml'
-      - 'scripts/render_expression_sections.py'
   workflow_dispatch:
 permissions:
   contents: read
