@@ -56,14 +56,16 @@ def render(scene,out,name):
 
 def main():
     p=argparse.ArgumentParser();p.add_argument("--part",type=int,required=True,help="-1 runs complete geometric preflight, no animation rendering");p.add_argument("--output",required=True);p.add_argument("--reuse-insert",type=Path,help="Exact original chunk 4 PNGs from run 45936954946")
-    p.add_argument("--test-profile",choices=("low","medium","high","restaged"),help="Supervisor lighting review only; no production renders")
+    p.add_argument("--test-profile",choices=("low","medium","high","restaged","singles_proof","wide_grid"),help="Supervisor lighting review only; no production renders")
     args=p.parse_args(sys.argv[sys.argv.index("--")+1:]);out=Path(args.output).resolve();out.mkdir(parents=True,exist_ok=True)
     if args.test_profile:
         assert args.part==-1 and not args.reuse_insert
     # Exact trial values, never applied to production mode before approval.
-    trials={"low":(230,70,.48),"medium":(340,100,.60),"high":(450,145,.74),"restaged":(85,0,.74)}
-    restaged=args.test_profile=="restaged"
-    test_frames={1,11,21,61,166} if restaged else {1,11,21,61,116,166} if args.test_profile else set()
+    trials={"low":(230,70,.48),"medium":(340,100,.60),"high":(450,145,.74),"restaged":(85,0,.74),"singles_proof":(85,0,.74),"wide_grid":(85,0,.74)}
+    singles_proof=args.test_profile=="singles_proof"
+    wide_grid=args.test_profile=="wide_grid"
+    restaged=args.test_profile in ("restaged","singles_proof","wide_grid")
+    test_frames={61,166} if singles_proof else {1,11,21} if wide_grid else {1,11,21,61,166} if restaged else {1,11,21,61,116,166} if args.test_profile else set()
     trial_lower,trial_torso,trial_world=trials[args.test_profile] if args.test_profile else (780,480,.34)
     scene,atm,cam,lead=street_scene(48,540,960);scene.render.fps=FPS;scene.render.fps_base=1
     scene.cycles.use_denoising=False;scene.cycles.adaptive_threshold=.035;scene.render.use_persistent_data=True
@@ -142,64 +144,93 @@ def main():
                 "balance_pass":not restaged or (ratio>=.70 and sum(x["coverage"] for x in bounds)>=.75),
                 "body_pass":body_gate("establishing_wide",bounds),
                 "face_pass":face_gate(face),"lamp_pass":lamp_gate(lamp)}
+    if wide_grid:
+        from gag_wide_grid import search
+        # Mutable vectors referenced by wide_pose; do not alter singles or contact lock.
+        def set_stage(a,b):
+            wide_lead_shift.x,wide_lead_shift.y,wide_lead_shift.z=a
+            wide_friend_shift.x,wide_friend_shift.y,wide_friend_shift.z=b
+        def new_lock():return StrideLock(ret,"walk_cycle",FPS,rate,start,walk_yaw)
+        def check(f):
+            row=wide_sample(f);return row
+        def wide_render(f,row):
+            ambient.default_value=.74
+            base=lead.root.location.copy();base.z=0
+            forward=Vector((cam.location.x-base.x,cam.location.y-base.y,0)).normalized()
+            lower_fill.location=base+2.8*forward+Vector((0,0,1.2))
+            point_at(lower_fill,base+Vector((0,0,.52)));lower_fill.data.energy=115
+            bpy.context.view_layer.update()
+            if f==10:
+                old=scene.render.resolution_percentage;scene.render.resolution_percentage=50
+                groups={a.role:[o for o in a.meshes if o.type=="MESH" and o!=a.face] for a in heroes}
+                gate=visibility_gate(scene,out,"wide_grid_0011",groups)
+                scene.render.resolution_percentage=old;row["visibility"]=gate
+                # Preserve the evidence even when the ID gate fails.
+            row["shot"]="establishing_wide"
+            row["test_light"]={"lower_w":115,"torso_w":0,"world_strength":float(ambient.default_value)}
+            row["render_seconds"]=render(scene,out,"test_%04d"%(f+1))
+        search(scene,cam,heroes,out,set_stage,new_lock,wide_pose,check,wide_render)
+        return
     # Same candidate family and score as the prior revision. First-frame
     # screening is only an optimization: any rejected candidate has failed
     # a real shot frame. The winner MUST pass all 21 actual timeline samples.
-    probe=StrideLock(ret,"walk_cycle",FPS,rate,start,walk_yaw)
-    wide_pose(probe,0)
-    a=lead.root.location.copy();b=friend.root.location.copy();q=(a+b)/2;q.z=1.30
-    candidates=[]
-    # More lower/closer viewpoints and portrait lens options. Rank
-    # by useful character scale, balance and lower camera height.
-    # Preserve old candidate family as a fallback; no hidden vetoes.
-    for angle in (0,25,-25,45,-45,55,60,-60,65,70,75,80,-70):
-        h=math.radians(angle)
-        for dist in (5.,6.,7.5,9.,11.,13.):
-            for height in (1.55,1.85,2.2,2.8):
-                pos=q+Vector((dist*math.sin(h),-dist*math.cos(h),height-q.z))
-                for lens in (28,35,42,50,58,66,74,85):
-                    apply(cam,"static",0,pos,q,lens)
-                    bounds=metrics(scene,cam,heroes)
-                    if not body_gate("establishing_wide",bounds):continue
-                    if restaged and (min(k["coverage"] for k in bounds)/max(k["coverage"] for k in bounds)<.70 or sum(k["coverage"] for k in bounds)<.75):continue
-                    lamp=check_lamps(scene,cam,heroes)
-                    if not lamp_gate(lamp):continue
-                    face={a.role:face_clear(scene,cam,a) for a in heroes}
-                    if not face_gate(face):continue
-                    total=sum(k["coverage"] for k in bounds)
-                    smaller=min(k["coverage"] for k in bounds)
-                    separation=abs(bounds[0]["face_center"][0]-bounds[1]["face_center"][0])
-                    # Ranking preferences only, never extra cutoffs.
-                    score=total+.75*smaller+.05*separation-.09*(height-1.55)-.012*(dist-5.)
-                    if args.test_profile:
-                        # Prefer comparable projected subject heights, while retaining
-                        # coverage and lower-camera preferences. No extra acceptance gate.
-                        larger=max(k["coverage"] for k in bounds)
-                        balance=smaller/max(larger,1e-8)
-                        score=total+1.55*balance+.35*smaller+.05*separation-.09*(height-1.55)-.012*(dist-5.)
-                    candidates.append((score,pos.copy(),q.copy(),lens))
-    candidates.sort(key=lambda c:c[0],reverse=True)
-    attempted=[];wide_camera=None
-    for score,pos,target,lens in candidates:
-        trial=StrideLock(ret,"walk_cycle",FPS,rate,start,walk_yaw)
-        checks=[]
-        for f in range(21):
-            wide_pose(trial,f);apply(cam,"static",0,pos,target,lens)
-            row=wide_sample(f);checks.append(row)
-            if not (row["body_pass"] and row["face_pass"] and row["lamp_pass"] and row["balance_pass"]):break
-        passed=len(checks)==21 and all(r["body_pass"] and r["face_pass"] and r["lamp_pass"] and r["balance_pass"] for r in checks)
-        attempted.append({"score":score,"position":list(pos),"target":list(target),"lens":lens,
-                          "frames_tested":len(checks),"pass":passed,"last_check":checks[-1]})
-        if passed:
-            wide_camera=(pos,target,lens)
-            save(out,"wide_candidate.json",{"position":list(pos),"target":list(target),"lens":lens,
-                "candidate_count":len(candidates),"candidates_tested":len(attempted),
-                "frames_tested":21,"pass":True,"frames":checks,"lead_shift":list(wide_lead_shift),"friend_shift":list(wide_friend_shift)})
-            break
-    save(out,"wide_search_audit.json",{"first_frame_candidates":len(candidates),"attempts":attempted})
-    if wide_camera is None:raise RuntimeError("No camera candidate passes all 21 establishing frames")
-    print("WIDE_ALL_FRAMES_PASS",json.dumps({"frames":21,"first_frame_candidates":len(candidates),
-          "attempts":len(attempted),"position":list(wide_camera[0]),"target":list(wide_camera[1]),"lens":wide_camera[2]}),flush=True)
+    wide_camera=None
+    if not singles_proof:
+        probe=StrideLock(ret,"walk_cycle",FPS,rate,start,walk_yaw)
+        wide_pose(probe,0)
+        a=lead.root.location.copy();b=friend.root.location.copy();q=(a+b)/2;q.z=1.30
+        candidates=[]
+        # More lower/closer viewpoints and portrait lens options. Rank
+        # by useful character scale, balance and lower camera height.
+        # Preserve old candidate family as a fallback; no hidden vetoes.
+        for angle in (0,25,-25,45,-45,55,60,-60,65,70,75,80,-70):
+            h=math.radians(angle)
+            for dist in (5.,6.,7.5,9.,11.,13.):
+                for height in (1.55,1.85,2.2,2.8):
+                    pos=q+Vector((dist*math.sin(h),-dist*math.cos(h),height-q.z))
+                    for lens in (28,35,42,50,58,66,74,85):
+                        apply(cam,"static",0,pos,q,lens)
+                        bounds=metrics(scene,cam,heroes)
+                        if not body_gate("establishing_wide",bounds):continue
+                        if restaged and (min(k["coverage"] for k in bounds)/max(k["coverage"] for k in bounds)<.70 or sum(k["coverage"] for k in bounds)<.75):continue
+                        lamp=check_lamps(scene,cam,heroes)
+                        if not lamp_gate(lamp):continue
+                        face={a.role:face_clear(scene,cam,a) for a in heroes}
+                        if not face_gate(face):continue
+                        total=sum(k["coverage"] for k in bounds)
+                        smaller=min(k["coverage"] for k in bounds)
+                        separation=abs(bounds[0]["face_center"][0]-bounds[1]["face_center"][0])
+                        # Ranking preferences only, never extra cutoffs.
+                        score=total+.75*smaller+.05*separation-.09*(height-1.55)-.012*(dist-5.)
+                        if args.test_profile:
+                            # Prefer comparable projected subject heights, while retaining
+                            # coverage and lower-camera preferences. No extra acceptance gate.
+                            larger=max(k["coverage"] for k in bounds)
+                            balance=smaller/max(larger,1e-8)
+                            score=total+1.55*balance+.35*smaller+.05*separation-.09*(height-1.55)-.012*(dist-5.)
+                        candidates.append((score,pos.copy(),q.copy(),lens))
+        candidates.sort(key=lambda c:c[0],reverse=True)
+        attempted=[];wide_camera=None
+        for score,pos,target,lens in candidates:
+            trial=StrideLock(ret,"walk_cycle",FPS,rate,start,walk_yaw)
+            checks=[]
+            for f in range(21):
+                wide_pose(trial,f);apply(cam,"static",0,pos,target,lens)
+                row=wide_sample(f);checks.append(row)
+                if not (row["body_pass"] and row["face_pass"] and row["lamp_pass"] and row["balance_pass"]):break
+            passed=len(checks)==21 and all(r["body_pass"] and r["face_pass"] and r["lamp_pass"] and r["balance_pass"] for r in checks)
+            attempted.append({"score":score,"position":list(pos),"target":list(target),"lens":lens,
+                              "frames_tested":len(checks),"pass":passed,"last_check":checks[-1]})
+            if passed:
+                wide_camera=(pos,target,lens)
+                save(out,"wide_candidate.json",{"position":list(pos),"target":list(target),"lens":lens,
+                    "candidate_count":len(candidates),"candidates_tested":len(attempted),
+                    "frames_tested":21,"pass":True,"frames":checks,"lead_shift":list(wide_lead_shift),"friend_shift":list(wide_friend_shift)})
+                break
+        save(out,"wide_search_audit.json",{"first_frame_candidates":len(candidates),"attempts":attempted})
+        if wide_camera is None:raise RuntimeError("No camera candidate passes all 21 establishing frames")
+        print("WIDE_ALL_FRAMES_PASS",json.dumps({"frames":21,"first_frame_candidates":len(candidates),
+              "attempts":len(attempted),"position":list(wide_camera[0]),"target":list(wide_camera[1]),"lens":wide_camera[2]}),flush=True)
     # Sequential playback ensures stance detection is the same on every runner.
     lock=StrideLock(ret,"walk_cycle",FPS,rate,start,walk_yaw)
     rows=[];failures=[];first=0 if args.part<0 else args.part*30;last=COUNT if args.part<0 else min(COUNT,first+30)
@@ -229,6 +260,8 @@ def main():
             # Ball lands at t~4.91, rolls forward, settles on sidewalk.
             ball.location=(.12-.44*min(dt,.95),-.64-.26*min(dt,1.35),max(0,z))
         bpy.context.view_layer.update()
+        # Independent singles proof skips every wide operation and non-proof camera.
+        if singles_proof and f+1 not in test_frames:continue
         cam.data.shift_x=0;cam.data.shift_y=0
         # Restore shot-local visibility before every camera evaluation.
         for actor in (lead,friend):
