@@ -392,3 +392,14 @@ A major emotional beat must not be authored as a face-material/decal swap alone.
 ### Chapter 2 reel specification
 
 scripts/render_expression_reel.py builds close-up expression coverage for all seven characters, a ten-second neutral multi-character blink shot, and two paired performances: Lead neutral → surprise → sustained laugh; Friend neutral → embarrassed. Neutral studio, Cycles denoising OFF. Reel must be rendered, inspected from actual pixels, and shown inline for user sign-off before marking the visual deliverable approved.
+
+
+### Split Chapter 2 render jobs — 2026-11-27
+
+The monolithic render 45998731264 was stalled with no step update after 12:28:54 UTC and was successfully cancelled. The replacement is split into three independently running jobs in workflow run **46001234510** (.github/workflows/facial-expression-split.yml), using scripts/render_expression_sections.py:
+
+- Expression close-ups — seven characters, 91 labelled stills + encoded sequence + per-character/master contact sheets. Job **140513100697**, artifact name chapter2-expression-closeups.
+- Ten-second neutral blink demo — 240 frames + encoded MP4 + blink-event contact sheet. Job **140513100064**, artifact name chapter2-neutral-blink-demo.
+- Paired emotional beats — Lead neutral → surprise → laugh and Friend neutral → embarrassed, 156 frames + encoded MP4 + contact sheet. Job **140513100520**, artifact name chapter2-paired-emotional-beats.
+
+Each job renders independently with Cycles denoising OFF. Close-ups/beats use 960×540 at 12 samples; blink grid uses 1280×720 at 12 samples. The first split attempt failed in CLI setup (missing --smoke flag) and a runner package-source 403; both were fixed. The current run's three jobs have passed checkout, package installation and decal generation, and are in their respective render steps. At this entry there are no completed reel artifacts or visual approvals yet. Check run 46001234510 for job/artifact completion.
