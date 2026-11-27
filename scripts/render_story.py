@@ -440,7 +440,9 @@ def main():
         assert (cake.matrix_world.translation-Vector(item["slice_bottom"])).length<.001
         assert (plate.matrix_world.translation-Vector(item["plate_bottom"])).length<.001
         for name,track in tracks.items():
-            assert [n for n,o in track.decals.items() if not o.hide_render]==[item[name+"_expression"]]
+            blink=actors[name]._blink_controller.is_closed(scene,item["frame"])
+            expected="sleep_closed" if blink else item[name+"_expression"]
+            assert [n for n,o in track.decals.items() if not o.hide_render]==[expected]
     manifest={"story":spec["id"],"resolution":[width,height],"fps":fps,"duration":spec["duration"],
               "frame_count":scene.frame_end,"samples":samples,"shots":shot_records,"max_grip_error":max_error,
               "launch_frame":launch,"landing_frame":land,"head_support_z":head_support_z,"hair_highest_z":highest.z,"cake_embed_depth_below_tip":highest.z-head_support_z,"max_friend_rim_error":max_friend_rim_error,"rig":"source GLB R6 armature / approved VariantCharacter lead and friend","source_sha256":SOURCE_SHA256,"seated_root_z":seats,"arm_lengths":lengths,"max_hand_target_error":max_hand_error,"max_lead_rim_error":max_lead_rim_error,"max_reach_direction_z":max_reach_z,"patrons":2,
