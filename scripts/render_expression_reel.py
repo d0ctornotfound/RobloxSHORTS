@@ -224,7 +224,7 @@ def main():
         "resolution":[1280,720],"fps":FPS,"denoising":False,"cycles_samples":24,
         "characters":[{"key":k,"label":label,"kind":kind,"expressions":list(EXPRESSIONS)} for k,label,kind in ACTOR_SPECS],
         "required_expression_set":sorted(REQUIRED),
-        "expression_stills":len(stills.glob("*.png").__iter__().__next__() for _ in []) if False else len(list(stills.glob("*.png"))),
+        "expression_stills":len(list(stills.glob("*.png"))),
         "expression_sequence_frames":expression_count,"expression_hold_frames":HOLD,
         "neutral_blink_frames":10*FPS,"neutral_blink_seconds":10,
         "blink_schedules":schedules,
