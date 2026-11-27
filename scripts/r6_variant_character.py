@@ -8,7 +8,7 @@ from r6_character import R6Character,ROLE_COLORS,matte,face_material,mesh_points
 from render_demo import cube
 
 ROOT=Path(__file__).resolve().parents[1]/"assets"/"r6_variants"
-EXPRESSIONS=("neutral","happy","smug","tired","worried","laughing","shocked","sad","unimpressed")
+EXPRESSIONS=("neutral","happy","smug","tired","worried","laughing","shocked","surprised","sad","unimpressed","embarrassed","angry","sleep_closed")
 SKINS={"honey":(.83,.54,.27),"warm_tan":(.60,.32,.13),"peach":(.93,.66,.39),"dad_tan":(.68,.40,.19)}
 ROLE_COLORS["dad"]=(SKINS["dad_tan"],(.50,.31,.15),(.025,.027,.035))
 GARMENTS={"lead":("hoodie","jeans","warm_tan","young"),"friend":("tee","yellow_denim","peach","friend"),"teacher":("cardigan","teacher_trousers","honey","teacher"),"dad":("jacket","stripe_pants","dad_tan","dad")}
