@@ -37,11 +37,19 @@ def render(scene,out,name):
     scene.render.filepath=str(out/(name+".png"));start=time.perf_counter();bpy.ops.render.render(write_still=True);return time.perf_counter()-start
 
 def main():
-    p=argparse.ArgumentParser();p.add_argument("--part",type=int,required=True);p.add_argument("--output",required=True)
+    p=argparse.ArgumentParser();p.add_argument("--part",type=int,required=True,help="-1 runs complete geometric preflight, no animation rendering");p.add_argument("--output",required=True)
     args=p.parse_args(sys.argv[sys.argv.index("--")+1:]);out=Path(args.output).resolve();out.mkdir(parents=True,exist_ok=True)
     scene,atm,cam,lead=street_scene(24,540,960);scene.render.fps=FPS;scene.render.fps_base=1
     scene.cycles.use_denoising=True;scene.cycles.adaptive_threshold=.065;scene.render.use_persistent_data=True
     atm.apply("golden_hour")
+    # Dress this daylight scene so street lamps do not cross face sightlines.
+    # Move intact fixtures and their paired point lights out of the acting corridor.
+    roots=sorted([o for o in scene.objects if o.type=="EMPTY" and (o.name=="lamp" or o.name.startswith("lamp."))],key=lambda o:o.location.x)
+    pools=sorted([o for o in scene.objects if o.type=="LIGHT" and o.name.startswith("Street lamp warm pool")],key=lambda o:o.location.x)
+    assert len(roots)==len(pools)==4,(len(roots),len(pools))
+    for root,pool,x in zip(roots,pools,(-15.,-12.,12.,15.)):
+        root.location.x=x;pool.location.x=x
+    bpy.context.view_layer.update()
     friend=character("Gift giver","friend");ret=Retarget(lead)
     yaw=.30;walk_yaw=1.40;start=(0,0,0);rate=.72
     def heading(t):return walk_yaw+(yaw-walk_yaw)*smoothstep((t-2.03)/.37)
@@ -72,7 +80,7 @@ def main():
     wide_camera=None
     # Sequential playback ensures stance detection is the same on every runner.
     lock=StrideLock(ret,"walk_cycle",FPS,rate,start,walk_yaw)
-    rows=[];first=args.part*30;last=min(COUNT,first+30)
+    rows=[];failures=[];first=0 if args.part<0 else args.part*30;last=COUNT if args.part<0 else min(COUNT,first+30)
     for f in range(COUNT):
         t=f/FPS;scene.frame_set(f+1)
         if f<=WALK_END:
@@ -99,6 +107,7 @@ def main():
             # Ball lands at t~4.91, rolls forward, settles on sidewalk.
             ball.location=(.12-.44*min(dt,.95),-.64-.26*min(dt,1.35),max(0,z))
         bpy.context.view_layer.update()
+        cam.data.shift_x=0;cam.data.shift_y=0
         # Restore shot-local visibility before every camera evaluation.
         for actor in (lead,friend):
             for obj in actor.meshes:obj.hide_render=False
@@ -120,7 +129,8 @@ def main():
                             if not all(k[4]>0 and .05<=k[0]<=k[1]<=.95 and .06<=k[2]<=k[3]<=.94 for k in bounds):continue
                             total=sum(k[3]-k[2] for k in bounds)
                             separation=abs(sum(bounds[0][:2])/2-sum(bounds[1][:2])/2)
-                            if total>=.45 and separation>=.18:
+                            lamp=check_lamps(scene,cam,heroes)
+                            if total>=.47 and separation>=.18 and max(lamp.values())<=.05:
                                 score=total+.15*separation-.001*abs(angle)
                                 if best is None or score>best[0]:best=(score,pos.copy(),q.copy(),lens)
                 if best is None:raise RuntimeError("Wide establishment has no safe full-body total >=45% framing")
@@ -136,6 +146,10 @@ def main():
             # of the face, slightly to camera-left, rather than grazing the profile.
             a=h-.20;d=4.35 if shot=="wave_notice_single" else 4.05
             apply(cam,"static",0,(x+d*math.sin(a),y-d*math.cos(a),1.83),(x,y,1.28),53)
+            # Fixed sensor shift toward the extended arm during wave/notice.
+            # This does not change focal length or move actors.
+            if shot=="wave_notice_single":cam.data.shift_x=-.105
+            bpy.context.view_layer.update()
         elif t<4.85:
             heroes=[];shot="gift_action_insert";insert=True
             for actor in (lead,friend):
@@ -161,6 +175,9 @@ def main():
         lamp_ok=all(x<=.05 for x in lamps.values())
         rec={"frame":f+1,"time":t,"shot":shot,"bounds":b,"face":face,"lamp_overlap":lamps,"lead_beat":lead_beat,"friend_beat":friend_beat,"body_pass":body_ok,"face_pass":face_ok,"lamp_pass":lamp_ok,"prop_bounds":prop_bounds,"coverage_rule":"sum>=.45" if shot=="establishing_wide" else "prop_insert" if insert else "each>=.45"}
         rows.append(rec)
+        if args.part<0:
+            if not (body_ok and face_ok and lamp_ok):failures.append(rec)
+            continue
         if first<=f<last:
             # Keep failure evidence instead of discarding the first offending image.
             if not (body_ok and face_ok and lamp_ok):
@@ -176,6 +193,12 @@ def main():
                 assert all(v["pass"] for v in gate.values()),gate
             rec["render_seconds"]=render(scene,out,"frame_%04d"%(f+1))
     walk_actual=lock.report()
+    if args.part<0:
+        save(out,"geometry_preflight.json",{"rows":rows,"failures":failures,"walk":walk_actual,"run":run_rec})
+        print("GAG_PREFLIGHT",json.dumps({"frames":len(rows),"failure_count":len(failures),"first_by_shot":{name:next(x for x in failures if x["shot"]==name) for name in sorted({x["shot"] for x in failures})}},default=str),flush=True)
+        assert not failures,"Full timeline geometry preflight failed; see artifact"
+        assert walk_actual["pass"] and run_rec["pass"]
+        return
     save(out,"manifest.json",{"fps":FPS,"resolution":[540,960],"frames":COUNT,"part":args.part,"stride":walk_actual,"run_stride":run_rec,"rows":rows[first:last],"two_shot":fit,"source_sha256":ret.data["source_sha256"],"engine":scene.render.engine,"samples":24,"denoise":True})
     assert walk_actual["pass"] and run_rec["pass"],("stride lock validation", {k:v for k,v in walk_actual.items() if k!="records"},{k:v for k,v in run_rec.items() if k!="records"})
 if __name__=="__main__":main()

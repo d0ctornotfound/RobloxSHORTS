@@ -1,4 +1,4 @@
-name: Quality acceptance gag — wide singles and gift insert
+name: Quality acceptance gag — gated storyboard and denoiser repair
 on:
   workflow_dispatch:
   push:
@@ -8,7 +8,33 @@ on:
 permissions:
   contents: read
 jobs:
+  preflight:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install official Blender 4.0.2 (includes CPU OIDN)
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y --no-install-recommends python3-pil python3-numpy libgl1 libx11-6 libxi6 libxrender1 libxfixes3 libxxf86vm1 libsm6
+          curl -fL --retry 3 https://download.blender.org/release/Blender4.0/blender-4.0.2-linux-x64.tar.xz -o /tmp/blender.tar.xz
+          tar -xJf /tmp/blender.tar.xz -C /tmp
+          echo "/tmp/blender-4.0.2-linux-x64" >> "$GITHUB_PATH"
+          /usr/bin/python3 scripts/library_character_assets.py
+          python3 -m py_compile scripts/library_locomotion.py scripts/library_acting.py scripts/library_camera.py scripts/library_sets.py scripts/render_quality_gag.py
+      - name: Check all 240 geometric samples before matrix fan-out
+        run: |
+          blender --version
+          blender -b --python-exit-code 1 --python scripts/render_quality_gag.py -- --part -1 --output render/gag
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: gag-full-geometry-preflight
+          path: render/gag/
+          if-no-files-found: warn
+          retention-days: 7
   render:
+    needs: preflight
     runs-on: ubuntu-24.04
     timeout-minutes: 60
     strategy:
@@ -17,10 +43,13 @@ jobs:
         part: [0, 1, 2, 3, 4, 5, 6, 7]
     steps:
       - uses: actions/checkout@v4
-      - name: Install Blender
+      - name: Install official Blender 4.0.2 (includes CPU OIDN)
         run: |
           sudo apt-get update
-          sudo apt-get install -y --no-install-recommends blender python3-pil python3-numpy
+          sudo apt-get install -y --no-install-recommends python3-pil python3-numpy libgl1 libx11-6 libxi6 libxrender1 libxfixes3 libxxf86vm1 libsm6
+          curl -fL --retry 3 https://download.blender.org/release/Blender4.0/blender-4.0.2-linux-x64.tar.xz -o /tmp/blender.tar.xz
+          tar -xJf /tmp/blender.tar.xz -C /tmp
+          echo "/tmp/blender-4.0.2-linux-x64" >> "$GITHUB_PATH"
           /usr/bin/python3 scripts/library_character_assets.py
           python3 -m py_compile scripts/library_locomotion.py scripts/library_acting.py scripts/library_camera.py scripts/library_sets.py scripts/render_quality_gag.py
       - name: Render contact-corrected acting gag chunk
