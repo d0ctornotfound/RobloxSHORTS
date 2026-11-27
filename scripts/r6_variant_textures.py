@@ -168,7 +168,11 @@ def character_face(expr,identity):
         oval(.5,.75 if comic else .731,.14 if comic else .09,.056,(159,70,62,255))
     elif expr=="angry":curve((.31,.70),(.5,.575),(.69,.70),.030)
     elif expr=="embarrassed":curve((.40,.68),(.5,.725),(.60,.68),.020)
-    elif expr in ("sad","worried"):curve((.31,.752),(.5,.51),(.69,.748),.030 if comic else .023)
+    elif expr=="worried":
+        # A small tense open mouth separates worry from the deeper sad frown.
+        oval(.50,.695,.135 if comic else .105,.105 if comic else .082)
+    elif expr=="sad":
+        curve((.31,.752),(.5,.51),(.69,.748),.030 if comic else .023)
     elif expr in ("happy","laughing","smug"):
         curve((.33,.642),(.5,.79),(.68,.622),.032)
     elif expr=="unimpressed":
