@@ -1,13 +1,6 @@
 name: Production library showcase (stills and proof clip)
 on:
   workflow_dispatch:
-  push:
-    branches: [main]
-    paths:
-      - 'scripts/library_*.py'
-      - 'scripts/render_library_showcase.py'
-      - 'scripts/package_library_showcase.py'
-      - '.github/workflows/library-showcase.yml'
 permissions:
   contents: read
 concurrency:

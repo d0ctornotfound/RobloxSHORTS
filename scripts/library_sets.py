@@ -4,6 +4,20 @@ from stage_a_cafe import wood,emission
 from library_props import build,palette
 import bpy
 
+def wall_sections(name,y,width,height,wall,openings=()):
+    """Physical wall panels around nonoverlapping x,width,bottom,height openings."""
+    cuts=[(-width/2,width/2,0,height)]
+    for x,w,bottom,h in openings:
+        a,b=x-w/2,x+w/2;top=bottom+h
+        assert -width/2<a<b<width/2 and top<height
+        nxt=[]
+        for l,r,z0,z1 in cuts:
+            if r<=a or l>=b or z1<=bottom or z0>=top:nxt.append((l,r,z0,z1));continue
+            for rect in ((l,min(r,a),z0,z1),(max(l,b),r,z0,z1),(max(l,a),min(r,b),z0,min(z1,bottom)),(max(l,a),min(r,b),max(z0,top),z1)):
+                if rect[1]-rect[0]>.001 and rect[3]-rect[2]>.001:nxt.append(rect)
+        cuts=nxt
+    return [cube(name+" panel "+str(i),((l+r)/2,y,(z0+z1)/2),(r-l,.16,z1-z0),wall,bevel=0) for i,(l,r,z0,z1) in enumerate(cuts)]
+
 def room(name,width=8,depth=8,height=4,window=(1.7,1.7,1.45),door=(-2.3,1.15,2.55),front=False):
     """Back wall + two side walls, optional front. Openings: x,width,height
     (window sill fixed at 1.25; door base 0). Camera stays inside envelope."""
@@ -13,20 +27,13 @@ def room(name,width=8,depth=8,height=4,window=(1.7,1.7,1.45),door=(-2.3,1.15,2.5
     for x in (-width/2,width/2):
         cube(name+" side wall",(x,0,height/2),(.16,depth,height),wall,bevel=0)
         cube(name+" base trim",(x*.98,0,.12),(.12,depth,.24),trim,bevel=0)
-    cuts=[(-width/2,width/2,0,height)]
-    for opening in (window,door):
+    openings=[]
+    for opening,kind in ((window,"window"),(door,"door")):
         if opening is None:continue
-        x,w,h=opening;bottom=1.25 if opening is window else 0
-        a,b=x-w/2,x+w/2;top=bottom+h
-        assert -width/2<a<b<width/2 and top<height
-        nxt=[]
-        for l,r,z0,z1 in cuts:
-            if r<=a or l>=b or z1<=bottom or z0>=top:nxt.append((l,r,z0,z1));continue
-            for rect in ((l,min(r,a),z0,z1),(max(l,b),r,z0,z1),(max(l,a),min(r,b),z0,min(z1,bottom)),(max(l,a),min(r,b),max(z0,top),z1)):
-                if rect[1]-rect[0]>.001 and rect[3]-rect[2]>.001:nxt.append(rect)
-        cuts=nxt
-        build("window" if opening is window else "door",name+" opening "+str(x),(x,y-.08,bottom),p=p,width=w,height=h,pane=False)
-    for i,(l,r,z0,z1) in enumerate(cuts):cube(name+" rear wall "+str(i),((l+r)/2,y,(z0+z1)/2),(r-l,.16,z1-z0),wall,bevel=0)
+        x,w,h=opening;bottom=1.25 if kind=="window" else 0
+        openings.append((x,w,bottom,h))
+        build(kind,name+" opening "+str(x),(x,y-.08,bottom),p=p,width=w,height=h,pane=False)
+    wall_sections(name+" rear wall",y,width,height,wall,openings)
     if front:cube(name+" front wall",(0,-y,height/2),(width,.16,height),wall,bevel=0)
     return p
 
@@ -60,12 +67,17 @@ def street():
     windows=[]
     for i,x in enumerate((-9,-3,3,9)):
         col=(brick,material("Blue siding",(.19,.35,.46)),material("Ochre siding",(.55,.37,.17)),brick)[i]
-        cube("House body",(x,4.7,1.65),(4.8,3.0,3.3),col,bevel=.025)
+        # Build façade from the same opening/panel kit as rooms; windows
+        # and door cover actual openings rather than decals on a solid cube.
+        for ob in wall_sections("House facade",3.2,4.8,3.3,col,((-.9,1.15,0,2.35),(.88,1.1,1.45,1.0)))):
+            ob.location.x+=x
+        cube("House rear",(x,6.2,1.65),(4.8,.16,3.3),col,bevel=0)
+        for side in (-1,1):cube("House side",(x+side*2.32,4.7,1.65),(.16,3.0,3.3),col,bevel=0)
         for side in (-1,1):
             ob=cube("Sloping roof",(x+side*1.28,4.7,3.59),(2.85,3.4,.14),roof);ob.rotation_euler.y=side*.32
         build("door",pos=(x-.9,3.12,0),scale=.9,p=p)
-        for dx in (.88,-.9):
-            z=1.45 if dx>0 else 2.45
+        for dx in (.88,):
+            z=1.45
             wp=emission("House window light",(.98,.72,.34),.18)
             pane=cube("Window luminous glass",(x+dx,3.10,z+.48),(1.0,.035,.96),wp,bevel=0)
             windows.append(pane);build("window",pos=(x+dx,3.06,z),scale=.68,p=p,pane=False)

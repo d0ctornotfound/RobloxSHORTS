@@ -3,7 +3,7 @@
   "duration": 120,
   "fps": 12,
   "hook_end": 2,
-  "narration": "My shadow started walking home without me. At first, I thought it was funny. It waved from the other sidewalk. I lifted my hand. It didn't. It pointed at my yellow umbrella. I had left it beside the café. I ran back to get it. The cashier stared past my shoulder. My shadow was already at the counter. It pointed at the little clock. The hands were moving backwards again. I grabbed my umbrella and hurried outside. The sky was turning orange already. My friend laughed when I told him. Then his shadow quietly shook its head. We followed both shadows down the street. They stopped beside a locked blue door. A tiny key lay underneath the mat. My friend picked it up and hesitated. The door opened onto our classroom. Every desk was completely empty inside. Except one, right by the window. An unfinished note sat on it. It said, remember the little clock. I remembered seeing it at the café. The note had my own handwriting. I looked outside. Night had arrived. My shadow stood beneath the moon. It held out an invisible hand. I opened the umbrella over it. The streetlamp made a second shadow. That one waved at me properly. The first shadow finally smiled back. Then it pointed toward my house. I walked home with my friend. He carried the note in silence. We stopped at the front steps. The porch clock read six o'clock. Exactly when I had left earlier. The umbrella began glowing faintly yellow. I folded it and stepped inside. The hallway looked perfectly normal again. My friend knocked on the window. His shadow had disappeared completely now. I looked down at my feet. Two shadows were standing behind me. One pointed at the little clock. The other reached for the umbrella. I suddenly understood the strange warning. The clock was never running backwards. It was counting down to sunset. The umbrella kept our shadows together. I opened it before the moon. My friend's shadow returned to him. He laughed and ran back home. I put the umbrella beside my bed. The next morning everything felt normal. Until I looked at the clock. Its hands stopped exactly at six. And my umbrella was already gone.",
+  "narration": "My shadow walked home without me. At first, I laughed. It waved across the street. I waved. It didn't. It pointed at my umbrella. I'd left it at the café. I ran back inside. The cashier looked terrified. My shadow was already there. It pointed at the clock. The hands ran backwards. I grabbed my umbrella. The sky turned orange. My friend laughed at me. His shadow shook its head. We followed both shadows. They found a blue door. A key lay underneath. My friend picked it up. Inside was our classroom. Every desk was empty. Except one by the window. A note sat there. Remember the clock, it said. I'd seen it at the café. The handwriting was mine. Night had arrived outside. My shadow faced the moon. It held out a hand. I opened the umbrella. A streetlamp cast another shadow. That one waved properly. The first smiled back. It pointed toward home. We walked home together. He carried the note. We reached my porch. The clock read six. When I'd left earlier. The umbrella glowed yellow. I folded it and entered. The hallway seemed normal. My friend knocked outside. His shadow had vanished. I looked at my feet. Two shadows stood there. One pointed at the clock. One reached for the umbrella. I understood the warning. The clock wasn't going backwards. It counted down to sunset. The umbrella kept shadows together. I opened it again. His shadow returned. He laughed and ran home. I put it beside my bed. Morning felt perfectly normal. Until I checked the clock. It was stuck at six. My umbrella was already gone.",
   "callbacks": [
     {
       "setup": 8,
@@ -17,8 +17,8 @@
       "end": 2,
       "location": "street",
       "camera": "wide",
-      "action": "My shadow started walking home without me.",
-      "narration_beat": "My shadow started walking home without me.",
+      "action": "My shadow walked home without me.",
+      "narration_beat": "My shadow walked home without me.",
       "characters": [
         "lead"
       ],
@@ -29,8 +29,8 @@
       "end": 4,
       "location": "street",
       "camera": "medium",
-      "action": "At first, I thought it was funny.",
-      "narration_beat": "At first, I thought it was funny.",
+      "action": "At first, I laughed.",
+      "narration_beat": "At first, I laughed.",
       "characters": [
         "lead"
       ],
@@ -41,8 +41,8 @@
       "end": 6,
       "location": "street",
       "camera": "close",
-      "action": "It waved from the other sidewalk.",
-      "narration_beat": "It waved from the other sidewalk.",
+      "action": "It waved across the street.",
+      "narration_beat": "It waved across the street.",
       "characters": [
         "lead"
       ],
@@ -53,8 +53,8 @@
       "end": 8,
       "location": "street",
       "camera": "insert",
-      "action": "I lifted my hand. It didn't.",
-      "narration_beat": "I lifted my hand. It didn't.",
+      "action": "I waved. It didn't.",
+      "narration_beat": "I waved. It didn't.",
       "characters": [
         "lead"
       ],
@@ -65,8 +65,8 @@
       "end": 10,
       "location": "street",
       "camera": "medium",
-      "action": "It pointed at my yellow umbrella.",
-      "narration_beat": "It pointed at my yellow umbrella.",
+      "action": "It pointed at my umbrella.",
+      "narration_beat": "It pointed at my umbrella.",
       "characters": [
         "lead"
       ],
@@ -79,8 +79,8 @@
       "end": 12,
       "location": "cafe",
       "camera": "wide",
-      "action": "I had left it beside the café.",
-      "narration_beat": "I had left it beside the café.",
+      "action": "I'd left it at the café.",
+      "narration_beat": "I'd left it at the café.",
       "characters": [
         "lead"
       ],
@@ -91,8 +91,8 @@
       "end": 14,
       "location": "cafe",
       "camera": "medium",
-      "action": "I ran back to get it.",
-      "narration_beat": "I ran back to get it.",
+      "action": "I ran back inside.",
+      "narration_beat": "I ran back inside.",
       "characters": [
         "lead"
       ],
@@ -103,8 +103,8 @@
       "end": 16,
       "location": "cafe",
       "camera": "close",
-      "action": "The cashier stared past my shoulder.",
-      "narration_beat": "The cashier stared past my shoulder.",
+      "action": "The cashier looked terrified.",
+      "narration_beat": "The cashier looked terrified.",
       "characters": [
         "lead"
       ],
@@ -115,8 +115,8 @@
       "end": 18,
       "location": "cafe",
       "camera": "medium",
-      "action": "My shadow was already at the counter.",
-      "narration_beat": "My shadow was already at the counter.",
+      "action": "My shadow was already there.",
+      "narration_beat": "My shadow was already there.",
       "characters": [
         "lead"
       ],
@@ -127,8 +127,8 @@
       "end": 20,
       "location": "cafe",
       "camera": "medium",
-      "action": "It pointed at the little clock.",
-      "narration_beat": "It pointed at the little clock.",
+      "action": "It pointed at the clock.",
+      "narration_beat": "It pointed at the clock.",
       "characters": [
         "lead"
       ],
@@ -141,8 +141,8 @@
       "end": 22,
       "location": "cafe",
       "camera": "insert",
-      "action": "The hands were moving backwards again.",
-      "narration_beat": "The hands were moving backwards again.",
+      "action": "The hands ran backwards.",
+      "narration_beat": "The hands ran backwards.",
       "characters": [
         "lead"
       ],
@@ -153,8 +153,8 @@
       "end": 24,
       "location": "cafe",
       "camera": "medium",
-      "action": "I grabbed my umbrella and hurried outside.",
-      "narration_beat": "I grabbed my umbrella and hurried outside.",
+      "action": "I grabbed my umbrella.",
+      "narration_beat": "I grabbed my umbrella.",
       "characters": [
         "lead"
       ],
@@ -167,8 +167,8 @@
       "end": 26,
       "location": "street",
       "camera": "wide",
-      "action": "The sky was turning orange already.",
-      "narration_beat": "The sky was turning orange already.",
+      "action": "The sky turned orange.",
+      "narration_beat": "The sky turned orange.",
       "characters": [
         "lead"
       ],
@@ -179,8 +179,8 @@
       "end": 28,
       "location": "street",
       "camera": "medium",
-      "action": "My friend laughed when I told him.",
-      "narration_beat": "My friend laughed when I told him.",
+      "action": "My friend laughed at me.",
+      "narration_beat": "My friend laughed at me.",
       "characters": [
         "lead",
         "friend"
@@ -192,8 +192,8 @@
       "end": 30,
       "location": "street",
       "camera": "medium",
-      "action": "Then his shadow quietly shook its head.",
-      "narration_beat": "Then his shadow quietly shook its head.",
+      "action": "His shadow shook its head.",
+      "narration_beat": "His shadow shook its head.",
       "characters": [
         "lead",
         "friend"
@@ -205,8 +205,8 @@
       "end": 32,
       "location": "street",
       "camera": "medium",
-      "action": "We followed both shadows down the street.",
-      "narration_beat": "We followed both shadows down the street.",
+      "action": "We followed both shadows.",
+      "narration_beat": "We followed both shadows.",
       "characters": [
         "lead",
         "friend"
@@ -218,8 +218,8 @@
       "end": 34,
       "location": "street",
       "camera": "medium",
-      "action": "They stopped beside a locked blue door.",
-      "narration_beat": "They stopped beside a locked blue door.",
+      "action": "They found a blue door.",
+      "narration_beat": "They found a blue door.",
       "characters": [
         "lead",
         "friend"
@@ -231,8 +231,8 @@
       "end": 36,
       "location": "street",
       "camera": "close",
-      "action": "A tiny key lay underneath the mat.",
-      "narration_beat": "A tiny key lay underneath the mat.",
+      "action": "A key lay underneath.",
+      "narration_beat": "A key lay underneath.",
       "characters": [
         "lead",
         "friend"
@@ -244,8 +244,8 @@
       "end": 38,
       "location": "street",
       "camera": "medium",
-      "action": "My friend picked it up and hesitated.",
-      "narration_beat": "My friend picked it up and hesitated.",
+      "action": "My friend picked it up.",
+      "narration_beat": "My friend picked it up.",
       "characters": [
         "lead",
         "friend"
@@ -257,8 +257,8 @@
       "end": 40,
       "location": "classroom",
       "camera": "wide",
-      "action": "The door opened onto our classroom.",
-      "narration_beat": "The door opened onto our classroom.",
+      "action": "Inside was our classroom.",
+      "narration_beat": "Inside was our classroom.",
       "characters": [
         "lead",
         "friend"
@@ -270,8 +270,8 @@
       "end": 42,
       "location": "classroom",
       "camera": "medium",
-      "action": "Every desk was completely empty inside.",
-      "narration_beat": "Every desk was completely empty inside.",
+      "action": "Every desk was empty.",
+      "narration_beat": "Every desk was empty.",
       "characters": [
         "lead",
         "friend"
@@ -283,8 +283,8 @@
       "end": 44,
       "location": "classroom",
       "camera": "medium",
-      "action": "Except one, right by the window.",
-      "narration_beat": "Except one, right by the window.",
+      "action": "Except one by the window.",
+      "narration_beat": "Except one by the window.",
       "characters": [
         "lead",
         "friend"
@@ -296,8 +296,8 @@
       "end": 46,
       "location": "classroom",
       "camera": "close",
-      "action": "An unfinished note sat on it.",
-      "narration_beat": "An unfinished note sat on it.",
+      "action": "A note sat there.",
+      "narration_beat": "A note sat there.",
       "characters": [
         "lead",
         "friend"
@@ -309,8 +309,8 @@
       "end": 48,
       "location": "classroom",
       "camera": "medium",
-      "action": "It said, remember the little clock.",
-      "narration_beat": "It said, remember the little clock.",
+      "action": "Remember the clock, it said.",
+      "narration_beat": "Remember the clock, it said.",
       "characters": [
         "lead",
         "friend"
@@ -324,8 +324,8 @@
       "end": 50,
       "location": "classroom",
       "camera": "insert",
-      "action": "I remembered seeing it at the café.",
-      "narration_beat": "I remembered seeing it at the café.",
+      "action": "I'd seen it at the café.",
+      "narration_beat": "I'd seen it at the café.",
       "characters": [
         "lead",
         "friend"
@@ -337,8 +337,8 @@
       "end": 52,
       "location": "classroom",
       "camera": "medium",
-      "action": "The note had my own handwriting.",
-      "narration_beat": "The note had my own handwriting.",
+      "action": "The handwriting was mine.",
+      "narration_beat": "The handwriting was mine.",
       "characters": [
         "lead",
         "friend"
@@ -350,8 +350,8 @@
       "end": 54,
       "location": "classroom",
       "camera": "medium",
-      "action": "I looked outside. Night had arrived.",
-      "narration_beat": "I looked outside. Night had arrived.",
+      "action": "Night had arrived outside.",
+      "narration_beat": "Night had arrived outside.",
       "characters": [
         "lead",
         "friend"
@@ -363,8 +363,8 @@
       "end": 56,
       "location": "street",
       "camera": "wide",
-      "action": "My shadow stood beneath the moon.",
-      "narration_beat": "My shadow stood beneath the moon.",
+      "action": "My shadow faced the moon.",
+      "narration_beat": "My shadow faced the moon.",
       "characters": [
         "lead",
         "friend"
@@ -376,8 +376,8 @@
       "end": 58,
       "location": "street",
       "camera": "medium",
-      "action": "It held out an invisible hand.",
-      "narration_beat": "It held out an invisible hand.",
+      "action": "It held out a hand.",
+      "narration_beat": "It held out a hand.",
       "characters": [
         "lead",
         "friend"
@@ -389,8 +389,8 @@
       "end": 60,
       "location": "street",
       "camera": "medium",
-      "action": "I opened the umbrella over it.",
-      "narration_beat": "I opened the umbrella over it.",
+      "action": "I opened the umbrella.",
+      "narration_beat": "I opened the umbrella.",
       "characters": [
         "lead",
         "friend"
@@ -404,8 +404,8 @@
       "end": 62,
       "location": "street",
       "camera": "medium",
-      "action": "The streetlamp made a second shadow.",
-      "narration_beat": "The streetlamp made a second shadow.",
+      "action": "A streetlamp cast another shadow.",
+      "narration_beat": "A streetlamp cast another shadow.",
       "characters": [
         "lead",
         "friend"
@@ -417,8 +417,8 @@
       "end": 64,
       "location": "street",
       "camera": "insert",
-      "action": "That one waved at me properly.",
-      "narration_beat": "That one waved at me properly.",
+      "action": "That one waved properly.",
+      "narration_beat": "That one waved properly.",
       "characters": [
         "lead",
         "friend"
@@ -430,8 +430,8 @@
       "end": 66,
       "location": "street",
       "camera": "close",
-      "action": "The first shadow finally smiled back.",
-      "narration_beat": "The first shadow finally smiled back.",
+      "action": "The first smiled back.",
+      "narration_beat": "The first smiled back.",
       "characters": [
         "lead",
         "friend"
@@ -443,8 +443,8 @@
       "end": 68,
       "location": "street",
       "camera": "medium",
-      "action": "Then it pointed toward my house.",
-      "narration_beat": "Then it pointed toward my house.",
+      "action": "It pointed toward home.",
+      "narration_beat": "It pointed toward home.",
       "characters": [
         "lead",
         "friend"
@@ -456,8 +456,8 @@
       "end": 70,
       "location": "street",
       "camera": "medium",
-      "action": "I walked home with my friend.",
-      "narration_beat": "I walked home with my friend.",
+      "action": "We walked home together.",
+      "narration_beat": "We walked home together.",
       "characters": [
         "lead",
         "friend"
@@ -469,8 +469,8 @@
       "end": 72,
       "location": "street",
       "camera": "medium",
-      "action": "He carried the note in silence.",
-      "narration_beat": "He carried the note in silence.",
+      "action": "He carried the note.",
+      "narration_beat": "He carried the note.",
       "characters": [
         "lead",
         "friend"
@@ -482,8 +482,8 @@
       "end": 74,
       "location": "house",
       "camera": "wide",
-      "action": "We stopped at the front steps.",
-      "narration_beat": "We stopped at the front steps.",
+      "action": "We reached my porch.",
+      "narration_beat": "We reached my porch.",
       "characters": [
         "lead",
         "friend"
@@ -495,8 +495,8 @@
       "end": 76,
       "location": "house",
       "camera": "close",
-      "action": "The porch clock read six o'clock.",
-      "narration_beat": "The porch clock read six o'clock.",
+      "action": "The clock read six.",
+      "narration_beat": "The clock read six.",
       "characters": [
         "lead",
         "friend"
@@ -510,8 +510,8 @@
       "end": 78,
       "location": "house",
       "camera": "insert",
-      "action": "Exactly when I had left earlier.",
-      "narration_beat": "Exactly when I had left earlier.",
+      "action": "When I'd left earlier.",
+      "narration_beat": "When I'd left earlier.",
       "characters": [
         "lead",
         "friend"
@@ -523,8 +523,8 @@
       "end": 80,
       "location": "house",
       "camera": "medium",
-      "action": "The umbrella began glowing faintly yellow.",
-      "narration_beat": "The umbrella began glowing faintly yellow.",
+      "action": "The umbrella glowed yellow.",
+      "narration_beat": "The umbrella glowed yellow.",
       "characters": [
         "lead",
         "friend"
@@ -538,8 +538,8 @@
       "end": 82,
       "location": "house",
       "camera": "medium",
-      "action": "I folded it and stepped inside.",
-      "narration_beat": "I folded it and stepped inside.",
+      "action": "I folded it and entered.",
+      "narration_beat": "I folded it and entered.",
       "characters": [
         "lead",
         "friend"
@@ -551,8 +551,8 @@
       "end": 84,
       "location": "house",
       "camera": "medium",
-      "action": "The hallway looked perfectly normal again.",
-      "narration_beat": "The hallway looked perfectly normal again.",
+      "action": "The hallway seemed normal.",
+      "narration_beat": "The hallway seemed normal.",
       "characters": [
         "lead",
         "friend"
@@ -564,8 +564,8 @@
       "end": 86,
       "location": "house",
       "camera": "close",
-      "action": "My friend knocked on the window.",
-      "narration_beat": "My friend knocked on the window.",
+      "action": "My friend knocked outside.",
+      "narration_beat": "My friend knocked outside.",
       "characters": [
         "lead",
         "friend"
@@ -577,8 +577,8 @@
       "end": 88,
       "location": "house",
       "camera": "medium",
-      "action": "His shadow had disappeared completely now.",
-      "narration_beat": "His shadow had disappeared completely now.",
+      "action": "His shadow had vanished.",
+      "narration_beat": "His shadow had vanished.",
       "characters": [
         "lead",
         "friend"
@@ -590,8 +590,8 @@
       "end": 90,
       "location": "house",
       "camera": "medium",
-      "action": "I looked down at my feet.",
-      "narration_beat": "I looked down at my feet.",
+      "action": "I looked at my feet.",
+      "narration_beat": "I looked at my feet.",
       "characters": [
         "lead",
         "friend"
@@ -603,8 +603,8 @@
       "end": 92,
       "location": "house",
       "camera": "insert",
-      "action": "Two shadows were standing behind me.",
-      "narration_beat": "Two shadows were standing behind me.",
+      "action": "Two shadows stood there.",
+      "narration_beat": "Two shadows stood there.",
       "characters": [
         "lead",
         "friend"
@@ -616,8 +616,8 @@
       "end": 94,
       "location": "house",
       "camera": "medium",
-      "action": "One pointed at the little clock.",
-      "narration_beat": "One pointed at the little clock.",
+      "action": "One pointed at the clock.",
+      "narration_beat": "One pointed at the clock.",
       "characters": [
         "lead",
         "friend"
@@ -631,8 +631,8 @@
       "end": 96,
       "location": "house",
       "camera": "close",
-      "action": "The other reached for the umbrella.",
-      "narration_beat": "The other reached for the umbrella.",
+      "action": "One reached for the umbrella.",
+      "narration_beat": "One reached for the umbrella.",
       "characters": [
         "lead",
         "friend"
@@ -646,8 +646,8 @@
       "end": 98,
       "location": "house",
       "camera": "medium",
-      "action": "I suddenly understood the strange warning.",
-      "narration_beat": "I suddenly understood the strange warning.",
+      "action": "I understood the warning.",
+      "narration_beat": "I understood the warning.",
       "characters": [
         "lead",
         "friend"
@@ -659,8 +659,8 @@
       "end": 100,
       "location": "house",
       "camera": "medium",
-      "action": "The clock was never running backwards.",
-      "narration_beat": "The clock was never running backwards.",
+      "action": "The clock wasn't going backwards.",
+      "narration_beat": "The clock wasn't going backwards.",
       "characters": [
         "lead",
         "friend"
@@ -674,8 +674,8 @@
       "end": 102,
       "location": "house",
       "camera": "medium",
-      "action": "It was counting down to sunset.",
-      "narration_beat": "It was counting down to sunset.",
+      "action": "It counted down to sunset.",
+      "narration_beat": "It counted down to sunset.",
       "characters": [
         "lead",
         "friend"
@@ -687,8 +687,8 @@
       "end": 104,
       "location": "house",
       "camera": "medium",
-      "action": "The umbrella kept our shadows together.",
-      "narration_beat": "The umbrella kept our shadows together.",
+      "action": "The umbrella kept shadows together.",
+      "narration_beat": "The umbrella kept shadows together.",
       "characters": [
         "lead",
         "friend"
@@ -702,8 +702,8 @@
       "end": 106,
       "location": "house",
       "camera": "close",
-      "action": "I opened it before the moon.",
-      "narration_beat": "I opened it before the moon.",
+      "action": "I opened it again.",
+      "narration_beat": "I opened it again.",
       "characters": [
         "lead",
         "friend"
@@ -715,8 +715,8 @@
       "end": 108,
       "location": "house",
       "camera": "medium",
-      "action": "My friend's shadow returned to him.",
-      "narration_beat": "My friend's shadow returned to him.",
+      "action": "His shadow returned.",
+      "narration_beat": "His shadow returned.",
       "characters": [
         "lead",
         "friend"
@@ -728,8 +728,8 @@
       "end": 110,
       "location": "house",
       "camera": "medium",
-      "action": "He laughed and ran back home.",
-      "narration_beat": "He laughed and ran back home.",
+      "action": "He laughed and ran home.",
+      "narration_beat": "He laughed and ran home.",
       "characters": [
         "lead",
         "friend"
@@ -741,8 +741,8 @@
       "end": 112,
       "location": "house",
       "camera": "medium",
-      "action": "I put the umbrella beside my bed.",
-      "narration_beat": "I put the umbrella beside my bed.",
+      "action": "I put it beside my bed.",
+      "narration_beat": "I put it beside my bed.",
       "characters": [
         "lead"
       ],
@@ -755,8 +755,8 @@
       "end": 114,
       "location": "house",
       "camera": "medium",
-      "action": "The next morning everything felt normal.",
-      "narration_beat": "The next morning everything felt normal.",
+      "action": "Morning felt perfectly normal.",
+      "narration_beat": "Morning felt perfectly normal.",
       "characters": [
         "lead"
       ],
@@ -767,8 +767,8 @@
       "end": 116,
       "location": "house",
       "camera": "close",
-      "action": "Until I looked at the clock.",
-      "narration_beat": "Until I looked at the clock.",
+      "action": "Until I checked the clock.",
+      "narration_beat": "Until I checked the clock.",
       "characters": [
         "lead"
       ],
@@ -781,8 +781,8 @@
       "end": 118,
       "location": "house",
       "camera": "medium",
-      "action": "Its hands stopped exactly at six.",
-      "narration_beat": "Its hands stopped exactly at six.",
+      "action": "It was stuck at six.",
+      "narration_beat": "It was stuck at six.",
       "characters": [
         "lead"
       ],
@@ -793,8 +793,8 @@
       "end": 120,
       "location": "house",
       "camera": "insert",
-      "action": "And my umbrella was already gone.",
-      "narration_beat": "And my umbrella was already gone.",
+      "action": "My umbrella was already gone.",
+      "narration_beat": "My umbrella was already gone.",
       "characters": [
         "lead"
       ],
