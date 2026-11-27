@@ -6,7 +6,7 @@ from PIL import Image,ImageDraw,ImageFilter
 import numpy as np
 
 EXPRESSIONS=("neutral","happy","smug","tired","worried","laughing","shocked","surprised","sad","unimpressed","embarrassed","angry","sleep_closed")
-SKINS={"honey":(.83,.54,.27),"warm_tan":(.60,.32,.13),"peach":(.93,.66,.39),"dad_tan":(.68,.40,.19)}
+SKINS={"honey":(.83,.54,.27),"warm_tan":(.60,.32,.13),"peach":(.93,.66,.39),"dad_tan":(.68,.40,.19),"patron_green":(.86,.58,.33),"patron_blue":(.92,.70,.48)}
 def srgb(c):return tuple(round(255*(12.92*x if x<=.0031308 else 1.055*x**(1/2.4)-.055)) for x in c)
 
 def face(expr,identity="young"):
@@ -219,7 +219,7 @@ def facial_hair(kind):
     return im.resize((1024,1024),Image.Resampling.LANCZOS)
 
 # Garment atlas: top-left front, top-right back, bottom-left sides, bottom-right caps.
-COLORS={"hoodie":(104,111,116),"jacket":(176,142,95),"tee":(219,198,151),"cardigan":(161,49,87),"jeans":(34,39,46),"yellow_denim":(244,164,2),"stripe_pants":(25,28,33),"blue_denim":(25,64,128),"teacher_trousers":(47,39,57)}
+COLORS={"hoodie":(104,111,116),"jacket":(176,142,95),"tee":(219,198,151),"cardigan":(161,49,87),"jeans":(34,39,46),"yellow_denim":(244,164,2),"stripe_pants":(25,28,33),"blue_denim":(25,64,128),"teacher_trousers":(47,39,57),"green_tee":(33,151,56),"blue_tee":(25,89,200),"green_student_denim":(29,75,162),"blue_student_denim":(250,188,3)}
 def cloth(kind,skin=None):
     S=512;atlas=Image.new("RGB",(1024,1024))
     base=COLORS[kind.split("_sleeve")[0]]
@@ -233,14 +233,14 @@ def cloth(kind,skin=None):
         for a,b,c,amp,spread in ((.13,.23,.13,-11,.045),(.85,.70,-.13,-15,.065),(.35,.52,.16,8,.12),(.48,.83,-.22,-9,.055),(.70,.14,.14,8,.07)):
             center=a+c*(y-b)
             folds+=amp*np.exp(-((x-center)/spread)**2-((y-b)/.19)**2)
-        if kind in ("tee","tee_sleeve"):
+        if kind in ("tee","tee_sleeve","green_tee","green_tee_sleeve","blue_tee","blue_tee_sleeve"):
             folds=1.5*np.sin(13*x+3*y)+1.4*np.sin(18*y+4*x)
             g+=1.7*np.sin((x+y)*S*math.pi*.55)
         if kind in ("cardigan","cardigan_sleeve"):
             # Cable-like V stitches and real knit-scale relief in the image.
             knit=4*np.cos(2*math.pi*(x*31+np.abs((y*43)%1-.5)*.95))
             g+=knit+2*np.cos(y*43*2*math.pi)
-        if kind in ("jeans","blue_denim","yellow_denim","teacher_trousers"):
+        if kind in ("jeans","blue_denim","yellow_denim","teacher_trousers","green_student_denim","blue_student_denim"):
             folds+=20*np.exp(-((x-.53)/.26)**2)*np.exp(-((y-.45)/.42)**2)
             g+=4*np.sin((x+y*.5)*S*math.pi*.74)+rng.normal(0,2.1,(S,S))
         arr=np.clip(np.array(base)[None,None,:]+(g+folds)[...,None],0,255).astype("uint8")
@@ -262,9 +262,14 @@ def cloth(kind,skin=None):
         line([(.025,.92),(.35,.945),(.68,.925),(.975,.94)],dark,.018)
         line([(.025,.903),(.35,.927),(.68,.907),(.975,.92)],lit,.008)
         if "_sleeve" in kind:
-            # Last 14% is exposed hand; cuff and seam above it.
-            rect((0,.86,1,1),skin or (220,170,115));rect((0,.80,1,.86),dark)
-            for a in (.815,.835,.85):line([(0,a),(1,a)],lit,.004)
+            # Tee sleeves stop on the upper arm; long-sleeve garments expose only the hand.
+            base_kind=kind.split("_sleeve")[0]
+            if base_kind in ("tee","green_tee","blue_tee"):
+                rect((0,.52,1,1),skin or (220,170,115));rect((0,.46,1,.52),dark)
+                for a in (.472,.488,.504):line([(0,a),(1,a)],lit,.004)
+            else:
+                rect((0,.86,1,1),skin or (220,170,115));rect((0,.80,1,.86),dark)
+                for a in (.815,.835,.85):line([(0,a),(1,a)],lit,.004)
             line([(.04,.03),(.10,.37),(.08,.76)],dark,.01)
         elif kind=="hoodie":
             if panel==0:
@@ -292,7 +297,7 @@ def cloth(kind,skin=None):
                 stitch(.035,.08,.035,.91);stitch(.965,.08,.965,.91)
                 for yy in (.31,.49,.67,.85):d.ellipse(q((.315,yy,.34,yy+.025)),fill=(219,208,183))
             elif panel==1:line([(.12,.2),(.5,.28),(.88,.2)],dark,.014)
-        elif kind in ("jeans","yellow_denim","blue_denim","stripe_pants","teacher_trousers"):
+        elif kind in ("jeans","yellow_denim","blue_denim","stripe_pants","teacher_trousers","green_student_denim","blue_student_denim"):
             line([(.06,.02),(.06,.98)],dark,.012);line([(.078,.02),(.078,.98)],lit,.005)
             line([(.94,.02),(.94,.98)],dark,.011)
             stitch(.085,.04,.085,.94);stitch(.922,.04,.922,.94)
@@ -308,7 +313,7 @@ def cloth(kind,skin=None):
                 if kind=="cardigan":
                     line([(.50,.13),(.50,.94)],dark,.015)
                     stitch(.46,.19,.46,.93);stitch(.54,.19,.54,.93)
-                elif kind=="tee":
+                elif kind in ("tee","green_tee","blue_tee"):
                     line([(.30,.025),(.4,.10),(.5,.125),(.6,.10),(.70,.025)],lit,.012)
                     stitch(.035,.18,.035,.92);stitch(.965,.18,.965,.92)
         atlas.paste(im,((panel%2)*S,(panel//2)*S))
@@ -323,7 +328,7 @@ def generate(out):
             image.save(folder/(expr+".png"))
     for kind in ("stubble","beard"):facial_hair(kind).save(out/(kind+".png"))
     for kind in COLORS:cloth(kind).save(out/(kind+".png"))
-    for role,skin,kind in [("lead","warm_tan","hoodie"),("friend","peach","tee"),("teacher","honey","cardigan"),("dad","dad_tan","jacket")]:
+    for role,skin,kind in [("lead","warm_tan","hoodie"),("friend","peach","tee"),("teacher","honey","cardigan"),("dad","dad_tan","jacket"),("patron_green","patron_green","green_tee"),("patron_blue","patron_blue","blue_tee")]:
         cloth(kind+"_sleeve",srgb(SKINS[skin])).save(out/(role+"_sleeve.png"))
 if __name__=="__main__":
     p=argparse.ArgumentParser();p.add_argument("--output",default="assets/r6_variants");a=p.parse_args();generate(a.output)

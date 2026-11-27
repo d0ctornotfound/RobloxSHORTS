@@ -18,3 +18,22 @@ class RecipeCharacter(R6Character):
 
 def character(name,role="lead"):
     return RecipeCharacter(name,role) if role in RECIPES else VariantCharacter(name,role)
+
+
+def clothed_character(name,role="lead"):
+    """Build one of the seven approved identities with the Chapter 3 textile layer.
+
+    This opt-in builder keeps the raw character()/R6Character paths unchanged for
+    the closed expression/motion review libraries.
+    """
+    if role in RECIPES:
+        actor=RecipeCharacter(name,role)
+    elif role in ("lead","friend","teacher","dad"):
+        actor=VariantCharacter(name,role)
+    elif role in ("patron_green","patron_blue"):
+        actor=R6Character(name,role)
+    else:
+        raise ValueError("Unknown clothed character role: "+role)
+    from clothing_system import upgrade_character
+    upgrade_character(actor)
+    return actor

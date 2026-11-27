@@ -10,8 +10,7 @@ sys.path.insert(0, str(Path(__file__).resolve().parent))
 import bpy
 from PIL import Image, ImageDraw, ImageFont
 
-from library_character import character
-from r6_character import R6Character
+from library_character import clothed_character
 from facial_expressions import disable_blinking
 
 ACTORS = {
@@ -95,15 +94,9 @@ def studio():
     world.node_tree.nodes["Background"].inputs[1].default_value = 0.55
     scene.world = world
     gray = mat("Neutral grey seamless studio", (0.34, 0.36, 0.39))
-    cube("Studio floor", (0, 0, -0.10), (30, 30, 0.20), gray)
-    walls = {
-        "front": cube("Studio north wall", (0, 3.2, 5), (30, 0.20, 10), gray),
-        "back": cube("Studio south wall", (0, -3.2, 5), (30, 0.20, 10), gray),
-        "east": cube("Studio east wall", (3.2, 0, 5), (0.20, 30, 10), gray),
-        "side": cube("Studio west wall", (-3.2, 0, 5), (0.20, 30, 10), gray),
-    }
-    for wall in walls.values():
-        wall.hide_render = True
+    # A uniform world background is the seamless studio; no physical wall or
+    # floor meshes are placed in the camera path, so every limb remains visible.
+    walls = {}
     area_light("Large soft key", (-3.4, -4.2, 5.2), (0, 0, 1.25), 760, 4.2, (1.0, 0.96, 0.91))
     area_light("Front fill", (4.0, -3.0, 3.5), (0, 0, 1.25), 420, 4.0, (0.88, 0.93, 1.0))
     area_light("Rear rim", (0.0, 3.0, 4.4), (0, 0, 1.35), 520, 3.0, (1.0, 1.0, 1.0))
@@ -118,10 +111,7 @@ def studio():
 
 def build_actor(key):
     label, kind = ACTORS[key]
-    if kind in ("variant", "recipe"):
-        actor = character("Clothing review " + label, key)
-    else:
-        actor = R6Character("Clothing review " + label, key)
+    actor = clothed_character("Clothing review " + label, key)
     actor.root.location = (0, 0, 0)
     actor.root.rotation_euler = (0, 0, 0)
     actor.pose("neutral")
@@ -163,9 +153,6 @@ def contact_sheet(root, label):
     return out
 
 def render_view(scene, cam, walls, actor, path, view, location, target, scale):
-    wall_key = "side" if view == "side" else "back" if view == "back" else "front"
-    for key, wall in walls.items():
-        wall.hide_render = key != wall_key
     cam.location = location
     cam.data.type = "ORTHO"
     cam.data.ortho_scale = scale
@@ -217,6 +204,7 @@ def main():
         "render_seconds": render_times,
         "whole_character_job_seconds": round(time.monotonic() - started, 2),
         "contact_sheet": sheet.name,
+        "clothing_upgrade": actor.clothing_report,
     }
     (out / "manifest.json").write_text(json.dumps(manifest, indent=2) + "\n")
     print("CLOTHING_CHARACTER_COMPLETE " + json.dumps(manifest), flush=True)

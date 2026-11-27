@@ -40,10 +40,10 @@ jobs:
           done
           sudo apt-get update -o Acquire::Retries=3
           sudo apt-get install -y --no-install-recommends blender python3-pil python3-numpy fonts-dejavu-core libegl1 libegl-mesa0 libgl1 libgl1-mesa-dri libgbm1
-      - name: Generate existing character textures
+      - name: Generate identity-preserving garment atlases
         run: python3 scripts/library_character_assets.py
       - name: Compile render code
-        run: python3 -m py_compile scripts/render_clothing_character.py scripts/library_character.py scripts/r6_variant_character.py scripts/r6_variant_textures.py
+        run: python3 -m py_compile scripts/render_clothing_character.py scripts/library_character.py scripts/clothing_system.py scripts/r6_variant_character.py scripts/r6_variant_textures.py
       - name: Render this character only — EEVEE, denoising OFF
         timeout-minutes: 25
         env:
@@ -57,7 +57,7 @@ jobs:
         if: always()
         uses: actions/upload-artifact@v4
         with:
-          name: chapter3-clothing-${{ matrix.actor }}
+          name: chapter3-clothing-final-${{ matrix.actor }}
           path: render/chapter3-clothing/${{ matrix.actor }}/
           if-no-files-found: warn
           retention-days: 30
