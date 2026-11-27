@@ -1,0 +1,43 @@
+name: Publish original Chapter 1 motion reel
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/publish-chapter1-motion-demo.yml'
+permissions:
+  contents: write
+  actions: read
+jobs:
+  publish:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+      - uses: actions/download-artifact@v4
+        with:
+          github-token: ${{ github.token }}
+          run-id: 45947057611
+          name: chapter-1-character-motion-reel
+          path: source-motion
+      - name: Copy exact original MP4 and verify
+        run: |
+          mkdir -p demos
+          test ! -e demos/chapter1_motion_reel.mp4 || cmp source-motion/motion_reel.mp4 demos/chapter1_motion_reel.mp4
+          cp source-motion/motion_reel.mp4 demos/chapter1_motion_reel.mp4
+          cmp source-motion/motion_reel.mp4 demos/chapter1_motion_reel.mp4
+          test "$(wc -c < demos/chapter1_motion_reel.mp4)" -eq 3604625
+          echo '1c71f56ac07a80ad8b88268acabae650a112b0b7b646a63aa2f32fc1c695d352  demos/chapter1_motion_reel.mp4' | sha256sum -c -
+          test "$(git hash-object demos/chapter1_motion_reel.mp4)" = f948f63f9ad1af258cd6ae1b220e263e9327d0b9
+      - name: Commit only original MP4
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add -- demos/chapter1_motion_reel.mp4
+          git diff --cached --quiet || git commit -m "demos: publish exact original Chapter 1 motion reel (not approved)"
+          git push origin HEAD:main
+          git rev-parse HEAD
+          git ls-tree -l HEAD demos/chapter1_motion_reel.mp4
+          sha256sum demos/chapter1_motion_reel.mp4
