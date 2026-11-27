@@ -7,14 +7,6 @@ on:
         type: choice
         options: [preview, full]
         default: preview
-  push:
-    branches: [main]
-    paths:
-      - 'stories/the_perfect_throw.json'
-      - 'scripts/classroom_set.py'
-      - 'scripts/render_classroom.py'
-      - 'scripts/camera_visibility.py'
-      - '.github/workflows/classroom-render.yml'
 
 permissions:
   contents: read

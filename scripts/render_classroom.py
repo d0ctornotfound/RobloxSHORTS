@@ -84,20 +84,30 @@ def main():
                      "friend":"neutral" if t<5 else "happy",
                      "teacher":"neutral" if t<7.75 else "shocked" if t<9.5 else "neutral"}
         for name,actor in actors.items():
+            # Payoff-only lean, keyed throughout to preserve the earlier shots.
+            if name in ("lead","friend"):
+                lean=smoothstep((t-10.0)/.35) if name=="friend" else smoothstep((t-10.55)/.15)
+                actor.root.rotation_euler.x=(-.12 if name=="lead" else -.16)*lean
+                actor.root.keyframe_insert("rotation_euler",frame=f)
             pivot=pivots[name]
             pivot.rotation_euler=(.16 if name=="lead" and t<2.7 else -.06 if name=="teacher" and t>=9.5 else 0,0,
                                   -.18 if name=="friend" and t<5 else 0)
             # Teacher support is fixed in the final head orientation, so avoid tilt after impact.
             if name=="teacher":pivot.rotation_euler=(0,0,0)
             if name=="friend" and t>=9.5:pivot.rotation_euler=(-.22-.05*math.sin(t*10),0,-.13)
-            if name=="lead" and t>=10.7:pivot.rotation_euler=(.05,0,.10)
+            if name=="lead" and t>=10:pivot.rotation_euler=(-.06,0,.03)
             pivot.keyframe_insert("rotation_euler",frame=f)
             for i in (0,1):
                 d=Vector((.24 if i==0 else -.24,-.66,-.55))
                 closed=False
                 if name=="lead":
-                    if t>=10.55:
-                        d=Vector((.48 if i==0 else -.48,-.42,.40))
+                    if t>=10:
+                        # Aim down and forward at the rear edge of the desk; never cross the face.
+                        side=-1 if i==0 else 1
+                        target=Vector((actor.root.location.x+side*.58,-.40,1.23))
+                        bpy.context.view_layer.update()
+                        d=actor.root.matrix_world.inverted()@target-actor.arms[i].location
+                        closed=True
                     elif i==0:
                         fold=Vector((.48+.08*math.sin(t*5),-.68,-.16))
                         wind=Vector((-.15,-.25,.90))
@@ -109,6 +119,9 @@ def main():
                         closed=f<launch
                     elif t<2.8:d=Vector((-.67,-.62,-.18+.10*math.sin(t*5)))
                     elif t>=9.5:d=Vector((-.15,-.50,.60))
+                elif name=="friend" and t>=10:
+                    # Laugh with the head tilted back and hands below the face.
+                    d=Vector((.16,-.78,-.40-.18*math.sin(t*12)) if i==0 else (.20,-.26,-.92))
                 elif name=="friend" and t>=8:d=Vector((.32,-.78,-.28) if i==0 else (-.10,-.38,.72+.10*math.sin(t*8)))
                 elif name=="teacher":
                     d=Vector((0,-.8,.30)) if i==1 and t<6.4 else Vector((.05 if i==0 else -.05,-.12,-1))
