@@ -15,7 +15,7 @@ FACE_DIR=ASSET.parent/"r6_faces"
 BONES={"root":"_rootJoint","torso":"Torso_00","head":"Head_01",
        "left_arm":"Left Arm_02","right_arm":"Right Arm_03",
        "left_leg":"Left Leg_04","right_leg":"Right Leg_05"}
-EXPRESSIONS=("neutral","happy","shocked","sad","unimpressed","laughing")
+EXPRESSIONS=("neutral","happy","smug","tired","worried","laughing","shocked","surprised","sad","unimpressed","embarrassed","angry","sleep_closed")
 # Keep the native dimensions, scale uniformly only to fit the existing sets.
 SCENE_HEIGHT=2.28
 ROLE_COLORS={
@@ -116,6 +116,7 @@ class R6Character:
         self.rig_space.location=(-(lo.x+hi.x)*self.scale/2,-(lo.y+hi.y)*self.scale/2,-lo.z*self.scale)
         bpy.context.view_layer.update()
         self.meshes=list(self.skinned);self.accessories=[]
+        self._expression_tracks=[];self.current_expression="neutral"
         colors=ROLE_COLORS[role]
         skin=matte(name+" / matte skin",skin or colors[0])
         shirt=matte(name+" / shirt",shirt or colors[1])
@@ -154,6 +155,8 @@ class R6Character:
         self.face=self._decal()
         self._accessories()
         self.pose("neutral")
+        from facial_expressions import enable_blinking
+        enable_blinking(bpy.context.scene,[self])
 
     def attach_at(self,name,bone,position,rotation=(0,0,0)):
         """Make an unscaled socket bone-parented at an actor-local scene point.
@@ -241,7 +244,11 @@ class R6Character:
             block("head short block hair",0,.05,.53,1.24,1.19,.24,hair)
 
     def pose(self,expression):
+        if expression not in self.face_materials:raise KeyError("Unknown face expression: "+expression)
+        self.current_expression=expression
         self.face.data.materials[0]=self.face_materials[expression]
+        from facial_expressions import refresh_expression
+        refresh_expression(self)
 
     def set_bone(self,bone,rotation,frame=None):
         pb=self.bones[bone];pb.rotation_mode="XYZ"
