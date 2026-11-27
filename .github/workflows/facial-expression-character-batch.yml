@@ -4,6 +4,11 @@ on:
     branches: [main]
     paths:
       - '.github/workflows/facial-expression-character-batch.yml'
+      - 'scripts/r6_variant_textures.py'
+      - 'scripts/r6_faces.py'
+      - 'scripts/render_expression_sections.py'
+      - 'scripts/build_expression_contact_sheet.py'
+      - 'scripts/audit_expression_duplicates.py'
   workflow_dispatch:
 permissions:
   contents: read
