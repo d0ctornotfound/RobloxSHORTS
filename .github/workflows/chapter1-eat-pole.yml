@@ -6,6 +6,7 @@ on:
     branches: [main]
     paths:
       - '.github/workflows/chapter1-eat-pole.yml'
+      - 'scripts/chapter1_eat_pole.py'
 permissions:
   contents: read
   actions: read
