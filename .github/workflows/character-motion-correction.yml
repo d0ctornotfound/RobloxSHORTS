@@ -1,0 +1,117 @@
+name: Character chapter 1 correction reel
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/character-motion-correction.yml'
+permissions:
+  contents: read
+jobs:
+  smoke:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install Blender and generate existing character textures
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y --no-install-recommends blender python3-pil python3-numpy ffmpeg fonts-dejavu-core
+          /usr/bin/python3 scripts/library_character_assets.py
+          python3 -m py_compile scripts/character_motion.py scripts/character_motion_correction.py scripts/render_character_correction.py
+      - name: Mandatory one-frame smoke test with actual reel profile
+        run: blender -b --python-exit-code 1 --python scripts/render_character_correction.py -- --part 0 --output render/smoke --smoke
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: character-correction-smoke
+          path: render/smoke/
+          if-no-files-found: error
+          retention-days: 30
+  motion:
+    needs: smoke
+    runs-on: ubuntu-24.04
+    timeout-minutes: 90
+    strategy:
+      fail-fast: false
+      matrix:
+        part: [0,1,2,3,4,5,6]
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install Blender and generate existing character textures
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y --no-install-recommends blender python3-pil python3-numpy ffmpeg fonts-dejavu-core
+          /usr/bin/python3 scripts/library_character_assets.py
+          python3 -m py_compile scripts/character_motion.py scripts/character_motion_correction.py scripts/render_character_correction.py
+      - name: Render character-only 30 fps motion clips
+        run: blender -b --python-exit-code 1 --python scripts/render_character_correction.py -- --part ${{ matrix.part }} --output render/motion
+      - name: Encode individual actual clips, retain pose evidence and metrics
+        run: |
+          mkdir -p render/review
+          for dir in render/motion/*/; do
+            name=$(basename "$dir")
+            label=$(echo "$name" | cut -c4- | tr '_' ' ')
+            ffmpeg -v error -y -framerate 30 -i "$dir/frame_%04d.png" -vf "drawtext=fontfile=/usr/share/fonts/truetype/dejavu/DejaVuSans.ttf:text='$label':fontcolor=white:fontsize=22:x=16:y=16:box=1:boxcolor=black@0.55:boxborderw=6" -c:v libx264 -crf 18 -pix_fmt yuv420p "render/review/$name.mp4"
+            cp "$dir/metrics.json" "render/review/$name.json"
+            for f in 0001 0012 0022 0034 0045 0060; do cp "$dir/frame_$f.png" "render/review/${name}_$f.png"; done
+          done
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: character-correction-part-${{ matrix.part }}
+          path: |
+            render/review/
+            render/motion/*/metrics.json
+            render/motion/part.json
+          if-no-files-found: warn
+          retention-days: 30
+  assemble:
+    needs: motion
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/download-artifact@v4
+        with:
+          pattern: character-correction-part-*
+          path: render/parts
+      - name: Assemble 30fps reel and visual review sheets
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y ffmpeg python3-pil
+          mkdir -p render/final/clips
+          find render/parts -name '*.mp4' -exec cp {} render/final/clips/ \;
+          find render/parts -path '*/review/*.json' -exec cp {} render/final/clips/ \;
+          find render/parts -path '*/review/*.png' -exec cp {} render/final/clips/ \;
+          test "$(find render/final/clips -name '*.mp4' | wc -l)" -eq 18
+          cd render/final
+          for f in clips/*.mp4; do echo "file '$f'"; done > concat.txt
+          ffmpeg -v error -y -f concat -safe 0 -i concat.txt -c copy motion_reel.mp4
+          ffprobe -v error -show_streams -show_format -of json motion_reel.mp4 > ffprobe.json
+          /usr/bin/python3 - <<'PY'
+          import json
+          from pathlib import Path
+          from PIL import Image,ImageDraw
+          paths=sorted(Path("clips").glob("*.mp4"))
+          reports=[]
+          for p in paths:
+              r=json.loads(p.with_suffix(".json").read_text());reports.append({k:v for k,v in r.items() if k!="rows"})
+          Path("motion_metrics.json").write_text(json.dumps(reports,indent=2)+"\n")
+          failures=[{"role":r["role"],"action":r["action"],"gate":k} for r in reports for k,v in r.get("correction_gates",{}).items() if v is False]
+          Path("correction_gate_report.json").write_text(json.dumps({"pass":not failures,"failures":failures,"visual_review_pending":True},indent=2)+"\n")
+          for start in range(0,len(paths),6):
+              batch=paths[start:start+6];sheet=Image.new("RGB",(6*160, len(batch)*144),(24,24,24));d=ImageDraw.Draw(sheet)
+              for y,p in enumerate(batch):
+                  for x,n in enumerate(("0001","0012","0022","0034","0045","0060")):
+                      im=Image.open(p.parent/(p.stem+"_"+n+".png"));im.thumbnail((160,120));sheet.paste(im,(x*160,y*144))
+                  d.text((4,y*144+122),p.stem,fill="white")
+              sheet.save(f"motion_sheet_{start//6+1}.png")
+          assert len(paths)==18
+          PY
+      - uses: actions/upload-artifact@v4
+        with:
+          name: chapter-1-character-correction-reel
+          path: render/final/
+          retention-days: 30
+
+      - name: Enforce numerical correction gates after evidence upload
+        run: python3 -c 'import json; r=json.load(open("render/final/correction_gate_report.json")); print(r); assert r["pass"], r["failures"]'
