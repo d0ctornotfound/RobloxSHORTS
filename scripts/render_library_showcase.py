@@ -68,7 +68,7 @@ def pose_strip(out,part):
         if name in ("sit","stand_up"):build("chair",pos=(x,.19,0),p=p)
         if name=="sleep":build("bed",pos=(x,0,0),p=p);pos=(x,0,.74)
         if name in ("hug","high_five"):pos=(x-.76,0,0)
-        pa=pose(a,name,phase,pos,yaw=math.pi/2 if name=="hug" else 0);a.pose("laughing" if name in ("high_five","hug","wave") else "shocked" if name=="fall" else "happy")
+        pa=pose(a,name,phase,pos,yaw=math.pi/2 if name=="hug" else 0);a.pose("sleep_closed" if name=="sleep" else "laughing" if name in ("high_five","hug","wave") else "shocked" if name=="fall" else "happy")
         err=None;partner=None
         if name=="hug":
             b=character(name+" B","lead");actors.append(b);pose(b,name,phase,(x+.76,0,0),yaw=-math.pi/2);b.pose("happy");partner="lead"
