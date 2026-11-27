@@ -56,7 +56,15 @@ def face(expr,identity="young"):
         else:
             oval(x,ey,.075,.104,dark)
         # Mature brows are broad and angular, younger ones more tapered.
-        if expr in ("worried","sad","embarrassed"):
+        if expr=="worried":
+            # Inner brow rises toward the bridge; outer brow stays tense.
+            inner=.235;outer=.335
+            pts=[(x-.087,outer if i==0 else inner),(x+.087,inner if i==0 else outer)]
+        elif expr=="sad":
+            # Inner brow droops toward the eyes while the outer end lifts.
+            inner=.342;outer=.255
+            pts=[(x-.087,outer if i==0 else inner),(x+.087,inner if i==0 else outer)]
+        elif expr=="embarrassed":
             inner=.264;outer=.325
             pts=[(x-.087,outer if i==0 else inner),(x+.087,inner if i==0 else outer)]
         elif expr=="angry":
@@ -84,7 +92,11 @@ def face(expr,identity="young"):
         oval(.5,.685,.195,.215,dark);oval(.5,.735,.12,.045,(149,70,60,255))
     elif expr=="angry":curve((.32,.69),(.5,.585),(.68,.69),.032)
     elif expr=="embarrassed":curve((.40,.675),(.5,.715),(.60,.675),.020)
-    elif expr in ("worried","sad"):curve((.31,.735),(.5,.51 if expr=="sad" else .57),(.70,.735),.027)
+    elif expr=="worried":
+        # Compressed tense mouth: small, held rather than a broad frown.
+        oval(.50,.690,.092,.052,dark)
+    elif expr=="sad":
+        curve((.31,.735),(.5,.485),(.70,.735),.034)
     elif expr=="tired":curve((.34,.69),(.49,.64),(.66,.69),.024)
     else:curve((.35,.66),(.5,.66 if expr=="unimpressed" else .705),(.65,.66),.026)
     return im.resize((1024,1024),Image.Resampling.LANCZOS)
@@ -179,6 +191,10 @@ def character_face(expr,identity):
         oval(.50,.695,.135 if comic else .105,.105 if comic else .082)
     elif expr=="sad":
         curve((.31,.752),(.5,.51),(.69,.748),.030 if comic else .023)
+    elif expr=="happy" and not comic:
+        # A clearly broader, deeper smile for Teacher and Librarian.
+        poly([(.245,.620),(.50,.675),(.755,.620),(.715,.735),(.50,.795),(.285,.735)],dark)
+        poly([(.285,.635),(.50,.686),(.715,.635),(.685,.695),(.50,.728),(.315,.695)],(250,245,225,255))
     elif expr in ("happy","laughing","smug"):
         curve((.33,.642),(.5,.79),(.68,.622),.032)
     elif expr=="unimpressed":
