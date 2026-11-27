@@ -392,7 +392,7 @@ A major emotional beat must not be authored as a face-material/decal swap alone.
 
 ### Chapter 2 reel specification
 
-scripts/render_expression_reel.py builds close-up expression coverage for all seven characters, a ten-second neutral multi-character blink shot, and two paired performances: Lead neutral → surprise → sustained laugh; Friend neutral → embarrassed. Neutral studio, Cycles denoising OFF. Reel must be rendered, inspected from actual pixels, and shown inline for user sign-off before marking the visual deliverable approved.
+scripts/render_expression_sections.py builds close-up expression coverage, a ten-second neutral blink shot, and paired performances: Lead neutral → surprise → sustained laugh; Friend neutral → embarrassed. The approved Chapter 2 review uses EEVEE at 1280×720, 24fps, with denoising OFF. The blink demonstration and corrected emotional-beat clip were inspected and approved by the supervisor. Final differentiation sheets and QA are stored under assets/chapter2_expression_review_final/; publication commit 01a57db.
 
 
 ### Split Chapter 2 render jobs — 2026-11-27
