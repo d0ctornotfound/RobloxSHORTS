@@ -140,6 +140,8 @@ def main():
             gap=right["start_seconds"]-left["end_seconds"]
             if not 2.0<=gap<=5.0:raise RuntimeError(("blink interval",label,gap))
     if args.smoke:
+        for actor in actors.values():visible(actor,False)
+        visible(actors["lead"],True)
         scene.frame_set(35);actors["lead"].pose("surprised")
         render(scene,out/"smoke.png")
         (out/"smoke.json").write_text(json.dumps({"pass":True,"denoising":scene.cycles.use_denoising,
@@ -177,11 +179,19 @@ def main():
     for key,actor in actors.items():
         actor.root.location=(positions[key][0],0,positions[key][1])
         actor.root.rotation_euler=(0,0,0);actor.pose("neutral");head_only(actor)
-    schedules=enable_blinking(scene,list(actors.values()),seed=20261127)
+    neutral_blink_schedules=enable_blinking(scene,list(actors.values()),seed=20261127)
     blink_dir=out/"blink_frames";blink_dir.mkdir(exist_ok=True)
+    blink_labels=[("Lead",274,540),("Friend",731,540),("Teacher",1189,540),("Dad",1646,540),
+                  ("Librarian",503,855),("Student Green",960,855),("Student Blue",1417,855)]
     for f in range(1,10*FPS+1):
         scene.frame_set(f);bpy.context.view_layer.update()
-        render(scene,blink_dir/("frame_%06d.png"%f))
+        path=blink_dir/("frame_%06d.png"%f);render(scene,path)
+        with Image.open(path) as raw:im=raw.convert("RGB")
+        draw=ImageDraw.Draw(im,"RGBA")
+        for label,x,y in blink_labels:
+            box=(x-104,y-5,x+104,y+38);draw.rounded_rectangle(box,radius=10,fill=(12,16,20,190))
+            bb=draw.textbbox((0,0),label,font=font(22));draw.text((x-(bb[2]-bb[0])/2,y),label,font=font(22),fill=(255,255,255,255))
+        im.save(path,quality=95)
 
     # Two paired expression/body performances. The acting helper drives head,
     # torso and arms together with the face; no major decal-only change.
@@ -189,7 +199,7 @@ def main():
     beat_dir=out/"beat_frames";beat_dir.mkdir(exist_ok=True)
     start=10*FPS+1;first_len=4*FPS;second_len=round(2.5*FPS)
     scene.frame_start=start;scene.frame_end=start+first_len+second_len-1
-    schedules=enable_blinking(scene,list(actors.values()),seed=20261128)
+    emotion_blink_schedules=enable_blinking(scene,list(actors.values()),seed=20261128)
     lead=actors["lead"];friend=actors["friend"]
     for other in actors.values():visible(other,False)
     visible(lead,True);lead.root.location=(0,0,0);lead.root.rotation_euler=(0,0,0)
@@ -227,7 +237,8 @@ def main():
         "expression_stills":len(list(stills.glob("*.png"))),
         "expression_sequence_frames":expression_count,"expression_hold_frames":HOLD,
         "neutral_blink_frames":10*FPS,"neutral_blink_seconds":10,
-        "blink_schedules":schedules,
+        "neutral_blink_schedules":neutral_blink_schedules,
+        "emotion_blink_schedules":emotion_blink_schedules,
         "paired_beats":[{"name":"neutral_to_surprise_to_laugh","character":"lead","frames":first_len},
                         {"name":"neutral_to_embarrassed","character":"friend","frames":second_len}],
         "blink_contract":{"interval_seconds":[2.0,5.0],"closed_seconds":[.12,.15],
