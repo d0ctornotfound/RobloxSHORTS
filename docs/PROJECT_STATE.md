@@ -506,3 +506,12 @@ The monolithic render 45998731264 was stalled with no step update after 12:28:54
 - Paired emotional beats — Lead neutral → surprise → laugh and Friend neutral → embarrassed, 156 frames + encoded MP4 + contact sheet. Job **140513100520**, artifact name chapter2-paired-emotional-beats.
 
 Each job renders independently with Cycles denoising OFF. Close-ups/beats use 960×540 at 12 samples; blink grid uses 1280×720 at 12 samples. The first split attempt failed in CLI setup (missing --smoke flag) and a runner package-source 403; both were fixed. The current run's three jobs have passed checkout, package installation and decal generation, and are in their respective render steps. At this entry there are no completed reel artifacts or visual approvals yet. Check run 46001234510 for job/artifact completion.
+
+
+### Chapter 2 — Lead-first EEVEE pilot (2026-11-27)
+
+The stalled multi-character workflow 46001234510 was cancelled. The replacement strategy is pilot-first: one actor, 13 expression stills, EEVEE, 1280×720, per-still flushed progress markers, 15-minute render-step timeout, 20-minute whole-job timeout, and partial-safe artifact upload in an always-run step. Workflow: .github/workflows/facial-expression-lead-pilot.yml. Renderer supports actor filtering and engine selection in scripts/render_expression_sections.py; contact sheet builder is scripts/build_expression_contact_sheet.py.
+
+Diagnostics: run 46002712646 failed before still 1 because Ubuntu Blender 4.0.2 does not recognize BLENDER_EEVEE_NEXT (available engine is BLENDER_EEVEE). Run 46003003952 used the supported BLENDER_EEVEE engine but failed on still 1 because libEGL.so.1 was missing; logs identify PILOT_STILL_START 1/13, expression neutral, followed by EGL initialization errors and native abort. Both are environment/configuration failures, not expression content failures. The workflow now installs libegl1, libegl-mesa0, libgl1, libgl1-mesa-dri and libgbm1 and sets LIBGL_ALWAYS_SOFTWARE=1.
+
+Run 46003241746 then completed 13/13 Lead expressions in EEVEE with all stills and a contact sheet uploaded (artifact 15199427136). However, a renderer branch overrode the requested 1280×720 to 960×540. The override was corrected to honor args.width/args.height when a single actor is selected. Correct-resolution rerun 46003877916 is currently in progress; do not mark the pilot accepted until its manifest confirms 1280×720 and the 13 stills/contact sheet are inspected. Subsequent character batches, blink and beats remain gated on pilot approval.
