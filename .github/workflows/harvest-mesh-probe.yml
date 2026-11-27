@@ -1,0 +1,26 @@
+name: MCRD public mesh delivery probe
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/harvest-mesh-probe.yml'
+permissions:
+  contents: read
+jobs:
+  probe:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: pip install 'numpy==2.3.5' 'trimesh==4.11.1' requests
+      - run: python scripts/resolve_harvest_meshes.py
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: mcrd-priority-mesh-probe
+          path: render/mesh-resolution/
+          if-no-files-found: warn
