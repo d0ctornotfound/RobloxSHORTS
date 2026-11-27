@@ -1,0 +1,73 @@
+name: Publish Chapter 2 final expression sheets
+on:
+  workflow_dispatch:
+    inputs:
+      source_run_id:
+        description: Completed six-character EEVEE expression batch run ID
+        required: true
+        default: "46016634372"
+permissions:
+  actions: read
+  contents: write
+jobs:
+  publish:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+          fetch-depth: 0
+      - name: Download and validate six final contact sheets and pixel QA
+        env:
+          GH_TOKEN: ${{ github.token }}
+          SOURCE_RUN_ID: ${{ inputs.source_run_id }}
+        run: |
+          set -euo pipefail
+          mkdir -p /tmp/ch2-artifacts assets/chapter2_expression_review_final
+          curl --fail --silent --show-error \
+            -H "Authorization: Bearer $GH_TOKEN" \
+            -H "Accept: application/vnd.github+json" \
+            "https://api.github.com/repos/${GITHUB_REPOSITORY}/actions/runs/$SOURCE_RUN_ID/artifacts?per_page=100" \
+            -o /tmp/ch2-artifacts/index.json
+          for actor in lead dad teacher librarian patron_green patron_blue; do
+            name="chapter2-$actor-expression-sheet"
+            id=$(jq -r --arg n "$name" '.artifacts[] | select(.name==$n and .expired==false) | .id' /tmp/ch2-artifacts/index.json | head -n1)
+            test -n "$id"
+            mkdir -p "/tmp/ch2-artifacts/$actor"
+            curl --fail --location --silent --show-error \
+              -H "Authorization: Bearer $GH_TOKEN" \
+              -H "Accept: application/vnd.github+json" \
+              "https://api.github.com/repos/${GITHUB_REPOSITORY}/actions/artifacts/$id/zip" \
+              -o "/tmp/ch2-artifacts/$actor.zip"
+            unzip -q "/tmp/ch2-artifacts/$actor.zip" -d "/tmp/ch2-artifacts/$actor"
+            sheet=$(find "/tmp/ch2-artifacts/$actor" -maxdepth 1 -name '*_expression_contact_sheet.png' -print -quit)
+            qa=$(find "/tmp/ch2-artifacts/$actor" -maxdepth 1 -name '*_pixel_qa.json' -print -quit)
+            manifest=$(find "/tmp/ch2-artifacts/$actor" -maxdepth 1 -name manifest.json -print -quit)
+            test -s "$sheet" && test -s "$qa" && test -s "$manifest"
+            python3 - "$qa" "$actor" <<'PY'
+          import json,sys
+          d=json.load(open(sys.argv[1]))
+          assert d["actor"]==sys.argv[2]
+          assert d["expressions_expected"]==13 and d["expressions_rendered"]==13
+          assert not d["missing_expressions"] and not d["exact_duplicate_pairs"]
+          allowed={"neutral","sleep_closed"}
+          for p in d["near_duplicate_pairs"]:
+              assert {p["left"],p["right"]}==allowed, (sys.argv[2],p)
+          assert d["pass"], d
+          print("FINAL_EXPRESSION_QA_PASS",sys.argv[2],flush=True)
+          PY
+            dest="assets/chapter2_expression_review_final"
+            cp "$sheet" "$dest/${actor}_contact_sheet.png"
+            cp "$qa" "$dest/${actor}_pixel_qa.json"
+            cp "$manifest" "$dest/${actor}_manifest.json"
+          done
+      - name: Commit final Chapter 2 expression evidence
+        run: |
+          set -euo pipefail
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add assets/chapter2_expression_review_final
+          git commit -m "Publish final Chapter 2 expression differentiation sheets"
+          git pull --rebase origin main
+          git push origin HEAD:main
