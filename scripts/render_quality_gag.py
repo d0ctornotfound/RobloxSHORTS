@@ -13,7 +13,7 @@ from library_locomotion import StrideLock
 from library_acting import act,face_clear
 from library_animation import pose
 from library_props import build,palette
-from library_camera import apply,metrics,fit_two_shot,project
+from library_camera import apply,metrics,project,points
 from r6_character import mesh_points
 from stage_b_interaction import smoothstep
 from camera_visibility import visibility_gate
@@ -51,30 +51,16 @@ def main():
     walk=lock.report()
     # Exercise run too; separate calibration only, not substituted into gag.
     run=StrideLock(ret,"run_cycle",FPS,.72,(0,0,0),yaw)
-    for f in range(61):run.step(f/FPS)
+    for f in range(181):run.step(f/FPS)
     run_rec=run.report()
     save(out,"calibration.json",{"walk":walk,"run":run_rec})
     print("STRIDE_VALIDATION",json.dumps({k:{a:b for a,b in v.items() if a!="records"} for k,v in (("walk",walk),("run",run_rec))}),flush=True)
     # Use derived travel, not arbitrary speed. Translate entire path so it
     # ends at the marked stage position, preserving contact velocity.
     end=Vector(walk["records"][-1]["root"])
-    # Supervisor-authorized depth staging: friend foreground, lead behind.
-    # Search actual blocking rather than weakening the coverage or body gate.
-    fit=None;attempts=[]
-    for lx,ly,fx,fy in ((-.38,.72,.34,-.56),(-.43,.70,.37,-.70),(-.28,.95,.37,-.60),(-.54,.88,.30,-.52),(-.35,.80,.22,-.74)):
-        finish=Vector((lx,ly,0));other=Vector((fx,fy,0))
-        act(lead,"recoil",.72,finish,yaw);act(friend,"recoil",.72,other,-.12)
-        try:
-            candidate=fit_two_shot(scene,cam,[lead,friend],target=((lx+fx)/2,(ly+fy)/2,1.28),minimum=.45,
-                allowed=lambda p,q:(other-p).length<(finish-p).length-.25)
-        except RuntimeError as e:
-            attempts.append({"lead":list(finish),"friend":list(other),"failure":str(e)})
-            continue
-        candidate["lead_position"]=list(finish);candidate["friend_position"]=list(other)
-        candidate["depth_difference"]=(finish-cam.location).length-(other-cam.location).length
-        attempts.append(candidate);fit=candidate;break
-    save(out,"depth_staging.json",attempts)
-    if fit is None:raise RuntimeError("No depth-staged full-body >=45% two-shot")
+    # Supervisor-approved shot design: establish geography once, then singles and insert.
+    finish=Vector((-.72,.08,0));other=Vector((.76,.42,0))
+    fit={"design":"wide establishing, lead approach/wave/notice, gift insert, lead recoil, friend laugh","wide_total_minimum":.45,"singles_minimum":.45}
     offset=finish-end;offset.z=0
     pose(lead,"idle",0,finish,yaw);pose(friend,"idle",0,other,-.12)
     p=palette();gift=build("gift_box","Surprise gift",pos=(.12,-.64,0),scale=.78,p=p)
@@ -82,8 +68,8 @@ def main():
     lid=[o for o in gift.children if any(k in o.name for k in ("lid","ribbon","bow"))];original={o:o.location.copy() for o in lid}
     # The ball sits inside the closed opaque box until the lid releases.
     for o in ball.children:o.hide_render=True
-    # The fixed two-shot uses the depth-staged solution found above.
-    print("GAG_TWO_SHOT",json.dumps(fit),flush=True)
+    print("GAG_SHOT_DESIGN",json.dumps(fit),flush=True)
+    wide_camera=None
     # Sequential playback ensures stance detection is the same on every runner.
     lock=StrideLock(ret,"walk_cycle",FPS,rate,start,walk_yaw)
     rows=[];first=args.part*30;last=min(COUNT,first+30)
@@ -113,36 +99,79 @@ def main():
             # Ball lands at t~4.91, rolls forward, settles on sidewalk.
             ball.location=(.12-.44*min(dt,.95),-.64-.26*min(dt,1.35),max(0,z))
         bpy.context.view_layer.update()
-        if t<2.4:
-            x,y,z=lead.root.location
-            h=heading(t);apply(cam,"static",0,(x+2.8*math.sin(h),y-2.8*math.cos(h)-1.7,1.94),(x,y,1.27),48)
-            heroes=[lead];shot="approach"
-        elif t<3.25:
-            apply(cam,"static",0,(finish.x+.35,finish.y-4.25,1.92),(finish.x,finish.y,1.26),46)
-            heroes=[lead];shot="wave"
-        elif t<5.55:
-            apply(cam,"static",0,fit["position"],fit["target"],fit["lens"])
-            heroes=[lead,friend];shot="surprise"
+        # Restore shot-local visibility before every camera evaluation.
+        for actor in (lead,friend):
+            for obj in actor.meshes:obj.hide_render=False
+        prop_points=[p for ob in (*gift.children_recursive,*ball.children_recursive) if ob.type=="MESH" and not ob.hide_render for p in mesh_points(ob)]
+        insert=False
+        if t<.70:
+            heroes=[lead,friend];shot="establishing_wide"
+            if wide_camera is None:
+                a=lead.root.location.copy();b=friend.root.location.copy();q=(a+b)/2;q.z=1.30
+                verts=[points(actor) for actor in heroes]
+                best=None
+                for angle in (0,25,-25,45,-45,60,-60):
+                    h=math.radians(angle)
+                    for dist in (6.,7.5,9.,11.):
+                        pos=q+Vector((dist*math.sin(h),-dist*math.cos(h),2.8-q.z))
+                        for lens in (28,35,42,50,58):
+                            apply(cam,"static",0,pos,q,lens)
+                            bounds=[project(scene,cam,x) for x in verts]
+                            if not all(k[4]>0 and .05<=k[0]<=k[1]<=.95 and .06<=k[2]<=k[3]<=.94 for k in bounds):continue
+                            total=sum(k[3]-k[2] for k in bounds)
+                            separation=abs(sum(bounds[0][:2])/2-sum(bounds[1][:2])/2)
+                            if total>=.45 and separation>=.18:
+                                score=total+.15*separation-.001*abs(angle)
+                                if best is None or score>best[0]:best=(score,pos.copy(),q.copy(),lens)
+                if best is None:raise RuntimeError("Wide establishment has no safe full-body total >=45% framing")
+                _,pos,q,lens=best;wide_camera=(pos,q,lens)
+            apply(cam,"static",0,*wide_camera)
+        elif t<4.15 or 4.85<=t<6.35:
+            heroes=[lead];shot="approach_single" if t<2.4 else "wave_notice_single" if t<4.15 else "recoil_single"
+            # Explicit cut to a single. Exclude non-hero only from this shot's render,
+            # never from the shared action timeline or the establishing view.
+            for obj in friend.meshes:obj.hide_render=True
+            x,y,z=lead.root.location;h=heading(t) if t<2.4 else yaw
+            # Follow the actual root with a stable focal length. Camera is in front
+            # of the face, slightly to camera-left, rather than grazing the profile.
+            a=h-.20;d=4.35 if shot=="wave_notice_single" else 4.05
+            apply(cam,"static",0,(x+d*math.sin(a),y-d*math.cos(a),1.83),(x,y,1.28),53)
+        elif t<4.85:
+            heroes=[];shot="gift_action_insert";insert=True
+            for actor in (lead,friend):
+                for obj in actor.meshes:obj.hide_render=True
+            apply(cam,"static",0,(.65,-3.05,1.32),(.0,-.64,.60),54)
         else:
-            apply(cam,"static",0,fit["position"],fit["target"],fit["lens"])
-            heroes=[lead,friend];shot="payoff"
+            heroes=[friend];shot="laugh_single"
+            for obj in lead.meshes:obj.hide_render=True
+            x,y,z=friend.root.location
+            apply(cam,"static",0,(x-.45,y-4.0,1.83),(x,y,1.28),53)
         b=metrics(scene,cam,heroes)
         face={a.role:face_clear(scene,cam,a) for a in heroes}
         lamps=check_lamps(scene,cam,heroes)
-        body_ok=all(x["body_safe"] and x["coverage"]>=.45 for x in b)
-        face_ok=all(x["pass"] for x in face.values())
+        prop_bounds=project(scene,cam,prop_points) if insert else None
+        if insert:
+            body_ok=prop_bounds[4]>0 and .035<=prop_bounds[0]<=prop_bounds[1]<=.965 and .035<=prop_bounds[2]<=prop_bounds[3]<=.965
+        elif shot=="establishing_wide":
+            body_ok=all(x["body_safe"] for x in b) and sum(x["coverage"] for x in b)>=.45
+        else:
+            body_ok=all(x["body_safe"] and x["coverage"]>=.45 for x in b)
+        # Wide face rays recorded diagnostically; singles retain original face gate.
+        face_ok=all(x["pass"] for x in face.values()) if len(heroes)==1 else True
         lamp_ok=all(x<=.05 for x in lamps.values())
-        rec={"frame":f+1,"time":t,"shot":shot,"bounds":b,"face":face,"lamp_overlap":lamps,"lead_beat":lead_beat,"friend_beat":friend_beat,"body_pass":body_ok,"face_pass":face_ok,"lamp_pass":lamp_ok}
+        rec={"frame":f+1,"time":t,"shot":shot,"bounds":b,"face":face,"lamp_overlap":lamps,"lead_beat":lead_beat,"friend_beat":friend_beat,"body_pass":body_ok,"face_pass":face_ok,"lamp_pass":lamp_ok,"prop_bounds":prop_bounds,"coverage_rule":"sum>=.45" if shot=="establishing_wide" else "prop_insert" if insert else "each>=.45"}
         rows.append(rec)
         if first<=f<last:
             # Keep failure evidence instead of discarding the first offending image.
             if not (body_ok and face_ok and lamp_ok):
                 save(out,"first_failure.json",rec);render(scene,out,"failure_%04d"%(f+1))
                 raise RuntimeError("GAG composition or face gate "+json.dumps(rec))
-            if f in (15,87,115,135,185,225):
+            if f in (10,45,87,115,135,165,205,225):
                 # Real ID visibility for representative hero frames.
                 old=scene.render.resolution_percentage;scene.render.resolution_percentage=50
-                gate=visibility_gate(scene,out,"gag_%04d"%(f+1),{a.role:[o for o in a.meshes if o.type=="MESH" and o!=a.face] for a in heroes})
+                groups={a.role:[o for o in a.meshes if o.type=="MESH" and o!=a.face] for a in heroes}
+                if insert:groups={"gift":[o for o in gift.children_recursive if o.type=="MESH"],"ball":[o for o in ball.children_recursive if o.type=="MESH" and not o.hide_render]}
+                gate=visibility_gate(scene,out,"gag_%04d"%(f+1),groups)
                 scene.render.resolution_percentage=old;rec["visibility"]=gate
                 assert all(v["pass"] for v in gate.values()),gate
             rec["render_seconds"]=render(scene,out,"frame_%04d"%(f+1))

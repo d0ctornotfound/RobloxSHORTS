@@ -314,12 +314,18 @@ def main():
     # Localized bounce for the last glide frames only; no change to the
     # other shots, camera, prop timeline, or final pixel acceptance gate.
     from stage_a_cafe import light
-    light("Glide landing shadow fill",(-3.2,-4.4,2.6),(0,-5.85,.65),180,2.5,(1,.86,.72))
+    light("Glide landing shadow fill",(-3.2,-4.4,2.6),(0,-5.85,.65),340,2.5,(1,.86,.72))
     lamp=bpy.data.objects.get("Glide landing shadow fill")
-    for t,power in ((0,0),(7.0,0),(7.5,180),(8.0,0),(12,0)):
+    for t,power in ((0,0),(7.0,0),(7.5,340),(8.0,0),(12,0)):
         lamp.data.energy=power;lamp.data.keyframe_insert("energy",frame=frame_at(t,fps))
     # Keep the light off at the teacher cut, not a gradual cross-shot fade.
     lamp.data.animation_data.action.fcurves[0].keyframe_points[-3].interpolation="CONSTANT"
+    # Additional low warm bounce is confined to the final glide frames, off at frame 97.
+    light("Final glide lower body bounce",(-2.2,-5.0,1.65),(0,-5.85,.35),190,2.2,(1,.83,.69))
+    low_fill=bpy.data.objects["Final glide lower body bounce"]
+    for t,power in ((0,0),(7.25,0),(7.5,190),(8.0,0),(12,0)):
+        low_fill.data.energy=power;low_fill.data.keyframe_insert("energy",frame=frame_at(t,fps))
+    low_fill.data.animation_data.action.fcurves[0].keyframe_points[-3].interpolation="CONSTANT"
     scene.frame_set(1)
     manifest={"story":spec["id"],"resolution":[w,h],"fps":fps,"duration":12,"frame_count":scene.frame_end,"samples":samples,"shots":records,"timeline":timeline,"max_grip_error":max(errors),"launch_frame":launch,"landing_frame":land,"payoff_hold_seconds":(scene.frame_end-land+1)/fps,"bun_contact_local":list(local),"rig":"approved source GLB R6 VariantCharacter","source_sha256":SOURCE_SHA256,"max_desk_grip_error":max(desk_errors),"desk_contact_frames":len(desk_targets),"rigid_hands":True}
     (out/"story_manifest.json").write_text(json.dumps(manifest,indent=2)+"\n")

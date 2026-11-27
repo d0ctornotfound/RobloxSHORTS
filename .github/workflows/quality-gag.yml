@@ -1,4 +1,4 @@
-name: Quality feedback acceptance gag — depth staging correction
+name: Quality acceptance gag — wide singles and gift insert
 on:
   workflow_dispatch:
   push:
@@ -67,7 +67,7 @@ jobs:
           Path("render/final/gag_manifest.json").write_text(json.dumps({"fps":30,"frame_count":240,"resolution":[540,960],"stride":reference[0],"run_stride":reference[1],"two_shot":reference[2],"rows":rows},indent=2))
           PY
           ffmpeg -v error -y -framerate 30 -i render/frames/frame_%04d.png -c:v libx264 -crf 17 -pix_fmt yuv420p -movflags +faststart render/final/surprise_gift.mp4
-          for n in 0016 0088 0116 0136 0186 0226; do cp "render/frames/frame_$n.png" "render/final/grabs/$n.png"; done
+          for n in 0011 0046 0088 0116 0136 0166 0206 0226; do cp "render/frames/frame_$n.png" "render/final/grabs/$n.png"; done
           ffprobe -v error -show_streams -show_format -of json render/final/surprise_gift.mp4 > render/final/ffprobe.json
           python3 - <<'PY'
           import json,subprocess,hashlib

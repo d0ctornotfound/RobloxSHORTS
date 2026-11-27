@@ -1,0 +1,128 @@
+name: Classroom glide only repair and final validation
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/classroom-glide-repair.yml'
+
+permissions:
+  contents: read
+  actions: read
+
+jobs:
+  render:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 60
+    strategy:
+      fail-fast: false
+      matrix:
+        shot: [03_glide]
+    env:
+      PROFILE: preview
+      SHOT: ${{ matrix.shot }}
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install Blender
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y --no-install-recommends blender python3-pil python3-numpy
+          /usr/bin/python3 scripts/r6_faces.py --output assets/r6_faces
+          /usr/bin/python3 scripts/library_character_assets.py
+          blender --version
+      - name: Build and render continuous story timeline
+        run: |
+          python3 -m py_compile scripts/render_classroom.py scripts/classroom_set.py scripts/camera_visibility.py scripts/edit_story.py
+          blender -b --python-exit-code 1 --python scripts/render_classroom.py -- --story stories/the_perfect_throw.json --profile "$PROFILE" --shot "$SHOT" --output render/story
+      - name: Upload shot frames
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: story-frames-${{ matrix.shot }}
+          path: render/story/
+          if-no-files-found: error
+          retention-days: 1
+  edit:
+    needs: render
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    env:
+      PROFILE: preview
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install FFmpeg and caption font
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y --no-install-recommends ffmpeg fonts-dejavu-core
+      - name: Recover exactly three successful chunks from run 45929103399
+        uses: actions/download-artifact@v4
+        with:
+          github-token: ${{ github.token }}
+          run-id: 45929103399
+          pattern: story-frames-*
+          path: render/chunks
+      - name: Remove original glide, retain only successful unchanged frames
+        run: rm -rf render/chunks/story-frames-03_glide
+      - uses: actions/download-artifact@v4
+        with:
+          pattern: story-frames-03_glide
+          path: render/chunks
+      - name: Assemble frames and cross-check timelines
+        run: |
+          python3 - <<'PY'
+          import json, shutil
+          from pathlib import Path
+          dest=Path("render/story")
+          dest.mkdir(parents=True,exist_ok=True)
+          chunks=sorted(Path("render/chunks").glob("story-frames-*"))
+          assert len(chunks)==4
+          ref=None
+          for chunk in chunks:
+              manifest=json.loads((chunk/"story_manifest.json").read_text())
+              if ref is None:
+                  ref=manifest
+              else:
+                  assert manifest==ref, "Shot timelines disagree"
+              shot=next(s for s in manifest["shots"] if chunk.name.endswith(s["id"]))
+              expected={f"frame_{i:04d}.png" for i in range(shot["first"],shot["last"]+1)}
+              assert {p.name for p in chunk.glob("frame_*.png")}==expected
+              for frame in chunk.glob("frame_*.png"):
+                  assert not (dest/frame.name).exists()
+                  shutil.copy2(frame,dest/frame.name)
+              rows=json.loads((chunk/"preflight.json").read_text())
+              assert rows and all(row["pass"] for row in rows), "preflight failed"
+              if chunk.name.endswith("03_glide"):
+                  assert (chunk/"story.blend").exists()
+                  shutil.copy2(chunk/"story.blend",dest/"story.blend")
+          assert len(list(dest.glob("frame_*.png")))==ref["frame_count"]
+          (dest/"story_manifest.json").write_text(json.dumps(ref,indent=2)+"\n")
+          PY
+      - name: Burn single-word captions and mix procedural audio
+        run: |
+          python3 scripts/edit_story.py --story stories/the_perfect_throw.json --profile "$PROFILE" --frames render/story --output render/final --verify-slot
+          cp render/story/story_manifest.json render/story/story.blend render/final/
+          cp stories/the_perfect_throw.json render/final/
+          mkdir -p render/final/preflight
+          for chunk in render/chunks/story-frames-*; do
+            cp "$chunk/preflight.json" "render/final/preflight/${chunk##*/}.json"
+            cp "$chunk"/preflight_*.png render/final/preflight/
+            cp "$chunk"/id_*.exr render/final/preflight/
+          done
+          mkdir -p render/final/frame_grabs
+          for item in 01_fold_1p5:1.5 02_throw_4p0:4.0 03_glide_6p5:6.5 04_payoff_8p5:8.5 04_payoff_10p7:10.7 04_payoff_11p8:11.8; do
+            ffmpeg -hide_banner -loglevel error -ss "${item#*:}" -i render/final/the_perfect_throw.mp4 -frames:v 1 "render/final/frame_grabs/${item%:*}.png"
+          done
+          python3 scripts/validate_story_pixels.py --video render/final/the_perfect_throw.mp4 --manifest render/final/story_manifest.json --output render/final/pixel_validation.json
+      - name: Hash and probe encoded output
+        run: |
+          cd render/final
+          sha256sum the_perfect_throw.mp4 > SHA256SUMS
+          ffprobe -v error -show_streams -show_format -of json the_perfect_throw.mp4 > ffprobe.json
+      - name: Upload finished short and reproducibility files
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: roblox-the-perfect-throw-glide-repair-12s
+          path: render/final/
+          if-no-files-found: error
+          retention-days: 7
