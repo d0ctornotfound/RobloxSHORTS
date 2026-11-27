@@ -1,0 +1,82 @@
+name: EAT final correction — 119 samples, replay and 60-frame clip
+on:
+  push:
+    branches: [main]
+    paths: ['.github/workflows/chapter1-eat-final-validation.yml']
+  workflow_dispatch:
+permissions:
+  contents: write
+  actions: read
+jobs:
+  eat-final:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 60
+    env:
+      R6_KNEE_BLEND: '0'
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/download-artifact@v4
+        with:
+          name: chapter1-round6-geometry-eat
+          run-id: 45970402223
+          github-token: ${{ github.token }}
+          path: source/carry
+      - uses: actions/download-artifact@v4
+        with:
+          name: chapter1-round9-geometry-eat-food
+          run-id: 45976704432
+          github-token: ${{ github.token }}
+          path: source/bite
+      - uses: actions/download-artifact@v4
+        with:
+          name: chapter1-round11-geometry-eat-food
+          run-id: 45982930320
+          github-token: ${{ github.token }}
+          path: source/approved
+      - name: Install Blender and encode tools
+        run: |
+          sudo apt-get update -o Dir::Etc::sourceparts=/dev/null -o Dir::Etc::sourcelist=/etc/apt/sources.list.d/ubuntu.sources
+          sudo apt-get install -y --no-install-recommends blender python3-pil python3-numpy ffmpeg fonts-dejavu-core
+          /usr/bin/python3 scripts/library_character_assets.py
+          python3 -m py_compile scripts/chapter1_eat_final_round.py
+      - name: Targeted final correction search and 119-sample validation
+        run: MODE=geometry SOURCE="$GITHUB_WORKSPACE/source" OUT="$GITHUB_WORKSPACE/render/eat" blender -b --python-exit-code 1 --python scripts/chapter1_eat_final_round.py
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: eat-final-geometry-and-candidate-search
+          path: render/eat/*.json
+          if-no-files-found: warn
+      - name: Independent replay and render 60 integer frames
+        if: success()
+        run: MODE=render SOURCE="$GITHUB_WORKSPACE/source" OUT="$GITHUB_WORKSPACE/render/eat" blender -b --python-exit-code 1 --python scripts/chapter1_eat_final_round.py
+      - name: Encode clip and prepare review package
+        if: success()
+        run: |
+          mkdir -p docs/diagnostics/eat-final-round/review
+          ffmpeg -v error -y -framerate 30 -i render/eat/frames/frame_%04d.png -c:v libx264 -crf 18 -pix_fmt yuv420p docs/diagnostics/eat-final-round/eat.mp4
+          cp render/eat/classifier_verdict.json docs/diagnostics/eat-final-round/
+          cp render/eat/geometry_plan.json docs/diagnostics/eat-final-round/
+          cp render/eat/replay_geometry.json docs/diagnostics/eat-final-round/
+          cp render/eat/render_metrics.json docs/diagnostics/eat-final-round/
+          for f in 0001 0006 0012 0017 0021 0024 0030 0036 0039 0045 0052 0060; do cp render/eat/frames/frame_$f.png docs/diagnostics/eat-final-round/review/; done
+          test "$(ffprobe -v error -select_streams v:0 -show_entries stream=nb_frames -of csv=p=0 docs/diagnostics/eat-final-round/eat.mp4)" = "60"
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: eat-final-review-package
+          path: |
+            docs/diagnostics/eat-final-round/
+            render/eat/geometry_plan.json
+            render/eat/replay_geometry.json
+            render/eat/render_metrics.json
+          if-no-files-found: warn
+      - name: Publish validated EAT clip and transforms
+        if: success()
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add docs/diagnostics/eat-final-round/
+          git commit -m 'Publish final EAT 60-frame clip, validated transforms and review evidence'
+          git push origin HEAD:main
+          git rev-parse HEAD
