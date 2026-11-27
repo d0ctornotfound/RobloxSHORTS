@@ -295,8 +295,14 @@ def main():
         section_manifest={"section":"beats","render_engine":args.engine,"denoising":False,
             "resolution":[args.width,args.height],"fps":FPS,
             "eevee_taa_samples":getattr(getattr(scene,"eevee",None),"taa_render_samples",None),
-            "paired_beats":[{"name":"neutral_to_surprise_to_laugh","character":"lead","frames":96},
-                {"name":"neutral_to_embarrassed","character":"friend","frames":60}]}
+            "paired_beats":[
+                {"name":"neutral_to_surprise_to_laugh","character":"lead","frames":96,"frame_range":[1,96],
+                 "phases":[{"expression":"neutral","frames":[1,16]},{"expression":"surprised","frames":[17,44]},
+                           {"expression":"laughing","frames":[45,96]}],
+                 "body_reactions":["neutral idle","head recoil + torso lean","head tilt + torso rock + shoulder bounce"]},
+                {"name":"neutral_to_embarrassed","character":"friend","frames":60,"frame_range":[97,156],
+                 "phases":[{"expression":"neutral","frames":[97,108]},{"expression":"embarrassed","frames":[109,156]}],
+                 "body_reactions":["neutral idle","head down + torso fold + arms in"]}]}
     (out/"manifest.json").write_text(json.dumps(section_manifest,indent=2)+"\n")
     print("FACIAL_EXPRESSION_SECTION_RENDERED",json.dumps({k:v for k,v in section_manifest.items() if "schedules" not in k}),flush=True)
 
