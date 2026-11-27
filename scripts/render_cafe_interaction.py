@@ -129,6 +129,8 @@ def main():
             state="rest" if elapsed>=drop.settle else "fall"
         lead_expr="neutral" if t<1.25 else ("happy" if frame<release_frame else ("shocked" if t<3.65 else "sad"))
         friend_expr="neutral" if frame<release_frame else ("shocked" if t<3.65 else "sad")
+        lead_track.apply_reaction(frame,lead_expr,fps)
+        friend_track.apply_reaction(frame,friend_expr,fps)
         lead_track.key(frame,lead_expr)
         friend_track.key(frame,friend_expr)
         bpy.context.view_layer.update()
