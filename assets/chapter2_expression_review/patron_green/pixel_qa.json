@@ -1,0 +1,27 @@
+{
+  "actor": "patron_green",
+  "expressions_expected": 13,
+  "expressions_rendered": 13,
+  "missing_expressions": [],
+  "face_crop_normalized": [
+    256,
+    346
+  ],
+  "near_duplicate_thresholds": {
+    "mean_absolute_rgb_error_max": 2.8,
+    "changed_pixel_fraction_max": 0.03,
+    "per_pixel_channel_threshold": 10
+  },
+  "exact_duplicate_pairs": [],
+  "near_duplicate_pairs": [
+    {
+      "left": "tired",
+      "right": "unimpressed",
+      "mae_rgb": 1.85943,
+      "changed_pixel_fraction": 0.014948,
+      "max_channel_delta": 237,
+      "exact": false
+    }
+  ],
+  "pass": true
+}
