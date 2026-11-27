@@ -1,24 +1,6 @@
 name: Chapter 2 — facial expression reel
 on:
   workflow_dispatch:
-  push:
-    branches: [main]
-    paths:
-      - '.github/workflows/facial-expressions.yml'
-      - 'scripts/facial_expressions.py'
-      - 'scripts/render_expression_reel.py'
-      - 'scripts/r6_faces.py'
-      - 'scripts/r6_variant_textures.py'
-      - 'scripts/r6_character.py'
-      - 'scripts/r6_variant_character.py'
-      - 'scripts/library_character_assets.py'
-      - 'scripts/stage_a_character.py'
-      - 'scripts/quality_textures.py'
-      - 'scripts/quality_character.py'
-      - 'scripts/stage_b_interaction.py'
-      - 'scripts/library_acting.py'
-      - 'scripts/render_story.py'
-      - 'scripts/render_classroom.py'
 permissions:
   contents: read
   actions: read
