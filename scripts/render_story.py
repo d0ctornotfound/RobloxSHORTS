@@ -223,8 +223,12 @@ def main():
         spin_f=smoothstep((t-times["spin_start"])/(launch_t-times["spin_start"]))
         center=start_plate+Vector((-.09*spin_f,.015*spin_f,0))
         for name,actor in actors.items():
+            expression=sample(spec["expressions"][name],t,True)
+            reaction=tracks[name].reaction(frame,expression,fps)
             yaw,pitch=sample(spec["head_turns"][name],t)
-            actor.set_bone("head",(pitch,0,yaw),frame)
+            head=(pitch+reaction["head"][0],reaction["head"][1],yaw+reaction["head"][2])
+            actor.set_bone("head",head,frame)
+            actor.set_bone("torso",reaction["torso"],frame)
             idx=reach_index[name];start=times[name+"_reach_start"];hit=times[name+"_contact"]
             target,exact=rim_contact(actor,idx,center,radius,lengths[name],1 if name=="lead" else -1)
             if t<start:direction=idle
@@ -246,7 +250,7 @@ def main():
             if name=="lead" and launch_t<=t<land_t+.4:other_dir=Vector((.20,-.80,-.28))
             if name=="friend" and t>=times["payoff"]:other_dir=Vector((.08,-.48,-.78))
             key_pose(actor,1-idx,other_dir,frame)
-            tracks[name].key(frame,sample(spec["expressions"][name],t,True))
+            tracks[name].key(frame,expression)
         lead_socket.matrix_world=Matrix.Translation(center)@Euler((0,0,1.4*spin_f)).to_matrix().to_4x4()
         for path in ("location","rotation_euler","scale"):lead_socket.keyframe_insert(path,frame=frame)
         bpy.context.view_layer.update()
