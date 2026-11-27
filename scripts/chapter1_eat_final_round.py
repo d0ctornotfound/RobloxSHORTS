@@ -54,7 +54,6 @@ def zone_metrics(a,art,cam,food,zones):
     heads=[a.head]+[o for o in a.accessories if o!=a.face and o.type=="MESH" and "head" in o.name.lower()]
     body_boxes=[b for g in (upper,lower) for h in [body]+[geo(o) for o in extras] for b in contact_boxes(g,h,bodyco)]
     head_boxes=[b for o in l.objects+other.objects for h in heads for b in contact_boxes(geo(o),geo(h),faceco)]
-    central=sum(lo[0]<.40 and hi[0]>-.40 and lo[1]<.62 and hi[1]>-.23 and hi[2]>-.09 for lo,hi in body_boxes if False)
     central=sum(lo[0]<.40 and hi[0]>-.40 and lo[1]<.62 and hi[1]>-.23 and hi[2]>-.09 for lo,hi in head_boxes)
     other_hits=sum(overlap(actual(o),[actual(z) for z in other.objects]) for o in l.objects)
     accessory_hits=sum(overlap(actual(o),[actual(z) for z in extras]) for o in l.objects)
@@ -178,12 +177,17 @@ def main():
     out=Path(os.environ["OUT"]);out.mkdir(parents=True,exist_ok=True)
     src=Path(os.environ["SOURCE"]);scene,cam,a,_,art,__,___,yaw=setup("eat");food=Food()
     assert not scene.cycles.use_denoising
-    carry,old,cfg,approved,peak=load_inputs(src)
+    mode=os.environ.get("MODE","preflight")
+    if mode=="preflight":
+        audit=json.loads((src/"approved/bite_search.json").read_text())
+        _,cfg,approved=audit["best_rejected_exact"];peak=audit["peak_frame"]-1
+        carry=old=None
+    else:
+        carry,old,cfg,approved,peak=load_inputs(src)
     zones,verdict=calibrate(scene,cam,a,art,food,yaw,approved)
     write(out/"classifier_verdict.json",verdict)
     print("EAT_FRAME17_CLASSIFIER",json.dumps(verdict),flush=True)
     assert verdict["classifier_pass"],"Approved frame-17 reference failed calibrated classifier; stop before sequence"
-    mode=os.environ.get("MODE","preflight")
     if mode=="preflight":return
     bites={};missing=[]
     for x in old:
