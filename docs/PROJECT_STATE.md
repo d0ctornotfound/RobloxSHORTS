@@ -1,6 +1,6 @@
 # Project State
 
-Current milestone: lead/dad variants approved; friend/teacher detail revision underway; both story rerenders frozen pending approval.
+Current milestone: friend/teacher APPROVED; production library showcase in progress. Both proof shorts frozen.
 
 Successful preview run: [45811466419](https://github.com/d0ctornotfound/RobloxSHORTS/actions/runs/45811466419), commit `c043c3cd322c274108726203bab3c16a6e8b8689`, artifact `roblox-demo-preview-5s`.
 
@@ -146,3 +146,7 @@ Previous café armature-only render [45912247014](https://github.com/d0ctornotfo
 
 ## Friend/teacher revision
 Supervisor approved lead/dad but requested further middle-two work. Checked main and Actions: no detailed variant café rerender started (prior armature-only run succeeded). Updated only variant texture/appearance and still workflow; both story renderers and workflows unchanged. New separate comic/mature expressions, knitted slouch hat, swept bun and fine lenses, clean tee/yellow denim and knit cardigan with geometric trim/buttons and matching trousers. Three approval stills pending. Do not rerender shorts before supervisor approval.
+
+
+## Production library sprint
+Supervisor approved friend and teacher stills from run 45917281074 and asked for slightly deeper yellow denim under café lighting. New protocol: show every review still and MP4 in chat; archive only supplemental. Isolated library modules and showcase workflow; no proof short render authorized. Existing café/classroom story drivers retained; modular equivalents built in library_sets.py, not retroactive changes to frozen source. Validation pending.

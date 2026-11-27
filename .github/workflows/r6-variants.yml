@@ -1,12 +1,6 @@
 name: R6 detailed variant approval stills
 on:
   workflow_dispatch:
-  push:
-    branches: [main]
-    paths:
-      - 'scripts/r6_variant_*.py'
-      - 'scripts/render_r6_variants.py'
-      - '.github/workflows/r6-variants.yml'
 permissions:
   contents: read
 concurrency:

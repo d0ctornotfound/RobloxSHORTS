@@ -147,7 +147,7 @@ def facial_hair(kind):
     return im.resize((1024,1024),Image.Resampling.LANCZOS)
 
 # Garment atlas: top-left front, top-right back, bottom-left sides, bottom-right caps.
-COLORS={"hoodie":(104,111,116),"jacket":(176,142,95),"tee":(219,198,151),"cardigan":(161,49,87),"jeans":(34,39,46),"yellow_denim":(235,170,7),"stripe_pants":(25,28,33),"blue_denim":(25,64,128),"teacher_trousers":(47,39,57)}
+COLORS={"hoodie":(104,111,116),"jacket":(176,142,95),"tee":(219,198,151),"cardigan":(161,49,87),"jeans":(34,39,46),"yellow_denim":(244,164,2),"stripe_pants":(25,28,33),"blue_denim":(25,64,128),"teacher_trousers":(47,39,57)}
 def cloth(kind,skin=None):
     S=512;atlas=Image.new("RGB",(1024,1024))
     base=COLORS[kind.split("_sleeve")[0]]
