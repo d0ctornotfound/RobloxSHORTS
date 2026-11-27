@@ -19,7 +19,7 @@ jobs:
           sudo apt-get install -y --no-install-recommends blender python3-pil python3-numpy ffmpeg fonts-dejavu-core
           /usr/bin/python3 scripts/library_character_assets.py
           python3 -m py_compile scripts/sleep_supine.py scripts/character_motion_correction.py scripts/render_sleep_supine.py
-      - name: Render actual profile smoke at final supine pose
+      - name: Render actual profile smoke at seated and supine poses
         run: blender -b --python-exit-code 1 --python scripts/render_sleep_supine.py -- --output render/smoke --smoke
       - uses: actions/upload-artifact@v4
         if: always()
@@ -67,4 +67,4 @@ jobs:
           if-no-files-found: warn
           retention-days: 30
       - name: Enforce numerical gates after evidence upload
-        run: python3 -c 'import json; r=json.load(open("render/review/metrics.json")); print(r["supine"],r["correction_gates"]); assert all(r["correction_gates"].values()),r["correction_gates"]'
+        run: python3 -c 'import json; r=json.load(open("render/review/metrics.json")); print(r["supine"],r["correction_gates"]); assert all(r["correction_gates"].values()),r["correction_gates"]; assert r["closed_eyes"]["all_settled_closed"],r["closed_eyes"]'
