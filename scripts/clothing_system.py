@@ -119,6 +119,27 @@ def _add_fabric_shader(material, kind):
     nt.links.new(bump.outputs["Normal"], bs.inputs["Normal"])
 
 
+def _mask_sleeve_bump(material, cutoff):
+    """The legacy atlas contains both cloth and bare arm; never emboss skin."""
+    nt = material.node_tree
+    bump = next(n for n in nt.nodes if n.label == "Chapter 3 woven fabric bump")
+    uv = next(n for n in nt.nodes if n.label == "Garment atlas UVs")
+    separate = nt.nodes.new("ShaderNodeSeparateXYZ")
+    nt.links.new(uv.outputs["UV"], separate.inputs[0])
+    twice = nt.nodes.new("ShaderNodeMath"); twice.operation = "MULTIPLY"
+    twice.inputs[1].default_value = 2.0
+    nt.links.new(separate.outputs["Y"], twice.inputs[0])
+    fract = nt.nodes.new("ShaderNodeMath"); fract.operation = "FRACT"
+    nt.links.new(twice.outputs[0], fract.inputs[0])
+    mask = nt.nodes.new("ShaderNodeMath"); mask.operation = "GREATER_THAN"
+    mask.inputs[1].default_value = .006 + .988*cutoff
+    nt.links.new(fract.outputs[0], mask.inputs[0])
+    strength = nt.nodes.new("ShaderNodeMath"); strength.operation = "MULTIPLY"
+    strength.inputs[1].default_value = bump.inputs["Strength"].default_value
+    nt.links.new(mask.outputs[0], strength.inputs[0])
+    nt.links.new(strength.outputs[0], bump.inputs["Strength"])
+
+
 def _material(actor, token):
     # Use the atlas slot actually assigned to the polygons, not the
     # earlier unused solid-color slot with a similar name.
@@ -151,6 +172,8 @@ def _cover_shoulder_caps(actor, material):
     ob = actor.body
     idx = len(ob.data.materials)
     ob.data.materials.append(material)
+    skin_index = len(ob.data.materials)
+    ob.data.materials.append(actor.head.data.materials[0])
     points = mesh_points(ob)
     for group in ARM_GROUPS:
         lo, hi = bounds(group_points(ob, group))
@@ -162,6 +185,8 @@ def _cover_shoulder_caps(actor, material):
             # sleeve panels preserve the atlas, including the hand cutoff.
             if min(zs) >= hi.z - 0.075:
                 poly.material_index = idx
+            elif max(zs) <= lo.z + 0.035:
+                poly.material_index = skin_index
 
 
 def _make_shell(actor, label, groups, arm_cutoff=None):
@@ -462,6 +487,7 @@ def upgrade_character(actor):
     sleeve = _material(actor, " / sleeve")
     for material, kind in ((shirt, cfg["shirt"]), (pants, cfg["pants"]), (sleeve, cfg["sleeve"])):
         _add_fabric_shader(material, kind)
+    _mask_sleeve_bump(sleeve, cfg["sleeve_cutoff"])
     # Raised geometry uses solid fabric materials, not an atlas sampled at an
     # arbitrary UV coordinate. The original atlas remains on the body shells.
     solid_shirt = _solid_fabric(actor, cfg["shirt"])
