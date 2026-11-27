@@ -105,7 +105,77 @@ def main():
     # The ball sits inside the closed opaque box until the lid releases.
     for o in ball.children:o.hide_render=True
     print("GAG_SHOT_DESIGN",json.dumps(fit),flush=True)
-    wide_camera=None
+    # Reproduce the exact first 21 timeline poses with a separate sequential
+    # contact lock for each candidate; do not mutate the production walk lock.
+    heroes=[lead,friend]
+    def wide_pose(sample_lock,f):
+        t=f/FPS;scene.frame_set(f+1)
+        sample_lock.step(t,smoothstep((t-2.03)/.37),yaw=heading(t))
+        lead.root.location+=offset;bpy.context.view_layer.update()
+        lead.pose("neutral")
+        pose(friend,"idle",t,other,-.12);friend.pose("neutral")
+        cam.data.shift_x=0;cam.data.shift_y=0
+        for actor in heroes:
+            for obj in actor.meshes:obj.hide_render=False
+        bpy.context.view_layer.update()
+    def wide_sample(f):
+        bounds=metrics(scene,cam,heroes)
+        face={a.role:face_clear(scene,cam,a) for a in heroes}
+        lamp=check_lamps(scene,cam,heroes)
+        return {"frame":f+1,"bounds":bounds,"face":face,"lamp_overlap":lamp,
+                "body_pass":body_gate("establishing_wide",bounds),
+                "face_pass":face_gate(face),"lamp_pass":lamp_gate(lamp)}
+    # Same candidate family and score as the prior revision. First-frame
+    # screening is only an optimization: any rejected candidate has failed
+    # a real shot frame. The winner MUST pass all 21 actual timeline samples.
+    probe=StrideLock(ret,"walk_cycle",FPS,rate,start,walk_yaw)
+    wide_pose(probe,0)
+    a=lead.root.location.copy();b=friend.root.location.copy();q=(a+b)/2;q.z=1.30
+    candidates=[]
+    # More lower/closer viewpoints and portrait lens options. Rank
+    # by useful character scale, balance and lower camera height.
+    # Preserve old candidate family as a fallback; no hidden vetoes.
+    for angle in (0,25,-25,45,-45,55,60,-60,65,70,75,80,-70):
+        h=math.radians(angle)
+        for dist in (5.,6.,7.5,9.,11.,13.):
+            for height in (1.55,1.85,2.2,2.8):
+                pos=q+Vector((dist*math.sin(h),-dist*math.cos(h),height-q.z))
+                for lens in (28,35,42,50,58,66,74,85):
+                    apply(cam,"static",0,pos,q,lens)
+                    bounds=metrics(scene,cam,heroes)
+                    if not body_gate("establishing_wide",bounds):continue
+                    lamp=check_lamps(scene,cam,heroes)
+                    if not lamp_gate(lamp):continue
+                    face={a.role:face_clear(scene,cam,a) for a in heroes}
+                    if not face_gate(face):continue
+                    total=sum(k["coverage"] for k in bounds)
+                    smaller=min(k["coverage"] for k in bounds)
+                    separation=abs(bounds[0]["face_center"][0]-bounds[1]["face_center"][0])
+                    # Ranking preferences only, never extra cutoffs.
+                    score=total+.75*smaller+.05*separation-.09*(height-1.55)-.012*(dist-5.)
+                    candidates.append((score,pos.copy(),q.copy(),lens))
+    candidates.sort(key=lambda c:c[0],reverse=True)
+    attempted=[];wide_camera=None
+    for score,pos,target,lens in candidates:
+        trial=StrideLock(ret,"walk_cycle",FPS,rate,start,walk_yaw)
+        checks=[]
+        for f in range(21):
+            wide_pose(trial,f);apply(cam,"static",0,pos,target,lens)
+            row=wide_sample(f);checks.append(row)
+            if not (row["body_pass"] and row["face_pass"] and row["lamp_pass"]):break
+        passed=len(checks)==21 and all(r["body_pass"] and r["face_pass"] and r["lamp_pass"] for r in checks)
+        attempted.append({"score":score,"position":list(pos),"target":list(target),"lens":lens,
+                          "frames_tested":len(checks),"pass":passed,"last_check":checks[-1]})
+        if passed:
+            wide_camera=(pos,target,lens)
+            save(out,"wide_candidate.json",{"position":list(pos),"target":list(target),"lens":lens,
+                "candidate_count":len(candidates),"candidates_tested":len(attempted),
+                "frames_tested":21,"pass":True,"frames":checks})
+            break
+    save(out,"wide_search_audit.json",{"first_frame_candidates":len(candidates),"attempts":attempted})
+    if wide_camera is None:raise RuntimeError("No camera candidate passes all 21 establishing frames")
+    print("WIDE_ALL_FRAMES_PASS",json.dumps({"frames":21,"first_frame_candidates":len(candidates),
+          "attempts":len(attempted),"position":list(wide_camera[0]),"target":list(wide_camera[1]),"lens":wide_camera[2]}),flush=True)
     # Sequential playback ensures stance detection is the same on every runner.
     lock=StrideLock(ret,"walk_cycle",FPS,rate,start,walk_yaw)
     rows=[];failures=[];first=0 if args.part<0 else args.part*30;last=COUNT if args.part<0 else min(COUNT,first+30)
@@ -143,35 +213,6 @@ def main():
         insert=False
         if t<.70:
             heroes=[lead,friend];shot="establishing_wide"
-            if wide_camera is None:
-                a=lead.root.location.copy();b=friend.root.location.copy();q=(a+b)/2;q.z=1.30
-                best=None
-                # More lower/closer viewpoints and portrait lens options. Rank
-                # by useful character scale, balance and lower camera height.
-                # Preserve old candidate family as a fallback; no hidden vetoes.
-                for angle in (0,25,-25,45,-45,55,60,-60,65,70,75,80,-70):
-                    h=math.radians(angle)
-                    for dist in (5.,6.,7.5,9.,11.,13.):
-                        for height in (1.55,1.85,2.2,2.8):
-                            pos=q+Vector((dist*math.sin(h),-dist*math.cos(h),height-q.z))
-                            for lens in (28,35,42,50,58,66,74,85):
-                                apply(cam,"static",0,pos,q,lens)
-                                bounds=metrics(scene,cam,heroes)
-                                if not body_gate("establishing_wide",bounds):continue
-                                lamp=check_lamps(scene,cam,heroes)
-                                if not lamp_gate(lamp):continue
-                                face={a.role:face_clear(scene,cam,a) for a in heroes}
-                                if not face_gate(face):continue
-                                total=sum(k["coverage"] for k in bounds)
-                                smaller=min(k["coverage"] for k in bounds)
-                                separation=abs(bounds[0]["face_center"][0]-bounds[1]["face_center"][0])
-                                # Ranking preferences only, never extra cutoffs.
-                                score=total+.75*smaller+.05*separation-.09*(height-1.55)-.012*(dist-5.)
-                                if best is None or score>best[0]:best=(score,pos.copy(),q.copy(),lens)
-                if best is None:raise RuntimeError("Wide establishment has no safe full-body total >=45% framing")
-                _,pos,q,lens=best;wide_camera=(pos,q,lens)
-                apply(cam,"static",0,*wide_camera)
-                save(out,"wide_candidate.json",{"position":list(pos),"target":list(q),"lens":lens,"bounds":metrics(scene,cam,heroes),"face":{a.role:face_clear(scene,cam,a) for a in heroes},"lamp_overlap":check_lamps(scene,cam,heroes)})
             apply(cam,"static",0,*wide_camera)
         elif t<4.15 or 4.85<=t<6.35:
             heroes=[lead];shot="approach_single" if t<2.4 else "wave_notice_single" if t<4.15 else "recoil_single"
