@@ -1,0 +1,47 @@
+name: Chapter 3 — Locked-motion clothing clearance
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'scripts/clothing_articulation.py'
+      - 'scripts/render_clothing_clearance.py'
+      - '.github/workflows/chapter3-clothing-clearance.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  clearance:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 35
+    strategy:
+      fail-fast: false
+      matrix:
+        actor: [lead, friend]
+        motion: [walk, wave, sit, reach]
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install Blender and dependencies
+        run: |
+          for f in /etc/apt/sources.list.d/*; do
+            if [ -f "$f" ] && grep -q "packages.microsoft.com" "$f"; then sudo mv "$f" "$f.disabled"; fi
+          done
+          sudo apt-get update -o Acquire::Retries=3
+          sudo apt-get install -y --no-install-recommends blender python3-pil python3-numpy fonts-dejavu-core libegl1 libegl-mesa0 libgl1 libgl1-mesa-dri libgbm1
+      - run: python3 scripts/library_character_assets.py
+      - run: python3 -m py_compile scripts/clothing_articulation.py scripts/render_clothing_clearance.py
+      - name: Replay and render one actor and motion
+        timeout-minutes: 25
+        env:
+          LIBGL_ALWAYS_SOFTWARE: "1"
+          R6_KNEE_BLEND: "1"
+        run: |
+          mkdir -p render/clothing-clearance
+          blender -b --python-exit-code 1 --python scripts/render_clothing_clearance.py -- --actor "${{ matrix.actor }}" --motion "${{ matrix.motion }}" --output render/clothing-clearance
+      - name: Upload partial or complete evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: clothing-clearance-${{ matrix.actor }}-${{ matrix.motion }}
+          path: render/clothing-clearance/
+          if-no-files-found: warn
+          retention-days: 30
