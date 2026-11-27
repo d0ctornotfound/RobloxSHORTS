@@ -1,0 +1,87 @@
+name: Chapter 1 supervisor EAT validation and DRINK profile contact
+on:
+  push:
+    branches: [main]
+    paths: ['.github/workflows/chapter1-supervisor-final.yml']
+  workflow_dispatch:
+permissions:
+  contents: read
+  actions: read
+jobs:
+  eat:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 45
+    env:
+      R6_KNEE_BLEND: '0'
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/download-artifact@v4
+        with:
+          name: chapter1-round6-geometry-eat
+          run-id: 45970402223
+          github-token: ${{ github.token }}
+          path: source/carry
+      - uses: actions/download-artifact@v4
+        with:
+          name: chapter1-round9-geometry-eat-food
+          run-id: 45976704432
+          github-token: ${{ github.token }}
+          path: source/bite
+      - uses: actions/download-artifact@v4
+        with:
+          name: chapter1-round11-geometry-eat-food
+          run-id: 45982930320
+          github-token: ${{ github.token }}
+          path: source/approved
+      - name: Install Blender
+        run: |
+          sudo apt-get update -o Dir::Etc::sourceparts=/dev/null -o Dir::Etc::sourcelist=/etc/apt/sources.list.d/ubuntu.sources
+          sudo apt-get install -y --no-install-recommends blender python3-pil python3-numpy ffmpeg fonts-dejavu-core
+          /usr/bin/python3 scripts/library_character_assets.py
+          python3 -m py_compile scripts/chapter1_eat_visual_standard.py
+      - name: Validate all 119 samples under EAT-only recalibration
+        run: SOURCE="$PWD/source" OUT="$PWD/render/eat" blender -b --python-exit-code 1 --python scripts/chapter1_eat_visual_standard.py
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: eat-visual-standard-geometry
+          path: render/eat/*.json
+          if-no-files-found: warn
+      - name: Independent replay then render 60 frames
+        run: MODE=render SOURCE="$PWD/source" OUT="$PWD/render/eat" blender -b --python-exit-code 1 --python scripts/chapter1_eat_visual_standard.py
+      - name: Encode clip and sample stills
+        run: |
+          ffmpeg -v error -y -framerate 30 -i render/eat/frames/frame_%04d.png -c:v libx264 -crf 18 -pix_fmt yuv420p render/eat/eat.mp4
+          mkdir -p render/eat/review
+          for f in 0001 0010 0017 0022 0030 0040 0046 0050 0060; do cp render/eat/frames/frame_$f.png render/eat/review/; done
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: eat-visual-standard-render
+          path: |
+            render/eat/eat.mp4
+            render/eat/review/
+            render/eat/render_metrics.json
+            render/eat/replay_geometry.json
+          if-no-files-found: ignore
+  drink-contact:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 30
+    env:
+      R6_KNEE_BLEND: '0'
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install Blender
+        run: |
+          sudo apt-get update -o Dir::Etc::sourceparts=/dev/null -o Dir::Etc::sourcelist=/etc/apt/sources.list.d/ubuntu.sources
+          sudo apt-get install -y --no-install-recommends blender python3-pil python3-numpy ffmpeg fonts-dejavu-core
+          /usr/bin/python3 scripts/library_character_assets.py
+          python3 -m py_compile scripts/chapter1_drink_profile_contact.py
+      - name: Visual-first profile contact frame only
+        run: OUT="$PWD/render/drink" blender -b --python-exit-code 1 --python scripts/chapter1_drink_profile_contact.py
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: drink-final-profile-contact
+          path: render/drink/
+          if-no-files-found: warn
