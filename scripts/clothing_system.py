@@ -297,21 +297,21 @@ def _add_cardigan_details(actor, shirt_material):
     _add_box(
         actor, "cardigan raised front placket",
         (center.x, front - 0.006, center.z),
-        (extent.x * 0.12, 0.036, extent.z * 0.84),
+        (extent.x * 0.095, 0.032, extent.z * 0.82),
         trim, bevel=0.008
     )
     for sign in (-1, 1):
         _add_box(
             actor, "cardigan raised collar",
-            (center.x + sign * extent.x * 0.27, front - 0.012, hi.z - extent.z * 0.16),
-            (extent.x * 0.16, 0.042, extent.z * 0.30),
-            trim, bevel=0.008, rotation_y=sign * 0.46
+            (center.x + sign * extent.x * 0.15, front - 0.012, hi.z - extent.z * 0.12),
+            (extent.x * 0.10, 0.032, extent.z * 0.20),
+            trim, bevel=0.006, rotation_y=sign * 0.38
         )
     for frac in (0.72, 0.52, 0.32, 0.12):
         _add_button(
             actor, "cardigan pearl button",
             (center.x, front - 0.034, lo.z + extent.z * frac),
-            0.020, buttons
+            0.017, buttons
         )
 
 
