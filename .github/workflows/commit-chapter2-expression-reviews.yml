@@ -1,5 +1,9 @@
 name: Commit Chapter 2 expression review sheets
 on:
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/commit-chapter2-expression-reviews.yml'
   workflow_dispatch:
 permissions:
   actions: read
@@ -67,5 +71,11 @@ jobs:
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add assets/chapter2_expression_review
+          if git diff --cached --quiet; then
+            echo "Expression review sheets already committed"
+            exit 0
+          fi
           git commit -m "Add Chapter 2 expression contact sheets and pixel QA"
+          git fetch origin main
+          git rebase origin/main
           git push origin HEAD:main
