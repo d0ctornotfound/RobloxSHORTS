@@ -203,7 +203,7 @@ def main():
             actor.root.location=(0,0,0);actor.root.rotation_euler=(0,0,0)
             actor.pose("neutral");head_only(actor)
             set_camera(cam,scene,"close")
-            blink_labels=[(dict(ACTOR_SPECS)[key],args.width//2,args.height-54)]
+            blink_labels=[(next(label for actor_key,label,kind in ACTOR_SPECS if actor_key==key),args.width//2,args.height-54)]
         else:
             set_camera(cam,scene,"grid")
             positions={
