@@ -120,16 +120,18 @@ def mouth_pose(actor,art,name,p,cam,cup,yaw):
     if name=="eat":
         target=mouth+side*.095-up*.10+normal*.045
     else:
-        target=mouth+side*.105-up*.17+normal*.11
+        axis=up.lerp((up-normal*.65).normalized(),a)
+        offset=axis*.16-side*.055
+        target=mouth+normal*.075-offset
     end=art.arm_target(0,rest.lerp(target,a),side+normal*.20-up*.35,yaw)
     if cup:
-        # The cup is a studio contact gauge, not a new production prop.
-        # Its rim moves with the grip; at the sip apex the rim meets the lip.
-        axis=up.lerp((up+normal*.75).normalized(),a)
-        rim=end+axis*.13-side*.065
+        # Cup rim center and true nearest point on the rim circumference;
+        # the hand stays on the side, not in front of the eyes.
+        rim=end+offset
         cup.location=rim-axis*.10;cup.rotation_mode="QUATERNION";cup.rotation_quaternion=Vector((0,0,1)).rotation_difference(axis)
         bpy.context.view_layer.update()
-        rim_gap=(rim-mouth).length
+        v=mouth-rim;plane=v-axis*v.dot(axis)
+        rim_gap=math.hypot(v.dot(axis),plane.length-.085)
     else:rim_gap=None
     blockers=[actor.body]+[o for limb in art.arms for o in limb.objects]+([cup] if cup else [])
     blocked=face_hits(cam,actor,blockers)

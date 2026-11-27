@@ -31,8 +31,17 @@ def main():
         assert top>.05,(top,c,wh)
         ob=cube("Studio seat contact fixture",(c.x,c.y,top/2),(wh[0],wh[1],top),matte("Neutral seat",(.20,.25,.30)),bevel=0);ob.rotation_euler.z=yaw
     if name=="drink":
-        bpy.ops.mesh.primitive_cylinder_add(vertices=32,radius=.085,depth=.20)
-        cup=bpy.context.object;cup.name="Studio sip contact cup";cup.data.materials.append(matte("Cup muted teal",(.13,.34,.36)))
+        # Open cup with a real rim and inner wall, just a studio contact fixture.
+        verts=[];faces=[];n=32
+        for radius,z in ((.075,-.10),(.085,.10),(.071,.10),(.061,-.083)):
+            verts.extend((radius*math.cos(math.tau*i/n),radius*math.sin(math.tau*i/n),z) for i in range(n))
+        for j in range(3):
+            for i in range(n):
+                k=(i+1)%n;faces.append((j*n+i,j*n+k,(j+1)*n+k,(j+1)*n+i))
+        faces.append(tuple(reversed(range(n))));faces.append(tuple(range(3*n,4*n)))
+        me=bpy.data.meshes.new("Open cup fixture");me.from_pydata(verts,[],faces);me.update()
+        cup=bpy.data.objects.new("Studio sip contact cup",me);scene.collection.objects.link(cup)
+        cup.data.materials.append(matte("Cup muted teal",(.13,.34,.36)))
     # Camera remains stable across the entire shot. Seat gets a side view;
     # mouth gestures are viewed from opposite the acting arm.
     cam.location=(6,-8,3.2) if seat else (6,-8,3.1) if name in ("eat","drink") else (0,-10,3.1) if partner else (3,-10,2.9)
@@ -46,6 +55,7 @@ def main():
             p,landing=pose(actor,art,name,u,t,yaw,feet,landing,seat)
             actor.pose("shocked" if name=="fall" and .18<u<.80 else "happy" if name=="jump" and .25<u<.8 else "neutral")
         bpy.context.view_layer.update()
+        mouth_metrics=mouth_pose(actor,art,name,p,cam,cup,yaw) if name in ("eat","drink") else None
         b=metrics(scene,cam,[actor,partner] if partner else [actor])
         # Fixed framing for the entire clip; do not hide a failure by frame zoom.
         safe=all(x["body_safe"] and x["head_safe"] for x in b)
@@ -57,7 +67,7 @@ def main():
             row["landing_sole_drift"]=[(x-y).length for x,y in zip(s,land_soles)]
         if seat:
             row.update(seated_fraction=p["seated_fraction"],seat_error=rear_hip(actor)[0]-seat[0],sole_tilt_deg=[l.tilt() for l in art.legs])
-        if name in ("eat","drink"):row.update(mouth_pose(actor,art,name,p,cam,cup,yaw))
+        if mouth_metrics is not None:row.update(mouth_metrics)
         if partner:row.update(intersections=p["intersections"],engagement=p["engagement"],spacing=p["spacing"],spread=p["spread"])
         rows.append(row)
         # Smoke uses the most representative action pose, not a neutral frame.
