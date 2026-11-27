@@ -1,0 +1,86 @@
+name: R6 detailed variant approval stills
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - 'scripts/r6_variant_*.py'
+      - 'scripts/render_r6_variants.py'
+      - '.github/workflows/r6-variants.yml'
+permissions:
+  contents: read
+concurrency:
+  group: r6-variant-approval-${{ github.ref }}
+  cancel-in-progress: true
+jobs:
+  render:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 30
+    strategy:
+      fail-fast: false
+      matrix:
+        shot: [00_variant_lineup, 01_variant_cafe]
+    env:
+      SHOT: ${{ matrix.shot }}
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install Blender and texture tools
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y --no-install-recommends blender ffmpeg python3-pil python3-numpy
+      - name: Verify source and generate original variant textures
+        run: |
+          echo '3a0f310faf09cf161f7036a4c0df1a20202b967683700badc4440309c0a7d95a  assets/r6_rigged.glb' | sha256sum -c -
+          /usr/bin/python3 scripts/r6_variant_textures.py --output assets/r6_variants
+      - name: Render still only
+        run: |
+          blender -b --python-exit-code 1 --python scripts/render_r6_variants.py -- --shot "$SHOT" --output render/variants
+          ffmpeg -hide_banner -loglevel error -i "render/variants/$SHOT.png" -vf "nlmeans=s=1.5:p=5:r=9" -frames:v 1 "render/variants/$SHOT-clean.png"
+          mv "render/variants/$SHOT-clean.png" "render/variants/$SHOT.png"
+          cp -r assets/r6_variants render/variants/
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: variant-shot-${{ matrix.shot }}
+          path: render/variants/
+          if-no-files-found: warn
+          retention-days: 7
+  package:
+    needs: render
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/download-artifact@v4
+        with:
+          pattern: variant-shot-*
+          path: chunks
+      - name: Verify and package stills
+        run: |
+          python3 - <<'PY'
+          import json,hashlib,struct,shutil
+          from pathlib import Path
+          dest=Path("approval");dest.mkdir()
+          rows=[]
+          for shot,size in [("00_variant_lineup",(1920,1080)),("01_variant_cafe",(720,1280))]:
+              root=Path("chunks")/("variant-shot-"+shot)
+              for ext in (".png",".json",".blend"):shutil.copy2(root/(shot+ext),dest)
+              p=(dest/(shot+".png")).read_bytes()
+              assert p[:8]==b"\x89PNG\r\n\x1a\n" and struct.unpack(">II",p[16:24])==size
+              m=json.loads((dest/(shot+".json")).read_text())
+              m["png_sha256"]=hashlib.sha256(p).hexdigest();rows.append(m)
+              if not (dest/"r6_variants").exists():shutil.copytree(root/"r6_variants",dest/"r6_variants")
+          assert len(rows[0]["characters"])==4 and len(rows[1]["characters"])==2
+          assert all(c["skinned_mesh_count"]==2 and c["expression_count"]==9 for r in rows for c in r["characters"])
+          assert rows[0]["characters"][-1]["facial_hair"]=="stubble"
+          textures=list((dest/"r6_variants").rglob("*.png"))
+          assert len(textures)==50,len(textures)
+          for f in textures:
+              p=f.read_bytes();assert p[:8]==b"\x89PNG\r\n\x1a\n" and struct.unpack(">II",p[16:24])==(1024,1024)
+          (dest/"variant_manifest.json").write_text(json.dumps(rows,indent=2)+"\n")
+          print("VARIANT_PACKAGE_VALIDATED",json.dumps(rows))
+          PY
+      - uses: actions/upload-artifact@v4
+        with:
+          name: r6-detailed-variant-approval
+          path: approval/
+          if-no-files-found: error
+          retention-days: 7

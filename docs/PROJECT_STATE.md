@@ -1,6 +1,6 @@
 # Project State
 
-Current milestone: supplied R6 character standard APPROVED; café-only armature port in progress. Classroom port explicitly frozen pending supervisor instruction.
+Current milestone: supplied R6 base approved; café armature port succeeded on prior appearance; detailed variant approval stills in progress. Classroom port frozen.
 
 Successful preview run: [45811466419](https://github.com/d0ctornotfound/RobloxSHORTS/actions/runs/45811466419), commit `c043c3cd322c274108726203bab3c16a6e8b8689`, artifact `roblox-demo-preview-5s`.
 
@@ -129,3 +129,7 @@ Source GLB committed unchanged, hash verified on runners. Initial still-only CI 
 
 ## R6 approval and café-only port
 Supervisor approved all three R6 approval stills and verified original GLB bytes. Port polish: larger saturated red signature star, richer teal/blue/yellow/pink clothing, forward/down target-directed arm poses. Café renderer migrated to measured seated bone geometry, bone-parented plate/cake supports and classic expression swaps; existing edit and darkness gates retained. Classroom renderer, classroom story and classroom workflow untouched. Run pending.
+
+
+## Detailed variant upgrade (approval only)
+Supervisor supplied three visual references. Preserve exact GLB and bone API; add separate VariantCharacter appearance subclass, original deterministic 1024px expression/garment textures, nine expressions, independent stubble/beard, detailed strand-textured accessory hair, warm skin tones, hoodie/jeans, jacket over shirt and striped trousers, friend beanie and teacher bun/glasses. Two still-only jobs (four-character lineup, café two-shot). No story renderer or story workflow modified; no short rerender until approval. Previous cafe armature-port run 45912247014 succeeded, artifact 15161631009, independent appearance review pending.
