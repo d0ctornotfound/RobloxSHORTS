@@ -1,0 +1,74 @@
+name: Gag supervisor lighting and balanced-wide test frames only
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/gag-lighting-tests.yml'
+permissions:
+  contents: read
+jobs:
+  test:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 30
+    strategy:
+      fail-fast: false
+      matrix:
+        profile: [low, medium, high]
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install same Blender build as production
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y --no-install-recommends blender python3-pil python3-numpy ffmpeg
+          /usr/bin/python3 scripts/library_character_assets.py
+          python3 -m py_compile scripts/render_quality_gag.py
+      - name: Render six isolated test frames only with full geometry preflight
+        run: blender -b --python-exit-code 1 --python scripts/render_quality_gag.py -- --part -1 --test-profile ${{ matrix.profile }} --output render/tests
+      - name: Measure original and independently encoded test-frame darkness
+        if: always()
+        run: |
+          /usr/bin/python3 - <<'PY'
+          import json,subprocess
+          from pathlib import Path
+          from PIL import Image,ImageDraw
+          import numpy as np
+          root=Path("render/tests");root.mkdir(parents=True,exist_ok=True)
+          data=[]
+          preflight=root/"geometry_preflight.json"
+          report=json.loads(preflight.read_text()) if preflight.exists() else {}
+          rows={r["frame"]:r for r in report.get("rows",[])}
+          imgs=sorted(root.glob("test_*.png"))
+          for p in imgs:
+              n=int(p.stem.split("_")[-1])
+              rgb=np.array(Image.open(p).convert("RGB"))
+              raw_dark=float((rgb.max(axis=2)<=24).mean()*100)
+              video=p.with_suffix(".mp4")
+              subprocess.run(["ffmpeg","-v","error","-y","-framerate","30","-i",str(p),"-frames:v","1","-c:v","libx264","-crf","17","-pix_fmt","yuv420p",str(video)],check=True)
+              raw=subprocess.check_output(["ffmpeg","-v","error","-i",str(video),"-f","rawvideo","-pix_fmt","rgb24","-"])
+              encoded=np.frombuffer(raw,dtype=np.uint8).reshape(rgb.shape)
+              dark=float((encoded.max(axis=2)<=24).mean()*100)
+              r=rows.get(n,{})
+              bounds=r.get("bounds",[])
+              record={"frame":n,"shot":r.get("shot"),"raw_dark_percent":raw_dark,"single_frame_encoded_dark_percent":dark,"darkness_pass":dark<2,"light":r.get("test_light"),"body_coverage":[b["coverage"] for b in bounds],"geometry_pass":all(r.get(k,False) for k in ("body_pass","face_pass","lamp_pass"))}
+              data.append(record)
+          summary={"profile":"${{ matrix.profile }}","test_frames":data,"geometry_failures":len(report.get("failures",[])) if report else None,"full_render_started":False,"note":"Single-image H264 encoding is a proxy; final timeline still requires encoded darkness validation. Material and face quality require human review."}
+          (root/"test_results.json").write_text(json.dumps(summary,indent=2)+"\n")
+          print("TEST_RESULTS",json.dumps(summary),flush=True)
+          if imgs:
+              sheet=Image.new("RGB",(270*len(imgs),516),(22,22,22));d=ImageDraw.Draw(sheet)
+              for i,(p,r) in enumerate(zip(imgs,data)):
+                  im=Image.open(p).convert("RGB");im.thumbnail((270,480))
+                  sheet.paste(im,(270*i,0))
+                  d.text((270*i+6,482),f"Frame {r['frame']} | {r['single_frame_encoded_dark_percent']:.3f}% dark",fill="white")
+                  d.text((270*i+6,498),str(r['shot']),fill="white")
+              sheet.save(root/"contact_sheet.png")
+          assert len(imgs)==6 and report and not report["failures"],"Incomplete trial/preflight"
+          PY
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: gag-lighting-test-${{ matrix.profile }}
+          path: render/tests/
+          if-no-files-found: warn
+          retention-days: 14

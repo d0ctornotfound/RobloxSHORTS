@@ -56,10 +56,19 @@ def render(scene,out,name):
 
 def main():
     p=argparse.ArgumentParser();p.add_argument("--part",type=int,required=True,help="-1 runs complete geometric preflight, no animation rendering");p.add_argument("--output",required=True);p.add_argument("--reuse-insert",type=Path,help="Exact original chunk 4 PNGs from run 45936954946")
+    p.add_argument("--test-profile",choices=("low","medium","high"),help="Supervisor lighting review only; no production renders")
     args=p.parse_args(sys.argv[sys.argv.index("--")+1:]);out=Path(args.output).resolve();out.mkdir(parents=True,exist_ok=True)
+    if args.test_profile:
+        assert args.part==-1 and not args.reuse_insert
+    # Exact trial values, never applied to production mode before approval.
+    trials={"low":(230,70,.48),"medium":(340,100,.60),"high":(450,145,.74)}
+    test_frames={1,11,21,61,116,166} if args.test_profile else set()
+    trial_lower,trial_torso,trial_world=trials[args.test_profile] if args.test_profile else (780,480,.34)
     scene,atm,cam,lead=street_scene(48,540,960);scene.render.fps=FPS;scene.render.fps_base=1
     scene.cycles.use_denoising=False;scene.cycles.adaptive_threshold=.035;scene.render.use_persistent_data=True
     atm.apply("golden_hour")
+    ambient=scene.world.node_tree.nodes.get("Background").inputs[1]
+    original_world=float(ambient.default_value)
     # Warm motivated, camera-side bounce follows the lead only in three singles.
     lower_fill=light("Gag lead localized lower-body bounce",(0,-2,1.0),(0,0,.55),0,2.2,(1,.87,.73))
     torso_fill=light("Gag lead localized torso bounce",(0,-2,2.1),(0,0,1.35),0,2.6,(1,.91,.81))
@@ -153,6 +162,12 @@ def main():
                     separation=abs(bounds[0]["face_center"][0]-bounds[1]["face_center"][0])
                     # Ranking preferences only, never extra cutoffs.
                     score=total+.75*smaller+.05*separation-.09*(height-1.55)-.012*(dist-5.)
+                    if args.test_profile:
+                        # Prefer comparable projected subject heights, while retaining
+                        # coverage and lower-camera preferences. No extra acceptance gate.
+                        larger=max(k["coverage"] for k in bounds)
+                        balance=smaller/max(larger,1e-8)
+                        score=total+1.55*balance+.35*smaller+.05*separation-.09*(height-1.55)-.012*(dist-5.)
                     candidates.append((score,pos.copy(),q.copy(),lens))
     candidates.sort(key=lambda c:c[0],reverse=True)
     attempted=[];wide_camera=None
@@ -241,6 +256,7 @@ def main():
             apply(cam,"static",0,(x-.45,y-4.0,1.83),(x,y,1.28),53)
         # The gift insert and wide/friend lighting stay unchanged.
         lower_fill.data.energy=0;torso_fill.data.energy=0
+        ambient.default_value=trial_world if args.test_profile and shot=="establishing_wide" else original_world
         if shot in ("approach_single","wave_notice_single","recoil_single"):
             x,y,_=lead.root.location
             a=heading(t) if t<2.4 else yaw
@@ -251,7 +267,7 @@ def main():
             torso_fill.location=base+2.3*forward-.65*side+Vector((0,0,2.12))
             point_at(lower_fill,base+Vector((0,0,.52)))
             point_at(torso_fill,base+Vector((0,0,1.32)))
-            lower_fill.data.energy=780;torso_fill.data.energy=480
+            lower_fill.data.energy=trial_lower;torso_fill.data.energy=trial_torso
         bpy.context.view_layer.update()
         b=metrics(scene,cam,heroes)
         face={a.role:face_clear(scene,cam,a) for a in heroes}
@@ -264,6 +280,11 @@ def main():
         rows.append(rec)
         if args.part<0:
             if not (body_ok and face_ok and lamp_ok):failures.append(rec)
+            if f+1 in test_frames:
+                assert body_ok and face_ok and lamp_ok,rec
+                rec["test_profile"]=args.test_profile
+                rec["test_light"]={"lower_w":lower_fill.data.energy,"torso_w":torso_fill.data.energy,"world_strength":float(ambient.default_value)}
+                rec["render_seconds"]=render(scene,out,"test_%04d"%(f+1))
             continue
         if first<=f<last:
             # Keep failure evidence instead of discarding the first offending image.
@@ -295,6 +316,7 @@ def main():
         save(out,"geometry_preflight.json",{"rows":rows,"failures":failures,"walk":walk_actual,"run":run_rec})
         print("GAG_PREFLIGHT",json.dumps({"frames":len(rows),"failure_count":len(failures),"first_by_shot":{name:next(x for x in failures if x["shot"]==name) for name in sorted({x["shot"] for x in failures})}},default=str),flush=True)
         assert not failures,"Full timeline geometry preflight failed; see artifact"
+        if args.test_profile:assert {r["frame"] for r in rows if r.get("test_profile")}==test_frames
         assert walk_actual["pass"] and run_rec["pass"]
         return
     save(out,"manifest.json",{"fps":FPS,"resolution":[540,960],"frames":COUNT,"part":args.part,"stride":walk_actual,"run_stride":run_rec,"rows":rows[first:last],"two_shot":fit,"source_sha256":ret.data["source_sha256"],"engine":scene.render.engine,"samples":48,"denoise":False})
