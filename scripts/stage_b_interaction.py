@@ -136,6 +136,7 @@ class ExpressionTrack:
         self.expression_keys={}
         self._reaction_expression="neutral"
         self._reaction_start_frame=None
+        self.base_root_rotation=actor.root.rotation_euler.copy()
         for expression,mat in actor.face_materials.items():
             obj=actor.face.copy()
             obj.data=actor.face.data.copy()
@@ -164,6 +165,18 @@ class ExpressionTrack:
         return {"head":tuple(v*weight for v in head),
                 "torso":tuple(v*weight for v in torso),
                 "expression":expression,"weight":weight}
+
+    def apply_reaction(self,frame,expression,fps):
+        """Apply the keyed reaction to imported-bone or legacy object-based R6 rigs."""
+        reaction=self.reaction(frame,expression,fps)
+        actor=self.actor
+        if hasattr(actor,"set_bone"):
+            actor.set_bone("head",reaction["head"],frame)
+            actor.set_bone("torso",reaction["torso"],frame)
+        else:
+            if hasattr(actor,"head"):actor.head.rotation_euler=reaction["head"]
+            actor.root.rotation_euler=tuple(self.base_root_rotation[i]+reaction["torso"][i] for i in range(3))
+        return reaction
 
     def key(self,frame,expression):
         if expression not in self.decals:raise KeyError("Missing expression decal: "+expression)
