@@ -22,13 +22,15 @@ jobs:
             if [ -f "$f" ] && grep -q "packages.microsoft.com" "$f"; then sudo mv "$f" "$f.disabled"; fi
           done
           sudo apt-get update -o Acquire::Retries=3
-          sudo apt-get install -y --no-install-recommends blender python3-pil python3-numpy fonts-dejavu-core
+          sudo apt-get install -y --no-install-recommends blender python3-pil python3-numpy fonts-dejavu-core libegl1 libegl-mesa0 libgl1 libgl1-mesa-dri libgbm1
       - name: Generate character-specific decal assets
         run: python3 scripts/library_character_assets.py
       - name: Validate pilot renderer
         run: python3 -m py_compile scripts/render_expression_sections.py scripts/facial_expressions.py scripts/library_acting.py scripts/build_expression_contact_sheet.py
       - name: Render Lead's 13 expressions — EEVEE, 720p
         timeout-minutes: 15
+        env:
+          LIBGL_ALWAYS_SOFTWARE: "1"
         run: |
           mkdir -p render/lead-pilot/stills render/lead-pilot/labelled
           blender -b --python-exit-code 1 --python scripts/render_expression_sections.py -- --section closeups --actor lead --engine BLENDER_EEVEE --width 1280 --height 720 --output render/lead-pilot
