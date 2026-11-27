@@ -118,7 +118,10 @@ def main():
             if name=="teacher":head_rotation=(0,0,0)
             if name=="friend" and t>=9.5:head_rotation=(-.22-.05*math.sin(t*10),0,-.13)
             if name=="lead" and t>=10:head_rotation=(-.06,0,.03)
+            reaction=tracks[name].reaction(f,expressions[name],fps)
+            head_rotation=tuple(head_rotation[i]+reaction["head"][i] for i in range(3))
             actor.set_bone("head",head_rotation,f)
+            actor.set_bone("torso",reaction["torso"],f)
             for i in (0,1):
                 d=Vector((.24 if i==0 else -.24,-.66,-.55))
                 closed=False
