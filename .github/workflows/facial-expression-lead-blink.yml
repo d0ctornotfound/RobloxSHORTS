@@ -1,5 +1,9 @@
 name: Chapter 2 — Lead ten-second EEVEE blink demo
 on:
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/facial-expression-lead-blink.yml'
   workflow_dispatch:
 permissions:
   contents: write
