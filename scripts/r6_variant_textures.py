@@ -41,9 +41,17 @@ def face(expr,identity="young"):
             oval(x+(.025 if expr=="tired" else 0),ey,.060,.10,dark)
             curve((x-.083,ey-.042),(x,ey-.036),(x+.083,ey-.043),.025)
             if expr=="tired":curve((x-.06,ey+.085),(x,ey+.113),(x+.06,ey+.085),.011,(100,60,41,100))
+        elif expr=="shocked":
+            # A distinct high-intensity reaction: wider, taller eyes and a
+            # stronger catchlight. Keep the same identity-specific ink style.
+            oval(x,ey,.112 if identity=="dad" else .105,.205,dark)
+            oval(x-.018,ey-.038,.025,.036,(255,255,255,235))
+        elif expr=="surprised":
+            # Smaller, restrained surprise remains visually separate.
+            oval(x,ey,.075,.145,dark)
+            oval(x-.012,ey-.025,.017,.027,(255,255,255,220))
         else:
-            oval(x,ey,.075,.145 if expr in ("shocked","surprised") else .104,dark)
-            if expr in ("shocked","surprised"):oval(x-.012,ey-.025,.017,.027,(255,255,255,220))
+            oval(x,ey,.075,.104,dark)
         # Mature brows are broad and angular, younger ones more tapered.
         if expr in ("worried","sad","embarrassed"):
             inner=.264;outer=.325
@@ -51,7 +59,8 @@ def face(expr,identity="young"):
         elif expr=="angry":
             pts=[(x-.087,.245 if i==0 else .315),(x+.087,.315 if i==0 else .245)]
         elif expr=="smug":pts=[(x-.09,.285+.015*i),(x+.086,.263+.035*i)]
-        elif expr in ("shocked","surprised"):pts=[(x-.084,.247),(x+.084,.247)]
+        elif expr=="shocked":pts=[(x-.090,.190),(x+.090,.190)]
+        elif expr=="surprised":pts=[(x-.084,.247),(x+.084,.247)]
         else:pts=[(x-.084,.281),(x+.084,.281+.012*sign)]
         a,b=pts;th=.037 if identity=="dad" else .026
         poly([a,(a[0]+.02,a[1]-th/2),(b[0]-.014,b[1]-th/2),b,(b[0]-.005,b[1]+th/2),(a[0]+.01,a[1]+th/2)],brow)
@@ -66,7 +75,10 @@ def face(expr,identity="young"):
         if expr=="smug":poly([(.314,.661),(.46,.660),(.61,.637),(.711,.601),(.669,.656),(.55,.691),(.43,.691)],(250,245,225,255))
         else:poly([(.31,.612),(.50,.654),(.69,.612),(.65,.666),(.50,.691),(.35,.666)],(250,245,225,255))
         if expr=="laughing":oval(.5,.748,.16,.063,(156,63,61,255))
-    elif expr in ("shocked","surprised"):oval(.5,.685,.195,.215,dark);oval(.5,.735,.12,.045,(149,70,60,255))
+    elif expr=="shocked":
+        oval(.5,.685,.275,.305,dark);oval(.5,.765,.165,.062,(149,70,60,255))
+    elif expr=="surprised":
+        oval(.5,.685,.195,.215,dark);oval(.5,.735,.12,.045,(149,70,60,255))
     elif expr=="angry":curve((.32,.69),(.5,.585),(.68,.69),.032)
     elif expr=="embarrassed":curve((.40,.675),(.5,.715),(.60,.675),.020)
     elif expr in ("worried","sad"):curve((.31,.735),(.5,.51 if expr=="sad" else .57),(.70,.735),.027)
