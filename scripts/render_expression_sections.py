@@ -27,11 +27,11 @@ ACTOR_SPECS=[
     ("patron_blue","Student Blue","standard"),
 ]
 
-def studio():
+def studio(engine="CYCLES",width=1280,height=720):
     scene=configure("preview")
-    scene.render.engine="CYCLES"
+    scene.render.engine=engine
     scene.render.resolution_percentage=100
-    scene.render.resolution_x=1280;scene.render.resolution_y=720
+    scene.render.resolution_x=width;scene.render.resolution_y=height
     scene.render.fps=FPS;scene.render.fps_base=1
     scene.cycles.samples=24;scene.cycles.use_denoising=False
     scene.cycles.adaptive_threshold=.025;scene.cycles.max_bounces=5
@@ -53,9 +53,9 @@ def studio():
     assert not scene.cycles.use_denoising
     return scene,cam
 
-def build_actors(scene):
+def build_actors(scene,specs=ACTOR_SPECS):
     actors={}
-    for key,label,kind in ACTOR_SPECS:
+    for key,label,kind in specs:
         if kind=="variant":actor=character("Reel "+label,key)
         elif kind=="recipe":actor=character("Reel "+label,key)
         else:actor=R6Character("Reel "+label,key)
@@ -111,9 +111,9 @@ def label_still(src,dst,top,bottom):
     d.text((28,im.height-34),bottom.upper().replace("_"," "),font=f2,fill=(224,229,234,255))
     im.save(dst,quality=95)
 
-def copy_sequence(stills,sequence,actors):
+def copy_sequence(stills,sequence,actors,specs=ACTOR_SPECS):
     sequence.mkdir(parents=True,exist_ok=True);n=1
-    for key,label,kind in ACTOR_SPECS:
+    for key,label,kind in specs:
         for expr in EXPRESSIONS:
             src=stills/(key+"_"+expr+".png")
             for _ in range(HOLD):
@@ -125,14 +125,19 @@ def main():
     ap.add_argument("--output",default="render/expressions")
     ap.add_argument("--section",choices=("all","closeups","blink","beats"),default="all")
     ap.add_argument("--smoke",action="store_true")
+    ap.add_argument("--actor",default=None,choices=[x[0] for x in ACTOR_SPECS])
+    ap.add_argument("--engine",default="CYCLES",choices=["CYCLES","BLENDER_EEVEE_NEXT"])
+    ap.add_argument("--width",type=int,default=1280)
+    ap.add_argument("--height",type=int,default=720)
     args=ap.parse_args(sys.argv[sys.argv.index("--")+1:])
     out=Path(args.output).resolve();out.mkdir(parents=True,exist_ok=True)
-    scene,cam=studio()
+    specs=[x for x in ACTOR_SPECS if args.actor is None or x[0]==args.actor]
+    scene,cam=studio(args.engine,args.width,args.height)
     scene.frame_start=1;scene.frame_end=240
-    actors=build_actors(scene)
+    actors=build_actors(scene,specs)
     names=list(actors)
     schedules=enable_blinking(scene,list(actors.values()),seed=20261127)
-    for key,label,kind in ACTOR_SPECS:
+    for key,label,kind in specs:
         rows=schedules["Reel "+label]
         if len(rows)<2:raise RuntimeError((label,"less than two blinks in 10 seconds",rows))
         for row in rows:
@@ -160,18 +165,20 @@ def main():
         labelled=out/"labelled";labelled.mkdir(exist_ok=True)
         scene.render.resolution_x=960;scene.render.resolution_y=540;scene.cycles.samples=12
         disable_blinking(scene,list(actors.values()))
-        for key,label,kind in ACTOR_SPECS:
+        for key,label,kind in specs:
             for other in actors.values():visible(other,False)
             actor=actors[key];visible(actor,True)
             actor.root.location=(0,0,0);actor.root.rotation_euler=(0,0,0)
             set_camera(cam,scene,"close")
-            for expr in EXPRESSIONS:
+            for index,expr in enumerate(EXPRESSIONS,1):
+                print(f"PILOT_STILL_START {index}/13 actor={label} expression={expr}",flush=True)
                 scene.frame_set(1);actor.pose(expr);bpy.context.view_layer.update()
                 src=stills/(key+"_"+expr+".png")
                 render(scene,src)
                 label_still(src,labelled/src.name,label,expr)
+                print(f"PILOT_STILL_DONE {index}/13 actor={label} expression={expr} bytes={src.stat().st_size}",flush=True)
         expression_frames=out/"expression_frames"
-        expression_count=copy_sequence(labelled,expression_frames,actors)
+        expression_count=copy_sequence(labelled,expression_frames,actors,specs) if args.actor is None else 0
     
     if args.section in ("all","blink"):
         # Ten-second, seven-character neutral close-up grid. Every actor has an
@@ -239,7 +246,7 @@ def main():
             render(scene,beat_dir/("frame_%06d.png"%(first_len+f-(start+first_len)+1)))
     if args.section=="closeups":
         section_manifest={"section":"closeups","denoising":False,"resolution":[960,540],"samples":12,
-            "characters":[{"key":k,"label":label,"expressions":list(EXPRESSIONS)} for k,label,kind in ACTOR_SPECS],
+            "characters":[{"key":k,"label":label,"expressions":list(EXPRESSIONS)} for k,label,kind in specs],
             "expression_stills":len(list((out/"stills").glob("*.png")))}
     elif args.section=="blink":
         section_manifest={"section":"blink","denoising":False,"resolution":[1280,720],"samples":12,
