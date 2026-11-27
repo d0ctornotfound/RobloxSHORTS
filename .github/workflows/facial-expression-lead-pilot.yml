@@ -1,0 +1,52 @@
+name: Chapter 2 — Lead EEVEE expression pilot
+on:
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/facial-expression-lead-pilot.yml'
+      - 'scripts/render_expression_sections.py'
+      - 'scripts/build_expression_contact_sheet.py'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  lead-expression-pilot:
+    name: Lead — 13 expression stills (EEVEE)
+    runs-on: ubuntu-24.04
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install Blender and image tools
+        run: |
+          for f in /etc/apt/sources.list.d/*; do
+            if [ -f "$f" ] && grep -q "packages.microsoft.com" "$f"; then sudo mv "$f" "$f.disabled"; fi
+          done
+          sudo apt-get update -o Acquire::Retries=3
+          sudo apt-get install -y --no-install-recommends blender python3-pil python3-numpy fonts-dejavu-core
+      - name: Generate character-specific decal assets
+        run: python3 scripts/library_character_assets.py
+      - name: Validate pilot renderer
+        run: python3 -m py_compile scripts/render_expression_sections.py scripts/facial_expressions.py scripts/library_acting.py scripts/build_expression_contact_sheet.py
+      - name: Render Lead's 13 expressions — EEVEE, 720p
+        timeout-minutes: 15
+        run: |
+          mkdir -p render/lead-pilot/stills render/lead-pilot/labelled
+          blender -b --python-exit-code 1 --python scripts/render_expression_sections.py -- --section closeups --actor lead --engine BLENDER_EEVEE_NEXT --width 1280 --height 720 --output render/lead-pilot
+      - name: Build partial-safe pilot contact sheet
+        if: always()
+        run: |
+          mkdir -p render/lead-pilot
+          if compgen -G 'render/lead-pilot/stills/*.png' > /dev/null; then
+            python3 scripts/build_expression_contact_sheet.py --input render/lead-pilot/stills --output render/lead-pilot/lead_expression_contact_sheet.png
+          else
+            echo "PILOT_CONTACT_SHEET_SKIPPED no expression stills completed" | tee render/lead-pilot/pilot_status.txt
+          fi
+      - name: Upload all completed pilot stills, including partial failures
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: chapter2-lead-expression-pilot
+          path: |
+            render/lead-pilot/
+          if-no-files-found: warn
+          retention-days: 30
