@@ -18,7 +18,7 @@ import library_sets
 from library_atmosphere import Atmosphere
 from library_effects import particles,update,shake
 
-JOBS=("characters","poses0","poses1","poses2","props0","props1","props2","rooms","sky0","sky1","effects","clip0","clip1","clip2","clip3","clip4","clip5","import_walk","import_run")
+JOBS=("dusk_review","characters","poses0","poses1","poses2","props0","props1","props2","rooms","sky0","sky1","effects","clip0","clip1","clip2","clip3","clip4","clip5","import_walk","import_run")
 def fresh(w=540,h=960,samples=24):
     scene=configure("preview");scene.render.resolution_x=w;scene.render.resolution_y=h
     scene.cycles.samples=samples;scene.cycles.adaptive_threshold=.10
@@ -113,7 +113,7 @@ def rooms(out):
         render(scene,out,"room_"+name);save(out,"room_"+name,{"kit":name,"mesh_count":sum(o.type=="MESH" for o in scene.objects)})
 def street_scene(samples=24,w=540,h=960):
     scene=fresh(w,h,samples);st=library_sets.street()
-    atm=Atmosphere(scene,st["windows"])
+    atm=Atmosphere(scene,st["windows"],lamps=st["lamps"])
     cam=camera(scene,(0,-5.0,2.80),(0,.8,2.25),37)
     actor=character("Street lead","lead");actor.pose("smug")
     pose(actor,"idle",.5,(0,0,0),yaw=.18)
@@ -126,6 +126,15 @@ def skies(out,part):
         rec["actor_bounds"]=visible(scene,cam,a)
         render(scene,out,"sky_"+name);save(out,"sky_"+name,rec)
     if part==1:bpy.ops.wm.save_as_mainfile(filepath=str(out/"street.blend"))
+def dusk_review(out):
+    scene,atm,cam,a=street_scene(64)
+    for name in ("dusk","night"):
+        rec=atm.apply(name);bpy.context.view_layer.update()
+        rec["actor_bounds"]=visible(scene,cam,a)
+        assert rec["lamp_energy"]==85
+        assert rec["camera_gradient_weight"]==(1 if name=="dusk" else 0)
+        render(scene,out,"sky_"+name);save(out,"sky_"+name,rec)
+
 def effects(out):
     scene,atm,cam,a=street_scene(20);atm.apply("rain")
     base=cam.location.copy();rows=[]
@@ -180,7 +189,8 @@ def main():
     p=argparse.ArgumentParser();p.add_argument("--job",choices=JOBS,required=True);p.add_argument("--output",default="render/showcase")
     a=p.parse_args(sys.argv[sys.argv.index("--")+1:]);out=Path(a.output).resolve();out.mkdir(parents=True,exist_ok=True)
     j=a.job
-    if j=="characters":characters(out)
+    if j=="dusk_review":dusk_review(out)
+    elif j=="characters":characters(out)
     elif j.startswith("poses"):pose_strip(out,int(j[-1]))
     elif j.startswith("props"):catalogue(out,int(j[-1]))
     elif j=="rooms":rooms(out)

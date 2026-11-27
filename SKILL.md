@@ -113,12 +113,12 @@ Source [library_atmosphere.py](scripts/library_atmosphere.py). Atmosphere(scene,
 | morning | 25 / -45 | (1,.78,.53) / 2.0 | (.46,.67,.91) / .42 | 0 |
 | midday | 62 / -35 | (1,.95,.82) / 2.8 | (.38,.65,.94) / .48 | 0 |
 | golden_hour | 12 / -60 | (1,.49,.20) / 2.5 | (.83,.42,.23) / .34 | .10 |
-| dusk | 4 / -70 | (.75,.40,.40) / .55 | (.21,.26,.48) / .28 | .10 |
+| dusk | 4 / -70 | (1,.52,.30) / .85 | (.28,.34,.55) / .45 | .18 |
 | night | 32 / 40 | (.34,.49,1) / .38 | (.035,.075,.22) / .25 | .25 |
 | overcast | 55 / -35 | (.82,.90,1) / .35 | (.46,.53,.62) / .65 | 0 |
 | rain | 38 / -35 | (.67,.78,1) / .22 | (.25,.34,.49) / .45 | .05 |
 
-Keep faces readable at night, no black-level clamp. Frame the moon against unobstructed sky; stars are scene objects not a physical sky dome.
+Dusk camera-only directional sky gradient: warm orange (1,.28,.075) at absolute ray Z .04, muted rose (.48,.17,.22) at .17, deep blue (.025,.065,.22) at .38; smooth interpolation, camera strength 1. Diffuse world lighting remains independent. Dusk front fill 265 W; street lamp warm point lights 85 W and diffuser emission 3.55 at dusk/night (day 0 W/.05). Dusk window emission .77, night 2.32. Gradient and lamp levels blend by preset weights. Review renders pending; do not claim visual approval. Keep faces readable at night, no black-level clamp. Frame the moon against unobstructed sky; stars are scene objects not a physical sky dome.
 
 ## 6. Effects — deterministic meshes and camera movement
 

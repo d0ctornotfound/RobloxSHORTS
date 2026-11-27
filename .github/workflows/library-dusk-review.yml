@@ -1,0 +1,29 @@
+name: Dusk and night atmosphere correction
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/library-dusk-review.yml'
+permissions:
+  contents: read
+jobs:
+  render:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install Blender
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y --no-install-recommends blender python3-pil python3-numpy
+      - name: Render same-camera dusk and night
+        run: |
+          /usr/bin/python3 -m py_compile scripts/library_atmosphere.py scripts/library_sets.py scripts/render_library_showcase.py
+          /usr/bin/python3 scripts/library_character_assets.py
+          blender -b --python-exit-code 1 --python scripts/render_library_showcase.py -- --job dusk_review --output render/dusk
+      - uses: actions/upload-artifact@v4
+        with:
+          name: roblox-dusk-night-review
+          path: render/dusk/
+          retention-days: 7

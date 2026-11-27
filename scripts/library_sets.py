@@ -84,5 +84,13 @@ def street():
         for j in range(3):build("plant",pos=(x-1.6+j*.5,2.7,0),scale=.72,p=p)
     for x in (-6,6,13):build("tree",pos=(x,2.25,0),scale=1.15,p=p)
     build("car",pos=(7,-3,0),p=p)
-    for x in (-4,4):build("lamp",pos=(x,1.02,0),scale=1.6,p=p)
-    return {"palette":p,"windows":windows}
+    lamps=[]
+    for x in (-4,1.85,4):
+        root=build("lamp",pos=(x,1.02,0),scale=1.6,p=p)
+        mat=emission("Street lamp diffuser", (1,.66,.26),.05)
+        diffuser=next(o for o in root.children if "diffuser" in o.name)
+        diffuser.data.materials[0]=mat
+        data=bpy.data.lights.new("Street lamp warm pool","POINT");data.color=(1,.62,.27);data.energy=0;data.shadow_soft_size=.24
+        ob=bpy.data.objects.new("Street lamp warm pool",data);bpy.context.collection.objects.link(ob)
+        ob.location=(x,1.02,2.08);lamps.append((ob,mat))
+    return {"palette":p,"windows":windows,"lamps":lamps}
