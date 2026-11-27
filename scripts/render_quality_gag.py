@@ -57,9 +57,11 @@ def render(scene,out,name):
 def main():
     p=argparse.ArgumentParser();p.add_argument("--part",type=int,required=True,help="-1 runs complete geometric preflight, no animation rendering");p.add_argument("--output",required=True);p.add_argument("--reuse-insert",type=Path,help="Exact original chunk 4 PNGs from run 45936954946")
     p.add_argument("--test-profile",choices=("low","medium","high","restaged","singles_proof","wide_grid","shadow_a","shadow_b"),help="Supervisor lighting review only; no production renders")
+    p.add_argument("--source-audit",action="store_true",help="Diagnostic object/material ID passes only on frozen shadow_b proof frames")
     args=p.parse_args(sys.argv[sys.argv.index("--")+1:]);out=Path(args.output).resolve();out.mkdir(parents=True,exist_ok=True)
     if args.test_profile:
         assert args.part==-1 and not args.reuse_insert
+    if args.source_audit:assert args.test_profile=="shadow_b"
     # Exact trial values, never applied to production mode before approval.
     trials={"low":(230,70,.48),"medium":(340,100,.60),"high":(450,145,.74),"restaged":(85,0,.74),"singles_proof":(85,0,.74),"wide_grid":(85,0,.74),"shadow_a":(85,0,.74),"shadow_b":(85,0,.74)}
     singles_proof=args.test_profile in ("singles_proof","shadow_a","shadow_b")
@@ -342,6 +344,9 @@ def main():
                 rec["test_profile"]=args.test_profile
                 rec["test_light"]={"lower_w":lower_fill.data.energy,"torso_w":torso_fill.data.energy,"world_strength":float(ambient.default_value),"sun":float(atm.sun.data.energy),"base_fill":float(atm.fill.data.energy),"exposure":float(scene.view_settings.exposure)}
                 rec["render_seconds"]=render(scene,out,"test_%04d"%(f+1))
+                if args.source_audit:
+                    from gag_dark_source import capture
+                    capture(scene,out,f+1)
             continue
         if first<=f<last:
             # Keep failure evidence instead of discarding the first offending image.

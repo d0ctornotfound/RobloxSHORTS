@@ -313,3 +313,7 @@ Run 45944691797 failed initial screening: verified audit had zero accepted frame
 
 ## Supervisor singles shadow-floor ruling
 Singles proof 45945286902 visual appearance ACCEPTED: dark grey hoodie, natural warm face, garment seams retained. Darkness failed at frame 61 4.0692515%, frame 166 2.6834491%. Freeze corrected sun 1.7, base fill 90 W, lower 85 W, torso 0 W, trial garment texture multiplier .82 (nominal sRGB 85/91/95), all framing/geometry and skin. Test A only world .44 (EV -.15); test B only EV 0 (world .34). Two independent matrix jobs, frames 61 and 166 only, no wide dependency, no production changes. Both samples must be strictly below 2% encoded near-black and retain the accepted visual appearance before supervisor approval. No full rerender; laugh and insert frozen.
+
+
+## Supervisor Variant B source attribution (diagnostic only)
+Variant B baseline approved visually, not darkness: 61 3.6585648%, 166 2.3393133%. Freeze all scene and material values, use exact prior proof artifact encoded mask, reproduce same two frames and capture un-antialiased frontmost object/material IDs without altering appearance. Report mutually exclusive region and exact object/material pair contributions as percentages of full frame, mask overlay, repeat agreement and limits of edge/codec attribution. Dark ground/house surface attribution does not establish cast-shadow causation. No fixes, threshold changes, wide lighting test or full render authorized.
