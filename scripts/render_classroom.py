@@ -1,16 +1,17 @@
-"""Perfect Throw continuous classroom animation, using the approved quality rig."""
+"""Perfect Throw choreography port to the approved supplied R6 variant rig."""
 import argparse,json,math,sys
 from pathlib import Path
 sys.path.insert(0,str(Path(__file__).resolve().parent))
 import bpy
-from mathutils import Vector
+from mathutils import Vector,Euler
 from bpy_extras.object_utils import world_to_camera_view
 from render_demo import empty,point_at,material
 from render_stills import configure
-from quality_character import Character,palette
-from classroom_set import Teacher,teacher_palette,build
-from render_story import head_pivot,frame_at,frame_time
-from stage_b_interaction import GripAttachment,ExpressionTrack,aim_arm,key_arm,smoothstep,blend_direction
+from r6_character import R6Character,mesh_points,bounds,SOURCE_SHA256
+from r6_variant_character import VariantCharacter
+from classroom_set import build
+from render_story import seat,shoulder,arm_length,frame_at,frame_time
+from stage_b_interaction import GripAttachment,ExpressionTrack,smoothstep,blend_direction
 
 def plane_mesh():
     root=empty("Paper plane grip origin",(0,0,0))
@@ -27,16 +28,36 @@ def plane_mesh():
     return root,ob
 
 def seated(a,x,y):
-    a.root.location=(x,y,-.219)
-    for leg in a.legs:leg.rotation_euler.x=-math.pi/2
-    for i in (0,1):aim_arm(a,i,(.13 if i==0 else -.13,-.84,-.50))
+    seat(a,x,y,"")
     a.pose("neutral")
-    for i in (0,1):aim_arm(a,i,(.13 if i==0 else -.13,-.84,-.50))
+    for i in (0,1):a.aim_arm(i,(.13 if i==0 else -.13,-.84,-.50))
 
-def corners(o):return [o.matrix_world@Vector(v) for v in o.bound_box]
+def corners(o):
+    lo,hi=bounds(mesh_points(o))
+    return [Vector((x,y,z)) for x in (lo.x,hi.x) for y in (lo.y,hi.y) for z in (lo.z,hi.z)]
+
+def desk_contact(actor,index,length,desk_x):
+    # Solve actual rigid-arm reach sphere against the real desk top.
+    # Rear edge y=-.375, front edge y=-1.225, top z=1.205.
+    joint=shoulder(actor,index);z=1.205;dz=z-joint.z
+    assert dz<0 and abs(dz)<length,("desk reach height",index,list(joint),length)
+    radius=math.sqrt(length*length-dz*dz)
+    opts=[]
+    # Exact sphere-plane points, prefer closest to rear edge and avoid
+    # crossing the torso midline. No invented IK or finger articulation.
+    for n in range(720):
+        a=math.tau*n/720
+        x=joint.x+radius*math.cos(a);y=joint.y+radius*math.sin(a)
+        if desk_x-.72<=x<=desk_x+.72 and -1.21<=y<=-.375 and y<joint.y-.03:
+            opts.append(Vector((x,y,z)))
+    assert opts,("no reachable desk contact",index,list(joint),length)
+    target=min(opts,key=lambda p:abs(p.y+.375)+.35*abs(p.x-joint.x))
+    d=actor.root.matrix_world.to_3x3().inverted()@(target-joint)
+    return target,d.normalized()
+
 
 def main():
-    pa=argparse.ArgumentParser();pa.add_argument("--story",default="stories/the_perfect_throw.json");pa.add_argument("--profile",choices=("preview","full"),default="preview");pa.add_argument("--shot",default="all");pa.add_argument("--output",default="render/story")
+    pa=argparse.ArgumentParser();pa.add_argument("--story",default="stories/the_perfect_throw.json");pa.add_argument("--profile",choices=("preview","full"),default="preview");pa.add_argument("--shot",default="all");pa.add_argument("--output",default="render/story");pa.add_argument("--validate-only",action="store_true")
     a=pa.parse_args(sys.argv[sys.argv.index("--")+1:])
     spec=json.loads(Path(a.story).read_text());out=Path(a.output).resolve();out.mkdir(parents=True,exist_ok=True)
     fps,w,h,samples=(12,432,768,24) if a.profile=="preview" else (24,1080,1920,96)
@@ -46,31 +67,32 @@ def main():
     scene.world.node_tree.nodes.get("Background").inputs[0].default_value=(.42,.31,.21,1)
     scene.world.node_tree.nodes.get("Background").inputs[1].default_value=.30
     scene.render.resolution_x=w;scene.render.resolution_y=h;scene.render.fps=fps;scene.frame_start=1;scene.frame_end=round(spec["duration"]*fps)
-    build();p=teacher_palette(palette())
-    lead=Character("lead",p,True);friend=Character("friend",p,False);teacher=Teacher(p)
+    build()
+    lead=VariantCharacter("lead","lead");friend=VariantCharacter("friend","friend");teacher=VariantCharacter("teacher","teacher")
     seated(lead,-.78,0.0);seated(friend,.78,0.0)
     teacher.root.location=(0,-5.85,0);teacher.root.rotation_euler.z=0
     actors={"lead":lead,"friend":friend,"teacher":teacher}
     extras=[]
     for i,(x,y) in enumerate([(-.78,2.2),(.78,2.2),(-.78,4.4),(.78,4.4)]):
-        extra=Character("student "+str(i),p,False,role="patron_green" if i%2 else "patron_blue")
+        extra=R6Character("student "+str(i),"patron_green" if i%2 else "patron_blue")
         seated(extra,x,y);extras.append(extra)
-    pivots={n:head_pivot(o) for n,o in actors.items()}
     tracks={n:ExpressionTrack(o) for n,o in actors.items()}
     plane,mesh=plane_mesh()
     # Head socket aligns the paper nose with the side of the actual bun.
     # Local nose ends at y=-.58; center lies on the visible side of the bun.
-    support=empty("Teacher bun paper support",(.68,.28,.68),pivots["teacher"])
-    support.rotation_euler=(.32,0,-math.pi/2)
-    bpy.context.view_layer.update()
     bun=teacher.bun
-    # Nose must lie inside or close to the bun geometry in its local coordinates.
-    nose=support.matrix_world@Vector((0,-.58,.06))
-    local=bun.matrix_world.inverted()@nose
-    assert local.length<.38, list(local)
+    bpy.context.view_layer.update()
+    nose_world=bun.matrix_world@Vector((.55,0,0))
+    rotation=(.32,0,-math.pi/2)
+    center=nose_world-Euler(rotation).to_matrix()@Vector((0,-.58,.06))
+    support=teacher.attach_at("Teacher bun paper support","head",teacher.root.matrix_world.inverted()@center,rotation)
+    bpy.context.view_layer.update()
+    local=bun.matrix_world.inverted()@(support.matrix_world@Vector((0,-.58,.06)))
+    assert local.length<.8,list(local)
     grip=lead.grips[0];hand=GripAttachment(plane,grip);hair=GripAttachment(plane,support)
     launch=frame_at(spec["actions"]["launch"],fps);land=frame_at(spec["actions"]["landing"],fps)
-    timeline=[];errors=[];start=None;start_rot=None
+    timeline=[];errors=[];start=None;start_rot=None;desk_errors=[];desk_targets={}
+    lengths=[arm_length(lead,i) for i in (0,1)]
     # The teacher turns through 180 degrees during flight, then stays turned.
     def teacher_yaw(t):return (math.pi-.28)*smoothstep((t-6.4)/1.25)
     # Calculate the landing support in its final world pose in advance.
@@ -81,7 +103,7 @@ def main():
         scene.frame_set(f);t=frame_time(f,fps)
         teacher.root.rotation_euler.z=teacher_yaw(t);teacher.root.keyframe_insert("rotation_euler",frame=f)
         expressions={"lead":"neutral" if t<3 else "happy" if t<10.55 else "shocked",
-                     "friend":"neutral" if t<5 else "happy",
+                     "friend":"neutral" if t<5 else "laughing" if t>=10 else "happy",
                      "teacher":"neutral" if t<7.75 else "shocked" if t<9.5 else "neutral"}
         for name,actor in actors.items():
             # Payoff-only lean, keyed throughout to preserve the earlier shots.
@@ -89,24 +111,19 @@ def main():
                 lean=smoothstep((t-10.0)/.35) if name=="friend" else smoothstep((t-10.55)/.15)
                 actor.root.rotation_euler.x=(-.12 if name=="lead" else -.16)*lean
                 actor.root.keyframe_insert("rotation_euler",frame=f)
-            pivot=pivots[name]
-            pivot.rotation_euler=(.16 if name=="lead" and t<2.7 else -.06 if name=="teacher" and t>=9.5 else 0,0,
-                                  -.18 if name=="friend" and t<5 else 0)
-            # Teacher support is fixed in the final head orientation, so avoid tilt after impact.
-            if name=="teacher":pivot.rotation_euler=(0,0,0)
-            if name=="friend" and t>=9.5:pivot.rotation_euler=(-.22-.05*math.sin(t*10),0,-.13)
-            if name=="lead" and t>=10:pivot.rotation_euler=(-.06,0,.03)
-            pivot.keyframe_insert("rotation_euler",frame=f)
+            head_rotation=(.16 if name=="lead" and t<2.7 else 0,0,-.18 if name=="friend" and t<5 else 0)
+            if name=="teacher":head_rotation=(0,0,0)
+            if name=="friend" and t>=9.5:head_rotation=(-.22-.05*math.sin(t*10),0,-.13)
+            if name=="lead" and t>=10:head_rotation=(-.06,0,.03)
+            actor.set_bone("head",head_rotation,f)
             for i in (0,1):
                 d=Vector((.24 if i==0 else -.24,-.66,-.55))
                 closed=False
                 if name=="lead":
                     if t>=10:
                         # Aim down and forward at the rear edge of the desk; never cross the face.
-                        side=-1 if i==0 else 1
-                        target=Vector((actor.root.location.x+side*.58,-.40,1.23))
                         bpy.context.view_layer.update()
-                        d=actor.root.matrix_world.inverted()@target-actor.arms[i].location
+                        target,d=desk_contact(actor,i,lengths[i],-.78)
                         closed=True
                     elif i==0:
                         fold=Vector((.48+.08*math.sin(t*5),-.68,-.16))
@@ -126,7 +143,12 @@ def main():
                 elif name=="teacher":
                     d=Vector((0,-.8,.30)) if i==1 and t<6.4 else Vector((.05 if i==0 else -.05,-.12,-1))
                     if t>=9.5:d=Vector((.38 if i==0 else -.38,-.65,-.38))
-                aim_arm(actor,i,d);key_arm(actor,i,f,closed)
+                actor.aim_arm(i,d,f)
+                if name=="lead" and t>=10:
+                    error=(actor.grips[i].matrix_world.translation-target).length
+                    assert error<.001,("desk contact missed",f,i,error)
+                    desk_errors.append(error)
+                    desk_targets.setdefault(f,[]).append(list(target))
             tracks[name].key(f,expressions[name])
         bpy.context.view_layer.update()
         if f<launch:
@@ -159,12 +181,15 @@ def main():
     hand.constant_switches();hair.constant_switches()
     for track in tracks.values():track.constant_switches()
     assert max(errors)<1e-5
+    assert desk_errors and max(desk_errors)<.001
     assert (scene.frame_end-land+1)/fps>=2
     assert {r["state"] for r in timeline}=={"hand","flight","hair"}
     for row in timeline:
         scene.frame_set(row["frame"]);bpy.context.view_layer.update()
         assert (plane.matrix_world.translation-Vector(row["plane"])).length<.001
         for name,track in tracks.items():assert [n for n,o in track.decals.items() if not o.hide_render]==[row["expressions"][name]]
+        if row["frame"] in desk_targets:
+            for i,target in enumerate(desk_targets[row["frame"]]):assert (lead.grips[i].matrix_world.translation-Vector(target)).length<.001
     # Extras appear only in throw and glide.
     from render_story import constant_action
     for extra in extras:
@@ -262,13 +287,14 @@ def main():
     # Keep the light off at the teacher cut, not a gradual cross-shot fade.
     lamp.data.animation_data.action.fcurves[0].keyframe_points[-3].interpolation="CONSTANT"
     scene.frame_set(1)
-    manifest={"story":spec["id"],"resolution":[w,h],"fps":fps,"duration":12,"frame_count":scene.frame_end,"samples":samples,"shots":records,"timeline":timeline,"max_grip_error":max(errors),"launch_frame":launch,"landing_frame":land,"payoff_hold_seconds":(scene.frame_end-land+1)/fps,"bun_contact_local":list(local),"rig":"Sprint 2 quality"}
+    manifest={"story":spec["id"],"resolution":[w,h],"fps":fps,"duration":12,"frame_count":scene.frame_end,"samples":samples,"shots":records,"timeline":timeline,"max_grip_error":max(errors),"launch_frame":launch,"landing_frame":land,"payoff_hold_seconds":(scene.frame_end-land+1)/fps,"bun_contact_local":list(local),"rig":"approved source GLB R6 VariantCharacter","source_sha256":SOURCE_SHA256,"max_desk_grip_error":max(desk_errors),"desk_contact_frames":len(desk_targets),"rigid_hands":True}
     (out/"story_manifest.json").write_text(json.dumps(manifest,indent=2)+"\n")
     print("CLASSROOM_VALIDATION",json.dumps({k:v for k,v in manifest.items() if k!="timeline"}),flush=True)
+    if a.validate_only:return
     scene.frame_set(1);scene.render.filepath=str(out/"frame_")
     if a.shot in ("all",records[0]["id"],"03_glide"):
         for image in bpy.data.images:
-            if image.source=="GENERATED" and not image.packed_file:image.pack()
+            if image.source in ("GENERATED","FILE") and not image.packed_file:image.pack()
         bpy.ops.wm.save_as_mainfile(filepath=str(out/"story.blend"))
     selected=[r for r in records if a.shot in ("all",r["id"])];assert selected
     # Pre-flight the selected shot's camera(s) before any full animation render.
