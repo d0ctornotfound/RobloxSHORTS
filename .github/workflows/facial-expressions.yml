@@ -1,0 +1,140 @@
+name: Chapter 2 — facial expression reel
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/facial-expressions.yml'
+      - 'scripts/facial_expressions.py'
+      - 'scripts/render_expression_reel.py'
+      - 'scripts/r6_faces.py'
+      - 'scripts/r6_variant_textures.py'
+      - 'scripts/r6_character.py'
+      - 'scripts/r6_variant_character.py'
+      - 'scripts/library_character_assets.py'
+      - 'scripts/stage_a_character.py'
+      - 'scripts/quality_textures.py'
+      - 'scripts/quality_character.py'
+      - 'scripts/stage_b_interaction.py'
+      - 'scripts/library_acting.py'
+      - 'scripts/render_story.py'
+      - 'scripts/render_classroom.py'
+permissions:
+  contents: read
+  actions: read
+jobs:
+  smoke:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install Blender and Python image tools
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y --no-install-recommends blender python3-pil python3-numpy ffmpeg fonts-dejavu-core
+          blender --version
+      - name: Generate complete expression decal libraries
+        run: |
+          /usr/bin/python3 scripts/r6_faces.py --output assets/r6_faces
+          python3 scripts/library_character_assets.py
+      - name: Compile expression, acting and production modules
+        run: |
+          python3 -m py_compile \
+            scripts/facial_expressions.py scripts/r6_faces.py scripts/r6_variant_textures.py \
+            scripts/r6_character.py scripts/r6_variant_character.py scripts/library_character.py \
+            scripts/library_character_assets.py scripts/stage_a_character.py scripts/quality_textures.py \
+            scripts/quality_character.py scripts/stage_b_interaction.py scripts/library_acting.py \
+            scripts/render_expression_reel.py scripts/render_story.py scripts/render_classroom.py
+      - name: Build every character and validate decal/blink contracts
+        run: blender -b --python-exit-code 1 --python scripts/render_expression_reel.py -- --smoke --output render/expression-smoke
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: facial-expression-smoke
+          path: render/expression-smoke/
+          if-no-files-found: warn
+          retention-days: 7
+  render:
+    needs: smoke
+    runs-on: ubuntu-24.04
+    timeout-minutes: 120
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install Blender, FFmpeg and image tools
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y --no-install-recommends blender python3-pil python3-numpy ffmpeg fonts-dejavu-core
+      - name: Generate all role-specific decals
+        run: |
+          /usr/bin/python3 scripts/r6_faces.py --output assets/r6_faces
+          python3 scripts/library_character_assets.py
+      - name: Render 13 expressions for every character, 10-second blink grid and paired acting beats
+        run: |
+          python3 -m py_compile scripts/render_expression_reel.py scripts/facial_expressions.py
+          blender -b --python-exit-code 1 --python scripts/render_expression_reel.py -- --output render/expressions
+      - name: Encode expression, blink and acting sections
+        run: |
+          ffmpeg -v error -y -framerate 24 -i render/expressions/expression_frames/frame_%06d.png -vf scale=1280:720:flags=lanczos -c:v libx264 -crf 18 -pix_fmt yuv420p -an render/expressions/expression_sequence.mp4
+          ffmpeg -v error -y -framerate 24 -i render/expressions/blink_frames/frame_%06d.png -vf scale=1280:720:flags=lanczos -c:v libx264 -crf 18 -pix_fmt yuv420p -an render/expressions/neutral_blink.mp4
+          ffmpeg -v error -y -framerate 24 -i render/expressions/beat_frames/frame_%06d.png -vf scale=1280:720:flags=lanczos -c:v libx264 -crf 18 -pix_fmt yuv420p -an render/expressions/paired_emotional_beats.mp4
+          printf "file 'expression_sequence.mp4'\nfile 'neutral_blink.mp4'\nfile 'paired_emotional_beats.mp4'\n" > render/expressions/concat.txt
+          ffmpeg -v error -y -f concat -safe 0 -i render/expressions/concat.txt -c:v libx264 -crf 18 -pix_fmt yuv420p -movflags +faststart render/expressions/facial_expression_reel.mp4
+          test "$(ffprobe -v error -select_streams v:0 -show_entries stream=nb_frames -of csv=p=0 render/expressions/facial_expression_reel.mp4)" = "1215"
+      - name: Create contact sheets for visual review
+        run: |
+          python3 - <<'PY'
+          import json
+          from pathlib import Path
+          from PIL import Image, ImageDraw, ImageFont
+          root=Path("render/expressions")
+          manifest=json.loads((root/"manifest.json").read_text())
+          keys=[x["key"] for x in manifest["characters"]]
+          expressions=manifest["characters"][0]["expressions"]
+          tile=(160,90)
+          sheet=Image.new("RGB",(tile[0]*len(expressions),tile[1]*len(keys)),(24,27,31))
+          for row,key in enumerate(keys):
+              for col,expr in enumerate(expressions):
+                  p=root/"labelled"/(key+"_"+expr+".png")
+                  im=Image.open(p).convert("RGB").resize(tile,Image.Resampling.LANCZOS)
+                  sheet.paste(im,(col*tile[0],row*tile[1]))
+          sheet.save(root/"expression_contact_sheet.png")
+          schedules=manifest["neutral_blink_schedules"]
+          samples=[]
+          for name,events in schedules.items():
+              if events:
+                  frame=max(1,round(events[0]["start_seconds"]*24)+1)
+                  samples.append((name,frame))
+          thumb=(480,270);cols=4;rows=(len(samples)+cols-1)//cols
+          grid=Image.new("RGB",(cols*thumb[0],rows*thumb[1]),(24,27,31))
+          for i,(name,frame) in enumerate(samples):
+              im=Image.open(root/"blink_frames"/("frame_%06d.png"%frame)).convert("RGB").resize(thumb,Image.Resampling.LANCZOS)
+              grid.paste(im,((i%cols)*thumb[0],(i//cols)*thumb[1]))
+          grid.save(root/"blink_contact_sheet.png")
+          picks=[1,24,45,60,80,96,120,156]
+          beat=(480,270);cols=4
+          board=Image.new("RGB",(cols*beat[0],2*beat[1]),(24,27,31))
+          for i,f in enumerate(picks):
+              p=root/"beat_frames"/("frame_%06d.png"%f)
+              im=Image.open(p).convert("RGB").resize(beat,Image.Resampling.LANCZOS)
+              board.paste(im,((i%cols)*beat[0],(i//cols)*beat[1]))
+          board.save(root/"paired_beats_contact_sheet.png")
+          manifest["encoded_reel"]={"file":"facial_expression_reel.mp4","frames":1215,"fps":24,"duration_seconds":50.625}
+          (root/"manifest.json").write_text(json.dumps(manifest,indent=2)+"\n")
+          PY
+      - name: Upload expression reel and review evidence
+        uses: actions/upload-artifact@v4
+        with:
+          name: chapter2-facial-expression-reel
+          path: |
+            render/expressions/facial_expression_reel.mp4
+            render/expressions/expression_sequence.mp4
+            render/expressions/neutral_blink.mp4
+            render/expressions/paired_emotional_beats.mp4
+            render/expressions/manifest.json
+            render/expressions/expression_contact_sheet.png
+            render/expressions/blink_contact_sheet.png
+            render/expressions/paired_beats_contact_sheet.png
+            render/expressions/stills/
+            render/expressions/labelled/
+          if-no-files-found: error
+          retention-days: 30
