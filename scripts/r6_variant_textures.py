@@ -267,10 +267,12 @@ def cloth(kind,skin=None):
             if base_kind in ("tee","green_tee","blue_tee"):
                 rect((0,.52,1,1),skin or (220,170,115));rect((0,.46,1,.52),dark)
                 for a in (.472,.488,.504):line([(0,a),(1,a)],lit,.004)
+                # Shoulder seam stays on fabric and never continues down the bare forearm.
+                line([(.04,.03),(.10,.22),(.08,.43)],dark,.01)
             else:
                 rect((0,.86,1,1),skin or (220,170,115));rect((0,.80,1,.86),dark)
                 for a in (.815,.835,.85):line([(0,a),(1,a)],lit,.004)
-            line([(.04,.03),(.10,.37),(.08,.76)],dark,.01)
+                line([(.04,.03),(.10,.37),(.08,.76)],dark,.01)
         elif kind=="hoodie":
             if panel==0:
                 poly([(0,.02),(.32,0),(.5,.14),(.68,0),(1,.02),(1,.16),(.5,.29),(0,.16)],dark)
