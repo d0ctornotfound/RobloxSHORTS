@@ -267,3 +267,7 @@ Run regression 45930120100 accepted, locomotion closed pending gag visuals; harv
 
 ## Gag dependency correction
 45934334403 preflight install failed: official Blender archive HTTP 403, curl exit 22, render/edit skipped, no artifact. Return to previously verified distro Blender, OIDN disabled, 48 Cycles samples at .035 adaptive threshold; maintain all geometric and pixel gates and full-timeline preflight. Grain improvement not yet established. Classroom glide-only run 45933739523 still active, no new artifact at time of change.
+
+
+## Supervisor final-cast proof approval and exact wide gate correction
+Short #2 The Perfect Throw APPROVED on final cast, completing both proof shorts. Run 45933739523 successful, final artifact 15169308953, all 144 encoded frames passed 2% darkness; glide maximum 1.043475% at frame 95 (not frame 96), fold .564236%, throw .749904%, payoff 1.423551%. Known nonblocking weaknesses: preview grain, cropped outer arms in reaction, static seated acting, some classroom coverage at 40% minimum instead of preferred 45%. Do not alter approved shorts. Gag 45934777448 failed before rendering at establishing search. Supervisor directed exactly scoped repair: remove .47 buffer, .05/.06 search-only margins, .18 face-separation cutoff; share body, face and lamp acceptance predicates between wide search and actual gate, rank only valid candidates by coverage/separation. Wide face gate now applies to both as explicitly directed. No other shot or render-profile changes. Full geometric preflight then matrix render and final validation pending.

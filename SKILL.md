@@ -218,3 +218,7 @@ Run 45933739499 failed on distro Blender's missing OpenImageDenoiser, not an ani
 
 ### CI renderer compatibility correction
 Run 45934334403 stopped before Blender execution because download.blender.org returned HTTP 403. Revert to known working Ubuntu Blender, disable unsupported OIDN, increase Cycles proof to 48 samples and tighten adaptive threshold .035. This is a non-denoised proof, not final grain-free profile. Keep complete 240-frame geometric preflight and all existing frame/face/lamp/ID/pixel thresholds. No external download attempts in this correction.
+
+
+### Standing rule: search/preflight equals acceptance
+Search and preflight code must never be stricter than the acceptance gates they serve. Share acceptance predicates wherever possible. No internal coverage buffers, extra framing margins, minimum separation or other hidden vetoes; composition preferences may rank passing candidates, not reject them. For the gag establishing wide: both full bodies must satisfy the existing body_safe bounds (.035 margin), sum of projected vertical coverages >=.45, both faces must pass the actual face gate (arm overlap <=.10 and ray visibility >=.78), each lamp overlap <=.05. Singles and prop insert unchanged. All timeline samples still validated, plus actual rendered ID checks and encoded darkness. This supersedes the earlier wide-face diagnostic-only note and .47 search buffer. Supervisor approved both final-cast proof shorts; preserve their outputs.

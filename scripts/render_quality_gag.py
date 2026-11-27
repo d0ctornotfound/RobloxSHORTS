@@ -33,6 +33,21 @@ def check_lamps(scene,cam,actors):
             over=max(over,max(0,min(f[1],b[1])-max(f[0],b[0]))*max(0,min(f[3],b[3])-max(f[2],b[2]))/area)
         result[a.role]=over
     return result
+def body_gate(shot,bounds,prop_bounds=None):
+    """Single acceptance predicate, shared by candidate search and final preflight."""
+    if shot=="gift_action_insert":
+        p=prop_bounds
+        return p[4]>0 and .035<=p[0]<=p[1]<=.965 and .035<=p[2]<=p[3]<=.965
+    if shot=="establishing_wide":
+        return len(bounds)==2 and all(x["body_safe"] for x in bounds) and sum(x["coverage"] for x in bounds)>=.45
+    return len(bounds)==1 and all(x["body_safe"] and x["coverage"]>=.45 for x in bounds)
+
+def face_gate(face):
+    return all(x["pass"] for x in face.values())
+
+def lamp_gate(lamps):
+    return all(x<=.05 for x in lamps.values())
+
 def render(scene,out,name):
     scene.render.filepath=str(out/(name+".png"));start=time.perf_counter();bpy.ops.render.render(write_still=True);return time.perf_counter()-start
 
@@ -117,7 +132,6 @@ def main():
             heroes=[lead,friend];shot="establishing_wide"
             if wide_camera is None:
                 a=lead.root.location.copy();b=friend.root.location.copy();q=(a+b)/2;q.z=1.30
-                verts=[points(actor) for actor in heroes]
                 best=None
                 for angle in (0,25,-25,45,-45,60,-60):
                     h=math.radians(angle)
@@ -125,16 +139,22 @@ def main():
                         pos=q+Vector((dist*math.sin(h),-dist*math.cos(h),2.8-q.z))
                         for lens in (28,35,42,50,58):
                             apply(cam,"static",0,pos,q,lens)
-                            bounds=[project(scene,cam,x) for x in verts]
-                            if not all(k[4]>0 and .05<=k[0]<=k[1]<=.95 and .06<=k[2]<=k[3]<=.94 for k in bounds):continue
-                            total=sum(k[3]-k[2] for k in bounds)
-                            separation=abs(sum(bounds[0][:2])/2-sum(bounds[1][:2])/2)
+                            bounds=metrics(scene,cam,heroes)
+                            # Reject only by the actual gate; coverage and separation
+                            # may rank candidates, never impose extra cutoffs.
+                            if not body_gate("establishing_wide",bounds):continue
                             lamp=check_lamps(scene,cam,heroes)
-                            if total>=.47 and separation>=.18 and max(lamp.values())<=.05:
-                                score=total+.15*separation-.001*abs(angle)
-                                if best is None or score>best[0]:best=(score,pos.copy(),q.copy(),lens)
+                            if not lamp_gate(lamp):continue
+                            face={a.role:face_clear(scene,cam,a) for a in heroes}
+                            if not face_gate(face):continue
+                            total=sum(k["coverage"] for k in bounds)
+                            separation=abs(bounds[0]["face_center"][0]-bounds[1]["face_center"][0])
+                            score=total+.15*separation-.001*abs(angle)
+                            if best is None or score>best[0]:best=(score,pos.copy(),q.copy(),lens)
                 if best is None:raise RuntimeError("Wide establishment has no safe full-body total >=45% framing")
                 _,pos,q,lens=best;wide_camera=(pos,q,lens)
+                apply(cam,"static",0,*wide_camera)
+                save(out,"wide_candidate.json",{"position":list(pos),"target":list(q),"lens":lens,"bounds":metrics(scene,cam,heroes),"face":{a.role:face_clear(scene,cam,a) for a in heroes},"lamp_overlap":check_lamps(scene,cam,heroes)})
             apply(cam,"static",0,*wide_camera)
         elif t<4.15 or 4.85<=t<6.35:
             heroes=[lead];shot="approach_single" if t<2.4 else "wave_notice_single" if t<4.15 else "recoil_single"
@@ -164,15 +184,9 @@ def main():
         face={a.role:face_clear(scene,cam,a) for a in heroes}
         lamps=check_lamps(scene,cam,heroes)
         prop_bounds=project(scene,cam,prop_points) if insert else None
-        if insert:
-            body_ok=prop_bounds[4]>0 and .035<=prop_bounds[0]<=prop_bounds[1]<=.965 and .035<=prop_bounds[2]<=prop_bounds[3]<=.965
-        elif shot=="establishing_wide":
-            body_ok=all(x["body_safe"] for x in b) and sum(x["coverage"] for x in b)>=.45
-        else:
-            body_ok=all(x["body_safe"] and x["coverage"]>=.45 for x in b)
-        # Wide face rays recorded diagnostically; singles retain original face gate.
-        face_ok=all(x["pass"] for x in face.values()) if len(heroes)==1 else True
-        lamp_ok=all(x<=.05 for x in lamps.values())
+        body_ok=body_gate(shot,b,prop_bounds)
+        face_ok=face_gate(face)
+        lamp_ok=lamp_gate(lamps)
         rec={"frame":f+1,"time":t,"shot":shot,"bounds":b,"face":face,"lamp_overlap":lamps,"lead_beat":lead_beat,"friend_beat":friend_beat,"body_pass":body_ok,"face_pass":face_ok,"lamp_pass":lamp_ok,"prop_bounds":prop_bounds,"coverage_rule":"sum>=.45" if shot=="establishing_wide" else "prop_insert" if insert else "each>=.45"}
         rows.append(rec)
         if args.part<0:
