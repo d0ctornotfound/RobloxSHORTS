@@ -1,0 +1,37 @@
+name: EAT final round — approved bite classifier preflight
+on:
+  push:
+    branches: [main]
+    paths: ['.github/workflows/chapter1-eat-final-reference.yml']
+  workflow_dispatch:
+permissions:
+  contents: read
+  actions: read
+jobs:
+  reference:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 20
+    env:
+      R6_KNEE_BLEND: '0'
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/download-artifact@v4
+        with:
+          name: chapter1-round11-geometry-eat-food
+          run-id: 45982930320
+          github-token: ${{ github.token }}
+          path: source/approved
+      - name: Install Blender
+        run: |
+          sudo apt-get update -o Dir::Etc::sourceparts=/dev/null -o Dir::Etc::sourcelist=/etc/apt/sources.list.d/ubuntu.sources
+          sudo apt-get install -y --no-install-recommends blender python3-pil python3-numpy
+          /usr/bin/python3 scripts/library_character_assets.py
+          python3 -m py_compile scripts/chapter1_eat_final_round.py
+      - name: Calibrate against approved frame 17 only
+        run: MODE=preflight SOURCE="$PWD/source" OUT="$PWD/preflight" blender -b --python-exit-code 1 --python scripts/chapter1_eat_final_round.py
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: eat-frame17-classifier-verdict
+          path: preflight/classifier_verdict.json
+          if-no-files-found: warn
