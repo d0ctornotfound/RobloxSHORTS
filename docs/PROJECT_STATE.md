@@ -495,3 +495,14 @@ Strict food/head and food/arm, food-tip alignment and normal gap, grip, end-cap,
 The successful smoke job ran both decal generators and then constructed all seven reel characters in Blender. The actual character constructor loads one face material for every member of the 13-entry EXPRESSIONS tuple from a PNG path; missing files raise FileNotFoundError. The seven-character smoke build passed, and the uploaded smoke.json records all seven character IDs and the 13 expression names. Thus the runtime-loaded inventory is **13 decal materials per actor (91 actor-material bindings across seven actors)**.
 
 The generation routines produce **78 unique decal PNG files** in six sets: 13 generic images in assets/r6_faces; 13 each in assets/r6_variants/young, friend, teacher, dad and librarian. Lead/Friend/Teacher/Dad/Librarian load their matching identity set. Student Green and Student Blue each load all 13 generic decals from the shared assets/r6_faces set; they do not need duplicate copies of those same generic PNGs. The smoke artifact is facial-expression-smoke (artifact 15196803122); it contains smoke.json and smoke.png, not the individual decal PNGs. The full render job has generated its role-specific assets successfully but remains in the render step; its reel/contact-sheet artifact has not yet been uploaded.
+
+
+### Split Chapter 2 render jobs — 2026-11-27
+
+The monolithic render 45998731264 was stalled with no step update after 12:28:54 UTC and was successfully cancelled. The replacement is split into three independently running jobs in workflow run **46001234510** (.github/workflows/facial-expression-split.yml), using scripts/render_expression_sections.py:
+
+- Expression close-ups — seven characters, 91 labelled stills + encoded sequence + per-character/master contact sheets. Job **140513100697**, artifact name chapter2-expression-closeups.
+- Ten-second neutral blink demo — 240 frames + encoded MP4 + blink-event contact sheet. Job **140513100064**, artifact name chapter2-neutral-blink-demo.
+- Paired emotional beats — Lead neutral → surprise → laugh and Friend neutral → embarrassed, 156 frames + encoded MP4 + contact sheet. Job **140513100520**, artifact name chapter2-paired-emotional-beats.
+
+Each job renders independently with Cycles denoising OFF. Close-ups/beats use 960×540 at 12 samples; blink grid uses 1280×720 at 12 samples. The first split attempt failed in CLI setup (missing --smoke flag) and a runner package-source 403; both were fixed. The current run's three jobs have passed checkout, package installation and decal generation, and are in their respective render steps. At this entry there are no completed reel artifacts or visual approvals yet. Check run 46001234510 for job/artifact completion.
