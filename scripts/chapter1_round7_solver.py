@@ -164,7 +164,7 @@ def search_drink(scene,cam,a,art,cup,yaw,N):
     for tilt,az,offset,corner in itertools.product(map(math.radians,(35,40,45)),(-.45,0,.45),(.035,.045,.055,.059),(-.025,0,.025)):
         axis=(z*math.cos(tilt)+(-hn*math.cos(az)+hs*math.sin(az))*math.sin(tilt)).normalized()
         rot=z.rotation_difference(axis);center=decal+n*offset+side*corner
-        cm=Matrix.Translation(center-rot@Vector((0,0,.07)))@rot.to_4x4()
+        cm=Matrix.Translation(center-rot@Vector((0,0,.07)))@rot.to_matrix().to_4x4()
         cg=world(data(cup),cm);lat,norm,rc=rim_contact(cup,cm,decal,n)
         below=max(v.z-decal.z for j,v in enumerate(cg[0]) if not 32<=j<96)
         score=(overlap(cg,heads)+overlap(cg,[body]+extras),rays(cam,a,[cup_nonrim(cup,cm)]),
