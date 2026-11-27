@@ -9,7 +9,8 @@ from render_demo import cube,empty,material,point_at
 from stage_a_cafe import light
 from quality_cafe import text
 from render_r6_stills import camera,actor_bounds,smoke
-from r6_character import SOURCE_SHA256,mesh_points,bounds
+from r6_character import SOURCE_SHA256,mesh_points,bounds,group_points
+from r6_imported_cycles import Retarget
 from library_character import character
 from library_animation import ACTIONS,pose,aim_at,grip,dual_grip
 from library_props import NAMES,build,palette
@@ -17,7 +18,7 @@ import library_sets
 from library_atmosphere import Atmosphere
 from library_effects import particles,update,shake
 
-JOBS=("characters","poses0","poses1","poses2","props0","props1","props2","rooms","sky0","sky1","effects","clip0","clip1","clip2")
+JOBS=("characters","poses0","poses1","poses2","props0","props1","props2","rooms","sky0","sky1","effects","clip0","clip1","clip2","clip3","clip4","clip5","import_walk","import_run")
 def fresh(w=540,h=960,samples=24):
     scene=configure("preview");scene.render.resolution_x=w;scene.render.resolution_y=h
     scene.cycles.samples=samples;scene.cycles.adaptive_threshold=.10
@@ -138,23 +139,43 @@ def effects(out):
     displacement=shake(cam,base,.73,.16,12);assert displacement>.01
     render(scene,out,"fx_shake");save(out,"effects",{"effects":rows,"shake_displacement":displacement})
 def clip(out,part):
-    scene,atm,cam,a=street_scene(8,288,512);scene.render.fps=6
-    scene.frame_start=1;scene.frame_end=72
+    from render_imported_cycles import grounded
+    scene,atm,cam,a=street_scene(16,360,640);fps=12;scene.render.fps=fps
+    scene.frame_start=1;scene.frame_end=144
+    ret=Retarget(a);cal=ret.calibrate("walk_cycle")
+    c=ret.clips["walk_cycle"];duration=12;distance=20
+    speed=distance/((144-1)/fps);rate=speed/cal["speed_scene_units_per_second"]
     first=part*24+1;last=first+23;records=[]
+    star=[o for o in a.accessories if "signature red star" in o.name]
+    assert len(star)==1 and not any("signature red pin" in o.name for o in a.accessories)
+    # Pin must remain within the torso's evaluated vertical range on every frame.
     for f in range(first,last+1):
-        t=(f-1)/6;u=(f-1)/71
-        scene.frame_set(f);x=-3+6*u
-        pose(a,"walk",t/.86,(x,0,0),yaw=math.pi/2,frame=f)
-        cam.location=(x+1.8,-4.6,2.65);point_at(cam,(x+.20,.8,2.25))
+        t=(f-1)/fps;x=-distance/2+speed*t;scene.frame_set(f)
+        ret.at("walk_cycle",t*rate)
+        low,adjust=grounded(a,(x,0,0),math.pi/2);a.pose("smug")
+        cam.location=(x+.85,-3.75,2.24);cam.data.lens=43
+        point_at(cam,(x+.12,.25,1.78))
+        # Move the fill with the camera, preserving the preset's color/energy.
+        atm.fill.location=(x,-5,5);point_at(atm.fill,(x,0,1.2))
         if t<3:rec=atm.apply("midday")
         elif t<6:rec=atm.apply("midday","golden_hour",(t-3)/3)
         elif t<9:rec=atm.apply("golden_hour","night",(t-6)/3)
         else:rec=atm.apply("night")
-        bpy.context.view_layer.update();rec["frame"]=f;rec["x"]=x
+        # Keep blue night legible with a motivated cool bounce, not a pixel clamp.
+        night=rec["night"]
+        atm.fill.data.energy+=190*night
+        bpy.context.view_layer.update()
+        torso=group_points(a.body,a.bones["torso"].name);lo,hi=bounds(torso)
+        center=sum(mesh_points(star[0]),Vector())/len(mesh_points(star[0]))
+        assert lo.z-.035<=center.z<=hi.z+.035,("star detached from chest",f,list(center),list(lo),list(hi))
+        rec.update({"frame":f,"x":x,"source_seconds":t*rate%c["duration"],"foot_min_z":low,
+                    "star_height":center.z,"torso_z_bounds":[lo.z,hi.z]})
         rec["actor_bounds"]=visible(scene,cam,a)
-        rec["foot_min_z"]=min(v.z for ob in a.skinned for v in mesh_points(ob));assert abs(rec["foot_min_z"])<.001
+        assert abs(low)<.001
         records.append(rec);render(scene,out,f"frame_{f:04d}")
-    save(out,"clip"+str(part),{"fps":6,"resolution":[288,512],"samples":8,"frames":records})
+    save(out,"clip"+str(part),{"fps":fps,"resolution":[360,640],"samples":16,
+         "action":"walk_cycle","source_sha256":ret.data["source_sha256"],"speed":speed,"playback_rate":rate,
+         "calibration":cal,"frames":records})
 def main():
     p=argparse.ArgumentParser();p.add_argument("--job",choices=JOBS,required=True);p.add_argument("--output",default="render/showcase")
     a=p.parse_args(sys.argv[sys.argv.index("--")+1:]);out=Path(a.output).resolve();out.mkdir(parents=True,exist_ok=True)
@@ -166,4 +187,7 @@ def main():
     elif j.startswith("sky"):skies(out,int(j[-1]))
     elif j=="effects":effects(out)
     elif j.startswith("clip"):clip(out,int(j[-1]))
+    elif j.startswith("import_"):
+        from render_imported_cycles import strip
+        strip(out,"walk_cycle" if j=="import_walk" else "run_cycle")
 if __name__=="__main__":main()

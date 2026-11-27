@@ -13,7 +13,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        job: [characters, poses0, poses1, poses2, props0, props1, props2, rooms, sky0, sky1, effects, clip0, clip1, clip2]
+        job: [characters, poses0, poses1, poses2, props0, props1, props2, rooms, sky0, sky1, effects, clip0, clip1, clip2, clip3, clip4, clip5, import_walk, import_run]
     steps:
       - uses: actions/checkout@v4
       - name: Install render tools

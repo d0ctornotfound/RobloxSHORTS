@@ -263,6 +263,10 @@ class VariantCharacter(R6Character):
 
     def _accessories(self):
         super()._accessories()
+        if self.role=="lead":
+            # Remove redundant backing slab, which was visibly detached at
+            # the feet in imported-cycle renders. Retain the red star decal.
+            remove_accessories(self,("signature red pin",))
         if self.role in ("lead","dad"):
             for ob in list(self.accessories):
                 if "head hair" in ob.name or "head fringe" in ob.name or "head short block hair" in ob.name:

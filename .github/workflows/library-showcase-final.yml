@@ -1,0 +1,73 @@
+name: Final library showcase with approved imported Walk
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/library-showcase-final.yml'
+permissions:
+  contents: read
+  actions: read
+jobs:
+  render:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 30
+    strategy:
+      fail-fast: false
+      matrix:
+        job: [clip0, clip1, clip2, clip3, clip4, clip5, import_walk, import_run]
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install tools
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y --no-install-recommends blender ffmpeg python3-pil python3-numpy
+      - name: Verify source and render
+        env:
+          JOB: ${{ matrix.job }}
+        run: |
+          echo '3a0f310faf09cf161f7036a4c0df1a20202b967683700badc4440309c0a7d95a  assets/r6_rigged.glb' | sha256sum -c -
+          echo 'a05aa15bd6cc28b739c53208c69037bc547bbb731e78d200393468a26029d2d4  assets/animations/run_walk_roblox.bin' | sha256sum -c -
+          /usr/bin/python3 -m py_compile scripts/render_library_showcase.py scripts/package_library_showcase.py scripts/r6_variant_character.py
+          /usr/bin/python3 scripts/library_character_assets.py
+          blender -b --python-exit-code 1 --python scripts/render_library_showcase.py -- --job "$JOB" --output render/showcase
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: library-${{ matrix.job }}
+          path: render/showcase/
+          retention-days: 7
+  package:
+    needs: render
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/download-artifact@v4
+        with:
+          pattern: library-*
+          path: chunks
+      - uses: actions/download-artifact@v4
+        with:
+          github-token: ${{ github.token }}
+          run-id: 45919789293
+          name: roblox-production-library-showcase
+          path: previous
+      - name: Reuse prior still proofs only
+        run: |
+          mkdir -p chunks/library-prior
+          for f in previous/*; do
+            case "$(basename "$f")" in
+              frame_*|clip*|library_showcase.mp4|showcase_manifest.json|story_plan.json|*_sheet.png) ;;
+              *) cp -a "$f" chunks/library-prior/ ;;
+            esac
+          done
+      - name: Validate and encode
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y ffmpeg python3-pil python3-numpy fonts-dejavu-core
+          /usr/bin/python3 scripts/package_library_showcase.py
+      - uses: actions/upload-artifact@v4
+        with:
+          name: roblox-production-library-final-showcase
+          path: showcase/
+          retention-days: 7
