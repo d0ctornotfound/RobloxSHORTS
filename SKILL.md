@@ -65,6 +65,27 @@ Source [library_animation.py](scripts/library_animation.py). parameters(action,t
 
 Use pose with unique frame key for each sample, or walk_path(actor,start,end,first,last,fps,cycle_seconds,run=False) for straight locomotion. For a reachable contact, aim_at returns measured residual; solve intersection of shoulder reach spheres for high-five, or plane/rim intersection for a seated plate. Use GripAttachment bind/release (stage_b_interaction.py) and analytic ballistic flight, then settle or bind to support. grip left/right returns attachment and error. dual_grip places a bar-like prop between two actual sockets; size local X endpoints to returned half-span. It is a static contact helper: update midpoint/orientation each moving sample, not a universal two-hand constraint. No IK, elbow/knee animation, collision solving, genuine mouth ingestion or foot lock; sit/stand/fall/sleep need specific chair/bed calibration, pair poses need collision review. A pose strip proves a pose, not full action timing or physics. Showcase clip proves walk sampling only.
 
+### Imported authentic-data locomotion (approval pending)
+
+The user supplied [run_walk_roblox.bin](assets/animations/run_walk_roblox.bin), RBXM KeyframeSequences Walk (50 keys, 0–.8166666627s) and Sprint (35 keys, 0–.5666666627s), both Loop=true and ~60Hz. Source attribution and SHA in [SOURCE.md](assets/animations/SOURCE.md); embedded credit godofsun95, not an official Roblox animation claim. Parser [rbxm_animation.py](scripts/rbxm_animation.py) reads original binary/LZ4 chunks, instances/references, parent tree, interleaved numeric arrays, compact/explicit CFrames, timestamps and Motor6D C0/C1. It rejects unknown supported animation encodings, non-linear easing or incomplete pose hierarchies instead of inventing motion. Original CFrames and endpoint differences retained. RootPart weight is zero; source is in-place locomotion.
+
+[r6_imported_cycles.py](scripts/r6_imported_cycles.py) maps source Torso, Head, Left/Right Arm and Leg to the exact target bone names. For each bone, source neutral joint axes from C0/C1 are rotated into actor space (+X Roblox right to -X actor right, +Y to +Z, -Z to -Y) then conjugated into evaluated GLB rest bone axes; source pose translations are mapped and uniformly scaled, rather than dropped. Preserves target joint pivots and original skin weights; not an exact source mesh clone. Source timing kept in named 60Hz Blender Actions walk_cycle and run_cycle, fake-user and CYCLES modifiers; original end key retained. No manually authored gait is substituted. For arbitrary fps, use Retarget.at(name,source_seconds,loop=True), which samples original intervals and slerps quaternions. Use loop=False to inspect exact last key. Walk max seam 2.153°/0.02484 studs; Sprint max seam 1.519°/0.03256 studs; do not erase those source differences. For a seamless production loop, use an explicitly documented short overlap/blend at edit or action level, never modify the preserved master.
+
+~~~python
+from library_character import character
+from r6_imported_cycles import Retarget
+a=character("walk hero","lead")
+ret=Retarget(a)
+actions=ret.actions()  # named reusable Blender Actions, source 60Hz
+cal=ret.calibrate("walk_cycle")
+# In a story, evaluate at (frame-first)/fps * playback_rate:
+ret.at("walk_cycle", seconds * playback_rate)
+# Set a.root position/yaw along desired path after pose evaluation.
+# Root distance = cal["speed_scene_units_per_second"] * playback_rate * seconds.
+~~~
+
+Calibration samples evaluated sole points at original timestamps; median backward stance-foot velocity estimates root speed, stride = speed × cycle duration. Scale speed and phase by the same factor to avoid obvious foot sliding, trim at full cycles or use a timed blend when transitioning to idle. No exact foot-lock IK or authored forward root track; report estimated stance slip and any per-frame ground correction. For 60Hz action playback at other scene fps retime via NLA or direct sampler; don't assume 60Hz frame numbers match 12fps. Imported workflow [imported-cycles.yml](.github/workflows/imported-cycles.yml) only renders walk/run pose strips, packed named-action Blender scene and four-second street proof clip. Round-trip check all 510 weighted poses, verify sampled Action F-curves and show actual media in chat. Until supervisor approves imported motion, older hand-authored walk/run remain only historical library demonstrations, not equivalent motion.
+
 ## 3. Props — modular catalogue
 
 Source [library_props.py](scripts/library_props.py). build(kind,name=None,pos=(0,0,0),scale=1,p=None,**params) returns an empty root, child meshes authored locally; root is the base/support origin, parent props and key transforms on it. palette() returns shared original wood/cream/metal/glass/leaf/red/blue etc materials; supply a shared palette to reuse materials. For table/desk width,depth,height; bed width,depth; door/window width,height (window pane=False for open aperture); bookshelf width,height. All accept uniform scale; other specific designs have default proportions. Use contact height, grip offset and support footprint measured from evaluated meshes, not catalogue display scale.

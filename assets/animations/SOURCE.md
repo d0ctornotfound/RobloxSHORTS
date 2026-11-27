@@ -1,0 +1,5 @@
+# Supplied R6 locomotion source
+
+User supplied `run_walk_roblox.bin` (37,626 bytes, RBXM v0), November 26, 2026, for conversion in this project. Embedded Humanoid DisplayName credits **godofsun95**, with the text "Made In Blender". Exact original source retained; no claim that it is official Roblox animation or that a public redistribution license was supplied. Verify permission before distributing outside the authorized project. SHA-256 a05aa15bd6cc28b739c53208c69037bc547bbb731e78d200393468a26029d2d4; Git blob 5564e1ecc3ee2b0359c44fc369824d41d2ad212c.
+
+Walk: 50 keyframes, 0..0.8166666627s, Loop=true; Sprint: 35, 0..0.5666666627s, Loop=true. Both sampled ~60Hz. 595 pose entries: 510 weighted body-part entries, 85 zero-weight identity HumanoidRootPart. Source includes six Motor6D joints and full C0/C1. All body poses linear. Source endpoints differ slightly; not edited to make seamless. Extract with scripts/rbxm_animation.py; convert using scripts/r6_imported_cycles.py. See SKILL.md for retarget and stride usage.

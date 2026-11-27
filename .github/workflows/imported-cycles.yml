@@ -1,0 +1,66 @@
+name: Authentic RBXM locomotion approval
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - 'assets/animations/run_walk_roblox.bin'
+      - 'scripts/rbxm_animation.py'
+      - 'scripts/r6_imported_cycles.py'
+      - 'scripts/render_imported_cycles.py'
+      - 'scripts/package_imported_cycles.py'
+      - '.github/workflows/imported-cycles.yml'
+permissions:
+  contents: read
+concurrency:
+  group: imported-cycles-${{ github.ref }}
+  cancel-in-progress: true
+jobs:
+  render:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 30
+    strategy:
+      fail-fast: false
+      matrix:
+        job: [walk, run, clip0, clip1, clip2]
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install Blender and texture tools
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y --no-install-recommends blender ffmpeg python3-pil python3-numpy
+      - name: Validate source and render imported motion
+        env:
+          JOB: ${{ matrix.job }}
+        run: |
+          echo 'a05aa15bd6cc28b739c53208c69037bc547bbb731e78d200393468a26029d2d4  assets/animations/run_walk_roblox.bin' | sha256sum -c -
+          /usr/bin/python3 -m py_compile scripts/rbxm_animation.py scripts/r6_imported_cycles.py scripts/render_imported_cycles.py scripts/package_imported_cycles.py
+          /usr/bin/python3 scripts/rbxm_animation.py --output render/source_extraction.json
+          /usr/bin/python3 scripts/library_character_assets.py
+          blender -b --python-exit-code 1 --python scripts/render_imported_cycles.py -- --job "$JOB" --output render/imported
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: imported-${{ matrix.job }}
+          path: render/imported/
+          if-no-files-found: warn
+          retention-days: 7
+  package:
+    needs: render
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/download-artifact@v4
+        with:
+          pattern: imported-*
+          path: chunks
+      - name: Validate and encode actual imported walk
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y ffmpeg python3-numpy
+          /usr/bin/python3 scripts/package_imported_cycles.py
+      - uses: actions/upload-artifact@v4
+        with:
+          name: r6-authentic-locomotion-approval
+          path: imported/
+          retention-days: 7

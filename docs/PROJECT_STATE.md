@@ -163,3 +163,7 @@ Permanent camera preflight: 50% resolution, 32 Cycles samples, <=10% near-black 
 
 ## Production library sprint — parallel-work reconciliation
 Preserve the classroom reuse-test closure and choreography from 76187739ee048ad0cac28531cf18da92920e3a71. This sprint does not change either proof-short driver/workflow. Friend/teacher approved per supervisor; denim deepened. First showcase run 45919353390 rendered independent modules; shared wall kit and long-form plan corrected in next commit. Isolated recovery renders only affected street/room/effects/clip jobs, reuses unchanged character/action/prop archives. Library approval still pending. Both shorts frozen until supervisor instruction.
+
+
+## Supplied RBXM locomotion addition
+User supplied run_walk_roblox.bin, exact source blob 5564e1ecc3ee2b0359c44fc369824d41d2ad212c, SHA-256 a05aa15bd6cc28b739c53208c69037bc547bbb731e78d200393468a26029d2d4. Local binary inspection confirmed Walk 50 keys 0.816667s, Sprint 35 keys 0.566667s, loops enabled, 595 pose records, 510 weighted body poses and 85 zero-weight root poses; linear easing, original Motor6D bind transforms. Embedded credit godofsun95; license unconfirmed. New strict parser, retargeter and isolated proof workflow. Library showcase completed run 45919789293 on hand-authored prior locomotion; new import proof pending. Both short drivers remain frozen; no substitute gait if import fails.
