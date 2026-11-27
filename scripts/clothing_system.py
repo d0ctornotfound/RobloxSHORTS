@@ -14,6 +14,25 @@ from r6_character import bounds, group_points, dominant_group, matte
 from r6_variant_character import apply_garments
 from render_demo import cube
 
+PALETTE_SRGB = {
+    "hoodie": (104, 111, 116), "jacket": (176, 142, 95), "tee": (219, 198, 151),
+    "cardigan": (161, 49, 87), "jeans": (34, 39, 46), "yellow_denim": (244, 164, 2),
+    "stripe_pants": (25, 28, 33), "blue_denim": (25, 64, 128), "teacher_trousers": (47, 39, 57),
+    "green_tee": (33, 151, 56), "blue_tee": (25, 89, 200),
+    "green_student_denim": (29, 75, 162), "blue_student_denim": (250, 188, 3),
+}
+
+def _srgb_linear(value):
+    c = value / 255.0
+    return c / 12.92 if c <= 0.04045 else ((c + 0.055) / 1.055) ** 2.4
+
+def _solid_fabric(actor, kind, suffix="raised detail", factor=1.0):
+    rgb = PALETTE_SRGB[kind]
+    color = tuple(_srgb_linear(v) * factor for v in rgb)
+    material = matte(actor.role + " / " + kind + " " + suffix, color)
+    _add_fabric_shader(material, kind)
+    return material
+
 ROLE_CLOTHES = {
     "lead": {"shirt": "hoodie", "pants": "jeans", "sleeve": "hoodie", "sleeve_cutoff": 0.14},
     "friend": {"shirt": "tee", "pants": "yellow_denim", "sleeve": "tee", "sleeve_cutoff": 0.48},
@@ -273,6 +292,7 @@ def _add_cardigan_details(actor, shirt_material):
     extent = hi - lo
     front = lo.y - 0.022
     trim = matte(actor.role + " cardigan raised knit trim", (0.28, 0.025, 0.075))
+    _add_fabric_shader(trim, "cardigan")
     buttons = matte(actor.role + " cardigan warm pearl buttons", (0.78, 0.57, 0.34))
     _add_box(
         actor, "cardigan raised front placket",
@@ -302,6 +322,7 @@ def _add_jacket_details(actor, shirt_material):
     front = lo.y - 0.024
     button = matte(actor.role + " jacket buttons", (0.72, 0.56, 0.34))
     flap = matte(actor.role + " jacket pocket flap", (0.42, 0.27, 0.14))
+    _add_fabric_shader(flap, "jacket")
     for sign in (-1, 1):
         x = center.x + sign * extent.x * 0.26
         z = center.z + extent.z * 0.12
@@ -343,6 +364,16 @@ def _add_jacket_details(actor, shirt_material):
         )
 
 
+def _remove_old_teacher_cardigan_details(actor):
+    tokens = ("cardigan raised placket", "cardigan raised collar", "raised cardigan button")
+    for ob in list(actor.accessories):
+        if any(token in ob.name.lower() for token in tokens):
+            actor.accessories.remove(ob)
+            if ob in actor.meshes:
+                actor.meshes.remove(ob)
+            bpy.data.objects.remove(ob, do_unlink=True)
+
+
 def upgrade_character(actor):
     """Apply the textile, shell-fit and raised-detail pass once to one R6 actor."""
     if getattr(actor, "clothing_upgraded", False):
@@ -363,24 +394,31 @@ def upgrade_character(actor):
     sleeve = _material(actor, " / sleeve")
     for material, kind in ((shirt, cfg["shirt"]), (pants, cfg["pants"]), (sleeve, cfg["sleeve"])):
         _add_fabric_shader(material, kind)
+    # Raised geometry uses solid fabric materials, not an atlas sampled at an
+    # arbitrary UV coordinate. The original atlas remains on the body shells.
+    solid_shirt = _solid_fabric(actor, cfg["shirt"])
+    solid_pants = _solid_fabric(actor, cfg["pants"])
+    solid_sleeve = _solid_fabric(actor, cfg["sleeve"], "sleeve edge")
 
     shirt_groups = (TORSO_GROUP,) + ARM_GROUPS
     _make_shell(actor, "shirt and sleeves", shirt_groups, arm_cutoff=cfg["sleeve_cutoff"])
     _make_shell(actor, "trousers", LEG_GROUPS)
 
-    _add_cuffs(actor, sleeve, cfg["sleeve_cutoff"])
+    _add_cuffs(actor, solid_sleeve, cfg["sleeve_cutoff"])
     if cfg["pants"] in ("jeans", "yellow_denim", "blue_denim", "green_student_denim", "blue_student_denim"):
-        _add_denim_pockets(actor, pants)
+        _add_denim_pockets(actor, solid_pants)
 
     if actor.role == "lead":
-        _add_hoodie_details(actor, shirt)
+        _add_hoodie_details(actor, solid_shirt)
     elif actor.role in ("friend", "patron_green", "patron_blue"):
-        _add_tee_collar(actor, shirt)
+        _add_tee_collar(actor, solid_shirt)
+    elif actor.role == "teacher":
+        _remove_old_teacher_cardigan_details(actor)
+        _add_cardigan_details(actor, solid_shirt)
     elif actor.role == "librarian":
-        _add_cardigan_details(actor, shirt)
+        _add_cardigan_details(actor, solid_shirt)
     elif actor.role == "dad":
-        _add_jacket_details(actor, shirt)
-    # Teacher already has its approved raised cardigan placket, collar and buttons.
+        _add_jacket_details(actor, solid_shirt)
 
     # The shared cube helper adds Weighted Normal modifiers that require
     # Auto Smooth; the bevelled garment details do not need those modifiers.
