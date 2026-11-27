@@ -4,35 +4,78 @@ import argparse
 from pathlib import Path
 from PIL import Image, ImageDraw
 
-EXPRESSIONS=("neutral","happy","shocked","sad","unimpressed","laughing")
+EXPRESSIONS=("neutral","happy","smug","tired","worried","laughing","shocked","surprised","sad","unimpressed","embarrassed","angry","sleep_closed")
 
 def build_faces(output):
     output=Path(output);output.mkdir(parents=True,exist_ok=True)
     S=2048
-    black=(10,10,12,255)
+    ink=(10,10,12,255);blush=(205,83,91,105)
     for expr in EXPRESSIONS:
         im=Image.new("RGBA",(S,S),(0,0,0,0));d=ImageDraw.Draw(im)
         def box(x0,y0,x1,y1):return tuple(round(x*S) for x in (x0,y0,x1,y1))
-        def oval(x,y,w,h,fill=black):d.ellipse(box(x-w/2,y-h/2,x+w/2,y+h/2),fill=fill)
-        def curve(start,control,end,width=.048):
+        def oval(x,y,w,h,fill=ink):d.ellipse(box(x-w/2,y-h/2,x+w/2,y+h/2),fill=fill)
+        def curve(start,control,end,width=.035,fill=ink):
             pts=[((1-t)**2*start[0]+2*t*(1-t)*control[0]+t*t*end[0],
-                  (1-t)**2*start[1]+2*t*(1-t)*control[1]+t*t*end[1]) for t in (i/40 for i in range(41))]
-            d.line([(round(x*S),round(y*S)) for x,y in pts],fill=black,width=round(width*S),joint="curve")
-            for x,y in (pts[0],pts[-1]):oval(x,y,width,width)
+                  (1-t)**2*start[1]+2*t*(1-t)*control[1]+t*t*end[1]) for t in (i/48 for i in range(49))]
+            d.line([(round(x*S),round(y*S)) for x,y in pts],fill=fill,width=round(width*S),joint="curve")
+            for x,y in (pts[0],pts[-1]):oval(x,y,width,width,fill)
+        for i,x in enumerate((.34,.66)):
+            sign=-1 if i==0 else 1
+            if expr=="sleep_closed":
+                curve((x-.075,.385),(x,.435),(x+.075,.385),.027)
+            elif expr=="laughing":
+                curve((x-.075,.405),(x,.275),(x+.075,.405),.036)
+            elif expr in ("tired","unimpressed"):
+                oval(x+(.018 if expr=="tired" else 0),.39,.075,.085)
+                curve((x-.085,.345),(x,.335),(x+.085,.345),.028)
+            elif expr=="smug":
+                oval(x+.02,.39,.065,.09)
+                curve((x-.075,.34),(x,.315),(x+.075,.345),.026)
+            elif expr=="embarrassed":
+                oval(x-.018*sign,.415,.066,.090)
+                curve((x-.078,.34),(x,.325),(x+.078,.34),.026)
+            elif expr=="angry":
+                oval(x,.39,.071,.085)
+                if i==0:curve((x-.09,.285),(x,.305),(x+.09,.345),.045)
+                else:curve((x-.09,.345),(x,.305),(x+.09,.285),.045)
+            elif expr in ("shocked","surprised"):
+                oval(x,.39,.083,.165)
+                oval(x-.012,.365,.018,.025,(255,255,255,235))
+                curve((x-.09,.275),(x,.245),(x+.09,.275),.025)
+            else:
+                oval(x,.39,.078,.115)
+                if expr in ("worried","sad"):
+                    if i==0:curve((x-.09,.325),(x,.285),(x+.09,.305),.032)
+                    else:curve((x-.09,.305),(x,.285),(x+.09,.325),.032)
+                else:
+                    curve((x-.09,.315),(x,.30),(x+.09,.315),.025)
+        if expr=="embarrassed":
+            oval(.235,.565,.12,.065,blush);oval(.765,.565,.12,.065,blush)
         if expr=="laughing":
-            for x in (.34,.66):curve((x-.075,.39),(x,.23),(x+.075,.39),.047)
-            oval(.5,.655,.36,.245);d.rounded_rectangle(box(.36,.566,.64,.606),radius=round(.018*S),fill=(255,255,255,255))
+            oval(.5,.675,.37,.255)
+            d.rounded_rectangle(box(.355,.585,.645,.625),radius=round(.016*S),fill=(255,255,255,255))
+            oval(.5,.755,.13,.05,(175,64,68,255))
+        elif expr in ("shocked","surprised"):
+            oval(.5,.68,.205,.235)
+            oval(.5,.742,.12,.045,(175,64,68,255))
+        elif expr=="happy":
+            curve((.27,.615),(.50,.86),(.73,.615),.052)
+        elif expr=="sad":
+            curve((.30,.735),(.50,.525),(.70,.735),.048)
+        elif expr=="angry":
+            curve((.32,.69),(.50,.575),(.68,.69),.045)
+        elif expr=="worried":
+            curve((.32,.735),(.50,.59),(.68,.735),.038)
+        elif expr=="embarrassed":
+            curve((.405,.68),(.50,.73),(.595,.68),.028)
+        elif expr=="smug":
+            curve((.34,.69),(.55,.70),(.69,.625),.042)
         elif expr=="unimpressed":
-            for x in (.34,.66):
-                oval(x,.365,.079,.125)
-                curve((x-.072,.322),(x,.322),(x+.072,.322),.036)
-            curve((.37,.65),(.5,.65),(.63,.65),.048)
+            curve((.36,.67),(.50,.66),(.64,.67),.035)
+        elif expr=="tired":
+            curve((.36,.68),(.50,.64),(.64,.68),.032)
         else:
-            for x in (.34,.66):oval(x,.365,.081,.171 if expr!="shocked" else .215)
-            if expr=="shocked":oval(.5,.675,.21,.225)
-            elif expr=="sad":curve((.29,.76),(.50,.44),(.71,.76),.050)
-            elif expr=="happy":curve((.27,.59),(.50,.94),(.73,.59),.055)
-            else:curve((.31,.64),(.50,.77),(.69,.64),.048)
+            curve((.35,.66),(.50,.69),(.65,.66),.035)
         im.resize((1024,1024),Image.Resampling.LANCZOS).save(output/(expr+".png"),optimize=True)
     return [output/(name+".png") for name in EXPRESSIONS]
 
