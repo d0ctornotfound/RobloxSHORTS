@@ -187,8 +187,8 @@ def main():
             actor.root.rotation_euler=(0,0,0);actor.pose("neutral");head_only(actor)
         neutral_blink_schedules=enable_blinking(scene,list(actors.values()),seed=20261127)
         blink_dir=out/"blink_frames";blink_dir.mkdir(exist_ok=True)
-        blink_labels=[("Lead",274,540),("Friend",731,540),("Teacher",1189,540),("Dad",1646,540),
-                      ("Librarian",503,855),("Student Green",960,855),("Student Blue",1417,855)]
+        blink_labels=[("Lead",200,270),("Friend",480,270),("Teacher",760,270),("Dad",1040,270),
+                      ("Librarian",340,550),("Student Green",640,550),("Student Blue",940,550)]
         for f in range(1,10*FPS+1):
             scene.frame_set(f);bpy.context.view_layer.update()
             path=blink_dir/("frame_%06d.png"%f);render(scene,path)
