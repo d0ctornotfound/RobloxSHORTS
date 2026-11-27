@@ -1,4 +1,4 @@
-"""Render the two variant approval stills; no animation workflow."""
+"""Render the three variant approval stills; no animation workflow."""
 import argparse,json,sys
 from pathlib import Path
 sys.path.insert(0,str(Path(__file__).resolve().parent))
@@ -14,7 +14,7 @@ from r6_variant_character import VariantCharacter
 from render_r6_stills import camera,actor_bounds,smoke
 
 def main():
-    p=argparse.ArgumentParser();p.add_argument("--shot",choices=("00_variant_lineup","01_variant_cafe"),required=True);p.add_argument("--output",default="render/variants")
+    p=argparse.ArgumentParser();p.add_argument("--shot",choices=("00_variant_lineup","01_variant_cafe","02_variant_classroom"),required=True);p.add_argument("--output",default="render/variants")
     a=p.parse_args(sys.argv[sys.argv.index("--")+1:]);out=Path(a.output).resolve();out.mkdir(parents=True,exist_ok=True)
     scene=configure("preview");scene.cycles.samples=96;scene.cycles.adaptive_threshold=.035
     scene.view_settings.view_transform="AgX";scene.view_settings.look="AgX - Medium High Contrast";scene.view_settings.exposure=.05
@@ -30,18 +30,29 @@ def main():
         light("Studio rim",(0,2.8,4.8),(0,0,1.25),320,3,(1,1,1))
         roles=("lead","friend","teacher","dad");positions=((-2.82,0,0),(-.94,0,0),(.94,0,0),(2.82,0,0))
         cam=camera(scene,(0,-10,2.65),(0,0,1.30),8.0,True)
-    else:
+    elif a.shot=="01_variant_cafe":
         scene.render.resolution_x,scene.render.resolution_y=720,1280
         for drink in cafe():set_visible(drink,False)
         roles=("lead","friend");positions=((-1.0,.76,0),(1.0,.76,0))
         plate,cake=build_plate_and_slice(.29);plate.location=(.04,-.03,1.18);cake.location=(.04,-.03,1.245)
         light("Variant cafe frontal bounce",(0,-3,3.4),(0,.85,1.65),340,4.2,(1,.95,.88))
         cam=camera(scene,(0,-3.8,2.18),(0,.72,1.58),52)
+    else:
+        from classroom_set import build as classroom
+        classroom()
+        scene.render.resolution_x,scene.render.resolution_y=720,1280
+        roles=("lead","teacher");positions=((-0.88,-5.45,0),(.88,-5.45,0))
+        light("Teacher approval front key",(0,-2.1,3.65),(0,-5.45,1.62),450,4,(1,.94,.86))
+        cam=camera(scene,(0,-1.15,2.35),(0,-5.45,1.60),55)
     actors=[VariantCharacter(role,role) for role in roles]
     checks={actor.role:smoke(actor) for actor in actors}
-    expressions={"lead":"smug","friend":"happy","teacher":"unimpressed","dad":"worried"}
+    expressions={"lead":"smug","friend":"laughing","teacher":"unimpressed","dad":"worried"}
     for actor,pos in zip(actors,positions):
         actor.root.location=pos
+        if a.shot=="02_variant_classroom":
+            import math
+            actor.root.rotation_euler.z=math.pi
+            actor.aim_arm(0,(.10,-.50,-.86));actor.aim_arm(1,(-.10,-.35,-.93))
         actor.pose(expressions[actor.role])
         if a.shot=="01_variant_cafe":
             from render_story import seat,shoulder,arm_length,rim_contact
@@ -58,7 +69,7 @@ def main():
             assert (actor.grips[idx].matrix_world.translation-target).length<.002
     bpy.context.view_layer.update()
     for _ in range(45):
-        protected=[actor_bounds(scene,cam,x,a.shot!="00_variant_lineup") for x in actors]
+        protected=[actor_bounds(scene,cam,x,False) for x in actors]
         if all(.035<=b[0] and b[1]<=.965 and .035<=b[2] and b[3]<=.965 for b in protected):break
         if cam.data.type=="ORTHO":cam.data.ortho_scale*=1.035
         else:cam.data.lens*=.97
@@ -67,7 +78,7 @@ def main():
     rec={"shot":a.shot,"source_sha256":SOURCE_SHA256,"source_size":ASSET.stat().st_size,"samples":scene.cycles.samples,
          "resolution":[scene.render.resolution_x,scene.render.resolution_y],
          "characters":[{"role":x.role,"bones":list(x.armature.pose.bones.keys()),"skinned_mesh_count":len(x.skinned),"measurements":x.measurements,
-          "skin_tone":x.variant_skin,"garment":x.variant_garment,"facial_hair":x.facial_hair,"expression":expressions[x.role],"expression_count":len(x.face_materials),
+          "face_identity":x.role,"skin_tone":x.variant_skin,"garment":x.variant_garment,"facial_hair":x.facial_hair,"expression":expressions[x.role],"expression_count":len(x.face_materials),
           "protected_bounds":b,"whole_body_bounds":actor_bounds(scene,cam,x),"smoke_test":checks[x.role]} for x,b in zip(actors,protected)]}
     for actor in actors:
         assert len(actor.skinned)==2 and len(actor.face_materials)==9

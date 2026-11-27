@@ -62,6 +62,75 @@ def face(expr,identity="young"):
     else:curve((.35,.66),(.5,.66 if expr=="unimpressed" else .705),(.65,.66),.026)
     return im.resize((1024,1024),Image.Resampling.LANCZOS)
 
+def character_face(expr,identity):
+    """Independent comic friend and mature teacher artwork. Same RGBA contract."""
+    S=2048;im=Image.new("RGBA",(S,S));d=ImageDraw.Draw(im)
+    dark=(32,22,20,255);brow=(48,28,20,255)
+    def xy(p):return tuple(round(x*S) for x in p)
+    def oval(x,y,w,h,c=dark):d.ellipse(xy((x-w/2,y-h/2,x+w/2,y+h/2)),fill=c)
+    def poly(p,c=dark):d.polygon([xy(q) for q in p],fill=c)
+    def curve(a,b,c,w,color=dark):
+        pts=[xy(((1-t)**2*a[0]+2*t*(1-t)*b[0]+t*t*c[0],(1-t)**2*a[1]+2*t*(1-t)*b[1]+t*t*c[1])) for t in (i/64 for i in range(65))]
+        d.line(pts,fill=color,width=round(w*S),joint="curve")
+        for x,y in (a,c):oval(x,y,w,w,color)
+    comic=identity=="friend"
+    shade=Image.new("RGBA",(S,S));sd=ImageDraw.Draw(shade)
+    for x in (.29,.71):
+        sd.ellipse(xy((x-.09,.46,x+.09,.62)),fill=(165,69,48,40 if comic else 16))
+    sd.ellipse(xy((.45,.42,.56,.62)),fill=(114,69,42,38))
+    sd.ellipse(xy((.36,.70,.64,.82)),fill=(111,57,37,22))
+    im=Image.alpha_composite(shade.filter(ImageFilter.GaussianBlur(33)),im);d=ImageDraw.Draw(im)
+    for i,x in enumerate((.34,.66)):
+        y=.405 if comic else .392
+        if expr=="laughing":
+            curve((x-.092,y),(x,y-.155 if comic else y-.105),(x+.092,y),.040 if comic else .027)
+        elif expr=="shocked":
+            oval(x,y,.113 if comic else .085,.176 if comic else .158)
+            oval(x-.018,y-.036,.026,.034,(254,245,222,255))
+        elif expr in ("unimpressed","tired","smug"):
+            oval(x+(.023 if expr in ("tired","smug") else 0),y,.073,.098)
+            curve((x-.095,y-.043),(x,y-.063),(x+.095,y-.040),.031)
+        else:
+            oval(x,y,.096 if comic else .068,.13 if comic else .118)
+            if comic:oval(x-.015,y-.027,.021,.027,(255,248,230,255))
+        if not comic:
+            # Upper lashes and fine lower lid for teacher, still readable in R6.
+            if expr!="laughing":curve((x-.075,y-.043),(x,y-.09),(x+.078,y-.043),.018)
+            if expr in ("tired","unimpressed","worried"):
+                curve((x-.06,y+.083),(x,y+.108),(x+.062,y+.083),.010,(112,69,44,125))
+        if expr in ("worried","sad"):
+            a=(x-.093,.315 if i==0 else .245);b=(x+.093,.245 if i==0 else .315)
+        elif expr=="shocked":a=(x-.09,.235);b=(x+.09,.225)
+        elif expr in ("unimpressed","smug"):
+            a=(x-.095,.295 if i==0 else .255);b=(x+.09,.270 if i==0 else .285)
+        else:a=(x-.095,.285);b=(x+.095,.29)
+        if comic:curve(a,(x,.225 if expr in ("happy","laughing","shocked") else .267),b,.037,brow)
+        else:
+            # Distinct tapered, arched eyebrows, not the dad's heavy rectangles.
+            poly([a,(x-.025,min(a[1],b[1])-.028),(x+.04,min(a[1],b[1])-.018),b,(x+.025,b[1]+.017),(x-.025,a[1]+.018)],brow)
+    curve((.477,.507),(.451,.576),(.527,.576),.011,(112,65,39,125))
+    if comic and expr in ("happy","laughing","smug"):
+        if expr=="laughing":
+            poly([(.22,.584),(.50,.615),(.78,.573),(.73,.733),(.62,.808),(.46,.828),(.31,.776)])
+            poly([(.265,.609),(.50,.64),(.735,.599),(.709,.666),(.50,.692),(.30,.66)],(253,245,224,255))
+            oval(.51,.768,.212,.077,(186,74,70,255))
+            for side in (-1,1):
+                x=.5+side*.30;curve((x-.02,.552),(x,.52),(x+.023,.552),.012,(124,64,42,155))
+        else:
+            poly([(.24,.61),(.47,.655),(.76,.594),(.70,.722),(.54,.766),(.37,.744)])
+            poly([(.28,.631),(.48,.675),(.716,.619),(.674,.695),(.51,.726),(.37,.71)],(253,246,229,255))
+    elif expr=="shocked":
+        oval(.50,.693,.236 if comic else .165,.255 if comic else .172)
+        oval(.5,.75 if comic else .731,.14 if comic else .09,.056,(159,70,62,255))
+    elif expr in ("sad","worried"):curve((.31,.752),(.5,.51),(.69,.748),.030 if comic else .023)
+    elif expr in ("happy","laughing","smug"):
+        curve((.33,.642),(.5,.79),(.68,.622),.032)
+    elif expr=="unimpressed":
+        curve((.34,.682),(.49,.660),(.66,.668),.027)
+        if not comic:curve((.43,.719),(.5,.728),(.57,.718),.009,(111,64,46,130))
+    else:curve((.35,.676),(.5,.696),(.65,.665),.025)
+    return im.resize((1024,1024),Image.Resampling.LANCZOS)
+
 def facial_hair(kind):
     S=2048;im=Image.new("RGBA",(S,S));d=ImageDraw.Draw(im);r=random.Random(238)
     def ellipse(x,y,w,h,c):d.ellipse(tuple(round(v*S) for v in (x-w/2,y-h/2,x+w/2,y+h/2)),fill=c)
@@ -78,7 +147,7 @@ def facial_hair(kind):
     return im.resize((1024,1024),Image.Resampling.LANCZOS)
 
 # Garment atlas: top-left front, top-right back, bottom-left sides, bottom-right caps.
-COLORS={"hoodie":(104,111,116),"jacket":(176,142,95),"tee":(216,190,138),"cardigan":(161,49,87),"jeans":(34,39,46),"yellow_denim":(224,165,10),"stripe_pants":(25,28,33),"blue_denim":(25,64,128)}
+COLORS={"hoodie":(104,111,116),"jacket":(176,142,95),"tee":(219,198,151),"cardigan":(161,49,87),"jeans":(34,39,46),"yellow_denim":(235,170,7),"stripe_pants":(25,28,33),"blue_denim":(25,64,128),"teacher_trousers":(47,39,57)}
 def cloth(kind,skin=None):
     S=512;atlas=Image.new("RGB",(1024,1024))
     base=COLORS[kind.split("_sleeve")[0]]
@@ -92,7 +161,14 @@ def cloth(kind,skin=None):
         for a,b,c,amp,spread in ((.13,.23,.13,-11,.045),(.85,.70,-.13,-15,.065),(.35,.52,.16,8,.12),(.48,.83,-.22,-9,.055),(.70,.14,.14,8,.07)):
             center=a+c*(y-b)
             folds+=amp*np.exp(-((x-center)/spread)**2-((y-b)/.19)**2)
-        if kind in ("jeans","blue_denim","yellow_denim"):
+        if kind in ("tee","tee_sleeve"):
+            folds=1.5*np.sin(13*x+3*y)+1.4*np.sin(18*y+4*x)
+            g+=1.7*np.sin((x+y)*S*math.pi*.55)
+        if kind in ("cardigan","cardigan_sleeve"):
+            # Cable-like V stitches and real knit-scale relief in the image.
+            knit=4*np.cos(2*math.pi*(x*31+np.abs((y*43)%1-.5)*.95))
+            g+=knit+2*np.cos(y*43*2*math.pi)
+        if kind in ("jeans","blue_denim","yellow_denim","teacher_trousers"):
             folds+=20*np.exp(-((x-.53)/.26)**2)*np.exp(-((y-.45)/.42)**2)
             g+=4*np.sin((x+y*.5)*S*math.pi*.74)+rng.normal(0,2.1,(S,S))
         arr=np.clip(np.array(base)[None,None,:]+(g+folds)[...,None],0,255).astype("uint8")
@@ -144,7 +220,7 @@ def cloth(kind,skin=None):
                 stitch(.035,.08,.035,.91);stitch(.965,.08,.965,.91)
                 for yy in (.31,.49,.67,.85):d.ellipse(q((.315,yy,.34,yy+.025)),fill=(219,208,183))
             elif panel==1:line([(.12,.2),(.5,.28),(.88,.2)],dark,.014)
-        elif kind in ("jeans","yellow_denim","blue_denim","stripe_pants"):
+        elif kind in ("jeans","yellow_denim","blue_denim","stripe_pants","teacher_trousers"):
             line([(.06,.02),(.06,.98)],dark,.012);line([(.078,.02),(.078,.98)],lit,.005)
             line([(.94,.02),(.94,.98)],dark,.011)
             stitch(.085,.04,.085,.94);stitch(.922,.04,.922,.94)
@@ -158,9 +234,11 @@ def cloth(kind,skin=None):
             if panel==0:
                 poly([(.30,0),(.70,0),(.60,.17),(.40,.17)],dark)
                 if kind=="cardigan":
-                    line([(.50,.13),(.50,.94)],dark,.02)
-                    for yy in (.26,.42,.58,.74):d.ellipse(q((.49,yy,.52,yy+.026)),fill=lit)
-                else:poly([(.32,.31),(.68,.31),(.64,.48),(.37,.48)],dark)
+                    line([(.50,.13),(.50,.94)],dark,.015)
+                    stitch(.46,.19,.46,.93);stitch(.54,.19,.54,.93)
+                elif kind=="tee":
+                    line([(.30,.025),(.4,.10),(.5,.125),(.6,.10),(.70,.025)],lit,.012)
+                    stitch(.035,.18,.035,.92);stitch(.965,.18,.965,.92)
         atlas.paste(im,((panel%2)*S,(panel//2)*S))
     return atlas
 
@@ -168,7 +246,9 @@ def generate(out):
     out=Path(out);out.mkdir(parents=True,exist_ok=True)
     for identity in ("young","dad","teacher","friend"):
         folder=out/identity;folder.mkdir(exist_ok=True)
-        for expr in EXPRESSIONS:face(expr,"dad" if identity=="dad" else identity).save(folder/(expr+".png"))
+        for expr in EXPRESSIONS:
+            image=character_face(expr,identity) if identity in ("friend","teacher") else face(expr,identity)
+            image.save(folder/(expr+".png"))
     for kind in ("stubble","beard"):facial_hair(kind).save(out/(kind+".png"))
     for kind in COLORS:cloth(kind).save(out/(kind+".png"))
     for role,skin,kind in [("lead","warm_tan","hoodie"),("friend","peach","tee"),("teacher","honey","cardigan"),("dad","dad_tan","jacket")]:

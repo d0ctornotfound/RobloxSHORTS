@@ -11,7 +11,7 @@ ROOT=Path(__file__).resolve().parents[1]/"assets"/"r6_variants"
 EXPRESSIONS=("neutral","happy","smug","tired","worried","laughing","shocked","sad","unimpressed")
 SKINS={"honey":(.83,.54,.27),"warm_tan":(.60,.32,.13),"peach":(.93,.66,.39),"dad_tan":(.68,.40,.19)}
 ROLE_COLORS["dad"]=(SKINS["dad_tan"],(.50,.31,.15),(.025,.027,.035))
-GARMENTS={"lead":("hoodie","jeans","warm_tan","young"),"friend":("tee","yellow_denim","peach","friend"),"teacher":("cardigan","stripe_pants","honey","teacher"),"dad":("jacket","stripe_pants","dad_tan","dad")}
+GARMENTS={"lead":("hoodie","jeans","warm_tan","young"),"friend":("tee","yellow_denim","peach","friend"),"teacher":("cardigan","teacher_trousers","honey","teacher"),"dad":("jacket","stripe_pants","dad_tan","dad")}
 
 def texture_mat(name,path):
     mat=matte(name,(.5,.5,.5));nt=mat.node_tree;bs=nt.nodes.get("Principled BSDF")
@@ -68,8 +68,8 @@ def apply_garments(actor,shirt,pants):
 
 def hair_style(actor,style):
     c=sum(actor.head_bounds,Vector())/2;s=actor.scale
-    rng=random.Random(81 if style=="lead" else 52)
-    color=(.019,.010,.006) if style=="lead" else (.009,.008,.007)
+    rng=random.Random(81 if style=="lead" else 97 if style=="teacher" else 52)
+    color=(.019,.010,.006) if style=="lead" else (.018,.009,.005) if style=="teacher" else (.009,.008,.007)
     mats=[fiber_mat(actor.role+" / directional strands "+str(i),tuple(v*f for v in color)) for i,f in enumerate((.70,.90,1.12,1.35))]
     # A low fitted cap, not a large spherical puff: cuboid-like cross-section
     # curves around the back, ears and upper forehead.
@@ -118,19 +118,127 @@ def hair_style(actor,style):
             if style=="lead":
                 tip=(x+rng.uniform(-.26,.26),yy+.03+rng.uniform(-.20,.20),.86+rng.uniform(-.05,.20))
                 mid=(x-.10,yy-.035,.91+rng.uniform(0,.12))
+            elif style=="teacher":
+                tip=(x+.22,yy+.24,.72+rng.uniform(-.035,.05));mid=(x+.10,yy+.10,.83)
             else:
                 tip=(x-.18,yy-.22,.72+rng.uniform(-.04,.13));mid=(x-.04,yy-.04,.89)
             lock((x,yy,.56),mid,tip,.115,.105,idx);idx+=1
     for j in range(9):
         x=-.56+j*.14
         if style=="lead":tip=(x+rng.uniform(-.09,.07),-.695,.12+rng.uniform(.04,.23));control=(x-.08,-.67,.63)
+        elif style=="teacher":tip=(x+.21,-.64,.42+rng.uniform(-.02,.08));control=(x+.08,-.65,.68)
         else:tip=(x-.17,-.67,.35+rng.uniform(-.05,.14));control=(x+.05,-.73,.70)
         lock((x,-.21,.70),control,tip,.117,.090,idx);idx+=1
     for sign in (-1,1):
         for j in range(4):
             yy=-.36+j*.24
-            tip=(sign*(.68+rng.uniform(0,.10)),yy-.06,.12+rng.uniform(-.05,.25))
+            tip=(sign*.64,yy+.16,.25+rng.uniform(0,.12)) if style=="teacher" else (sign*(.68+rng.uniform(0,.10)),yy-.06,.12+rng.uniform(-.05,.25))
             lock((sign*.46,yy,.65),(sign*.68,yy,.48),tip,.105,.10,idx);idx+=1
+
+def accessory_mesh(actor,label,vertices,faces,uv,mat,bone="head"):
+    me=bpy.data.meshes.new(actor.role+" / "+label)
+    me.from_pydata(vertices,[],faces);me.update()
+    ob=bpy.data.objects.new(actor.root.name+" / "+label,me);bpy.context.collection.objects.link(ob);ob.data.materials.append(mat)
+    layer=me.uv_layers.new(name="Directional fibers")
+    for p in me.polygons:
+        p.use_smooth=True
+        for l in p.loop_indices:layer.data[l].uv=uv[me.loops[l].vertex_index]
+    return actor.attach_mesh(ob,bone)
+
+def remove_accessories(actor,tokens):
+    for ob in list(actor.accessories):
+        if any(k in ob.name for k in tokens):
+            actor.accessories.remove(ob);actor.meshes.remove(ob);bpy.data.objects.remove(ob,do_unlink=True)
+
+def knit_material(name,color):
+    m=matte(name,color);nt=m.node_tree;bs=nt.nodes.get("Principled BSDF")
+    bs.inputs["Roughness"].default_value=.96
+    uv=nt.nodes.new("ShaderNodeTexCoord")
+    sep=nt.nodes.new("ShaderNodeSeparateXYZ");nt.links.new(uv.outputs["UV"],sep.inputs[0])
+    # Alternating ribs in U, tighter crosswise stitches in V. Both feed bump.
+    def mathnode(op,a,b):
+        node=nt.nodes.new("ShaderNodeMath");node.operation=op
+        for i,x in enumerate((a,b)):
+            if isinstance(x,(float,int)):node.inputs[i].default_value=x
+            else:nt.links.new(x,node.inputs[i])
+        return node.outputs[0]
+    u=mathnode("MULTIPLY",sep.outputs["X"],math.tau*44)
+    vv=mathnode("MULTIPLY",sep.outputs["Y"],math.tau*24)
+    ribs=mathnode("MULTIPLY",mathnode("ADD",mathnode("SINE",u,0),1),.5)
+    cross=mathnode("MULTIPLY",mathnode("ADD",mathnode("SINE",vv,0),1),.5)
+    fac=mathnode("ADD",mathnode("MULTIPLY",ribs,.75),mathnode("MULTIPLY",cross,.25))
+    ramp=nt.nodes.new("ShaderNodeValToRGB")
+    ramp.color_ramp.elements[0].color=(*[v*.47 for v in color],1);ramp.color_ramp.elements[1].color=(*[v*1.30 for v in color],1)
+    nt.links.new(fac,ramp.inputs[0]);nt.links.new(ramp.outputs[0],bs.inputs["Base Color"])
+    bump=nt.nodes.new("ShaderNodeBump");bump.inputs["Strength"].default_value=.45;bump.inputs["Distance"].default_value=.008
+    nt.links.new(fac,bump.inputs["Height"]);nt.links.new(bump.outputs[0],bs.inputs["Normal"])
+    return m
+
+def knitted_beanie(actor):
+    remove_accessories(actor,("beanie",))
+    c=sum(actor.head_bounds,Vector())/2;s=actor.scale
+    crown=knit_material("Ochre wool crown",(.37,.105,.010))
+    brim=knit_material("Folded ribbed wool cuff",(.31,.079,.008))
+    def rings(label,profiles,mat,cap=False):
+        N=132;vs=[];fs=[];uv=[]
+        for j,(rx,ry,z,offset) in enumerate(profiles):
+            for i in range(N):
+                a=math.tau*i/N
+                # Raised physical ribs and soft squarish fit over cube head.
+                rib=1+.018*math.cos(44*a)
+                x=rx*math.copysign(abs(math.cos(a))**.66,math.cos(a))*rib
+                y=ry*math.copysign(abs(math.sin(a))**.66,math.sin(a))*rib+offset
+                vs.append(tuple(c+s*Vector((x,y,z+.015*math.sin(3*a)))))
+                uv.append((i/N,j/(len(profiles)-1)))
+        for j in range(len(profiles)-1):
+            for i in range(N):a=j*N+i;b=j*N+(i+1)%N;fs.append((a,b,b+N,a+N))
+        if cap:fs.append(tuple(range((len(profiles)-1)*N,len(profiles)*N)))
+        return accessory_mesh(actor,"head "+label,vs,fs,uv,mat)
+    rings("knitted beanie crown",[(.64,.64,.43,0),(.66,.66,.60,.015),(.62,.61,.76,.09),(.48,.49,.91,.20),(.28,.32,1.0,.27),(.055,.065,1.01,.29)],crown,True)
+    rings("knitted beanie folded brim",[(.65,.65,.36,0),(.69,.68,.39,0),(.69,.68,.55,0),(.66,.65,.58,0)],brim)
+
+def teacher_accessories(actor):
+    remove_accessories(actor,("head hair","head block bun","head glasses"))
+    # Swept layered locks, then an actual rounded coiled bun.
+    hair_style(actor,"teacher")
+    c=sum(actor.head_bounds,Vector())/2;s=actor.scale
+    mat=fiber_mat("Teacher swept espresso bun",(.018,.009,.005))
+    bpy.ops.mesh.primitive_uv_sphere_add(segments=32,ring_count=20,location=tuple(c+s*Vector((0,.54,.86))))
+    bun=bpy.context.object;bun.name=actor.root.name+" / head rounded swept bun";bun.scale=(.38*s,.34*s,.39*s);bun.data.materials.append(mat)
+    for p in bun.data.polygons:p.use_smooth=True
+    bpy.context.view_layer.update();actor.bun=actor.attach_mesh(bun,"head")
+    rim=matte("Teacher fine burgundy frame",(.095,.009,.025))
+    lens=bpy.data.materials.new("Teacher clear optical lenses");lens.use_nodes=True
+    nt=lens.node_tree;nt.nodes.clear();out=nt.nodes.new("ShaderNodeOutputMaterial")
+    mix=nt.nodes.new("ShaderNodeMixShader");mix.inputs[0].default_value=.065
+    clear=nt.nodes.new("ShaderNodeBsdfTransparent");gloss=nt.nodes.new("ShaderNodeBsdfGlossy");gloss.inputs["Roughness"].default_value=.12
+    nt.links.new(clear.outputs[0],mix.inputs[1]);nt.links.new(gloss.outputs[0],mix.inputs[2]);nt.links.new(mix.outputs[0],out.inputs[0])
+    lens.blend_method="HASHED";lens.shadow_method="NONE"
+    def bar(label,x,y,z,dx,dy,dz,m):
+        ob=cube(actor.root.name+" / head "+label,tuple(c+s*Vector((x,y,z))),(dx*s,dy*s,dz*s),m,bevel=.006*s)
+        bpy.context.view_layer.update();return actor.attach_mesh(ob,"head")
+    for x in (-.18,.18):
+        for z in (.004,.230):bar("glasses fine rim",x,-.624,z,.31,.038,.020,rim)
+        for dx in (-.146,.146):bar("glasses fine rim",x+dx,-.624,.117,.020,.038,.225,rim)
+        # Thin clear panes rather than solid opaque blocks.
+        vs=[tuple(c+s*Vector((x+dx,-.632,z))) for dx,z in ((-.135,.02),(.135,.02),(.135,.216),(-.135,.216))]
+        accessory_mesh(actor,"head clear lens",vs,[(0,1,2,3)],[(0,0),(1,0),(1,1),(0,1)],lens)
+    bar("glasses bridge",0,-.624,.135,.055,.035,.023,rim)
+    for x in (-.335,.335):bar("glasses temple",x,-.41,.135,.025,.42,.025,rim)
+
+def cardigan_details(actor):
+    lo,hi=actor.torso_bounds;c=(lo+hi)/2;s=actor.scale
+    knit=knit_material("Teacher deep rose rib-knit trim",(.27,.025,.075))
+    button=matte("Teacher pearl buttons",(.68,.36,.23))
+    placket=cube(actor.root.name+" / cardigan raised placket",(c.x,lo.y-.012,c.z-.03*s),(.12*s,.04*s,1.60*s),knit,bevel=.006*s)
+    actor.attach_mesh(placket,"torso")
+    for side in (-1,1):
+        ob=cube(actor.root.name+" / cardigan raised collar",(c.x+side*.27*s,lo.y-.016,hi.z-.26*s),(.14*s,.055*s,.55*s),knit,bevel=.008*s)
+        ob.rotation_euler.y=side*.51;bpy.context.view_layer.update();actor.attach_mesh(ob,"torso")
+    for z in (.51,.15,-.21,-.57):
+        bpy.ops.mesh.primitive_cylinder_add(vertices=24,radius=.062*s,depth=.035*s,location=(c.x,lo.y-.033,c.z+z*s),rotation=(math.pi/2,0,0))
+        ob=bpy.context.object;ob.name=actor.root.name+" / raised cardigan button";ob.data.materials.append(button)
+        bpy.context.view_layer.update();actor.attach_mesh(ob,"torso")
 
 class VariantCharacter(R6Character):
     def __init__(self,name,role="lead",skin_tone=None,facial_hair=None,flat=False):
@@ -150,6 +258,7 @@ class VariantCharacter(R6Character):
             ob.data.materials[0]=face_material(kind,ROOT)
             world=ob.matrix_world.copy();world.translation.y-=.0015;ob.matrix_world=world
             self.meshes.append(ob);self.accessories.append(ob);self.facial_hair=kind
+        if role=="teacher":cardigan_details(self)
         self.pose("neutral")
 
     def _accessories(self):
@@ -160,11 +269,6 @@ class VariantCharacter(R6Character):
                     self.accessories.remove(ob);self.meshes.remove(ob);bpy.data.objects.remove(ob,do_unlink=True)
             hair_style(self,self.role)
         elif self.role=="friend":
-            m=fiber_mat("Ochre rib-knit beanie",(.46,.13,.013),True)
-            cuff=fiber_mat("Dark rib-knit cuff",(.30,.065,.009),True)
-            for ob in self.accessories:
-                if "beanie" in ob.name:ob.data.materials[0]=cuff if "cuff" in ob.name else m
+            knitted_beanie(self)
         elif self.role=="teacher":
-            m=fiber_mat("Teacher dark strand hair",(.025,.012,.007))
-            for ob in self.accessories:
-                if "hair" in ob.name or "bun" in ob.name:ob.data.materials[0]=m
+            teacher_accessories(self)

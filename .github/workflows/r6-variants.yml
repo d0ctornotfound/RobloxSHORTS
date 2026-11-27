@@ -19,7 +19,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        shot: [00_variant_lineup, 01_variant_cafe]
+        shot: [00_variant_lineup, 01_variant_cafe, 02_variant_classroom]
     env:
       SHOT: ${{ matrix.shot }}
     steps:
@@ -60,7 +60,7 @@ jobs:
           from pathlib import Path
           dest=Path("approval");dest.mkdir()
           rows=[]
-          for shot,size in [("00_variant_lineup",(1920,1080)),("01_variant_cafe",(720,1280))]:
+          for shot,size in [("00_variant_lineup",(1920,1080)),("01_variant_cafe",(720,1280)),("02_variant_classroom",(720,1280))]:
               root=Path("chunks")/("variant-shot-"+shot)
               for ext in (".png",".json",".blend"):shutil.copy2(root/(shot+ext),dest)
               p=(dest/(shot+".png")).read_bytes()
@@ -68,11 +68,11 @@ jobs:
               m=json.loads((dest/(shot+".json")).read_text())
               m["png_sha256"]=hashlib.sha256(p).hexdigest();rows.append(m)
               if not (dest/"r6_variants").exists():shutil.copytree(root/"r6_variants",dest/"r6_variants")
-          assert len(rows[0]["characters"])==4 and len(rows[1]["characters"])==2
+          assert len(rows[0]["characters"])==4 and len(rows[1]["characters"])==2 and len(rows[2]["characters"])==2
           assert all(c["skinned_mesh_count"]==2 and c["expression_count"]==9 for r in rows for c in r["characters"])
           assert rows[0]["characters"][-1]["facial_hair"]=="stubble"
           textures=list((dest/"r6_variants").rglob("*.png"))
-          assert len(textures)==50,len(textures)
+          assert len(textures)==51,len(textures)
           for f in textures:
               p=f.read_bytes();assert p[:8]==b"\x89PNG\r\n\x1a\n" and struct.unpack(">II",p[16:24])==(1024,1024)
           (dest/"variant_manifest.json").write_text(json.dumps(rows,indent=2)+"\n")
@@ -80,7 +80,7 @@ jobs:
           PY
       - uses: actions/upload-artifact@v4
         with:
-          name: r6-detailed-variant-approval
+          name: r6-friend-teacher-approval
           path: approval/
           if-no-files-found: error
           retention-days: 7
