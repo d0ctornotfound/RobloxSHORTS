@@ -6,8 +6,9 @@ from array import array
 from mathutils import Vector
 
 from render_demo import cube, empty, material
+from quality_textures import face_canvas
 
-EXPRESSIONS = ("neutral", "happy", "shocked", "sad")
+EXPRESSIONS = ("neutral","happy","smug","tired","worried","laughing","shocked","surprised","sad","unimpressed","embarrassed","angry","sleep_closed")
 
 
 def fabric(name, colors, striped=False):
@@ -77,52 +78,8 @@ def fabric(name, colors, striped=False):
 
 
 def face_image(expression):
-    """RGBA decal from analytic strokes, not imported art. UV origin is lower left."""
-    size = 512
-    alpha = array("f", [0.0]) * (size * size)
-    def raster(x0, y0, x1, y1, coverage):
-        for iy in range(max(0, math.floor(y0*(size-1))), min(size, math.ceil(y1*(size-1))+1)):
-            y = iy/(size-1)
-            for ix in range(max(0, math.floor(x0*(size-1))), min(size, math.ceil(x1*(size-1))+1)):
-                x = ix/(size-1)
-                i = iy*size+ix
-                alpha[i] = max(alpha[i], min(1.0, max(0.0, coverage(x,y))))
-    def ellipse(cx, cy, rx, ry):
-        raster(cx-rx, cy-ry, cx+rx, cy+ry,
-               lambda x,y: (1-math.hypot((x-cx)/rx,(y-cy)/ry))*min(rx,ry)*size)
-    def stroke(points, width=.014):
-        for (ax, ay), (bx, by) in zip(points, points[1:]):
-            dx, dy = bx-ax, by-ay
-            def coverage(x,y):
-                t = min(1.0,max(0.0,((x-ax)*dx+(y-ay)*dy)/(dx*dx+dy*dy)))
-                return (width-math.hypot(x-ax-t*dx,y-ay-t*dy))*size
-            raster(min(ax,bx)-width,min(ay,by)-width,max(ax,bx)+width,max(ay,by)+width,coverage)
-    for cx in (.33, .67):
-        if expression == "happy":
-            stroke([(cx-.055,.61),(cx-.035,.66),(cx,.68),(cx+.035,.66),(cx+.055,.61)], .017)
-        elif expression == "shocked":
-            ellipse(cx,.64,.047,.076)
-            stroke([(cx-.065,.77),(cx,.79),(cx+.065,.77)], .013)
-        else:
-            ellipse(cx,.63,.034,.055)
-            if expression == "sad":
-                s = 1 if cx < .5 else -1
-                stroke([(cx-s*.065,.72),(cx+s*.06,.77)], .014)
-    if expression == "happy":
-        stroke([(.36,.43),(.40,.37),(.46,.34),(.54,.34),(.60,.37),(.64,.43)], .025)
-    elif expression == "shocked":
-        ellipse(.5,.38,.081,.105)
-    elif expression == "sad":
-        stroke([(.37,.34),(.43,.40),(.50,.42),(.57,.40),(.63,.34)], .020)
-    else:
-        stroke([(.42,.39),(.50,.38),(.58,.39)], .017)
-    rgba = array("f", [.028,.016,.012,0.0]) * (size*size)
-    rgba[3::4] = alpha
-    img = bpy.data.images.new("Original face / "+expression, width=size, height=size, alpha=True)
-    img.pixels.foreach_set(rgba)
-    img.update()
-    return img
-
+    """Shared transparent low-face decal artwork for all legacy R6 variants."""
+    return face_canvas(expression).image("Original face / "+expression)
 
 def face_material(expression):
     mat = bpy.data.materials.new("Face decal / "+expression)
@@ -168,6 +125,7 @@ class Character:
         self.grips = []
         self.fingers = []
         self.face_materials = p["faces"]
+        self.current_expression="neutral";self._expression_tracks=[]
         skin = p["skin" if lead else "skin2"]
         shirt = p["lead" if lead else "friend"]
         def box(label, loc, dims, mat, parent=None, bevel=.025):
@@ -216,9 +174,15 @@ class Character:
             box("denim leg",(0,0,-.405),(.50,.54,.81),p["denim"],leg)
             box("sneaker",(0,-.075,-.875),(.52,.65,.19),p["shoe"],leg)
             box("rubber sole",(0,-.075,-.956),(.53,.66,.048),p["sole"],leg,bevel=.012)
+        from facial_expressions import enable_blinking
+        enable_blinking(bpy.context.scene,[self])
 
     def expression(self, name):
+        if name not in self.face_materials:raise KeyError("Unknown face expression: "+name)
+        self.current_expression=name
         self.face.data.materials[0] = self.face_materials[name]
+        from facial_expressions import refresh_expression
+        refresh_expression(self)
 
     def visible(self, value):
         for mesh in self.meshes:
