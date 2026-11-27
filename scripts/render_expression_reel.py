@@ -136,9 +136,13 @@ def main():
         if len(rows)<2:raise RuntimeError((label,"less than two blinks in 10 seconds",rows))
         for row in rows:
             if not .12<=row["closed_seconds"]<=.15:raise RuntimeError(("blink duration",label,row))
+        gaps=[]
         for left,right in zip(rows,rows[1:]):
             gap=right["start_seconds"]-left["end_seconds"]
             if not 2.0<=gap<=5.0:raise RuntimeError(("blink interval",label,gap))
+            gaps.append(gap)
+        if any(abs(gaps[i]-gaps[i-1])<.45 for i in range(1,len(gaps))):
+            raise RuntimeError(("near-metronomic blink intervals",label,gaps))
     if args.smoke:
         for actor in actors.values():visible(actor,False)
         visible(actors["lead"],True)
@@ -242,7 +246,7 @@ def main():
         "paired_beats":[{"name":"neutral_to_surprise_to_laugh","character":"lead","frames":first_len},
                         {"name":"neutral_to_embarrassed","character":"friend","frames":second_len}],
         "blink_contract":{"interval_seconds":[2.0,5.0],"closed_seconds":[.12,.15],
-                          "irregular_per_actor":True,"expression_override":"sleep_closed"},
+                          "irregular_per_actor":True,"minimum_consecutive_interval_difference_seconds":.45,"expression_override":"sleep_closed"},
     }
     (out/"manifest.json").write_text(json.dumps(manifest,indent=2)+"\n")
     print("FACIAL_EXPRESSION_REEL_RENDERED",json.dumps({k:v for k,v in manifest.items() if k!="blink_schedules"}),flush=True)
