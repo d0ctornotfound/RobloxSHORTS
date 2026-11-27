@@ -10,7 +10,10 @@ from render_library_showcase import street_scene
 from library_character import character
 from r6_imported_cycles import Retarget
 from library_locomotion import StrideLock
-from library_acting import act,face_clear
+from library_acting import act,face_clear,sustained_laugh
+from stage_a_cafe import light
+from render_demo import point_at
+import shutil
 from library_animation import pose
 from library_props import build,palette
 from library_camera import apply,metrics,project,points
@@ -52,11 +55,21 @@ def render(scene,out,name):
     scene.render.filepath=str(out/(name+".png"));start=time.perf_counter();bpy.ops.render.render(write_still=True);return time.perf_counter()-start
 
 def main():
-    p=argparse.ArgumentParser();p.add_argument("--part",type=int,required=True,help="-1 runs complete geometric preflight, no animation rendering");p.add_argument("--output",required=True)
+    p=argparse.ArgumentParser();p.add_argument("--part",type=int,required=True,help="-1 runs complete geometric preflight, no animation rendering");p.add_argument("--output",required=True);p.add_argument("--reuse-insert",type=Path,help="Exact original chunk 4 PNGs from run 45936954946")
     args=p.parse_args(sys.argv[sys.argv.index("--")+1:]);out=Path(args.output).resolve();out.mkdir(parents=True,exist_ok=True)
     scene,atm,cam,lead=street_scene(48,540,960);scene.render.fps=FPS;scene.render.fps_base=1
     scene.cycles.use_denoising=False;scene.cycles.adaptive_threshold=.035;scene.render.use_persistent_data=True
     atm.apply("golden_hour")
+    # Warm motivated, camera-side bounce follows the lead only in three singles.
+    lower_fill=light("Gag lead localized lower-body bounce",(0,-2,1.0),(0,0,.55),0,2.2,(1,.87,.73))
+    torso_fill=light("Gag lead localized torso bounce",(0,-2,2.1),(0,0,1.35),0,2.6,(1,.91,.81))
+    reuse_rows={}
+    if args.reuse_insert:
+        assert args.part==4
+        prior=json.loads((args.reuse_insert/"manifest.json").read_text())
+        assert prior["part"]==4 and prior["frames"]==COUNT
+        reuse_rows={r["frame"]:r for r in prior["rows"] if r["shot"]=="gift_action_insert"}
+        assert set(reuse_rows)==set(range(126,147)),sorted(reuse_rows)
     # Dress this daylight scene so street lamps do not cross face sightlines.
     # Move intact fixtures and their paired point lights out of the acting corridor.
     roots=sorted([o for o in scene.objects if o.type=="EMPTY" and (o.name=="lamp" or o.name.startswith("lamp."))],key=lambda o:o.location.x)
@@ -111,7 +124,7 @@ def main():
             pose(friend,"idle",t,other,-.12);friend.pose("neutral");friend_beat={"beat":"idle","expression":"neutral","body_weight":0}
         elif t<4.15:friend_beat=act(friend,"point",(t-3.25)/.9,other,-.12)
         elif t<5.55:friend_beat=act(friend,"recoil",(t-4.15)/1.4,other,-.12)
-        else:friend_beat=act(friend,"laugh",(t-5.55)/1.0,other,-.12)
+        else:friend_beat=sustained_laugh(friend,t-5.55,other,-.12)
         # Mechanical spring-lid and ball flight; no simulated unseen contact.
         dt=max(0,t-4.15);lift=min(1,dt/.20)
         for ob in lid:
@@ -133,24 +146,28 @@ def main():
             if wide_camera is None:
                 a=lead.root.location.copy();b=friend.root.location.copy();q=(a+b)/2;q.z=1.30
                 best=None
-                for angle in (0,25,-25,45,-45,60,-60):
+                # More lower/closer viewpoints and portrait lens options. Rank
+                # by useful character scale, balance and lower camera height.
+                # Preserve old candidate family as a fallback; no hidden vetoes.
+                for angle in (0,25,-25,45,-45,55,60,-60,65,70,75,80,-70):
                     h=math.radians(angle)
-                    for dist in (6.,7.5,9.,11.):
-                        pos=q+Vector((dist*math.sin(h),-dist*math.cos(h),2.8-q.z))
-                        for lens in (28,35,42,50,58):
-                            apply(cam,"static",0,pos,q,lens)
-                            bounds=metrics(scene,cam,heroes)
-                            # Reject only by the actual gate; coverage and separation
-                            # may rank candidates, never impose extra cutoffs.
-                            if not body_gate("establishing_wide",bounds):continue
-                            lamp=check_lamps(scene,cam,heroes)
-                            if not lamp_gate(lamp):continue
-                            face={a.role:face_clear(scene,cam,a) for a in heroes}
-                            if not face_gate(face):continue
-                            total=sum(k["coverage"] for k in bounds)
-                            separation=abs(bounds[0]["face_center"][0]-bounds[1]["face_center"][0])
-                            score=total+.15*separation-.001*abs(angle)
-                            if best is None or score>best[0]:best=(score,pos.copy(),q.copy(),lens)
+                    for dist in (5.,6.,7.5,9.,11.,13.):
+                        for height in (1.55,1.85,2.2,2.8):
+                            pos=q+Vector((dist*math.sin(h),-dist*math.cos(h),height-q.z))
+                            for lens in (28,35,42,50,58,66,74,85):
+                                apply(cam,"static",0,pos,q,lens)
+                                bounds=metrics(scene,cam,heroes)
+                                if not body_gate("establishing_wide",bounds):continue
+                                lamp=check_lamps(scene,cam,heroes)
+                                if not lamp_gate(lamp):continue
+                                face={a.role:face_clear(scene,cam,a) for a in heroes}
+                                if not face_gate(face):continue
+                                total=sum(k["coverage"] for k in bounds)
+                                smaller=min(k["coverage"] for k in bounds)
+                                separation=abs(bounds[0]["face_center"][0]-bounds[1]["face_center"][0])
+                                # Ranking preferences only, never extra cutoffs.
+                                score=total+.75*smaller+.05*separation-.09*(height-1.55)-.012*(dist-5.)
+                                if best is None or score>best[0]:best=(score,pos.copy(),q.copy(),lens)
                 if best is None:raise RuntimeError("Wide establishment has no safe full-body total >=45% framing")
                 _,pos,q,lens=best;wide_camera=(pos,q,lens)
                 apply(cam,"static",0,*wide_camera)
@@ -181,6 +198,20 @@ def main():
             for obj in lead.meshes:obj.hide_render=True
             x,y,z=friend.root.location
             apply(cam,"static",0,(x-.45,y-4.0,1.83),(x,y,1.28),53)
+        # The gift insert and wide/friend lighting stay unchanged.
+        lower_fill.data.energy=0;torso_fill.data.energy=0
+        if shot in ("approach_single","wave_notice_single","recoil_single"):
+            x,y,_=lead.root.location
+            a=heading(t) if t<2.4 else yaw
+            forward=Vector((math.sin(a),-math.cos(a),0))
+            side=Vector((math.cos(a),math.sin(a),0))
+            base=Vector((x,y,0))
+            lower_fill.location=base+2.0*forward+.40*side+Vector((0,0,1.05))
+            torso_fill.location=base+2.3*forward-.65*side+Vector((0,0,2.12))
+            point_at(lower_fill,base+Vector((0,0,.52)))
+            point_at(torso_fill,base+Vector((0,0,1.32)))
+            lower_fill.data.energy=780;torso_fill.data.energy=480
+        bpy.context.view_layer.update()
         b=metrics(scene,cam,heroes)
         face={a.role:face_clear(scene,cam,a) for a in heroes}
         lamps=check_lamps(scene,cam,heroes)
@@ -198,6 +229,17 @@ def main():
             if not (body_ok and face_ok and lamp_ok):
                 save(out,"first_failure.json",rec);render(scene,out,"failure_%04d"%(f+1))
                 raise RuntimeError("GAG composition or face gate "+json.dumps(rec))
+            if insert and args.reuse_insert:
+                prior=reuse_rows[f+1]
+                assert prior["body_pass"] and prior["face_pass"] and prior["lamp_pass"]
+                assert all(abs(a-b)<1e-5 for a,b in zip(prior["prop_bounds"],rec["prop_bounds"]))
+                if "visibility" in prior:
+                    rec["visibility"]=prior["visibility"]
+                    assert all(v["pass"] for v in rec["visibility"].values())
+                name="frame_%04d.png"%(f+1)
+                shutil.copyfile(args.reuse_insert/name,out/name)
+                rec["reused_from_run"]=45936954946
+                continue
             if f in (10,45,87,115,135,165,205,225):
                 # Real ID visibility for representative hero frames.
                 old=scene.render.resolution_percentage;scene.render.resolution_percentage=50

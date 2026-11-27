@@ -37,6 +37,35 @@ def act(actor,kind,t,position,yaw=0,major=True):
     if major and b<.25:actor.pose("neutral")
     else:actor.pose(expr)
     return {"beat":kind,"expression":expr if b>=.25 or not major else "neutral","head_weight":h,"body_weight":b,"gesture_weight":g}
+def sustained_laugh(actor,seconds,position,yaw=0):
+    """Continuous grounded rigid-R6 performance, in seconds (not clamped phase).
+    Rock torso, nod head and bounce both shoulders asymmetrically. No hold."""
+    t=max(0.,seconds)
+    rise=smoothstep(min(1.,t/.20))
+    pulse=math.sin(math.tau*2.4*t)
+    rock=math.sin(math.tau*1.25*t+.45)
+    sway=math.sin(math.tau*1.8*t+.9)
+    pose(actor,"idle",t,position,yaw)
+    head=(-.19+.095*pulse,.04*sway,.105+.055*rock)
+    torso=(-.12+.08*pulse,.035*sway,.06+.055*rock)
+    actor.set_bone("head",tuple(rise*x for x in head))
+    actor.set_bone("torso",tuple(rise*x for x in torso))
+    directions=[]
+    for i,sign in enumerate((-1,1)):
+        bounce=math.sin(math.tau*2.4*t+i*.52)
+        d=Vector((sign*(.24+.065*bounce),-.40-.09*bounce,-.86+.07*bounce))
+        directions.append(list(d))
+        actor.aim_arm(i,Vector((0,0,-1)).lerp(d,rise))
+    bpy.context.view_layer.update()
+    floor=min(v.z for ob in actor.skinned for v in mesh_points(ob))
+    actor.root.location.z+=position[2]-floor
+    bpy.context.view_layer.update()
+    actor.pose("laughing" if rise>.25 else "neutral")
+    return {"beat":"sustained_laugh","expression":"laughing" if rise>.25 else "neutral",
+            "elapsed_seconds":t,"head_euler":[rise*x for x in head],
+            "torso_euler":[rise*x for x in torso],"arm_directions":directions,
+            "floor_correction":float(position[2]-floor)}
+
 def face_clear(scene,cam,actor,occluders=()):
     """Conservative projected arm overlap in the face decal rectangle, with
     camera depth. Actual ray samples confirm visible face surface; geometric
