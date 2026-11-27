@@ -132,7 +132,7 @@ class Character:
             o = cube(name+" / "+label, loc, dims, mat, parent or self.root, bevel)
             self.meshes.append(o)
             return o
-        box("torso", (0,0,1.36), (1.02,.57,.77), shirt)
+        self.torso=box("torso", (0,0,1.36), (1.02,.57,.77), shirt)
         self.head = box("head", (0,0,2.10), (.79,.67,.70), skin, bevel=.055)
         # A UV-mapped transparent face plane slightly in front of the head.
         verts = [(-.34,-.341,1.80),(.34,-.341,1.80),(.34,-.341,2.40),(-.34,-.341,2.40)]
