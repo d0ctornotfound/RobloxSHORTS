@@ -1,0 +1,60 @@
+name: Publish exact approved proof MP4s
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/publish-proof-demos.yml'
+permissions:
+  contents: write
+  actions: read
+jobs:
+  publish:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+      - uses: actions/download-artifact@v4
+        with:
+          github-token: ${{ github.token }}
+          run-id: 45924174087
+          name: roblox-the-last-slice-r6-preview-12s
+          path: source-cafe
+      - uses: actions/download-artifact@v4
+        with:
+          github-token: ${{ github.token }}
+          run-id: 45933739523
+          name: roblox-the-perfect-throw-glide-repair-12s
+          path: source-classroom
+      - name: Copy only original validated MP4 bytes and verify
+        run: |
+          mkdir -p demos
+          cp source-cafe/the_last_slice.mp4 demos/the_last_slice_final_cast.mp4
+          cp source-classroom/the_perfect_throw.mp4 demos/the_perfect_throw_final_cast.mp4
+          python3 - <<'PY'
+          import hashlib,json
+          from pathlib import Path
+          sources=[
+            ("the_last_slice_final_cast.mp4",1597528,"cea28cbf3f154c10056fc70e796c2fd53509fc733dbffa3005d7fdec9f624f00",45924174087,15166457275),
+            ("the_perfect_throw_final_cast.mp4",4872488,"5fab65794f7aaa5599934eb4319626b5e70b444e30e98295447d8eb12d8d5177",45933739523,15169308953)]
+          rows=[]
+          for name,size,sha,run,artifact in sources:
+              data=(Path("demos")/name).read_bytes()
+              assert len(data)==size and hashlib.sha256(data).hexdigest()==sha
+              rows.append(dict(file=name,bytes=size,sha256=sha,source_run=run,source_artifact=artifact))
+          Path("demos/SHA256SUMS").write_text("".join(f"{r['sha256']}  {r['file']}\n" for r in rows))
+          Path("demos/manifest.json").write_text(json.dumps({"copy_only":True,"reencoded":False,"supervisor_approved":True,"files":rows},indent=2)+"\n")
+          print("VERIFIED_DEMOS",json.dumps(rows))
+          PY
+      - name: Publish exact validated bytes
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add demos/the_last_slice_final_cast.mp4 demos/the_perfect_throw_final_cast.mp4 demos/SHA256SUMS demos/manifest.json
+          git diff --cached --quiet || git commit -m "demos: publish byte-identical approved final cast proofs"
+          git push origin HEAD:main
+          git rev-parse HEAD
+          cd demos
+          sha256sum -c SHA256SUMS
