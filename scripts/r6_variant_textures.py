@@ -5,7 +5,7 @@ import argparse,math,random
 from PIL import Image,ImageDraw,ImageFilter
 import numpy as np
 
-EXPRESSIONS=("neutral","happy","smug","tired","worried","laughing","shocked","sad","unimpressed")
+EXPRESSIONS=("neutral","happy","smug","tired","worried","laughing","shocked","surprised","sad","unimpressed","embarrassed","angry","sleep_closed")
 SKINS={"honey":(.83,.54,.27),"warm_tan":(.60,.32,.13),"peach":(.93,.66,.39),"dad_tan":(.68,.40,.19)}
 def srgb(c):return tuple(round(255*(12.92*x if x<=.0031308 else 1.055*x**(1/2.4)-.055)) for x in c)
 
@@ -30,6 +30,11 @@ def face(expr,identity="young"):
         ey=.385
         if expr=="sleep_closed":curve((x-.075,ey),(x,ey+.050),(x+.075,ey),.025)
         elif expr=="laughing":curve((x-.08,ey),(x,ey-.12),(x+.08,ey),.032)
+        elif expr=="embarrassed":
+            oval(x-.018*sign,ey+.022,.060,.086,dark)
+            curve((x-.073,ey-.037),(x,ey-.048),(x+.073,ey-.037),.022)
+        elif expr=="angry":
+            oval(x,ey,.069,.087,dark)
         elif expr=="smug":
             oval(x+.025,ey,.066,.088,dark);curve((x-.073,ey-.039),(x,ey-.06),(x+.068,ey-.036),.026)
         elif expr in ("tired","unimpressed"):
@@ -37,17 +42,21 @@ def face(expr,identity="young"):
             curve((x-.083,ey-.042),(x,ey-.036),(x+.083,ey-.043),.025)
             if expr=="tired":curve((x-.06,ey+.085),(x,ey+.113),(x+.06,ey+.085),.011,(100,60,41,100))
         else:
-            oval(x,ey,.075,.145 if expr=="shocked" else .104,dark)
-            if expr=="shocked":oval(x-.012,ey-.025,.017,.027,(255,255,255,220))
+            oval(x,ey,.075,.145 if expr in ("shocked","surprised") else .104,dark)
+            if expr in ("shocked","surprised"):oval(x-.012,ey-.025,.017,.027,(255,255,255,220))
         # Mature brows are broad and angular, younger ones more tapered.
-        if expr in ("worried","sad"):
+        if expr in ("worried","sad","embarrassed"):
             inner=.264;outer=.325
             pts=[(x-.087,outer if i==0 else inner),(x+.087,inner if i==0 else outer)]
+        elif expr=="angry":
+            pts=[(x-.087,.245 if i==0 else .315),(x+.087,.315 if i==0 else .245)]
         elif expr=="smug":pts=[(x-.09,.285+.015*i),(x+.086,.263+.035*i)]
-        elif expr=="shocked":pts=[(x-.084,.247),(x+.084,.247)]
+        elif expr in ("shocked","surprised"):pts=[(x-.084,.247),(x+.084,.247)]
         else:pts=[(x-.084,.281),(x+.084,.281+.012*sign)]
         a,b=pts;th=.037 if identity=="dad" else .026
         poly([a,(a[0]+.02,a[1]-th/2),(b[0]-.014,b[1]-th/2),b,(b[0]-.005,b[1]+th/2),(a[0]+.01,a[1]+th/2)],brow)
+    if expr=="embarrassed":
+        oval(.235,.585,.105,.055,(190,76,78,105));oval(.765,.585,.105,.055,(190,76,78,105))
     curve((.475,.51),(.465,.565),(.522,.572),.012,(102,57,33,110))
     if expr in ("smug","happy","laughing"):
         if expr=="smug":a=(.28,.651);b=(.74,.574);top=[a,(.46,.649),(.60,.626),b];bottom=[(.69,.682),(.55,.727),(.40,.721)]
@@ -57,7 +66,9 @@ def face(expr,identity="young"):
         if expr=="smug":poly([(.314,.661),(.46,.660),(.61,.637),(.711,.601),(.669,.656),(.55,.691),(.43,.691)],(250,245,225,255))
         else:poly([(.31,.612),(.50,.654),(.69,.612),(.65,.666),(.50,.691),(.35,.666)],(250,245,225,255))
         if expr=="laughing":oval(.5,.748,.16,.063,(156,63,61,255))
-    elif expr=="shocked":oval(.5,.685,.195,.215,dark);oval(.5,.735,.12,.045,(149,70,60,255))
+    elif expr in ("shocked","surprised"):oval(.5,.685,.195,.215,dark);oval(.5,.735,.12,.045,(149,70,60,255))
+    elif expr=="angry":curve((.32,.69),(.5,.585),(.68,.69),.032)
+    elif expr=="embarrassed":curve((.40,.675),(.5,.715),(.60,.675),.020)
     elif expr in ("worried","sad"):curve((.31,.735),(.5,.51 if expr=="sad" else .57),(.70,.735),.027)
     elif expr=="tired":curve((.34,.69),(.49,.64),(.66,.69),.024)
     else:curve((.35,.66),(.5,.66 if expr=="unimpressed" else .705),(.65,.66),.026)
@@ -86,7 +97,12 @@ def character_face(expr,identity):
         if expr=="sleep_closed":curve((x-.075,y),(x,y+.045),(x+.075,y),.025)
         elif expr=="laughing":
             curve((x-.092,y),(x,y-.155 if comic else y-.105),(x+.092,y),.040 if comic else .027)
-        elif expr=="shocked":
+        elif expr=="embarrassed":
+            oval(x-.018*(1 if i==0 else -1),y+.020,.072 if comic else .058,.090,dark)
+            curve((x-.082,y-.040),(x,y-.052),(x+.082,y-.040),.026)
+        elif expr=="angry":
+            oval(x,y,.086 if comic else .065,.085,dark)
+        elif expr in ("shocked","surprised"):
             oval(x,y,.113 if comic else .085,.176 if comic else .158)
             oval(x-.018,y-.036,.026,.034,(254,245,222,255))
         elif expr in ("unimpressed","tired","smug"):
@@ -100,16 +116,20 @@ def character_face(expr,identity):
             if expr not in ("laughing","sleep_closed"):curve((x-.075,y-.043),(x,y-.09),(x+.078,y-.043),.018)
             if expr in ("tired","unimpressed","worried"):
                 curve((x-.06,y+.083),(x,y+.108),(x+.062,y+.083),.010,(112,69,44,125))
-        if expr in ("worried","sad"):
+        if expr in ("worried","sad","embarrassed"):
             a=(x-.093,.315 if i==0 else .245);b=(x+.093,.245 if i==0 else .315)
-        elif expr=="shocked":a=(x-.09,.235);b=(x+.09,.225)
+        elif expr=="angry":
+            a=(x-.093,.235 if i==0 else .315);b=(x+.093,.315 if i==0 else .235)
+        elif expr in ("shocked","surprised"):a=(x-.09,.235);b=(x+.09,.225)
         elif expr in ("unimpressed","smug"):
             a=(x-.095,.295 if i==0 else .255);b=(x+.09,.270 if i==0 else .285)
         else:a=(x-.095,.285);b=(x+.095,.29)
-        if comic:curve(a,(x,.225 if expr in ("happy","laughing","shocked") else .267),b,.037,brow)
+        if comic:curve(a,(x,.225 if expr in ("happy","laughing","shocked","surprised") else .267),b,.037,brow)
         else:
             # Distinct tapered, arched eyebrows, not the dad's heavy rectangles.
             poly([a,(x-.025,min(a[1],b[1])-.028),(x+.04,min(a[1],b[1])-.018),b,(x+.025,b[1]+.017),(x-.025,a[1]+.018)],brow)
+    if expr=="embarrassed":
+        oval(.235,.59,.12,.06,(190,76,78,105));oval(.765,.59,.12,.06,(190,76,78,105))
     curve((.477,.507),(.451,.576),(.527,.576),.011,(112,65,39,125))
     if comic and expr in ("happy","laughing","smug"):
         if expr=="laughing":
@@ -121,9 +141,11 @@ def character_face(expr,identity):
         else:
             poly([(.24,.61),(.47,.655),(.76,.594),(.70,.722),(.54,.766),(.37,.744)])
             poly([(.28,.631),(.48,.675),(.716,.619),(.674,.695),(.51,.726),(.37,.71)],(253,246,229,255))
-    elif expr=="shocked":
+    elif expr in ("shocked","surprised"):
         oval(.50,.693,.236 if comic else .165,.255 if comic else .172)
         oval(.5,.75 if comic else .731,.14 if comic else .09,.056,(159,70,62,255))
+    elif expr=="angry":curve((.31,.70),(.5,.575),(.69,.70),.030)
+    elif expr=="embarrassed":curve((.40,.68),(.5,.725),(.60,.68),.020)
     elif expr in ("sad","worried"):curve((.31,.752),(.5,.51),(.69,.748),.030 if comic else .023)
     elif expr in ("happy","laughing","smug"):
         curve((.33,.642),(.5,.79),(.68,.622),.032)
