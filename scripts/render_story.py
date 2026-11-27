@@ -13,6 +13,7 @@ from render_demo import empty,point_at
 from stage_a_cafe import light
 from render_stills import configure
 from r6_character import R6Character,mesh_points,group_points,bounds as mesh_bounds,SOURCE_SHA256
+from r6_variant_character import VariantCharacter
 from quality_cafe import build as build_cafe
 from stage_a_cafe import set_visible
 from stage_b_interaction import blend_direction,smoothstep,GripAttachment,GravityDrop,ExpressionTrack
@@ -143,7 +144,7 @@ def main():
     light("Integration neutral frontal bounce",(0,-3.0,3.4),(0,1.0,1.65),290,4.2,(1,.94,.87))
     light("Integration rear set wash",(0,-.65,4.8),(0,2.4,2.5),170,3.5,(1,.93,.83))
     scene.world.node_tree.nodes.get("Background").inputs[1].default_value=.30
-    actors={name:R6Character(name,"lead" if cfg["lead"] else "friend") for name,cfg in spec["characters"].items()}
+    actors={name:VariantCharacter(name,"lead" if cfg["lead"] else "friend") for name,cfg in spec["characters"].items()}
     lead,friend=actors["lead"],actors["friend"]
     plate,cake=build_plate_and_slice(spec["props"]["plate"]["radius"])
     support=spec["props"]["plate"]["support_z"];radius=spec["props"]["plate"]["radius"]
@@ -171,10 +172,10 @@ def main():
         print("R6_SEATED_REACH",name,"root",list(actor.root.location),"shoulder",list(shoulder(actor,idx)),"arm length",length,flush=True)
     lead_i,friend_i=reach_index["lead"],reach_index["friend"]
     # Rest hair top derived from actual imported-rig accessory mesh vertices.
-    hair_vertices=[v for ob in lead.accessories if "head hair" in ob.name or "head fringe" in ob.name for v in mesh_points(ob)]
-    highest=max(hair_vertices,key=lambda v:v.z)
+    hair_vertices=[v for ob in lead.accessories if any(k in ob.name for k in ("head fitted hair cap","head strand lock")) for v in mesh_points(ob)]
     headlo,headhi=mesh_bounds(mesh_points(lead.head))
     crown=(headlo+headhi)/2
+    highest=max((v for v in hair_vertices if abs(v.x-crown.x)<.17 and abs(v.y-crown.y)<.17),key=lambda v:v.z)
     head_support_z=highest.z-.045
     cake_site=Vector((crown.x+.025,crown.y-.025,head_support_z))
     assert any(abs(v.x-cake_site.x)<.20 and abs(v.y-cake_site.y)<.20 and v.z>=head_support_z-.025 for v in hair_vertices)
@@ -438,7 +439,7 @@ def main():
             assert [n for n,o in track.decals.items() if not o.hide_render]==[item[name+"_expression"]]
     manifest={"story":spec["id"],"resolution":[width,height],"fps":fps,"duration":spec["duration"],
               "frame_count":scene.frame_end,"samples":samples,"shots":shot_records,"max_grip_error":max_error,
-              "launch_frame":launch,"landing_frame":land,"head_support_z":head_support_z,"hair_highest_z":highest.z,"cake_embed_depth_below_tip":highest.z-head_support_z,"max_friend_rim_error":max_friend_rim_error,"rig":"source GLB R6 armature","source_sha256":SOURCE_SHA256,"seated_root_z":seats,"arm_lengths":lengths,"max_hand_target_error":max_hand_error,"max_lead_rim_error":max_lead_rim_error,"max_reach_direction_z":max_reach_z,"patrons":2,
+              "launch_frame":launch,"landing_frame":land,"head_support_z":head_support_z,"hair_highest_z":highest.z,"cake_embed_depth_below_tip":highest.z-head_support_z,"max_friend_rim_error":max_friend_rim_error,"rig":"source GLB R6 armature / approved VariantCharacter lead and friend","source_sha256":SOURCE_SHA256,"seated_root_z":seats,"arm_lengths":lengths,"max_hand_target_error":max_hand_error,"max_lead_rim_error":max_lead_rim_error,"max_reach_direction_z":max_reach_z,"patrons":2,
               "payoff_hold_seconds":(scene.frame_end-frame_at(action["payoff"],fps)+1)/fps,
               "timeline":manifest_frames}
     (output/"story_manifest.json").write_text(json.dumps(manifest,indent=2)+"\n")
@@ -451,7 +452,7 @@ def main():
     scene.render.filepath=str(output/"frame_")
     if a.shot in ("all",shot_records[0]["id"]):
         for image in bpy.data.images:
-            if image.source=="GENERATED" and not image.packed_file:
+            if image.source in ("GENERATED","FILE") and not image.packed_file:
                 image.pack()
         bpy.ops.wm.save_as_mainfile(filepath=str(output/"story.blend"))
     # The same representative reduced-resolution camera gate used by the

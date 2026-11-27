@@ -16,6 +16,8 @@ on:
       - 'scripts/quality_*.py'
       - 'scripts/r6_character.py'
       - 'scripts/r6_faces.py'
+      - 'scripts/r6_variant_character.py'
+      - 'scripts/r6_variant_textures.py'
       - 'assets/r6_rigged.glb'
       - 'scripts/edit_story.py'
       - 'scripts/validate_story_pixels.py'
@@ -46,6 +48,7 @@ jobs:
           sudo apt-get update
           sudo apt-get install -y --no-install-recommends blender python3-pil python3-numpy
           /usr/bin/python3 scripts/r6_faces.py --output assets/r6_faces
+          /usr/bin/python3 scripts/library_character_assets.py
           blender --version
       - name: Build and render continuous story timeline
         run: |
