@@ -39,8 +39,8 @@ def render(scene,out,name):
 def main():
     p=argparse.ArgumentParser();p.add_argument("--part",type=int,required=True,help="-1 runs complete geometric preflight, no animation rendering");p.add_argument("--output",required=True)
     args=p.parse_args(sys.argv[sys.argv.index("--")+1:]);out=Path(args.output).resolve();out.mkdir(parents=True,exist_ok=True)
-    scene,atm,cam,lead=street_scene(24,540,960);scene.render.fps=FPS;scene.render.fps_base=1
-    scene.cycles.use_denoising=True;scene.cycles.adaptive_threshold=.065;scene.render.use_persistent_data=True
+    scene,atm,cam,lead=street_scene(48,540,960);scene.render.fps=FPS;scene.render.fps_base=1
+    scene.cycles.use_denoising=False;scene.cycles.adaptive_threshold=.035;scene.render.use_persistent_data=True
     atm.apply("golden_hour")
     # Dress this daylight scene so street lamps do not cross face sightlines.
     # Move intact fixtures and their paired point lights out of the acting corridor.
@@ -199,6 +199,6 @@ def main():
         assert not failures,"Full timeline geometry preflight failed; see artifact"
         assert walk_actual["pass"] and run_rec["pass"]
         return
-    save(out,"manifest.json",{"fps":FPS,"resolution":[540,960],"frames":COUNT,"part":args.part,"stride":walk_actual,"run_stride":run_rec,"rows":rows[first:last],"two_shot":fit,"source_sha256":ret.data["source_sha256"],"engine":scene.render.engine,"samples":24,"denoise":True})
+    save(out,"manifest.json",{"fps":FPS,"resolution":[540,960],"frames":COUNT,"part":args.part,"stride":walk_actual,"run_stride":run_rec,"rows":rows[first:last],"two_shot":fit,"source_sha256":ret.data["source_sha256"],"engine":scene.render.engine,"samples":48,"denoise":False})
     assert walk_actual["pass"] and run_rec["pass"],("stride lock validation", {k:v for k,v in walk_actual.items() if k!="records"},{k:v for k,v in run_rec.items() if k!="records"})
 if __name__=="__main__":main()

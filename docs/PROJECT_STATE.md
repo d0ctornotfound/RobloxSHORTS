@@ -263,3 +263,7 @@ Run regression 45930120100 accepted, locomotion closed pending gag visuals; harv
 
 ## Supervisor check-in — gag render dependency and layout repair
 45933739499 completed failure, all 8 jobs report Build without OpenImageDenoiser. Calibration still passes: walk RMS .0386255, gap .0139212, backward 0; run RMS .0665195, gap .0156425, backward 0. Four saved failure records: wide frame1 total .45502, lamp .27249; approach31 .53913/lamp .11042; approach61 .51422/lamp .48198; wave91 .48727/left bound -.01440. Faces 9/9, zero arm overlap on those sampled failures. No images were written. Correction: official Blender 4.0.2 with OIDN, physical lamp relocation in this daylight gag only, fixed wave sensor shift, preflight entire geometry timeline before rendering matrix; thresholds unchanged. Classroom 45933739523 still rendering glide-only as of check; not touched. No approved assets altered.
+
+
+## Gag dependency correction
+45934334403 preflight install failed: official Blender archive HTTP 403, curl exit 22, render/edit skipped, no artifact. Return to previously verified distro Blender, OIDN disabled, 48 Cycles samples at .035 adaptive threshold; maintain all geometric and pixel gates and full-timeline preflight. Grain improvement not yet established. Classroom glide-only run 45933739523 still active, no new artifact at time of change.

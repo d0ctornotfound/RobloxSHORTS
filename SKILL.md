@@ -214,3 +214,7 @@ Run regression 45930120100 ACCEPTED: walk 2.65835, run 5.66948 units/s at .72 ra
 
 ### Gag storyboard preflight correction
 Run 45933739499 failed on distro Blender's missing OpenImageDenoiser, not an animation conversion defect. Saved preflight JSON identifies frame 1 wide combined .45502 with lead lamp overlap .27249; frame 31 single .53913 coverage, lamp overlap .11042; frame 61 single .51422, lamp overlap .48198; frame 91 wave .48727 coverage, left bound -.01440. All four tested face ray fractions 1.0, arm overlap zero. Use official Blender 4.0.2 CPU OIDN for denoised render (installation/runtime not yet verified); full 240-frame geometry preflight must pass before eight render chunks. Reposition intact lamp fixtures and paired lights outside gag acting corridor only; fixed sensor shift during wave/notice keeps arm within frame without changing lens. Wide search targets a small combined coverage buffer .47 (acceptance remains .45), rejects lamp overlap. No threshold relaxation or unrelated set changes. Full rendered ID, pixel and motion visual review still required.
+
+
+### CI renderer compatibility correction
+Run 45934334403 stopped before Blender execution because download.blender.org returned HTTP 403. Revert to known working Ubuntu Blender, disable unsupported OIDN, increase Cycles proof to 48 samples and tighten adaptive threshold .035. This is a non-denoised proof, not final grain-free profile. Keep complete 240-frame geometric preflight and all existing frame/face/lamp/ID/pixel thresholds. No external download attempts in this correction.
