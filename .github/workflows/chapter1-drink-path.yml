@@ -1,0 +1,29 @@
+name: Chapter 1 drink collision-constrained path
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/chapter1-drink-path.yml'
+permissions:
+  contents: read
+jobs:
+  geometry:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 45
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install Blender from Ubuntu repositories
+        run: |
+          sudo apt-get update -o Dir::Etc::sourceparts=/dev/null -o Dir::Etc::sourcelist=/etc/apt/sources.list.d/ubuntu.sources
+          sudo apt-get install -y --no-install-recommends blender python3-pil python3-numpy fonts-dejavu-core
+          /usr/bin/python3 scripts/library_character_assets.py
+          python3 -m py_compile scripts/chapter1_drink_path.py
+      - name: Search full collision-constrained drink trajectory without rendering
+        run: blender -b --python-exit-code 1 --python scripts/chapter1_drink_path.py -- --output render/geometry
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: chapter1-drink-path-report
+          path: render/geometry/
+          if-no-files-found: warn
