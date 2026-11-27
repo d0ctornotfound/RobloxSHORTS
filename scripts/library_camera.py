@@ -64,6 +64,7 @@ def metrics(scene,cam,actors,margin=.035):
         face=project(scene,cam,mesh_points(a.face))
         rows.append({"name":a.root.name,"bounds":list(b),"head_bounds":list(h),
            "coverage":max(0,min(1,b[3])-max(0,b[2])),
+           "body_safe":b[4]>0 and margin<=b[0]<=b[1]<=1-margin and margin<=b[2]<=b[3]<=1-margin,
            "head_safe":h[4]>0 and margin<=h[0]<=h[1]<=1-margin and margin<=h[2]<=h[3]<=1-margin,
            "face_center":[(face[0]+face[1])/2,(face[2]+face[3])/2]})
     return rows
@@ -76,13 +77,13 @@ def fit_two_shot(scene,cam,actors,target=None,minimum=.45,margin=.035,allowed=No
     q=V(target) if target is not None else sum((a.root.location for a in actors),V((0,0,0)))/2+V((0,0,1.38))
     cache=[(a,points(a),points(a,True),mesh_points(a.face)) for a in actors]
     best=None
-    for angle in (0,-8,8,-15,15,-22,22,-30,30):
+    for angle in (0,-8,8,-15,15,-22,22,-30,30,-40,40):
         a=math.radians(angle)
         for d in (3.4,3.8,4.2,4.6,5.0):
             for z in (1.75,2.1,2.45):
                 p=q+V((d*math.sin(a),-d*math.cos(a),z-q.z))
                 if allowed is not None and not allowed(p,q):continue
-                for lens in (42,46,50,54,58,62,66):
+                for lens in (34,38,42,46,50,54,58,62,66):
                     apply(cam,"static",0,p,q,lens)
                     rows=[]
                     for actor,body,heads,face in cache:
@@ -93,7 +94,8 @@ def fit_two_shot(scene,cam,actors,target=None,minimum=.45,margin=.035,allowed=No
                     # Preserve faces, avoid a compressed overlap; permit intentional
                     # partial lower-body crop, not a clipped head.
                     separation=abs(sum(rows[0][2][:2])/2-sum(rows[1][2][:2])/2)
-                    if safe and separation>=.20 and min(coverage)>=minimum:
+                    full_safe=all(b[4]>0 and margin<=b[0]<=b[1]<=1-margin and margin<=b[2]<=b[3]<=1-margin for b,h,f in rows)
+                    if safe and full_safe and separation>=.20 and min(coverage)>=minimum:
                         # Prefer frontal composition and balanced screen size.
                         score=min(coverage)-.4*abs(coverage[0]-coverage[1])-.0015*abs(angle)
                         if best is None or score>best[0]:best=(score,p.copy(),q.copy(),lens)

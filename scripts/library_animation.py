@@ -28,7 +28,10 @@ def parameters(name,t=.5,side="right"):
     elif name=="reach":a[i]=(.06,-.88,-.47);head=(.12,0,0)
     elif name=="throw":
         q=smoothstep(u);a[i]=(.14, .72*(1-q)-.93*q,.62*(1-q)-.22*q);torso=(0,0,.12*(1-2*q))
-    elif name=="wave":a[i]=(.35+.20*k,-.10,.90);head=(0,0,-.10)
+    elif name=="wave":
+        # Brief lateral pulse; anatomical right is -X, left +X.
+        sign=-1 if i==0 else 1;g=smoothstep(u/.18)*(1-smoothstep((u-.65)/.35))
+        a[i]=Vector(DEFAULT).lerp(Vector((sign*(.88+.08*k),-.05,.40)),g);head=(0,0,sign*.08*g)
     elif name=="point":a[i]=(.05,-.99,.06);head=(0,0,.08)
     elif name=="hug":a=[(.30,-.91,.12),(-.30,-.91,.12)];head=(.08,0,0)
     elif name=="high_five":a[i]=(.25,-.58,.77)

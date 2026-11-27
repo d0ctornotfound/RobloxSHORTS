@@ -1,5 +1,7 @@
 """Room construction with physical openings, plus modular café/classroom/street."""
 from render_demo import cube,material
+from quality_cafe import sphere,text
+import math
 from stage_a_cafe import wood,emission
 from library_props import build,palette
 import bpy
@@ -55,6 +57,12 @@ def classroom():
     board=material("Chalkboard",(.055,.22,.14));cube("Classroom board",(0,4.34,2.55),(3.6,.1,1.35),board)
     build("bookshelf",pos=(3.4,3.9,0),p=p);return p
 
+def gable(name,x,y,base,ridge,half_width,mat):
+    # Solid triangular prism closes the full eave opening at front/rear.
+    v=[(x-half_width,y+d,base) for d in (-.09,.09)]+[(x+half_width,y+d,base) for d in (-.09,.09)]+[(x,y+d,ridge) for d in (-.09,.09)]
+    m=bpy.data.meshes.new(name);m.from_pydata(v,[],[(0,2,4),(1,5,3),(0,1,3,2),(2,3,5,4),(4,5,1,0)]);m.update()
+    ob=bpy.data.objects.new(name,m);bpy.context.collection.objects.link(ob);m.materials.append(mat);return ob
+
 def street():
     """New exterior: dressed sidewalk, row houses, road, park trees."""
     p=palette();asphalt=material("Asphalt",(.105,.12,.14));walk=material("Concrete sidewalk",(.43,.44,.40))
@@ -66,7 +74,10 @@ def street():
     for x in range(-16,17):cube("Paving joint",(x,.15,.002),(.018,2.1,.004),asphalt,bevel=0)
     windows=[]
     for i,x in enumerate((-9,-3,3,9)):
-        col=(brick,material("Blue siding",(.19,.35,.46)),material("Ochre siding",(.55,.37,.17)),brick)[i]
+        col=(brick,material("Blue siding",(.19,.35,.46)),material("Ochre siding",(.55,.37,.17)),material("Sage siding",(.24,.38,.24)))[i]
+        roof=material("Roof variant "+str(i),((.15,.19,.24),(.29,.14,.10),(.16,.20,.16),(.23,.19,.28))[i])
+        pitch=(.32,.38,.28,.35)[i];ridge=3.30+2.45*math.tan(pitch)
+        for y in (3.20,6.20):gable("Closed house gable "+str(i),x,y,3.27,ridge,2.41,col)
         # Build façade from the same opening/panel kit as rooms; windows
         # and door cover actual openings rather than decals on a solid cube.
         for ob in wall_sections("House facade",3.2,4.8,3.3,col,((-.9,1.15,0,2.35),(.88,1.1,1.45,1.0))):
@@ -74,18 +85,26 @@ def street():
         cube("House rear",(x,6.2,1.65),(4.8,.16,3.3),col,bevel=0)
         for side in (-1,1):cube("House side",(x+side*2.32,4.7,1.65),(.16,3.0,3.3),col,bevel=0)
         for side in (-1,1):
-            ob=cube("Sloping roof",(x+side*1.28,4.7,3.59),(2.85,3.4,.14),roof);ob.rotation_euler.y=side*.32
+            ob=cube("Sloping roof",(x+side*1.28,4.7,ridge-1.28*math.tan(pitch)),(2.75/math.cos(pitch),3.4,.14),roof);ob.rotation_euler.y=side*pitch
         build("door",pos=(x-.9,3.12,0),scale=.9,p=p)
         for dx in (.88,):
             z=1.45
             wp=emission("House window light",(.98,.72,.34),.18)
             pane=cube("Window luminous glass",(x+dx,3.10,z+.48),(1.0,.035,.96),wp,bevel=0)
             windows.append(pane);build("window",pos=(x+dx,3.06,z),scale=.68,p=p,pane=False)
-        for j in range(3):build("plant",pos=(x-1.6+j*.5,2.7,0),scale=.72,p=p)
+        for j in range(3):build("plant",pos=(x-1.6+j*.5,2.7,0),scale=.65+.08*((i+j)%3),p=p)
+        # Low segmented fences leave doors and sidewalk clear.
+        for side in (-1,1):
+            fx=x+side*1.85
+            for j in range(3):cube("Fence picket",(fx-.42+j*.42,2.15,.37),(.10,.10,.74),p["cream"],bevel=.012)
+            for z in (.23,.52):cube("Fence rail",(fx,2.15,z),(.98,.08,.075),p["cream"])
+        for j in range(3):sphere("Trimmed hedge",(x+1.5+j*.26,2.60,.34),(.52,.55,.60),p["leaf"] if j%2 else p["green"])
+        cube("House number plaque",(x-.10,3.08,1.78),(.40,.065,.26),p["dark"])
+        text("House number",str(12+i*2),(x-.10,3.025,1.78),.17,p["cream"])
     for x in (-6,6,13):build("tree",pos=(x,2.25,0),scale=1.15,p=p)
     build("car",pos=(7,-3,0),p=p)
     lamps=[]
-    for x in (-4,1.85,4):
+    for x in (-6.1,-2.8,2.8,6.1):
         root=build("lamp",pos=(x,1.02,0),scale=1.6,p=p)
         mat=emission("Street lamp diffuser", (1,.66,.26),.05)
         diffuser=next(o for o in root.children if "diffuser" in o.name)
