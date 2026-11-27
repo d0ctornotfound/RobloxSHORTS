@@ -31,7 +31,7 @@ jobs:
         timeout-minutes: 15
         run: |
           mkdir -p render/lead-pilot/stills render/lead-pilot/labelled
-          blender -b --python-exit-code 1 --python scripts/render_expression_sections.py -- --section closeups --actor lead --engine BLENDER_EEVEE_NEXT --width 1280 --height 720 --output render/lead-pilot
+          blender -b --python-exit-code 1 --python scripts/render_expression_sections.py -- --section closeups --actor lead --engine BLENDER_EEVEE --width 1280 --height 720 --output render/lead-pilot
       - name: Build partial-safe pilot contact sheet
         if: always()
         run: |
