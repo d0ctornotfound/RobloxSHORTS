@@ -1,5 +1,10 @@
 name: Publish Chapter 2 final expression sheets
 on:
+  push:
+    branches: [main]
+    paths:
+      - 'docs/PROJECT_STATE.md'
+      - 'SKILL.md'
   workflow_dispatch:
     inputs:
       source_run_id:
@@ -21,7 +26,7 @@ jobs:
       - name: Download and validate six final contact sheets and pixel QA
         env:
           GH_TOKEN: ${{ github.token }}
-          SOURCE_RUN_ID: ${{ inputs.source_run_id }}
+          SOURCE_RUN_ID: ${{ inputs.source_run_id || '46016634372' }}
         run: |
           set -euo pipefail
           mkdir -p /tmp/ch2-artifacts assets/chapter2_expression_review_final
