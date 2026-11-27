@@ -3,6 +3,7 @@ on:
   push:
     branches: [main]
     paths:
+      - 'scripts/clothing_system.py'
       - 'scripts/clothing_articulation.py'
       - 'scripts/render_clothing_clearance.py'
       - '.github/workflows/chapter3-clothing-clearance.yml'

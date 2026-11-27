@@ -10,7 +10,7 @@ import bmesh
 import bpy
 from mathutils import Vector
 
-from r6_character import bounds, group_points, dominant_group, matte
+from r6_character import bounds, group_points, dominant_group, matte, mesh_points
 from r6_variant_character import apply_garments
 from render_demo import cube
 
@@ -151,13 +151,16 @@ def _cover_shoulder_caps(actor, material):
     ob = actor.body
     idx = len(ob.data.materials)
     ob.data.materials.append(material)
+    points = mesh_points(ob)
     for group in ARM_GROUPS:
         lo, hi = bounds(group_points(ob, group))
         for poly in ob.data.polygons:
             if dominant_group(ob, ob.data.vertices[poly.vertices[0]]) != group:
                 continue
-            zs = [(ob.matrix_world @ ob.data.vertices[i].co).z for i in poly.vertices]
-            if min(zs) >= hi.z - 0.035:
+            zs = [points[i].z for i in poly.vertices]
+            # Include the bevel around the upper cap. The remaining vertical
+            # sleeve panels preserve the atlas, including the hand cutoff.
+            if min(zs) >= hi.z - 0.075:
                 poly.material_index = idx
 
 
@@ -170,6 +173,7 @@ def _make_shell(actor, label, groups, arm_cutoff=None):
     shell.data.name = shell.name + " mesh"
 
     group_by_vertex = [dominant_group(body, v) for v in body.data.vertices]
+    evaluated_points = mesh_points(body)
     group_bounds = {}
     if arm_cutoff is not None:
         for group in ARM_GROUPS:
@@ -186,7 +190,7 @@ def _make_shell(actor, label, groups, arm_cutoff=None):
             remove.append(face)
             continue
         if group in ARM_GROUPS and arm_cutoff is not None:
-            world_z = sum((body.matrix_world @ body.data.vertices[v.index].co).z for v in face.verts) / len(face.verts)
+            world_z = sum(evaluated_points[v.index].z for v in face.verts) / len(face.verts)
             lo, hi = group_bounds[group]
             cutoff_z = lo.z + arm_cutoff * (hi.z - lo.z)
             if world_z < cutoff_z:
