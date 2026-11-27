@@ -161,6 +161,9 @@ def _make_shell(actor, label, groups, arm_cutoff=None):
 
 def _add_box(actor, label, location, dimensions, material, bone="torso", bevel=0.004, rotation_y=0.0):
     ob = cube(actor.root.name + " / " + label, tuple(location), tuple(dimensions), material, bevel=bevel)
+    for modifier in list(ob.modifiers):
+        if modifier.type == "WEIGHTED_NORMAL":
+            ob.modifiers.remove(modifier)
     ob.rotation_euler.y = rotation_y
     bpy.context.view_layer.update()
     actor.attach_mesh(ob, bone)
@@ -379,6 +382,12 @@ def upgrade_character(actor):
         _add_jacket_details(actor, shirt)
     # Teacher already has its approved raised cardigan placket, collar and buttons.
 
+    # The shared cube helper adds Weighted Normal modifiers that require
+    # Auto Smooth; the bevelled garment details do not need those modifiers.
+    for ob in list(actor.accessories):
+        for modifier in list(ob.modifiers):
+            if modifier.type == "WEIGHTED_NORMAL":
+                ob.modifiers.remove(modifier)
     bpy.context.view_layer.update()
     if len(actor.body.data.vertices) != original_vertices:
         raise RuntimeError("Chapter 3 changed original body vertex count")

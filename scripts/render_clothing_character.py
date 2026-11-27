@@ -67,6 +67,10 @@ def area_light(name, location, target, power, size, color):
     return ob
 
 def studio():
+    # Blender's background startup file contains a default 2 m cube; remove it
+    # before staging the neutral world so it cannot obscure the character.
+    bpy.ops.object.select_all(action="SELECT")
+    bpy.ops.object.delete(use_global=False)
     scene = bpy.context.scene
     scene.render.engine = "BLENDER_EEVEE"
     scene.render.resolution_percentage = 100
