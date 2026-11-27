@@ -2,7 +2,9 @@
 from pathlib import Path
 from PIL import Image,ImageDraw
 from r6_variant_textures import character_face,EXPRESSIONS,cloth,srgb,SKINS,generate
+from r6_faces import build_faces
 def main():
+    build_faces(Path("assets/r6_faces"))
     out=Path("assets/r6_variants");generate(out)
     dest=out/"librarian";dest.mkdir(exist_ok=True)
     for e in EXPRESSIONS:
