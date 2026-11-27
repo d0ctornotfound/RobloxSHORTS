@@ -175,7 +175,7 @@ class ExpressionTrack:
             actor.set_bone("torso",reaction["torso"],frame)
         else:
             if hasattr(actor,"head"):actor.head.rotation_euler=reaction["head"]
-            actor.root.rotation_euler=tuple(self.base_root_rotation[i]+reaction["torso"][i] for i in range(3))
+            if hasattr(actor,"torso"):actor.torso.rotation_euler=reaction["torso"]
         return reaction
 
     def key(self,frame,expression):
