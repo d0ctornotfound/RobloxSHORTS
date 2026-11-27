@@ -1,5 +1,15 @@
 name: Chapter 2 — remaining six character expression sheets
 on:
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/facial-expression-character-batch.yml'
+      - 'scripts/r6_variant_textures.py'
+      - 'scripts/r6_faces.py'
+      - 'scripts/library_character_assets.py'
+      - 'scripts/render_expression_sections.py'
+      - 'scripts/build_expression_contact_sheet.py'
+      - 'scripts/audit_expression_duplicates.py'
   workflow_dispatch:
 permissions:
   contents: read
@@ -12,7 +22,7 @@ jobs:
       fail-fast: false
       max-parallel: 6
       matrix:
-        actor: [friend, teacher, dad, librarian, patron_green, patron_blue]
+        actor: [lead, dad, teacher, librarian, patron_green, patron_blue]
     env:
       ACTOR: ${{ matrix.actor }}
       OUT: render/${{ matrix.actor }}-expressions
