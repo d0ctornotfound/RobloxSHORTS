@@ -202,7 +202,10 @@ def main():
     for row in timeline:
         scene.frame_set(row["frame"]);bpy.context.view_layer.update()
         assert (plane.matrix_world.translation-Vector(row["plane"])).length<.001
-        for name,track in tracks.items():assert [n for n,o in track.decals.items() if not o.hide_render]==[row["expressions"][name]]
+        for name,track in tracks.items():
+            blink=actors[name]._blink_controller.is_closed(scene,row["frame"])
+            expected="sleep_closed" if blink else row["expressions"][name]
+            assert [n for n,o in track.decals.items() if not o.hide_render]==[expected]
         if row["frame"] in desk_targets:
             for i,target in enumerate(desk_targets[row["frame"]]):assert (lead.grips[i].matrix_world.translation-Vector(target)).length<.001
     # Extras appear only in throw and glide.
