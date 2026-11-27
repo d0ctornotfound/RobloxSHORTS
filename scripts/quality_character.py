@@ -167,7 +167,7 @@ class Character(LegacyCharacter):
             self.meshes.append(obj)
             if uv:block_uv(obj)
             return obj
-        box("torso",(0,0,1.3335),self.PROPORTIONS["torso"],shirt,bevel=.035,uv=True)
+        self.torso=box("torso",(0,0,1.3335),self.PROPORTIONS["torso"],shirt,bevel=.035,uv=True)
         self.head=box("head",(0,0,2.029),self.PROPORTIONS["head"],skin,bevel=.065)
         self.head.modifiers.get("Soft edges").segments=8
         verts=[(-.46,-.392,1.82),(.46,-.392,1.82),(.46,-.392,2.24),(-.46,-.392,2.24)]
