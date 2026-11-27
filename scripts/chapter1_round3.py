@@ -3,7 +3,8 @@ import math,bpy
 from mathutils import Vector
 from character_motion import D,ramp,pulse,mix,floor
 from chapter1_round2 import new_params as old_params,basic,pose as old_pose,neutral_feet,seat_setup
-from chapter1_articulation import Articulation,face_grid,face_hits,tree_for_object
+from chapter1_articulation import Articulation,face_grid,face_hits,tree_for_object,clip
+from mathutils.bvhtree import BVHTree
 from r6_character import group_points,bounds,mesh_points
 
 def new_params(name,u,t):
@@ -39,8 +40,20 @@ def rim_gap(mouth,cup):
         result.append((mouth-(a+d*q)).length)
     return min(result)
 
-def mouth_pose(actor,art,name,p,cam,cup,yaw):
-    a=p["mouth_action"];c,dx,dz=face_grid(actor)
+def hand_tree(limb):
+    # Measure the real outer surfaces of the distal quarter of the lower arm.
+    verts=[];faces=[]
+    ob=limb.lower
+    for p in ob.data.polygons:
+        poly=[(ob.data.vertices[i].co.copy(),Vector((0,0))) for i in p.vertices]
+        part=clip(poly,-.75*limb.b,False)
+        if len(part)<3:continue
+        faces.append(list(range(len(verts),len(verts)+len(part))))
+        verts.extend(ob.matrix_world@v for v,uv in part)
+    return BVHTree.FromPolygons(verts,faces)
+
+def mouth_pose(actor,art,name,p,cam,cup,yaw,prior=None):
+    raw=p["mouth_action"];a=min(1,raw/.90);c,dx,dz=face_grid(actor)
     mouth=c-.32*dz
     side=-dx.normalized();up=dz.normalized();normal=dx.cross(dz).normalized()
     # Actual front normal: decal orientation must point away from head.
@@ -70,13 +83,13 @@ def mouth_pose(actor,art,name,p,cam,cup,yaw):
             bpy.context.view_layer.update()
             gap=rim_gap(mouth,cup)
         tree=tree_for_object(l.lower)
-        hit=tree.find_nearest(mouth)
+        hit=hand_tree(l).find_nearest(mouth)
         handgap=float(hit[3]) if hit[0] is not None else 999.
         if not cup:gap=handgap
         blocked=face_hits(cam,actor,blockers)
         # Surface intersections with head: prioritize an unobstructed face
         # and genuine lip contact, avoid hand/cup penetrating the head.
-        cross=len(tree.overlap(headtree))
+        cross=len(tree.overlap(headtree))+len(tree_for_object(l.upper).overlap(headtree))
         if cup:cross+=len(tree_for_object(cup).overlap(headtree))
         return blocked,gap,handgap,cross,end
     # A fixed default trajectory; near contact, search nearby offsets and
@@ -88,6 +101,8 @@ def mouth_pose(actor,art,name,p,cam,cup,yaw):
         candidates=[(lat,depth,down,pm,tilt) for lat in (0,.025,-.025) for depth in (0,.012) for down in (0,.012) for pm in (.7,1.6) for tilt in (.45,.85)]
     else:
         candidates=[(lat,depth,down,pm,0) for lat in (0,.045,.09,-.035) for depth in (.015,.065,.11) for down in (.045,.09,.13) for pm in (.7,1.6)]
+    if prior is not None and a>=.35:
+        candidates=[tuple(prior)]+[x for x in candidates if x!=tuple(prior)]
     best=None
     for params in candidates:
         blocked,gap,handgap,cross,end=evaluate(*params)
@@ -96,7 +111,7 @@ def mouth_pose(actor,art,name,p,cam,cup,yaw):
         if blocked==0 and cross==0 and (gap<=.012 or a<.90):break
     blocked,gap,handgap,cross,end=evaluate(*best[1])
     return {"face_body_blocked_samples":blocked,"hand_to_mouth":handgap,"cup_rim_to_mouth":gap if cup else None,
-            "mouth_action":a,"head_surface_intersections":cross,"target_parameters":list(best[1])}
+            "mouth_action":raw,"head_surface_intersections":cross,"target_parameters":list(best[1])}
 
 def body_meshes(a):
     return [o for o in a.meshes if o.type=="MESH" and o!=a.face]
@@ -132,8 +147,8 @@ def hug_pose(a,b,aa,bb,u,t,layout):
         p=old_params("hug",u,t);p["arms"]=[D,D];p["torso"]=(.035*eng,0,0);p["head"]=(-.05*eng,0,0)
         basic(actor,p,loc,yaw);art.rigid();art.shift(Vector((0,0,-floor(actor))));actor.pose("happy")
     # Asymmetric wrap, or a single side-hug arm behind partner's upper back.
-    idx=max(range(2),key=lambda i:aa.arms[i].joint().x)
-    other=min(range(2),key=lambda i:bb.arms[i].joint().x)
+    idx=0 if mode=="asymmetric" else max(range(2),key=lambda i:aa.arms[i].joint().x)
+    other=1 if mode=="asymmetric" else min(range(2),key=lambda i:bb.arms[i].joint().x)
     active=[(a,aa,idx,b,.23,.82,yaws[0])]
     if mode=="asymmetric":active.append((b,bb,other,a,.75,.35,yaws[1]))
     # In side hug, partner's inside arm moves forward out of the wrap path.
@@ -150,7 +165,7 @@ def hug_pose(a,b,aa,bb,u,t,layout):
         # Distance from actual hand end to target torso surface (and
         # nearest evaluated surface point). This is evidence, not approval.
         end=l.lower.matrix_world@Vector((0,0,-l.b))
-        near=tree_for_object(partner.body).find_nearest(end)
+        near=hand_tree(l).find_nearest(target)
         gaps.append(float(near[3]) if near[0] is not None else 999.)
     overlap=cross_intersections(a,b)
     return {"phase":"side_hug" if mode=="side" else "asymmetric_hug","flight":False,"lift":0,"engagement":eng,
@@ -163,13 +178,13 @@ def choose_hug(a,b,aa,bb,N):
     # individual frames. Asymmetric first, side fallback if it clips.
     diagnostics=[]
     for mode in ("asymmetric","side"):
-        candidates=[(mode,spacing,depth,angle,clearance) for spacing in ((.40,.48,.56) if mode=="asymmetric" else (.58,.66,.74,.82)) for depth in ((.12,.24) if mode=="asymmetric" else (.08,.18,.28)) for angle in (.12,.26) for clearance in (.045,.095)]
+        candidates=[(mode,spacing,depth,angle,clearance) for spacing in ((.40,.48,.56) if mode=="asymmetric" else (.58,.66,.74,.82)) for depth in ((.12,.24) if mode=="asymmetric" else (.08,.22)) for angle in (.12,.26) for clearance in (.055,)]
         sampled=[]
         for layout in candidates:
             rows=[hug_pose(a,b,aa,bb,f/(N-1),f/30,layout) for f in (0,10,20,30,40,50,59)]
             score=(max(x["intersections"] for x in rows),max(max(x["hand_surface_gaps"]) for x in rows if x["engagement"]>.85))
             sampled.append((score,layout))
-        for _,layout in sorted(sampled)[:6]:
+        for _,layout in sorted(sampled)[:4]:
             rows=[hug_pose(a,b,aa,bb,f/(N-1),f/30,layout) for f in range(N)]
             count=max(x["intersections"] for x in rows)
             gap=max(max(x["hand_surface_gaps"]) for x in rows if x["engagement"]>.85)

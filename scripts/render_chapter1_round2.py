@@ -61,7 +61,8 @@ def main():
         safe=all(x["body_safe"] and x["head_safe"] for x in b)
         s=art.soles() if art else soles(actor)
         row={"frame":f+1,"seconds":t,"phase":p["phase"],"floor":floor(actor),"soles":[list(x) for x in s],"bounds":b,"flight":p["flight"],"lift":p["lift"],"framing_safe":safe}
-        if art:row["max_segment_axial_adjustment"]=max((l.stretch for l in art.limbs.values()),default=0)
+        if art:
+            row.update(art.length_metrics());row["max_segment_axial_adjustment"]=row["max_segment_length_change"]
         if name=="jump" and t>=1.1:
             if land_soles is None:land_soles=[x.copy() for x in s]
             row["landing_sole_drift"]=[(x-y).length for x,y in zip(s,land_soles)]
@@ -83,7 +84,11 @@ def main():
     fraction=sum(v<.25 for v in maes)/len(maes)
     report={"index":args.part,"role":role,"action":name,"frames":N,"fps":FPS,"rows":rows,"motion_review_pending":True,"near_static":{"threshold_mae":.25,"count":sum(v<.25 for v in maes),"transitions":len(maes),"fraction":fraction,"maes":maes}}
     gates={"performance_motion":fraction<=.40,"full_body_framing":all(x["framing_safe"] for x in rows)}
-    if art:report["max_segment_axial_adjustment"]=max(x["max_segment_axial_adjustment"] for x in rows)
+    if art:
+        report["max_segment_axial_adjustment"]=max(x["max_segment_axial_adjustment"] for x in rows)
+        report["max_segment_length_change"]=report["max_segment_axial_adjustment"]
+        report["max_joint_gap"]=max(x["max_joint_gap"] for x in rows)
+        gates["adapter_length_preserved"]=report["max_segment_length_change"]<=.02
     if name=="reach":
         d=[max(math.hypot(a["soles"][i][0]-b["soles"][i][0],a["soles"][i][1]-b["soles"][i][1]) for a,b in zip(rows,rows[1:])) for i in range(2)]
         report["sole_displacement_per_frame"]=d;gates["planted_foot"]=max(d)<.02
