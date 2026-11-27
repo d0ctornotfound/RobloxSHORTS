@@ -5,7 +5,7 @@ from character_motion import D,ramp,pulse,mix,floor
 from chapter1_round2 import new_params as old_params,basic,pose as old_pose
 from chapter1_round4_solver import actual,data,world,nearest,overlap,ArmSolver,arm_matrices,matlist,restore,eat_face_rays,rays,rim_distance,proximal_data
 from chapter1_round5_solver import pack,flat_contact
-from chapter1_round6_solver import components,prep,rim_contact,cup_nonrim,contact_ok,profile_base
+from chapter1_round6_solver import LAT,GAP,components,prep,rim_contact,cup_nonrim,contact_ok,profile_base
 
 def point_pose(actor,art,u,t,yaw):
     # Same neutral bookends, arm direction and pulse amplitudes. Retiming
