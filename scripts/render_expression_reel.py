@@ -138,7 +138,7 @@ def main():
             if not .12<=row["closed_seconds"]<=.15:raise RuntimeError(("blink duration",label,row))
         gaps=[]
         for left,right in zip(rows,rows[1:]):
-            gap=right["start_seconds"]-left["end_seconds"]
+            gap=right["start_seconds"]-left["start_seconds"]
             if not 2.0<=gap<=5.0:raise RuntimeError(("blink interval",label,gap))
             gaps.append(gap)
         if any(abs(gaps[i]-gaps[i-1])<.45 for i in range(1,len(gaps))):
