@@ -84,8 +84,11 @@ def set_camera(cam,scene,mode):
         cam.data.type="PERSP";cam.data.lens=85
         cam.location=(0,-3.4,2.15);point_at(cam,(0,0,2.05))
     elif mode=="emotion":
-        cam.data.type="PERSP";cam.data.lens=60
-        cam.location=(0,-4.2,2.05);point_at(cam,(0,0,1.28))
+        # Wider waist-up acting frame: the previous 60mm / low target clipped
+        # the head in the reaction strips. Keep full face, shoulders and torso
+        # visible through the recoil, laugh and embarrassed head dip.
+        cam.data.type="PERSP";cam.data.lens=40
+        cam.location=(0,-5.0,2.05);point_at(cam,(0,0,1.90))
     else:
         cam.data.type="ORTHO";cam.data.ortho_scale=8.4
         cam.location=(0,-14,2.0);point_at(cam,(0,0,2.0))
