@@ -122,9 +122,8 @@ class Limb:
         vec=end-start;d=vec.length
         if d<1e-7:vec=rot@DOWN;d=1e-7
         q=(rot@DOWN).rotation_difference(vec.normalized()).to_matrix()
-        # Explicit, measured minor axial adjustment to keep joint ends joined
-        # under body lean. Never scale the flat planted lower leg.
-        ob.matrix_world=Matrix.Translation(start)@q.to_4x4()@rot.to_4x4()@Matrix.Diagonal((1,1,d/length,1))
+        # Round 3: rigid transforms only. Never scale a segment to reach a target.
+        ob.matrix_world=Matrix.Translation(start)@q.to_4x4()@rot.to_4x4()
         return abs(d/length-1)
     def ground(self,foot,rot):
         knee=foot+Vector((0,0,self.b))
@@ -143,6 +142,17 @@ class Limb:
         end=start+axis*d
         self.stretch=max(self.place(self.upper,start,elbow,self.a,rot),self.place(self.lower,elbow,end,self.b,rot))
         return end
+    def length_change(self):
+        # Measure transformed centreline lengths, not a requested target or a
+        # hardcoded zero. Joint continuity is reported separately.
+        result=[]
+        for obj,L in ((self.upper,self.a),(self.lower,self.b)):
+            a=obj.matrix_world@Vector((0,0,0))
+            b=obj.matrix_world@Vector((0,0,-L))
+            result.append(abs((b-a).length/L-1))
+        return max(result)
+    def joint_gap(self):
+        return ((self.upper.matrix_world@Vector((0,0,-self.a)))-self.lower.matrix_world.translation).length
     def sole(self):
         pts=mesh_points(self.lower);z=min(v.z for v in pts);p=[v for v in pts if v.z<=z+.025]
         return Vector((sum(v.x for v in p)/len(p),sum(v.y for v in p)/len(p),z))
@@ -185,10 +195,42 @@ class Articulation:
     def planted(self,feet,yaw,bend):
         rot=self.rot(yaw);back=rot@Vector((0,1,0))
         hips=[f+Vector((0,0,l.b+l.a*math.cos(bend)))+back*l.a*math.sin(bend) for f,l in zip(feet,self.legs)]
-        delta=sum((h-l.joint() for h,l in zip(hips,self.legs)),Vector())/2
+        desired=sum((h-l.joint() for h,l in zip(hips,self.legs)),Vector())/2
+        # Solve the intersection of two spheres in root-translation space.
+        # The two fixed shin endpoints determine the knees; the thigh
+        # lengths are radii. Choose the point closest to the desired pelvis
+        # motion. A rigid torso/root translation preserves hip spacing.
+        centers=[f+Vector((0,0,l.b))-l.joint() for f,l in zip(feet,self.legs)]
+        c0,c1=centers;r0,r1=[l.a for l in self.legs]
+        axis=c1-c0;dist=axis.length
+        if dist<1e-6:
+            direction=desired-c0
+            if direction.length<1e-7:direction=Vector((0,0,1))
+            delta=c0+direction.normalized()*r0
+        else:
+            n=axis/dist
+            x=(r0*r0-r1*r1+dist*dist)/(2*dist)
+            circle=c0+n*x
+            radius2=r0*r0-x*x
+            if radius2<-1e-7:
+                # Unreachable pose: keep original lengths and disclose
+                # the unsolved joint residual rather than stretching.
+                delta=desired
+            else:
+                v=desired-circle;nproj=v-n*v.dot(n)
+                if nproj.length<1e-7:
+                    v=Vector((0,0,1));nproj=v-n*v.dot(n)
+                if nproj.length<1e-7:
+                    v=back;nproj=v-n*v.dot(n)
+                if nproj.length<1e-7:nproj=n.cross(Vector((1,0,0)))
+                if nproj.length<1e-7:nproj=n.cross(Vector((0,1,0)))
+                delta=circle+nproj.normalized()*math.sqrt(max(0,radius2))
         self.shift(delta)
         for l,f in zip(self.legs,feet):l.ground(f,rot)
         bpy.context.view_layer.update()
+    def length_metrics(self):
+        return {"max_segment_length_change":max((l.length_change() for l in self.limbs.values()),default=0),
+                "max_joint_gap":max((l.joint_gap() for l in self.limbs.values()),default=0)}
     def arm_target(self,index,target,pole,yaw):
         result=self.arms[index].solve(target,pole,self.rot(yaw));bpy.context.view_layer.update();return result
 
