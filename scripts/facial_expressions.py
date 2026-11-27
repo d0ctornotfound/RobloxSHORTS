@@ -59,6 +59,21 @@ class BlinkController:
         seconds = (int(frame) - int(scene.frame_start)) / max(fps, 1e-8)
         return any(start <= seconds < end for start, end in self.events)
 
+    def state(self, scene, frame):
+        """Return the rendered blink phase, including one-frame half-lid transitions."""
+        self._build(scene)
+        fps = float(scene.render.fps) / max(float(scene.render.fps_base), 1e-8)
+        seconds = (int(frame) - int(scene.frame_start)) / max(fps, 1e-8)
+        edge = 1.0 / max(fps, 1e-8)
+        for start, end in self.events:
+            if start-edge <= seconds < start:
+                return "blink_half"
+            if start <= seconds < end:
+                return "sleep_closed"
+            if end <= seconds < end+edge:
+                return "blink_half"
+        return None
+
     def manifest(self, scene):
         self._build(scene)
         return [{"start_seconds": round(a, 4), "end_seconds": round(b, 4),
@@ -66,21 +81,25 @@ class BlinkController:
 
 def _apply_actor(actor, scene, frame):
     if not getattr(actor, "_blink_enabled", True):
-        closed = False
+        blink_state = None
     else:
         controller = getattr(actor, "_blink_controller", None)
-        closed = bool(controller and controller.is_closed(scene, frame))
+        blink_state = controller.state(scene, frame) if controller else None
     tracks = getattr(actor, "_expression_tracks", ())
     if tracks:
         for track in tracks:
             expression = track.expression_at(frame)
-            active = "sleep_closed" if closed else expression
+            active = blink_state or expression
+            if active == "blink_half" and "blink_half" not in track.decals:
+                active = "sleep_closed"
             for name, obj in track.decals.items():
                 obj.hide_render = name != active
     else:
         expression = getattr(actor, "current_expression", "neutral")
-        name = "sleep_closed" if closed else expression
+        name = blink_state or expression
         materials = getattr(actor, "face_materials", {})
+        if name == "blink_half" and name not in materials:
+            name = "sleep_closed"
         face = getattr(actor, "face", None)
         if face is not None and name in materials and face.data.materials:
             face.data.materials[0] = materials[name]
