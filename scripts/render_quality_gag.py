@@ -166,9 +166,10 @@ def main():
             # of the face, slightly to camera-left, rather than grazing the profile.
             a=h-.20;d=4.35 if shot=="wave_notice_single" else 4.05
             apply(cam,"static",0,(x+d*math.sin(a),y-d*math.cos(a),1.83),(x,y,1.28),53)
-            # Fixed sensor shift toward the extended arm during wave/notice.
-            # This does not change focal length or move actors.
-            if shot=="wave_notice_single":cam.data.shift_x=-.105
+            # Wave and anticipation have different silhouettes. Cut to a
+            # centered sensor at the anticipation beat; keep the proven wave
+            # framing unchanged. No lens, pose, or acceptance changes.
+            if shot=="wave_notice_single":cam.data.shift_x=-.105 if t<3.25 else 0.0
             bpy.context.view_layer.update()
         elif t<4.85:
             heroes=[];shot="gift_action_insert";insert=True
