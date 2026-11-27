@@ -96,10 +96,14 @@ def studio():
     scene.world = world
     gray = mat("Neutral grey seamless studio", (0.34, 0.36, 0.39))
     cube("Studio floor", (0, 0, -0.10), (30, 30, 0.20), gray)
-    cube("Studio north wall", (0, 3.2, 5), (30, 0.20, 10), gray)
-    cube("Studio south wall", (0, -3.2, 5), (30, 0.20, 10), gray)
-    cube("Studio east wall", (3.2, 0, 5), (0.20, 30, 10), gray)
-    cube("Studio west wall", (-3.2, 0, 5), (0.20, 30, 10), gray)
+    walls = {
+        "front": cube("Studio north wall", (0, 3.2, 5), (30, 0.20, 10), gray),
+        "back": cube("Studio south wall", (0, -3.2, 5), (30, 0.20, 10), gray),
+        "east": cube("Studio east wall", (3.2, 0, 5), (0.20, 30, 10), gray),
+        "side": cube("Studio west wall", (-3.2, 0, 5), (0.20, 30, 10), gray),
+    }
+    for wall in walls.values():
+        wall.hide_render = True
     area_light("Large soft key", (-3.4, -4.2, 5.2), (0, 0, 1.25), 760, 4.2, (1.0, 0.96, 0.91))
     area_light("Front fill", (4.0, -3.0, 3.5), (0, 0, 1.25), 420, 4.0, (0.88, 0.93, 1.0))
     area_light("Rear rim", (0.0, 3.0, 4.4), (0, 0, 1.35), 520, 3.0, (1.0, 1.0, 1.0))
@@ -110,7 +114,7 @@ def studio():
     cam.data.type = "ORTHO"
     cam.data.ortho_scale = 3.0
     scene.camera = cam
-    return scene, cam
+    return scene, cam, walls
 
 def build_actor(key):
     label, kind = ACTORS[key]
@@ -158,8 +162,10 @@ def contact_sheet(root, label):
     board.save(out)
     return out
 
-def render_view(scene, cam, actor, path, view, location, target, scale):
-    from mathutils import Vector
+def render_view(scene, cam, walls, actor, path, view, location, target, scale):
+    wall_key = "side" if view == "side" else "back" if view == "back" else "front"
+    for key, wall in walls.items():
+        wall.hide_render = key != wall_key
     cam.location = location
     cam.data.type = "ORTHO"
     cam.data.ortho_scale = scale
@@ -185,7 +191,7 @@ def main():
     out.mkdir(parents=True, exist_ok=True)
     label = ACTORS[args.actor][0]
     started = time.monotonic()
-    scene, cam = studio()
+    scene, cam, walls = studio()
     actor = build_actor(args.actor)
     views = [
         ("front", (0, -6, 1.20), (0, 0, 1.20), 3.0),
@@ -194,10 +200,10 @@ def main():
     ]
     render_times = {}
     for name, loc, target, scale in views:
-        render_times[name] = render_view(scene, cam, actor, out / (name + ".png"), name, loc, target, scale)
+        render_times[name] = render_view(scene, cam, walls, actor, out / (name + ".png"), name, loc, target, scale)
     tx, ty, tz, detail_scale = DETAIL_TARGETS[args.actor]
     render_times["detail"] = render_view(
-        scene, cam, actor, out / "detail.png", "detail",
+        scene, cam, walls, actor, out / "detail.png", "detail",
         (tx, -4.0, tz), (tx, ty, tz), detail_scale
     )
     sheet = contact_sheet(out, label)
