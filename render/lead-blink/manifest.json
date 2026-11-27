@@ -1,0 +1,54 @@
+{
+  "section": "blink",
+  "actor": "lead",
+  "render_engine": "BLENDER_EEVEE",
+  "denoising": false,
+  "resolution": [
+    1280,
+    720
+  ],
+  "fps": 24,
+  "eevee_taa_samples": 8,
+  "neutral_blink_frames": 240,
+  "neutral_blink_seconds": 10,
+  "neutral_blink_schedules": {
+    "Reel Lead": [
+      {
+        "start_seconds": 2.2208,
+        "end_seconds": 2.3635,
+        "closed_seconds": 0.1427
+      },
+      {
+        "start_seconds": 5.5981,
+        "end_seconds": 5.7311,
+        "closed_seconds": 0.133
+      },
+      {
+        "start_seconds": 8.3635,
+        "end_seconds": 8.5019,
+        "closed_seconds": 0.1384
+      }
+    ]
+  },
+  "blink_contract": {
+    "interval_seconds": [
+      2.0,
+      5.0
+    ],
+    "closed_seconds": [
+      0.12,
+      0.15
+    ],
+    "irregular_per_actor": true,
+    "minimum_consecutive_interval_difference_seconds": 0.45,
+    "expression_override": "sleep_closed",
+    "transition_expression": "blink_half",
+    "transition_frames_each_side": 1,
+    "review_sequence": [
+      "open",
+      "blink_half",
+      "sleep_closed",
+      "open"
+    ]
+  }
+}
