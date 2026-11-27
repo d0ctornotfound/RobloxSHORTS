@@ -356,3 +356,39 @@ Failure summary: food/body 23 samples (1–4, 26.5–29, 31–32.5, 57–59.5); 
 Classifier caveat: 11 bite samples 43–48 were conservatively flagged because the implementation added one torso-accessory contact to the arm/body count. They have arm/body=30, accessory=1 and zero outside-zone contacts; under the supervisor's literal arm/body <=30 gate, those 11 are not arm/body threshold failures. Even excluding them, 80 samples still fail, so the animation remains rejected.
 
 Strict food/head and food/arm, food-tip alignment and normal gap, grip, end-cap, support, segment length, joint continuity, framing and opposite-arm gates passed. Independent replay and 60-frame render were skipped. No MP4, visual sign-off or publication commit exists. EAT is now CLOSED as **bite-pose-approved / full-animation limitation**. No further EAT work. DRINK and HUG remain closed; all other locked motions remain unchanged.
+
+
+
+## Chapter 2 — facial expressions and automatic blinking (2026-11-27)
+
+### Audited character decal inventory
+
+The current repository's reusable character builders resolve seven character configurations: Lead, Friend, Teacher, Dad, Librarian, Student Green and Student Blue. Each builds the same complete 13-decal inventory: **neutral, happy, smug, tired, worried, laughing, shocked, surprised, sad, unimpressed, embarrassed, angry, sleep_closed**. All seven meet the required minimum set (neutral, happy, laughing, surprised, embarrassed, sad, angry, worried and sleepy/closed-eyes); no missing required decal was found in the current builders. Friend, Teacher and Librarian use identity-specific artwork; the other roles use the general face generator with role skin/hair/garment styling. This is an audit of the seven role configurations represented by the current reusable library, not a claim that every historical one-off scene file has been individually migrated.
+
+Sources: scripts/r6_character.py, scripts/r6_variant_character.py, scripts/library_character.py, scripts/r6_faces.py, scripts/r6_variant_textures.py, scripts/library_character_assets.py. The smoke workflow constructs all seven and asserts that every actor has all 13 materials and all nine required decals.
+
+### Reusable blink controller
+
+Source: [facial_expressions.py](scripts/facial_expressions.py). R6Character registers automatic blinking at construction; explicit scene-level control is also available:
+
+~~~python
+from facial_expressions import enable_blinking, disable_blinking
+
+# Enable deterministic but independently irregular blinks for all actors.
+# Optional seed makes a render reproducible.
+schedules = enable_blinking(scene, actors, seed=123)
+
+# Disable for a selected actor/list, or disable all registered actors in scene.
+disable_blinking(scene, actors)
+disable_blinking(scene)
+~~~
+
+Blinking is based on scene time and a persistent frame-change handler, not action phase, so it layers over any locomotion, pose or expression. Each actor gets a deterministic independent schedule: initial onset randomized in the first ~1.25–2.55 s; subsequent closed-lid events last 0.12–0.15 s and are separated by randomized 2–5 s open intervals. The existing sleep_closed decal is reused as the closed-lid frame. During a blink, the controller temporarily selects sleep_closed; on the next open frame it restores the actor's active expression. disable_blinking(scene) turns the system off scene-wide; disable_blinking(scene, actor_or_actors) disables only selected actors. Pass an explicit seed for repeatable renders. The smoke test on 2026-11-27 built all seven characters and validated the required decals, complete 13-expression inventory, closed-lid duration and irregular interval schedules; evidence: workflow 45997384683, artifact 15196422537.
+
+### Expression + body reaction rule
+
+A major emotional beat must not be authored as a face-material/decal swap alone. Use [library_acting.py](scripts/library_acting.py): act(actor, kind, t, position, yaw) couples expression to head, torso and arm reaction; sustained_laugh(actor, seconds, position, yaw) maintains a moving laugh with head nod, torso rock and shoulder/arm bounce. Existing beat recipes include surprise/recoil, embarrassed head-down and torso fold, angry lean, worried anticipation, greet, confidence and laugh. Minor neutral/continuity expression changes may use actor.pose(...); major emotional transitions in production must use a paired acting beat and should retain face-clearance checks. Do not replace this rule with a facial decal-only keyframe.
+
+### Chapter 2 reel specification
+
+scripts/render_expression_reel.py builds close-up expression coverage for all seven characters, a ten-second neutral multi-character blink shot, and two paired performances: Lead neutral → surprise → sustained laugh; Friend neutral → embarrassed. Neutral studio, Cycles denoising OFF. Reel must be rendered, inspected from actual pixels, and shown inline for user sign-off before marking the visual deliverable approved.
