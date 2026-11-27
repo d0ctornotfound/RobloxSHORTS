@@ -163,7 +163,11 @@ def main():
     if args.section in ("all","closeups"):
         stills=out/"stills";stills.mkdir(exist_ok=True)
         labelled=out/"labelled";labelled.mkdir(exist_ok=True)
-        scene.render.resolution_x=960;scene.render.resolution_y=540;scene.cycles.samples=12
+        if args.actor is None:
+            scene.render.resolution_x=960;scene.render.resolution_y=540
+        else:
+            scene.render.resolution_x=args.width;scene.render.resolution_y=args.height
+        scene.cycles.samples=12
         disable_blinking(scene,list(actors.values()))
         for key,label,kind in specs:
             for other in actors.values():visible(other,False)
@@ -245,7 +249,7 @@ def main():
             bpy.context.view_layer.update()
             render(scene,beat_dir/("frame_%06d.png"%(first_len+f-(start+first_len)+1)))
     if args.section=="closeups":
-        section_manifest={"section":"closeups","denoising":False,"resolution":[960,540],"samples":12,
+        section_manifest={"section":"closeups","denoising":False,"resolution":[scene.render.resolution_x,scene.render.resolution_y],"samples":12,
             "characters":[{"key":k,"label":label,"expressions":list(EXPRESSIONS)} for k,label,kind in specs],
             "expression_stills":len(list((out/"stills").glob("*.png")))}
     elif args.section=="blink":
