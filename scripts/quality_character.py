@@ -176,6 +176,10 @@ class Character(LegacyCharacter):
         for loop in mesh.loops:uv.data[loop.index].uv=[(0,0),(1,0),(1,1),(0,1)][loop.vertex_index]
         self.face=bpy.data.objects.new(name+" / expression decal",mesh)
         bpy.context.collection.objects.link(self.face);self.face.parent=self.root
+        bpy.context.view_layer.update()
+        face_world=self.face.matrix_world.copy()
+        self.face.parent=self.head
+        self.face.matrix_world=face_world
         self.meshes.append(self.face);self.face.data.materials.append(p["faces"]["neutral"])
         if role=="lead":
             self.meshes.append(hair_mass(name,self.root,p["hair"],"swept"))
