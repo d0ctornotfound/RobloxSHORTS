@@ -124,6 +124,7 @@ def main():
     ap=argparse.ArgumentParser()
     ap.add_argument("--output",default="render/expressions")
     ap.add_argument("--section",choices=("all","closeups","blink","beats"),default="all")
+    ap.add_argument("--smoke",action="store_true")
     args=ap.parse_args(sys.argv[sys.argv.index("--")+1:])
     out=Path(args.output).resolve();out.mkdir(parents=True,exist_ok=True)
     scene,cam=studio()
