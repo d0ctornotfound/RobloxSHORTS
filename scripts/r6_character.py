@@ -152,6 +152,9 @@ class R6Character:
             axis=(self.armature.matrix_world@pb.matrix).to_3x3().inverted()@(end-joint)
             self.leg_axes.append(axis.normalized())
         self.face_materials={e:face_material(e,face_dir) for e in EXPRESSIONS}
+        blink_half=Path(face_dir)/"blink_half.png"
+        if blink_half.is_file():
+            self.face_materials["blink_half"]=face_material("blink_half",face_dir)
         self.face=self._decal()
         self._accessories()
         self.pose("neutral")
