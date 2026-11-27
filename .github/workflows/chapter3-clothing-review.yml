@@ -1,0 +1,63 @@
+name: Chapter 3 — Clothing review (per-character EEVEE)
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'scripts/render_clothing_character.py'
+      - '.github/workflows/chapter3-clothing-review.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  render-character:
+    name: ${{ matrix.label }} — clothing views
+    runs-on: ubuntu-24.04
+    timeout-minutes: 35
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - actor: lead
+            label: Lead
+          - actor: friend
+            label: Friend
+          - actor: teacher
+            label: Teacher
+          - actor: dad
+            label: Dad
+          - actor: librarian
+            label: Librarian
+          - actor: patron_green
+            label: Student Green
+          - actor: patron_blue
+            label: Student Blue
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install Blender and render dependencies
+        run: |
+          for f in /etc/apt/sources.list.d/*; do
+            if [ -f "$f" ] && grep -q "packages.microsoft.com" "$f"; then sudo mv "$f" "$f.disabled"; fi
+          done
+          sudo apt-get update -o Acquire::Retries=3
+          sudo apt-get install -y --no-install-recommends blender python3-pil python3-numpy fonts-dejavu-core libegl1 libegl-mesa0 libgl1 libgl1-mesa-dri libgbm1
+      - name: Generate existing character textures
+        run: python3 scripts/library_character_assets.py
+      - name: Compile render code
+        run: python3 -m py_compile scripts/render_clothing_character.py scripts/library_character.py scripts/r6_variant_character.py scripts/r6_variant_textures.py
+      - name: Render this character only — EEVEE, denoising OFF
+        timeout-minutes: 25
+        env:
+          LIBGL_ALWAYS_SOFTWARE: "1"
+        run: |
+          mkdir -p "render/chapter3-clothing/${{ matrix.actor }}"
+          blender -b --python-exit-code 1 --python scripts/render_clothing_character.py -- \
+            --actor "${{ matrix.actor }}" \
+            --output "render/chapter3-clothing/${{ matrix.actor }}"
+      - name: Upload completed views even after partial failure
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: chapter3-clothing-${{ matrix.actor }}
+          path: render/chapter3-clothing/${{ matrix.actor }}/
+          if-no-files-found: warn
+          retention-days: 30
