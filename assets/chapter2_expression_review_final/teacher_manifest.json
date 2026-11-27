@@ -1,0 +1,34 @@
+{
+  "section": "closeups",
+  "render_engine": "BLENDER_EEVEE",
+  "denoising": false,
+  "resolution": [
+    1280,
+    720
+  ],
+  "fps": 24,
+  "eevee_taa_samples": 8,
+  "samples": 12,
+  "characters": [
+    {
+      "key": "teacher",
+      "label": "Teacher",
+      "expressions": [
+        "neutral",
+        "happy",
+        "smug",
+        "tired",
+        "worried",
+        "laughing",
+        "shocked",
+        "surprised",
+        "sad",
+        "unimpressed",
+        "embarrassed",
+        "angry",
+        "sleep_closed"
+      ]
+    }
+  ],
+  "expression_stills": 13
+}
