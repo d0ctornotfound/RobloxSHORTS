@@ -1,0 +1,63 @@
+name: Chapter 1 round eleven down-out bite pole and two-phase grip
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/chapter1-eat-pole.yml'
+permissions:
+  contents: read
+  actions: read
+jobs:
+  geometry-and-conditional-render:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 90
+    env:
+      R6_KNEE_BLEND: '0'
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/download-artifact@v4
+        with:
+          name: chapter1-round6-geometry-eat
+          run-id: 45970402223
+          github-token: ${{ github.token }}
+          path: render/carry
+      - uses: actions/download-artifact@v4
+        with:
+          name: chapter1-round9-geometry-eat-food
+          run-id: 45976704432
+          github-token: ${{ github.token }}
+          path: render/bite
+      - name: Install Blender
+        run: |
+          sudo apt-get update -o Dir::Etc::sourceparts=/dev/null -o Dir::Etc::sourcelist=/etc/apt/sources.list.d/ubuntu.sources
+          sudo apt-get install -y --no-install-recommends blender python3-pil python3-numpy ffmpeg fonts-dejavu-core
+          /usr/bin/python3 scripts/library_character_assets.py
+          python3 -m py_compile scripts/chapter1_eat_pole.py
+      - name: Re-solve bite with down-out pole then verify 119 samples
+        run: blender -b --python-exit-code 1 --python scripts/chapter1_eat_pole.py -- --output render/geometry --geometry-only --carry render/carry/geometry_plan.json --bite render/bite/search_report.json
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: chapter1-round11-geometry-eat-food
+          path: render/geometry/
+          if-no-files-found: warn
+      - name: Independently replay geometry then render
+        run: blender -b --python-exit-code 1 --python scripts/chapter1_eat_pole.py -- --output render/motion --plan render/geometry/geometry_plan.json
+      - name: Encode and retain render evidence
+        run: |
+          mkdir -p render/review
+          dir=render/motion/00_lead_eat_food
+          ffmpeg -v error -y -framerate 30 -i "$dir/frame_%04d.png" -c:v libx264 -crf 18 -pix_fmt yuv420p render/review/eat_food.mp4
+          cp "$dir/metrics.json" render/review/eat_food.json
+          for f in 0001 0012 0016 0021 0030 0039 0044 0048 0060; do cp "$dir/frame_$f.png" "render/review/eat_food_$f.png"; done
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: chapter1-round11-render-eat-food
+          path: |
+            render/review/
+            render/motion/replay_geometry.json
+          if-no-files-found: ignore
+      - name: Enforce performance after evidence upload
+        run: python3 -c 'import json; r=json.load(open("render/review/eat_food.json")); assert all(r["correction_gates"].values())'
