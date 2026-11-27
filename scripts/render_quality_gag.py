@@ -56,19 +56,22 @@ def render(scene,out,name):
 
 def main():
     p=argparse.ArgumentParser();p.add_argument("--part",type=int,required=True,help="-1 runs complete geometric preflight, no animation rendering");p.add_argument("--output",required=True);p.add_argument("--reuse-insert",type=Path,help="Exact original chunk 4 PNGs from run 45936954946")
-    p.add_argument("--test-profile",choices=("low","medium","high"),help="Supervisor lighting review only; no production renders")
+    p.add_argument("--test-profile",choices=("low","medium","high","restaged"),help="Supervisor lighting review only; no production renders")
     args=p.parse_args(sys.argv[sys.argv.index("--")+1:]);out=Path(args.output).resolve();out.mkdir(parents=True,exist_ok=True)
     if args.test_profile:
         assert args.part==-1 and not args.reuse_insert
     # Exact trial values, never applied to production mode before approval.
-    trials={"low":(230,70,.48),"medium":(340,100,.60),"high":(450,145,.74)}
-    test_frames={1,11,21,61,116,166} if args.test_profile else set()
+    trials={"low":(230,70,.48),"medium":(340,100,.60),"high":(450,145,.74),"restaged":(85,0,.74)}
+    restaged=args.test_profile=="restaged"
+    test_frames={1,11,21,61,166} if restaged else {1,11,21,61,116,166} if args.test_profile else set()
     trial_lower,trial_torso,trial_world=trials[args.test_profile] if args.test_profile else (780,480,.34)
     scene,atm,cam,lead=street_scene(48,540,960);scene.render.fps=FPS;scene.render.fps_base=1
     scene.cycles.use_denoising=False;scene.cycles.adaptive_threshold=.035;scene.render.use_persistent_data=True
     atm.apply("golden_hour")
     ambient=scene.world.node_tree.nodes.get("Background").inputs[1]
     original_world=float(ambient.default_value)
+    original_sun=float(atm.sun.data.energy);original_fill=float(atm.fill.data.energy);original_exposure=float(scene.view_settings.exposure)
+    if restaged:print("BASE_EXPOSURE_AUDIT",json.dumps({"sun":original_sun,"world":original_world,"front_fill":original_fill,"exposure":original_exposure,"hoodie_srgb_original":[104,111,116],"hoodie_srgb_trial":[85,91,95]}),flush=True)
     # Warm motivated, camera-side bounce follows the lead only in three singles.
     lower_fill=light("Gag lead localized lower-body bounce",(0,-2,1.0),(0,0,.55),0,2.2,(1,.87,.73))
     torso_fill=light("Gag lead localized torso bounce",(0,-2,2.1),(0,0,1.35),0,2.6,(1,.91,.81))
@@ -105,6 +108,9 @@ def main():
     end=Vector(walk["records"][-1]["root"])
     # Supervisor-approved shot design: establish geography once, then singles and insert.
     finish=Vector((-.72,.08,0));other=Vector((.76,.42,0))
+    # Constant shot-local translations preserve the contact-locked relative path.
+    wide_lead_shift=Vector((1.9,0,0)) if restaged else Vector((0,0,0))
+    wide_friend_shift=Vector((-1.6,0,0)) if restaged else Vector((0,0,0))
     fit={"design":"wide establishing, lead approach/wave/notice, gift insert, lead recoil, friend laugh","wide_total_minimum":.45,"singles_minimum":.45}
     offset=finish-end;offset.z=0
     pose(lead,"idle",0,finish,yaw);pose(friend,"idle",0,other,-.12)
@@ -120,9 +126,9 @@ def main():
     def wide_pose(sample_lock,f):
         t=f/FPS;scene.frame_set(f+1)
         sample_lock.step(t,smoothstep((t-2.03)/.37),yaw=heading(t))
-        lead.root.location+=offset;bpy.context.view_layer.update()
+        lead.root.location+=offset+wide_lead_shift;bpy.context.view_layer.update()
         lead.pose("neutral")
-        pose(friend,"idle",t,other,-.12);friend.pose("neutral")
+        pose(friend,"idle",t,other+wide_friend_shift,-.12);friend.pose("neutral")
         cam.data.shift_x=0;cam.data.shift_y=0
         for actor in heroes:
             for obj in actor.meshes:obj.hide_render=False
@@ -131,7 +137,9 @@ def main():
         bounds=metrics(scene,cam,heroes)
         face={a.role:face_clear(scene,cam,a) for a in heroes}
         lamp=check_lamps(scene,cam,heroes)
-        return {"frame":f+1,"bounds":bounds,"face":face,"lamp_overlap":lamp,
+        ratio=min(x["coverage"] for x in bounds)/max(x["coverage"] for x in bounds)
+        return {"frame":f+1,"bounds":bounds,"face":face,"lamp_overlap":lamp,"size_ratio":ratio,
+                "balance_pass":not restaged or (ratio>=.70 and sum(x["coverage"] for x in bounds)>=.75),
                 "body_pass":body_gate("establishing_wide",bounds),
                 "face_pass":face_gate(face),"lamp_pass":lamp_gate(lamp)}
     # Same candidate family and score as the prior revision. First-frame
@@ -153,6 +161,7 @@ def main():
                     apply(cam,"static",0,pos,q,lens)
                     bounds=metrics(scene,cam,heroes)
                     if not body_gate("establishing_wide",bounds):continue
+                    if restaged and (min(k["coverage"] for k in bounds)/max(k["coverage"] for k in bounds)<.70 or sum(k["coverage"] for k in bounds)<.75):continue
                     lamp=check_lamps(scene,cam,heroes)
                     if not lamp_gate(lamp):continue
                     face={a.role:face_clear(scene,cam,a) for a in heroes}
@@ -177,15 +186,15 @@ def main():
         for f in range(21):
             wide_pose(trial,f);apply(cam,"static",0,pos,target,lens)
             row=wide_sample(f);checks.append(row)
-            if not (row["body_pass"] and row["face_pass"] and row["lamp_pass"]):break
-        passed=len(checks)==21 and all(r["body_pass"] and r["face_pass"] and r["lamp_pass"] for r in checks)
+            if not (row["body_pass"] and row["face_pass"] and row["lamp_pass"] and row["balance_pass"]):break
+        passed=len(checks)==21 and all(r["body_pass"] and r["face_pass"] and r["lamp_pass"] and r["balance_pass"] for r in checks)
         attempted.append({"score":score,"position":list(pos),"target":list(target),"lens":lens,
                           "frames_tested":len(checks),"pass":passed,"last_check":checks[-1]})
         if passed:
             wide_camera=(pos,target,lens)
             save(out,"wide_candidate.json",{"position":list(pos),"target":list(target),"lens":lens,
                 "candidate_count":len(candidates),"candidates_tested":len(attempted),
-                "frames_tested":21,"pass":True,"frames":checks})
+                "frames_tested":21,"pass":True,"frames":checks,"lead_shift":list(wide_lead_shift),"friend_shift":list(wide_friend_shift)})
             break
     save(out,"wide_search_audit.json",{"first_frame_candidates":len(candidates),"attempts":attempted})
     if wide_camera is None:raise RuntimeError("No camera candidate passes all 21 establishing frames")
@@ -228,6 +237,8 @@ def main():
         insert=False
         if t<.70:
             heroes=[lead,friend];shot="establishing_wide"
+            lead.root.location+=wide_lead_shift;friend.root.location+=wide_friend_shift
+            bpy.context.view_layer.update()
             apply(cam,"static",0,*wide_camera)
         elif t<4.15 or 4.85<=t<6.35:
             heroes=[lead];shot="approach_single" if t<2.4 else "wave_notice_single" if t<4.15 else "recoil_single"
@@ -257,6 +268,15 @@ def main():
         # The gift insert and wide/friend lighting stay unchanged.
         lower_fill.data.energy=0;torso_fill.data.energy=0
         ambient.default_value=trial_world if args.test_profile and shot=="establishing_wide" else original_world
+        atm.sun.data.energy=original_sun;atm.fill.data.energy=original_fill;scene.view_settings.exposure=original_exposure
+        if restaged and shot=="establishing_wide":
+            # Broad camera-side bounce localized to the dark lead lower body.
+            base=lead.root.location.copy();base.z=0
+            forward=Vector((cam.location.x-base.x,cam.location.y-base.y,0)).normalized()
+            lower_fill.location=base+2.8*forward+Vector((0,0,1.2))
+            point_at(lower_fill,base+Vector((0,0,.52)));lower_fill.data.energy=115
+        if restaged and shot in ("approach_single","wave_notice_single","recoil_single"):
+            atm.sun.data.energy=1.7;atm.fill.data.energy=90;scene.view_settings.exposure=-.15
         if shot in ("approach_single","wave_notice_single","recoil_single"):
             x,y,_=lead.root.location
             a=heading(t) if t<2.4 else yaw
@@ -274,6 +294,7 @@ def main():
         lamps=check_lamps(scene,cam,heroes)
         prop_bounds=project(scene,cam,prop_points) if insert else None
         body_ok=body_gate(shot,b,prop_bounds)
+        if restaged and shot=="establishing_wide":body_ok=body_ok and min(x["coverage"] for x in b)/max(x["coverage"] for x in b)>=.70 and sum(x["coverage"] for x in b)>=.75
         face_ok=face_gate(face)
         lamp_ok=lamp_gate(lamps)
         rec={"frame":f+1,"time":t,"shot":shot,"bounds":b,"face":face,"lamp_overlap":lamps,"lead_beat":lead_beat,"friend_beat":friend_beat,"body_pass":body_ok,"face_pass":face_ok,"lamp_pass":lamp_ok,"prop_bounds":prop_bounds,"coverage_rule":"sum>=.45" if shot=="establishing_wide" else "prop_insert" if insert else "each>=.45"}
@@ -283,7 +304,7 @@ def main():
             if f+1 in test_frames:
                 assert body_ok and face_ok and lamp_ok,rec
                 rec["test_profile"]=args.test_profile
-                rec["test_light"]={"lower_w":lower_fill.data.energy,"torso_w":torso_fill.data.energy,"world_strength":float(ambient.default_value)}
+                rec["test_light"]={"lower_w":lower_fill.data.energy,"torso_w":torso_fill.data.energy,"world_strength":float(ambient.default_value),"sun":float(atm.sun.data.energy),"base_fill":float(atm.fill.data.energy),"exposure":float(scene.view_settings.exposure)}
                 rec["render_seconds"]=render(scene,out,"test_%04d"%(f+1))
             continue
         if first<=f<last:
