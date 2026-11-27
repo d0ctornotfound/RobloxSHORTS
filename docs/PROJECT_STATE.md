@@ -475,3 +475,15 @@ Failure summary: food/body 23 samples (1–4, 26.5–29, 31–32.5, 57–59.5); 
 Classifier caveat: 11 bite samples 43–48 were conservatively flagged because the implementation added one torso-accessory contact to the arm/body count. They have arm/body=30, accessory=1 and zero outside-zone contacts; under the supervisor's literal arm/body <=30 gate, those 11 are not arm/body threshold failures. Even excluding them, 80 samples still fail, so the animation remains rejected.
 
 Strict food/head and food/arm, food-tip alignment and normal gap, grip, end-cap, support, segment length, joint continuity, framing and opposite-arm gates passed. Independent replay and 60-frame render were skipped. No MP4, visual sign-off or publication commit exists. EAT is now CLOSED as **bite-pose-approved / full-animation limitation**. No further EAT work. DRINK and HUG remain closed; all other locked motions remain unchanged.
+
+
+
+## Chapter 2 — facial expressions (2026-11-27)
+
+**Audit:** seven reusable character configurations are present: Lead, Friend, Teacher, Dad, Librarian, Student Green and Student Blue. Each currently has all 13 decals: neutral, happy, smug, tired, worried, laughing, shocked, surprised, sad, unimpressed, embarrassed, angry and sleep_closed. All nine required expressions are present for all seven; no required decal gap in the reusable builders. This does not certify every historical one-off scene has been migrated.
+
+**Blink system:** scripts/facial_expressions.py. All R6Character instances register blinking automatically; scenes can explicitly use enable_blinking(scene, actors, seed=...) and disable_blinking(scene[, actors]). Per-actor deterministic irregular schedules, 0.12–0.15 s sleep_closed eyelid swaps and randomized 2–5 s open intervals. Frame-change handler layers the swap over existing motion/expression. Smoke test passed all seven builders and timing/decal assertions, workflow 45997384683 artifact 15196422537.
+
+**Major emotional acting rule:** do not make a major emotional beat a naked face swap. Use library_acting.act() for expression + head/torso/arm reaction, and sustained_laugh() for a continuous laugh reaction. The reel uses Lead neutral → surprise → laugh and Friend neutral → embarrassed, with body reactions.
+
+**Reel:** .github/workflows/facial-expressions.yml, scripts/render_expression_reel.py. Neutral studio, Cycles denoising OFF; 13 expression close-ups per character, 10-second seven-character neutral blink grid, and two paired emotional beats. Full render is in progress; no reel or visual approval is claimed until the workflow uploads the MP4 and the rendered pixels are inspected and shown inline.
