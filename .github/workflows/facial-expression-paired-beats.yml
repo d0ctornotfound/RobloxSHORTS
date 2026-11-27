@@ -1,0 +1,83 @@
+name: Chapter 2 — paired emotional beats (Lead and Friend)
+on:
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  paired-emotional-beats:
+    name: Lead surprise/laugh + Friend embarrassment
+    runs-on: ubuntu-24.04
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@v4
+      - name: Create partial-safe output directories
+        run: mkdir -p render/chapter2-paired-beats/beat_frames
+      - name: Install Blender, FFmpeg and image tools
+        run: |
+          for f in /etc/apt/sources.list.d/*; do
+            if [ -f "$f" ] && grep -q "packages.microsoft.com" "$f"; then sudo mv "$f" "$f.disabled"; fi
+          done
+          sudo apt-get update -o Acquire::Retries=3
+          sudo apt-get install -y --no-install-recommends blender ffmpeg python3-pil python3-numpy fonts-dejavu-core libegl1 libegl-mesa0 libgl1 libgl1-mesa-dri libgbm1
+      - name: Generate Lead and Friend face assets
+        run: python3 scripts/library_character_assets.py
+      - name: Validate renderer and strip builder
+        run: python3 -m py_compile scripts/render_expression_sections.py scripts/facial_expressions.py scripts/library_acting.py scripts/build_emotional_beat_strips.py
+      - name: Render paired head/body reactions — EEVEE, 720p
+        timeout-minutes: 18
+        env:
+          LIBGL_ALWAYS_SOFTWARE: "1"
+        run: |
+          blender -b --python-exit-code 1 --python scripts/render_expression_sections.py -- --section beats --actor lead --engine BLENDER_EEVEE --width 1280 --height 720 --output render/chapter2-paired-beats
+      - name: Encode beat clip and build paired reaction strips
+        if: always()
+        run: |
+          if [ "$(find render/chapter2-paired-beats/beat_frames -maxdepth 1 -name 'frame_*.png' | wc -l)" -eq 156 ]; then
+            ffmpeg -v error -y -framerate 24 -i render/chapter2-paired-beats/beat_frames/frame_%06d.png -c:v libx264 -crf 20 -preset medium -pix_fmt yuv420p -movflags +faststart render/chapter2-paired-beats/paired_emotional_beats.mp4
+          else
+            echo "BEAT_CLIP_NOT_ENCODED incomplete frame sequence" | tee render/chapter2-paired-beats/clip_status.txt
+          fi
+          if [ -d render/chapter2-paired-beats/beat_frames ] && compgen -G 'render/chapter2-paired-beats/beat_frames/frame_*.png' > /dev/null; then
+            python3 scripts/build_emotional_beat_strips.py --input render/chapter2-paired-beats/beat_frames --output-dir render/chapter2-paired-beats
+          fi
+      - name: Validate complete paired beat clip
+        if: success()
+        run: |
+          test -f render/chapter2-paired-beats/paired_emotional_beats.mp4
+          ffprobe -v error -select_streams v:0 -show_entries stream=width,height,r_frame_rate,nb_frames -show_entries format=duration -of json render/chapter2-paired-beats/paired_emotional_beats.mp4 | tee render/chapter2-paired-beats/ffprobe.json
+          python3 - <<'PY'
+          import json
+          d=json.load(open("render/chapter2-paired-beats/ffprobe.json"));s=d["streams"][0]
+          assert (s["width"],s["height"])==(1280,720),s
+          assert s["r_frame_rate"]=="24/1" and int(s["nb_frames"])==156,s
+          assert abs(float(d["format"]["duration"])-6.5)<.08,d
+          m=json.load(open("render/chapter2-paired-beats/manifest.json"))
+          assert m["paired_beats"][0]["frames"]==96 and m["paired_beats"][1]["frames"]==60,m
+          print("PAIRED_EMOTIONAL_BEATS_VALIDATED",json.dumps({"frames":s["nb_frames"],"duration":d["format"]["duration"]}),flush=True)
+          PY
+      - name: Upload full clip, strips and partial frames even on failure
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: chapter2-paired-emotional-beats
+          path: |
+            render/chapter2-paired-beats/paired_emotional_beats.mp4
+            render/chapter2-paired-beats/lead_emotional_strip.png
+            render/chapter2-paired-beats/friend_emotional_strip.png
+            render/chapter2-paired-beats/lead_emotional_overview.png
+            render/chapter2-paired-beats/manifest.json
+            render/chapter2-paired-beats/ffprobe.json
+            render/chapter2-paired-beats/clip_status.txt
+            render/chapter2-paired-beats/beat_frames/
+          if-no-files-found: warn
+          retention-days: 30
+      - name: Commit paired emotional clip and frame strips
+        if: success()
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add render/chapter2-paired-beats/paired_emotional_beats.mp4 render/chapter2-paired-beats/lead_emotional_strip.png render/chapter2-paired-beats/friend_emotional_strip.png render/chapter2-paired-beats/lead_emotional_overview.png render/chapter2-paired-beats/manifest.json render/chapter2-paired-beats/ffprobe.json
+          git commit -m "Add paired Chapter 2 emotional beat review clip and strips"
+          git push origin HEAD:main
