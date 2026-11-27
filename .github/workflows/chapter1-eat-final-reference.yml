@@ -2,7 +2,7 @@ name: EAT final round — approved bite classifier preflight
 on:
   push:
     branches: [main]
-    paths: ['.github/workflows/chapter1-eat-final-reference.yml']
+    paths: ['.github/workflows/chapter1-eat-final-reference.yml','scripts/chapter1_eat_final_round.py']
   workflow_dispatch:
 permissions:
   contents: read
