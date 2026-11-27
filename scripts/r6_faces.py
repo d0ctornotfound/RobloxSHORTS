@@ -10,7 +10,7 @@ def build_faces(output):
     output=Path(output);output.mkdir(parents=True,exist_ok=True)
     S=2048
     ink=(10,10,12,255);blush=(205,83,91,105)
-    for expr in EXPRESSIONS:
+    for expr in (*EXPRESSIONS,"blink_half"):
         im=Image.new("RGBA",(S,S),(0,0,0,0));d=ImageDraw.Draw(im)
         def box(x0,y0,x1,y1):return tuple(round(x*S) for x in (x0,y0,x1,y1))
         def oval(x,y,w,h,fill=ink):d.ellipse(box(x-w/2,y-h/2,x+w/2,y+h/2),fill=fill)
@@ -21,7 +21,10 @@ def build_faces(output):
             for x,y in (pts[0],pts[-1]):oval(x,y,width,width,fill)
         for i,x in enumerate((.34,.66)):
             sign=-1 if i==0 else 1
-            if expr=="sleep_closed":
+            if expr=="blink_half":
+                curve((x-.075,.365),(x,.385),(x+.075,.365),.027)
+                oval(x,.397,.036,.050)
+            elif expr=="sleep_closed":
                 curve((x-.075,.385),(x,.435),(x+.075,.385),.027)
             elif expr=="laughing":
                 curve((x-.075,.405),(x,.275),(x+.075,.405),.036)
