@@ -1,0 +1,71 @@
+name: Commit Chapter 2 expression review sheets
+on:
+  workflow_dispatch:
+permissions:
+  actions: read
+  contents: write
+jobs:
+  commit-expression-reviews:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - name: Download final Lead and six-character review artifacts
+        uses: actions/download-artifact@v4
+        with:
+          github-token: ${{ github.token }}
+          repository: ${{ github.repository }}
+          run-id: 46008612615
+          pattern: chapter2-*-expression-sheet
+          path: /tmp/chapter2-character-artifacts
+          merge-multiple: false
+      - name: Download refreshed Lead pilot
+        uses: actions/download-artifact@v4
+        with:
+          github-token: ${{ github.token }}
+          repository: ${{ github.repository }}
+          run-id: 46007443042
+          pattern: chapter2-lead-expression-refresh
+          path: /tmp/chapter2-lead-artifact
+          merge-multiple: false
+      - name: Assemble compact review library
+        run: |
+          python3 - <<'PY'
+          import json,shutil
+          from pathlib import Path
+          dest=Path("assets/chapter2_expression_review");dest.mkdir(parents=True,exist_ok=True)
+          roots=[Path("/tmp/chapter2-character-artifacts"),Path("/tmp/chapter2-lead-artifact")]
+          copied=[]
+          for root in roots:
+              for folder in root.iterdir():
+                  if not folder.is_dir():continue
+                  if folder.name=="chapter2-lead-expression-refresh":actor="lead"
+                  elif folder.name.startswith("chapter2-") and folder.name.endswith("-expression-sheet"):
+                      actor=folder.name[len("chapter2-"):-len("-expression-sheet")]
+                  else:continue
+                  sheet=folder/(f"{actor}_expression_contact_sheet.png" if actor!="lead" or "expression-sheet" in folder.name else "lead_expression_contact_sheet.png")
+                  qa=folder/(f"{actor}_pixel_qa.json" if actor!="lead" or "expression-sheet" in folder.name else "lead_pixel_qa.json")
+                  if not sheet.is_file() or not qa.is_file():raise FileNotFoundError((actor,sheet,qa))
+                  out=dest/actor;out.mkdir(exist_ok=True)
+                  shutil.copy2(sheet,out/"contact_sheet.png")
+                  shutil.copy2(qa,out/"pixel_qa.json")
+                  manifest=folder/"manifest.json"
+                  if manifest.is_file():shutil.copy2(manifest,out/"manifest.json")
+                  report=json.loads(qa.read_text())
+                  copied.append({"actor":actor,"expressions":report["expressions_rendered"],
+                      "exact_duplicates":len(report["exact_duplicate_pairs"]),
+                      "near_duplicates":len(report["near_duplicate_pairs"])})
+          if len(copied)!=7:raise RuntimeError(f"Expected 7 character reviews, got {copied}")
+          (dest/"INDEX.json").write_text(json.dumps(copied,indent=2)+"\n")
+          (dest/"README.md").write_text("# Chapter 2 facial expression review library\n\nSeven characters; 13 EEVEE expression stills each at 1280×720. Contact sheets and pixel-comparison QA are stored per character. Raw stills remain in the corresponding GitHub Actions artifacts.\n")
+          print(json.dumps(copied,indent=2),flush=True)
+          PY
+      - name: Commit contact sheets and pixel QA reports
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add assets/chapter2_expression_review
+          git commit -m "Add Chapter 2 expression contact sheets and pixel QA"
+          git push origin HEAD:main
