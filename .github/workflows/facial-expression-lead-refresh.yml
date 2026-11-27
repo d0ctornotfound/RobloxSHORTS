@@ -1,0 +1,63 @@
+name: Chapter 2 — Lead expression refresh after shocked fix
+on:
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/facial-expression-lead-refresh.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  lead-expression-refresh:
+    name: Lead — shocked distinction verification
+    runs-on: ubuntu-24.04
+    timeout-minutes: 20
+    env:
+      ACTOR: lead
+      LABEL: Lead
+      OUT: render/lead-expression-refresh
+    steps:
+      - uses: actions/checkout@v4
+      - name: Create partial-safe output directories
+        run: mkdir -p "$OUT/stills" "$OUT/labelled"
+      - name: Install Blender and image tools
+        run: |
+          for f in /etc/apt/sources.list.d/*; do
+            if [ -f "$f" ] && grep -q "packages.microsoft.com" "$f"; then sudo mv "$f" "$f.disabled"; fi
+          done
+          sudo apt-get update -o Acquire::Retries=3
+          sudo apt-get install -y --no-install-recommends blender python3-pil python3-numpy fonts-dejavu-core libegl1 libegl-mesa0 libgl1 libgl1-mesa-dri libgbm1
+      - name: Generate all character-specific face artwork
+        run: python3 scripts/library_character_assets.py
+      - name: Validate scripts
+        run: python3 -m py_compile scripts/render_expression_sections.py scripts/facial_expressions.py scripts/library_acting.py scripts/build_expression_contact_sheet.py scripts/audit_expression_duplicates.py
+      - name: Render Lead's 13 expressions — EEVEE, 720p
+        timeout-minutes: 15
+        env:
+          LIBGL_ALWAYS_SOFTWARE: "1"
+        run: |
+          blender -b --python-exit-code 1 --python scripts/render_expression_sections.py -- --section closeups --actor lead --engine BLENDER_EEVEE --width 1280 --height 720 --output "$OUT"
+      - name: Build partial-safe Lead contact sheet
+        if: always()
+        run: |
+          if compgen -G "$OUT/stills/*.png" > /dev/null; then
+            python3 scripts/build_expression_contact_sheet.py --input "$OUT/stills" --actor lead --label Lead --output "$OUT/lead_expression_contact_sheet.png"
+          else
+            echo "CONTACT_SHEET_SKIPPED no stills completed" | tee "$OUT/pilot_status.txt"
+          fi
+      - name: Pixel-compare all Lead expression pairs
+        if: always()
+        run: |
+          if compgen -G "$OUT/stills/*.png" > /dev/null; then
+            python3 scripts/audit_expression_duplicates.py --input "$OUT/stills" --actor lead --output "$OUT/lead_pixel_qa.json"
+          else
+            echo "PIXEL_QA_SKIPPED no stills completed" | tee "$OUT/pixel_qa_status.txt"
+          fi
+      - name: Upload all completed Lead stills and QA
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: chapter2-lead-expression-refresh
+          path: ${{ env.OUT }}/
+          if-no-files-found: warn
+          retention-days: 30
