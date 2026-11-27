@@ -35,6 +35,8 @@ def studio(engine="CYCLES",width=1280,height=720):
     scene.render.fps=FPS;scene.render.fps_base=1
     scene.cycles.samples=24;scene.cycles.use_denoising=False
     scene.cycles.adaptive_threshold=.025;scene.cycles.max_bounces=5
+    if engine=="BLENDER_EEVEE" and hasattr(scene,"eevee"):
+        scene.eevee.taa_render_samples=8
     scene.view_settings.view_transform="AgX"
     scene.view_settings.look="AgX - Medium High Contrast"
     scene.view_settings.exposure=0
@@ -131,7 +133,12 @@ def main():
     ap.add_argument("--height",type=int,default=720)
     args=ap.parse_args(sys.argv[sys.argv.index("--")+1:])
     out=Path(args.output).resolve();out.mkdir(parents=True,exist_ok=True)
-    specs=[x for x in ACTOR_SPECS if args.actor is None or x[0]==args.actor]
+    if args.section=="beats":
+        # The paired acting sequence requires both lead and friend even though
+        # the workflow is named/triggered as the Lead emotional-beat deliverable.
+        specs=[x for x in ACTOR_SPECS if x[0] in ("lead","friend")]
+    else:
+        specs=[x for x in ACTOR_SPECS if args.actor is None or x[0]==args.actor]
     scene,cam=studio(args.engine,args.width,args.height)
     scene.frame_start=1;scene.frame_end=240
     actors=build_actors(scene,specs)
@@ -189,32 +196,47 @@ def main():
         # independent irregular blink schedule; only head groups are shown so
         # eyelid movement stays legible at reel scale.
         scene.frame_start=1;scene.frame_end=10*FPS
-        scene.render.resolution_x=1280;scene.render.resolution_y=720;scene.cycles.samples=12
-        set_camera(cam,scene,"grid")
-        positions={
-            "lead":(-3.0,.70),"friend":(-1.0,.70),"teacher":(1.0,.70),"dad":(3.0,.70),
-            "librarian":(-2.0,-.70),"patron_green":(0.0,-.70),"patron_blue":(2.0,-.70)}
-        for key,actor in actors.items():
-            actor.root.location=(positions[key][0],0,positions[key][1])
-            actor.root.rotation_euler=(0,0,0);actor.pose("neutral");head_only(actor)
-        neutral_blink_schedules=enable_blinking(scene,list(actors.values()),seed=20261127)
+        scene.render.resolution_x=args.width;scene.render.resolution_y=args.height;scene.cycles.samples=12
         blink_dir=out/"blink_frames";blink_dir.mkdir(exist_ok=True)
-        blink_labels=[("Lead",200,270),("Friend",480,270),("Teacher",760,270),("Dad",1040,270),
-                      ("Librarian",340,550),("Student Green",640,550),("Student Blue",940,550)]
+        if len(actors)==1:
+            key,actor=next(iter(actors.items()))
+            actor.root.location=(0,0,0);actor.root.rotation_euler=(0,0,0)
+            actor.pose("neutral");head_only(actor)
+            set_camera(cam,scene,"close")
+            blink_labels=[(dict(ACTOR_SPECS)[key],args.width//2,args.height-54)]
+        else:
+            set_camera(cam,scene,"grid")
+            positions={
+                "lead":(-3.0,.70),"friend":(-1.0,.70),"teacher":(1.0,.70),"dad":(3.0,.70),
+                "librarian":(-2.0,-.70),"patron_green":(0.0,-.70),"patron_blue":(2.0,-.70)}
+            for key,actor in actors.items():
+                actor.root.location=(positions[key][0],0,positions[key][1])
+                actor.root.rotation_euler=(0,0,0);actor.pose("neutral");head_only(actor)
+            blink_labels=[("Lead",200,270),("Friend",480,270),("Teacher",760,270),("Dad",1040,270),
+                          ("Librarian",340,550),("Student Green",640,550),("Student Blue",940,550)]
+        neutral_blink_schedules=enable_blinking(scene,list(actors.values()),seed=20261127)
         for f in range(1,10*FPS+1):
             scene.frame_set(f);bpy.context.view_layer.update()
+            actor_label=next(iter(actors)) if len(actors)==1 else "all"
+            print(f"BLINK_FRAME_START {f}/{10*FPS} actor={actor_label}",flush=True)
             path=blink_dir/("frame_%06d.png"%f);render(scene,path)
             with Image.open(path) as raw:im=raw.convert("RGB")
             draw=ImageDraw.Draw(im,"RGBA")
             for label,x,y in blink_labels:
-                box=(x-104,y-5,x+104,y+38);draw.rounded_rectangle(box,radius=10,fill=(12,16,20,190))
-                bb=draw.textbbox((0,0),label,font=font(22));draw.text((x-(bb[2]-bb[0])/2,y),label,font=font(22),fill=(255,255,255,255))
+                if len(actors)==1:
+                    bb=draw.textbbox((0,0),label,font=font(22));x0=x-(bb[2]-bb[0])/2
+                    draw.rounded_rectangle((x0-12,y-8,x0+(bb[2]-bb[0])+12,y+32),radius=10,fill=(12,16,20,190))
+                    draw.text((x0,y-2),label,font=font(22),fill=(255,255,255,255))
+                else:
+                    box=(x-104,y-5,x+104,y+38);draw.rounded_rectangle(box,radius=10,fill=(12,16,20,190))
+                    bb=draw.textbbox((0,0),label,font=font(22));draw.text((x-(bb[2]-bb[0])/2,y),label,font=font(22),fill=(255,255,255,255))
             im.save(path,quality=95)
+            print(f"BLINK_FRAME_DONE {f}/{10*FPS} actor={actor_label} bytes={path.stat().st_size}",flush=True)
 
     if args.section in ("all","beats"):
         # Two paired expression/body performances. The acting helper drives head,
         # torso and arms together with the face; no major decal-only change.
-        scene.render.resolution_x=960;scene.render.resolution_y=540;scene.cycles.samples=12
+        scene.render.resolution_x=args.width;scene.render.resolution_y=args.height;scene.cycles.samples=12
         beat_dir=out/"beat_frames";beat_dir.mkdir(exist_ok=True)
         start=10*FPS+1;first_len=4*FPS;second_len=round(2.5*FPS)
         scene.frame_start=start;scene.frame_end=start+first_len+second_len-1
@@ -224,6 +246,8 @@ def main():
         visible(lead,True);lead.root.location=(0,0,0);lead.root.rotation_euler=(0,0,0)
         set_camera(cam,scene,"emotion")
         for f in range(start,start+first_len):
+            frame_no=f-start+1
+            print(f"BEAT_FRAME_START {frame_no}/{first_len+second_len} actor=lead",flush=True)
             scene.frame_set(f);t=(f-start)/FPS
             if t<.65:
                 motion_pose(lead,"idle",t,(0,0,0),0);lead.pose("neutral")
@@ -235,10 +259,13 @@ def main():
                 phase=sustained_laugh(lead,t-1.85,(0,0,0),0)
                 phase["reaction"]="head_tilt_torso_rock_shoulder_bounce"
             bpy.context.view_layer.update()
-            render(scene,beat_dir/("frame_%06d.png"%(f-start+1)))
+            path=beat_dir/("frame_%06d.png"%frame_no);render(scene,path)
+            print(f"BEAT_FRAME_DONE {frame_no}/{first_len+second_len} actor=lead bytes={path.stat().st_size}",flush=True)
         for other in actors.values():visible(other,False)
         visible(friend,True);friend.root.location=(0,0,0);friend.root.rotation_euler=(0,0,0)
         for f in range(start+first_len,start+first_len+second_len):
+            frame_no=first_len+f-(start+first_len)+1
+            print(f"BEAT_FRAME_START {frame_no}/{first_len+second_len} actor=friend",flush=True)
             scene.frame_set(f);t=(f-(start+first_len))/FPS
             if t<.5:
                 motion_pose(friend,"idle",t,(0,0,0),0);friend.pose("neutral")
@@ -247,20 +274,27 @@ def main():
                 phase=act(friend,"embarrassed",(t-.5)/2.0,(0,0,0),0)
                 phase["reaction"]="head_down_torso_fold_arms_in"
             bpy.context.view_layer.update()
-            render(scene,beat_dir/("frame_%06d.png"%(first_len+f-(start+first_len)+1)))
+            path=beat_dir/("frame_%06d.png"%frame_no);render(scene,path)
+            print(f"BEAT_FRAME_DONE {frame_no}/{first_len+second_len} actor=friend bytes={path.stat().st_size}",flush=True)
     if args.section=="closeups":
-        section_manifest={"section":"closeups","denoising":False,"resolution":[scene.render.resolution_x,scene.render.resolution_y],"samples":12,
+        section_manifest={"section":"closeups","render_engine":args.engine,"denoising":False,
+            "resolution":[scene.render.resolution_x,scene.render.resolution_y],"fps":FPS,
+            "eevee_taa_samples":getattr(getattr(scene,"eevee",None),"taa_render_samples",None),"samples":12,
             "characters":[{"key":k,"label":label,"expressions":list(EXPRESSIONS)} for k,label,kind in specs],
             "expression_stills":len(list((out/"stills").glob("*.png")))}
     elif args.section=="blink":
-        section_manifest={"section":"blink","denoising":False,"resolution":[1280,720],"samples":12,
+        section_manifest={"section":"blink","actor":args.actor or "all","render_engine":args.engine,
+            "denoising":False,"resolution":[args.width,args.height],"fps":FPS,
+            "eevee_taa_samples":getattr(getattr(scene,"eevee",None),"taa_render_samples",None),
             "neutral_blink_frames":10*FPS,"neutral_blink_seconds":10,
             "neutral_blink_schedules":neutral_blink_schedules,
             "blink_contract":{"interval_seconds":[2.0,5.0],"closed_seconds":[.12,.15],
                 "irregular_per_actor":True,"minimum_consecutive_interval_difference_seconds":.45,
                 "expression_override":"sleep_closed"}}
     else:
-        section_manifest={"section":"beats","denoising":False,"resolution":[960,540],"samples":12,
+        section_manifest={"section":"beats","render_engine":args.engine,"denoising":False,
+            "resolution":[args.width,args.height],"fps":FPS,
+            "eevee_taa_samples":getattr(getattr(scene,"eevee",None),"taa_render_samples",None),
             "paired_beats":[{"name":"neutral_to_surprise_to_laugh","character":"lead","frames":96},
                 {"name":"neutral_to_embarrassed","character":"friend","frames":60}]}
     (out/"manifest.json").write_text(json.dumps(section_manifest,indent=2)+"\n")
