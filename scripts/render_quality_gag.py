@@ -43,36 +43,39 @@ def main():
     scene.cycles.use_denoising=True;scene.cycles.adaptive_threshold=.065;scene.render.use_persistent_data=True
     atm.apply("golden_hour")
     friend=character("Gift giver","friend");ret=Retarget(lead)
-    yaw=.36;start=(0,0,0);rate=.72
-    lock=StrideLock(ret,"walk_cycle",FPS,rate,start,yaw)
+    yaw=.30;walk_yaw=1.40;start=(0,0,0);rate=.72
+    def heading(t):return walk_yaw+(yaw-walk_yaw)*smoothstep((t-2.03)/.37)
+    lock=StrideLock(ret,"walk_cycle",FPS,rate,start,walk_yaw)
     for f in range(WALK_END+1):
-        t=f/FPS;lock.step(t,smoothstep((t-2.03)/.37))
+        t=f/FPS;lock.step(t,smoothstep((t-2.03)/.37),yaw=heading(t))
     walk=lock.report()
     # Exercise run too; separate calibration only, not substituted into gag.
     run=StrideLock(ret,"run_cycle",FPS,.72,(0,0,0),yaw)
     for f in range(61):run.step(f/FPS)
     run_rec=run.report()
+    save(out,"calibration.json",{"walk":walk,"run":run_rec})
+    print("STRIDE_VALIDATION",json.dumps({k:{a:b for a,b in v.items() if a!="records"} for k,v in (("walk",walk),("run",run_rec))}),flush=True)
     # Use derived travel, not arbitrary speed. Translate entire path so it
     # ends at the marked stage position, preserving contact velocity.
-    finish=Vector((-.74,-.12,0));end=Vector(walk["records"][-1]["root"]);offset=finish-end;offset.z=0
+    finish=Vector((-.46,-.24,0));end=Vector(walk["records"][-1]["root"]);offset=finish-end;offset.z=0
     pose(lead,"idle",0,finish,yaw)
-    other=Vector((.68,.73,0));pose(friend,"idle",0,other,-.12)
+    other=Vector((.48,.46,0));pose(friend,"idle",0,other,-.12)
     p=palette();gift=build("gift_box","Surprise gift",pos=(.12,-.64,0),scale=.78,p=p)
     ball=build("ball","Surprise ball",pos=(.12,-.64,.16),scale=.75,p=p)
     lid=[o for o in gift.children if any(k in o.name for k in ("lid","ribbon","bow"))];original={o:o.location.copy() for o in lid}
     # The ball sits inside the closed opaque box until the lid releases.
     for o in ball.children:o.hide_render=True
     # Solve the static two-shot with widest meaningful gesture at payoff.
-    act(lead,"embarrassed",.72,finish,yaw);act(friend,"laugh",.72,other,-.12)
-    fit=fit_two_shot(scene,cam,[lead,friend],target=(0,.25,1.35),minimum=.45)
+    act(lead,"recoil",.72,finish,yaw);act(friend,"recoil",.72,other,-.12)
+    fit=fit_two_shot(scene,cam,[lead,friend],target=(0,.10,1.28),minimum=.45)
     print("GAG_TWO_SHOT",json.dumps(fit),flush=True)
     # Sequential playback ensures stance detection is the same on every runner.
-    lock=StrideLock(ret,"walk_cycle",FPS,rate,start,yaw)
+    lock=StrideLock(ret,"walk_cycle",FPS,rate,start,walk_yaw)
     rows=[];first=args.part*30;last=min(COUNT,first+30)
     for f in range(COUNT):
         t=f/FPS;scene.frame_set(f+1)
         if f<=WALK_END:
-            step=lock.step(t,smoothstep((t-2.03)/.37))
+            step=lock.step(t,smoothstep((t-2.03)/.37),yaw=heading(t))
             lead.root.location+=offset;bpy.context.view_layer.update()
             lead.pose("neutral")
             lead_beat={"beat":"imported_walk","expression":"neutral","body_weight":1}
@@ -97,10 +100,10 @@ def main():
         bpy.context.view_layer.update()
         if t<2.4:
             x,y,z=lead.root.location
-            apply(cam,"static",0,(x+.65,y-3.8,1.92),(x,y,1.28),53)
+            h=heading(t);apply(cam,"static",0,(x+2.8*math.sin(h),y-2.8*math.cos(h)-1.7,1.94),(x,y,1.27),48)
             heroes=[lead];shot="approach"
         elif t<3.25:
-            apply(cam,"static",0,(-.74+.25,-3.8,1.92),(-.74,-.12,1.31),49)
+            apply(cam,"static",0,(finish.x+.35,finish.y-4.25,1.92),(finish.x,finish.y,1.26),46)
             heroes=[lead];shot="wave"
         elif t<5.55:
             apply(cam,"static",0,fit["position"],fit["target"],fit["lens"])

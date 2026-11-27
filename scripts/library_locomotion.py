@@ -35,9 +35,11 @@ class StrideLock:
         # lowest point on each sole. This is an evaluated support-point proxy,
         # not a fixed material vertex or guarantee of zero rolling/slip.
         return [Vector((sum(verts[i].x for i in ids)/len(ids),sum(verts[i].y for i in ids)/len(ids),min(verts[i].z for i in ids))) for ids in self.soles]
-    def step(self,t,settle=0):
+    def step(self,t,settle=0,yaw=None):
         if self.last is not None and abs(t-self.last-1/self.fps)>1e-5:raise ValueError("StrideLock requires consecutive fixed-fps samples")
         local=self.sample_local(t,settle);low=min(p.z for p in local)
+        old_rot=self.rot.copy()
+        if yaw is not None:self.yaw=yaw;self.rot=Matrix.Rotation(yaw,3,"Z")
         if self.prev is None:
             support=min(range(2),key=lambda i:local[i].z);delta=Vector((0,0,0));speed=0
         else:
@@ -48,7 +50,7 @@ class StrideLock:
                 sweep=(local[i].y-self.prev[i].y)*self.fps
                 return sweep+(0.12 if i==self.support else 0)
             support=max(eligible,key=score)
-            delta=self.rot@(self.prev[support]-local[support]);delta.z=0
+            delta=old_rot@self.prev[support]-self.rot@local[support];delta.z=0
             self.pos+=delta
             speed=-((self.rot.inverted()@delta).y)*self.fps
         self.pos.z=self.start.z-low

@@ -1,5 +1,5 @@
 """Perfect Throw choreography port to the approved supplied R6 variant rig."""
-import argparse,json,math,sys
+import argparse,json,math,sys,tempfile
 from pathlib import Path
 sys.path.insert(0,str(Path(__file__).resolve().parent))
 import bpy
@@ -273,15 +273,37 @@ def main():
                 # Search physical positions and aim, using the whole segment's bounds.
                 cam.data.lens=52 if kind=="01_fold" else 48
                 cx=-.78 if kind=="02_throw" else 0
-                best=None
-                for dx in (0,-.55,.55,-1.1,1.1):
+                best=None;fold_candidates={}
+                for dx in ((0,-.55,.55,-1.1,1.1,-1.75,1.75,-2.4,2.4) if kind=="01_fold" else (0,-.55,.55,-1.1,1.1)):
                     for dist in (3.1,3.5,3.9,4.3,4.7):
-                        for z in ((2.1,2.35,2.65) if kind=="01_fold" else (1.48,1.75,2.0)):
+                        for z in ((1.55,1.85,2.1,2.35,2.65,2.9) if kind=="01_fold" else (1.48,1.75,2.0)):
                             for aimx in (-.25,0,.25):
                                 cam.location=(cx+dx,-dist,z);point_at(cam,(cx+aimx,-.15,1.73 if kind=="01_fold" else 1.40))
                                 m=measure();cov,ok,penalty,_,_=m
                                 score=(ok and min(cov.values())>=.40,min(cov.values())-penalty*12,ok)
                                 if best is None or score>best[0]:best=(score,cam.location.copy(),cam.rotation_euler.copy(),m)
+                                if kind=="01_fold" and ok and min(cov.values())>=.40:
+                                    bucket=(dx,z)
+                                    old=fold_candidates.get(bucket)
+                                    if old is None or score>old[0]:fold_candidates[bucket]=(score,cam.location.copy(),cam.rotation_euler.copy(),m)
+                if kind=="01_fold":
+                    from camera_visibility import visibility_gate
+                    old_pct=scene.render.resolution_percentage;scene.render.resolution_percentage=50
+                    scene.frame_set((lo+hi)//2);scene.camera=cam
+                    groups={n:[o for o in actors[n].meshes if o.type=="MESH" and o!=actors[n].face] for n in heroes}
+                    accepted=[]
+                    with tempfile.TemporaryDirectory() as tmp:
+                        for ix,candidate in enumerate(sorted(fold_candidates.values(),key=lambda a:a[0],reverse=True)[:18]):
+                            _,pos,rot,m=candidate
+                            cam.location=pos;cam.rotation_euler=rot;bpy.context.view_layer.update()
+                            gate=visibility_gate(scene,Path(tmp),"fold_search_"+str(ix),groups)
+                            worst=min(1-v["occluded_fraction"] for v in gate.values())
+                            print("FOLD_CAMERA_CANDIDATE",ix,list(pos),worst,json.dumps(gate),flush=True)
+                            if all(v["pass"] for v in gate.values()):
+                                accepted.append((worst,candidate));break
+                    scene.render.resolution_percentage=old_pct
+                    assert accepted,"No fold camera passed actual occlusion and projected framing"
+                    best=accepted[0][1]
                 _,pos,rot,result=best;cam.location=pos;cam.rotation_euler=rot
             cov,ok,penalty,bounds,widths=result
             parts.append({"segment":kind,"first":lo,"last":hi,"lens":cam.data.lens,"min_hero_vertical_coverage":cov,"coverage_goal_met":all(v>=.45 for v in cov.values()),"supervisor_minimum_met":all(v>=.40 for v in cov.values()),"safe_bounds_met":ok,"bounds":[min(v.x for v in bounds),max(v.x for v in bounds),min(v.y for v in bounds),max(v.y for v in bounds)],"min_plane_projected_width":min(widths)})
