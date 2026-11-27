@@ -31,8 +31,8 @@ def main():
     for i,event in enumerate(events,1):
         first_closed=math.ceil(float(event["start_seconds"])*fps)+1
         first_open=math.ceil(float(event["end_seconds"])*fps)+1
-        frame_ids=[max(1,first_closed-1),min(total,first_closed),
-                   min(total,max(first_closed,first_open-1)),min(total,first_open)]
+        frame_ids=[max(1,first_closed-2),max(1,first_closed-1),
+                   min(total,first_closed),min(total,first_open+1)]
         row={"event":i,"start_seconds":event["start_seconds"],"end_seconds":event["end_seconds"],
              "frames":frame_ids,"stages":list(stages)}
         rows.append(row)
