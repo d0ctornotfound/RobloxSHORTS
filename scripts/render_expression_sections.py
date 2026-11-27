@@ -126,7 +126,7 @@ def main():
     ap.add_argument("--section",choices=("all","closeups","blink","beats"),default="all")
     ap.add_argument("--smoke",action="store_true")
     ap.add_argument("--actor",default=None,choices=[x[0] for x in ACTOR_SPECS])
-    ap.add_argument("--engine",default="CYCLES",choices=["CYCLES","BLENDER_EEVEE_NEXT"])
+    ap.add_argument("--engine",default="CYCLES",choices=["CYCLES","BLENDER_EEVEE","BLENDER_EEVEE_NEXT"])
     ap.add_argument("--width",type=int,default=1280)
     ap.add_argument("--height",type=int,default=720)
     args=ap.parse_args(sys.argv[sys.argv.index("--")+1:])
