@@ -8,9 +8,30 @@ on:
 permissions:
   contents: read
 jobs:
-  motion:
+  smoke:
     runs-on: ubuntu-24.04
-    timeout-minutes: 55
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install Blender and generate existing character textures
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y --no-install-recommends blender python3-pil python3-numpy ffmpeg fonts-dejavu-core
+          /usr/bin/python3 scripts/library_character_assets.py
+          python3 -m py_compile scripts/character_motion.py scripts/render_character_motion.py
+      - name: Mandatory one-frame smoke test with actual reel profile
+        run: blender -b --python-exit-code 1 --python scripts/render_character_motion.py -- --part 0 --output render/smoke --smoke
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: character-motion-smoke
+          path: render/smoke/
+          if-no-files-found: error
+          retention-days: 30
+  motion:
+    needs: smoke
+    runs-on: ubuntu-24.04
+    timeout-minutes: 90
     strategy:
       fail-fast: false
       matrix:

@@ -21,7 +21,8 @@ CLIPS=[(role,action) for role in ("lead","friend") for action in ("walk","run","
 # 7 chunks of 3/4 clips. Per-frame geometry preflight before each render.
 def studio():
     s=configure("preview");s.render.resolution_x=640;s.render.resolution_y=480;s.render.fps=FPS
-    s.cycles.samples=16;s.cycles.use_denoising=True;s.cycles.adaptive_threshold=.10;s.render.use_persistent_data=True
+    s.cycles.samples=48;s.cycles.use_denoising=False;s.cycles.adaptive_threshold=.10;s.render.use_persistent_data=True
+    assert not s.cycles.use_denoising, 'CI Blender build lacks OpenImageDenoiser'
     s.view_settings.view_transform="AgX";s.view_settings.look="AgX - Medium High Contrast";s.view_settings.exposure=-.10
     bg=s.world.node_tree.nodes.get("Background");bg.inputs[0].default_value=(.50,.50,.50,1);bg.inputs[1].default_value=.45
     gray=matte("Plain neutral studio",(.32,.32,.32))
@@ -35,7 +36,7 @@ def studio():
 def set_visible(a,visible):
     for o in a.meshes:o.hide_render=not visible
 def main():
-    p=argparse.ArgumentParser();p.add_argument("--part",type=int,required=True);p.add_argument("--output",required=True)
+    p=argparse.ArgumentParser();p.add_argument("--part",type=int,required=True);p.add_argument("--output",required=True);p.add_argument("--smoke",action="store_true",help="Render exactly one frame using the actual reel profile")
     args=p.parse_args(sys.argv[sys.argv.index("--")+1:]);out=Path(args.output).resolve();out.mkdir(parents=True,exist_ok=True)
     scene,cam,lights=studio()
     lead=character("Motion lead","lead");friend=character("Motion friend","friend")
@@ -91,6 +92,12 @@ def main():
             if paired and name=="high_five":row["hand_contact_error"]=contact
             rows.append(row)
             scene.render.filepath=str(clip/f"frame_{f+1:04d}.png");bpy.ops.render.render(write_still=True)
+            if args.smoke:
+                proof=Path(scene.render.filepath)
+                assert proof.is_file() and proof.stat().st_size>0, "Smoke render missing"
+                (out/"smoke.json").write_text(json.dumps({"pass":True,"file":str(proof.relative_to(out)),"samples":scene.cycles.samples,"denoising":scene.cycles.use_denoising,"fps":scene.render.fps,"frame":f+1,"role":role,"action":name,"bounds":b},indent=2)+"\n")
+                print("MOTION_SMOKE_PASS",flush=True)
+                return
         report={"index":idx,"role":role,"action":name,"frames":N,"fps":FPS,"rows":rows,"motion_review_pending":True}
         if lock:
             report["stride"]=lock.report();assert report["stride"]["pass"],report["stride"]
