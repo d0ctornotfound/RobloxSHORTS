@@ -195,6 +195,9 @@ def main():
             planned,attempts=search_eat(scene,cam,actor,art,yaw,baseline["rows"],N)
         elif name=="drink":
             planned,attempts=search_drink(scene,cam,actor,art,cup,yaw,N)
+            if planned is None:
+                write(out/"search_report.json",{"action":"drink","geometry_pass":False,"search_attempts":attempts})
+                raise RuntimeError("No eligible all-frame exact grip; see search_report.json; no render")
         else:
             planned=[{} for f in range(N)]
         for f in range(N):

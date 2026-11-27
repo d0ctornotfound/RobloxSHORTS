@@ -69,15 +69,13 @@ def search_eat(scene,cam,a,art,yaw,baseline,N):
     print("EAT7_HEAD_SEARCH",json.dumps({"tested":len(candidates),"best":best[0]}),flush=True)
     return best[1],candidates
 
-def cup_support(arm,gq,gn,pole,yaw,roll,clear,branch,fu,fv,outward,diagnostic=False):
+def cup_support(arm,gq,gn,pole,yaw,roll,clear,branch,fu,fv,outward):
     # Distal cap local -Z must face -gn (toward the cup base). The old
     # unconstrained IK fallback could flip this normal by ~180 degrees.
     # Exact surface-plane IK is used for search; fallback is diagnostic only.
     sol=flat_contact(arm,gq,gn,yaw,(2,-1,fu,fv,branch,clear,Vector((0,0,0))))
-    exact=sol is not None
-    if sol is None:
-        if not diagnostic:return None
-        sol=arm.solve(gq,pole,yaw,roll,1.,clear)
+    if sol is None:return None
+    exact=True
     lm=Matrix(sol["matrices"][1])
     cap=(lm.to_3x3()@Vector((0,0,-1))).normalized()
     sol["cap_alignment"]=cap.dot(-gn)
@@ -89,7 +87,7 @@ def cup_support(arm,gq,gn,pole,yaw,roll,clear,branch,fu,fv,outward,diagnostic=Fa
     sol["support_clearance"]=min((v-gq).dot(gn) for v in sol["hand"][0])
     return sol
 
-def drink_eval(actor,art,cam,cup,p,yaw,params,prepared=None,diagnostic=False):
+def drink_eval(actor,art,cam,cup,p,yaw,params,prepared=None):
     raw=p["mouth_action"];w=min(1.,raw/.90);contact=raw>=.90
     decal,anchor,n,up,side,heads,other,body,extras=prepared or prep(actor,art)
     side_sign,tilt,az,offset,corner,grip,gripz,poleangle,poledepth,roll,way,drop=params
@@ -116,7 +114,7 @@ def drink_eval(actor,art,cam,cup,p,yaw,params,prepared=None,diagnostic=False):
     branch=1 if math.sin(poleangle)>=0 else -1
     fu=.15+.70*(.5+.5*math.cos(grip));fv=.15+.70*(.5+.5*math.sin(grip))
     outward=(actor.root.matrix_world.to_3x3()@Vector((1,0,0))).normalized()
-    sol=cup_support(arm,gq,gn,pole,yaw,roll,.004,branch,fu,fv,outward,diagnostic)
+    sol=cup_support(arm,gq,gn,pole,yaw,roll,.004,branch,fu,fv,outward)
     if sol is None:
         return None,{"geometry_pass":False,"search_constraints_pass":False,
             "search_rejection":"no reachable exact distal end-cap solution",
@@ -171,55 +169,51 @@ def search_drink(scene,cam,a,art,cup,yaw,N):
                int(not contact_ok(lat,norm)),max(0,below-.002))
         opts.append((score,(tilt,az,offset,corner)))
     opts.sort();clean=[x for x in opts if x[0]==(0,0,0,0)]
-    ranked=[];tested=0;peak_clean=0;hard_rejections=0;diagnostic_seed=None
+    ranked=[];tested=0;peak_clean=0;hard_rejections=0;rejected_exact=[];reasons={}
     for _,cp in (clean[:18] if clean else opts[:8]):
         for ss,grip,gz,pa,pd,roll in itertools.product((-1,1),[i*math.tau/8 for i in range(8)],
                 (-.07,-.025,.02),[i*math.tau/8 for i in range(8)],(.2,.8),(0,math.pi/2,-math.pi/2)):
             config=(ss,)+cp+(grip,gz,pa,pd,roll,.22,.22)
-            if diagnostic_seed is None:diagnostic_seed=config
-            score,row=drink_eval(a,art,cam,cup,p,angle,config,prepared,False);tested+=1
+            score,row=drink_eval(a,art,cam,cup,p,angle,config,prepared);tested+=1
             if score is None or row is None:
-                hard_rejections+=1;continue
+                hard_rejections+=1
+                reason=(row or {}).get("search_rejection","exact pose failed hard constraints")
+                reasons[reason]=reasons.get(reason,0)+1
+                if row and row.get("endcap_exact_solution"):
+                    rejected_exact.append(row)
+                continue
             ranked.append((score,config));peak_clean+=int(row["geometry_pass"])
             if peak_clean>=24:break
         if peak_clean>=24:break
     attempts=[{"cup_candidates":len(opts),"clean_cup_candidates":len(clean),"arm_candidates":tested,
-        "peak_geometry_clean":peak_clean,"hard_constraint_rejections":hard_rejections,"best_peak":ranked[:3]}]
-    if not ranked:
-        rows=[];config=diagnostic_seed
-        for f in range(N):
-            scene.frame_set(f+1);p,angle=profile_base(a,art,f/59,f/30,yaw)
-            _,row=drink_eval(a,art,cam,cup,p,angle,config,prepared=None,diagnostic=True);rows.append(row)
-        attempts[0]["no_eligible_peak_candidate"]=True
-        return rows,attempts
-    best=None;best_diagnostic=None
-    for _,c in ranked[:24]:
+        "peak_geometry_clean":peak_clean,"hard_constraint_rejections":hard_rejections,
+        "rejection_reasons":reasons,"eligible_peak_candidates":len(ranked),"best_peak":sorted(ranked)[:3]}]
+    # Rejected exact poses are diagnostic evidence only. No fallback
+    # ArmSolver.solve call and no missing matrices passed into replay.
+    if rejected_exact:
+        d=min(rejected_exact,key=lambda r:(r["arm_body_intersections"],max(0,.10-r["elbow_outward"]),max(0,.90-r["cap_alignment"])))
+        attempts[0]["best_rejected_exact_peak"]={k:v for k,v in d.items() if k not in ("arm_matrices","cup_matrix")}
+    print("DRINK9_PEAK",json.dumps(attempts[0]),flush=True)
+    if not ranked:return None,attempts
+    best=None;best_partial=None
+    for _,c in sorted(ranked)[:24]:
         rows=[];hard_frames=[]
         for f in range(N):
             scene.frame_set(f+1);p,angle=profile_base(a,art,f/59,f/30,yaw)
-            score,row=drink_eval(a,art,cam,cup,p,angle,c,diagnostic=False)
-            if score is None:
-                hard_frames.append(f+1)
-                _,row=drink_eval(a,art,cam,cup,p,angle,c,diagnostic=True)
-            rows.append(row)
+            sc,row=drink_eval(a,art,cam,cup,p,angle,c)
+            if sc is None:hard_frames.append(f+1)
+            rows.append(dict(row or {},frame=f+1))
         if hard_frames:
             attempts.append({"parameters":list(c),"hard_constraint_failed_frames":hard_frames})
-            if best_diagnostic is None or len(hard_frames)<best_diagnostic[0]:
-                best_diagnostic=(len(hard_frames),rows,c)
+            if best_partial is None or len(hard_frames)<best_partial[0]:best_partial=(len(hard_frames),rows)
             continue
         contacts=[r for r in rows if r["contact"]]
-        score=(sum(not r["geometry_pass"] for r in rows),
-            max(r["head_surface_intersections"] for r in rows),
-            max(r["cup_arm_intersections"] for r in rows),
-            max(r["arm_body_intersections"] for r in rows),
+        score=(sum(not r["geometry_pass"] for r in rows),max(r["head_surface_intersections"] for r in rows),
+            max(r["cup_arm_intersections"] for r in rows),max(r["arm_body_intersections"] for r in rows),
             max(r["lateral_alignment"] for r in contacts))
         attempts.append({"parameters":list(c),"score":list(score)})
         if best is None or score<best[0]:best=(score,rows)
         if score[0]==0:break
     if best is not None:return best[1],attempts
-    if best_diagnostic is not None:return best_diagnostic[1],attempts
-    rows=[];config=diagnostic_seed
-    for f in range(N):
-        scene.frame_set(f+1);p,angle=profile_base(a,art,f/59,f/30,yaw)
-        _,row=drink_eval(a,art,cam,cup,p,angle,config,diagnostic=True);rows.append(row)
-    return rows,attempts
+    if best_partial is not None:attempts.append({"best_partial":best_partial[1],"hard_failed_frame_count":best_partial[0]})
+    return None,attempts

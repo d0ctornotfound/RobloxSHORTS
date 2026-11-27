@@ -1,5 +1,5 @@
 name: Chapter 1 drink round nine — exact end-cap grip and outside elbow
-# Re-run after fixing Quaternion-to-matrix conversion; geometry settings unchanged.
+# Retry with diagnostic IK removed; exact search settings unchanged.
 on:
   workflow_dispatch:
   push:
