@@ -369,21 +369,22 @@ Sources: scripts/r6_character.py, scripts/r6_variant_character.py, scripts/libra
 
 ### Reusable blink controller
 
-Source: [facial_expressions.py](scripts/facial_expressions.py). R6Character registers automatic blinking at construction; explicit scene-level control is also available:
+Source: [facial_expressions.py](scripts/facial_expressions.py). The reusable API is:
 
 ~~~python
 from facial_expressions import enable_blinking, disable_blinking
 
-# Enable deterministic but independently irregular blinks for all actors.
-# Optional seed makes a render reproducible.
+# Enable for one actor or an iterable of actors in a scene.
 schedules = enable_blinking(scene, actors, seed=123)
 
-# Disable for a selected actor/list, or disable all registered actors in scene.
+# Disable selected actors, or all actors registered in this scene.
 disable_blinking(scene, actors)
 disable_blinking(scene)
 ~~~
 
-Blinking is based on scene time and a persistent frame-change handler, not action phase, so it layers over any locomotion, pose or expression. Each actor gets a deterministic independent schedule: initial onset randomized in the first ~1.25–2.55 s; subsequent blink start times are randomized 2–5 s apart; adjacent intervals are deliberately kept at least 0.45 s different to avoid a metronomic cadence. Each closed-lid event lasts 0.12–0.15 s. The existing sleep_closed decal is reused as the closed-lid frame. During a blink, the controller temporarily selects sleep_closed; on the next open frame it restores the actor's active expression. disable_blinking(scene) turns the system off scene-wide; disable_blinking(scene, actor_or_actors) disables only selected actors. Pass an explicit seed for repeatable renders. The smoke test on 2026-11-27 built all seven characters and validated the required decals, complete 13-expression inventory, closed-lid duration and irregular interval schedules; evidence: workflow 45998731264, artifact 15196803122.
+R6Character enables blinking by default. Use the explicit API when a scene needs a deterministic seed, a selected actor set, or an opt-out. Each actor receives an independently seeded irregular schedule. Blink starts are randomized at roughly 2–5 second intervals; the controller avoids adjacent intervals that differ by less than 0.45 seconds. Fully closed eyelids last 0.12–0.15 seconds. The existing `sleep_closed` decal is the fully closed frame. A generated identity-specific `blink_half` transition decal is shown for one frame while closing and one frame while reopening, then the actor's currently active expression is restored. Blinking is evaluated in scene time by a persistent frame-change handler, so it overlays locomotion, poses and expression tracks without advancing or replacing the underlying animation. The feature can be disabled scene-wide or per actor.
+
+**Approved visual standard (2026-11-27):** Lead's 10-second EEVEE demonstration has three natural blinks; full closure measured 0.133–0.143 seconds and the event strip clearly reads open → closing → closed → open. The user approved this system. Do not make blinking metronomic, hold the closed eyes longer, or let a blink permanently replace the active expression.
 
 ### Expression + body reaction rule
 
@@ -421,3 +422,16 @@ Run 46003241746 then completed 13/13 Lead expressions in EEVEE with all stills a
 **Visual QA finding:** Lead's shocked and surprised renders are pixel-identical (ImageChops difference bbox is empty), although they are separately named decal entries. All other expressions render and are visually distinguishable in the contact sheet. Treat the pilot as a technical render pass, but hold expansion to the remaining characters until the supervisor decides whether shocked should be a distinct expression or an intentional alias of surprised. Do not launch the remaining-character, blink or emotional-beat batches yet.
 
 The previous 960×540 pilot (run 46003241746, artifact 15199427136) is superseded. Use 46003877916 / artifact 15199816632 as the approved-resolution pilot evidence.
+
+
+### Chapter 2 — approved and closed (2026-11-27)
+
+The seven-character facial-expression library and reusable blink system are approved. This chapter is closed; no further expression redesign is authorized without a new supervisor instruction.
+
+**Standard inventory — 13 public expressions per character:** `neutral`, `happy`, `smug`, `tired`, `worried`, `laughing`, `shocked`, `surprised`, `sad`, `unimpressed`, `embarrassed`, `angry`, `sleep_closed`. All seven characters (Lead, Friend, Teacher, Dad, Librarian, Student Green, Student Blue) have identity-appropriate generated assets for all 13. `blink_half` is an internal transition decal used by the blink controller; it is not a fourteenth public story expression.
+
+**Final differentiation rules:** `worried` uses raised inner brows and a small tense mouth; `sad` uses brows drooping inward/outward as drawn in each identity set and a deeper downturned mouth. Teacher and Librarian `happy` use a visibly broader, deeper smile than neutral. Student `tired` uses heavy drooping eyelids and a slack mouth; `unimpressed` uses flatter half-lids and a sideways flat mouth. Neutral versus `sleep_closed` is intentionally accepted as open versus closed eyes, even where pixel QA reports it as a near pair. `shocked` remains distinctly higher intensity than `surprised` on all seven: larger/wider eyes, higher brows and larger open O mouth.
+
+**Major emotion rule:** pair major face changes with body acting. Use `library_acting.act()` for head/torso/arm reaction and `sustained_laugh()` for continuous head/torso/shoulder movement. Approved examples: Lead surprise recoil/lean, rocking laugh, and Friend bowed-head embarrassment with arms drawn inward. No naked major face swaps.
+
+**Final review:** the 10-second blink demo and paired emotional-beat clip were rendered in EEVEE at 1280×720, 24fps, denoising off, inspected and approved. The six sheets re-rendered for the final differentiation pass in run 46016634372; the unchanged Friend sheet remains from the preceding approved batch. Final sheets and per-character pixel-QA reports are published under `assets/chapter2_expression_review_final/`. The final QA contract permits only the accepted neutral/sleep_closed near-pair; all other exact/near-duplicate flags must be absent. Publisher workflow: `.github/workflows/publish-chapter2-expression-refresh.yml`.
