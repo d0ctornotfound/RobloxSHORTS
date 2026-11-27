@@ -220,7 +220,7 @@ def facial_hair(kind):
 
 # Garment atlas: top-left front, top-right back, bottom-left sides, bottom-right caps.
 COLORS={"hoodie":(104,111,116),"jacket":(176,142,95),"tee":(219,198,151),"cardigan":(161,49,87),"jeans":(34,39,46),"yellow_denim":(244,164,2),"stripe_pants":(25,28,33),"blue_denim":(25,64,128),"teacher_trousers":(47,39,57),"green_tee":(33,151,56),"blue_tee":(25,89,200),"green_student_denim":(29,75,162),"blue_student_denim":(250,188,3)}
-def cloth(kind,skin=None):
+def cloth(kind,skin=None,physical_details=False):
     S=512;atlas=Image.new("RGB",(1024,1024))
     base=COLORS[kind.split("_sleeve")[0]]
     rng=np.random.default_rng(17)
@@ -279,10 +279,11 @@ def cloth(kind,skin=None):
                 poly([(.03,.025),(.33,.02),(.5,.16),(.67,.02),(.97,.025),(.97,.13),(.5,.235),(.03,.13)],lit)
                 for px in (.43,.57):
                     line([(px,.16),(px-.01,.38),(px+.015,.48)],(191,196,197),.012)
-                poly([(.28,.61),(.72,.61),(.81,.84),(.19,.84)],dark)
-                poly([(.30,.63),(.70,.63),(.78,.82),(.22,.82)],base)
-                line([(.29,.65),(.22,.80)],lit,.012);line([(.71,.65),(.78,.80)],lit,.012)
-                stitch(.30,.625,.70,.625);stitch(.24,.827,.76,.827)
+                if not physical_details:
+                    poly([(.28,.61),(.72,.61),(.81,.84),(.19,.84)],dark)
+                    poly([(.30,.63),(.70,.63),(.78,.82),(.22,.82)],base)
+                    line([(.29,.65),(.22,.80)],lit,.012);line([(.71,.65),(.78,.80)],lit,.012)
+                    stitch(.30,.625,.70,.625);stitch(.24,.827,.76,.827)
             elif panel==1:poly([(.12,.02),(.88,.02),(.78,.24),(.5,.37),(.22,.24)],dark)
         elif kind=="jacket":
             if panel==0:
@@ -291,11 +292,12 @@ def cloth(kind,skin=None):
                     a=.33 if k==0 else .67
                     line([(a,.04),(a,.98)],dark,.018)
                     poly([(a,.02),(a+(-.12 if k==0 else .12),.02),(a+(-.035 if k==0 else .035),.26)],(224,207,176))
-                pocket(.075,.30,.29,.54);pocket(.71,.30,.925,.54)
-                for x0,x1 in ((.075,.29),(.71,.925)):
-                    rect((x0,.30,x1,.36),dark);rect((x0+.009,.306,x1-.009,.349),base)
-                    stitch(x0+.018,.373,x1-.018,.373,lit)
-                    d.ellipse(q(((x0+x1)/2-.012,.325,(x0+x1)/2+.012,.349)),fill=(222,209,184))
+                if not physical_details:
+                    pocket(.075,.30,.29,.54);pocket(.71,.30,.925,.54)
+                    for x0,x1 in ((.075,.29),(.71,.925)):
+                        rect((x0,.30,x1,.36),dark);rect((x0+.009,.306,x1-.009,.349),base)
+                        stitch(x0+.018,.373,x1-.018,.373,lit)
+                        d.ellipse(q(((x0+x1)/2-.012,.325,(x0+x1)/2+.012,.349)),fill=(222,209,184))
                 stitch(.035,.08,.035,.91);stitch(.965,.08,.965,.91)
                 for yy in (.31,.49,.67,.85):d.ellipse(q((.315,yy,.34,yy+.025)),fill=(219,208,183))
             elif panel==1:line([(.12,.2),(.5,.28),(.88,.2)],dark,.014)

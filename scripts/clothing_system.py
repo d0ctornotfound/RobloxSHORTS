@@ -52,7 +52,9 @@ def _fabric_profile(kind):
         return {"u": 38, "v": 26, "noise": 175, "distance": 0.0030, "roughness": 0.94}
     if "denim" in kind or kind in ("jeans", "teacher_trousers", "stripe_pants"):
         return {"u": 145, "v": 112, "noise": 205, "distance": 0.0025, "roughness": 0.88}
-    if kind in ("tee", "green_tee", "blue_tee"):
+    if kind in ("green_tee", "blue_tee"):
+        return {"u": 47, "v": 39, "noise": 115, "distance": 0.0055, "roughness": 0.93}
+    if kind == "tee":
         return {"u": 112, "v": 92, "noise": 185, "distance": 0.0018, "roughness": 0.90}
     if kind == "hoodie":
         return {"u": 76, "v": 62, "noise": 160, "distance": 0.0025, "roughness": 0.92}
@@ -111,17 +113,52 @@ def _add_fabric_shader(material, kind):
 
     bump = nodes.new("ShaderNodeBump")
     bump.label = "Chapter 3 woven fabric bump"
-    bump.inputs["Strength"].default_value = 0.23 if "cardigan" not in kind else 0.28
+    bump.inputs["Strength"].default_value = 0.58 if kind in ("green_tee", "blue_tee") else 0.23 if "cardigan" not in kind else 0.28
     bump.inputs["Distance"].default_value = profile["distance"]
     nt.links.new(height.outputs[0], bump.inputs["Height"])
     nt.links.new(bump.outputs["Normal"], bs.inputs["Normal"])
 
 
 def _material(actor, token):
-    for mat in actor.body.data.materials:
-        if mat and token in mat.name:
+    # Use the atlas slot actually assigned to the polygons, not the
+    # earlier unused solid-color slot with a similar name.
+    used = {p.material_index for p in actor.body.data.polygons}
+    for i, mat in enumerate(actor.body.data.materials):
+        if i in used and mat and mat.name.split(" / ")[-1].split(".")[0] == token.strip(" /"):
             return mat
     raise RuntimeError("Missing garment material %s / %s" % (actor.role, token))
+
+
+def _clean_candidate_atlas(material, kind):
+    """Private in-memory texture; legacy generated atlas stays unchanged."""
+    from r6_variant_textures import cloth
+    import tempfile
+    from pathlib import Path
+    with tempfile.TemporaryDirectory() as tmp:
+        path = Path(tmp) / (kind + "_physical.png")
+        cloth(kind, physical_details=True).save(path)
+        img = bpy.data.images.load(str(path), check_existing=False)
+        img.pack()
+    for node in material.node_tree.nodes:
+        if node.type == "TEX_IMAGE":
+            node.image = img
+
+
+def _cover_shoulder_caps(actor, material):
+    # The UV cap panel maps its vertical coordinate across depth, so the
+    # painted hand stripe can land on the upper shoulder. Override only
+    # horizontal top caps with fabric. Preserve bare hands/forearms.
+    ob = actor.body
+    idx = len(ob.data.materials)
+    ob.data.materials.append(material)
+    for group in ARM_GROUPS:
+        lo, hi = bounds(group_points(ob, group))
+        for poly in ob.data.polygons:
+            if dominant_group(ob, ob.data.vertices[poly.vertices[0]]) != group:
+                continue
+            zs = [(ob.matrix_world @ ob.data.vertices[i].co).z for i in poly.vertices]
+            if min(zs) >= hi.z - 0.035:
+                poly.material_index = idx
 
 
 def _make_shell(actor, label, groups, arm_cutoff=None):
@@ -263,12 +300,39 @@ def _add_hoodie_details(actor, shirt_material):
     center = (lo + hi) * 0.5
     extent = hi - lo
     front = lo.y - 0.022
-    _add_box(
-        actor, "hoodie kangaroo pocket",
-        (center.x, front, lo.z + extent.z * 0.28),
-        (extent.x * 0.54, 0.026, extent.z * 0.22),
-        shirt_material, bevel=0.022
-    )
+    # Tapered, curved pouch: a shallow perimeter and a fuller middle,
+    # with continuous UVs, smooth normals and actual cloth thickness.
+    verts, faces, coords = [], [], []
+    nx, nz = 12, 8
+    for j in range(nz + 1):
+        v = j / nz
+        halfwidth = extent.x * (0.29 - 0.075 * v)
+        for i in range(nx + 1):
+            u = i / nx
+            q = 2*u - 1
+            x = center.x + q * halfwidth
+            z = lo.z + extent.z * (0.15 + 0.24*v + 0.012*(1-q*q))
+            depth = 0.005 + 0.027 * math.sin(math.pi*u) * math.sin(math.pi*v)**0.75
+            verts.append((x, lo.y - 0.009 - depth, z))
+            coords.append((u, v))
+    for j in range(nz):
+        for i in range(nx):
+            a = j*(nx+1)+i
+            faces.append((a, a+1, a+nx+2, a+nx+1))
+    mesh = bpy.data.meshes.new(actor.role + " tapered fabric pouch")
+    mesh.from_pydata(verts, [], faces); mesh.update()
+    ob = bpy.data.objects.new(actor.root.name + " / tapered kangaroo pouch", mesh)
+    bpy.context.collection.objects.link(ob)
+    mesh.materials.append(shirt_material)
+    uv = mesh.uv_layers.new(name="Pouch weave")
+    for p in mesh.polygons:
+        p.use_smooth = True
+        for k in p.loop_indices:
+            uv.data[k].uv = coords[mesh.loops[k].vertex_index]
+    solid = ob.modifiers.new("Pouch textile edge", "SOLIDIFY")
+    solid.thickness = 0.004
+    solid.offset = -1
+    actor.attach_mesh(ob, "torso")
     cord = matte(actor.role + " hoodie drawcord", (0.70, 0.72, 0.73))
     for sign in (-1, 1):
         _add_box(
@@ -400,6 +464,9 @@ def upgrade_character(actor):
     solid_pants = _solid_fabric(actor, cfg["pants"])
     solid_sleeve = _solid_fabric(actor, cfg["sleeve"], "sleeve edge")
 
+    if cfg["shirt"] in ("hoodie", "jacket"):
+        _clean_candidate_atlas(shirt, cfg["shirt"])
+    _cover_shoulder_caps(actor, solid_sleeve)
     shirt_groups = (TORSO_GROUP,) + ARM_GROUPS
     _make_shell(actor, "shirt and sleeves", shirt_groups, arm_cutoff=cfg["sleeve_cutoff"])
     _make_shell(actor, "trousers", LEG_GROUPS)
@@ -438,7 +505,7 @@ def upgrade_character(actor):
         "sleeve_cutoff_fraction_from_wrist": cfg["sleeve_cutoff"],
         "fabric_shader": "UV cross-weave / knit bump + atlas color and stitched artwork",
         "garment_shells": ["shirt and sleeves", "trousers"],
-        "shell_thickness_scene_units": 0.010,
+        "shell_thickness_local_units": 0.010,
         "raised_details": {
             "cuffs": True,
             "denim_back_pockets": cfg["pants"] in ("jeans", "yellow_denim", "blue_denim", "green_student_denim", "blue_student_denim"),
