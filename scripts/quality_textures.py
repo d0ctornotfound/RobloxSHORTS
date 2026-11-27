@@ -63,32 +63,72 @@ class Canvas:
 
 def face_canvas(expression):
     c=Canvas(1024)
-    ink=(22,16,13,255)
-    white=(255,248,231,255)
-    tongue=(239,105,93,255)
-    if expression=="happy":
-        # Classic two bold oval eyes and a broad single curved smile.
-        for x in (.32,.68):
-            c.ellipse(x,.65,.046,.078,ink)
-        c.line([(x,.285+.115*((x-.5)/.23)**2) for x in (.27+i*.46/40 for i in range(41))],.052,ink)
-    elif expression=="shocked":
-        for x in (.32,.68):
-            c.ellipse(x,.64,.057,.092,ink)
-            c.line([(x-.073,.79),(x,.82),(x+.073,.79)],.032,ink)
-        c.ellipse(.50,.35,.104,.132,ink)
-        c.ellipse(.50,.286,.057,.035,tongue)
+    ink=(22,16,13,255);white=(255,248,231,255);blush=(205,83,91,105)
+    def curve(a,b,d,width=.035,color=ink):
+        pts=[]
+        for n in range(41):
+            t=n/40
+            pts.append(((1-t)**2*a[0]+2*t*(1-t)*b[0]+t*t*d[0],
+                        (1-t)**2*a[1]+2*t*(1-t)*b[1]+t*t*d[1]))
+        c.line(pts,width,color)
+    for idx,x in enumerate((.32,.68)):
+        sign=-1 if idx==0 else 1
+        if expression=="sleep_closed":
+            curve((x-.075,.65),(x,.70),(x+.075,.65),.026)
+        elif expression=="laughing":
+            curve((x-.075,.66),(x,.52),(x+.075,.66),.034)
+        elif expression in ("tired","unimpressed"):
+            c.ellipse(x+(.018 if expression=="tired" else 0),.65,.038,.047,ink)
+            curve((x-.08,.60),(x,.585),(x+.08,.60),.026)
+        elif expression=="smug":
+            c.ellipse(x+.02,.65,.034,.046,ink)
+            curve((x-.08,.60),(x,.57),(x+.08,.60),.024)
+        elif expression=="embarrassed":
+            c.ellipse(x-.018*sign,.675,.034,.045,ink)
+            curve((x-.075,.60),(x,.585),(x+.075,.60),.024)
+        elif expression=="angry":
+            c.ellipse(x,.65,.038,.045,ink)
+            if idx==0:curve((x-.09,.52),(x,.55),(x+.09,.60),.035)
+            else:curve((x-.09,.60),(x,.55),(x+.09,.52),.035)
+        elif expression in ("shocked","surprised"):
+            c.ellipse(x,.65,.045,.085,ink)
+            c.ellipse(x-.01,.635,.012,.018,white)
+            curve((x-.085,.54),(x,.51),(x+.085,.54),.024)
+        else:
+            c.ellipse(x,.65,.039,.058,ink)
+            if expression in ("worried","sad"):
+                if idx==0:curve((x-.085,.60),(x,.56),(x+.085,.585),.026)
+                else:curve((x-.085,.585),(x,.56),(x+.085,.60),.026)
+            else:
+                curve((x-.08,.59),(x,.575),(x+.08,.59),.023)
+    if expression=="embarrassed":
+        c.ellipse(.22,.48,.06,.032,blush);c.ellipse(.78,.48,.06,.032,blush)
+    if expression=="laughing":
+        c.ellipse(.50,.34,.18,.125,ink)
+        c.rect(.36,.385,.64,.415,white)
+        c.ellipse(.50,.305,.065,.025,(175,64,68,255))
+    elif expression in ("shocked","surprised"):
+        c.ellipse(.50,.34,.10,.13,ink)
+        c.ellipse(.50,.275,.058,.025,(175,64,68,255))
+    elif expression=="happy":
+        curve((.27,.40),(.50,.63),(.73,.40),.050)
     elif expression=="sad":
-        for x in (.32,.68):
-            c.ellipse(x,.63,.042,.071,ink)
-        c.line([(.245,.75),(.38,.80)],.032,ink)
-        c.line([(.62,.80),(.755,.75)],.032,ink)
-        c.line([(.32,.29),(.39,.35),(.50,.375),(.61,.35),(.68,.29)],.046,ink)
+        curve((.30,.30),(.50,.52),(.70,.30),.045)
+    elif expression=="angry":
+        curve((.32,.34),(.50,.49),(.68,.34),.043)
+    elif expression=="worried":
+        curve((.32,.30),(.50,.43),(.68,.30),.035)
+    elif expression=="embarrassed":
+        curve((.41,.36),(.50,.31),(.59,.36),.022)
+    elif expression=="smug":
+        curve((.34,.35),(.55,.34),(.69,.42),.038)
+    elif expression=="unimpressed":
+        curve((.36,.35),(.50,.36),(.64,.35),.030)
+    elif expression=="tired":
+        curve((.36,.34),(.50,.39),(.64,.34),.028)
     else:
-        for x in (.32,.68):
-            c.ellipse(x,.65,.045,.075,ink)
-        c.line([(.34,.36),(.44,.335),(.56,.335),(.66,.36)],.040,ink)
-    # Scale all ink (not the head) to 60% about its visual center,
-    # then lower the center to 36% of the UV panel height.
+        curve((.35,.36),(.50,.33),(.65,.36),.028)
+    # Keep the complete expression small and low on the head UV.
     small=Canvas(1024)
     n=c.n
     for y in range(n):
@@ -97,10 +137,9 @@ def face_canvas(expression):
         for x in range(n):
             sx=round((x/n-.50)/.60*n+.50*n)
             if 0<=sx<n:
-                i=(sy*n+sx)*4;j=(y*n+x)*4
-                small.data[j:j+4]=c.data[i:i+4]
+                src=(sy*n+sx)*4;dst=(y*n+x)*4
+                small.data[dst:dst+4]=c.data[src:src+4]
     return small
-
 
 def face_material(expression):
     im=face_canvas(expression).image("Hero face 1024 / "+expression)
