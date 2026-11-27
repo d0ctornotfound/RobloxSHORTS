@@ -125,7 +125,7 @@ def bite_candidate(a,art,ctx,arm,old,yaw,config):
     l=arm.l;um,lm=map(Matrix,sol["matrices"])
     pole=pole_metrics(a,l,um,lm)
     cap=(lm.to_3x3()@Vector((0,0,-1))).normalized().dot(-n)
-    body=ctx[6]
+    body=ctx[7]
     ab=overlap(world(sliced(l.upper,-.25*l.a),um),[body])+overlap(sol["lower"],[body])
     row=dict(old,arm_matrices=sol["matrices"],endcap_exact_solution=True,cap_alignment=cap,grip_gap=sol["gap"],
         support_clearance=sol["surface_clearance"],arm_body_intersections=ab,**pole)
