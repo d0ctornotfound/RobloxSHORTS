@@ -1,0 +1,85 @@
+name: Chapter 2 — Lead ten-second EEVEE blink demo
+on:
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  lead-blink-demo:
+    name: Lead — 10s blink clip and event strips
+    runs-on: ubuntu-24.04
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@v4
+      - name: Create partial-safe output directories
+        run: mkdir -p render/lead-blink/blink_frames
+      - name: Install Blender, FFmpeg and image tools
+        run: |
+          for f in /etc/apt/sources.list.d/*; do
+            if [ -f "$f" ] && grep -q "packages.microsoft.com" "$f"; then sudo mv "$f" "$f.disabled"; fi
+          done
+          sudo apt-get update -o Acquire::Retries=3
+          sudo apt-get install -y --no-install-recommends blender ffmpeg python3-pil python3-numpy fonts-dejavu-core libegl1 libegl-mesa0 libgl1 libgl1-mesa-dri libgbm1
+      - name: Generate Lead and supporting face assets
+        run: python3 scripts/library_character_assets.py
+      - name: Validate renderer and blink strip builder
+        run: python3 -m py_compile scripts/render_expression_sections.py scripts/facial_expressions.py scripts/build_blink_event_strip.py
+      - name: Render Lead's 10-second blink animation — EEVEE, 720p
+        timeout-minutes: 18
+        env:
+          LIBGL_ALWAYS_SOFTWARE: "1"
+        run: |
+          blender -b --python-exit-code 1 --python scripts/render_expression_sections.py -- --section blink --actor lead --engine BLENDER_EEVEE --width 1280 --height 720 --output render/lead-blink
+      - name: Encode 240-frame ten-second clip and build blink event strips
+        if: always()
+        run: |
+          if [ "$(find render/lead-blink/blink_frames -maxdepth 1 -name 'frame_*.png' | wc -l)" -eq 240 ]; then
+            ffmpeg -v error -y -framerate 24 -i render/lead-blink/blink_frames/frame_%06d.png -c:v libx264 -crf 20 -preset medium -pix_fmt yuv420p -movflags +faststart render/lead-blink/lead_blink_10s.mp4
+          else
+            echo "BLINK_CLIP_NOT_ENCODED incomplete frame sequence" | tee render/lead-blink/clip_status.txt
+          fi
+          if [ -f render/lead-blink/manifest.json ] && [ -d render/lead-blink/blink_frames ]; then
+            python3 scripts/build_blink_event_strip.py --input render/lead-blink --manifest render/lead-blink/manifest.json --actor lead --output render/lead-blink/lead_blink_event_strip.png
+          fi
+      - name: Validate complete clip metadata
+        if: success()
+        run: |
+          test -f render/lead-blink/lead_blink_10s.mp4
+          ffprobe -v error -select_streams v:0 -show_entries stream=width,height,r_frame_rate,nb_frames -show_entries format=duration -of json render/lead-blink/lead_blink_10s.mp4 | tee render/lead-blink/ffprobe.json
+          python3 - <<'PY'
+          import json
+          d=json.load(open("render/lead-blink/ffprobe.json"))
+          s=d["streams"][0]
+          assert (s["width"],s["height"])==(1280,720),s
+          assert s["r_frame_rate"]=="24/1",s
+          assert int(s["nb_frames"])==240,s
+          assert abs(float(d["format"]["duration"])-10.0)<.08,d
+          m=json.load(open("render/lead-blink/manifest.json"))
+          assert m["neutral_blink_frames"]==240 and m["neutral_blink_seconds"]==10,m
+          assert len(m["neutral_blink_schedules"]["Reel Lead"])>=2,m
+          print("LEAD_BLINK_CLIP_VALIDATED",json.dumps({"frames":s["nb_frames"],"duration":d["format"]["duration"],"events":len(m["neutral_blink_schedules"]["Reel Lead"])}),flush=True)
+          PY
+      - name: Upload full clip, event strips and completed frames even on failure
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: chapter2-lead-blink-10s
+          path: |
+            render/lead-blink/lead_blink_10s.mp4
+            render/lead-blink/lead_blink_event_strip.png
+            render/lead-blink/lead_blink_event_strip.json
+            render/lead-blink/manifest.json
+            render/lead-blink/ffprobe.json
+            render/lead-blink/clip_status.txt
+            render/lead-blink/blink_frames/
+          if-no-files-found: warn
+          retention-days: 30
+      - name: Commit the full blink clip and review strips to the repository
+        if: success()
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add render/lead-blink/lead_blink_10s.mp4 render/lead-blink/lead_blink_event_strip.png render/lead-blink/lead_blink_event_strip.json render/lead-blink/manifest.json render/lead-blink/ffprobe.json
+          git commit -m "Add Lead 10-second blink demonstration and event strips"
+          git push origin HEAD:main
