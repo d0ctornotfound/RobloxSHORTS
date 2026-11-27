@@ -1,0 +1,119 @@
+name: Chapter 1 round four geometry-first
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/chapter1-round4.yml'
+permissions:
+  contents: read
+env:
+  R6_KNEE_BLEND: '1'
+jobs:
+  geometry:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 90
+    strategy:
+      fail-fast: false
+      matrix:
+        motion: [point,eat,drink,hug]
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install Blender and generate existing character textures
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y --no-install-recommends blender python3-pil python3-numpy fonts-dejavu-core
+          /usr/bin/python3 scripts/library_character_assets.py
+          python3 -m py_compile scripts/chapter1_round4_solver.py scripts/render_chapter1_round4.py
+      - name: Solve and independently verify every frame without rendering
+        run: blender -b --python-exit-code 1 --python scripts/render_chapter1_round4.py -- --motion ${{ matrix.motion }} --output render/geometry --geometry-only
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: chapter1-round4-geometry-${{ matrix.motion }}
+          path: render/geometry/
+          if-no-files-found: warn
+          retention-days: 30
+  motion:
+    needs: geometry
+    runs-on: ubuntu-24.04
+    timeout-minutes: 90
+    strategy:
+      fail-fast: false
+      matrix:
+        motion: [point,eat,drink,hug]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/download-artifact@v4
+        with:
+          name: chapter1-round4-geometry-${{ matrix.motion }}
+          path: render/geometry
+      - name: Install Blender and generate existing character textures
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y --no-install-recommends blender python3-pil python3-numpy ffmpeg fonts-dejavu-core
+          /usr/bin/python3 scripts/library_character_assets.py
+      - name: Independently replay all solved frames, then render only if clean
+        run: blender -b --python-exit-code 1 --python scripts/render_chapter1_round4.py -- --motion ${{ matrix.motion }} --output render/motion --plan render/geometry/geometry_plan.json
+      - name: Encode clips and preserve evidence
+        run: |
+          mkdir -p render/review
+          for dir in render/motion/*/; do
+            name=$(basename "$dir")
+            ffmpeg -v error -y -framerate 30 -i "$dir/frame_%04d.png" -c:v libx264 -crf 18 -pix_fmt yuv420p "render/review/$name.mp4"
+            cp "$dir/metrics.json" "render/review/$name.json"
+            for f in 0001 0012 0022 0025 0034 0045 0060; do cp "$dir/frame_$f.png" "render/review/${name}_$f.png"; done
+          done
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: chapter1-round4-part-${{ matrix.motion }}
+          path: |
+            render/review/
+            render/motion/replay_geometry.json
+          if-no-files-found: warn
+          retention-days: 30
+  assemble:
+    needs: motion
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/download-artifact@v4
+        with:
+          pattern: chapter1-round4-part-*
+          path: render/parts
+      - name: Assemble correction reel and review strips
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y ffmpeg python3-pil
+          mkdir -p render/final/clips
+          find render/parts -name '*.mp4' -exec cp {} render/final/clips/ \;
+          find render/parts -path '*/review/*.json' -exec cp {} render/final/clips/ \;
+          find render/parts -path '*/review/*.png' -exec cp {} render/final/clips/ \;
+          test "$(find render/final/clips -name '*.mp4' | wc -l)" -eq 4
+          cd render/final
+          for f in clips/*.mp4; do echo "file '$f'"; done > concat.txt
+          ffmpeg -v error -y -f concat -safe 0 -i concat.txt -c copy motion_reel.mp4
+          ffprobe -v error -show_streams -show_format -of json motion_reel.mp4 > ffprobe.json
+          /usr/bin/python3 - <<'PY'
+          import json
+          from pathlib import Path
+          from PIL import Image,ImageDraw
+          paths=sorted(Path("clips").glob("*.mp4"));reports=[]
+          sheet=Image.new("RGB",(6*240,len(paths)*200),(24,24,24));d=ImageDraw.Draw(sheet)
+          for y,p in enumerate(paths):
+              r=json.loads(p.with_suffix(".json").read_text());reports.append({k:v for k,v in r.items() if k!="rows"})
+              for x,n in enumerate(("0001","0012","0022","0034","0045","0060")):
+                  im=Image.open(p.parent/(p.stem+"_"+n+".png"));im.thumbnail((240,180));sheet.paste(im,(x*240,y*200))
+              d.text((4,y*200+182),p.stem,fill="white")
+          sheet.save("motion_sheet.png")
+          Path("motion_metrics.json").write_text(json.dumps(reports,indent=2)+"\n")
+          failures=[{"action":r["action"],"gate":k} for r in reports for k,v in r["correction_gates"].items() if not v]
+          Path("correction_gate_report.json").write_text(json.dumps({"pass":not failures,"failures":failures,"visual_review_pending":True},indent=2)+"\n")
+          PY
+      - uses: actions/upload-artifact@v4
+        with:
+          name: chapter1-round4-reel
+          path: render/final/
+          retention-days: 30
+      - name: Enforce final performance gates after uploading evidence
+        run: python3 -c 'import json; r=json.load(open("render/final/correction_gate_report.json")); print(r); assert r["pass"], r["failures"]'

@@ -188,13 +188,14 @@ def mouth_solve(actor,art,cam,cup,yaw,p,prior=None):
             if gq is None:gq,_,_=nearest(cg,origin+gn*.08)
             sol=arm.solve(gq,gn,pole,yaw,roll,1.,clearance=.003)
             cgap=sol["gap"]
+            cup_arm=overlap(cg,[sol["upper"],sol["lower"]]+other)
             cuphead=overlap(cg,headparts)
             # Non-rim cup vertices must remain below the mouth line at sip.
             below=max(v.z-decal.z for j,v in enumerate(cg[0]) if not 32<=j<96)
             cupmat=matlist(cm)
         else:
             sol=arm.solve(anchor,n,pole,yaw,roll,w,clearance=cl)
-            cg=None;rim=None;cuphead=0;below=0;cgap=0;cupmat=None
+            cg=None;rim=None;cuphead=0;below=0;cgap=0;cupmat=None;cup_arm=0;gq=None
         geoms=[sol["upper"],sol["lower"]]
         headhits=sum(overlap(g,headparts) for g in geoms)+cuphead
         face=rays(cam,actor,[actorbody]+other+geoms+([cg] if cg else []))
@@ -205,10 +206,11 @@ def mouth_solve(actor,art,cam,cup,yaw,p,prior=None):
         clear=sol["surface_clearance"]
         support_pen=max(0,-clear-.001) if contact and not cup else 0
         grip_pen=max(0,cgap-.02) if cup else 0
-        valid=headhits==0 and face==0 and (not contact or gap<=.02) and support_pen<=1e-6 and (not cup or (cgap<=.02 and (not contact or below<=.002)))
-        score=(int(not valid),headhits+face, max(0,gap-.02) if contact else 0,grip_pen+support_pen+max(0,below-.002) if contact or cup else 0,gap if contact else 0)
+        valid=headhits==0 and face==0 and (not contact or gap<=.02) and support_pen<=1e-6 and (not cup or (cgap<=.02 and cup_arm==0 and (not contact or below<=.002)))
+        score=(int(not valid),headhits+face+cup_arm, max(0,gap-.02) if contact else 0,grip_pen+support_pen+max(0,below-.002) if contact or cup else 0,gap if contact else 0)
         row={"face_body_blocked_samples":face,"head_surface_intersections":headhits,"hand_to_mouth":handgap,
              "cup_rim_to_mouth":rim,"mouth_action":raw,"contact":contact,"grip_gap":cgap,"cup_body_above_mouth":below,
+             "cup_arm_intersections":cup_arm,"grip_anchor":list(gq) if gq is not None else None,
              "hand_outward_clearance":clear,"measured_half_thickness":sol["half_thickness"],
              "mouth_decal_anchor":list(decal),"head_surface_anchor":list(anchor),"hand_surface_point":sol["hand_surface_point"],
              "parameters":list(params),"arm_matrices":sol["matrices"],"cup_matrix":cupmat,"geometry_pass":valid}
