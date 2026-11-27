@@ -4,6 +4,9 @@ on:
     branches: [main]
     paths:
       - 'scripts/render_clothing_character.py'
+      - 'scripts/clothing_system.py'
+      - 'scripts/r6_variant_textures.py'
+      - 'scripts/library_character.py'
       - '.github/workflows/chapter3-clothing-review.yml'
   workflow_dispatch:
 permissions:
