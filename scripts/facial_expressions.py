@@ -40,10 +40,18 @@ class BlinkController:
         rng = random.Random(self.seed)
         cursor = rng.uniform(1.25, 2.55)
         self.events = []
+        last_gap = None
         while cursor < duration:
             length = rng.uniform(*self.closed)
             self.events.append((cursor, cursor + length))
-            cursor += length + rng.uniform(*self.interval)
+            gap = rng.uniform(*self.interval)
+            if last_gap is not None:
+                for _ in range(24):
+                    if abs(gap - last_gap) >= .45:
+                        break
+                    gap = rng.uniform(*self.interval)
+            last_gap = gap
+            cursor += length + gap
 
     def is_closed(self, scene, frame):
         self._build(scene)
