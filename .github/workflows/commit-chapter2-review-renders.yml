@@ -1,0 +1,75 @@
+name: Commit Chapter 2 review renders
+on:
+  workflow_run:
+    workflows: ["Chapter 2 — paired emotional beats (Lead and Friend)"]
+    types: [completed]
+    branches: [main]
+permissions:
+  actions: read
+  contents: write
+jobs:
+  commit-review-renders:
+    name: Commit validated blink and emotional review outputs
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+      - name: Download validated Lead blink artifact
+        uses: actions/download-artifact@v4
+        with:
+          name: chapter2-lead-blink-10s
+          repository: d0ctornotfound/RobloxSHORTS
+          run-id: 46011106287
+          github-token: ${{ github.token }}
+          path: render/lead-blink
+      - name: Download paired emotional beat artifact
+        uses: actions/download-artifact@v4
+        with:
+          name: chapter2-paired-emotional-beats
+          repository: d0ctornotfound/RobloxSHORTS
+          run-id: ${{ github.event.workflow_run.id }}
+          github-token: ${{ github.token }}
+          path: render/chapter2-paired-beats
+      - name: Validate both review videos and remove raw frame sequences
+        run: |
+          set -euo pipefail
+          test -f render/lead-blink/lead_blink_10s.mp4
+          test -f render/lead-blink/lead_blink_event_strip.png
+          test -f render/lead-blink/manifest.json
+          test -f render/chapter2-paired-beats/paired_emotional_beats.mp4
+          test -f render/chapter2-paired-beats/lead_emotional_strip.png
+          test -f render/chapter2-paired-beats/friend_emotional_strip.png
+          test -f render/chapter2-paired-beats/manifest.json
+          sudo apt-get update -o Acquire::Retries=3
+          sudo apt-get install -y --no-install-recommends ffmpeg
+          ffprobe -v error -select_streams v:0 -show_entries stream=width,height,r_frame_rate,nb_frames -show_entries format=duration -of json render/lead-blink/lead_blink_10s.mp4 > render/lead-blink/ffprobe.json
+          ffprobe -v error -select_streams v:0 -show_entries stream=width,height,r_frame_rate,nb_frames -show_entries format=duration -of json render/chapter2-paired-beats/paired_emotional_beats.mp4 > render/chapter2-paired-beats/ffprobe.json
+          python3 - <<'PY'
+          import json
+          for root,frames,duration in [
+              ("render/lead-blink",240,10.0),
+              ("render/chapter2-paired-beats",156,6.5),
+          ]:
+              d=json.load(open(root+"/ffprobe.json"));s=d["streams"][0]
+              assert (s["width"],s["height"],s["r_frame_rate"],int(s["nb_frames"]))==(1280,720,"24/1",frames),s
+              assert abs(float(d["format"]["duration"])-duration)<.08,d
+          print("CHAPTER2_REVIEW_RENDERS_VALIDATED")
+          PY
+          rm -rf render/lead-blink/blink_frames render/chapter2-paired-beats/beat_frames
+      - name: Commit review videos, strips and manifests with rebase-safe push
+        run: |
+          set -euo pipefail
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add render/lead-blink/lead_blink_10s.mp4 render/lead-blink/lead_blink_event_strip.png render/lead-blink/lead_blink_event_strip.json render/lead-blink/manifest.json render/lead-blink/ffprobe.json
+          git add render/chapter2-paired-beats/paired_emotional_beats.mp4 render/chapter2-paired-beats/lead_emotional_strip.png render/chapter2-paired-beats/friend_emotional_strip.png render/chapter2-paired-beats/lead_emotional_overview.png render/chapter2-paired-beats/manifest.json render/chapter2-paired-beats/ffprobe.json
+          if git diff --cached --quiet; then
+            echo "Review renders already present on main; no commit needed"
+            exit 0
+          fi
+          git commit -m "Add Chapter 2 blink and paired emotional review renders"
+          git fetch origin main
+          git rebase origin/main
+          git push origin HEAD:main
