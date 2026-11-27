@@ -6,3 +6,7 @@
 ## Supplied locomotion animation
 
 `assets/animations/run_walk_roblox.bin`, supplied by user, embedded credit **godofsun95** ("Made In Blender"). License not established; do not assume official Roblox authorship or redistribution permission. Exact source and SHA-256 in [animations/SOURCE.md](animations/SOURCE.md). Supervisor approved conversion; source endpoints preserved.
+
+
+## MCRD San Diego static map harvest
+Original builder **LoneWolf_Alfa**, [MCRD San Diego](https://builtbybit.com/resources/mcrd-san-diego.62883/) (free release, Free EULA, attribution required). User-provided RBXL SHA-256 0d383e8e4ee0b3162e79f856efc22e8fa00a213b477fd2a496b36f500388eed1. 10 primitive-model GLBs / 187 visible parts harvested privately; source RGB/CFrames retained, PBR approximation. Do not redistribute original/derived assets in public repository without permission. Third-party Roblox mesh/texture dependencies require separate access and rights. See [harvest README](harvest/README.md).
