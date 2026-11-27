@@ -28,7 +28,10 @@ def face(expr,identity="young"):
     for i,x in enumerate((.34,.66)):
         sign=-1 if i==0 else 1
         ey=.385
-        if expr=="sleep_closed":curve((x-.075,ey),(x,ey+.050),(x+.075,ey),.025)
+        if expr=="blink_half":
+            curve((x-.075,ey-.020),(x,ey+.008),(x+.075,ey-.020),.025)
+            oval(x,ey+.025,.035,.045,dark)
+        elif expr=="sleep_closed":curve((x-.075,ey),(x,ey+.050),(x+.075,ey),.025)
         elif expr=="laughing":curve((x-.08,ey),(x,ey-.12),(x+.08,ey),.032)
         elif expr=="embarrassed":
             oval(x-.018*sign,ey+.022,.060,.086,dark)
@@ -106,7 +109,10 @@ def character_face(expr,identity):
     im=Image.alpha_composite(shade.filter(ImageFilter.GaussianBlur(33)),im);d=ImageDraw.Draw(im)
     for i,x in enumerate((.34,.66)):
         y=.405 if comic else .392
-        if expr=="sleep_closed":curve((x-.075,y),(x,y+.045),(x+.075,y),.025)
+        if expr=="blink_half":
+            curve((x-.080,y-.018),(x,y+.008),(x+.080,y-.018),.025)
+            oval(x,y+.025,.038 if comic else .030,.046 if comic else .038,dark)
+        elif expr=="sleep_closed":curve((x-.075,y),(x,y+.045),(x+.075,y),.025)
         elif expr=="laughing":
             curve((x-.092,y),(x,y-.155 if comic else y-.105),(x+.092,y),.040 if comic else .027)
         elif expr=="embarrassed":
@@ -129,7 +135,7 @@ def character_face(expr,identity):
             if comic:oval(x-.015,y-.027,.021,.027,(255,248,230,255))
         if not comic:
             # Upper lashes and fine lower lid for teacher, still readable in R6.
-            if expr not in ("laughing","sleep_closed"):curve((x-.075,y-.043),(x,y-.09),(x+.078,y-.043),.018)
+            if expr not in ("laughing","sleep_closed","blink_half"):curve((x-.075,y-.043),(x,y-.09),(x+.078,y-.043),.018)
             if expr in ("tired","unimpressed","worried"):
                 curve((x-.06,y+.083),(x,y+.108),(x+.062,y+.083),.010,(112,69,44,125))
         if expr in ("worried","sad","embarrassed"):
@@ -296,7 +302,7 @@ def generate(out):
     out=Path(out);out.mkdir(parents=True,exist_ok=True)
     for identity in ("young","dad","teacher","friend"):
         folder=out/identity;folder.mkdir(exist_ok=True)
-        for expr in EXPRESSIONS:
+        for expr in (*EXPRESSIONS,"blink_half"):
             image=character_face(expr,identity) if identity in ("friend","teacher") else face(expr,identity)
             image.save(folder/(expr+".png"))
     for kind in ("stubble","beard"):facial_hair(kind).save(out/(kind+".png"))
