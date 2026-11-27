@@ -28,9 +28,15 @@ def build_faces(output):
                 curve((x-.075,.385),(x,.435),(x+.075,.385),.027)
             elif expr=="laughing":
                 curve((x-.075,.405),(x,.275),(x+.075,.405),.036)
-            elif expr in ("tired","unimpressed"):
-                oval(x+(.018 if expr=="tired" else 0),.39,.075,.085)
-                curve((x-.085,.345),(x,.335),(x+.085,.345),.028)
+            elif expr=="tired":
+                # Heavy, low upper lid and small pupil: visibly drowsy.
+                oval(x+.012,.405,.070,.070)
+                curve((x-.090,.365),(x,.402),(x+.090,.365),.052)
+                curve((x-.065,.475),(x,.495),(x+.065,.475),.014,(95,76,68,150))
+            elif expr=="unimpressed":
+                # Half-lids remain flatter and more level than tired lids.
+                oval(x,.39,.075,.085)
+                curve((x-.088,.350),(x,.352),(x+.088,.350),.034)
             elif expr=="smug":
                 oval(x+.02,.39,.065,.09)
                 curve((x-.075,.34),(x,.315),(x+.075,.345),.026)
@@ -81,9 +87,12 @@ def build_faces(output):
         elif expr=="smug":
             curve((.34,.69),(.55,.70),(.69,.625),.042)
         elif expr=="unimpressed":
-            curve((.36,.67),(.50,.66),(.64,.67),.035)
+            # Flat, slightly sideways line: restrained disapproval, not fatigue.
+            curve((.34,.675),(.51,.675),(.67,.665),.034)
         elif expr=="tired":
-            curve((.36,.68),(.50,.64),(.64,.68),.032)
+            # Slack, softly open mouth with a small relaxed lower lip.
+            oval(.50,.685,.105,.060)
+            curve((.445,.742),(.50,.754),(.555,.742),.012,(90,70,62,180))
         else:
             curve((.35,.66),(.50,.69),(.65,.66),.035)
         im.resize((1024,1024),Image.Resampling.LANCZOS).save(output/(expr+".png"),optimize=True)
