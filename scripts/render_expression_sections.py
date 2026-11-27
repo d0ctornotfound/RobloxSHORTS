@@ -290,7 +290,9 @@ def main():
             "neutral_blink_schedules":neutral_blink_schedules,
             "blink_contract":{"interval_seconds":[2.0,5.0],"closed_seconds":[.12,.15],
                 "irregular_per_actor":True,"minimum_consecutive_interval_difference_seconds":.45,
-                "expression_override":"sleep_closed"}}
+                "expression_override":"sleep_closed","transition_expression":"blink_half",
+                "transition_frames_each_side":1,
+                "review_sequence":["open","blink_half","sleep_closed","open"]}}
     else:
         section_manifest={"section":"beats","render_engine":args.engine,"denoising":False,
             "resolution":[args.width,args.height],"fps":FPS,
