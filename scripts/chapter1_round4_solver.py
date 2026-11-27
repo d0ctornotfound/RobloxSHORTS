@@ -44,6 +44,33 @@ def rays(cam,actor,blockers):
     c,dx,dz=face_grid(actor);direction=(cam.matrix_world.to_3x3()@DOWN).normalized()
     return sum(any(g[1].ray_cast(c+dx*x+dz*z-direction*20,direction,19.999)[0] is not None for g in blockers)
                for x in (-.55,-.275,0,.275,.55) for z in (-.52,-.26,0,.26,.52))
+def proximal_data(limb):
+    verts=[];faces=[]
+    ob=limb.lower
+    for p in ob.data.polygons:
+        poly=[(ob.data.vertices[i].co.copy(),Vector((0,0))) for i in p.vertices]
+        part=clip(poly,-.75*limb.b,True)
+        if len(part)<3:continue
+        faces.append(tuple(range(len(verts),len(verts)+len(part))))
+        verts.extend(v for v,_ in part)
+    return verts,faces
+
+def eat_face_rays(cam,actor,nonhand,hand,contact):
+    # Original 25 rays retained. Mask only distal-hand hits within the
+    # neutral mouth decal footprint plus half a sampling cell, during
+    # designated contact. No exemption for the forearm or other geometry.
+    c,dx,dz=face_grid(actor);direction=(cam.matrix_world.to_3x3()@DOWN).normalized()
+    blocked=0;exempt=0
+    for x in (-.55,-.275,0,.275,.55):
+        for z in (-.52,-.26,0,.26,.52):
+            origin=c+dx*x+dz*z-direction*20
+            other=any(g[1].ray_cast(origin,direction,19.999)[0] is not None for g in nonhand)
+            hit=hand[1].ray_cast(origin,direction,19.999)[0] is not None
+            mouth=contact and abs(x)<=.30 and abs(z+.365)<=.16
+            blocked+=int(other or (hit and not mouth))
+            exempt+=int(hit and mouth and not other)
+    return blocked,exempt
+
 def matlist(m):return [list(row) for row in m]
 def restore(limb,mats):
     limb.upper.matrix_world=Matrix(mats[0]);limb.lower.matrix_world=Matrix(mats[1])
@@ -110,6 +137,37 @@ class ArmSolver:
         return {"matrices":[matlist(um),matlist(lm)],"upper":upper,"lower":lower,"hand":hand,"gap":gap,
                 "surface_clearance":support,"half_thickness":float(max((lm@self.local_center-v).dot(normal) for v in hand[0])),
                 "endpoint":list(end),"hand_surface_point":list(q)}
+def eat_path(arm,anchor,n,up,side,pole,yaw,roll,w,cl,depth,drop,lat):
+    # Solve the contact endpoint at the OUTWARD half-thickness plane.
+    # Travel via a below-front waypoint, then approach vertically from
+    # below while staying in front. Reverse this on withdrawal.
+    l=arm.l;rest=l.transform()@l.end
+    if w<=1e-7:
+        um=l.upper.matrix_world.copy();lm=l.lower.matrix_world.copy()
+    else:
+        contact=arm.solve(anchor,n,pole,yaw,roll,1.,cl)
+        final=Vector(contact["endpoint"])
+        # The contact pose itself must not cross the head plane. If the
+        # residual refinement penetrated, enforce support-plane projection.
+        for _ in range(5):
+            um,lm,end=arm_matrices(l,final,pole,yaw,roll)
+            support=min((lm@v-anchor).dot(n) for v in arm.hd[0])
+            if support>=cl-.0005:break
+            final+=n*(cl-support+.001)
+        waypoint=final+n*depth-up*drop+side*lat
+        if w<.55:
+            blend=ramp(w,0,.55);goal=rest.lerp(waypoint,blend)
+        else:
+            blend=ramp(w,.55,1.);goal=waypoint.lerp(final,blend)
+        um,lm,end=arm_matrices(l,goal,pole,yaw,roll*min(1.,w/.55))
+    hand=world(arm.hd,lm);upper=world(arm.ud,um);lower=world(arm.ld,lm)
+    q,_,gap=nearest(hand,anchor)
+    return {"matrices":[matlist(um),matlist(lm)],"upper":upper,"lower":lower,"hand":hand,
+            "proximal":world(proximal_data(l),lm),"gap":gap,
+            "surface_clearance":min((v-anchor).dot(n) for v in hand[0]),
+            "half_thickness":float(max((lm@arm.local_center-v).dot(n) for v in hand[0])),
+            "endpoint":list(lm@Vector((0,0,-l.b))),"hand_surface_point":list(q)}
+
 def point_pose(actor,art,u,t,yaw):
     p=old_params("point",u,t);lead=pulse(u,0,.15,.70,1);hit=pulse(u,.15,.34,.59,.88)
     # No root crouch or moving feet. Neutral first and last frames; sustained
@@ -194,11 +252,14 @@ def mouth_solve(actor,art,cam,cup,yaw,p,prior=None):
             below=max(v.z-decal.z for j,v in enumerate(cg[0]) if not 32<=j<96)
             cupmat=matlist(cm)
         else:
-            sol=arm.solve(anchor,n,pole,yaw,roll,w,clearance=cl)
+            sol=eat_path(arm,anchor,n,up,side,pole,yaw,roll,w,cl,az,tilt,grip)
             cg=None;rim=None;cuphead=0;below=0;cgap=0;cupmat=None;cup_arm=0;gq=None
         geoms=[sol["upper"],sol["lower"]]
         headhits=sum(overlap(g,headparts) for g in geoms)+cuphead
-        face=rays(cam,actor,[actorbody]+other+geoms+([cg] if cg else []))
+        if cup:
+            face=rays(cam,actor,[actorbody]+other+geoms+[cg]);exempt=0
+        else:
+            face,exempt=eat_face_rays(cam,actor,[actorbody]+other+[sol["upper"],sol["proximal"]],sol["hand"],contact)
         handgap=nearest(sol["hand"],decal)[2]
         gap=rim if cup else handgap
         # Never score a contact through the head. Require the hand to stay
@@ -213,14 +274,19 @@ def mouth_solve(actor,art,cam,cup,yaw,p,prior=None):
              "cup_arm_intersections":cup_arm,"grip_anchor":list(gq) if gq is not None else None,
              "hand_outward_clearance":clear,"measured_half_thickness":sol["half_thickness"],
              "mouth_decal_anchor":list(decal),"head_surface_anchor":list(anchor),"hand_surface_point":sol["hand_surface_point"],
-             "parameters":list(params),"arm_matrices":sol["matrices"],"cup_matrix":cupmat,"geometry_pass":valid}
+             "parameters":list(params),"arm_matrices":sol["matrices"],"cup_matrix":cupmat,"geometry_pass":valid,
+             "mouth_only_exempt_rays":exempt}
         return score,row
     # Deterministic coarse-to-fine search with previous-frame continuation.
     # Limit the search per frame and publish explicit exhausted failures.
     if cup:
         defaults=[(pi,ro,cl,az,tilt,gr) for pi in (2,5,8,11,14,17,20,23) for ro in (0,math.pi/2,-math.pi/2) for cl in (.004,.010) for az in (0,math.pi/2,-math.pi/2,math.pi) for tilt in (math.pi/6,) for gr in (0,math.pi/2,math.pi,-math.pi/2)]
     else:
-        defaults=[(pi,ro,cl,0,0,0) for pi in range(len(poles)) for ro in rolls for cl in (.004,.008,.012)]
+        # Below-front waypoint parameters (depth, drop, lateral shift).
+        # At contact they do not alter the target; at approach they steer
+        # the elbow/hand around the head, not through it.
+        paths=[(.20,.30,0),(.30,.38,.08),(.30,.38,-.08),(.13,.25,0)]
+        defaults=[(pi,ro,cl,depth,drop,lat) for depth,drop,lat in paths for pi in range(len(poles)) for ro in rolls for cl in (.003,.006,.010)]
     candidates=([tuple(prior)] if prior is not None else [])+defaults
     best=None;tries=0
     for params in candidates:
@@ -232,11 +298,14 @@ def mouth_solve(actor,art,cam,cup,yaw,p,prior=None):
         for scale in (1,.5,.25):
             center=best[1]["parameters"]
             for j,delta in ((1,.25*scale),(2,.002*scale),(3,.24*scale),(4,.035*scale),(5,.25*scale)):
-                if not cup and j>2:continue
+                if not cup and j>2:
+                    if contact:continue
+                    delta=.025*scale
                 for sign in (-1,1):
                     v=list(center);v[j]+=sign*delta
                     if v[2]<.001 or v[2]>.018:continue
                     if cup and not math.radians(25)<=v[4]<=math.radians(35):continue
+                    if not cup and (v[3]<.08 or v[4]<.12):continue
                     score,row=evaluate(v);tries+=1
                     if score<best[0]:best=(score,row)
             if best[1]["geometry_pass"]:break

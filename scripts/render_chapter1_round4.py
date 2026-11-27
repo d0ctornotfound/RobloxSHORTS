@@ -17,7 +17,7 @@ from chapter1_articulation import Articulation,face_hits
 from chapter1_round2 import pose as old_pose
 from chapter1_round3 import cross_intersections,body_meshes
 from chapter1_round4_solver import (point_pose,mouth_solve,mouth_anchor,hug_solve,search_hug,hug_base,
-    actual,data,world,nearest,overlap,restore,rim_distance,ArmSolver,torso_surface)
+    actual,data,world,nearest,overlap,restore,rim_distance,ArmSolver,torso_surface,proximal_data,eat_face_rays)
 N=60;FPS=30
 NAMES=("point","eat","drink","hug")
 def make_cup(scene):
@@ -83,7 +83,12 @@ def verify(scene,cam,actor,partner,art,other,cup,name,f,p,row,layout):
         armgeoms=[actual(o) for l in art.arms for o in l.objects]
         headhits=sum(overlap(x,headparts) for x in armgeoms)
         if cup:headhits+=overlap(actual(cup),headparts)
-        face=face_hits(cam,actor,blockers)
+        if name=="eat":
+            nonhand=[actual(actor.body)]+[actual(o) for o in art.arms[1].objects]+[actual(limb.upper),world(proximal_data(limb),limb.lower.matrix_world)]
+            face,exempt=eat_face_rays(cam,actor,nonhand,hand,contact)
+            row["mouth_only_exempt_rays"]=exempt
+        else:
+            face=face_hits(cam,actor,blockers)
         clear=min((v-anchor).dot(n) for v in hand[0])
         row.update(hand_to_mouth=handgap,head_surface_intersections=headhits,face_body_blocked_samples=face,
                    contact=contact,hand_outward_clearance=clear)

@@ -1,0 +1,105 @@
+name: Chapter 1 round four point and eat follow-ups
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/chapter1-round4-followup.yml'
+permissions:
+  contents: read
+  actions: read
+env:
+  R6_KNEE_BLEND: '1'
+jobs:
+  point:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 45
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/download-artifact@v4
+        with:
+          name: chapter1-round4-geometry-point
+          run-id: 45968072941
+          github-token: ${{ github.token }}
+          path: render/geometry
+      - name: Install Blender
+        run: |
+          sudo apt-get update -o Dir::Etc::sourceparts=/dev/null -o Dir::Etc::sourcelist=/etc/apt/sources.list.d/ubuntu.sources
+          sudo apt-get install -y --no-install-recommends blender python3-pil python3-numpy ffmpeg fonts-dejavu-core
+          /usr/bin/python3 scripts/library_character_assets.py
+      - name: Replay 60 passed geometry frames then render point
+        run: blender -b --python-exit-code 1 --python scripts/render_chapter1_round4.py -- --motion point --output render/motion --plan render/geometry/geometry_plan.json
+      - name: Encode and retain actual point evidence
+        run: |
+          mkdir -p render/review
+          for dir in render/motion/*/; do
+            name=$(basename "$dir")
+            ffmpeg -v error -y -framerate 30 -i "$dir/frame_%04d.png" -c:v libx264 -crf 18 -pix_fmt yuv420p "render/review/$name.mp4"
+            cp "$dir/metrics.json" "render/review/$name.json"
+            for f in 0001 0012 0022 0025 0034 0045 0060; do cp "$dir/frame_$f.png" "render/review/${name}_$f.png"; done
+          done
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: chapter1-round4-followup-point
+          path: |
+            render/review/
+            render/motion/replay_geometry.json
+          if-no-files-found: warn
+      - name: Enforce point performance target
+        run: python3 -c 'import json,glob; r=json.load(open(glob.glob("render/review/*.json")[0])); print(r["near_static"]); assert all(r["correction_gates"].values())'
+  eat-geometry:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 45
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install Blender
+        run: |
+          sudo apt-get update -o Dir::Etc::sourceparts=/dev/null -o Dir::Etc::sourcelist=/etc/apt/sources.list.d/ubuntu.sources
+          sudo apt-get install -y --no-install-recommends blender python3-pil python3-numpy fonts-dejavu-core
+          /usr/bin/python3 scripts/library_character_assets.py
+          python3 -m py_compile scripts/chapter1_round4_solver.py scripts/render_chapter1_round4.py
+      - name: Geometry only, revised below-front approach and eat-only mouth mask
+        run: blender -b --python-exit-code 1 --python scripts/render_chapter1_round4.py -- --motion eat --output render/geometry --geometry-only
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: chapter1-round4-followup-eat-geometry
+          path: render/geometry/
+          if-no-files-found: warn
+  eat-render:
+    needs: eat-geometry
+    runs-on: ubuntu-24.04
+    timeout-minutes: 45
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/download-artifact@v4
+        with:
+          name: chapter1-round4-followup-eat-geometry
+          path: render/geometry
+      - name: Install Blender
+        run: |
+          sudo apt-get update -o Dir::Etc::sourceparts=/dev/null -o Dir::Etc::sourcelist=/etc/apt/sources.list.d/ubuntu.sources
+          sudo apt-get install -y --no-install-recommends blender python3-pil python3-numpy ffmpeg fonts-dejavu-core
+          /usr/bin/python3 scripts/library_character_assets.py
+      - name: Replay every clean solved frame before rendering
+        run: blender -b --python-exit-code 1 --python scripts/render_chapter1_round4.py -- --motion eat --output render/motion --plan render/geometry/geometry_plan.json
+      - name: Encode and retain actual eat evidence
+        run: |
+          mkdir -p render/review
+          for dir in render/motion/*/; do
+            name=$(basename "$dir")
+            ffmpeg -v error -y -framerate 30 -i "$dir/frame_%04d.png" -c:v libx264 -crf 18 -pix_fmt yuv420p "render/review/$name.mp4"
+            cp "$dir/metrics.json" "render/review/$name.json"
+            for f in 0001 0012 0022 0025 0034 0045 0060; do cp "$dir/frame_$f.png" "render/review/${name}_$f.png"; done
+          done
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: chapter1-round4-followup-eat
+          path: |
+            render/review/
+            render/motion/replay_geometry.json
+          if-no-files-found: warn
+      - name: Enforce performance
+        run: python3 -c 'import json,glob; r=json.load(open(glob.glob("render/review/*.json")[0])); print(r["near_static"]); assert all(r["correction_gates"].values())'
