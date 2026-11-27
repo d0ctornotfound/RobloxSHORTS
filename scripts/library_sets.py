@@ -69,7 +69,7 @@ def street():
         col=(brick,material("Blue siding",(.19,.35,.46)),material("Ochre siding",(.55,.37,.17)),brick)[i]
         # Build façade from the same opening/panel kit as rooms; windows
         # and door cover actual openings rather than decals on a solid cube.
-        for ob in wall_sections("House facade",3.2,4.8,3.3,col,((-.9,1.15,0,2.35),(.88,1.1,1.45,1.0)))):
+        for ob in wall_sections("House facade",3.2,4.8,3.3,col,((-.9,1.15,0,2.35),(.88,1.1,1.45,1.0))):
             ob.location.x+=x
         cube("House rear",(x,6.2,1.65),(4.8,.16,3.3),col,bevel=0)
         for side in (-1,1):cube("House side",(x+side*2.32,4.7,1.65),(.16,3.0,3.3),col,bevel=0)
