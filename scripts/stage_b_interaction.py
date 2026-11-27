@@ -167,6 +167,9 @@ class ExpressionTrack:
 
     def key(self,frame,expression):
         if expression not in self.decals:raise KeyError("Missing expression decal: "+expression)
+        previous=self.expression_at(int(frame)-1)
+        if expression in self.MAJOR_REACTIONS and expression!=previous and self._reaction_start_frame!=int(frame):
+            raise RuntimeError("Major expression change requires a paired head/torso reaction: "+expression)
         self.expression_keys[int(frame)]=expression
         self.actor.current_expression=expression
         for name,obj in self.decals.items():
