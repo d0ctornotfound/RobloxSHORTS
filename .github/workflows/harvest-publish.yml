@@ -1,0 +1,54 @@
+name: Publish attributed harvest and render review
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/harvest-publish.yml'
+permissions:
+  contents: write
+jobs:
+  publish:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: pip install 'numpy==2.3.5' 'trimesh==4.11.1'
+      - name: Reconstruct exact original extracted GLBs and verify hashes
+        run: python scripts/rebuild_harvest.py
+      - name: Publish verified assets only
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add assets/harvest/architecture/*.glb assets/harvest/furniture/*.glb assets/harvest/published_manifest.json
+          git diff --cached --quiet || git commit -m "assets: publish ten attributed MCRD static GLBs"
+          git push origin HEAD:main
+      - uses: actions/upload-artifact@v4
+        with:
+          name: mcrd-harvest-verified
+          path: assets/harvest/
+  review:
+    needs: publish
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/download-artifact@v4
+        with:
+          name: mcrd-harvest-verified
+          path: assets/harvest/
+      - run: |
+          sudo apt-get update
+          sudo apt-get install -y --no-install-recommends blender python3-pil python3-numpy
+          /usr/bin/python3 scripts/library_character_assets.py
+      - name: Render actual source GLBs and approved characters
+        run: blender -b -t 4 --python-exit-code 1 --python scripts/render_harvest_review.py -- --assets assets/harvest --output render/harvest
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: mcrd-harvest-render-review
+          path: render/harvest/
+          if-no-files-found: warn

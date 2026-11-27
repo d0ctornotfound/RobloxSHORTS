@@ -1,5 +1,4 @@
-"""Private Blender catalogue + dressed office review. Do not run on public CI
-with third-party source GLBs unless redistribution is expressly allowed."""
+"""Attributed MCRD Blender catalogue and dressed office review."""
 import argparse,sys,math
 from pathlib import Path
 sys.path.insert(0,str(Path(__file__).resolve().parent))
@@ -38,14 +37,15 @@ def main():
     scene=fresh(1080,1920,48)
     wall=material("Office warm plaster",(.56,.48,.38));floor=material("Office floor",(.28,.31,.32))
     cube("Floor",(0,0,-.12),(10,8,.24),floor);cube("Back wall",(0,3.8,2.4),(10,.18,4.8),wall)
-    import_asset(a.assets/"furniture/office_desk.glb","Harvest desk",(-.65,1.0,0),.456)
-    import_asset(a.assets/"furniture/garage_shelf.glb","Harvest shelf",(3.2,1.8,0),.35)
+    import_asset(a.assets/"furniture/office_desk.glb","Harvest desk",(-.45,1.0,0),.456)
+    import_asset(a.assets/"furniture/garage_shelf.glb","Harvest shelf",(3.5,1.3,0),.456,yaw=math.pi/2)
     import_asset(a.assets/"architecture/metal_door.glb","Harvest door",(-3.0,3.65,0),.456)
     import_asset(a.assets/"architecture/window_frame_a.glb","Harvest window",(1.7,3.65,1.35),.456)
     lead=character("Office lead","lead");friend=character("Office friend","friend")
     pose(lead,"idle",.5,(-.72,-1.15,0),.18);pose(friend,"idle",.5,(.65,-.9,0),-.18);lead.pose("happy");friend.pose("happy")
     light("Warm key",(-3,-5,6),(0,0,1.2),1200,5,(1,.86,.70));light("Fill",(4,-3,4),(0,0,1.2),850,5,(.82,.91,1))
-    cam=create(scene);apply(cam,"static",0,(.1,-7,3.2),(0,0,1.6),38);render(scene,a.output,"dressed_office")
+    scene.render.resolution_x=1200;scene.render.resolution_y=900
+    cam=create(scene);apply(cam,"static",0,(.1,-9.5,4.7),(0,1.1,1.85),35);render(scene,a.output,"dressed_office")
     for im in bpy.data.images:
         if im.source in ("GENERATED","FILE") and not im.packed_file:im.pack()
     bpy.ops.wm.save_as_mainfile(filepath=str(a.output/"dressed_office.blend"))
