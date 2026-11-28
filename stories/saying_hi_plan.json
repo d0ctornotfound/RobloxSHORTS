@@ -972,7 +972,8 @@
           "video_start_frame": 0
         }
       ],
-      "proof_unit": "crossing"
+      "proof_unit": "crossing",
+      "readability_gate": "crossing"
     },
     {
       "id": "sh21",
@@ -1042,7 +1043,8 @@
           "video_start_frame": 106
         }
       ],
-      "proof_unit": "crossing"
+      "proof_unit": "crossing",
+      "readability_gate": "crossing"
     },
     {
       "id": "sh22",
@@ -2076,7 +2078,7 @@
       "edit_in": 90.42,
       "edit_out": 92.14,
       "understand": "June makes room and narrator joins her.",
-      "action": "Show full seat and both actors; June shifts to adjacent mark, narrator sits supported; Waffle rolls over beside them.",
+      "action": "June makes room on the named raised fountain-side bench; narrator sits beside her; both settled faces toward the locked front camera, Waffle on the ground in front.",
       "cast": [
         "june",
         "narrator"
@@ -2115,7 +2117,8 @@
           "video_start_frame": 0
         }
       ],
-      "proof_unit": "seating"
+      "proof_unit": "seating",
+      "readability_gate": "seating"
     },
     {
       "id": "sh44",
@@ -2389,5 +2392,57 @@
       48
     ]
   },
-  "animatic_policy": "Held actual rendered poses plus native 30-fps proof clips; exact frame intervals, no full-film render. Internal montage timing provisional within measured temporary sentence PCM."
+  "animatic_policy": "Held actual rendered poses plus native 30-fps proof clips; exact frame intervals, no full-film render. Internal montage timing provisional within measured temporary sentence PCM.",
+  "round4_readability": {
+    "crossing": {
+      "stride_source": "Chapter 1 evaluated same-foot plant-to-next-plant support-point displacement",
+      "destination_rule": "route start + N times projected same-foot stride",
+      "final_plant": true,
+      "settle_frames": 0,
+      "locked_cameras": [
+        {
+          "id": "geography_master",
+          "scope": "whole route",
+          "landmarks": [
+            "tally wall",
+            "Piazza fountain"
+          ],
+          "locked": true
+        },
+        {
+          "id": "contact_low",
+          "scope": "final third of walking samples",
+          "locked": true,
+          "minimum_narrator_height_fraction": 0.25,
+          "blocked_support_rays": 0
+        }
+      ],
+      "single_camera_preferred": true,
+      "split_camera_release_requires_both_native_clips": true
+    },
+    "seating": {
+      "seat_kind": "raised_bench",
+      "seat_name": "Round4 fountain-side raised bench",
+      "location": "beside Piazza fountain",
+      "visible_horizontal_surface": true,
+      "visible_ground_support": true,
+      "hips_over_surface": true,
+      "hip_gap_max": 0.015,
+      "settled_actor_ids": [
+        "june",
+        "narrator"
+      ],
+      "face_occlusion_max": 0,
+      "minimum_facing_dot": 0.5,
+      "lens_mm": [
+        35,
+        50
+      ],
+      "dog_min_width_fraction": 0.12,
+      "dog_min_height_fraction": 0.055,
+      "planted_foot_drift_max": 0,
+      "move_over_min": 0.2,
+      "lateral_hip_drift_max": 0.005
+    }
+  }
 }
