@@ -1,0 +1,15 @@
+name: Round 6 native interview well correction
+on:
+  push:
+    branches: ['production/saying-hi']
+    paths: ['.github/workflows/saying-hi-round6-native-interview-well.yml']
+  workflow_dispatch:
+permissions:
+  contents: write
+  actions: read
+jobs:
+  pilot:
+    uses: ./.github/workflows/film-direction-native-pilot.yml
+    with:
+      branch: production/saying-hi
+      config: stories/saying_hi_pilot_native_interview_well.json
