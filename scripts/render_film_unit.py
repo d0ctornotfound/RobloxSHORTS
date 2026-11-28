@@ -41,7 +41,7 @@ def make_driver(base,conf,task,scene,cam,cast,stage,local_map):
     cls=Driver if walk else base
     kw={}
     if spec.get("camera_cache"):kw["reviewed_camera"]=json.loads(Path(spec["camera_cache"]).read_text())["camera"]
-    d=cls(scene,cam,cast,stage,spec["unit"],task["sentence_ids"],local_map,conf["lineup"],spec.get("variant"),**kw)
+    d=cls(scene,cam,cast,stage,spec["unit"],spec.get("setup_ids",task["sentence_ids"]),local_map,conf["lineup"],spec.get("variant"),**kw)
     if walk:d.prepare_stride(task["unit_end"]-task["unit_start"])
     # Story-owned blocking data: explicit stand marks for non-contact setups.
     direction=spec.get("direction",{})
@@ -70,6 +70,10 @@ def main():
     actor_points=resolve(conf["actor_points"]);frame=resolve(conf["camera_function"])
     grade=apply_grade(scene,conf["grade_preset"]) if conf.get("grade_preset") else None
     vis=resolve(conf["visibility_function"]);meshes=resolve(conf["meshes_function"])
+    action_tracks=None
+    if spec.get("actions"):
+        from film_action_tracks import ActionTracks
+        action_tracks=ActionTracks(d,spec["actions"],task)
     # Declarative generic animated props and performance tracks; no story IDs.
     roots={name:bpy.data.objects.get(name) for name in spec.get("translate_props",{})}
     origin={name:o.location.copy() for name,o in roots.items() if o is not None}
@@ -89,6 +93,7 @@ def main():
         if spec.get("walk"):
             q=d.cross_camera;frame(scene,cam,q["position"],q["target"],q["lens"])
         m=d.update(n,u,t,gf-unit_start,gf/30>=shot["audio_out"])
+        if action_tracks:m["declared_walks"]=action_tracks.before_performance(gf-unit_start)
         if spec.get("walk") and gf-unit_start>=d.low_start:
             q=d.low_camera;frame(scene,cam,q["position"],q["target"],q["lens"])
         # Stage-specific base pose is followed by reusable animation tracks.
@@ -113,6 +118,8 @@ def main():
         bpy.context.view_layer.update()
         if spec.get("direction"):
             performance(d.actors,spec["direction"],u,t)
+        if action_tracks:m["declared_socket_contacts"]=action_tracks.after_performance(gf-unit_start)
+        if spec.get("direction"):
             direct_camera(scene,cam,d.actors,spec["direction"],u,frame,camera_state)
         if gf<first:continue
         # Generic external vs own-character visibility; the full original ray
@@ -139,6 +146,7 @@ def main():
     assert len(rows)==end-first
     if not a.preflight:assert len(rendered)==end-first
     extra={}
+    if action_tracks:extra["declared_walks"]=action_tracks.report()
     if spec.get("walk") and end==unit_end:
         report=d.lock.report();extra["walk"]={**d.stride_candidate,"metrics":{k:v for k,v in report.items() if k!="records"},"root_stop_error_to_plant":(d.lock.pos-d.end).length,"final_contact_error":(Vector(d.lock.records[-1]["contact_world"])-d.end).length,"complete_unit":end==unit_end}
     dump(out/"manifest.json",{"task":task,"preflight_only":a.preflight,"engine":"EEVEE","denoising":False,"spatial_samples":32,"render_sampling_hz":30,"rendered":rendered,"rows":rows,"extra":extra,"missing_props":[n for n,o in roots.items() if o is None]})
