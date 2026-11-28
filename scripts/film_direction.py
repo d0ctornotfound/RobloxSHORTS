@@ -2,7 +2,7 @@
 No cast IDs, shot numbers, location names or story actions belong here.
 """
 import math
-from mathutils import Vector, Euler
+from mathutils import Vector, Euler, Matrix
 import bpy
 from library_camera import project
 from r6_character import mesh_points
@@ -188,3 +188,25 @@ def directed_bounce(scene,cam,spec,actors):
     if "exposure" in q:scene.view_settings.exposure=q["exposure"]
     bpy.context.view_layer.update()
     return {"energy":ob.data.energy,"color":list(ob.data.color),"size":ob.data.size,"exposure":scene.view_settings.exposure,"position":list(ob.location)}
+
+def directed_hand_props(actors,spec,t):
+    """Stage a declared handheld prop along the evaluated distal arm.
+    The source actor rig is unchanged. Re-aiming is explicit story data.
+    Geometry and ray checks must run after this attachment."""
+    records={}
+    for q in spec.get("hand_props",[]):
+        a=actors[q["actor"]];i=int(q["socket"]);ob=bpy.data.objects.get(q["object"])
+        if ob is None:raise ValueError("missing directed hand prop "+q["object"])
+        base=q["aim"];amp=q.get("shake_amplitude",[0,0,0]);freq=q.get("shake_frequency",[25,25,23])
+        direction=Vector([x+y*math.sin(t*z) for x,y,z in zip(base,amp,freq)])
+        a.aim_arm(i,direction);bpy.context.view_layer.update()
+        grip=a.grips[i].matrix_world.translation.copy()
+        shoulder=(a.armature.matrix_world@a.arms[i].matrix).translation
+        axis=(grip-shoulder).normalized()
+        axis=(axis+Vector(q.get("shaft_lift",[0,0,.32]))).normalized()
+        offset=q.get("anchor_offset",.105)
+        orient=Vector(q.get("local_shaft_axis",[0,0,-1])).rotation_difference(axis).to_matrix().to_4x4()
+        ob.matrix_world=Matrix.Translation(grip+axis*offset)@orient
+        bpy.context.view_layer.update()
+        records[q["object"]]={"actor":q["actor"],"socket":i,"anchor_error":float((ob.matrix_world.translation-axis*offset-grip).length),"aim":list(direction)}
+    return records
