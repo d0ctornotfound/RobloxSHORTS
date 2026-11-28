@@ -1,0 +1,196 @@
+name: Chapter 4 — Hair and wardrobe candidate review
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'scripts/chapter4_hair.py'
+      - 'scripts/chapter4_wardrobe.py'
+      - 'scripts/render_chapter4.py'
+      - '.github/workflows/chapter4-review.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  render-item:
+    name: ${{ matrix.actor }} / ${{ matrix.kind }} / ${{ matrix.item }} / ${{ matrix.motion }}
+    runs-on: ubuntu-24.04
+    timeout-minutes: 35
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - actor: lead
+            kind: hair
+            item: default
+            motion: none
+          - actor: lead
+            kind: hair
+            item: messy_fringe
+            motion: none
+          - actor: lead
+            kind: hair
+            item: side_part
+            motion: none
+          - actor: lead
+            kind: outfit
+            item: forest_bomber
+            motion: none
+          - actor: lead
+            kind: outfit
+            item: navy_sleepwear
+            motion: none
+          - actor: friend
+            kind: hair
+            item: default
+            motion: none
+          - actor: friend
+            kind: hair
+            item: curly_crop
+            motion: none
+          - actor: friend
+            kind: hair
+            item: quiff
+            motion: none
+          - actor: friend
+            kind: outfit
+            item: rugby_polo
+            motion: none
+          - actor: friend
+            kind: outfit
+            item: track_kit
+            motion: none
+          - actor: teacher
+            kind: hair
+            item: default
+            motion: none
+          - actor: teacher
+            kind: hair
+            item: low_ponytail
+            motion: none
+          - actor: teacher
+            kind: hair
+            item: rounded_bob
+            motion: none
+          - actor: teacher
+            kind: outfit
+            item: navy_formal
+            motion: none
+          - actor: teacher
+            kind: outfit
+            item: oat_knit
+            motion: none
+          - actor: dad
+            kind: hair
+            item: default
+            motion: none
+          - actor: dad
+            kind: hair
+            item: short_crew
+            motion: none
+          - actor: dad
+            kind: hair
+            item: side_part
+            motion: none
+          - actor: dad
+            kind: outfit
+            item: charcoal_suit
+            motion: none
+          - actor: dad
+            kind: outfit
+            item: weekend_flannel
+            motion: none
+          - actor: librarian
+            kind: hair
+            item: default
+            motion: none
+          - actor: librarian
+            kind: hair
+            item: low_bun
+            motion: none
+          - actor: librarian
+            kind: hair
+            item: rounded_bob
+            motion: none
+          - actor: librarian
+            kind: outfit
+            item: teal_cardigan
+            motion: none
+          - actor: librarian
+            kind: outfit
+            item: plum_blazer
+            motion: none
+          - actor: patron_green
+            kind: hair
+            item: default
+            motion: none
+          - actor: patron_green
+            kind: hair
+            item: messy_fringe
+            motion: none
+          - actor: patron_green
+            kind: outfit
+            item: school_polo
+            motion: none
+          - actor: patron_blue
+            kind: hair
+            item: default
+            motion: none
+          - actor: patron_blue
+            kind: hair
+            item: curly_crop
+            motion: none
+          - actor: patron_blue
+            kind: outfit
+            item: sports_kit
+            motion: none
+          - actor: lead
+            kind: clearance
+            item: forest_bomber
+            motion: walk
+          - actor: lead
+            kind: clearance
+            item: forest_bomber
+            motion: sit
+          - actor: friend
+            kind: clearance
+            item: rugby_polo
+            motion: walk
+          - actor: friend
+            kind: clearance
+            item: rugby_polo
+            motion: sit
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install Blender and dependencies
+        run: |
+          for f in /etc/apt/sources.list.d/*; do
+            if [ -f "$f" ] && grep -q "packages.microsoft.com" "$f"; then sudo mv "$f" "$f.disabled"; fi
+          done
+          sudo apt-get update -o Acquire::Retries=3
+          sudo apt-get install -y --no-install-recommends blender python3-pil python3-numpy fonts-dejavu-core libegl1 libegl-mesa0 libgl1 libgl1-mesa-dri libgbm1
+      - name: Generate identity assets
+        run: python3 scripts/library_character_assets.py
+      - name: Compile isolated candidate code
+        run: python3 -m py_compile scripts/chapter4_hair.py scripts/chapter4_wardrobe.py scripts/render_chapter4.py
+      - name: Render one item or clearance motion
+        timeout-minutes: 25
+        env:
+          LIBGL_ALWAYS_SOFTWARE: "1"
+          R6_KNEE_BLEND: "1"
+          ROLE: ${{ matrix.actor }}
+          KIND: ${{ matrix.kind }}
+          ITEM: ${{ matrix.item }}
+          MOTION: ${{ matrix.motion }}
+        run: |
+          mkdir -p render/chapter4
+          args=()
+          if [ "$KIND" = clearance ]; then args+=(--motion "$MOTION"); fi
+          timeout 23m blender -b --python-exit-code 1 --python scripts/render_chapter4.py -- --actor "$ROLE" --kind "$KIND" --item "$ITEM" --output render/chapter4 "${args[@]}"
+      - name: Upload partial or complete actual renders
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: chapter4-${{ matrix.actor }}-${{ matrix.kind }}-${{ matrix.item }}-${{ matrix.motion }}
+          path: render/chapter4/
+          if-no-files-found: warn
+          retention-days: 30
