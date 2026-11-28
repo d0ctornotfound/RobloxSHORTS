@@ -1,10 +1,9 @@
 Exact correction inventory compared with d4036eefc85270e63e3a2ac3717c3b0f3994cc31
 Snapshot cd72eb3c505144e5cdc07460cba501befffa6423
-Independent external change .github/workflows/saying-hi-supervisor-geometry.yml (excluded from this round's inventory)
-Modified (4):
+Independent concurrent changes excluded: .github/workflows/saying-hi-supervisor-geometry.yml (9b4acb3a91b1dcd595ac46242f77ef49c81257ef) and scripts/render_saying_hi_shot.py (fa97b9a5b08b0795148633849d1018c476c02916)
+Modified by this round (3):
 assets/saying_hi_review/SHA256SUMS
 docs/saying_hi_review.md
-scripts/render_saying_hi_shot.py
 stories/saying_hi_plan.json
 Added (200, including this inventory):
 .github/workflows/saying-hi-correction-crossing-retry.yml
