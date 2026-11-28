@@ -1,0 +1,97 @@
+name: Saying Hi — corrected actual tally-wall native proof
+on:
+  push:
+    branches: ['production/saying-hi']
+    paths: ['.github/workflows/saying-hi-correction-wall-native.yml']
+  workflow_dispatch:
+permissions:
+  contents: write
+  actions: read
+jobs:
+  render:
+    if: github.ref == 'refs/heads/production/saying-hi'
+    runs-on: ubuntu-24.04
+    timeout-minutes: 35
+    env:
+      GH_TOKEN: ${{ github.token }}
+      LIBGL_ALWAYS_SOFTWARE: '1'
+      R6_KNEE_BLEND: '1'
+    steps:
+      - uses: actions/checkout@v4
+      - name: Require reviewed actual all-frame wall visibility and check images
+        run: |
+          gh run download 46105792817 --repo "$GITHUB_REPOSITORY" --name saying-hi-payoff-camera-empty_wall --dir /tmp/wall-check
+          python3 - <<'PY'
+          import json
+          from pathlib import Path
+          p=Path('/tmp/wall-check');g=json.loads((p/'gate.json').read_text());m=json.loads((p/'manifest.json').read_text())
+          assert g['samples']==42 and g['pass'] is True and g['checks']['boys_on_wall']['value']==0
+          assert g['checks']['wall_tally_strokes']['value']==35 and g['checks']['tally_visibility_occlusion_samples']['value']==0
+          assert m['actual_rendered_frames']==5 and (p/'held_pose.png').is_file()
+          PY
+      - name: Install EEVEE and exact imported source
+        run: |
+          for f in /etc/apt/sources.list.d/*; do
+            if [ -f "$f" ] && grep -q "packages.microsoft.com" "$f"; then sudo mv "$f" "$f.disabled"; fi
+          done
+          sudo apt-get update -o Acquire::Retries=3
+          sudo apt-get install -y --no-install-recommends blender ffmpeg python3-pil python3-numpy fonts-dejavu-core libegl1 libegl-mesa0 libgl1 libgl1-mesa-dri libgbm1
+          /usr/bin/python3 scripts/r6_faces.py --output assets/r6_faces
+          /usr/bin/python3 scripts/library_character_assets.py
+          mkdir -p /tmp/saying_hi_map
+          curl --fail --location --retry 3 --max-time 180 'https://raw.githubusercontent.com/AdityapalW/Roblox-skill/54b34ba1be2e3013a9de59e40db288d8f2ebda53/Itlay/Itlay.gltf' -o /tmp/saying_hi_map/Itlay.gltf
+          test "$(git hash-object /tmp/saying_hi_map/Itlay.gltf)" = '20108af3a19fae6b5beaa5fac2e3305b56112a41'
+      - name: Re-verify every frame before rendering and encode 42 native samples
+        run: |
+          set -o pipefail
+          mkdir -p review/empty_wall
+          timeout --kill-after=20s 28m blender -b --python-exit-code 1 --python scripts/render_saying_hi_correction.py -- --unit empty_wall --mode motion --map /tmp/saying_hi_map/Itlay.gltf --lineup assets/saying_hi_review/smoke/round3/lineup --cache /tmp/wall-check/gate.json --output review/empty_wall 2>&1 | tee review/empty_wall/render.log
+          python3 scripts/encode_saying_hi_proof.py review/empty_wall
+      - name: Retain exact inspection samples
+        if: always()
+        run: |
+          mkdir -p review/empty_wall
+          python3 - <<'PY'
+          from pathlib import Path
+          import shutil,json,os
+          p=Path('review/empty_wall');fs=sorted(p.glob('frame_*.png'))
+          if fs:
+              for i in sorted(set([0,len(fs)//4,len(fs)//2,3*len(fs)//4,len(fs)-1])):
+                  shutil.copyfile(fs[i],p/('sample_'+fs[i].name))
+          (p/'workflow_provenance.json').write_text(json.dumps({'workflow_run_id':os.environ['GITHUB_RUN_ID'],'source_commit':os.environ['GITHUB_SHA'],'reviewed_check_run_id':46105792817,'check_artifact_id':15247746350},indent=2)+'\n')
+          PY
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: corrected-wall-native
+          path: |
+            review/empty_wall/*.mp4
+            review/empty_wall/*.json
+            review/empty_wall/*.log
+            review/empty_wall/sample_*.png
+          if-no-files-found: warn
+  publish:
+    needs: render
+    if: always() && github.ref == 'refs/heads/production/saying-hi'
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: production/saying-hi
+      - uses: actions/download-artifact@v4
+        with:
+          name: corrected-wall-native
+          path: assets/saying_hi_review/corrections/native/empty_wall
+      - name: Commit actual completed or failed proof evidence
+        run: |
+          set -euo pipefail
+          OUT=assets/saying_hi_review
+          find "$OUT" -type f ! -name SHA256SUMS -print0 | sort -z | xargs -0 sha256sum > "$OUT/SHA256SUMS"
+          sha256sum stories/saying_hi_script.txt stories/saying_hi_plan.json >> "$OUT/SHA256SUMS"
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add "$OUT"
+          git commit -m "Publish corrected native tally-wall proof and measured visibility"
+          git pull --rebase origin production/saying-hi
+          git push origin HEAD:refs/heads/production/saying-hi
