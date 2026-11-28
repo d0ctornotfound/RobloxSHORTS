@@ -1,7 +1,21 @@
 {
   "status": "partial_verified_not_release_ready",
-  "verified_shots": 6,
+  "verified_shots": 11,
   "shots": [
+    {
+      "shot": 3,
+      "artifact_id": 15240353086,
+      "production_run": 46088254315,
+      "preflight_run": 46087343283,
+      "source_commit": "c88b009354b8be2a6c1386ca46c6679bd4c52714",
+      "frames": 60,
+      "duration": 2.5,
+      "encoded_max_near_black_percent": 1.2662037037037037,
+      "sha256": "4db9b092e38f5a9a1691ebc57b4b82853bb4690fe831cb3dd434c1a97ab3c660",
+      "passed": true,
+      "independent_checks": "SHA-256, independently decoded darkness and frame count, profile, raw PNG indices, exact geometry",
+      "visual_status": "sampled production frames inspected; continuous playback pending"
+    },
     {
       "shot": 5,
       "artifact_id": 15240027829,
@@ -17,6 +31,20 @@
       "visual_status": "first and last production frames inspected; final continuous playback pending"
     },
     {
+      "shot": 6,
+      "artifact_id": 15240462200,
+      "production_run": 46088254315,
+      "preflight_run": 46087343283,
+      "source_commit": "c88b009354b8be2a6c1386ca46c6679bd4c52714",
+      "frames": 60,
+      "duration": 2.5,
+      "encoded_max_near_black_percent": 1.0424382716049383,
+      "sha256": "c281e765e6c12106394827ceb7785456a957f5e228c9c99cd0da02c482b5d0d2",
+      "passed": true,
+      "independent_checks": "SHA-256, independently decoded darkness and frame count, profile, raw PNG indices, exact geometry",
+      "visual_status": "sampled production frames inspected; continuous playback pending"
+    },
+    {
       "shot": 12,
       "artifact_id": 15240208535,
       "sha256": "603cd69df4cb5237fc8a2320cdffc09711981070a1d2c4a1bdb579fbf323e1df",
@@ -29,6 +57,34 @@
       "passed": true,
       "independent_checks": "SHA-256, decoded frame count, dimensions, raw frame sequence, geometry records",
       "visual_status": "first and last production frames inspected; final continuous playback pending"
+    },
+    {
+      "shot": 24,
+      "artifact_id": 15240412562,
+      "production_run": 46088254315,
+      "preflight_run": 46087716942,
+      "source_commit": "7997a45da1b14e69934fb2248ef0d193c44d145a",
+      "frames": 60,
+      "duration": 2.5,
+      "encoded_max_near_black_percent": 0.3148148148148148,
+      "sha256": "e09b4b5223b6508d33c414eb720cab7a0eb62a7557f97c608879eaa3ad3571ea",
+      "passed": true,
+      "independent_checks": "SHA-256, independently decoded darkness and frame count, profile, raw PNG indices, exact geometry",
+      "visual_status": "sampled production frames inspected; continuous playback pending"
+    },
+    {
+      "shot": 25,
+      "artifact_id": 15240621741,
+      "production_run": 46088254315,
+      "preflight_run": 46087716942,
+      "source_commit": "7997a45da1b14e69934fb2248ef0d193c44d145a",
+      "frames": 60,
+      "duration": 2.5,
+      "encoded_max_near_black_percent": 1.4822530864197532,
+      "sha256": "00131d98ba3e25ce2a67e90c0d0fd2b387bcf830442dc1e7a7693260475dd56b",
+      "passed": true,
+      "independent_checks": "SHA-256, independently decoded darkness and frame count, profile, raw PNG indices, exact geometry",
+      "visual_status": "sampled production frames inspected; continuous playback pending"
     },
     {
       "shot": 26,
@@ -57,6 +113,20 @@
       "passed": true,
       "independent_checks": "SHA-256, decoded frame count, dimensions, raw frame sequence, geometry records",
       "visual_status": "first and last production frames inspected; final continuous playback pending"
+    },
+    {
+      "shot": 29,
+      "artifact_id": 15240477152,
+      "production_run": 46088390454,
+      "preflight_run": 46086807184,
+      "source_commit": "935e5c4055ac8fe02cd4b8f3f0f18c1e5bba0f2f",
+      "frames": 60,
+      "duration": 2.5,
+      "encoded_max_near_black_percent": 0,
+      "sha256": "03479ecc0487d4d3187dd08465e37d53562612299dc6d8aa8d30c59d66f47a29",
+      "passed": true,
+      "independent_checks": "SHA-256, independently decoded darkness and frame count, profile, raw PNG indices, exact geometry",
+      "visual_status": "sampled production frames inspected; continuous playback pending"
     },
     {
       "shot": 33,
