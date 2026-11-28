@@ -43,15 +43,30 @@ def make_driver(base,conf,task,scene,cam,cast,stage,local_map):
     if spec.get("camera_cache"):kw["reviewed_camera"]=json.loads(Path(spec["camera_cache"]).read_text())["camera"]
     d=cls(scene,cam,cast,stage,spec["unit"],task["sentence_ids"],local_map,conf["lineup"],spec.get("variant"),**kw)
     if walk:d.prepare_stride(task["unit_end"]-task["unit_start"])
+    # Story-owned blocking data: explicit stand marks for non-contact setups.
+    direction=spec.get("direction",{})
+    for cid,mark in direction.get("blocking",{}).items():
+        d.place(cid,mark["position"],math.radians(mark["yaw_deg"]),mark.get("expression","neutral"))
+    # Declared dynamic-adapter mark overrides retain the adapter\'s contact logic.
+    for field,value in direction.get("adapter_vector_marks",{}).items():
+        if not hasattr(d,field):raise ValueError("unknown adapter mark "+field)
+        setattr(d,field,Vector(value))
+    for field,value in direction.get("adapter_yaw_marks",{}).items():
+        if not hasattr(d,field):raise ValueError("unknown adapter yaw "+field)
+        setattr(d,field,math.radians(value))
     if camera:frame(scene,cam,camera["position"],camera["target"],camera["lens"])
     return d
 def main():
-    p=argparse.ArgumentParser();p.add_argument("--config",required=True);p.add_argument("--task",required=True);p.add_argument("--map",required=True);p.add_argument("--output",required=True)
+    p=argparse.ArgumentParser();p.add_argument("--config",required=True);p.add_argument("--task",required=True);p.add_argument("--map",required=True);p.add_argument("--output",required=True);p.add_argument("--preflight",action="store_true")
     a=p.parse_args(sys.argv[sys.argv.index("--")+1:]);out=Path(a.output).resolve();out.mkdir(parents=True,exist_ok=True)
     conf=json.loads(Path(a.config).read_text());task=json.loads(a.task);spec=task["stage"];plan=json.loads(Path(conf["plan"]).read_text())
     cast=json.loads(Path(plan["cast_path"]).read_text());stage=json.loads(Path(plan["staging_path"]).read_text())
     scene=resolve(conf["setup_function"])(540,960);scene.frame_end=round(plan["audio_duration"]*30);cam=resolve(conf["create_camera"])(scene)
-    base=resolve(spec.get("driver",conf["default_driver"]));d=make_driver(base,conf,task,scene,cam,cast,stage,a.map)
+    if spec.get("diagram"):
+        from film_diagram_driver import DiagramDriver
+        d=DiagramDriver(scene,cam,cast,spec,conf,task)
+    else:
+        base=resolve(spec.get("driver",conf["default_driver"]));d=make_driver(base,conf,task,scene,cam,cast,stage,a.map)
     actor_points=resolve(conf["actor_points"]);frame=resolve(conf["camera_function"])
     grade=apply_grade(scene,conf["grade_preset"]) if conf.get("grade_preset") else None
     vis=resolve(conf["visibility_function"]);meshes=resolve(conf["meshes_function"])
@@ -65,9 +80,11 @@ def main():
         pet=spec["animal"];dog=resolve(conf["animal_factory"])(pet["name"])
         dog[0].location=pet["position"];dog[0].rotation_euler.z=math.radians(pet["yaw_deg"])
     rows=[];rendered=[];first=task["start"];end=task["end"];unit_start=task["unit_start"];unit_end=task["unit_end"]
+    camera_state={};previous_shot=None
     for gf in range(unit_start,end):
         shot=next(s for s in plan["shots"] if round(s["edit_in"]*30)<=gf<round(s["edit_out"]*30))
         n=int(shot["sentence_ids"][0]);u=(gf-round(shot["edit_in"]*30))/max(1,round(shot["edit_out"]*30)-round(shot["edit_in"]*30)-1);t=(gf-unit_start)/30
+        if shot["id"]!=previous_shot:camera_state={};previous_shot=shot["id"]
         scene.frame_set(gf+1)
         if spec.get("walk"):
             q=d.cross_camera;frame(scene,cam,q["position"],q["target"],q["lens"])
@@ -96,7 +113,7 @@ def main():
         bpy.context.view_layer.update()
         if spec.get("direction"):
             performance(d.actors,spec["direction"],u,t)
-            direct_camera(scene,cam,d.actors,spec["direction"],u,frame)
+            direct_camera(scene,cam,d.actors,spec["direction"],u,frame,camera_state)
         if gf<first:continue
         # Generic external vs own-character visibility; the full original ray
         # result is retained, never reclassified as a geometry pass.
@@ -104,21 +121,25 @@ def main():
         for cid in spec.get("qc_actors",[]):
             if cid not in d.actors:continue
             actor=d.actors[cid];b=project(scene,cam,actor_points(actor))
-            face=vis(scene,cam,[actor.face],5)
-            external=vis(scene,cam,[actor.face],5,meshes(actor.root))
+            face=vis(scene,cam,[actor.face],7)
+            external=vis(scene,cam,[actor.face],7,meshes(actor.root))
             quality[cid]={"bounds":list(b),"safe":safe(b),"vertical_coverage":b[3]-b[2],"face_all":face,"face_external":external,"own_ray_difference":max(0,face["blocked"]-external["blocked"])}
-        path=out/f"frame_{gf:05d}.png";scene.render.filepath=str(path)
-        clock=time.monotonic()
-        print("SMOKE_START" if gf==first else "FRAME_START",gf,flush=True)
-        bpy.ops.render.render(write_still=True)
-        pix=np.asarray(Image.open(path).convert("RGB"))
-        render={"frame":gf,"render_seconds":time.monotonic()-clock,"near_black_percent":100*float(np.mean(np.max(pix,axis=2)<=24))}
-        rendered.append(render);rows.append({"frame":gf,"shot":shot["id"],"actor_qc":quality,"geometry":m,**({"direction":direction_sample(scene,cam,d.actors,spec["direction"],grade)} if spec.get("direction") else {})})
-        dump(out/"partial.json",{"rendered":rendered,"rows":rows})
-        print("SMOKE_PASS" if gf==first else "FRAME_DONE",gf,flush=True)
-    assert len(rendered)==end-first
+        row={"frame":gf,"shot":shot["id"],"actor_qc":quality,"geometry":m,**({"direction":direction_sample(scene,cam,d.actors,spec["direction"],grade)} if spec.get("direction") else {})}
+        rows.append(row)
+        if not a.preflight or gf in (first,(first+end)//2,end-1):
+            path=out/f"frame_{gf:05d}.png";scene.render.filepath=str(path)
+            clock=time.monotonic()
+            print("SMOKE_START" if gf==first else "FRAME_START",gf,flush=True)
+            bpy.ops.render.render(write_still=True)
+            pix=np.asarray(Image.open(path).convert("RGB"))
+            render={"frame":gf,"render_seconds":time.monotonic()-clock,"near_black_percent":100*float(np.mean(np.max(pix,axis=2)<=24))}
+            rendered.append(render)
+            print("SMOKE_PASS" if gf==first else "FRAME_DONE",gf,flush=True)
+        if not a.preflight or gf==end-1:dump(out/"partial.json",{"rendered":rendered,"rows":rows})
+    assert len(rows)==end-first
+    if not a.preflight:assert len(rendered)==end-first
     extra={}
     if spec.get("walk") and end==unit_end:
         report=d.lock.report();extra["walk"]={**d.stride_candidate,"metrics":{k:v for k,v in report.items() if k!="records"},"root_stop_error_to_plant":(d.lock.pos-d.end).length,"final_contact_error":(Vector(d.lock.records[-1]["contact_world"])-d.end).length,"complete_unit":end==unit_end}
-    dump(out/"manifest.json",{"task":task,"engine":"EEVEE","denoising":False,"spatial_samples":32,"render_sampling_hz":30,"rendered":rendered,"rows":rows,"extra":extra,"missing_props":[n for n,o in roots.items() if o is None]})
+    dump(out/"manifest.json",{"task":task,"preflight_only":a.preflight,"engine":"EEVEE","denoising":False,"spatial_samples":32,"render_sampling_hz":30,"rendered":rendered,"rows":rows,"extra":extra,"missing_props":[n for n,o in roots.items() if o is None]})
 if __name__=="__main__":main()
