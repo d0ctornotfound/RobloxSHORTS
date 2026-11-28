@@ -4,7 +4,7 @@ Technical integrity is mandatory; measured artistic QC is advisory.
 import argparse,hashlib,json,os,subprocess,sys
 from pathlib import Path
 from fractions import Fraction
-from film_qc import evaluate as evaluate_qc
+from film_qc import evaluate as evaluate_qc, flow_report
 def read(p):return json.loads(Path(p).read_text())
 def write(p,v):Path(p).write_text(json.dumps(v,indent=2)+"\n")
 def run(cmd):subprocess.run(cmd,check=True)
@@ -88,6 +88,9 @@ def assemble(c,tasks,chunks,out):
         check_video(target,n);q["frames"]+=n;ledger.append({**row,"key":key,"start":t["start"],"end":t["end"],"path":str(target.resolve())})
     for s in plan["shots"]:
         q=qc[s["id"]];q["flags"]+=c.get("known_weaknesses",{}).get(s["id"],[])
+        if c.get("grade_preset"):
+            q["direction"]=flow_report(samples.get(s["id"],[]), expected_frames=q["end"]-q["start"])
+            if q["direction"]["status"]!="numeric_pass":q["flags"].append("direction QC: "+q["direction"]["status"])
         q["measurements"]=evaluate_qc(samples.get(s["id"],[]),c.get("qc_rules",{}).get(s["id"],[]))
         for m in q["measurements"]:
             if m["status"]!="pass":q["flags"].append(f"{m['name']}: {m['value']} (limit {m['operator']} {m['limit']}; {m['status']})")
