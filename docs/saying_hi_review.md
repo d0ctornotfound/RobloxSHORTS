@@ -315,3 +315,25 @@ Precheck run 46123443558; downstream run 46123546984.
 Plan exit 0; proof audit exit 1; animatic audit exit 1; export exit None (None means not invoked).
 No supervisor visual approval inferred. Prior six native proofs and historical seating remain intact. No full-film render or paid voice. No gate lowered.
 ROUND 4 RELEASE BLOCKED until visual review and all strict checks pass.
+
+### Round 4 final supervisor status — terminal, supersedes active handover
+
+Both runs completed FAILURE. Precheck [46123443558](https://github.com/d0ctornotfound/RobloxSHORTS/actions/runs/46123443558) 07:55:56–08:03:33 UTC (7m37s), all four geometry jobs failed and publish succeeded, publication commit 63a047350ca388325a8061a007c9c4a8522d8acd. Artifact IDs and exact bytes: crossing 15255061164 / 62009, C1 15254757163 / 78860, C2 15254536638 / 20777, seating 15254536858 / 25628. Downstream [46123546984](https://github.com/d0ctornotfound/RobloxSHORTS/actions/runs/46123546984) 07:57:26–08:04:26 UTC (7m00s): selection success with zero qualifying units, native render skipped, publish job failed due to release audit but its always-run evidence commit succeeded at c0e12aec522df132e19a566f4c88ec04be3204c2. No downstream artifacts. Native provenance selected empty, merge_failure=0 is vacuous (nothing rendered), not delivery. No active jobs. Actual plan PASS, 443 words, 48 sentences/shots, 101.2s. Proof audit 30 failed checks; animatic audit 37, including missing real motion sh20, sh21, sh31–sh34 and sh43. Export not invoked. Six accepted clips, 532 frames, remain validated and unchanged. No locked code or narration changed.
+
+Crossing search: 48 candidates, 47 same-foot endpoints, ZERO final support transitions, zero candidates satisfying both or all. The selected rejected fallback is the only candidate with mismatched support (index 1→0), so its 4.3681435585 scene-unit projected displacement is NOT a same-foot stride. It is an implementation/search failure, not a demonstrated impossibility. Initial plant onset was not independently verified. Low camera passes coverage .2954699397 but fails 45/47 support rays. Single-camera gate preserved; split-camera native integration remains incomplete, no gate waived.
+
+C1: 32/113 affected frames vs 113/113; one blocked ray maximum, folded beanie brim exclusively, frames 2091–2092, 2096–2114, 2116–2119, 2166–2172. C2: unchanged previous camera; 57/57 affected, hair cap exclusively, maximum two rays at 2245. Seating: settled frames 2761–2763; each has June hair cap blocking two rays and narrator folded beanie brim blocking three. Facing dots .8608598931 and .9897761999 pass; named raised bench legibility proxy passes (height .4648271799, surface visible .2903225806, one support 0, other .24, both hips in footprint, horizontal, reaches ground). Visual approval is absent. Lens 35mm satisfies range but not preferred 50mm. Waffle width .1801693439 passes .12 minimum, below prior .2565649897. Both actors safe-frame fails. No smoke or motion render invoked for any unit.
+
+Remaining defect ledger (Round 4 values supersede Round 3 diagnostic measurements only; historical files preserved):
+- R3-01 BLOCK: planted stop .6800700703, root stop 1.4440588704 (both max .05), invalid cross-foot measurement; no final plant in any candidate.
+- R3-02 BLOCK: 2 backward frames (limit 0).
+- R3-03 BLOCK: stance RMS .0324038858 (limit .03); locked stride failed.
+- R3-04 BLOCK: wide coverage .1673355401 vs .25, 66 blocked support frames; low coverage .2954699397 passes but 45/47 blocked, split native integration not implemented.
+- R3-05 BLOCK: C1 max 1 blocked ray, 32/113 affected, facing .5289075151 vs .72.
+- R3-06 BLOCK: C1 safe body and pencil framing fail despite 100% sampled visibility each.
+- R3-07 BLOCK: C2 max 2 blocked rays, all 57 frames affected.
+- R3-08 BLOCK: seating settled face rays June 2/narrator 3, full-body framing false; named seat legibility and front dot proxies pass, no visual review/native proof.
+- R3-09 BLOCK: four replacement native clips absent; no rejected predecessor substituted.
+- R3-10 BLOCK: complete timed animatic absent, release audit 30/37 failures.
+
+ROUND 4 INCOMPLETE — RELEASE BLOCKED. All 12 unit geometry JSON/gate/log files and five provenance/audit files plus native provenance are permanently committed; no new media exists to publish. No new corrective workflow launched for this status-only handover.
