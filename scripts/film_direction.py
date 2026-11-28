@@ -166,3 +166,25 @@ def performance(actors,spec,u,t):
         pb=a.bones["head"];pb.rotation_mode="XYZ"
         pb.matrix_basis=a.bind_basis[pb.name]@Euler((.14*math.sin(phase),0,.26*math.sin(phase+.9))).to_matrix().to_4x4()
     bpy.context.view_layer.update()
+
+def directed_bounce(scene,cam,spec,actors):
+    """Motivated warm plaza bounce. Opt-in and recorded, not a hidden grade.
+    The broad source follows the camera-side subject area, not camera rays;
+    a source outside the frame does not modify any character geometry."""
+    q=spec.get("grade_fill")
+    if not q:return None
+    ob=bpy.data.objects.get("Directed warm bounce")
+    if ob is None:
+        data=bpy.data.lights.new("Directed warm bounce","AREA")
+        ob=bpy.data.objects.new("Directed warm bounce",data);scene.collection.objects.link(ob)
+    ids=[i for i in [spec.get("principal")]+spec.get("listeners",[]) if i in actors]
+    if not ids:raise ValueError("warm bounce needs a subject")
+    target=center([p for i in ids for p in face_points(actors[i])])
+    axis=(cam.location-target).normalized()
+    lateral=Vector((-axis.y,axis.x,0))
+    ob.location=target+axis*q.get("distance",2.8)+lateral*q.get("side",.2)+Vector((0,0,q.get("height",.7)))
+    ob.rotation_euler=(target-ob.location).to_track_quat("-Z","Y").to_euler()
+    ob.data.energy=q["energy"];ob.data.size=q.get("size",3.5);ob.data.color=tuple(q.get("color",[1,.87,.72]))
+    if "exposure" in q:scene.view_settings.exposure=q["exposure"]
+    bpy.context.view_layer.update()
+    return {"energy":ob.data.energy,"color":list(ob.data.color),"size":ob.data.size,"exposure":scene.view_settings.exposure,"position":list(ob.location)}
