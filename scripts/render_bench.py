@@ -224,7 +224,7 @@ def main():
     atmosphere=Atmosphere(scene,target=(0,0,1.2));atmosphere.apply(shot["atmosphere"])
     area_light("Gentle story bounce",(4,-3,4),220,5,(1,.88,.76))
     area_light("Front facial fill",(-2,-4,3.4),380 if shot["atmosphere"]=="morning" else 240,5,(1,.96,.90))
-    if n==2:area_light("Walking trouser shadow fill",(-3,-2.8,1.5),260,3.5,(1,.94,.87))
+    if n in (1,2):area_light("Walking trouser shadow fill",(-3,-2.8,1.5),340 if n==1 else 260,3.5,(1,.94,.87))
     if n in (43,44):area_light("Cane and trouser shadow fill",(2.0,-3.2,1.8),520,4.0,(.94,.96,1))
     camera=create(scene,"The Bench camera",42)
     bags=[paper("Brown paper bag "+str(i+1),p) for i in range(2)]
@@ -247,16 +247,17 @@ def main():
         actors["Milo"]=Actor("Milo","lead",mode,pos,yaw,.40 if n==2 else .6)
     if show_d:
         mode="walk" if n in (41,43,44) else "sit_down" if n==45 else "sit" if dad_seated else "idle"
-        pos=(3.5,-.35,0) if n==41 else (3.1,-.75,0) if mode=="walk" else (.83,0,0)
-        actors["Dad"]=Actor("Dad","dad",mode,pos,-math.pi/2 if mode=="walk" else -.12,.33 if mode=="walk" else .6)
+        pos=(4.6,.55,0) if n==41 else (3.1,-.75,0) if mode=="walk" else (.83,0,0)
+        actors["Dad"]=Actor("Dad","dad",mode,pos,-math.pi/2 if mode=="walk" else -.12,.19 if n==41 else .33 if mode=="walk" else .6)
     if n==41:
-        area_light("Returning actor shadow key",(6,-.95,3.15),620,.48,(.82,.88,1))
-        area_light("Bench shadow detail fill",(-1.8,-3.4,2.5),500,4.0,(.96,.96,1))
+        area_light("Returning actor shadow key",(6,1.25,3.15),620,.48,(.82,.88,1))
+        area_light("Bench shadow detail fill",(-1.8,-3.4,2.5),650,4.0,(.96,.96,1))
     # Global timeline means per-shot processes retain the same blink schedule.
     for name,a in actors.items():enable_blinking(scene,a.a,seed=23 if name=="Milo" else 71)
     num=round((shot["end"]-shot["start"])*FPS);first=round(shot["start"]*FPS)+1
     selected=set(range(num)) if args.mode=="render" else {0,num//2,num-1}
     if args.mode=="preflight" and n in (23,31,45,46,47,48):selected.update({num//4,3*num//4})
+    if args.mode=="preflight" and n==1:selected.update({35,36,37,38}) # exact failed global frames 36–39
     records=[];geometry_records=[];started=time.monotonic();cap_attached=False;cap_mount=None;cane_length=None;pair_setup=None
     for f in range(num):
         global_frame=first+f;scene.frame_set(global_frame)
@@ -276,7 +277,10 @@ def main():
         for i,(bird,head) in enumerate(birds):
             bird.location=(-1.8+i*.56,-1.20-.34*(i%3),0)
             # Keep pigeons out of the walking corridor in the corrected shots.
-            if n in (1,2,9,17,25,43,44):bird.location=(.10+i*.47,-.55-.11*(i%3),0)
+            if n in (1,2,9,17,25):bird.location=(.10+i*.47,-.55-.11*(i%3),0)
+            # Reunion: flock disperses beyond the walking and cane corridor.
+            if n in (41,43,44):bird.location=(-2.7+i*.48,-2.2-.16*(i%3),0)
+            if n in (41,44):hide(bird,True)
             bird.rotation_euler.z=.5*math.sin(i*2)+.15*math.sin(t+i)
             head.rotation_euler.x=.22+.66*max(0,math.sin(t*5+i))
         for i,c in enumerate(crumbs):
