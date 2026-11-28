@@ -100,7 +100,7 @@ def direct_camera(scene,cam,actors,spec,u,frame,state=None):
             lens=max(12,min(180,lens*desired/max(.001,b[3]-b[2])))
         elif kind=="interview":
             span=max(.001,b[1]-b[0]);height=max(.001,b[3]-b[2])
-            lens=max(12,min(120,lens*min(.82/span,.54/height)))
+            lens=max(12,min(120,lens*min(spec.get("interview_face_span",.82)/span,.54/height)))
         state.update({"target":target.copy(),"axis":axis.copy(),"distance":dist,"lens":lens,"root":principal.root.matrix_world.translation.copy()})
     target=state["target"].copy();axis=state["axis"];dist=state["distance"];lens=state["lens"]
     if move=="track":target+=principal.root.matrix_world.translation-state["root"]
