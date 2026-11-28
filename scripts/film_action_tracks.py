@@ -73,6 +73,7 @@ class ActionTracks:
             lock,solve=construct(Retarget(driver.actors[cid]),start,direction,last-first,cycles=w.get("cycles",1))
             self.walks[cid]={"lock":lock,"solve":solve,"first":first,"last":last,"expression":w.get("expression","neutral")}
         self.initial={x["object"]:object_by_name(x["object"]).location.copy() for x in spec.get("prop_tracks",[])}
+        self.socket_scales={x["object"]:object_by_name(x["object"]).matrix_world.to_scale().copy() for x in spec.get("socket_tracks",[])}
     def before_performance(self,index):
         result={}
         for cid,w in self.walks.items():
@@ -99,7 +100,10 @@ class ActionTracks:
             offset=Vector(p.get("offset",[0,0,0]))
             anchor=socket.matrix_world@offset
             orient=Euler(tuple(math.radians(x) for x in p.get("rotation_deg",[0,0,0]))).to_matrix().to_4x4()
-            ob.matrix_world=socket.matrix_world@Matrix.Translation(offset)@orient
+            # Preserve prop physical scale instead of inheriting rig scale.
+            rotation=socket.matrix_world.to_quaternion().to_matrix().to_4x4()
+            scale=Matrix.Diagonal((*self.socket_scales[p["object"]],1))
+            ob.matrix_world=Matrix.Translation(anchor)@rotation@orient@scale
             bpy.context.view_layer.update()
             out[p["object"]]={"actor":p["actor"],"socket":p["socket"],"socket_anchor_error":float((ob.matrix_world.translation-anchor).length)}
         return out
