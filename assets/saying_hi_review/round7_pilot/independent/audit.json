@@ -1,0 +1,614 @@
+{
+  "evidence_commit": "63945e1a3a53fc9b06dcbd537af00864048ae3b5",
+  "qc_sha256": "e254e3945a571a05e5838724e39f0bb4fdda0297b905403d3b7f7be9c907cfd3",
+  "baseline": {
+    "path": "assets/saying_hi_review/round6/saying_hi.mp4",
+    "sha256": "5257e73b9c6aba9f69d791df4c059cb15e07ea14ee792253786dc5d330812b23",
+    "frames": 3036,
+    "duration": 101.2,
+    "bytes": 20237654,
+    "resolution": [
+      540,
+      960
+    ],
+    "fps": 30,
+    "audio_duration": 101.2,
+    "full_decode": "pass"
+  },
+  "run_id": "46152208501",
+  "clips": {
+    "sh09_group": {
+      "path": "assets/saying_hi_review/round7_pilot/sh09_group.mp4",
+      "sha256": "cf1e329b17f889a76ab5e2bacf7c751c4e245ce673a1b6d07ec02fbe90a66291",
+      "frames": 83,
+      "duration": 2.7666666666666666,
+      "bytes": 542939,
+      "resolution": [
+        540,
+        960
+      ],
+      "fps": 30,
+      "audio_duration": 2.766984,
+      "full_decode": "pass"
+    },
+    "sh27_interview": {
+      "path": "assets/saying_hi_review/round7_pilot/sh27_interview.mp4",
+      "sha256": "7a816c6cbdd508be5e319cdb0c88ada060ff200de19151efaadcb05c4fa2dadf",
+      "frames": 76,
+      "duration": 2.533333333333333,
+      "bytes": 405041,
+      "resolution": [
+        540,
+        960
+      ],
+      "fps": 30,
+      "audio_duration": 2.533016,
+      "full_decode": "pass"
+    },
+    "sh43_seating": {
+      "path": "assets/saying_hi_review/round7_pilot/sh43_seating.mp4",
+      "sha256": "7e9d94a7cd78f7e0454b6e992805fe6b1786019b1af446c247b8f0363e8952a6",
+      "frames": 51,
+      "duration": 1.7,
+      "bytes": 271387,
+      "resolution": [
+        540,
+        960
+      ],
+      "fps": 30,
+      "audio_duration": 1.7,
+      "full_decode": "pass"
+    }
+  },
+  "shots": {
+    "sh09": {
+      "before": {
+        "frames": 83,
+        "saturation": 0.36925231960125254,
+        "warm_red_minus_blue": -0.03162176665995829,
+        "luma": 0.43987929981363594,
+        "near_black_fraction": 0.002779637066785661,
+        "consecutive_exact_duplicates": 0
+      },
+      "after": {
+        "frames": 83,
+        "saturation": 0.369174208903548,
+        "warm_red_minus_blue": -0.03152818244656154,
+        "luma": 0.4400802425314936,
+        "near_black_fraction": 0.0027703406217462444,
+        "consecutive_exact_duplicates": 0
+      },
+      "direction": {
+        "status": "numeric_pass",
+        "beat_type": "action",
+        "principal": "narrator",
+        "actors": {
+          "leo": {
+            "action_coverage": null,
+            "action_coverage_whole_shot": 0.0,
+            "longest_action_freeze_s": null,
+            "action_transitions": 0,
+            "total_transitions": 82,
+            "state_frames": {
+              "idle": 83
+            },
+            "idle_profile": "calm_film_v1",
+            "max_applied_idle_rad": {
+              "head": [
+                0.014995183561843933,
+                0.013999864589245905,
+                0.00034206611937517465
+              ],
+              "torso": [
+                0,
+                0,
+                0
+              ]
+            },
+            "motion_coverage": null,
+            "held_pose_max_s": null,
+            "start_in_motion": false,
+            "end_in_motion": false
+          },
+          "max": {
+            "action_coverage": null,
+            "action_coverage_whole_shot": 0.0,
+            "longest_action_freeze_s": null,
+            "action_transitions": 0,
+            "total_transitions": 82,
+            "state_frames": {
+              "idle": 83
+            },
+            "idle_profile": "calm_film_v1",
+            "max_applied_idle_rad": {
+              "head": [
+                0.03296076220986961,
+                0.013780810634413776,
+                0.05194340301081146
+              ],
+              "torso": [
+                0,
+                0,
+                0
+              ]
+            },
+            "motion_coverage": null,
+            "held_pose_max_s": null,
+            "start_in_motion": false,
+            "end_in_motion": false
+          },
+          "narrator": {
+            "action_coverage": 1.0,
+            "action_coverage_whole_shot": 1.0,
+            "longest_action_freeze_s": 0.03333333333333333,
+            "action_transitions": 82,
+            "total_transitions": 82,
+            "state_frames": {
+              "action": 83
+            },
+            "idle_profile": "calm_film_v1",
+            "max_applied_idle_rad": {
+              "head": [
+                0,
+                0,
+                0
+              ],
+              "torso": [
+                0,
+                0,
+                0
+              ]
+            },
+            "motion_coverage": 1.0,
+            "held_pose_max_s": 0.03333333333333333,
+            "start_in_motion": true,
+            "end_in_motion": true
+          },
+          "noah": {
+            "action_coverage": null,
+            "action_coverage_whole_shot": 0.0,
+            "longest_action_freeze_s": null,
+            "action_transitions": 0,
+            "total_transitions": 82,
+            "state_frames": {
+              "idle": 83
+            },
+            "idle_profile": "calm_film_v1",
+            "max_applied_idle_rad": {
+              "head": [
+                0.04226449444033746,
+                0.013998894618853426,
+                0.051910269652184746
+              ],
+              "torso": [
+                0,
+                0,
+                0
+              ]
+            },
+            "motion_coverage": null,
+            "held_pose_max_s": null,
+            "start_in_motion": false,
+            "end_in_motion": false
+          },
+          "otis": {
+            "action_coverage": 1.0,
+            "action_coverage_whole_shot": 1.0,
+            "longest_action_freeze_s": 0.03333333333333333,
+            "action_transitions": 82,
+            "total_transitions": 82,
+            "state_frames": {
+              "action": 83
+            },
+            "idle_profile": "calm_film_v1",
+            "max_applied_idle_rad": {
+              "head": [
+                0,
+                0,
+                0
+              ],
+              "torso": [
+                0,
+                0,
+                0
+              ]
+            },
+            "motion_coverage": 1.0,
+            "held_pose_max_s": 0.03333333333333333,
+            "start_in_motion": true,
+            "end_in_motion": true
+          },
+          "ryan": {
+            "action_coverage": null,
+            "action_coverage_whole_shot": 0.0,
+            "longest_action_freeze_s": null,
+            "action_transitions": 0,
+            "total_transitions": 82,
+            "state_frames": {
+              "idle": 83
+            },
+            "idle_profile": "calm_film_v1",
+            "max_applied_idle_rad": {
+              "head": [
+                0.029108013010337344,
+                0.01399960205943576,
+                0.026269543821189307
+              ],
+              "torso": [
+                0,
+                0,
+                0
+              ]
+            },
+            "motion_coverage": null,
+            "held_pose_max_s": null,
+            "start_in_motion": false,
+            "end_in_motion": false
+          },
+          "sam": {
+            "action_coverage": null,
+            "action_coverage_whole_shot": 0.0,
+            "longest_action_freeze_s": null,
+            "action_transitions": 0,
+            "total_transitions": 82,
+            "state_frames": {
+              "idle": 83
+            },
+            "idle_profile": "calm_film_v1",
+            "max_applied_idle_rad": {
+              "head": [
+                0.0149993038692874,
+                0.013999104639032601,
+                0.020269509702931596
+              ],
+              "torso": [
+                0,
+                0,
+                0
+              ]
+            },
+            "motion_coverage": null,
+            "held_pose_max_s": null,
+            "start_in_motion": false,
+            "end_in_motion": false
+          }
+        },
+        "faces": {
+          "narrator": {
+            "min_height": 0.07806277275085449,
+            "safe_all": true
+          }
+        },
+        "checks": {
+          "principal_action_coverage": true,
+          "principal_action_freeze": true,
+          "grade_declared": true,
+          "action_body_scale": true
+        },
+        "grade": {
+          "preset": "warm_saturated_v1",
+          "look": "AgX - Medium High Contrast",
+          "exposure": -0.12,
+          "saturation": 1.18
+        },
+        "threshold_scene_units": 0.0015,
+        "motion_schema": "action_only_v1",
+        "idle_profile": {
+          "name": "calm_film_v1",
+          "torso_breath_rad": 0.013,
+          "torso_sway_rad": 0.02,
+          "head_breath_rad": 0.015,
+          "head_sway_rad": 0.014,
+          "head_glance_rad": 0.06,
+          "breath_hz": 0.25,
+          "sway_hz": 0.15,
+          "background_pitch_rad": 0.028,
+          "background_yaw_rad": 0.052,
+          "glance_interval_s": [
+            3,
+            6
+          ],
+          "glance_duration_s": 1.2,
+          "continuous_background_oscillation": false
+        },
+        "visual_review_required": true
+      },
+      "review_frames": [
+        "assets/saying_hi_review/round7_pilot/independent/sh09_00629.png",
+        "assets/saying_hi_review/round7_pilot/independent/sh09_00645.png",
+        "assets/saying_hi_review/round7_pilot/independent/sh09_00662.png",
+        "assets/saying_hi_review/round7_pilot/independent/sh09_00678.png",
+        "assets/saying_hi_review/round7_pilot/independent/sh09_00695.png",
+        "assets/saying_hi_review/round7_pilot/independent/sh09_00711.png"
+      ]
+    },
+    "sh27": {
+      "before": {
+        "frames": 76,
+        "saturation": 0.3717462508243506,
+        "warm_red_minus_blue": 0.025168753742564533,
+        "luma": 0.5818140722386329,
+        "near_black_fraction": 5.330165692007797e-05,
+        "consecutive_exact_duplicates": 0
+      },
+      "after": {
+        "frames": 76,
+        "saturation": 0.367750313038616,
+        "warm_red_minus_blue": 0.02168030711310048,
+        "luma": 0.5833352706828429,
+        "near_black_fraction": 6.599252761533463e-05,
+        "consecutive_exact_duplicates": 0
+      },
+      "direction": {
+        "status": "numeric_pass",
+        "beat_type": "interview",
+        "principal": "kai",
+        "actors": {
+          "cleo": {
+            "action_coverage": 1.0,
+            "action_coverage_whole_shot": 1.0,
+            "longest_action_freeze_s": 0.03333333333333333,
+            "action_transitions": 75,
+            "total_transitions": 75,
+            "state_frames": {
+              "action": 76
+            },
+            "idle_profile": "calm_film_v1",
+            "max_applied_idle_rad": {
+              "head": [
+                0,
+                0,
+                0
+              ],
+              "torso": [
+                0,
+                0,
+                0
+              ]
+            },
+            "motion_coverage": 1.0,
+            "held_pose_max_s": 0.03333333333333333,
+            "start_in_motion": true,
+            "end_in_motion": true
+          },
+          "kai": {
+            "action_coverage": 1.0,
+            "action_coverage_whole_shot": 1.0,
+            "longest_action_freeze_s": 0.03333333333333333,
+            "action_transitions": 75,
+            "total_transitions": 75,
+            "state_frames": {
+              "action": 76
+            },
+            "idle_profile": "calm_film_v1",
+            "max_applied_idle_rad": {
+              "head": [
+                0,
+                0,
+                0
+              ],
+              "torso": [
+                0,
+                0,
+                0
+              ]
+            },
+            "motion_coverage": 1.0,
+            "held_pose_max_s": 0.03333333333333333,
+            "start_in_motion": true,
+            "end_in_motion": true
+          }
+        },
+        "faces": {
+          "kai": {
+            "min_height": 0.12220746278762817,
+            "safe_all": true,
+            "min_facing_dot": 0.9159031575545669,
+            "min_ray_visibility": 0.9166666666666666,
+            "max_external_blocks": 0,
+            "min_ray_samples": 24
+          },
+          "cleo": {
+            "min_height": 0.12198328971862793,
+            "safe_all": true,
+            "min_facing_dot": 0.9096015114337206,
+            "min_ray_visibility": 0.92,
+            "max_external_blocks": 0,
+            "min_ray_samples": 25
+          }
+        },
+        "checks": {
+          "principal_action_coverage": true,
+          "principal_action_freeze": true,
+          "grade_declared": true,
+          "readable_faces": true,
+          "two_face_bounds": true,
+          "landmarks_visible": true
+        },
+        "grade": {
+          "preset": "warm_saturated_v1",
+          "look": "AgX - Medium High Contrast",
+          "exposure": -0.12,
+          "saturation": 1.18,
+          "directed_bounce": {
+            "energy": 680.0,
+            "color": [
+              1.0,
+              0.8799999952316284,
+              0.75
+            ],
+            "size": 4.0,
+            "exposure": 0.019999999552965164,
+            "position": [
+              -0.166285902261734,
+              5.383187294006348,
+              3.0188183784484863
+            ]
+          }
+        },
+        "threshold_scene_units": 0.0015,
+        "motion_schema": "action_only_v1",
+        "idle_profile": {
+          "name": "calm_film_v1",
+          "torso_breath_rad": 0.013,
+          "torso_sway_rad": 0.02,
+          "head_breath_rad": 0.015,
+          "head_sway_rad": 0.014,
+          "head_glance_rad": 0.06,
+          "breath_hz": 0.25,
+          "sway_hz": 0.15,
+          "background_pitch_rad": 0.028,
+          "background_yaw_rad": 0.052,
+          "glance_interval_s": [
+            3,
+            6
+          ],
+          "glance_duration_s": 1.2,
+          "continuous_background_oscillation": false
+        },
+        "visual_review_required": true
+      },
+      "review_frames": [
+        "assets/saying_hi_review/round7_pilot/independent/sh27_01807.png",
+        "assets/saying_hi_review/round7_pilot/independent/sh27_01822.png",
+        "assets/saying_hi_review/round7_pilot/independent/sh27_01837.png",
+        "assets/saying_hi_review/round7_pilot/independent/sh27_01852.png",
+        "assets/saying_hi_review/round7_pilot/independent/sh27_01867.png",
+        "assets/saying_hi_review/round7_pilot/independent/sh27_01882.png"
+      ]
+    },
+    "sh43": {
+      "before": {
+        "frames": 51,
+        "saturation": 0.33321715003240127,
+        "warm_red_minus_blue": -0.10681919584585875,
+        "luma": 0.48944323619595265,
+        "near_black_fraction": 0.00550714112805616,
+        "consecutive_exact_duplicates": 0
+      },
+      "after": {
+        "frames": 51,
+        "saturation": 0.3334955343509909,
+        "warm_red_minus_blue": -0.10684932136738194,
+        "luma": 0.4899272326615804,
+        "near_black_fraction": 0.004867919389978213,
+        "consecutive_exact_duplicates": 0
+      },
+      "direction": {
+        "status": "flag",
+        "beat_type": "action",
+        "principal": "narrator",
+        "actors": {
+          "june": {
+            "action_coverage": 0.9347826086956522,
+            "action_coverage_whole_shot": 0.86,
+            "longest_action_freeze_s": 0.1,
+            "action_transitions": 46,
+            "total_transitions": 50,
+            "state_frames": {
+              "action": 47,
+              "intentional_stillness": 4
+            },
+            "idle_profile": "calm_film_v1",
+            "max_applied_idle_rad": {
+              "head": [
+                0.014998694270281838,
+                0.003302438386212448,
+                0
+              ],
+              "torso": [
+                0,
+                0,
+                0
+              ]
+            },
+            "motion_coverage": 0.9347826086956522,
+            "held_pose_max_s": 0.1,
+            "start_in_motion": false,
+            "end_in_motion": false
+          },
+          "narrator": {
+            "action_coverage": 0.6944444444444444,
+            "action_coverage_whole_shot": 0.5,
+            "longest_action_freeze_s": 0.3333333333333333,
+            "action_transitions": 36,
+            "total_transitions": 50,
+            "state_frames": {
+              "action": 37,
+              "intentional_stillness": 14
+            },
+            "idle_profile": "calm_film_v1",
+            "max_applied_idle_rad": {
+              "head": [
+                0.031348851977152904,
+                0.013771409936432529,
+                0.0310509789638975
+              ],
+              "torso": [
+                0,
+                0,
+                0
+              ]
+            },
+            "motion_coverage": 0.6944444444444444,
+            "held_pose_max_s": 0.3333333333333333,
+            "start_in_motion": false,
+            "end_in_motion": false
+          }
+        },
+        "faces": {
+          "narrator": {
+            "min_height": 0.07091379165649414,
+            "safe_all": true
+          },
+          "june": {
+            "min_height": 0.06266772747039795,
+            "safe_all": true
+          }
+        },
+        "checks": {
+          "principal_action_coverage": false,
+          "principal_action_freeze": true,
+          "grade_declared": true,
+          "action_body_scale": true
+        },
+        "grade": {
+          "preset": "warm_saturated_v1",
+          "look": "AgX - Medium High Contrast",
+          "exposure": -0.12,
+          "saturation": 1.18
+        },
+        "threshold_scene_units": 0.0015,
+        "motion_schema": "action_only_v1",
+        "idle_profile": {
+          "name": "calm_film_v1",
+          "torso_breath_rad": 0.013,
+          "torso_sway_rad": 0.02,
+          "head_breath_rad": 0.015,
+          "head_sway_rad": 0.014,
+          "head_glance_rad": 0.06,
+          "breath_hz": 0.25,
+          "sway_hz": 0.15,
+          "background_pitch_rad": 0.028,
+          "background_yaw_rad": 0.052,
+          "glance_interval_s": [
+            3,
+            6
+          ],
+          "glance_duration_s": 1.2,
+          "continuous_background_oscillation": false
+        },
+        "visual_review_required": true
+      },
+      "review_frames": [
+        "assets/saying_hi_review/round7_pilot/independent/sh43_02713.png",
+        "assets/saying_hi_review/round7_pilot/independent/sh43_02723.png",
+        "assets/saying_hi_review/round7_pilot/independent/sh43_02733.png",
+        "assets/saying_hi_review/round7_pilot/independent/sh43_02743.png",
+        "assets/saying_hi_review/round7_pilot/independent/sh43_02753.png",
+        "assets/saying_hi_review/round7_pilot/independent/sh43_02763.png"
+      ]
+    }
+  },
+  "visual_review_required": true
+}
