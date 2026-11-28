@@ -65,20 +65,20 @@ jobs:
         run: |
           set -euo pipefail
           OUT=assets/saying_hi_review
-          mkdir -p "$OUT/smoke/round2"
+          mkdir -p "$OUT/smoke/round3"
           for kind in lineup square; do
             src=/tmp/saying-hi-smoke/saying-hi-smoke-$kind
             if test -d "$src"; then
-              mkdir -p "$OUT/smoke/round2/$kind"
-              cp -a "$src"/. "$OUT/smoke/round2/$kind/"
+              mkdir -p "$OUT/smoke/round3/$kind"
+              cp -a "$src"/. "$OUT/smoke/round3/$kind/"
             fi
           done
-          printf 'workflow_run_id=%s\nsource_commit=%s\nsmoke_result=%s\n' "$GITHUB_RUN_ID" "$GITHUB_SHA" "${{ needs.smoke.result }}" > "$OUT/smoke/round2/workflow_provenance.txt"
+          printf 'workflow_run_id=%s\nsource_commit=%s\nsmoke_result=%s\n' "$GITHUB_RUN_ID" "$GITHUB_SHA" "${{ needs.smoke.result }}" > "$OUT/smoke/round3/workflow_provenance.txt"
           find "$OUT" -type f ! -name SHA256SUMS -print0 | sort -z | xargs -0 sha256sum > "$OUT/SHA256SUMS"
           sha256sum stories/saying_hi_script.txt stories/saying_hi_plan.json >> "$OUT/SHA256SUMS"
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add "$OUT"
-          git commit -m "Publish corrected EGL smoke evidence (round 2)"
+          git commit -m "Publish corrected EGL smoke evidence (round 3)"
           git pull --rebase origin production/saying-hi
           git push origin HEAD:refs/heads/production/saying-hi
