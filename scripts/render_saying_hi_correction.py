@@ -66,6 +66,8 @@ def evaluate_gate(unit,driver,rows):
         check("dog_occlusion_samples",b,0,b==0 and s>0)
         safe=bool(dog) and all(x["safe"] for x in dog)
         check("dog_fully_in_frame",safe,True,safe)
+        actor_safe=all(p[4]>0 and .035<=p[0]<=p[1]<=.965 and .035<=p[2]<=p[3]<=.965 for m in ms for p in m["actor_bounds"].values())
+        check("payoff_actor_full_body_in_frame",actor_safe,True,actor_safe)
         ground=max((abs(m["waffle"]["evaluated_min_z"]) for m in ms if m["dog_visible"]),default=999)
         check("dog_floor_error",ground,.002,ground<=.002)
         june=[m["seat_contacts"]["june"] for m in ms]
@@ -89,7 +91,7 @@ def evaluate_gate(unit,driver,rows):
         if unit=="seating":
             displacement=abs(june[-1]["hip_world"][1]-june[0]["hip_world"][1])
             check("actual_move_over_displacement",displacement,.20,displacement>=.20)
-        extra={"dog_visible_frames":len(dog),"minimum_dog_samples":s,"camera":list(driver.cam.location)}
+        extra={"dog_visible_frames":len(dog),"minimum_dog_samples":s,"camera":driver.payoff_camera,"dog_blockers":sorted({b for m in dog for b in m.get("blockers",[])})}
     elif unit=="empty_wall":
         check("wall_tally_strokes",min(m["tally_count"] for m in ms),35,all(m["tally_count"]==35 for m in ms))
         check("boys_on_wall",max(m["boys_on_wall"] for m in ms),0,all(m["boys_on_wall"]==0 for m in ms))
