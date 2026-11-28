@@ -1,0 +1,4536 @@
+[
+  {
+    "path": "assets/chapter4_review/round2/teacher-hair-default-none.png",
+    "run_id": "46096074284",
+    "artifact": "chapter4-teacher-hair-default-none",
+    "sha256": "b709f1d962a4775152702005c2b76d4e83ffeab10d2f2de42611d0cdb4622e4f",
+    "size": [
+      3072,
+      1100
+    ],
+    "source_pngs": {
+      "hair_contact_sheet.png": "b709f1d962a4775152702005c2b76d4e83ffeab10d2f2de42611d0cdb4622e4f"
+    },
+    "manifest": {
+      "actor": "teacher",
+      "kind": "hair",
+      "item": "default",
+      "engine": "EEVEE",
+      "denoising": false,
+      "views": [
+        "front",
+        "side",
+        "back"
+      ],
+      "seconds": {
+        "front": 31.443542184999984,
+        "side": 8.941380664000008,
+        "back": 10.527397043000008
+      },
+      "sheet": "hair_contact_sheet.png",
+      "body_vertices": 480,
+      "bones": 12,
+      "hair": "swept_bun",
+      "outfit": "default",
+      "clothing": {
+        "role": "teacher",
+        "garments": {
+          "shirt": "cardigan",
+          "sleeves": "cardigan",
+          "pants": "teacher_trousers"
+        },
+        "sleeve_cutoff_fraction_from_wrist": 0.14,
+        "fabric_shader": "UV cross-weave / knit bump + atlas color and stitched artwork",
+        "garment_shells": [
+          "shirt and sleeves",
+          "trousers"
+        ],
+        "shell_thickness_local_units": 0.01,
+        "raised_details": {
+          "cuffs": true,
+          "denim_back_pockets": false,
+          "hoodie_pouch_drawcords_folded_hood": false,
+          "tee_neckline": false,
+          "cardigan_placket_collar_buttons": true,
+          "jacket_lapels_pockets_buttons": false
+        },
+        "original_body_vertices_preserved": 480,
+        "original_armature_bones_preserved": 12
+      }
+    }
+  },
+  {
+    "path": "assets/chapter4_review/round2/teacher-hair-rounded_bob-none.png",
+    "run_id": "46096074284",
+    "artifact": "chapter4-teacher-hair-rounded_bob-none",
+    "sha256": "24099f39fef4459efb2e8a154dde6a7a1a3728e4e288419f47077b059e8bcd37",
+    "size": [
+      3072,
+      1100
+    ],
+    "source_pngs": {
+      "hair_contact_sheet.png": "24099f39fef4459efb2e8a154dde6a7a1a3728e4e288419f47077b059e8bcd37"
+    },
+    "manifest": {
+      "actor": "teacher",
+      "kind": "hair",
+      "item": "rounded_bob",
+      "engine": "EEVEE",
+      "denoising": false,
+      "views": [
+        "front",
+        "side",
+        "back"
+      ],
+      "seconds": {
+        "front": 22.789079714000025,
+        "side": 6.470029316000023,
+        "back": 8.41585388599998
+      },
+      "sheet": "hair_contact_sheet.png",
+      "body_vertices": 480,
+      "bones": 12,
+      "hair": "rounded_bob",
+      "outfit": "default",
+      "clothing": {
+        "role": "teacher",
+        "garments": {
+          "shirt": "cardigan",
+          "sleeves": "cardigan",
+          "pants": "teacher_trousers"
+        },
+        "sleeve_cutoff_fraction_from_wrist": 0.14,
+        "fabric_shader": "UV cross-weave / knit bump + atlas color and stitched artwork",
+        "garment_shells": [
+          "shirt and sleeves",
+          "trousers"
+        ],
+        "shell_thickness_local_units": 0.01,
+        "raised_details": {
+          "cuffs": true,
+          "denim_back_pockets": false,
+          "hoodie_pouch_drawcords_folded_hood": false,
+          "tee_neckline": false,
+          "cardigan_placket_collar_buttons": true,
+          "jacket_lapels_pockets_buttons": false
+        },
+        "original_body_vertices_preserved": 480,
+        "original_armature_bones_preserved": 12
+      }
+    }
+  },
+  {
+    "path": "assets/chapter4_review/round2/dad-hair-default-none.png",
+    "run_id": "46096074284",
+    "artifact": "chapter4-dad-hair-default-none",
+    "sha256": "1c4c3c12865cb3ff4628fcc5d44bd1732b9acc31b3161b360434eb112ba645c0",
+    "size": [
+      3072,
+      1100
+    ],
+    "source_pngs": {
+      "hair_contact_sheet.png": "1c4c3c12865cb3ff4628fcc5d44bd1732b9acc31b3161b360434eb112ba645c0"
+    },
+    "manifest": {
+      "actor": "dad",
+      "kind": "hair",
+      "item": "default",
+      "engine": "EEVEE",
+      "denoising": false,
+      "views": [
+        "front",
+        "side",
+        "back"
+      ],
+      "seconds": {
+        "front": 22.79150774300001,
+        "side": 6.042482758999995,
+        "back": 7.831472018999989
+      },
+      "sheet": "hair_contact_sheet.png",
+      "body_vertices": 480,
+      "bones": 12,
+      "hair": "classic_sweep",
+      "outfit": "default",
+      "clothing": {
+        "role": "dad",
+        "garments": {
+          "shirt": "jacket",
+          "sleeves": "jacket",
+          "pants": "stripe_pants"
+        },
+        "sleeve_cutoff_fraction_from_wrist": 0.14,
+        "fabric_shader": "UV cross-weave / knit bump + atlas color and stitched artwork",
+        "garment_shells": [
+          "shirt and sleeves",
+          "trousers"
+        ],
+        "shell_thickness_local_units": 0.01,
+        "raised_details": {
+          "cuffs": true,
+          "denim_back_pockets": false,
+          "hoodie_pouch_drawcords_folded_hood": false,
+          "tee_neckline": false,
+          "cardigan_placket_collar_buttons": false,
+          "jacket_lapels_pockets_buttons": true
+        },
+        "original_body_vertices_preserved": 480,
+        "original_armature_bones_preserved": 12
+      }
+    }
+  },
+  {
+    "path": "assets/chapter4_review/round2/dad-hair-short_crew-none.png",
+    "run_id": "46096074284",
+    "artifact": "chapter4-dad-hair-short_crew-none",
+    "sha256": "dce1879289d05c4f2a168a82220955a155d662ab5aecfc971fc8f0a115ea07eb",
+    "size": [
+      3072,
+      1100
+    ],
+    "source_pngs": {
+      "hair_contact_sheet.png": "dce1879289d05c4f2a168a82220955a155d662ab5aecfc971fc8f0a115ea07eb"
+    },
+    "manifest": {
+      "actor": "dad",
+      "kind": "hair",
+      "item": "short_crew",
+      "engine": "EEVEE",
+      "denoising": false,
+      "views": [
+        "front",
+        "side",
+        "back"
+      ],
+      "seconds": {
+        "front": 26.208948175000017,
+        "side": 7.592356057000018,
+        "back": 10.311389104
+      },
+      "sheet": "hair_contact_sheet.png",
+      "body_vertices": 480,
+      "bones": 12,
+      "hair": "short_crew",
+      "outfit": "default",
+      "clothing": {
+        "role": "dad",
+        "garments": {
+          "shirt": "jacket",
+          "sleeves": "jacket",
+          "pants": "stripe_pants"
+        },
+        "sleeve_cutoff_fraction_from_wrist": 0.14,
+        "fabric_shader": "UV cross-weave / knit bump + atlas color and stitched artwork",
+        "garment_shells": [
+          "shirt and sleeves",
+          "trousers"
+        ],
+        "shell_thickness_local_units": 0.01,
+        "raised_details": {
+          "cuffs": true,
+          "denim_back_pockets": false,
+          "hoodie_pouch_drawcords_folded_hood": false,
+          "tee_neckline": false,
+          "cardigan_placket_collar_buttons": false,
+          "jacket_lapels_pockets_buttons": true
+        },
+        "original_body_vertices_preserved": 480,
+        "original_armature_bones_preserved": 12
+      }
+    }
+  },
+  {
+    "path": "assets/chapter4_review/round2/dad-hair-side_part-none.png",
+    "run_id": "46096074284",
+    "artifact": "chapter4-dad-hair-side_part-none",
+    "sha256": "747bd21a75f8ef238314d59caf39e3340ac1c500ed91d5c470d6b2ddbfff29e6",
+    "size": [
+      3072,
+      1100
+    ],
+    "source_pngs": {
+      "hair_contact_sheet.png": "747bd21a75f8ef238314d59caf39e3340ac1c500ed91d5c470d6b2ddbfff29e6"
+    },
+    "manifest": {
+      "actor": "dad",
+      "kind": "hair",
+      "item": "side_part",
+      "engine": "EEVEE",
+      "denoising": false,
+      "views": [
+        "front",
+        "side",
+        "back"
+      ],
+      "seconds": {
+        "front": 23.143022453000015,
+        "side": 6.011467751999987,
+        "back": 7.7725411260000214
+      },
+      "sheet": "hair_contact_sheet.png",
+      "body_vertices": 480,
+      "bones": 12,
+      "hair": "side_part",
+      "outfit": "default",
+      "clothing": {
+        "role": "dad",
+        "garments": {
+          "shirt": "jacket",
+          "sleeves": "jacket",
+          "pants": "stripe_pants"
+        },
+        "sleeve_cutoff_fraction_from_wrist": 0.14,
+        "fabric_shader": "UV cross-weave / knit bump + atlas color and stitched artwork",
+        "garment_shells": [
+          "shirt and sleeves",
+          "trousers"
+        ],
+        "shell_thickness_local_units": 0.01,
+        "raised_details": {
+          "cuffs": true,
+          "denim_back_pockets": false,
+          "hoodie_pouch_drawcords_folded_hood": false,
+          "tee_neckline": false,
+          "cardigan_placket_collar_buttons": false,
+          "jacket_lapels_pockets_buttons": true
+        },
+        "original_body_vertices_preserved": 480,
+        "original_armature_bones_preserved": 12
+      }
+    }
+  },
+  {
+    "path": "assets/chapter4_review/round2/librarian-hair-default-none.png",
+    "run_id": "46096074284",
+    "artifact": "chapter4-librarian-hair-default-none",
+    "sha256": "8f6c474a7b86f8bab18a492c12cb3d5b351144fe807da2c951ffa64582e1b3f8",
+    "size": [
+      3072,
+      1100
+    ],
+    "source_pngs": {
+      "hair_contact_sheet.png": "8f6c474a7b86f8bab18a492c12cb3d5b351144fe807da2c951ffa64582e1b3f8"
+    },
+    "manifest": {
+      "actor": "librarian",
+      "kind": "hair",
+      "item": "default",
+      "engine": "EEVEE",
+      "denoising": false,
+      "views": [
+        "front",
+        "side",
+        "back"
+      ],
+      "seconds": {
+        "front": 28.664740257999995,
+        "side": 7.979536177,
+        "back": 10.548050276999987
+      },
+      "sheet": "hair_contact_sheet.png",
+      "body_vertices": 480,
+      "bones": 12,
+      "hair": "soft_sweep",
+      "outfit": "default",
+      "clothing": {
+        "role": "librarian",
+        "garments": {
+          "shirt": "cardigan",
+          "sleeves": "cardigan",
+          "pants": "blue_denim"
+        },
+        "sleeve_cutoff_fraction_from_wrist": 0.14,
+        "fabric_shader": "UV cross-weave / knit bump + atlas color and stitched artwork",
+        "garment_shells": [
+          "shirt and sleeves",
+          "trousers"
+        ],
+        "shell_thickness_local_units": 0.01,
+        "raised_details": {
+          "cuffs": true,
+          "denim_back_pockets": true,
+          "hoodie_pouch_drawcords_folded_hood": false,
+          "tee_neckline": false,
+          "cardigan_placket_collar_buttons": true,
+          "jacket_lapels_pockets_buttons": false
+        },
+        "original_body_vertices_preserved": 480,
+        "original_armature_bones_preserved": 12
+      }
+    }
+  },
+  {
+    "path": "assets/chapter4_review/round2/librarian-hair-rounded_bob-none.png",
+    "run_id": "46096074284",
+    "artifact": "chapter4-librarian-hair-rounded_bob-none",
+    "sha256": "8b476e85c846ec9ed5401654243531fab675cf764dd626acede9fd3dd7727916",
+    "size": [
+      3072,
+      1100
+    ],
+    "source_pngs": {
+      "hair_contact_sheet.png": "8b476e85c846ec9ed5401654243531fab675cf764dd626acede9fd3dd7727916"
+    },
+    "manifest": {
+      "actor": "librarian",
+      "kind": "hair",
+      "item": "rounded_bob",
+      "engine": "EEVEE",
+      "denoising": false,
+      "views": [
+        "front",
+        "side",
+        "back"
+      ],
+      "seconds": {
+        "front": 27.336155048000023,
+        "side": 6.331903677000014,
+        "back": 8.150020858000005
+      },
+      "sheet": "hair_contact_sheet.png",
+      "body_vertices": 480,
+      "bones": 12,
+      "hair": "rounded_bob",
+      "outfit": "default",
+      "clothing": {
+        "role": "librarian",
+        "garments": {
+          "shirt": "cardigan",
+          "sleeves": "cardigan",
+          "pants": "blue_denim"
+        },
+        "sleeve_cutoff_fraction_from_wrist": 0.14,
+        "fabric_shader": "UV cross-weave / knit bump + atlas color and stitched artwork",
+        "garment_shells": [
+          "shirt and sleeves",
+          "trousers"
+        ],
+        "shell_thickness_local_units": 0.01,
+        "raised_details": {
+          "cuffs": true,
+          "denim_back_pockets": true,
+          "hoodie_pouch_drawcords_folded_hood": false,
+          "tee_neckline": false,
+          "cardigan_placket_collar_buttons": true,
+          "jacket_lapels_pockets_buttons": false
+        },
+        "original_body_vertices_preserved": 480,
+        "original_armature_bones_preserved": 12
+      }
+    }
+  },
+  {
+    "path": "assets/chapter4_review/round2/patron_green-hair-messy_fringe-none.png",
+    "run_id": "46096074284",
+    "artifact": "chapter4-patron_green-hair-messy_fringe-none",
+    "sha256": "1521643de0cf044b026626476bca46b9881065d49e7fe600c9d9847d721bc976",
+    "size": [
+      3072,
+      1100
+    ],
+    "source_pngs": {
+      "hair_contact_sheet.png": "1521643de0cf044b026626476bca46b9881065d49e7fe600c9d9847d721bc976"
+    },
+    "manifest": {
+      "actor": "patron_green",
+      "kind": "hair",
+      "item": "messy_fringe",
+      "engine": "EEVEE",
+      "denoising": false,
+      "views": [
+        "front",
+        "side",
+        "back"
+      ],
+      "seconds": {
+        "front": 18.526973636999998,
+        "side": 4.673152340999991,
+        "back": 6.166328531999994
+      },
+      "sheet": "hair_contact_sheet.png",
+      "body_vertices": 480,
+      "bones": 12,
+      "hair": "messy_fringe",
+      "outfit": "default",
+      "clothing": {
+        "role": "patron_green",
+        "garments": {
+          "shirt": "green_tee",
+          "sleeves": "green_tee",
+          "pants": "green_student_denim"
+        },
+        "sleeve_cutoff_fraction_from_wrist": 0.48,
+        "fabric_shader": "UV cross-weave / knit bump + atlas color and stitched artwork",
+        "garment_shells": [
+          "shirt and sleeves",
+          "trousers"
+        ],
+        "shell_thickness_local_units": 0.01,
+        "raised_details": {
+          "cuffs": true,
+          "denim_back_pockets": true,
+          "hoodie_pouch_drawcords_folded_hood": false,
+          "tee_neckline": true,
+          "cardigan_placket_collar_buttons": false,
+          "jacket_lapels_pockets_buttons": false
+        },
+        "original_body_vertices_preserved": 480,
+        "original_armature_bones_preserved": 12
+      }
+    }
+  },
+  {
+    "path": "assets/chapter4_review/round2/patron_blue-hair-curly_crop-none.png",
+    "run_id": "46096074284",
+    "artifact": "chapter4-patron_blue-hair-curly_crop-none",
+    "sha256": "ad4ffe3fe22e5ced3072e0cf3da6df493381487b2a18fb636a1a11667bf42c2c",
+    "size": [
+      3072,
+      1100
+    ],
+    "source_pngs": {
+      "hair_contact_sheet.png": "ad4ffe3fe22e5ced3072e0cf3da6df493381487b2a18fb636a1a11667bf42c2c"
+    },
+    "manifest": {
+      "actor": "patron_blue",
+      "kind": "hair",
+      "item": "curly_crop",
+      "engine": "EEVEE",
+      "denoising": false,
+      "views": [
+        "front",
+        "side",
+        "back"
+      ],
+      "seconds": {
+        "front": 33.528050803,
+        "side": 7.814743916000012,
+        "back": 10.367195471999992
+      },
+      "sheet": "hair_contact_sheet.png",
+      "body_vertices": 480,
+      "bones": 12,
+      "hair": "curly_crop",
+      "outfit": "default",
+      "clothing": {
+        "role": "patron_blue",
+        "garments": {
+          "shirt": "blue_tee",
+          "sleeves": "blue_tee",
+          "pants": "blue_student_denim"
+        },
+        "sleeve_cutoff_fraction_from_wrist": 0.48,
+        "fabric_shader": "UV cross-weave / knit bump + atlas color and stitched artwork",
+        "garment_shells": [
+          "shirt and sleeves",
+          "trousers"
+        ],
+        "shell_thickness_local_units": 0.01,
+        "raised_details": {
+          "cuffs": true,
+          "denim_back_pockets": true,
+          "hoodie_pouch_drawcords_folded_hood": false,
+          "tee_neckline": true,
+          "cardigan_placket_collar_buttons": false,
+          "jacket_lapels_pockets_buttons": false
+        },
+        "original_body_vertices_preserved": 480,
+        "original_armature_bones_preserved": 12
+      }
+    }
+  },
+  {
+    "path": "assets/chapter4_review/round2/lead-outfit-forest_bomber-none.png",
+    "run_id": "46096074284",
+    "artifact": "chapter4-lead-outfit-forest_bomber-none",
+    "sha256": "06e04d149dabe7a71857066ee2ab8e1fd4e3d48f35b791a0b0da1d8085d0f3cc",
+    "size": [
+      2048,
+      2122
+    ],
+    "source_pngs": {
+      "clothing_contact_sheet.png": "06e04d149dabe7a71857066ee2ab8e1fd4e3d48f35b791a0b0da1d8085d0f3cc"
+    },
+    "manifest": {
+      "actor": "lead",
+      "kind": "outfit",
+      "item": "forest_bomber",
+      "engine": "EEVEE",
+      "denoising": false,
+      "views": [
+        "front",
+        "side",
+        "back",
+        "detail"
+      ],
+      "seconds": {
+        "front": 29.846062364999995,
+        "side": 5.8419584339999915,
+        "back": 8.946494512999976,
+        "detail": 19.24989413100002
+      },
+      "sheet": "clothing_contact_sheet.png",
+      "body_vertices": 480,
+      "bones": 12,
+      "hair": "spikes",
+      "outfit": "forest_bomber",
+      "clothing": {
+        "role": "lead",
+        "outfit": "forest_bomber",
+        "top": "jacket",
+        "pants": "jeans",
+        "sleeve_cutoff_fraction_from_wrist": 0.14,
+        "shells": 2,
+        "body_vertices": 480,
+        "bones": 12
+      }
+    }
+  },
+  {
+    "path": "assets/chapter4_review/round2/dad-outfit-charcoal_suit-none.png",
+    "run_id": "46096074284",
+    "artifact": "chapter4-dad-outfit-charcoal_suit-none",
+    "sha256": "b80998a97e62da0d3021fe4d7565d790bdce44d0a14b847daf011a468fa3a8fd",
+    "size": [
+      2048,
+      2122
+    ],
+    "source_pngs": {
+      "clothing_contact_sheet.png": "b80998a97e62da0d3021fe4d7565d790bdce44d0a14b847daf011a468fa3a8fd"
+    },
+    "manifest": {
+      "actor": "dad",
+      "kind": "outfit",
+      "item": "charcoal_suit",
+      "engine": "EEVEE",
+      "denoising": false,
+      "views": [
+        "front",
+        "side",
+        "back",
+        "detail"
+      ],
+      "seconds": {
+        "front": 31.18365495900001,
+        "side": 5.234041518999987,
+        "back": 8.357890652999998,
+        "detail": 18.994755890999983
+      },
+      "sheet": "clothing_contact_sheet.png",
+      "body_vertices": 480,
+      "bones": 12,
+      "hair": "classic_sweep",
+      "outfit": "charcoal_suit",
+      "clothing": {
+        "role": "dad",
+        "outfit": "charcoal_suit",
+        "top": "formal",
+        "pants": "chino",
+        "sleeve_cutoff_fraction_from_wrist": 0.14,
+        "shells": 2,
+        "body_vertices": 480,
+        "bones": 12
+      }
+    }
+  },
+  {
+    "path": "assets/chapter4_review/round2/teacher-outfit-navy_formal-none.png",
+    "run_id": "46096074284",
+    "artifact": "chapter4-teacher-outfit-navy_formal-none",
+    "sha256": "17761044ca9fed970d514c4f2de13a73f5b9c5845df6d1178faace367c5cde1b",
+    "size": [
+      2048,
+      2122
+    ],
+    "source_pngs": {
+      "clothing_contact_sheet.png": "17761044ca9fed970d514c4f2de13a73f5b9c5845df6d1178faace367c5cde1b"
+    },
+    "manifest": {
+      "actor": "teacher",
+      "kind": "outfit",
+      "item": "navy_formal",
+      "engine": "EEVEE",
+      "denoising": false,
+      "views": [
+        "front",
+        "side",
+        "back",
+        "detail"
+      ],
+      "seconds": {
+        "front": 21.23338594500001,
+        "side": 4.3708429480000035,
+        "back": 6.767011119999992,
+        "detail": 14.711172352000006
+      },
+      "sheet": "clothing_contact_sheet.png",
+      "body_vertices": 480,
+      "bones": 12,
+      "hair": "swept_bun",
+      "outfit": "navy_formal",
+      "clothing": {
+        "role": "teacher",
+        "outfit": "navy_formal",
+        "top": "formal",
+        "pants": "chino",
+        "sleeve_cutoff_fraction_from_wrist": 0.14,
+        "shells": 2,
+        "body_vertices": 480,
+        "bones": 12
+      }
+    }
+  },
+  {
+    "path": "assets/chapter4_review/round2/librarian-outfit-plum_blazer-none.png",
+    "run_id": "46096074284",
+    "artifact": "chapter4-librarian-outfit-plum_blazer-none",
+    "sha256": "9ec8d3112fbef7351b47d8de07bca5e7d17e02b0f2cae63673ce0c871c2077d6",
+    "size": [
+      2048,
+      2122
+    ],
+    "source_pngs": {
+      "clothing_contact_sheet.png": "9ec8d3112fbef7351b47d8de07bca5e7d17e02b0f2cae63673ce0c871c2077d6"
+    },
+    "manifest": {
+      "actor": "librarian",
+      "kind": "outfit",
+      "item": "plum_blazer",
+      "engine": "EEVEE",
+      "denoising": false,
+      "views": [
+        "front",
+        "side",
+        "back",
+        "detail"
+      ],
+      "seconds": {
+        "front": 25.226100416999998,
+        "side": 3.974716304000026,
+        "back": 6.185521547000008,
+        "detail": 13.701024307000012
+      },
+      "sheet": "clothing_contact_sheet.png",
+      "body_vertices": 480,
+      "bones": 12,
+      "hair": "soft_sweep",
+      "outfit": "plum_blazer",
+      "clothing": {
+        "role": "librarian",
+        "outfit": "plum_blazer",
+        "top": "formal",
+        "pants": "chino",
+        "sleeve_cutoff_fraction_from_wrist": 0.14,
+        "shells": 2,
+        "body_vertices": 480,
+        "bones": 12
+      }
+    }
+  },
+  {
+    "path": "assets/chapter4_review/round2/librarian-outfit-teal_cardigan-none.png",
+    "run_id": "46096074284",
+    "artifact": "chapter4-librarian-outfit-teal_cardigan-none",
+    "sha256": "52a40fbe3886850f0255b3cd4684fccc5d37a548ce4988105c9f01fdd93ecf8d",
+    "size": [
+      2048,
+      2122
+    ],
+    "source_pngs": {
+      "clothing_contact_sheet.png": "52a40fbe3886850f0255b3cd4684fccc5d37a548ce4988105c9f01fdd93ecf8d"
+    },
+    "manifest": {
+      "actor": "librarian",
+      "kind": "outfit",
+      "item": "teal_cardigan",
+      "engine": "EEVEE",
+      "denoising": false,
+      "views": [
+        "front",
+        "side",
+        "back",
+        "detail"
+      ],
+      "seconds": {
+        "front": 25.52188321,
+        "side": 3.8893828839999856,
+        "back": 6.092539856999991,
+        "detail": 13.76128200300002
+      },
+      "sheet": "clothing_contact_sheet.png",
+      "body_vertices": 480,
+      "bones": 12,
+      "hair": "soft_sweep",
+      "outfit": "teal_cardigan",
+      "clothing": {
+        "role": "librarian",
+        "outfit": "teal_cardigan",
+        "top": "knit",
+        "pants": "chino",
+        "sleeve_cutoff_fraction_from_wrist": 0.14,
+        "shells": 2,
+        "body_vertices": 480,
+        "bones": 12
+      }
+    }
+  },
+  {
+    "path": "assets/chapter4_review/round2/patron_green-outfit-school_polo-none.png",
+    "run_id": "46096074284",
+    "artifact": "chapter4-patron_green-outfit-school_polo-none",
+    "sha256": "5ed490dc927bdf09a2fb9949ca04663fd841cba2bde889b80aeb9177c2dc0bb7",
+    "size": [
+      2048,
+      2122
+    ],
+    "source_pngs": {
+      "clothing_contact_sheet.png": "5ed490dc927bdf09a2fb9949ca04663fd841cba2bde889b80aeb9177c2dc0bb7"
+    },
+    "manifest": {
+      "actor": "patron_green",
+      "kind": "outfit",
+      "item": "school_polo",
+      "engine": "EEVEE",
+      "denoising": false,
+      "views": [
+        "front",
+        "side",
+        "back",
+        "detail"
+      ],
+      "seconds": {
+        "front": 21.73183828599997,
+        "side": 4.176912911000045,
+        "back": 6.042489337999996,
+        "detail": 12.100929845999985
+      },
+      "sheet": "clothing_contact_sheet.png",
+      "body_vertices": 480,
+      "bones": 12,
+      "hair": "short_crop",
+      "outfit": "school_polo",
+      "clothing": {
+        "role": "patron_green",
+        "outfit": "school_polo",
+        "top": "polo",
+        "pants": "chino",
+        "sleeve_cutoff_fraction_from_wrist": 0.48,
+        "shells": 2,
+        "body_vertices": 480,
+        "bones": 12
+      }
+    }
+  },
+  {
+    "path": "assets/chapter4_review/round2/patron_blue-outfit-sports_kit-none.png",
+    "run_id": "46096074284",
+    "artifact": "chapter4-patron_blue-outfit-sports_kit-none",
+    "sha256": "a326a35938d507e74b4c13b8298ea7da1b2bf1dbd86083e3f8d7103f1ad772a6",
+    "size": [
+      2048,
+      2122
+    ],
+    "source_pngs": {
+      "clothing_contact_sheet.png": "a326a35938d507e74b4c13b8298ea7da1b2bf1dbd86083e3f8d7103f1ad772a6"
+    },
+    "manifest": {
+      "actor": "patron_blue",
+      "kind": "outfit",
+      "item": "sports_kit",
+      "engine": "EEVEE",
+      "denoising": false,
+      "views": [
+        "front",
+        "side",
+        "back",
+        "detail"
+      ],
+      "seconds": {
+        "front": 29.959561757000003,
+        "side": 5.328259059000004,
+        "back": 8.577173679000012,
+        "detail": 18.946274824
+      },
+      "sheet": "clothing_contact_sheet.png",
+      "body_vertices": 480,
+      "bones": 12,
+      "hair": "short_crop",
+      "outfit": "sports_kit",
+      "clothing": {
+        "role": "patron_blue",
+        "outfit": "sports_kit",
+        "top": "sport",
+        "pants": "soft",
+        "sleeve_cutoff_fraction_from_wrist": 0.48,
+        "shells": 2,
+        "body_vertices": 480,
+        "bones": 12
+      }
+    }
+  },
+  {
+    "path": "assets/chapter4_review/round2/lead-clearance-forest_bomber-walk.png",
+    "run_id": "46096074284",
+    "artifact": "chapter4-lead-clearance-forest_bomber-walk",
+    "sha256": "5d3c502aa4d5dc13c8b4ef1aa518566fe4f681486233a086038534425196309a",
+    "size": [
+      1680,
+      1950
+    ],
+    "source_pngs": {
+      "front_strip.png": "03a6f95b92146b8334a7e52b08a7280c37bed09426a09f88cab8162c7522c94a",
+      "side_strip.png": "98853d33ac6527c43fca6dcb3344a47146d9d1c831eb6c1c6a94ea6a2831bff3"
+    },
+    "manifest": {
+      "actor": "lead",
+      "motion": "walk",
+      "frames_evaluated": 60,
+      "rendered_samples": [
+        1,
+        11,
+        21,
+        31,
+        41,
+        51,
+        60
+      ],
+      "views": [
+        "front",
+        "side"
+      ],
+      "engine": "EEVEE",
+      "denoising": false,
+      "locked_motion_path": "StrideLock/Retarget",
+      "max_shell_source_gap": 0.004470320884138346,
+      "max_articulated_trim_tracking_error": 0.0,
+      "tracking_pass": true,
+      "visual_clearance": "pending actual pixel inspection; source proximity alone does not prove absence of clipping",
+      "records": [
+        {
+          "frame": 1,
+          "shell_count": 2,
+          "shell_vertices": 5824,
+          "max_source_gap": 0.004469666630029678,
+          "max_articulated_trim_tracking_error": 0.0,
+          "pass_tracking": true
+        },
+        {
+          "frame": 2,
+          "shell_count": 2,
+          "shell_vertices": 5824,
+          "max_source_gap": 0.004469647537916899,
+          "max_articulated_trim_tracking_error": 0.0,
+          "pass_tracking": true
+        },
+        {
+          "frame": 3,
+          "shell_count": 2,
+          "shell_vertices": 5824,
+          "max_source_gap": 0.004469677805900574,
+          "max_articulated_trim_tracking_error": 0.0,
+          "pass_tracking": true
+        },
+        {
+          "frame": 4,
+          "shell_count": 2,
+          "shell_vertices": 5824,
+          "max_source_gap": 0.004469612613320351,
+          "max_articulated_trim_tracking_error": 0.0,
+          "pass_tracking": true
+        },
+        {
+          "frame": 5,
+          "shell_count": 2,
+          "shell_vertices": 5824,
+          "max_source_gap": 0.004469661507755518,
+          "max_articulated_trim_tracking_error": 0.0,
+          "pass_tracking": true
+        },
+        {
+          "frame": 6,
+          "shell_count": 2,
+          "shell_vertices": 5824,
+          "max_source_gap": 0.004469688516110182,
+          "max_articulated_trim_tracking_error": 0.0,
+          "pass_tracking": true
+        },
+        {
+          "frame": 7,
+          "shell_count": 2,
+          "shell_vertices": 5824,
+          "max_source_gap": 0.004469639156013727,
+          "max_articulated_trim_tracking_error": 0.0,
+          "pass_tracking": true
+        },
+        {
+          "frame": 8,
+          "shell_count": 2,
+          "shell_vertices": 5824,
+          "max_source_gap": 0.004469675477594137,
+          "max_articulated_trim_tracking_error": 0.0,
+          "pass_tracking": true
+        },
+        {
+          "frame": 9,
+          "shell_count": 2,
+          "shell_vertices": 5824,
+          "max_source_gap": 0.004469714127480984,
+          "max_articulated_trim_tracking_error": 0.0,
+          "pass_tracking": true
+        },
+        {
+          "frame": 10,
+          "shell_count": 2,
+          "shell_vertices": 5824,
+          "max_source_gap": 0.00446968711912632,
+          "max_articulated_trim_tracking_error": 0.0,
+          "pass_tracking": true
+        },
+        {
+          "frame": 11,
+          "shell_count": 2,
+          "shell_vertices": 5824,
+          "max_source_gap": 0.0044697648845613,
+          "max_articulated_trim_tracking_error": 0.0,
+          "pass_tracking": true
+        },
+        {
+          "frame": 12,
+          "shell_count": 2,
+          "shell_vertices": 5824,
+          "max_source_gap": 0.0044696819968521595,
+          "max_articulated_trim_tracking_error": 0.0,
+          "pass_tracking": true
+        },
+        {
+          "frame": 13,
+          "shell_count": 2,
+          "shell_vertices": 5824,
+          "max_source_gap": 0.004469742998480797,
+          "max_articulated_trim_tracking_error": 0.0,
+          "pass_tracking": true
+        },
+        {
+          "frame": 14,
+          "shell_count": 2,
+          "shell_vertices": 5824,
+          "max_source_gap": 0.004469667561352253,
+          "max_articulated_trim_tracking_error": 0.0,
+          "pass_tracking": true
+        },
+        {
+          "frame": 15,
+          "shell_count": 2,
+          "shell_vertices": 5824,
+          "max_source_gap": 0.004469783045351505,
+          "max_articulated_trim_tracking_error": 0.0,
+          "pass_tracking": true
+        },
+        {
+          "frame": 16,
+          "shell_count": 2,
+          "shell_vertices": 5824,
+          "max_source_gap": 0.004469757433980703,
+          "max_articulated_trim_tracking_error": 0.0,
+          "pass_tracking": true
+        },
+        {
+          "frame": 17,
+          "shell_count": 2,
+          "shell_vertices": 5824,
+          "max_source_gap": 0.004469722975045443,
+          "max_articulated_trim_tracking_error": 0.0,
+          "pass_tracking": true
+        },
+        {
+          "frame": 18,
+          "shell_count": 2,
+          "shell_vertices": 5824,
+          "max_source_gap": 0.004469789564609528,
+          "max_articulated_trim_tracking_error": 0.0,
+          "pass_tracking": true
+        },
+        {
+          "frame": 19,
+          "shell_count": 2,
+          "shell_vertices": 5824,
+          "max_source_gap": 0.004469773732125759,
+          "max_articulated_trim_tracking_error": 0.0,
+          "pass_tracking": true
+        },
+        {
+          "frame": 20,
+          "shell_count": 2,
+          "shell_vertices": 5824,
+          "max_source_gap": 0.00446968711912632,
+          "max_articulated_trim_tracking_error": 0.0,
+          "pass_tracking": true
+        },
+        {
+          "frame": 21,
+          "shell_count": 2,
+          "shell_vertices": 5824,
+          "max_source_gap": 0.004469733219593763,
+          "max_articulated_trim_tracking_error": 0.0,
+          "pass_tracking": true
+        },
+        {
+          "frame": 22,
+          "shell_count": 2,
+          "shell_vertices": 5824,
+          "max_source_gap": 0.004469746258109808,
+          "max_articulated_trim_tracking_error": 0.0,
+          "pass_tracking": true
+        },
+        {
+          "frame": 23,
+          "shell_count": 2,
+          "shell_vertices": 5824,
+          "max_source_gap": 0.004469781182706356,
+          "max_articulated_trim_tracking_error": 0.0,
+          "pass_tracking": true
+        },
+        {
+          "frame": 24,
+          "shell_count": 2,
+          "shell_vertices": 5824,
+          "max_source_gap": 0.004469792824238539,
+          "max_articulated_trim_tracking_error": 0.0,
+          "pass_tracking": true
+        },
+        {
+          "frame": 25,
+          "shell_count": 2,
+          "shell_vertices": 5824,
+          "max_source_gap": 0.004469808656722307,
+          "max_articulated_trim_tracking_error": 0.0,
+          "pass_tracking": true
+        },
+        {
+          "frame": 26,
+          "shell_count": 2,
+          "shell_vertices": 5824,
+          "max_source_gap": 0.004469764418900013,
+          "max_articulated_trim_tracking_error": 0.0,
+          "pass_tracking": true
+        },
+        {
+          "frame": 27,
+          "shell_count": 2,
+          "shell_vertices": 5824,
+          "max_source_gap": 0.004469773732125759,
+          "max_articulated_trim_tracking_error": 0.0,
+          "pass_tracking": true
+        },
+        {
+          "frame": 28,
+          "shell_count": 2,
+          "shell_vertices": 5824,
+          "max_source_gap": 0.0044697788543999195,
+          "max_articulated_trim_tracking_error": 0.0,
+          "pass_tracking": true
+        },
+        {
+          "frame": 29,
+          "shell_count": 2,
+          "shell_vertices": 5824,
+          "max_source_gap": 0.004469842184334993,
+          "max_articulated_trim_tracking_error": 0.0,
+          "pass_tracking": true
+        },
+        {
+          "frame": 30,
+          "shell_count": 2,
+          "shell_vertices": 5824,
+          "max_source_gap": 0.0044699255377054214,
+          "max_articulated_trim_tracking_error": 0.0,
+          "pass_tracking": true
+        },
+        {
+          "frame": 31,
+          "shell_count": 2,
+          "shell_vertices": 5824,
+          "max_source_gap": 0.004470066167414188,
+          "max_articulated_trim_tracking_error": 0.0,
+          "pass_tracking": true
+        },
+        {
+          "frame": 32,
+          "shell_count": 2,
+          "shell_vertices": 5824,
+          "max_source_gap": 0.004470034968107939,
+          "max_articulated_trim_tracking_error": 0.0,
+          "pass_tracking": true
+        },
+        {
+          "frame": 33,
+          "shell_count": 2,
+          "shell_vertices": 5824,
+          "max_source_gap": 0.004470149986445904,
+          "max_articulated_trim_tracking_error": 0.0,
+          "pass_tracking": true
+        },
+        {
+          "frame": 34,
+          "shell_count": 2,
+          "shell_vertices": 5824,
+          "max_source_gap": 0.004469973500818014,
+          "max_articulated_trim_tracking_error": 0.0,
+          "pass_tracking": true
+        },
+        {
+          "frame": 35,
+          "shell_count": 2,
+          "shell_vertices": 5824,
+          "max_source_gap": 0.004470185376703739,
+          "max_articulated_trim_tracking_error": 0.0,
+          "pass_tracking": true
+        },
+        {
+          "frame": 36,
+          "shell_count": 2,
+          "shell_vertices": 5824,
+          "max_source_gap": 0.004470126703381538,
+          "max_articulated_trim_tracking_error": 0.0,
+          "pass_tracking": true
+        },
+        {
+          "frame": 37,
+          "shell_count": 2,
+          "shell_vertices": 5824,
+          "max_source_gap": 0.004470158834010363,
+          "max_articulated_trim_tracking_error": 0.0,
+          "pass_tracking": true
+        },
+        {
+          "frame": 38,
+          "shell_count": 2,
+          "shell_vertices": 5824,
+          "max_source_gap": 0.0044700209982693195,
+          "max_articulated_trim_tracking_error": 0.0,
+          "pass_tracking": true
+        },
+        {
+          "frame": 39,
+          "shell_count": 2,
+          "shell_vertices": 5824,
+          "max_source_gap": 0.0044699967838823795,
+          "max_articulated_trim_tracking_error": 0.0,
+          "pass_tracking": true
+        },
+        {
+          "frame": 40,
+          "shell_count": 2,
+          "shell_vertices": 5824,
+          "max_source_gap": 0.004470041953027248,
+          "max_articulated_trim_tracking_error": 0.0,
+          "pass_tracking": true
+        },
+        {
+          "frame": 41,
+          "shell_count": 2,
+          "shell_vertices": 5824,
+          "max_source_gap": 0.004469962790608406,
+          "max_articulated_trim_tracking_error": 0.0,
+          "pass_tracking": true
+        },
+        {
+          "frame": 42,
+          "shell_count": 2,
+          "shell_vertices": 5824,
+          "max_source_gap": 0.004469964187592268,
+          "max_articulated_trim_tracking_error": 0.0,
+          "pass_tracking": true
+        },
+        {
+          "frame": 43,
+          "shell_count": 2,
+          "shell_vertices": 5824,
+          "max_source_gap": 0.0044699921272695065,
+          "max_articulated_trim_tracking_error": 0.0,
+          "pass_tracking": true
+        },
+        {
+          "frame": 44,
+          "shell_count": 2,
+          "shell_vertices": 5824,
+          "max_source_gap": 0.004470068030059338,
+          "max_articulated_trim_tracking_error": 0.0,
+          "pass_tracking": true
+        },
+        {
+          "frame": 45,
+          "shell_count": 2,
+          "shell_vertices": 5824,
+          "max_source_gap": 0.004470043815672398,
+          "max_articulated_trim_tracking_error": 0.0,
+          "pass_tracking": true
+        },
+        {
+          "frame": 46,
+          "shell_count": 2,
+          "shell_vertices": 5824,
+          "max_source_gap": 0.0044700070284307,
+          "max_articulated_trim_tracking_error": 0.0,
+          "pass_tracking": true
+        },
+        {
+          "frame": 47,
+          "shell_count": 2,
+          "shell_vertices": 5824,
+          "max_source_gap": 0.004470040090382099,
+          "max_articulated_trim_tracking_error": 0.0,
+          "pass_tracking": true
+        },
+        {
+          "frame": 48,
+          "shell_count": 2,
+          "shell_vertices": 5824,
+          "max_source_gap": 0.004470041953027248,
+          "max_articulated_trim_tracking_error": 0.0,
+          "pass_tracking": true
+        },
+        {
+          "frame": 49,
+          "shell_count": 2,
+          "shell_vertices": 5824,
+          "max_source_gap": 0.004469971172511578,
+          "max_articulated_trim_tracking_error": 0.0,
+          "pass_tracking": true
+        },
+        {
+          "frame": 50,
+          "shell_count": 2,
+          "shell_vertices": 5824,
+          "max_source_gap": 0.004470139276236296,
+          "max_articulated_trim_tracking_error": 0.0,
+          "pass_tracking": true
+        },
+        {
+          "frame": 51,
+          "shell_count": 2,
+          "shell_vertices": 5824,
+          "max_source_gap": 0.0044700270518660545,
+          "max_articulated_trim_tracking_error": 0.0,
+          "pass_tracking": true
+        },
+        {
+          "frame": 52,
+          "shell_count": 2,
+          "shell_vertices": 5824,
+          "max_source_gap": 0.0044699776917696,
+          "max_articulated_trim_tracking_error": 0.0,
+          "pass_tracking": true
+        },
+        {
+          "frame": 53,
+          "shell_count": 2,
+          "shell_vertices": 5824,
+          "max_source_gap": 0.00447016442194581,
+          "max_articulated_trim_tracking_error": 0.0,
+          "pass_tracking": true
+        },
+        {
+          "frame": 54,
+          "shell_count": 2,
+          "shell_vertices": 5824,
+          "max_source_gap": 0.004470009356737137,
+          "max_articulated_trim_tracking_error": 0.0,
+          "pass_tracking": true
+        },
+        {
+          "frame": 55,
+          "shell_count": 2,
+          "shell_vertices": 5824,
+          "max_source_gap": 0.004470041953027248,
+          "max_articulated_trim_tracking_error": 0.0,
+          "pass_tracking": true
+        },
+        {
+          "frame": 56,
+          "shell_count": 2,
+          "shell_vertices": 5824,
+          "max_source_gap": 0.004470020066946745,
+          "max_articulated_trim_tracking_error": 0.0,
+          "pass_tracking": true
+        },
+        {
+          "frame": 57,
+          "shell_count": 2,
+          "shell_vertices": 5824,
+          "max_source_gap": 0.0044701979495584965,
+          "max_articulated_trim_tracking_error": 0.0,
+          "pass_tracking": true
+        },
+        {
+          "frame": 58,
+          "shell_count": 2,
+          "shell_vertices": 5824,
+          "max_source_gap": 0.0044699618592858315,
+          "max_articulated_trim_tracking_error": 0.0,
+          "pass_tracking": true
+        },
+        {
+          "frame": 59,
+          "shell_count": 2,
+          "shell_vertices": 5824,
+          "max_source_gap": 0.004470081999897957,
+          "max_articulated_trim_tracking_error": 0.0,
+          "pass_tracking": true
+        },
+        {
+          "frame": 60,
+          "shell_count": 2,
+          "shell_vertices": 5824,
+          "max_source_gap": 0.004470320884138346,
+          "max_articulated_trim_tracking_error": 0.0,
+          "pass_tracking": true
+        }
+      ],
+      "outfit": "forest_bomber"
+    }
+  },
+  {
+    "path": "assets/chapter4_review/round2/lead-clearance-forest_bomber-sit.png",
+    "run_id": "46096074284",
+    "artifact": "chapter4-lead-clearance-forest_bomber-sit",
+    "sha256": "4eb21f713963356690aaf00bf00f3bd18dd5577e3c3fcba6e89f79cd11e7b185",
+    "size": [
+      1680,
+      1950
+    ],
+    "source_pngs": {
+      "front_strip.png": "389952ef77d3101ae263b293643a33c94eb9b67d703fa2aa3818af88c25ec87c",
+      "side_strip.png": "2b5db2d1531b5e03ac5ccf396939ba967f1bc7ef2134b20b357d6b96804f68a3"
+    },
+    "manifest": {
+      "actor": "lead",
+      "motion": "sit",
+      "frames_evaluated": 60,
+      "rendered_samples": [
+        1,
+        11,
+        21,
+        31,
+        41,
+        51,
+        60
+      ],
+      "views": [
+        "front",
+        "side"
+      ],
+      "engine": "EEVEE",
+      "denoising": false,
+      "locked_motion_path": "round2 pose + knee fabric",
+      "max_shell_source_gap": 0.006403307430446148,
+      "max_articulated_trim_tracking_error": 2.7476383618393204e-07,
+      "tracking_pass": true,
+      "visual_clearance": "pending actual pixel inspection; source proximity alone does not prove absence of clipping",
+      "records": [
+        {
+          "frame": 1,
+          "shell_count": 11,
+          "shell_vertices": 3856,
+          "max_source_gap": 0.006403282284736633,
+          "max_articulated_trim_tracking_error": 1.812804499357408e-07,
+          "pass_tracking": true,
+          "max_segment_length_change": 1.1395581667184018e-07,
+          "max_joint_gap": 2.9802322387695312e-08
+        },
+        {
+          "frame": 2,
+          "shell_count": 11,
+          "shell_vertices": 3856,
+          "max_source_gap": 0.006403271108865738,
+          "max_articulated_trim_tracking_error": 6.143906154658885e-08,
+          "pass_tracking": true,
+          "max_segment_length_change": 8.432193843166402e-08,
+          "max_joint_gap": 2.9802322387695312e-08
+        },
+        {
+          "frame": 3,
+          "shell_count": 11,
+          "shell_vertices": 3856,
+          "max_source_gap": 0.0064032673835754395,
+          "max_articulated_trim_tracking_error": 6.664001874625056e-08,
+          "pass_tracking": true,
+          "max_segment_length_change": 1.2055612819139583e-07,
+          "max_joint_gap": 8.940696716308594e-08
+        },
+        {
+          "frame": 4,
+          "shell_count": 11,
+          "shell_vertices": 3856,
+          "max_source_gap": 0.0064032673835754395,
+          "max_articulated_trim_tracking_error": 1.3348812510944096e-07,
+          "pass_tracking": true,
+          "max_segment_length_change": 1.172989492204124e-07,
+          "max_joint_gap": 1.1920928955078125e-07
+        },
+        {
+          "frame": 5,
+          "shell_count": 11,
+          "shell_vertices": 3856,
+          "max_source_gap": 0.006403266917914152,
+          "max_articulated_trim_tracking_error": 1.1920928955078125e-07,
+          "pass_tracking": true,
+          "max_segment_length_change": 1.715220732112499e-07,
+          "max_joint_gap": 1.1944189326376765e-07
+        },
+        {
+          "frame": 6,
+          "shell_count": 11,
+          "shell_vertices": 3856,
+          "max_source_gap": 0.006403282750397921,
+          "max_articulated_trim_tracking_error": 1.228781230931777e-07,
+          "pass_tracking": true,
+          "max_segment_length_change": 4.7414249859656366e-08,
+          "max_joint_gap": 3.003425057343598e-08
+        },
+        {
+          "frame": 7,
+          "shell_count": 11,
+          "shell_vertices": 3856,
+          "max_source_gap": 0.0064032725058496,
+          "max_articulated_trim_tracking_error": 1.4975481660844222e-07,
+          "pass_tracking": true,
+          "max_segment_length_change": 1.8211372654342028e-07,
+          "max_joint_gap": 6.006850114687196e-08
+        },
+        {
+          "frame": 8,
+          "shell_count": 11,
+          "shell_vertices": 3856,
+          "max_source_gap": 0.006403283216059208,
+          "max_articulated_trim_tracking_error": 1.2310379476739693e-07,
+          "pass_tracking": true,
+          "max_segment_length_change": 1.071267925478736e-07,
+          "max_joint_gap": 1.1944189326376765e-07
+        },
+        {
+          "frame": 9,
+          "shell_count": 11,
+          "shell_vertices": 3856,
+          "max_source_gap": 0.006403274834156036,
+          "max_articulated_trim_tracking_error": 1.3348812510944096e-07,
+          "pass_tracking": true,
+          "max_segment_length_change": 7.252160794113394e-08,
+          "max_joint_gap": 1.341104507446289e-07
+        },
+        {
+          "frame": 10,
+          "shell_count": 11,
+          "shell_vertices": 3856,
+          "max_source_gap": 0.006403287407010794,
+          "max_articulated_trim_tracking_error": 1.1920928955078125e-07,
+          "pass_tracking": true,
+          "max_segment_length_change": 9.749882434739732e-08,
+          "max_joint_gap": 5.972094663188382e-08
+        },
+        {
+          "frame": 11,
+          "shell_count": 11,
+          "shell_vertices": 3856,
+          "max_source_gap": 0.00640329672023654,
+          "max_articulated_trim_tracking_error": 1.2644054553268208e-07,
+          "pass_tracking": true,
+          "max_segment_length_change": 7.825199599409416e-08,
+          "max_joint_gap": 9.215859231988326e-08
+        },
+        {
+          "frame": 12,
+          "shell_count": 11,
+          "shell_vertices": 3856,
+          "max_source_gap": 0.006403270177543163,
+          "max_articulated_trim_tracking_error": 1.3657139822709083e-07,
+          "pass_tracking": true,
+          "max_segment_length_change": 1.2773254787212807e-07,
+          "max_joint_gap": 1.2013700229374393e-07
+        },
+        {
+          "frame": 13,
+          "shell_count": 11,
+          "shell_vertices": 3856,
+          "max_source_gap": 0.006403266452252865,
+          "max_articulated_trim_tracking_error": 1.341104507446289e-07,
+          "pass_tracking": true,
+          "max_segment_length_change": 1.5365848260451287e-07,
+          "max_joint_gap": 1.1920928955078125e-07
+        },
+        {
+          "frame": 14,
+          "shell_count": 11,
+          "shell_vertices": 3856,
+          "max_source_gap": 0.006403300911188126,
+          "max_articulated_trim_tracking_error": 1.4057727354849284e-07,
+          "pass_tracking": true,
+          "max_segment_length_change": 1.897017978258475e-07,
+          "max_joint_gap": 4.470348358154297e-08
+        },
+        {
+          "frame": 15,
+          "shell_count": 11,
+          "shell_vertices": 3856,
+          "max_source_gap": 0.006403261795639992,
+          "max_articulated_trim_tracking_error": 1.228781230931777e-07,
+          "pass_tracking": true,
+          "max_segment_length_change": 1.32791279972011e-07,
+          "max_joint_gap": 1.1944189326376765e-07
+        },
+        {
+          "frame": 16,
+          "shell_count": 11,
+          "shell_vertices": 3856,
+          "max_source_gap": 0.006403282750397921,
+          "max_articulated_trim_tracking_error": 1.884864366154897e-07,
+          "pass_tracking": true,
+          "max_segment_length_change": 1.226738333137689e-07,
+          "max_joint_gap": 3.0719530773294423e-08
+        },
+        {
+          "frame": 17,
+          "shell_count": 11,
+          "shell_vertices": 3856,
+          "max_source_gap": 0.0064032673835754395,
+          "max_articulated_trim_tracking_error": 1.2644054553268208e-07,
+          "pass_tracking": true,
+          "max_segment_length_change": 1.1508576158725248e-07,
+          "max_joint_gap": 1.228781230931777e-07
+        },
+        {
+          "frame": 18,
+          "shell_count": 11,
+          "shell_vertices": 3856,
+          "max_source_gap": 0.006403245963156223,
+          "max_articulated_trim_tracking_error": 1.3484573213561076e-07,
+          "pass_tracking": true,
+          "max_segment_length_change": 4.6793113606113934e-08,
+          "max_joint_gap": 1.228781230931777e-07
+        },
+        {
+          "frame": 19,
+          "shell_count": 11,
+          "shell_vertices": 3856,
+          "max_source_gap": 0.006403276231139898,
+          "max_articulated_trim_tracking_error": 6.828569911354542e-08,
+          "pass_tracking": true,
+          "max_segment_length_change": 7.75869590796674e-08,
+          "max_joint_gap": 6.006850114687196e-08
+        },
+        {
+          "frame": 20,
+          "shell_count": 11,
+          "shell_vertices": 3856,
+          "max_source_gap": 0.006403292994946241,
+          "max_articulated_trim_tracking_error": 9.541398640621973e-08,
+          "pass_tracking": true,
+          "max_segment_length_change": 9.990962801520453e-08,
+          "max_joint_gap": 1.228781230931777e-07
+        },
+        {
+          "frame": 21,
+          "shell_count": 11,
+          "shell_vertices": 3856,
+          "max_source_gap": 0.006403307430446148,
+          "max_articulated_trim_tracking_error": 8.940696716308594e-08,
+          "pass_tracking": true,
+          "max_segment_length_change": 9.051811955540501e-08,
+          "max_joint_gap": 4.998001405968792e-08
+        },
+        {
+          "frame": 22,
+          "shell_count": 11,
+          "shell_vertices": 3856,
+          "max_source_gap": 0.006403281353414059,
+          "max_articulated_trim_tracking_error": 6.50593981019146e-08,
+          "pass_tracking": true,
+          "max_segment_length_change": 1.3341373916730959e-07,
+          "max_joint_gap": 1.0350677363164577e-07
+        },
+        {
+          "frame": 23,
+          "shell_count": 11,
+          "shell_vertices": 3856,
+          "max_source_gap": 0.006403292994946241,
+          "max_articulated_trim_tracking_error": 8.940696716308594e-08,
+          "pass_tracking": true,
+          "max_segment_length_change": 9.421856406177653e-08,
+          "max_joint_gap": 1.2731557704981462e-07
+        },
+        {
+          "frame": 24,
+          "shell_count": 11,
+          "shell_vertices": 3856,
+          "max_source_gap": 0.006403246894478798,
+          "max_articulated_trim_tracking_error": 9.215859231988326e-08,
+          "pass_tracking": true,
+          "max_segment_length_change": 7.335136609221138e-08,
+          "max_joint_gap": 4.012260442327338e-08
+        },
+        {
+          "frame": 25,
+          "shell_count": 11,
+          "shell_vertices": 3856,
+          "max_source_gap": 0.006403281353414059,
+          "max_articulated_trim_tracking_error": 6.006850114687196e-08,
+          "pass_tracking": true,
+          "max_segment_length_change": 7.384902522833414e-08,
+          "max_joint_gap": 6.365778852490731e-08
+        },
+        {
+          "frame": 26,
+          "shell_count": 11,
+          "shell_vertices": 3856,
+          "max_source_gap": 0.006403279025107622,
+          "max_articulated_trim_tracking_error": 8.429369702178807e-08,
+          "pass_tracking": true,
+          "max_segment_length_change": 5.4855440190237914e-08,
+          "max_joint_gap": 3.725290298461914e-08
+        },
+        {
+          "frame": 27,
+          "shell_count": 11,
+          "shell_vertices": 3856,
+          "max_source_gap": 0.006403274834156036,
+          "max_articulated_trim_tracking_error": 1.0745380149674383e-07,
+          "pass_tracking": true,
+          "max_segment_length_change": 1.5207763404134766e-07,
+          "max_joint_gap": 4.842877388000488e-08
+        },
+        {
+          "frame": 28,
+          "shell_count": 11,
+          "shell_vertices": 3856,
+          "max_source_gap": 0.00640328461304307,
+          "max_articulated_trim_tracking_error": 1.3328003749250113e-07,
+          "pass_tracking": true,
+          "max_segment_length_change": 1.6314354822632993e-07,
+          "max_joint_gap": 1.4901161193847656e-07
+        },
+        {
+          "frame": 29,
+          "shell_count": 11,
+          "shell_vertices": 3856,
+          "max_source_gap": 0.006403274368494749,
+          "max_articulated_trim_tracking_error": 1.5269146510898468e-07,
+          "pass_tracking": true,
+          "max_segment_length_change": 1.3640013019067254e-07,
+          "max_joint_gap": 9.685754776000977e-08
+        },
+        {
+          "frame": 30,
+          "shell_count": 11,
+          "shell_vertices": 3856,
+          "max_source_gap": 0.006403283681720495,
+          "max_articulated_trim_tracking_error": 8.940696716308594e-08,
+          "pass_tracking": true,
+          "max_segment_length_change": 1.1255669962739745e-07,
+          "max_joint_gap": 8.971687092477304e-08
+        },
+        {
+          "frame": 31,
+          "shell_count": 11,
+          "shell_vertices": 3856,
+          "max_source_gap": 0.006403248757123947,
+          "max_articulated_trim_tracking_error": 9.541398640621973e-08,
+          "pass_tracking": true,
+          "max_segment_length_change": 1.3089426154078154e-07,
+          "max_joint_gap": 1.228781230931777e-07
+        },
+        {
+          "frame": 32,
+          "shell_count": 11,
+          "shell_vertices": 3856,
+          "max_source_gap": 0.006403293460607529,
+          "max_articulated_trim_tracking_error": 8.940696716308594e-08,
+          "pass_tracking": true,
+          "max_segment_length_change": 8.504965109956686e-08,
+          "max_joint_gap": 1.2036781326982014e-07
+        },
+        {
+          "frame": 33,
+          "shell_count": 11,
+          "shell_vertices": 3856,
+          "max_source_gap": 0.006403252016752958,
+          "max_articulated_trim_tracking_error": 1.3657139822709083e-07,
+          "pass_tracking": true,
+          "max_segment_length_change": 1.1002733546483512e-07,
+          "max_joint_gap": 1.228781230931777e-07
+        },
+        {
+          "frame": 34,
+          "shell_count": 11,
+          "shell_vertices": 3856,
+          "max_source_gap": 0.006403250154107809,
+          "max_articulated_trim_tracking_error": 8.429369702178807e-08,
+          "pass_tracking": true,
+          "max_segment_length_change": 1.7073204805484465e-07,
+          "max_joint_gap": 1.0350677363164577e-07
+        },
+        {
+          "frame": 35,
+          "shell_count": 11,
+          "shell_vertices": 3856,
+          "max_source_gap": 0.006403268780559301,
+          "max_articulated_trim_tracking_error": 1.0323827311807139e-07,
+          "pass_tracking": true,
+          "max_segment_length_change": 7.714560179561403e-08,
+          "max_joint_gap": 1.301187962038292e-07
+        },
+        {
+          "frame": 36,
+          "shell_count": 11,
+          "shell_vertices": 3856,
+          "max_source_gap": 0.0064032478258013725,
+          "max_articulated_trim_tracking_error": 1.4600096599955427e-07,
+          "pass_tracking": true,
+          "max_segment_length_change": 1.3911467466876104e-07,
+          "max_joint_gap": 1.228781230931777e-07
+        },
+        {
+          "frame": 37,
+          "shell_count": 11,
+          "shell_vertices": 3856,
+          "max_source_gap": 0.006403255742043257,
+          "max_articulated_trim_tracking_error": 5.960464477539063e-08,
+          "pass_tracking": true,
+          "max_segment_length_change": 4.6793230845665335e-08,
+          "max_joint_gap": 6.705522537231445e-08
+        },
+        {
+          "frame": 38,
+          "shell_count": 11,
+          "shell_vertices": 3856,
+          "max_source_gap": 0.006403251085430384,
+          "max_articulated_trim_tracking_error": 1.3328003749250113e-07,
+          "pass_tracking": true,
+          "max_segment_length_change": 7.965794335262899e-08,
+          "max_joint_gap": 1.1944189326376765e-07
+        },
+        {
+          "frame": 39,
+          "shell_count": 11,
+          "shell_vertices": 3856,
+          "max_source_gap": 0.006403276696801186,
+          "max_articulated_trim_tracking_error": 1.884864366154897e-07,
+          "pass_tracking": true,
+          "max_segment_length_change": 1.2678403882304679e-07,
+          "max_joint_gap": 1.257802770743827e-07
+        },
+        {
+          "frame": 40,
+          "shell_count": 11,
+          "shell_vertices": 3856,
+          "max_source_gap": 0.006403268314898014,
+          "max_articulated_trim_tracking_error": 1.0323827311807139e-07,
+          "pass_tracking": true,
+          "max_segment_length_change": 1.5555550114676464e-07,
+          "max_joint_gap": 1.1920928955078125e-07
+        },
+        {
+          "frame": 41,
+          "shell_count": 11,
+          "shell_vertices": 3856,
+          "max_source_gap": 0.006403292529284954,
+          "max_articulated_trim_tracking_error": 8.429369702178807e-08,
+          "pass_tracking": true,
+          "max_segment_length_change": 8.884368773998119e-08,
+          "max_joint_gap": 1.228781230931777e-07
+        },
+        {
+          "frame": 42,
+          "shell_count": 11,
+          "shell_vertices": 3856,
+          "max_source_gap": 0.0064032734371721745,
+          "max_articulated_trim_tracking_error": 1.3328003749250113e-07,
+          "pass_tracking": true,
+          "max_segment_length_change": 1.3974701407182266e-07,
+          "max_joint_gap": 1.309692549053352e-07
+        },
+        {
+          "frame": 43,
+          "shell_count": 11,
+          "shell_vertices": 3856,
+          "max_source_gap": 0.006403300445526838,
+          "max_articulated_trim_tracking_error": 1.7881393432617188e-07,
+          "pass_tracking": true,
+          "max_segment_length_change": 1.2678405492128064e-07,
+          "max_joint_gap": 6.664001874625056e-08
+        },
+        {
+          "frame": 44,
+          "shell_count": 11,
+          "shell_vertices": 3856,
+          "max_source_gap": 0.0064032794907689095,
+          "max_articulated_trim_tracking_error": 8.429369702178807e-08,
+          "pass_tracking": true,
+          "max_segment_length_change": 1.3731892944957025e-07,
+          "max_joint_gap": 7.487740830422111e-08
+        },
+        {
+          "frame": 45,
+          "shell_count": 11,
+          "shell_vertices": 3856,
+          "max_source_gap": 0.00640326552093029,
+          "max_articulated_trim_tracking_error": 2.7476383618393204e-07,
+          "pass_tracking": true,
+          "max_segment_length_change": 6.813271302696933e-08,
+          "max_joint_gap": 7.337970883992392e-08
+        },
+        {
+          "frame": 46,
+          "shell_count": 11,
+          "shell_vertices": 3856,
+          "max_source_gap": 0.00640328973531723,
+          "max_articulated_trim_tracking_error": 1.4901161193847656e-07,
+          "pass_tracking": true,
+          "max_segment_length_change": 1.1799683585778098e-07,
+          "max_joint_gap": 8.971687092477304e-08
+        },
+        {
+          "frame": 47,
+          "shell_count": 11,
+          "shell_vertices": 3856,
+          "max_source_gap": 0.006403288338333368,
+          "max_articulated_trim_tracking_error": 1.3328003749250113e-07,
+          "pass_tracking": true,
+          "max_segment_length_change": 1.343131837971967e-07,
+          "max_joint_gap": 1.5997074956881917e-07
+        },
+        {
+          "frame": 48,
+          "shell_count": 11,
+          "shell_vertices": 3856,
+          "max_source_gap": 0.006403274368494749,
+          "max_articulated_trim_tracking_error": 1.228781230931777e-07,
+          "pass_tracking": true,
+          "max_segment_length_change": 1.0578372289238303e-07,
+          "max_joint_gap": 1.9097336557472194e-07
+        },
+        {
+          "frame": 49,
+          "shell_count": 11,
+          "shell_vertices": 3856,
+          "max_source_gap": 0.006403262726962566,
+          "max_articulated_trim_tracking_error": 2.457562461863554e-07,
+          "pass_tracking": true,
+          "max_segment_length_change": 1.1192406512705588e-07,
+          "max_joint_gap": 2.5777286130199124e-07
+        },
+        {
+          "frame": 50,
+          "shell_count": 11,
+          "shell_vertices": 3856,
+          "max_source_gap": 0.006403264123946428,
+          "max_articulated_trim_tracking_error": 1.7881393432617188e-07,
+          "pass_tracking": true,
+          "max_segment_length_change": 9.232177666795849e-08,
+          "max_joint_gap": 9.799708752308715e-08
+        },
+        {
+          "frame": 51,
+          "shell_count": 11,
+          "shell_vertices": 3856,
+          "max_source_gap": 0.006403264123946428,
+          "max_articulated_trim_tracking_error": 1.7881393432617188e-07,
+          "pass_tracking": true,
+          "max_segment_length_change": 9.232177666795849e-08,
+          "max_joint_gap": 9.799708752308715e-08
+        },
+        {
+          "frame": 52,
+          "shell_count": 11,
+          "shell_vertices": 3856,
+          "max_source_gap": 0.006403264123946428,
+          "max_articulated_trim_tracking_error": 1.7881393432617188e-07,
+          "pass_tracking": true,
+          "max_segment_length_change": 9.232177666795849e-08,
+          "max_joint_gap": 9.799708752308715e-08
+        },
+        {
+          "frame": 53,
+          "shell_count": 11,
+          "shell_vertices": 3856,
+          "max_source_gap": 0.006403264123946428,
+          "max_articulated_trim_tracking_error": 1.7881393432617188e-07,
+          "pass_tracking": true,
+          "max_segment_length_change": 9.232177666795849e-08,
+          "max_joint_gap": 9.799708752308715e-08
+        },
+        {
+          "frame": 54,
+          "shell_count": 11,
+          "shell_vertices": 3856,
+          "max_source_gap": 0.006403264123946428,
+          "max_articulated_trim_tracking_error": 1.7881393432617188e-07,
+          "pass_tracking": true,
+          "max_segment_length_change": 9.232177666795849e-08,
+          "max_joint_gap": 9.799708752308715e-08
+        },
+        {
+          "frame": 55,
+          "shell_count": 11,
+          "shell_vertices": 3856,
+          "max_source_gap": 0.006403264123946428,
+          "max_articulated_trim_tracking_error": 1.7881393432617188e-07,
+          "pass_tracking": true,
+          "max_segment_length_change": 9.232177666795849e-08,
+          "max_joint_gap": 9.799708752308715e-08
+        },
+        {
+          "frame": 56,
+          "shell_count": 11,
+          "shell_vertices": 3856,
+          "max_source_gap": 0.006403264123946428,
+          "max_articulated_trim_tracking_error": 1.7881393432617188e-07,
+          "pass_tracking": true,
+          "max_segment_length_change": 9.232177666795849e-08,
+          "max_joint_gap": 9.799708752308715e-08
+        },
+        {
+          "frame": 57,
+          "shell_count": 11,
+          "shell_vertices": 3856,
+          "max_source_gap": 0.006403264123946428,
+          "max_articulated_trim_tracking_error": 1.7881393432617188e-07,
+          "pass_tracking": true,
+          "max_segment_length_change": 9.232177666795849e-08,
+          "max_joint_gap": 9.799708752308715e-08
+        },
+        {
+          "frame": 58,
+          "shell_count": 11,
+          "shell_vertices": 3856,
+          "max_source_gap": 0.006403264123946428,
+          "max_articulated_trim_tracking_error": 1.7881393432617188e-07,
+          "pass_tracking": true,
+          "max_segment_length_change": 9.232177666795849e-08,
+          "max_joint_gap": 9.799708752308715e-08
+        },
+        {
+          "frame": 59,
+          "shell_count": 11,
+          "shell_vertices": 3856,
+          "max_source_gap": 0.006403264123946428,
+          "max_articulated_trim_tracking_error": 1.7881393432617188e-07,
+          "pass_tracking": true,
+          "max_segment_length_change": 9.232177666795849e-08,
+          "max_joint_gap": 9.799708752308715e-08
+        },
+        {
+          "frame": 60,
+          "shell_count": 11,
+          "shell_vertices": 3856,
+          "max_source_gap": 0.006403264123946428,
+          "max_articulated_trim_tracking_error": 1.7881393432617188e-07,
+          "pass_tracking": true,
+          "max_segment_length_change": 9.232177666795849e-08,
+          "max_joint_gap": 9.799708752308715e-08
+        }
+      ],
+      "max_segment_length_change": 1.897017978258475e-07,
+      "max_joint_gap": 2.5777286130199124e-07,
+      "outfit": "forest_bomber"
+    }
+  },
+  {
+    "path": "assets/chapter4_review/round2/friend-clearance-rugby_polo-walk.png",
+    "run_id": "46096074284",
+    "artifact": "chapter4-friend-clearance-rugby_polo-walk",
+    "sha256": "f2ed763804551544dc6ce4ff9f2546d26902a0f46739f363388ac9109e2ca57a",
+    "size": [
+      1680,
+      1950
+    ],
+    "source_pngs": {
+      "front_strip.png": "eeb0e136e1ae093578d54fe9fb2654bb7b0ec954cdd39c61d59f2181b166fc85",
+      "side_strip.png": "3cac76033362afade8fd500423b18d90b3350d78abad826ffb168290906d2b63"
+    },
+    "manifest": {
+      "actor": "friend",
+      "motion": "walk",
+      "frames_evaluated": 60,
+      "rendered_samples": [
+        1,
+        11,
+        21,
+        31,
+        41,
+        51,
+        60
+      ],
+      "views": [
+        "front",
+        "side"
+      ],
+      "engine": "EEVEE",
+      "denoising": false,
+      "locked_motion_path": "StrideLock/Retarget",
+      "max_shell_source_gap": 0.004470320884138346,
+      "max_articulated_trim_tracking_error": 0.0,
+      "tracking_pass": true,
+      "visual_clearance": "pending actual pixel inspection; source proximity alone does not prove absence of clipping",
+      "records": [
+        {
+          "frame": 1,
+          "shell_count": 2,
+          "shell_vertices": 5600,
+          "max_source_gap": 0.004469666630029678,
+          "max_articulated_trim_tracking_error": 0.0,
+          "pass_tracking": true
+        },
+        {
+          "frame": 2,
+          "shell_count": 2,
+          "shell_vertices": 5600,
+          "max_source_gap": 0.004469647537916899,
+          "max_articulated_trim_tracking_error": 0.0,
+          "pass_tracking": true
+        },
+        {
+          "frame": 3,
+          "shell_count": 2,
+          "shell_vertices": 5600,
+          "max_source_gap": 0.004469677805900574,
+          "max_articulated_trim_tracking_error": 0.0,
+          "pass_tracking": true
+        },
+        {
+          "frame": 4,
+          "shell_count": 2,
+          "shell_vertices": 5600,
+          "max_source_gap": 0.004469668958336115,
+          "max_articulated_trim_tracking_error": 0.0,
+          "pass_tracking": true
+        },
+        {
+          "frame": 5,
+          "shell_count": 2,
+          "shell_vertices": 5600,
+          "max_source_gap": 0.004469661507755518,
+          "max_articulated_trim_tracking_error": 0.0,
+          "pass_tracking": true
+        },
+        {
+          "frame": 6,
+          "shell_count": 2,
+          "shell_vertices": 5600,
+          "max_source_gap": 0.004469649866223335,
+          "max_articulated_trim_tracking_error": 0.0,
+          "pass_tracking": true
+        },
+        {
+          "frame": 7,
+          "shell_count": 2,
+          "shell_vertices": 5600,
+          "max_source_gap": 0.004469639156013727,
+          "max_articulated_trim_tracking_error": 0.0,
+          "pass_tracking": true
+        },
+        {
+          "frame": 8,
+          "shell_count": 2,
+          "shell_vertices": 5600,
+          "max_source_gap": 0.004469677805900574,
+          "max_articulated_trim_tracking_error": 0.0,
+          "pass_tracking": true
+        },
+        {
+          "frame": 9,
+          "shell_count": 2,
+          "shell_vertices": 5600,
+          "max_source_gap": 0.004469714127480984,
+          "max_articulated_trim_tracking_error": 0.0,
+          "pass_tracking": true
+        },
+        {
+          "frame": 10,
+          "shell_count": 2,
+          "shell_vertices": 5600,
+          "max_source_gap": 0.00446968711912632,
+          "max_articulated_trim_tracking_error": 0.0,
+          "pass_tracking": true
+        },
+        {
+          "frame": 11,
+          "shell_count": 2,
+          "shell_vertices": 5600,
+          "max_source_gap": 0.004469725769013166,
+          "max_articulated_trim_tracking_error": 0.0,
+          "pass_tracking": true
+        },
+        {
+          "frame": 12,
+          "shell_count": 2,
+          "shell_vertices": 5600,
+          "max_source_gap": 0.0044696819968521595,
+          "max_articulated_trim_tracking_error": 0.0,
+          "pass_tracking": true
+        },
+        {
+          "frame": 13,
+          "shell_count": 2,
+          "shell_vertices": 5600,
+          "max_source_gap": 0.004469695966690779,
+          "max_articulated_trim_tracking_error": 0.0,
+          "pass_tracking": true
+        },
+        {
+          "frame": 14,
+          "shell_count": 2,
+          "shell_vertices": 5600,
+          "max_source_gap": 0.004469666630029678,
+          "max_articulated_trim_tracking_error": 0.0,
+          "pass_tracking": true
+        },
+        {
+          "frame": 15,
+          "shell_count": 2,
+          "shell_vertices": 5600,
+          "max_source_gap": 0.004469783045351505,
+          "max_articulated_trim_tracking_error": 0.0,
+          "pass_tracking": true
+        },
+        {
+          "frame": 16,
+          "shell_count": 2,
+          "shell_vertices": 5600,
+          "max_source_gap": 0.004469776526093483,
+          "max_articulated_trim_tracking_error": 0.0,
+          "pass_tracking": true
+        },
+        {
+          "frame": 17,
+          "shell_count": 2,
+          "shell_vertices": 5600,
+          "max_source_gap": 0.004469819366931915,
+          "max_articulated_trim_tracking_error": 0.0,
+          "pass_tracking": true
+        },
+        {
+          "frame": 18,
+          "shell_count": 2,
+          "shell_vertices": 5600,
+          "max_source_gap": 0.004469796549528837,
+          "max_articulated_trim_tracking_error": 0.0,
+          "pass_tracking": true
+        },
+        {
+          "frame": 19,
+          "shell_count": 2,
+          "shell_vertices": 5600,
+          "max_source_gap": 0.004469773732125759,
+          "max_articulated_trim_tracking_error": 0.0,
+          "pass_tracking": true
+        },
+        {
+          "frame": 20,
+          "shell_count": 2,
+          "shell_vertices": 5600,
+          "max_source_gap": 0.004469685722142458,
+          "max_articulated_trim_tracking_error": 0.0,
+          "pass_tracking": true
+        },
+        {
+          "frame": 21,
+          "shell_count": 2,
+          "shell_vertices": 5600,
+          "max_source_gap": 0.004469733219593763,
+          "max_articulated_trim_tracking_error": 0.0,
+          "pass_tracking": true
+        },
+        {
+          "frame": 22,
+          "shell_count": 2,
+          "shell_vertices": 5600,
+          "max_source_gap": 0.004469746258109808,
+          "max_articulated_trim_tracking_error": 0.0,
+          "pass_tracking": true
+        },
+        {
+          "frame": 23,
+          "shell_count": 2,
+          "shell_vertices": 5600,
+          "max_source_gap": 0.004469787236303091,
+          "max_articulated_trim_tracking_error": 0.0,
+          "pass_tracking": true
+        },
+        {
+          "frame": 24,
+          "shell_count": 2,
+          "shell_vertices": 5600,
+          "max_source_gap": 0.004469792824238539,
+          "max_articulated_trim_tracking_error": 0.0,
+          "pass_tracking": true
+        },
+        {
+          "frame": 25,
+          "shell_count": 2,
+          "shell_vertices": 5600,
+          "max_source_gap": 0.004469808656722307,
+          "max_articulated_trim_tracking_error": 0.0,
+          "pass_tracking": true
+        },
+        {
+          "frame": 26,
+          "shell_count": 2,
+          "shell_vertices": 5600,
+          "max_source_gap": 0.004469764418900013,
+          "max_articulated_trim_tracking_error": 0.0,
+          "pass_tracking": true
+        },
+        {
+          "frame": 27,
+          "shell_count": 2,
+          "shell_vertices": 5600,
+          "max_source_gap": 0.004469773732125759,
+          "max_articulated_trim_tracking_error": 0.0,
+          "pass_tracking": true
+        },
+        {
+          "frame": 28,
+          "shell_count": 2,
+          "shell_vertices": 5600,
+          "max_source_gap": 0.0044697788543999195,
+          "max_articulated_trim_tracking_error": 0.0,
+          "pass_tracking": true
+        },
+        {
+          "frame": 29,
+          "shell_count": 2,
+          "shell_vertices": 5600,
+          "max_source_gap": 0.004469842184334993,
+          "max_articulated_trim_tracking_error": 0.0,
+          "pass_tracking": true
+        },
+        {
+          "frame": 30,
+          "shell_count": 2,
+          "shell_vertices": 5600,
+          "max_source_gap": 0.004469850100576878,
+          "max_articulated_trim_tracking_error": 0.0,
+          "pass_tracking": true
+        },
+        {
+          "frame": 31,
+          "shell_count": 2,
+          "shell_vertices": 5600,
+          "max_source_gap": 0.004470066167414188,
+          "max_articulated_trim_tracking_error": 0.0,
+          "pass_tracking": true
+        },
+        {
+          "frame": 32,
+          "shell_count": 2,
+          "shell_vertices": 5600,
+          "max_source_gap": 0.004470032174140215,
+          "max_articulated_trim_tracking_error": 0.0,
+          "pass_tracking": true
+        },
+        {
+          "frame": 33,
+          "shell_count": 2,
+          "shell_vertices": 5600,
+          "max_source_gap": 0.004470149986445904,
+          "max_articulated_trim_tracking_error": 0.0,
+          "pass_tracking": true
+        },
+        {
+          "frame": 34,
+          "shell_count": 2,
+          "shell_vertices": 5600,
+          "max_source_gap": 0.004470142535865307,
+          "max_articulated_trim_tracking_error": 0.0,
+          "pass_tracking": true
+        },
+        {
+          "frame": 35,
+          "shell_count": 2,
+          "shell_vertices": 5600,
+          "max_source_gap": 0.004470185376703739,
+          "max_articulated_trim_tracking_error": 0.0,
+          "pass_tracking": true
+        },
+        {
+          "frame": 36,
+          "shell_count": 2,
+          "shell_vertices": 5600,
+          "max_source_gap": 0.004470126703381538,
+          "max_articulated_trim_tracking_error": 0.0,
+          "pass_tracking": true
+        },
+        {
+          "frame": 37,
+          "shell_count": 2,
+          "shell_vertices": 5600,
+          "max_source_gap": 0.004470158834010363,
+          "max_articulated_trim_tracking_error": 0.0,
+          "pass_tracking": true
+        },
+        {
+          "frame": 38,
+          "shell_count": 2,
+          "shell_vertices": 5600,
+          "max_source_gap": 0.0044700209982693195,
+          "max_articulated_trim_tracking_error": 0.0,
+          "pass_tracking": true
+        },
+        {
+          "frame": 39,
+          "shell_count": 2,
+          "shell_vertices": 5600,
+          "max_source_gap": 0.0044699967838823795,
+          "max_articulated_trim_tracking_error": 0.0,
+          "pass_tracking": true
+        },
+        {
+          "frame": 40,
+          "shell_count": 2,
+          "shell_vertices": 5600,
+          "max_source_gap": 0.004470041953027248,
+          "max_articulated_trim_tracking_error": 0.0,
+          "pass_tracking": true
+        },
+        {
+          "frame": 41,
+          "shell_count": 2,
+          "shell_vertices": 5600,
+          "max_source_gap": 0.004470068961381912,
+          "max_articulated_trim_tracking_error": 0.0,
+          "pass_tracking": true
+        },
+        {
+          "frame": 42,
+          "shell_count": 2,
+          "shell_vertices": 5600,
+          "max_source_gap": 0.004469964187592268,
+          "max_articulated_trim_tracking_error": 0.0,
+          "pass_tracking": true
+        },
+        {
+          "frame": 43,
+          "shell_count": 2,
+          "shell_vertices": 5600,
+          "max_source_gap": 0.0044699921272695065,
+          "max_articulated_trim_tracking_error": 0.0,
+          "pass_tracking": true
+        },
+        {
+          "frame": 44,
+          "shell_count": 2,
+          "shell_vertices": 5600,
+          "max_source_gap": 0.004470068030059338,
+          "max_articulated_trim_tracking_error": 0.0,
+          "pass_tracking": true
+        },
+        {
+          "frame": 45,
+          "shell_count": 2,
+          "shell_vertices": 5600,
+          "max_source_gap": 0.004470008425414562,
+          "max_articulated_trim_tracking_error": 0.0,
+          "pass_tracking": true
+        },
+        {
+          "frame": 46,
+          "shell_count": 2,
+          "shell_vertices": 5600,
+          "max_source_gap": 0.004470020532608032,
+          "max_articulated_trim_tracking_error": 0.0,
+          "pass_tracking": true
+        },
+        {
+          "frame": 47,
+          "shell_count": 2,
+          "shell_vertices": 5600,
+          "max_source_gap": 0.004470040090382099,
+          "max_articulated_trim_tracking_error": 0.0,
+          "pass_tracking": true
+        },
+        {
+          "frame": 48,
+          "shell_count": 2,
+          "shell_vertices": 5600,
+          "max_source_gap": 0.004470011685043573,
+          "max_articulated_trim_tracking_error": 0.0,
+          "pass_tracking": true
+        },
+        {
+          "frame": 49,
+          "shell_count": 2,
+          "shell_vertices": 5600,
+          "max_source_gap": 0.004469971172511578,
+          "max_articulated_trim_tracking_error": 0.0,
+          "pass_tracking": true
+        },
+        {
+          "frame": 50,
+          "shell_count": 2,
+          "shell_vertices": 5600,
+          "max_source_gap": 0.004470139276236296,
+          "max_articulated_trim_tracking_error": 0.0,
+          "pass_tracking": true
+        },
+        {
+          "frame": 51,
+          "shell_count": 2,
+          "shell_vertices": 5600,
+          "max_source_gap": 0.004470049869269133,
+          "max_articulated_trim_tracking_error": 0.0,
+          "pass_tracking": true
+        },
+        {
+          "frame": 52,
+          "shell_count": 2,
+          "shell_vertices": 5600,
+          "max_source_gap": 0.0044699776917696,
+          "max_articulated_trim_tracking_error": 0.0,
+          "pass_tracking": true
+        },
+        {
+          "frame": 53,
+          "shell_count": 2,
+          "shell_vertices": 5600,
+          "max_source_gap": 0.00447016442194581,
+          "max_articulated_trim_tracking_error": 0.0,
+          "pass_tracking": true
+        },
+        {
+          "frame": 54,
+          "shell_count": 2,
+          "shell_vertices": 5600,
+          "max_source_gap": 0.004470009356737137,
+          "max_articulated_trim_tracking_error": 0.0,
+          "pass_tracking": true
+        },
+        {
+          "frame": 55,
+          "shell_count": 2,
+          "shell_vertices": 5600,
+          "max_source_gap": 0.004470033571124077,
+          "max_articulated_trim_tracking_error": 0.0,
+          "pass_tracking": true
+        },
+        {
+          "frame": 56,
+          "shell_count": 2,
+          "shell_vertices": 5600,
+          "max_source_gap": 0.004470098298043013,
+          "max_articulated_trim_tracking_error": 0.0,
+          "pass_tracking": true
+        },
+        {
+          "frame": 57,
+          "shell_count": 2,
+          "shell_vertices": 5600,
+          "max_source_gap": 0.0044701979495584965,
+          "max_articulated_trim_tracking_error": 0.0,
+          "pass_tracking": true
+        },
+        {
+          "frame": 58,
+          "shell_count": 2,
+          "shell_vertices": 5600,
+          "max_source_gap": 0.0044699618592858315,
+          "max_articulated_trim_tracking_error": 0.0,
+          "pass_tracking": true
+        },
+        {
+          "frame": 59,
+          "shell_count": 2,
+          "shell_vertices": 5600,
+          "max_source_gap": 0.004470081999897957,
+          "max_articulated_trim_tracking_error": 0.0,
+          "pass_tracking": true
+        },
+        {
+          "frame": 60,
+          "shell_count": 2,
+          "shell_vertices": 5600,
+          "max_source_gap": 0.004470320884138346,
+          "max_articulated_trim_tracking_error": 0.0,
+          "pass_tracking": true
+        }
+      ],
+      "outfit": "rugby_polo"
+    }
+  },
+  {
+    "path": "assets/chapter4_review/round2/friend-clearance-rugby_polo-sit.png",
+    "run_id": "46096074284",
+    "artifact": "chapter4-friend-clearance-rugby_polo-sit",
+    "sha256": "b0797e5a8e98985fb1398ccfbd1937060e168cb956a9950542f65a053151d2a2",
+    "size": [
+      1680,
+      1950
+    ],
+    "source_pngs": {
+      "front_strip.png": "eb3acd564440f2170942c834c66cafdd28f91665bb85d5bb971373e0f199a080",
+      "side_strip.png": "f1068c590b661c8dc50934f10e87afbeba77152238df57ba74ecc7aa35231706"
+    },
+    "manifest": {
+      "actor": "friend",
+      "motion": "sit",
+      "frames_evaluated": 60,
+      "rendered_samples": [
+        1,
+        11,
+        21,
+        31,
+        41,
+        51,
+        60
+      ],
+      "views": [
+        "front",
+        "side"
+      ],
+      "engine": "EEVEE",
+      "denoising": false,
+      "locked_motion_path": "round2 pose + knee fabric",
+      "max_shell_source_gap": 0.006403307430446148,
+      "max_articulated_trim_tracking_error": 2.7476383618393204e-07,
+      "tracking_pass": true,
+      "visual_clearance": "pending actual pixel inspection; source proximity alone does not prove absence of clipping",
+      "records": [
+        {
+          "frame": 1,
+          "shell_count": 11,
+          "shell_vertices": 3856,
+          "max_source_gap": 0.006403282284736633,
+          "max_articulated_trim_tracking_error": 1.3348812510944096e-07,
+          "pass_tracking": true,
+          "max_segment_length_change": 1.1395581667184018e-07,
+          "max_joint_gap": 2.9802322387695312e-08
+        },
+        {
+          "frame": 2,
+          "shell_count": 11,
+          "shell_vertices": 3856,
+          "max_source_gap": 0.006403271108865738,
+          "max_articulated_trim_tracking_error": 5.960464477539063e-08,
+          "pass_tracking": true,
+          "max_segment_length_change": 8.432193843166402e-08,
+          "max_joint_gap": 2.9802322387695312e-08
+        },
+        {
+          "frame": 3,
+          "shell_count": 11,
+          "shell_vertices": 3856,
+          "max_source_gap": 0.0064032673835754395,
+          "max_articulated_trim_tracking_error": 2.2351741790771484e-08,
+          "pass_tracking": true,
+          "max_segment_length_change": 1.2055612819139583e-07,
+          "max_joint_gap": 8.940696716308594e-08
+        },
+        {
+          "frame": 4,
+          "shell_count": 11,
+          "shell_vertices": 3856,
+          "max_source_gap": 0.0064032673835754395,
+          "max_articulated_trim_tracking_error": 2.2351741790771484e-08,
+          "pass_tracking": true,
+          "max_segment_length_change": 1.172989492204124e-07,
+          "max_joint_gap": 1.1920928955078125e-07
+        },
+        {
+          "frame": 5,
+          "shell_count": 11,
+          "shell_vertices": 3856,
+          "max_source_gap": 0.006403266917914152,
+          "max_articulated_trim_tracking_error": 6.143906154658885e-08,
+          "pass_tracking": true,
+          "max_segment_length_change": 1.715220732112499e-07,
+          "max_joint_gap": 1.1944189326376765e-07
+        },
+        {
+          "frame": 6,
+          "shell_count": 11,
+          "shell_vertices": 3856,
+          "max_source_gap": 0.006403282750397921,
+          "max_articulated_trim_tracking_error": 6.006850114687196e-08,
+          "pass_tracking": true,
+          "max_segment_length_change": 4.7414249859656366e-08,
+          "max_joint_gap": 3.003425057343598e-08
+        },
+        {
+          "frame": 7,
+          "shell_count": 11,
+          "shell_vertices": 3856,
+          "max_source_gap": 0.0064032725058496,
+          "max_articulated_trim_tracking_error": 1.3348812510944096e-07,
+          "pass_tracking": true,
+          "max_segment_length_change": 1.8211372654342028e-07,
+          "max_joint_gap": 6.006850114687196e-08
+        },
+        {
+          "frame": 8,
+          "shell_count": 11,
+          "shell_vertices": 3856,
+          "max_source_gap": 0.006403283216059208,
+          "max_articulated_trim_tracking_error": 1.3838839248572819e-07,
+          "pass_tracking": true,
+          "max_segment_length_change": 1.071267925478736e-07,
+          "max_joint_gap": 1.1944189326376765e-07
+        },
+        {
+          "frame": 9,
+          "shell_count": 11,
+          "shell_vertices": 3856,
+          "max_source_gap": 0.006403274834156036,
+          "max_articulated_trim_tracking_error": 2.9802322387695312e-08,
+          "pass_tracking": true,
+          "max_segment_length_change": 7.252160794113394e-08,
+          "max_joint_gap": 1.341104507446289e-07
+        },
+        {
+          "frame": 10,
+          "shell_count": 11,
+          "shell_vertices": 3856,
+          "max_source_gap": 0.006403287407010794,
+          "max_articulated_trim_tracking_error": 1.3328003749250113e-07,
+          "pass_tracking": true,
+          "max_segment_length_change": 9.749882434739732e-08,
+          "max_joint_gap": 5.972094663188382e-08
+        },
+        {
+          "frame": 11,
+          "shell_count": 11,
+          "shell_vertices": 3856,
+          "max_source_gap": 0.00640329672023654,
+          "max_articulated_trim_tracking_error": 1.2013700229374393e-07,
+          "pass_tracking": true,
+          "max_segment_length_change": 7.825199599409416e-08,
+          "max_joint_gap": 9.215859231988326e-08
+        },
+        {
+          "frame": 12,
+          "shell_count": 11,
+          "shell_vertices": 3856,
+          "max_source_gap": 0.006403270177543163,
+          "max_articulated_trim_tracking_error": 1.341104507446289e-07,
+          "pass_tracking": true,
+          "max_segment_length_change": 1.2773254787212807e-07,
+          "max_joint_gap": 1.2013700229374393e-07
+        },
+        {
+          "frame": 13,
+          "shell_count": 11,
+          "shell_vertices": 3856,
+          "max_source_gap": 0.006403266452252865,
+          "max_articulated_trim_tracking_error": 1.341104507446289e-07,
+          "pass_tracking": true,
+          "max_segment_length_change": 1.5365848260451287e-07,
+          "max_joint_gap": 1.1920928955078125e-07
+        },
+        {
+          "frame": 14,
+          "shell_count": 11,
+          "shell_vertices": 3856,
+          "max_source_gap": 0.006403300911188126,
+          "max_articulated_trim_tracking_error": 1.4057727354849284e-07,
+          "pass_tracking": true,
+          "max_segment_length_change": 1.897017978258475e-07,
+          "max_joint_gap": 4.470348358154297e-08
+        },
+        {
+          "frame": 15,
+          "shell_count": 11,
+          "shell_vertices": 3856,
+          "max_source_gap": 0.006403261795639992,
+          "max_articulated_trim_tracking_error": 1.1944189326376765e-07,
+          "pass_tracking": true,
+          "max_segment_length_change": 1.32791279972011e-07,
+          "max_joint_gap": 1.1944189326376765e-07
+        },
+        {
+          "frame": 16,
+          "shell_count": 11,
+          "shell_vertices": 3856,
+          "max_source_gap": 0.006403282750397921,
+          "max_articulated_trim_tracking_error": 1.3657139822709083e-07,
+          "pass_tracking": true,
+          "max_segment_length_change": 1.226738333137689e-07,
+          "max_joint_gap": 3.0719530773294423e-08
+        },
+        {
+          "frame": 17,
+          "shell_count": 11,
+          "shell_vertices": 3856,
+          "max_source_gap": 0.0064032673835754395,
+          "max_articulated_trim_tracking_error": 1.2013700229374393e-07,
+          "pass_tracking": true,
+          "max_segment_length_change": 1.1508576158725248e-07,
+          "max_joint_gap": 1.228781230931777e-07
+        },
+        {
+          "frame": 18,
+          "shell_count": 11,
+          "shell_vertices": 3856,
+          "max_source_gap": 0.006403245963156223,
+          "max_articulated_trim_tracking_error": 6.664001874625056e-08,
+          "pass_tracking": true,
+          "max_segment_length_change": 4.6793113606113934e-08,
+          "max_joint_gap": 1.228781230931777e-07
+        },
+        {
+          "frame": 19,
+          "shell_count": 11,
+          "shell_vertices": 3856,
+          "max_source_gap": 0.006403276231139898,
+          "max_articulated_trim_tracking_error": 1.3328003749250113e-07,
+          "pass_tracking": true,
+          "max_segment_length_change": 7.75869590796674e-08,
+          "max_joint_gap": 6.006850114687196e-08
+        },
+        {
+          "frame": 20,
+          "shell_count": 11,
+          "shell_vertices": 3856,
+          "max_source_gap": 0.006403292994946241,
+          "max_articulated_trim_tracking_error": 6.143906154658885e-08,
+          "pass_tracking": true,
+          "max_segment_length_change": 9.990962801520453e-08,
+          "max_joint_gap": 1.228781230931777e-07
+        },
+        {
+          "frame": 21,
+          "shell_count": 11,
+          "shell_vertices": 3856,
+          "max_source_gap": 0.006403307430446148,
+          "max_articulated_trim_tracking_error": 1.2013700229374393e-07,
+          "pass_tracking": true,
+          "max_segment_length_change": 9.051811955540501e-08,
+          "max_joint_gap": 4.998001405968792e-08
+        },
+        {
+          "frame": 22,
+          "shell_count": 11,
+          "shell_vertices": 3856,
+          "max_source_gap": 0.006403281353414059,
+          "max_articulated_trim_tracking_error": 1.4057727354849284e-07,
+          "pass_tracking": true,
+          "max_segment_length_change": 1.3341373916730959e-07,
+          "max_joint_gap": 1.0350677363164577e-07
+        },
+        {
+          "frame": 23,
+          "shell_count": 11,
+          "shell_vertices": 3856,
+          "max_source_gap": 0.006403292994946241,
+          "max_articulated_trim_tracking_error": 1.3328003749250113e-07,
+          "pass_tracking": true,
+          "max_segment_length_change": 9.421856406177653e-08,
+          "max_joint_gap": 1.2731557704981462e-07
+        },
+        {
+          "frame": 24,
+          "shell_count": 11,
+          "shell_vertices": 3856,
+          "max_source_gap": 0.006403246894478798,
+          "max_articulated_trim_tracking_error": 1.2731557704981462e-07,
+          "pass_tracking": true,
+          "max_segment_length_change": 7.335136609221138e-08,
+          "max_joint_gap": 4.012260442327338e-08
+        },
+        {
+          "frame": 25,
+          "shell_count": 11,
+          "shell_vertices": 3856,
+          "max_source_gap": 0.006403281353414059,
+          "max_articulated_trim_tracking_error": 7.028863677424642e-08,
+          "pass_tracking": true,
+          "max_segment_length_change": 7.384902522833414e-08,
+          "max_joint_gap": 6.365778852490731e-08
+        },
+        {
+          "frame": 26,
+          "shell_count": 11,
+          "shell_vertices": 3856,
+          "max_source_gap": 0.006403279025107622,
+          "max_articulated_trim_tracking_error": 6.487415504770934e-08,
+          "pass_tracking": true,
+          "max_segment_length_change": 5.4855440190237914e-08,
+          "max_joint_gap": 3.725290298461914e-08
+        },
+        {
+          "frame": 27,
+          "shell_count": 11,
+          "shell_vertices": 3856,
+          "max_source_gap": 0.006403274834156036,
+          "max_articulated_trim_tracking_error": 8.940696716308594e-08,
+          "pass_tracking": true,
+          "max_segment_length_change": 1.5207763404134766e-07,
+          "max_joint_gap": 4.842877388000488e-08
+        },
+        {
+          "frame": 28,
+          "shell_count": 11,
+          "shell_vertices": 3856,
+          "max_source_gap": 0.00640328461304307,
+          "max_articulated_trim_tracking_error": 1.6858739404357614e-07,
+          "pass_tracking": true,
+          "max_segment_length_change": 1.6314354822632993e-07,
+          "max_joint_gap": 1.4901161193847656e-07
+        },
+        {
+          "frame": 29,
+          "shell_count": 11,
+          "shell_vertices": 3856,
+          "max_source_gap": 0.006403274368494749,
+          "max_articulated_trim_tracking_error": 4.470348358154297e-08,
+          "pass_tracking": true,
+          "max_segment_length_change": 1.3640013019067254e-07,
+          "max_joint_gap": 9.685754776000977e-08
+        },
+        {
+          "frame": 30,
+          "shell_count": 11,
+          "shell_vertices": 3856,
+          "max_source_gap": 0.006403283681720495,
+          "max_articulated_trim_tracking_error": 8.429369702178807e-08,
+          "pass_tracking": true,
+          "max_segment_length_change": 1.1255669962739745e-07,
+          "max_joint_gap": 8.971687092477304e-08
+        },
+        {
+          "frame": 31,
+          "shell_count": 11,
+          "shell_vertices": 3856,
+          "max_source_gap": 0.006403248757123947,
+          "max_articulated_trim_tracking_error": 5.960464477539063e-08,
+          "pass_tracking": true,
+          "max_segment_length_change": 1.3089426154078154e-07,
+          "max_joint_gap": 1.228781230931777e-07
+        },
+        {
+          "frame": 32,
+          "shell_count": 11,
+          "shell_vertices": 3856,
+          "max_source_gap": 0.006403293460607529,
+          "max_articulated_trim_tracking_error": 1.043081283569336e-07,
+          "pass_tracking": true,
+          "max_segment_length_change": 8.504965109956686e-08,
+          "max_joint_gap": 1.2036781326982014e-07
+        },
+        {
+          "frame": 33,
+          "shell_count": 11,
+          "shell_vertices": 3856,
+          "max_source_gap": 0.006403252016752958,
+          "max_articulated_trim_tracking_error": 1.3328003749250113e-07,
+          "pass_tracking": true,
+          "max_segment_length_change": 1.1002733546483512e-07,
+          "max_joint_gap": 1.228781230931777e-07
+        },
+        {
+          "frame": 34,
+          "shell_count": 11,
+          "shell_vertices": 3856,
+          "max_source_gap": 0.006403250154107809,
+          "max_articulated_trim_tracking_error": 1.3328003749250113e-07,
+          "pass_tracking": true,
+          "max_segment_length_change": 1.7073204805484465e-07,
+          "max_joint_gap": 1.0350677363164577e-07
+        },
+        {
+          "frame": 35,
+          "shell_count": 11,
+          "shell_vertices": 3856,
+          "max_source_gap": 0.006403268780559301,
+          "max_articulated_trim_tracking_error": 1.7881393432617188e-07,
+          "pass_tracking": true,
+          "max_segment_length_change": 7.714560179561403e-08,
+          "max_joint_gap": 1.301187962038292e-07
+        },
+        {
+          "frame": 36,
+          "shell_count": 11,
+          "shell_vertices": 3856,
+          "max_source_gap": 0.0064032478258013725,
+          "max_articulated_trim_tracking_error": 1.9082797281243946e-07,
+          "pass_tracking": true,
+          "max_segment_length_change": 1.3911467466876104e-07,
+          "max_joint_gap": 1.228781230931777e-07
+        },
+        {
+          "frame": 37,
+          "shell_count": 11,
+          "shell_vertices": 3856,
+          "max_source_gap": 0.006403255742043257,
+          "max_articulated_trim_tracking_error": 8.429369702178807e-08,
+          "pass_tracking": true,
+          "max_segment_length_change": 4.6793230845665335e-08,
+          "max_joint_gap": 6.705522537231445e-08
+        },
+        {
+          "frame": 38,
+          "shell_count": 11,
+          "shell_vertices": 3856,
+          "max_source_gap": 0.006403251085430384,
+          "max_articulated_trim_tracking_error": 1.1920928955078125e-07,
+          "pass_tracking": true,
+          "max_segment_length_change": 7.965794335262899e-08,
+          "max_joint_gap": 1.1944189326376765e-07
+        },
+        {
+          "frame": 39,
+          "shell_count": 11,
+          "shell_vertices": 3856,
+          "max_source_gap": 0.006403276696801186,
+          "max_articulated_trim_tracking_error": 1.4600096599955427e-07,
+          "pass_tracking": true,
+          "max_segment_length_change": 1.2678403882304679e-07,
+          "max_joint_gap": 1.257802770743827e-07
+        },
+        {
+          "frame": 40,
+          "shell_count": 11,
+          "shell_vertices": 3856,
+          "max_source_gap": 0.006403268314898014,
+          "max_articulated_trim_tracking_error": 1.0323827311807139e-07,
+          "pass_tracking": true,
+          "max_segment_length_change": 1.5555550114676464e-07,
+          "max_joint_gap": 1.1920928955078125e-07
+        },
+        {
+          "frame": 41,
+          "shell_count": 11,
+          "shell_vertices": 3856,
+          "max_source_gap": 0.006403292529284954,
+          "max_articulated_trim_tracking_error": 8.429369702178807e-08,
+          "pass_tracking": true,
+          "max_segment_length_change": 8.884368773998119e-08,
+          "max_joint_gap": 1.228781230931777e-07
+        },
+        {
+          "frame": 42,
+          "shell_count": 11,
+          "shell_vertices": 3856,
+          "max_source_gap": 0.0064032734371721745,
+          "max_articulated_trim_tracking_error": 8.940696716308594e-08,
+          "pass_tracking": true,
+          "max_segment_length_change": 1.3974701407182266e-07,
+          "max_joint_gap": 1.309692549053352e-07
+        },
+        {
+          "frame": 43,
+          "shell_count": 11,
+          "shell_vertices": 3856,
+          "max_source_gap": 0.006403300445526838,
+          "max_articulated_trim_tracking_error": 1.3328003749250113e-07,
+          "pass_tracking": true,
+          "max_segment_length_change": 1.2678405492128064e-07,
+          "max_joint_gap": 6.664001874625056e-08
+        },
+        {
+          "frame": 44,
+          "shell_count": 11,
+          "shell_vertices": 3856,
+          "max_source_gap": 0.0064032794907689095,
+          "max_articulated_trim_tracking_error": 1.7881393432617188e-07,
+          "pass_tracking": true,
+          "max_segment_length_change": 1.3731892944957025e-07,
+          "max_joint_gap": 7.487740830422111e-08
+        },
+        {
+          "frame": 45,
+          "shell_count": 11,
+          "shell_vertices": 3856,
+          "max_source_gap": 0.00640326552093029,
+          "max_articulated_trim_tracking_error": 2.7476383618393204e-07,
+          "pass_tracking": true,
+          "max_segment_length_change": 6.813271302696933e-08,
+          "max_joint_gap": 7.337970883992392e-08
+        },
+        {
+          "frame": 46,
+          "shell_count": 11,
+          "shell_vertices": 3856,
+          "max_source_gap": 0.00640328973531723,
+          "max_articulated_trim_tracking_error": 1.7881393432617188e-07,
+          "pass_tracking": true,
+          "max_segment_length_change": 1.1799683585778098e-07,
+          "max_joint_gap": 8.971687092477304e-08
+        },
+        {
+          "frame": 47,
+          "shell_count": 11,
+          "shell_vertices": 3856,
+          "max_source_gap": 0.006403288338333368,
+          "max_articulated_trim_tracking_error": 2.3276357876976293e-07,
+          "pass_tracking": true,
+          "max_segment_length_change": 1.343131837971967e-07,
+          "max_joint_gap": 1.5997074956881917e-07
+        },
+        {
+          "frame": 48,
+          "shell_count": 11,
+          "shell_vertices": 3856,
+          "max_source_gap": 0.006403274368494749,
+          "max_articulated_trim_tracking_error": 1.3328003749250113e-07,
+          "pass_tracking": true,
+          "max_segment_length_change": 1.0578372289238303e-07,
+          "max_joint_gap": 1.9097336557472194e-07
+        },
+        {
+          "frame": 49,
+          "shell_count": 11,
+          "shell_vertices": 3856,
+          "max_source_gap": 0.006403262726962566,
+          "max_articulated_trim_tracking_error": 1.1920928955078125e-07,
+          "pass_tracking": true,
+          "max_segment_length_change": 1.1192406512705588e-07,
+          "max_joint_gap": 2.5777286130199124e-07
+        },
+        {
+          "frame": 50,
+          "shell_count": 11,
+          "shell_vertices": 3856,
+          "max_source_gap": 0.006403264123946428,
+          "max_articulated_trim_tracking_error": 1.884864366154897e-07,
+          "pass_tracking": true,
+          "max_segment_length_change": 9.232177666795849e-08,
+          "max_joint_gap": 9.799708752308715e-08
+        },
+        {
+          "frame": 51,
+          "shell_count": 11,
+          "shell_vertices": 3856,
+          "max_source_gap": 0.006403264123946428,
+          "max_articulated_trim_tracking_error": 1.884864366154897e-07,
+          "pass_tracking": true,
+          "max_segment_length_change": 9.232177666795849e-08,
+          "max_joint_gap": 9.799708752308715e-08
+        },
+        {
+          "frame": 52,
+          "shell_count": 11,
+          "shell_vertices": 3856,
+          "max_source_gap": 0.006403264123946428,
+          "max_articulated_trim_tracking_error": 1.884864366154897e-07,
+          "pass_tracking": true,
+          "max_segment_length_change": 9.232177666795849e-08,
+          "max_joint_gap": 9.799708752308715e-08
+        },
+        {
+          "frame": 53,
+          "shell_count": 11,
+          "shell_vertices": 3856,
+          "max_source_gap": 0.006403264123946428,
+          "max_articulated_trim_tracking_error": 1.884864366154897e-07,
+          "pass_tracking": true,
+          "max_segment_length_change": 9.232177666795849e-08,
+          "max_joint_gap": 9.799708752308715e-08
+        },
+        {
+          "frame": 54,
+          "shell_count": 11,
+          "shell_vertices": 3856,
+          "max_source_gap": 0.006403264123946428,
+          "max_articulated_trim_tracking_error": 1.884864366154897e-07,
+          "pass_tracking": true,
+          "max_segment_length_change": 9.232177666795849e-08,
+          "max_joint_gap": 9.799708752308715e-08
+        },
+        {
+          "frame": 55,
+          "shell_count": 11,
+          "shell_vertices": 3856,
+          "max_source_gap": 0.006403264123946428,
+          "max_articulated_trim_tracking_error": 1.884864366154897e-07,
+          "pass_tracking": true,
+          "max_segment_length_change": 9.232177666795849e-08,
+          "max_joint_gap": 9.799708752308715e-08
+        },
+        {
+          "frame": 56,
+          "shell_count": 11,
+          "shell_vertices": 3856,
+          "max_source_gap": 0.006403264123946428,
+          "max_articulated_trim_tracking_error": 1.884864366154897e-07,
+          "pass_tracking": true,
+          "max_segment_length_change": 9.232177666795849e-08,
+          "max_joint_gap": 9.799708752308715e-08
+        },
+        {
+          "frame": 57,
+          "shell_count": 11,
+          "shell_vertices": 3856,
+          "max_source_gap": 0.006403264123946428,
+          "max_articulated_trim_tracking_error": 1.884864366154897e-07,
+          "pass_tracking": true,
+          "max_segment_length_change": 9.232177666795849e-08,
+          "max_joint_gap": 9.799708752308715e-08
+        },
+        {
+          "frame": 58,
+          "shell_count": 11,
+          "shell_vertices": 3856,
+          "max_source_gap": 0.006403264123946428,
+          "max_articulated_trim_tracking_error": 1.884864366154897e-07,
+          "pass_tracking": true,
+          "max_segment_length_change": 9.232177666795849e-08,
+          "max_joint_gap": 9.799708752308715e-08
+        },
+        {
+          "frame": 59,
+          "shell_count": 11,
+          "shell_vertices": 3856,
+          "max_source_gap": 0.006403264123946428,
+          "max_articulated_trim_tracking_error": 1.884864366154897e-07,
+          "pass_tracking": true,
+          "max_segment_length_change": 9.232177666795849e-08,
+          "max_joint_gap": 9.799708752308715e-08
+        },
+        {
+          "frame": 60,
+          "shell_count": 11,
+          "shell_vertices": 3856,
+          "max_source_gap": 0.006403264123946428,
+          "max_articulated_trim_tracking_error": 1.884864366154897e-07,
+          "pass_tracking": true,
+          "max_segment_length_change": 9.232177666795849e-08,
+          "max_joint_gap": 9.799708752308715e-08
+        }
+      ],
+      "max_segment_length_change": 1.897017978258475e-07,
+      "max_joint_gap": 2.5777286130199124e-07,
+      "outfit": "rugby_polo"
+    }
+  },
+  {
+    "path": "assets/chapter4_review/round3/teacher-hair-default-none.png",
+    "run_id": "46097127853",
+    "artifact": "chapter4-teacher-hair-default-none",
+    "sha256": "87931f9e45e43cbc1744bf1d76803fd6870168efd7201f02bb8b4ef0dde6eb49",
+    "size": [
+      3072,
+      1100
+    ],
+    "source_pngs": {
+      "hair_contact_sheet.png": "87931f9e45e43cbc1744bf1d76803fd6870168efd7201f02bb8b4ef0dde6eb49"
+    },
+    "manifest": {
+      "actor": "teacher",
+      "kind": "hair",
+      "item": "default",
+      "engine": "EEVEE",
+      "denoising": false,
+      "views": [
+        "front",
+        "side",
+        "back"
+      ],
+      "seconds": {
+        "front": 25.730645530999993,
+        "side": 6.772132444000022,
+        "back": 7.943527169999982
+      },
+      "sheet": "hair_contact_sheet.png",
+      "body_vertices": 480,
+      "bones": 12,
+      "hair": "swept_bun",
+      "outfit": "default",
+      "clothing": {
+        "role": "teacher",
+        "garments": {
+          "shirt": "cardigan",
+          "sleeves": "cardigan",
+          "pants": "teacher_trousers"
+        },
+        "sleeve_cutoff_fraction_from_wrist": 0.14,
+        "fabric_shader": "UV cross-weave / knit bump + atlas color and stitched artwork",
+        "garment_shells": [
+          "shirt and sleeves",
+          "trousers"
+        ],
+        "shell_thickness_local_units": 0.01,
+        "raised_details": {
+          "cuffs": true,
+          "denim_back_pockets": false,
+          "hoodie_pouch_drawcords_folded_hood": false,
+          "tee_neckline": false,
+          "cardigan_placket_collar_buttons": true,
+          "jacket_lapels_pockets_buttons": false
+        },
+        "original_body_vertices_preserved": 480,
+        "original_armature_bones_preserved": 12
+      }
+    }
+  },
+  {
+    "path": "assets/chapter4_review/round3/teacher-hair-rounded_bob-none.png",
+    "run_id": "46097127853",
+    "artifact": "chapter4-teacher-hair-rounded_bob-none",
+    "sha256": "a176c6751bd391895c88308f9cce20fe24e7c333e561c2cee8309c2ef2624d2d",
+    "size": [
+      3072,
+      1100
+    ],
+    "source_pngs": {
+      "hair_contact_sheet.png": "a176c6751bd391895c88308f9cce20fe24e7c333e561c2cee8309c2ef2624d2d"
+    },
+    "manifest": {
+      "actor": "teacher",
+      "kind": "hair",
+      "item": "rounded_bob",
+      "engine": "EEVEE",
+      "denoising": false,
+      "views": [
+        "front",
+        "side",
+        "back"
+      ],
+      "seconds": {
+        "front": 23.226593941000004,
+        "side": 6.741374641000007,
+        "back": 8.640975191999999
+      },
+      "sheet": "hair_contact_sheet.png",
+      "body_vertices": 480,
+      "bones": 12,
+      "hair": "rounded_bob",
+      "outfit": "default",
+      "clothing": {
+        "role": "teacher",
+        "garments": {
+          "shirt": "cardigan",
+          "sleeves": "cardigan",
+          "pants": "teacher_trousers"
+        },
+        "sleeve_cutoff_fraction_from_wrist": 0.14,
+        "fabric_shader": "UV cross-weave / knit bump + atlas color and stitched artwork",
+        "garment_shells": [
+          "shirt and sleeves",
+          "trousers"
+        ],
+        "shell_thickness_local_units": 0.01,
+        "raised_details": {
+          "cuffs": true,
+          "denim_back_pockets": false,
+          "hoodie_pouch_drawcords_folded_hood": false,
+          "tee_neckline": false,
+          "cardigan_placket_collar_buttons": true,
+          "jacket_lapels_pockets_buttons": false
+        },
+        "original_body_vertices_preserved": 480,
+        "original_armature_bones_preserved": 12
+      }
+    }
+  },
+  {
+    "path": "assets/chapter4_review/round3/lead-outfit-forest_bomber-none.png",
+    "run_id": "46097127853",
+    "artifact": "chapter4-lead-outfit-forest_bomber-none",
+    "sha256": "4d34f975bfc8e0d063c04947636d72b0cd143d6b8e0baafb1dc23abe317dc410",
+    "size": [
+      2048,
+      2122
+    ],
+    "source_pngs": {
+      "clothing_contact_sheet.png": "4d34f975bfc8e0d063c04947636d72b0cd143d6b8e0baafb1dc23abe317dc410"
+    },
+    "manifest": {
+      "actor": "lead",
+      "kind": "outfit",
+      "item": "forest_bomber",
+      "engine": "EEVEE",
+      "denoising": false,
+      "views": [
+        "front",
+        "side",
+        "back",
+        "detail"
+      ],
+      "seconds": {
+        "front": 26.124474919999983,
+        "side": 4.364889423999955,
+        "back": 6.602326533999985,
+        "detail": 13.58448707399998
+      },
+      "sheet": "clothing_contact_sheet.png",
+      "body_vertices": 480,
+      "bones": 12,
+      "hair": "spikes",
+      "outfit": "forest_bomber",
+      "clothing": {
+        "role": "lead",
+        "outfit": "forest_bomber",
+        "top": "jacket",
+        "pants": "jeans",
+        "sleeve_cutoff_fraction_from_wrist": 0.14,
+        "shells": 2,
+        "body_vertices": 480,
+        "bones": 12
+      }
+    }
+  },
+  {
+    "path": "assets/chapter4_review/round3/lead-clearance-forest_bomber-walk.png",
+    "run_id": "46097127853",
+    "artifact": "chapter4-lead-clearance-forest_bomber-walk",
+    "sha256": "515f82be1750b554d531bd8caa5c00a29a61c9a0a518dcaaf59720f846066066",
+    "size": [
+      1680,
+      1950
+    ],
+    "source_pngs": {
+      "front_strip.png": "f2852697b571277475f591384a560282804db54ddff8763b0386db9ec72add59",
+      "side_strip.png": "dc985b6a116d797acca60e31208badfe40b0b28b8a5dfd7c1e1e927b9b26beae"
+    },
+    "manifest": {
+      "actor": "lead",
+      "motion": "walk",
+      "frames_evaluated": 60,
+      "rendered_samples": [
+        1,
+        11,
+        21,
+        31,
+        41,
+        51,
+        60
+      ],
+      "views": [
+        "front",
+        "side"
+      ],
+      "engine": "EEVEE",
+      "denoising": false,
+      "locked_motion_path": "StrideLock/Retarget",
+      "max_shell_source_gap": 0.004470320884138346,
+      "max_articulated_trim_tracking_error": 0.0,
+      "tracking_pass": true,
+      "visual_clearance": "pending actual pixel inspection; source proximity alone does not prove absence of clipping",
+      "records": [
+        {
+          "frame": 1,
+          "shell_count": 2,
+          "shell_vertices": 5824,
+          "max_source_gap": 0.004469666630029678,
+          "max_articulated_trim_tracking_error": 0.0,
+          "pass_tracking": true
+        },
+        {
+          "frame": 2,
+          "shell_count": 2,
+          "shell_vertices": 5824,
+          "max_source_gap": 0.004469647537916899,
+          "max_articulated_trim_tracking_error": 0.0,
+          "pass_tracking": true
+        },
+        {
+          "frame": 3,
+          "shell_count": 2,
+          "shell_vertices": 5824,
+          "max_source_gap": 0.004469677805900574,
+          "max_articulated_trim_tracking_error": 0.0,
+          "pass_tracking": true
+        },
+        {
+          "frame": 4,
+          "shell_count": 2,
+          "shell_vertices": 5824,
+          "max_source_gap": 0.004469612613320351,
+          "max_articulated_trim_tracking_error": 0.0,
+          "pass_tracking": true
+        },
+        {
+          "frame": 5,
+          "shell_count": 2,
+          "shell_vertices": 5824,
+          "max_source_gap": 0.004469661507755518,
+          "max_articulated_trim_tracking_error": 0.0,
+          "pass_tracking": true
+        },
+        {
+          "frame": 6,
+          "shell_count": 2,
+          "shell_vertices": 5824,
+          "max_source_gap": 0.004469688516110182,
+          "max_articulated_trim_tracking_error": 0.0,
+          "pass_tracking": true
+        },
+        {
+          "frame": 7,
+          "shell_count": 2,
+          "shell_vertices": 5824,
+          "max_source_gap": 0.004469639156013727,
+          "max_articulated_trim_tracking_error": 0.0,
+          "pass_tracking": true
+        },
+        {
+          "frame": 8,
+          "shell_count": 2,
+          "shell_vertices": 5824,
+          "max_source_gap": 0.004469675477594137,
+          "max_articulated_trim_tracking_error": 0.0,
+          "pass_tracking": true
+        },
+        {
+          "frame": 9,
+          "shell_count": 2,
+          "shell_vertices": 5824,
+          "max_source_gap": 0.004469714127480984,
+          "max_articulated_trim_tracking_error": 0.0,
+          "pass_tracking": true
+        },
+        {
+          "frame": 10,
+          "shell_count": 2,
+          "shell_vertices": 5824,
+          "max_source_gap": 0.00446968711912632,
+          "max_articulated_trim_tracking_error": 0.0,
+          "pass_tracking": true
+        },
+        {
+          "frame": 11,
+          "shell_count": 2,
+          "shell_vertices": 5824,
+          "max_source_gap": 0.0044697648845613,
+          "max_articulated_trim_tracking_error": 0.0,
+          "pass_tracking": true
+        },
+        {
+          "frame": 12,
+          "shell_count": 2,
+          "shell_vertices": 5824,
+          "max_source_gap": 0.0044696819968521595,
+          "max_articulated_trim_tracking_error": 0.0,
+          "pass_tracking": true
+        },
+        {
+          "frame": 13,
+          "shell_count": 2,
+          "shell_vertices": 5824,
+          "max_source_gap": 0.004469742998480797,
+          "max_articulated_trim_tracking_error": 0.0,
+          "pass_tracking": true
+        },
+        {
+          "frame": 14,
+          "shell_count": 2,
+          "shell_vertices": 5824,
+          "max_source_gap": 0.004469667561352253,
+          "max_articulated_trim_tracking_error": 0.0,
+          "pass_tracking": true
+        },
+        {
+          "frame": 15,
+          "shell_count": 2,
+          "shell_vertices": 5824,
+          "max_source_gap": 0.004469783045351505,
+          "max_articulated_trim_tracking_error": 0.0,
+          "pass_tracking": true
+        },
+        {
+          "frame": 16,
+          "shell_count": 2,
+          "shell_vertices": 5824,
+          "max_source_gap": 0.004469757433980703,
+          "max_articulated_trim_tracking_error": 0.0,
+          "pass_tracking": true
+        },
+        {
+          "frame": 17,
+          "shell_count": 2,
+          "shell_vertices": 5824,
+          "max_source_gap": 0.004469722975045443,
+          "max_articulated_trim_tracking_error": 0.0,
+          "pass_tracking": true
+        },
+        {
+          "frame": 18,
+          "shell_count": 2,
+          "shell_vertices": 5824,
+          "max_source_gap": 0.004469789564609528,
+          "max_articulated_trim_tracking_error": 0.0,
+          "pass_tracking": true
+        },
+        {
+          "frame": 19,
+          "shell_count": 2,
+          "shell_vertices": 5824,
+          "max_source_gap": 0.004469773732125759,
+          "max_articulated_trim_tracking_error": 0.0,
+          "pass_tracking": true
+        },
+        {
+          "frame": 20,
+          "shell_count": 2,
+          "shell_vertices": 5824,
+          "max_source_gap": 0.00446968711912632,
+          "max_articulated_trim_tracking_error": 0.0,
+          "pass_tracking": true
+        },
+        {
+          "frame": 21,
+          "shell_count": 2,
+          "shell_vertices": 5824,
+          "max_source_gap": 0.004469733219593763,
+          "max_articulated_trim_tracking_error": 0.0,
+          "pass_tracking": true
+        },
+        {
+          "frame": 22,
+          "shell_count": 2,
+          "shell_vertices": 5824,
+          "max_source_gap": 0.004469746258109808,
+          "max_articulated_trim_tracking_error": 0.0,
+          "pass_tracking": true
+        },
+        {
+          "frame": 23,
+          "shell_count": 2,
+          "shell_vertices": 5824,
+          "max_source_gap": 0.004469781182706356,
+          "max_articulated_trim_tracking_error": 0.0,
+          "pass_tracking": true
+        },
+        {
+          "frame": 24,
+          "shell_count": 2,
+          "shell_vertices": 5824,
+          "max_source_gap": 0.004469792824238539,
+          "max_articulated_trim_tracking_error": 0.0,
+          "pass_tracking": true
+        },
+        {
+          "frame": 25,
+          "shell_count": 2,
+          "shell_vertices": 5824,
+          "max_source_gap": 0.004469808656722307,
+          "max_articulated_trim_tracking_error": 0.0,
+          "pass_tracking": true
+        },
+        {
+          "frame": 26,
+          "shell_count": 2,
+          "shell_vertices": 5824,
+          "max_source_gap": 0.004469764418900013,
+          "max_articulated_trim_tracking_error": 0.0,
+          "pass_tracking": true
+        },
+        {
+          "frame": 27,
+          "shell_count": 2,
+          "shell_vertices": 5824,
+          "max_source_gap": 0.004469773732125759,
+          "max_articulated_trim_tracking_error": 0.0,
+          "pass_tracking": true
+        },
+        {
+          "frame": 28,
+          "shell_count": 2,
+          "shell_vertices": 5824,
+          "max_source_gap": 0.0044697788543999195,
+          "max_articulated_trim_tracking_error": 0.0,
+          "pass_tracking": true
+        },
+        {
+          "frame": 29,
+          "shell_count": 2,
+          "shell_vertices": 5824,
+          "max_source_gap": 0.004469842184334993,
+          "max_articulated_trim_tracking_error": 0.0,
+          "pass_tracking": true
+        },
+        {
+          "frame": 30,
+          "shell_count": 2,
+          "shell_vertices": 5824,
+          "max_source_gap": 0.0044699255377054214,
+          "max_articulated_trim_tracking_error": 0.0,
+          "pass_tracking": true
+        },
+        {
+          "frame": 31,
+          "shell_count": 2,
+          "shell_vertices": 5824,
+          "max_source_gap": 0.004470066167414188,
+          "max_articulated_trim_tracking_error": 0.0,
+          "pass_tracking": true
+        },
+        {
+          "frame": 32,
+          "shell_count": 2,
+          "shell_vertices": 5824,
+          "max_source_gap": 0.004470034968107939,
+          "max_articulated_trim_tracking_error": 0.0,
+          "pass_tracking": true
+        },
+        {
+          "frame": 33,
+          "shell_count": 2,
+          "shell_vertices": 5824,
+          "max_source_gap": 0.004470149986445904,
+          "max_articulated_trim_tracking_error": 0.0,
+          "pass_tracking": true
+        },
+        {
+          "frame": 34,
+          "shell_count": 2,
+          "shell_vertices": 5824,
+          "max_source_gap": 0.004469973500818014,
+          "max_articulated_trim_tracking_error": 0.0,
+          "pass_tracking": true
+        },
+        {
+          "frame": 35,
+          "shell_count": 2,
+          "shell_vertices": 5824,
+          "max_source_gap": 0.004470185376703739,
+          "max_articulated_trim_tracking_error": 0.0,
+          "pass_tracking": true
+        },
+        {
+          "frame": 36,
+          "shell_count": 2,
+          "shell_vertices": 5824,
+          "max_source_gap": 0.004470126703381538,
+          "max_articulated_trim_tracking_error": 0.0,
+          "pass_tracking": true
+        },
+        {
+          "frame": 37,
+          "shell_count": 2,
+          "shell_vertices": 5824,
+          "max_source_gap": 0.004470158834010363,
+          "max_articulated_trim_tracking_error": 0.0,
+          "pass_tracking": true
+        },
+        {
+          "frame": 38,
+          "shell_count": 2,
+          "shell_vertices": 5824,
+          "max_source_gap": 0.0044700209982693195,
+          "max_articulated_trim_tracking_error": 0.0,
+          "pass_tracking": true
+        },
+        {
+          "frame": 39,
+          "shell_count": 2,
+          "shell_vertices": 5824,
+          "max_source_gap": 0.0044699967838823795,
+          "max_articulated_trim_tracking_error": 0.0,
+          "pass_tracking": true
+        },
+        {
+          "frame": 40,
+          "shell_count": 2,
+          "shell_vertices": 5824,
+          "max_source_gap": 0.004470041953027248,
+          "max_articulated_trim_tracking_error": 0.0,
+          "pass_tracking": true
+        },
+        {
+          "frame": 41,
+          "shell_count": 2,
+          "shell_vertices": 5824,
+          "max_source_gap": 0.004469962790608406,
+          "max_articulated_trim_tracking_error": 0.0,
+          "pass_tracking": true
+        },
+        {
+          "frame": 42,
+          "shell_count": 2,
+          "shell_vertices": 5824,
+          "max_source_gap": 0.004469964187592268,
+          "max_articulated_trim_tracking_error": 0.0,
+          "pass_tracking": true
+        },
+        {
+          "frame": 43,
+          "shell_count": 2,
+          "shell_vertices": 5824,
+          "max_source_gap": 0.0044699921272695065,
+          "max_articulated_trim_tracking_error": 0.0,
+          "pass_tracking": true
+        },
+        {
+          "frame": 44,
+          "shell_count": 2,
+          "shell_vertices": 5824,
+          "max_source_gap": 0.004470068030059338,
+          "max_articulated_trim_tracking_error": 0.0,
+          "pass_tracking": true
+        },
+        {
+          "frame": 45,
+          "shell_count": 2,
+          "shell_vertices": 5824,
+          "max_source_gap": 0.004470043815672398,
+          "max_articulated_trim_tracking_error": 0.0,
+          "pass_tracking": true
+        },
+        {
+          "frame": 46,
+          "shell_count": 2,
+          "shell_vertices": 5824,
+          "max_source_gap": 0.0044700070284307,
+          "max_articulated_trim_tracking_error": 0.0,
+          "pass_tracking": true
+        },
+        {
+          "frame": 47,
+          "shell_count": 2,
+          "shell_vertices": 5824,
+          "max_source_gap": 0.004470040090382099,
+          "max_articulated_trim_tracking_error": 0.0,
+          "pass_tracking": true
+        },
+        {
+          "frame": 48,
+          "shell_count": 2,
+          "shell_vertices": 5824,
+          "max_source_gap": 0.004470041953027248,
+          "max_articulated_trim_tracking_error": 0.0,
+          "pass_tracking": true
+        },
+        {
+          "frame": 49,
+          "shell_count": 2,
+          "shell_vertices": 5824,
+          "max_source_gap": 0.004469971172511578,
+          "max_articulated_trim_tracking_error": 0.0,
+          "pass_tracking": true
+        },
+        {
+          "frame": 50,
+          "shell_count": 2,
+          "shell_vertices": 5824,
+          "max_source_gap": 0.004470139276236296,
+          "max_articulated_trim_tracking_error": 0.0,
+          "pass_tracking": true
+        },
+        {
+          "frame": 51,
+          "shell_count": 2,
+          "shell_vertices": 5824,
+          "max_source_gap": 0.0044700270518660545,
+          "max_articulated_trim_tracking_error": 0.0,
+          "pass_tracking": true
+        },
+        {
+          "frame": 52,
+          "shell_count": 2,
+          "shell_vertices": 5824,
+          "max_source_gap": 0.0044699776917696,
+          "max_articulated_trim_tracking_error": 0.0,
+          "pass_tracking": true
+        },
+        {
+          "frame": 53,
+          "shell_count": 2,
+          "shell_vertices": 5824,
+          "max_source_gap": 0.00447016442194581,
+          "max_articulated_trim_tracking_error": 0.0,
+          "pass_tracking": true
+        },
+        {
+          "frame": 54,
+          "shell_count": 2,
+          "shell_vertices": 5824,
+          "max_source_gap": 0.004470009356737137,
+          "max_articulated_trim_tracking_error": 0.0,
+          "pass_tracking": true
+        },
+        {
+          "frame": 55,
+          "shell_count": 2,
+          "shell_vertices": 5824,
+          "max_source_gap": 0.004470041953027248,
+          "max_articulated_trim_tracking_error": 0.0,
+          "pass_tracking": true
+        },
+        {
+          "frame": 56,
+          "shell_count": 2,
+          "shell_vertices": 5824,
+          "max_source_gap": 0.004470020066946745,
+          "max_articulated_trim_tracking_error": 0.0,
+          "pass_tracking": true
+        },
+        {
+          "frame": 57,
+          "shell_count": 2,
+          "shell_vertices": 5824,
+          "max_source_gap": 0.0044701979495584965,
+          "max_articulated_trim_tracking_error": 0.0,
+          "pass_tracking": true
+        },
+        {
+          "frame": 58,
+          "shell_count": 2,
+          "shell_vertices": 5824,
+          "max_source_gap": 0.0044699618592858315,
+          "max_articulated_trim_tracking_error": 0.0,
+          "pass_tracking": true
+        },
+        {
+          "frame": 59,
+          "shell_count": 2,
+          "shell_vertices": 5824,
+          "max_source_gap": 0.004470081999897957,
+          "max_articulated_trim_tracking_error": 0.0,
+          "pass_tracking": true
+        },
+        {
+          "frame": 60,
+          "shell_count": 2,
+          "shell_vertices": 5824,
+          "max_source_gap": 0.004470320884138346,
+          "max_articulated_trim_tracking_error": 0.0,
+          "pass_tracking": true
+        }
+      ],
+      "outfit": "forest_bomber"
+    }
+  },
+  {
+    "path": "assets/chapter4_review/round3/lead-clearance-forest_bomber-sit.png",
+    "run_id": "46097127853",
+    "artifact": "chapter4-lead-clearance-forest_bomber-sit",
+    "sha256": "30d387923d062ae366e6b59703e817291661109ffb50771b6802a47addd9dd23",
+    "size": [
+      1680,
+      1950
+    ],
+    "source_pngs": {
+      "front_strip.png": "7ad28ab9b65954389f1d87237cd7ced670e448974f8f09d1f064ac223eeafde6",
+      "side_strip.png": "44f81b959b6fd3488cdab8f2e0b6aa53e46b2b02f2095811cae7d756d53c2903"
+    },
+    "manifest": {
+      "actor": "lead",
+      "motion": "sit",
+      "frames_evaluated": 60,
+      "rendered_samples": [
+        1,
+        11,
+        21,
+        31,
+        41,
+        51,
+        60
+      ],
+      "views": [
+        "front",
+        "side"
+      ],
+      "engine": "EEVEE",
+      "denoising": false,
+      "locked_motion_path": "round2 pose + knee fabric",
+      "max_shell_source_gap": 0.006403307430446148,
+      "max_articulated_trim_tracking_error": 2.7476383618393204e-07,
+      "tracking_pass": true,
+      "visual_clearance": "pending actual pixel inspection; source proximity alone does not prove absence of clipping",
+      "records": [
+        {
+          "frame": 1,
+          "shell_count": 11,
+          "shell_vertices": 3856,
+          "max_source_gap": 0.006403282284736633,
+          "max_articulated_trim_tracking_error": 1.812804499357408e-07,
+          "pass_tracking": true,
+          "max_segment_length_change": 1.1395581667184018e-07,
+          "max_joint_gap": 2.9802322387695312e-08
+        },
+        {
+          "frame": 2,
+          "shell_count": 11,
+          "shell_vertices": 3856,
+          "max_source_gap": 0.006403271108865738,
+          "max_articulated_trim_tracking_error": 6.143906154658885e-08,
+          "pass_tracking": true,
+          "max_segment_length_change": 8.432193843166402e-08,
+          "max_joint_gap": 2.9802322387695312e-08
+        },
+        {
+          "frame": 3,
+          "shell_count": 11,
+          "shell_vertices": 3856,
+          "max_source_gap": 0.0064032673835754395,
+          "max_articulated_trim_tracking_error": 6.664001874625056e-08,
+          "pass_tracking": true,
+          "max_segment_length_change": 1.2055612819139583e-07,
+          "max_joint_gap": 8.940696716308594e-08
+        },
+        {
+          "frame": 4,
+          "shell_count": 11,
+          "shell_vertices": 3856,
+          "max_source_gap": 0.0064032673835754395,
+          "max_articulated_trim_tracking_error": 1.3348812510944096e-07,
+          "pass_tracking": true,
+          "max_segment_length_change": 1.172989492204124e-07,
+          "max_joint_gap": 1.1920928955078125e-07
+        },
+        {
+          "frame": 5,
+          "shell_count": 11,
+          "shell_vertices": 3856,
+          "max_source_gap": 0.006403266917914152,
+          "max_articulated_trim_tracking_error": 1.1920928955078125e-07,
+          "pass_tracking": true,
+          "max_segment_length_change": 1.715220732112499e-07,
+          "max_joint_gap": 1.1944189326376765e-07
+        },
+        {
+          "frame": 6,
+          "shell_count": 11,
+          "shell_vertices": 3856,
+          "max_source_gap": 0.006403282750397921,
+          "max_articulated_trim_tracking_error": 1.228781230931777e-07,
+          "pass_tracking": true,
+          "max_segment_length_change": 4.7414249859656366e-08,
+          "max_joint_gap": 3.003425057343598e-08
+        },
+        {
+          "frame": 7,
+          "shell_count": 11,
+          "shell_vertices": 3856,
+          "max_source_gap": 0.0064032725058496,
+          "max_articulated_trim_tracking_error": 1.4975481660844222e-07,
+          "pass_tracking": true,
+          "max_segment_length_change": 1.8211372654342028e-07,
+          "max_joint_gap": 6.006850114687196e-08
+        },
+        {
+          "frame": 8,
+          "shell_count": 11,
+          "shell_vertices": 3856,
+          "max_source_gap": 0.006403283216059208,
+          "max_articulated_trim_tracking_error": 1.2310379476739693e-07,
+          "pass_tracking": true,
+          "max_segment_length_change": 1.071267925478736e-07,
+          "max_joint_gap": 1.1944189326376765e-07
+        },
+        {
+          "frame": 9,
+          "shell_count": 11,
+          "shell_vertices": 3856,
+          "max_source_gap": 0.006403274834156036,
+          "max_articulated_trim_tracking_error": 1.3348812510944096e-07,
+          "pass_tracking": true,
+          "max_segment_length_change": 7.252160794113394e-08,
+          "max_joint_gap": 1.341104507446289e-07
+        },
+        {
+          "frame": 10,
+          "shell_count": 11,
+          "shell_vertices": 3856,
+          "max_source_gap": 0.006403287407010794,
+          "max_articulated_trim_tracking_error": 1.1920928955078125e-07,
+          "pass_tracking": true,
+          "max_segment_length_change": 9.749882434739732e-08,
+          "max_joint_gap": 5.972094663188382e-08
+        },
+        {
+          "frame": 11,
+          "shell_count": 11,
+          "shell_vertices": 3856,
+          "max_source_gap": 0.00640329672023654,
+          "max_articulated_trim_tracking_error": 1.2644054553268208e-07,
+          "pass_tracking": true,
+          "max_segment_length_change": 7.825199599409416e-08,
+          "max_joint_gap": 9.215859231988326e-08
+        },
+        {
+          "frame": 12,
+          "shell_count": 11,
+          "shell_vertices": 3856,
+          "max_source_gap": 0.006403270177543163,
+          "max_articulated_trim_tracking_error": 1.3657139822709083e-07,
+          "pass_tracking": true,
+          "max_segment_length_change": 1.2773254787212807e-07,
+          "max_joint_gap": 1.2013700229374393e-07
+        },
+        {
+          "frame": 13,
+          "shell_count": 11,
+          "shell_vertices": 3856,
+          "max_source_gap": 0.006403266452252865,
+          "max_articulated_trim_tracking_error": 1.341104507446289e-07,
+          "pass_tracking": true,
+          "max_segment_length_change": 1.5365848260451287e-07,
+          "max_joint_gap": 1.1920928955078125e-07
+        },
+        {
+          "frame": 14,
+          "shell_count": 11,
+          "shell_vertices": 3856,
+          "max_source_gap": 0.006403300911188126,
+          "max_articulated_trim_tracking_error": 1.4057727354849284e-07,
+          "pass_tracking": true,
+          "max_segment_length_change": 1.897017978258475e-07,
+          "max_joint_gap": 4.470348358154297e-08
+        },
+        {
+          "frame": 15,
+          "shell_count": 11,
+          "shell_vertices": 3856,
+          "max_source_gap": 0.006403261795639992,
+          "max_articulated_trim_tracking_error": 1.228781230931777e-07,
+          "pass_tracking": true,
+          "max_segment_length_change": 1.32791279972011e-07,
+          "max_joint_gap": 1.1944189326376765e-07
+        },
+        {
+          "frame": 16,
+          "shell_count": 11,
+          "shell_vertices": 3856,
+          "max_source_gap": 0.006403282750397921,
+          "max_articulated_trim_tracking_error": 1.884864366154897e-07,
+          "pass_tracking": true,
+          "max_segment_length_change": 1.226738333137689e-07,
+          "max_joint_gap": 3.0719530773294423e-08
+        },
+        {
+          "frame": 17,
+          "shell_count": 11,
+          "shell_vertices": 3856,
+          "max_source_gap": 0.0064032673835754395,
+          "max_articulated_trim_tracking_error": 1.2644054553268208e-07,
+          "pass_tracking": true,
+          "max_segment_length_change": 1.1508576158725248e-07,
+          "max_joint_gap": 1.228781230931777e-07
+        },
+        {
+          "frame": 18,
+          "shell_count": 11,
+          "shell_vertices": 3856,
+          "max_source_gap": 0.006403245963156223,
+          "max_articulated_trim_tracking_error": 1.3484573213561076e-07,
+          "pass_tracking": true,
+          "max_segment_length_change": 4.6793113606113934e-08,
+          "max_joint_gap": 1.228781230931777e-07
+        },
+        {
+          "frame": 19,
+          "shell_count": 11,
+          "shell_vertices": 3856,
+          "max_source_gap": 0.006403276231139898,
+          "max_articulated_trim_tracking_error": 6.828569911354542e-08,
+          "pass_tracking": true,
+          "max_segment_length_change": 7.75869590796674e-08,
+          "max_joint_gap": 6.006850114687196e-08
+        },
+        {
+          "frame": 20,
+          "shell_count": 11,
+          "shell_vertices": 3856,
+          "max_source_gap": 0.006403292994946241,
+          "max_articulated_trim_tracking_error": 9.541398640621973e-08,
+          "pass_tracking": true,
+          "max_segment_length_change": 9.990962801520453e-08,
+          "max_joint_gap": 1.228781230931777e-07
+        },
+        {
+          "frame": 21,
+          "shell_count": 11,
+          "shell_vertices": 3856,
+          "max_source_gap": 0.006403307430446148,
+          "max_articulated_trim_tracking_error": 8.940696716308594e-08,
+          "pass_tracking": true,
+          "max_segment_length_change": 9.051811955540501e-08,
+          "max_joint_gap": 4.998001405968792e-08
+        },
+        {
+          "frame": 22,
+          "shell_count": 11,
+          "shell_vertices": 3856,
+          "max_source_gap": 0.006403281353414059,
+          "max_articulated_trim_tracking_error": 6.50593981019146e-08,
+          "pass_tracking": true,
+          "max_segment_length_change": 1.3341373916730959e-07,
+          "max_joint_gap": 1.0350677363164577e-07
+        },
+        {
+          "frame": 23,
+          "shell_count": 11,
+          "shell_vertices": 3856,
+          "max_source_gap": 0.006403292994946241,
+          "max_articulated_trim_tracking_error": 8.940696716308594e-08,
+          "pass_tracking": true,
+          "max_segment_length_change": 9.421856406177653e-08,
+          "max_joint_gap": 1.2731557704981462e-07
+        },
+        {
+          "frame": 24,
+          "shell_count": 11,
+          "shell_vertices": 3856,
+          "max_source_gap": 0.006403246894478798,
+          "max_articulated_trim_tracking_error": 9.215859231988326e-08,
+          "pass_tracking": true,
+          "max_segment_length_change": 7.335136609221138e-08,
+          "max_joint_gap": 4.012260442327338e-08
+        },
+        {
+          "frame": 25,
+          "shell_count": 11,
+          "shell_vertices": 3856,
+          "max_source_gap": 0.006403281353414059,
+          "max_articulated_trim_tracking_error": 6.006850114687196e-08,
+          "pass_tracking": true,
+          "max_segment_length_change": 7.384902522833414e-08,
+          "max_joint_gap": 6.365778852490731e-08
+        },
+        {
+          "frame": 26,
+          "shell_count": 11,
+          "shell_vertices": 3856,
+          "max_source_gap": 0.006403279025107622,
+          "max_articulated_trim_tracking_error": 8.429369702178807e-08,
+          "pass_tracking": true,
+          "max_segment_length_change": 5.4855440190237914e-08,
+          "max_joint_gap": 3.725290298461914e-08
+        },
+        {
+          "frame": 27,
+          "shell_count": 11,
+          "shell_vertices": 3856,
+          "max_source_gap": 0.006403274834156036,
+          "max_articulated_trim_tracking_error": 1.0745380149674383e-07,
+          "pass_tracking": true,
+          "max_segment_length_change": 1.5207763404134766e-07,
+          "max_joint_gap": 4.842877388000488e-08
+        },
+        {
+          "frame": 28,
+          "shell_count": 11,
+          "shell_vertices": 3856,
+          "max_source_gap": 0.00640328461304307,
+          "max_articulated_trim_tracking_error": 1.3328003749250113e-07,
+          "pass_tracking": true,
+          "max_segment_length_change": 1.6314354822632993e-07,
+          "max_joint_gap": 1.4901161193847656e-07
+        },
+        {
+          "frame": 29,
+          "shell_count": 11,
+          "shell_vertices": 3856,
+          "max_source_gap": 0.006403274368494749,
+          "max_articulated_trim_tracking_error": 1.5269146510898468e-07,
+          "pass_tracking": true,
+          "max_segment_length_change": 1.3640013019067254e-07,
+          "max_joint_gap": 9.685754776000977e-08
+        },
+        {
+          "frame": 30,
+          "shell_count": 11,
+          "shell_vertices": 3856,
+          "max_source_gap": 0.006403283681720495,
+          "max_articulated_trim_tracking_error": 8.940696716308594e-08,
+          "pass_tracking": true,
+          "max_segment_length_change": 1.1255669962739745e-07,
+          "max_joint_gap": 8.971687092477304e-08
+        },
+        {
+          "frame": 31,
+          "shell_count": 11,
+          "shell_vertices": 3856,
+          "max_source_gap": 0.006403248757123947,
+          "max_articulated_trim_tracking_error": 9.541398640621973e-08,
+          "pass_tracking": true,
+          "max_segment_length_change": 1.3089426154078154e-07,
+          "max_joint_gap": 1.228781230931777e-07
+        },
+        {
+          "frame": 32,
+          "shell_count": 11,
+          "shell_vertices": 3856,
+          "max_source_gap": 0.006403293460607529,
+          "max_articulated_trim_tracking_error": 8.940696716308594e-08,
+          "pass_tracking": true,
+          "max_segment_length_change": 8.504965109956686e-08,
+          "max_joint_gap": 1.2036781326982014e-07
+        },
+        {
+          "frame": 33,
+          "shell_count": 11,
+          "shell_vertices": 3856,
+          "max_source_gap": 0.006403252016752958,
+          "max_articulated_trim_tracking_error": 1.3657139822709083e-07,
+          "pass_tracking": true,
+          "max_segment_length_change": 1.1002733546483512e-07,
+          "max_joint_gap": 1.228781230931777e-07
+        },
+        {
+          "frame": 34,
+          "shell_count": 11,
+          "shell_vertices": 3856,
+          "max_source_gap": 0.006403250154107809,
+          "max_articulated_trim_tracking_error": 8.429369702178807e-08,
+          "pass_tracking": true,
+          "max_segment_length_change": 1.7073204805484465e-07,
+          "max_joint_gap": 1.0350677363164577e-07
+        },
+        {
+          "frame": 35,
+          "shell_count": 11,
+          "shell_vertices": 3856,
+          "max_source_gap": 0.006403268780559301,
+          "max_articulated_trim_tracking_error": 1.0323827311807139e-07,
+          "pass_tracking": true,
+          "max_segment_length_change": 7.714560179561403e-08,
+          "max_joint_gap": 1.301187962038292e-07
+        },
+        {
+          "frame": 36,
+          "shell_count": 11,
+          "shell_vertices": 3856,
+          "max_source_gap": 0.0064032478258013725,
+          "max_articulated_trim_tracking_error": 1.4600096599955427e-07,
+          "pass_tracking": true,
+          "max_segment_length_change": 1.3911467466876104e-07,
+          "max_joint_gap": 1.228781230931777e-07
+        },
+        {
+          "frame": 37,
+          "shell_count": 11,
+          "shell_vertices": 3856,
+          "max_source_gap": 0.006403255742043257,
+          "max_articulated_trim_tracking_error": 5.960464477539063e-08,
+          "pass_tracking": true,
+          "max_segment_length_change": 4.6793230845665335e-08,
+          "max_joint_gap": 6.705522537231445e-08
+        },
+        {
+          "frame": 38,
+          "shell_count": 11,
+          "shell_vertices": 3856,
+          "max_source_gap": 0.006403251085430384,
+          "max_articulated_trim_tracking_error": 1.3328003749250113e-07,
+          "pass_tracking": true,
+          "max_segment_length_change": 7.965794335262899e-08,
+          "max_joint_gap": 1.1944189326376765e-07
+        },
+        {
+          "frame": 39,
+          "shell_count": 11,
+          "shell_vertices": 3856,
+          "max_source_gap": 0.006403276696801186,
+          "max_articulated_trim_tracking_error": 1.884864366154897e-07,
+          "pass_tracking": true,
+          "max_segment_length_change": 1.2678403882304679e-07,
+          "max_joint_gap": 1.257802770743827e-07
+        },
+        {
+          "frame": 40,
+          "shell_count": 11,
+          "shell_vertices": 3856,
+          "max_source_gap": 0.006403268314898014,
+          "max_articulated_trim_tracking_error": 1.0323827311807139e-07,
+          "pass_tracking": true,
+          "max_segment_length_change": 1.5555550114676464e-07,
+          "max_joint_gap": 1.1920928955078125e-07
+        },
+        {
+          "frame": 41,
+          "shell_count": 11,
+          "shell_vertices": 3856,
+          "max_source_gap": 0.006403292529284954,
+          "max_articulated_trim_tracking_error": 8.429369702178807e-08,
+          "pass_tracking": true,
+          "max_segment_length_change": 8.884368773998119e-08,
+          "max_joint_gap": 1.228781230931777e-07
+        },
+        {
+          "frame": 42,
+          "shell_count": 11,
+          "shell_vertices": 3856,
+          "max_source_gap": 0.0064032734371721745,
+          "max_articulated_trim_tracking_error": 1.3328003749250113e-07,
+          "pass_tracking": true,
+          "max_segment_length_change": 1.3974701407182266e-07,
+          "max_joint_gap": 1.309692549053352e-07
+        },
+        {
+          "frame": 43,
+          "shell_count": 11,
+          "shell_vertices": 3856,
+          "max_source_gap": 0.006403300445526838,
+          "max_articulated_trim_tracking_error": 1.7881393432617188e-07,
+          "pass_tracking": true,
+          "max_segment_length_change": 1.2678405492128064e-07,
+          "max_joint_gap": 6.664001874625056e-08
+        },
+        {
+          "frame": 44,
+          "shell_count": 11,
+          "shell_vertices": 3856,
+          "max_source_gap": 0.0064032794907689095,
+          "max_articulated_trim_tracking_error": 8.429369702178807e-08,
+          "pass_tracking": true,
+          "max_segment_length_change": 1.3731892944957025e-07,
+          "max_joint_gap": 7.487740830422111e-08
+        },
+        {
+          "frame": 45,
+          "shell_count": 11,
+          "shell_vertices": 3856,
+          "max_source_gap": 0.00640326552093029,
+          "max_articulated_trim_tracking_error": 2.7476383618393204e-07,
+          "pass_tracking": true,
+          "max_segment_length_change": 6.813271302696933e-08,
+          "max_joint_gap": 7.337970883992392e-08
+        },
+        {
+          "frame": 46,
+          "shell_count": 11,
+          "shell_vertices": 3856,
+          "max_source_gap": 0.00640328973531723,
+          "max_articulated_trim_tracking_error": 1.4901161193847656e-07,
+          "pass_tracking": true,
+          "max_segment_length_change": 1.1799683585778098e-07,
+          "max_joint_gap": 8.971687092477304e-08
+        },
+        {
+          "frame": 47,
+          "shell_count": 11,
+          "shell_vertices": 3856,
+          "max_source_gap": 0.006403288338333368,
+          "max_articulated_trim_tracking_error": 1.3328003749250113e-07,
+          "pass_tracking": true,
+          "max_segment_length_change": 1.343131837971967e-07,
+          "max_joint_gap": 1.5997074956881917e-07
+        },
+        {
+          "frame": 48,
+          "shell_count": 11,
+          "shell_vertices": 3856,
+          "max_source_gap": 0.006403274368494749,
+          "max_articulated_trim_tracking_error": 1.228781230931777e-07,
+          "pass_tracking": true,
+          "max_segment_length_change": 1.0578372289238303e-07,
+          "max_joint_gap": 1.9097336557472194e-07
+        },
+        {
+          "frame": 49,
+          "shell_count": 11,
+          "shell_vertices": 3856,
+          "max_source_gap": 0.006403262726962566,
+          "max_articulated_trim_tracking_error": 2.457562461863554e-07,
+          "pass_tracking": true,
+          "max_segment_length_change": 1.1192406512705588e-07,
+          "max_joint_gap": 2.5777286130199124e-07
+        },
+        {
+          "frame": 50,
+          "shell_count": 11,
+          "shell_vertices": 3856,
+          "max_source_gap": 0.006403264123946428,
+          "max_articulated_trim_tracking_error": 1.7881393432617188e-07,
+          "pass_tracking": true,
+          "max_segment_length_change": 9.232177666795849e-08,
+          "max_joint_gap": 9.799708752308715e-08
+        },
+        {
+          "frame": 51,
+          "shell_count": 11,
+          "shell_vertices": 3856,
+          "max_source_gap": 0.006403264123946428,
+          "max_articulated_trim_tracking_error": 1.7881393432617188e-07,
+          "pass_tracking": true,
+          "max_segment_length_change": 9.232177666795849e-08,
+          "max_joint_gap": 9.799708752308715e-08
+        },
+        {
+          "frame": 52,
+          "shell_count": 11,
+          "shell_vertices": 3856,
+          "max_source_gap": 0.006403264123946428,
+          "max_articulated_trim_tracking_error": 1.7881393432617188e-07,
+          "pass_tracking": true,
+          "max_segment_length_change": 9.232177666795849e-08,
+          "max_joint_gap": 9.799708752308715e-08
+        },
+        {
+          "frame": 53,
+          "shell_count": 11,
+          "shell_vertices": 3856,
+          "max_source_gap": 0.006403264123946428,
+          "max_articulated_trim_tracking_error": 1.7881393432617188e-07,
+          "pass_tracking": true,
+          "max_segment_length_change": 9.232177666795849e-08,
+          "max_joint_gap": 9.799708752308715e-08
+        },
+        {
+          "frame": 54,
+          "shell_count": 11,
+          "shell_vertices": 3856,
+          "max_source_gap": 0.006403264123946428,
+          "max_articulated_trim_tracking_error": 1.7881393432617188e-07,
+          "pass_tracking": true,
+          "max_segment_length_change": 9.232177666795849e-08,
+          "max_joint_gap": 9.799708752308715e-08
+        },
+        {
+          "frame": 55,
+          "shell_count": 11,
+          "shell_vertices": 3856,
+          "max_source_gap": 0.006403264123946428,
+          "max_articulated_trim_tracking_error": 1.7881393432617188e-07,
+          "pass_tracking": true,
+          "max_segment_length_change": 9.232177666795849e-08,
+          "max_joint_gap": 9.799708752308715e-08
+        },
+        {
+          "frame": 56,
+          "shell_count": 11,
+          "shell_vertices": 3856,
+          "max_source_gap": 0.006403264123946428,
+          "max_articulated_trim_tracking_error": 1.7881393432617188e-07,
+          "pass_tracking": true,
+          "max_segment_length_change": 9.232177666795849e-08,
+          "max_joint_gap": 9.799708752308715e-08
+        },
+        {
+          "frame": 57,
+          "shell_count": 11,
+          "shell_vertices": 3856,
+          "max_source_gap": 0.006403264123946428,
+          "max_articulated_trim_tracking_error": 1.7881393432617188e-07,
+          "pass_tracking": true,
+          "max_segment_length_change": 9.232177666795849e-08,
+          "max_joint_gap": 9.799708752308715e-08
+        },
+        {
+          "frame": 58,
+          "shell_count": 11,
+          "shell_vertices": 3856,
+          "max_source_gap": 0.006403264123946428,
+          "max_articulated_trim_tracking_error": 1.7881393432617188e-07,
+          "pass_tracking": true,
+          "max_segment_length_change": 9.232177666795849e-08,
+          "max_joint_gap": 9.799708752308715e-08
+        },
+        {
+          "frame": 59,
+          "shell_count": 11,
+          "shell_vertices": 3856,
+          "max_source_gap": 0.006403264123946428,
+          "max_articulated_trim_tracking_error": 1.7881393432617188e-07,
+          "pass_tracking": true,
+          "max_segment_length_change": 9.232177666795849e-08,
+          "max_joint_gap": 9.799708752308715e-08
+        },
+        {
+          "frame": 60,
+          "shell_count": 11,
+          "shell_vertices": 3856,
+          "max_source_gap": 0.006403264123946428,
+          "max_articulated_trim_tracking_error": 1.7881393432617188e-07,
+          "pass_tracking": true,
+          "max_segment_length_change": 9.232177666795849e-08,
+          "max_joint_gap": 9.799708752308715e-08
+        }
+      ],
+      "max_segment_length_change": 1.897017978258475e-07,
+      "max_joint_gap": 2.5777286130199124e-07,
+      "outfit": "forest_bomber"
+    }
+  }
+]
