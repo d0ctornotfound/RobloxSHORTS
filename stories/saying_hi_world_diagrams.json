@@ -1,0 +1,1890 @@
+{
+  "status": "draft world-space cast diagram data; actual native rendering pending pilot approval",
+  "source": "stories/saying_hi_staging.json",
+  "initial": {
+    "name": "Otis's theory",
+    "ground": {
+      "center": [
+        0,
+        0,
+        -0.025
+      ],
+      "size": [
+        13,
+        20
+      ],
+      "color": [
+        0.58,
+        0.48,
+        0.34
+      ]
+    },
+    "graphics_z": 0.035,
+    "line_radius": 0.024,
+    "font_size": 0.27,
+    "heading_size": 0.43,
+    "title": "Otis's theory",
+    "title_xyz": [
+      0,
+      8.35,
+      0.035
+    ],
+    "title_size": 0.44,
+    "label_color": [
+      0.1,
+      0.08,
+      0.055
+    ],
+    "formations": [
+      {
+        "heading": "Girls",
+        "heading_xyz": [
+          -2.65,
+          7.9,
+          0.035
+        ],
+        "actors": [
+          {
+            "id": "ava",
+            "label": "Ava",
+            "xyz": [
+              -2.65,
+              6.6,
+              0
+            ],
+            "yaw": 0,
+            "label_offset": [
+              0,
+              -0.62
+            ]
+          },
+          {
+            "id": "bella",
+            "label": "Bella",
+            "xyz": [
+              -2.65,
+              5.13,
+              0
+            ],
+            "yaw": 0,
+            "label_offset": [
+              0,
+              -0.62
+            ]
+          },
+          {
+            "id": "cleo",
+            "label": "Cleo",
+            "xyz": [
+              -2.65,
+              3.6599999999999997,
+              0
+            ],
+            "yaw": 0,
+            "label_offset": [
+              0,
+              -0.62
+            ]
+          },
+          {
+            "id": "daisy",
+            "label": "Daisy",
+            "xyz": [
+              -2.65,
+              2.1899999999999995,
+              0
+            ],
+            "yaw": 0,
+            "label_offset": [
+              0,
+              -0.62
+            ]
+          },
+          {
+            "id": "ella",
+            "label": "Ella",
+            "xyz": [
+              -2.65,
+              0.7199999999999998,
+              0
+            ],
+            "yaw": 0,
+            "label_offset": [
+              0,
+              -0.62
+            ]
+          },
+          {
+            "id": "faye",
+            "label": "Faye",
+            "xyz": [
+              -2.65,
+              -0.75,
+              0
+            ],
+            "yaw": 0,
+            "label_offset": [
+              0,
+              -0.62
+            ]
+          },
+          {
+            "id": "gia",
+            "label": "Gia",
+            "xyz": [
+              -2.65,
+              -2.2200000000000006,
+              0
+            ],
+            "yaw": 0,
+            "label_offset": [
+              0,
+              -0.62
+            ]
+          },
+          {
+            "id": "hana",
+            "label": "Hana",
+            "xyz": [
+              -2.65,
+              -3.6899999999999995,
+              0
+            ],
+            "yaw": 0,
+            "label_offset": [
+              0,
+              -0.62
+            ]
+          },
+          {
+            "id": "ivy",
+            "label": "Ivy",
+            "xyz": [
+              -2.65,
+              -5.16,
+              0
+            ],
+            "yaw": 0,
+            "label_offset": [
+              0,
+              -0.62
+            ]
+          },
+          {
+            "id": "june",
+            "label": "June",
+            "xyz": [
+              -2.65,
+              -6.630000000000001,
+              0
+            ],
+            "yaw": 0,
+            "label_offset": [
+              0,
+              -0.62
+            ]
+          }
+        ]
+      },
+      {
+        "heading": "Boys",
+        "heading_xyz": [
+          2.65,
+          7.9,
+          0.035
+        ],
+        "actors": [
+          {
+            "id": "brody",
+            "label": "Brody",
+            "xyz": [
+              2.65,
+              6.6,
+              0
+            ],
+            "yaw": 0,
+            "label_offset": [
+              0,
+              -0.62
+            ]
+          },
+          {
+            "id": "chase",
+            "label": "Chase",
+            "xyz": [
+              2.65,
+              5.13,
+              0
+            ],
+            "yaw": 0,
+            "label_offset": [
+              0,
+              -0.62
+            ]
+          },
+          {
+            "id": "kai",
+            "label": "Kai",
+            "xyz": [
+              2.65,
+              3.6599999999999997,
+              0
+            ],
+            "yaw": 0,
+            "label_offset": [
+              0,
+              -0.62
+            ]
+          },
+          {
+            "id": "otis",
+            "label": "Otis",
+            "xyz": [
+              2.65,
+              2.1899999999999995,
+              0
+            ],
+            "yaw": 0,
+            "label_offset": [
+              0,
+              -0.62
+            ]
+          },
+          {
+            "id": "leo",
+            "label": "Leo",
+            "xyz": [
+              2.65,
+              0.7199999999999998,
+              0
+            ],
+            "yaw": 0,
+            "label_offset": [
+              0,
+              -0.62
+            ]
+          },
+          {
+            "id": "max",
+            "label": "Max",
+            "xyz": [
+              2.65,
+              -0.75,
+              0
+            ],
+            "yaw": 0,
+            "label_offset": [
+              0,
+              -0.62
+            ]
+          },
+          {
+            "id": "noah",
+            "label": "Noah",
+            "xyz": [
+              2.65,
+              -2.2200000000000006,
+              0
+            ],
+            "yaw": 0,
+            "label_offset": [
+              0,
+              -0.62
+            ]
+          },
+          {
+            "id": "ryan",
+            "label": "Ryan",
+            "xyz": [
+              2.65,
+              -3.6899999999999995,
+              0
+            ],
+            "yaw": 0,
+            "label_offset": [
+              0,
+              -0.62
+            ]
+          },
+          {
+            "id": "sam",
+            "label": "Sam",
+            "xyz": [
+              2.65,
+              -5.16,
+              0
+            ],
+            "yaw": 0,
+            "label_offset": [
+              0,
+              -0.62
+            ]
+          },
+          {
+            "id": "narrator",
+            "label": "Me",
+            "xyz": [
+              2.65,
+              -6.630000000000001,
+              0
+            ],
+            "yaw": 0,
+            "label_offset": [
+              0,
+              -0.62
+            ]
+          }
+        ]
+      }
+    ],
+    "links": [
+      {
+        "from": "ava",
+        "to": "brody",
+        "reveal": [
+          0,
+          0.1
+        ],
+        "start_clearance": 0.68,
+        "end_clearance": 0.68,
+        "end_offset": [
+          0,
+          -0.16
+        ],
+        "arrowhead_size": 0.15,
+        "color": [
+          0.78,
+          0.14,
+          0.08
+        ]
+      },
+      {
+        "from": "bella",
+        "to": "chase",
+        "reveal": [
+          0.1,
+          0.2
+        ],
+        "start_clearance": 0.68,
+        "end_clearance": 0.68,
+        "end_offset": [
+          0,
+          -0.16
+        ],
+        "arrowhead_size": 0.15,
+        "color": [
+          0.13,
+          0.35,
+          0.75
+        ]
+      },
+      {
+        "from": "cleo",
+        "to": "kai",
+        "reveal": [
+          0.2,
+          0.3
+        ],
+        "start_clearance": 0.68,
+        "end_clearance": 0.68,
+        "end_offset": [
+          0,
+          -0.24
+        ],
+        "arrowhead_size": 0.15,
+        "color": [
+          0.56,
+          0.17,
+          0.69
+        ]
+      },
+      {
+        "from": "daisy",
+        "to": "brody",
+        "reveal": [
+          0.3,
+          0.4
+        ],
+        "start_clearance": 0.68,
+        "end_clearance": 0.68,
+        "end_offset": [
+          0,
+          0
+        ],
+        "arrowhead_size": 0.15,
+        "color": [
+          0.78,
+          0.14,
+          0.08
+        ]
+      },
+      {
+        "from": "ella",
+        "to": "chase",
+        "reveal": [
+          0.4,
+          0.5
+        ],
+        "start_clearance": 0.68,
+        "end_clearance": 0.68,
+        "end_offset": [
+          0,
+          0
+        ],
+        "arrowhead_size": 0.15,
+        "color": [
+          0.13,
+          0.35,
+          0.75
+        ]
+      },
+      {
+        "from": "faye",
+        "to": "kai",
+        "reveal": [
+          0.5,
+          0.6
+        ],
+        "start_clearance": 0.68,
+        "end_clearance": 0.68,
+        "end_offset": [
+          0,
+          -0.08
+        ],
+        "arrowhead_size": 0.15,
+        "color": [
+          0.56,
+          0.17,
+          0.69
+        ]
+      },
+      {
+        "from": "gia",
+        "to": "brody",
+        "reveal": [
+          0.6,
+          0.7
+        ],
+        "start_clearance": 0.68,
+        "end_clearance": 0.68,
+        "end_offset": [
+          0,
+          0.16
+        ],
+        "arrowhead_size": 0.15,
+        "color": [
+          0.78,
+          0.14,
+          0.08
+        ]
+      },
+      {
+        "from": "hana",
+        "to": "chase",
+        "reveal": [
+          0.7,
+          0.8
+        ],
+        "start_clearance": 0.68,
+        "end_clearance": 0.68,
+        "end_offset": [
+          0,
+          0.16
+        ],
+        "arrowhead_size": 0.15,
+        "color": [
+          0.13,
+          0.35,
+          0.75
+        ]
+      },
+      {
+        "from": "ivy",
+        "to": "kai",
+        "reveal": [
+          0.8,
+          0.9
+        ],
+        "start_clearance": 0.68,
+        "end_clearance": 0.68,
+        "end_offset": [
+          0,
+          0.08
+        ],
+        "arrowhead_size": 0.15,
+        "color": [
+          0.56,
+          0.17,
+          0.69
+        ]
+      },
+      {
+        "from": "june",
+        "to": "kai",
+        "reveal": [
+          0.9,
+          1
+        ],
+        "start_clearance": 0.68,
+        "end_clearance": 0.68,
+        "end_offset": [
+          0,
+          0.24
+        ],
+        "arrowhead_size": 0.15,
+        "color": [
+          0.56,
+          0.17,
+          0.69
+        ]
+      }
+    ],
+    "progress_keys": [
+      [
+        0,
+        0
+      ],
+      [
+        1,
+        1
+      ]
+    ],
+    "camera": {
+      "position": [
+        0,
+        0,
+        18
+      ],
+      "target": [
+        0,
+        0,
+        0
+      ],
+      "ortho_scale": 9.8
+    }
+  },
+  "zero": {
+    "name": "Otis's theory",
+    "ground": {
+      "center": [
+        0,
+        0,
+        -0.025
+      ],
+      "size": [
+        13,
+        20
+      ],
+      "color": [
+        0.58,
+        0.48,
+        0.34
+      ]
+    },
+    "graphics_z": 0.035,
+    "line_radius": 0.024,
+    "font_size": 0.27,
+    "heading_size": 0.43,
+    "title": "Otis's theory",
+    "title_xyz": [
+      0,
+      8.35,
+      0.035
+    ],
+    "title_size": 0.44,
+    "label_color": [
+      0.1,
+      0.08,
+      0.055
+    ],
+    "formations": [
+      {
+        "heading": "Girls",
+        "heading_xyz": [
+          -2.65,
+          7.9,
+          0.035
+        ],
+        "actors": [
+          {
+            "id": "ava",
+            "label": "Ava",
+            "xyz": [
+              -2.65,
+              6.6,
+              0
+            ],
+            "yaw": 0,
+            "label_offset": [
+              0,
+              -0.62
+            ]
+          },
+          {
+            "id": "bella",
+            "label": "Bella",
+            "xyz": [
+              -2.65,
+              5.13,
+              0
+            ],
+            "yaw": 0,
+            "label_offset": [
+              0,
+              -0.62
+            ]
+          },
+          {
+            "id": "cleo",
+            "label": "Cleo",
+            "xyz": [
+              -2.65,
+              3.6599999999999997,
+              0
+            ],
+            "yaw": 0,
+            "label_offset": [
+              0,
+              -0.62
+            ]
+          },
+          {
+            "id": "daisy",
+            "label": "Daisy",
+            "xyz": [
+              -2.65,
+              2.1899999999999995,
+              0
+            ],
+            "yaw": 0,
+            "label_offset": [
+              0,
+              -0.62
+            ]
+          },
+          {
+            "id": "ella",
+            "label": "Ella",
+            "xyz": [
+              -2.65,
+              0.7199999999999998,
+              0
+            ],
+            "yaw": 0,
+            "label_offset": [
+              0,
+              -0.62
+            ]
+          },
+          {
+            "id": "faye",
+            "label": "Faye",
+            "xyz": [
+              -2.65,
+              -0.75,
+              0
+            ],
+            "yaw": 0,
+            "label_offset": [
+              0,
+              -0.62
+            ]
+          },
+          {
+            "id": "gia",
+            "label": "Gia",
+            "xyz": [
+              -2.65,
+              -2.2200000000000006,
+              0
+            ],
+            "yaw": 0,
+            "label_offset": [
+              0,
+              -0.62
+            ]
+          },
+          {
+            "id": "hana",
+            "label": "Hana",
+            "xyz": [
+              -2.65,
+              -3.6899999999999995,
+              0
+            ],
+            "yaw": 0,
+            "label_offset": [
+              0,
+              -0.62
+            ]
+          },
+          {
+            "id": "ivy",
+            "label": "Ivy",
+            "xyz": [
+              -2.65,
+              -5.16,
+              0
+            ],
+            "yaw": 0,
+            "label_offset": [
+              0,
+              -0.62
+            ]
+          },
+          {
+            "id": "june",
+            "label": "June",
+            "xyz": [
+              -2.65,
+              -6.630000000000001,
+              0
+            ],
+            "yaw": 0,
+            "label_offset": [
+              0,
+              -0.62
+            ]
+          }
+        ]
+      },
+      {
+        "heading": "Boys",
+        "heading_xyz": [
+          2.65,
+          7.9,
+          0.035
+        ],
+        "actors": [
+          {
+            "id": "brody",
+            "label": "Brody",
+            "xyz": [
+              2.65,
+              6.6,
+              0
+            ],
+            "yaw": 0,
+            "label_offset": [
+              0,
+              -0.62
+            ]
+          },
+          {
+            "id": "chase",
+            "label": "Chase",
+            "xyz": [
+              2.65,
+              5.13,
+              0
+            ],
+            "yaw": 0,
+            "label_offset": [
+              0,
+              -0.62
+            ]
+          },
+          {
+            "id": "kai",
+            "label": "Kai",
+            "xyz": [
+              2.65,
+              3.6599999999999997,
+              0
+            ],
+            "yaw": 0,
+            "label_offset": [
+              0,
+              -0.62
+            ]
+          },
+          {
+            "id": "otis",
+            "label": "Otis  ·  0",
+            "xyz": [
+              2.65,
+              2.1899999999999995,
+              0
+            ],
+            "yaw": 0,
+            "label_offset": [
+              0,
+              -0.62
+            ]
+          },
+          {
+            "id": "leo",
+            "label": "Leo  ·  0",
+            "xyz": [
+              2.65,
+              0.7199999999999998,
+              0
+            ],
+            "yaw": 0,
+            "label_offset": [
+              0,
+              -0.62
+            ]
+          },
+          {
+            "id": "max",
+            "label": "Max  ·  0",
+            "xyz": [
+              2.65,
+              -0.75,
+              0
+            ],
+            "yaw": 0,
+            "label_offset": [
+              0,
+              -0.62
+            ]
+          },
+          {
+            "id": "noah",
+            "label": "Noah  ·  0",
+            "xyz": [
+              2.65,
+              -2.2200000000000006,
+              0
+            ],
+            "yaw": 0,
+            "label_offset": [
+              0,
+              -0.62
+            ]
+          },
+          {
+            "id": "ryan",
+            "label": "Ryan  ·  0",
+            "xyz": [
+              2.65,
+              -3.6899999999999995,
+              0
+            ],
+            "yaw": 0,
+            "label_offset": [
+              0,
+              -0.62
+            ]
+          },
+          {
+            "id": "sam",
+            "label": "Sam  ·  0",
+            "xyz": [
+              2.65,
+              -5.16,
+              0
+            ],
+            "yaw": 0,
+            "label_offset": [
+              0,
+              -0.62
+            ]
+          },
+          {
+            "id": "narrator",
+            "label": "Me  ·  0",
+            "xyz": [
+              2.65,
+              -6.630000000000001,
+              0
+            ],
+            "yaw": 0,
+            "label_offset": [
+              0,
+              -0.62
+            ]
+          }
+        ]
+      }
+    ],
+    "links": [
+      {
+        "from": "ava",
+        "to": "brody",
+        "reveal": [
+          0,
+          0.1
+        ],
+        "start_clearance": 0.68,
+        "end_clearance": 0.68,
+        "end_offset": [
+          0,
+          -0.16
+        ],
+        "arrowhead_size": 0.15,
+        "color": [
+          0.78,
+          0.14,
+          0.08
+        ]
+      },
+      {
+        "from": "bella",
+        "to": "chase",
+        "reveal": [
+          0.1,
+          0.2
+        ],
+        "start_clearance": 0.68,
+        "end_clearance": 0.68,
+        "end_offset": [
+          0,
+          -0.16
+        ],
+        "arrowhead_size": 0.15,
+        "color": [
+          0.13,
+          0.35,
+          0.75
+        ]
+      },
+      {
+        "from": "cleo",
+        "to": "kai",
+        "reveal": [
+          0.2,
+          0.3
+        ],
+        "start_clearance": 0.68,
+        "end_clearance": 0.68,
+        "end_offset": [
+          0,
+          -0.24
+        ],
+        "arrowhead_size": 0.15,
+        "color": [
+          0.56,
+          0.17,
+          0.69
+        ]
+      },
+      {
+        "from": "daisy",
+        "to": "brody",
+        "reveal": [
+          0.3,
+          0.4
+        ],
+        "start_clearance": 0.68,
+        "end_clearance": 0.68,
+        "end_offset": [
+          0,
+          0
+        ],
+        "arrowhead_size": 0.15,
+        "color": [
+          0.78,
+          0.14,
+          0.08
+        ]
+      },
+      {
+        "from": "ella",
+        "to": "chase",
+        "reveal": [
+          0.4,
+          0.5
+        ],
+        "start_clearance": 0.68,
+        "end_clearance": 0.68,
+        "end_offset": [
+          0,
+          0
+        ],
+        "arrowhead_size": 0.15,
+        "color": [
+          0.13,
+          0.35,
+          0.75
+        ]
+      },
+      {
+        "from": "faye",
+        "to": "kai",
+        "reveal": [
+          0.5,
+          0.6
+        ],
+        "start_clearance": 0.68,
+        "end_clearance": 0.68,
+        "end_offset": [
+          0,
+          -0.08
+        ],
+        "arrowhead_size": 0.15,
+        "color": [
+          0.56,
+          0.17,
+          0.69
+        ]
+      },
+      {
+        "from": "gia",
+        "to": "brody",
+        "reveal": [
+          0.6,
+          0.7
+        ],
+        "start_clearance": 0.68,
+        "end_clearance": 0.68,
+        "end_offset": [
+          0,
+          0.16
+        ],
+        "arrowhead_size": 0.15,
+        "color": [
+          0.78,
+          0.14,
+          0.08
+        ]
+      },
+      {
+        "from": "hana",
+        "to": "chase",
+        "reveal": [
+          0.7,
+          0.8
+        ],
+        "start_clearance": 0.68,
+        "end_clearance": 0.68,
+        "end_offset": [
+          0,
+          0.16
+        ],
+        "arrowhead_size": 0.15,
+        "color": [
+          0.13,
+          0.35,
+          0.75
+        ]
+      },
+      {
+        "from": "ivy",
+        "to": "kai",
+        "reveal": [
+          0.8,
+          0.9
+        ],
+        "start_clearance": 0.68,
+        "end_clearance": 0.68,
+        "end_offset": [
+          0,
+          0.08
+        ],
+        "arrowhead_size": 0.15,
+        "color": [
+          0.56,
+          0.17,
+          0.69
+        ]
+      },
+      {
+        "from": "june",
+        "to": "kai",
+        "reveal": [
+          0.9,
+          1
+        ],
+        "start_clearance": 0.68,
+        "end_clearance": 0.68,
+        "end_offset": [
+          0,
+          0.24
+        ],
+        "arrowhead_size": 0.15,
+        "color": [
+          0.56,
+          0.17,
+          0.69
+        ]
+      }
+    ],
+    "progress_keys": [
+      [
+        0,
+        1
+      ],
+      [
+        1,
+        1
+      ]
+    ],
+    "camera": {
+      "position": [
+        0,
+        0,
+        18
+      ],
+      "target": [
+        0,
+        0,
+        0
+      ],
+      "ortho_scale": 9.8
+    }
+  },
+  "replacement": {
+    "name": "Otis's new chart",
+    "ground": {
+      "center": [
+        0,
+        0,
+        -0.025
+      ],
+      "size": [
+        13,
+        20
+      ],
+      "color": [
+        0.58,
+        0.48,
+        0.34
+      ]
+    },
+    "graphics_z": 0.035,
+    "line_radius": 0.024,
+    "font_size": 0.27,
+    "heading_size": 0.43,
+    "title": "Otis's new chart",
+    "title_xyz": [
+      0,
+      8.35,
+      0.035
+    ],
+    "title_size": 0.44,
+    "label_color": [
+      0.1,
+      0.08,
+      0.055
+    ],
+    "formations": [
+      {
+        "heading": "Girls",
+        "heading_xyz": [
+          -2.65,
+          7.9,
+          0.035
+        ],
+        "actors": [
+          {
+            "id": "ava",
+            "label": "Ava",
+            "xyz": [
+              -2.65,
+              6.6,
+              0
+            ],
+            "yaw": 0,
+            "label_offset": [
+              0,
+              -0.62
+            ]
+          },
+          {
+            "id": "bella",
+            "label": "Bella",
+            "xyz": [
+              -2.65,
+              5.13,
+              0
+            ],
+            "yaw": 0,
+            "label_offset": [
+              0,
+              -0.62
+            ]
+          },
+          {
+            "id": "cleo",
+            "label": "Cleo",
+            "xyz": [
+              -2.65,
+              3.6599999999999997,
+              0
+            ],
+            "yaw": 0,
+            "label_offset": [
+              0,
+              -0.62
+            ]
+          },
+          {
+            "id": "daisy",
+            "label": "Daisy",
+            "xyz": [
+              -2.65,
+              2.1899999999999995,
+              0
+            ],
+            "yaw": 0,
+            "label_offset": [
+              0,
+              -0.62
+            ]
+          },
+          {
+            "id": "ella",
+            "label": "Ella",
+            "xyz": [
+              -2.65,
+              0.7199999999999998,
+              0
+            ],
+            "yaw": 0,
+            "label_offset": [
+              0,
+              -0.62
+            ]
+          },
+          {
+            "id": "faye",
+            "label": "Faye",
+            "xyz": [
+              -2.65,
+              -0.75,
+              0
+            ],
+            "yaw": 0,
+            "label_offset": [
+              0,
+              -0.62
+            ]
+          },
+          {
+            "id": "gia",
+            "label": "Gia",
+            "xyz": [
+              -2.65,
+              -2.2200000000000006,
+              0
+            ],
+            "yaw": 0,
+            "label_offset": [
+              0,
+              -0.62
+            ]
+          },
+          {
+            "id": "hana",
+            "label": "Hana",
+            "xyz": [
+              -2.65,
+              -3.6899999999999995,
+              0
+            ],
+            "yaw": 0,
+            "label_offset": [
+              0,
+              -0.62
+            ]
+          },
+          {
+            "id": "ivy",
+            "label": "Ivy",
+            "xyz": [
+              -2.65,
+              -5.16,
+              0
+            ],
+            "yaw": 0,
+            "label_offset": [
+              0,
+              -0.62
+            ]
+          },
+          {
+            "id": "june",
+            "label": "June",
+            "xyz": [
+              -2.65,
+              -6.630000000000001,
+              0
+            ],
+            "yaw": 0,
+            "label_offset": [
+              0,
+              -0.62
+            ]
+          }
+        ]
+      },
+      {
+        "heading": "Boys",
+        "heading_xyz": [
+          2.65,
+          7.9,
+          0.035
+        ],
+        "actors": [
+          {
+            "id": "brody",
+            "label": "Brody",
+            "xyz": [
+              2.65,
+              6.6,
+              0
+            ],
+            "yaw": 0,
+            "label_offset": [
+              0,
+              -0.62
+            ]
+          },
+          {
+            "id": "chase",
+            "label": "Chase",
+            "xyz": [
+              2.65,
+              5.13,
+              0
+            ],
+            "yaw": 0,
+            "label_offset": [
+              0,
+              -0.62
+            ]
+          },
+          {
+            "id": "kai",
+            "label": "Kai",
+            "xyz": [
+              2.65,
+              3.6599999999999997,
+              0
+            ],
+            "yaw": 0,
+            "label_offset": [
+              0,
+              -0.62
+            ]
+          },
+          {
+            "id": "otis",
+            "label": "Otis",
+            "xyz": [
+              2.65,
+              2.1899999999999995,
+              0
+            ],
+            "yaw": 0,
+            "label_offset": [
+              0,
+              -0.62
+            ]
+          },
+          {
+            "id": "leo",
+            "label": "Leo",
+            "xyz": [
+              2.65,
+              0.7199999999999998,
+              0
+            ],
+            "yaw": 0,
+            "label_offset": [
+              0,
+              -0.62
+            ]
+          },
+          {
+            "id": "max",
+            "label": "Max",
+            "xyz": [
+              2.65,
+              -0.75,
+              0
+            ],
+            "yaw": 0,
+            "label_offset": [
+              0,
+              -0.62
+            ]
+          },
+          {
+            "id": "noah",
+            "label": "Noah",
+            "xyz": [
+              2.65,
+              -2.2200000000000006,
+              0
+            ],
+            "yaw": 0,
+            "label_offset": [
+              0,
+              -0.62
+            ]
+          },
+          {
+            "id": "ryan",
+            "label": "Ryan",
+            "xyz": [
+              2.65,
+              -3.6899999999999995,
+              0
+            ],
+            "yaw": 0,
+            "label_offset": [
+              0,
+              -0.62
+            ]
+          },
+          {
+            "id": "sam",
+            "label": "Sam",
+            "xyz": [
+              2.65,
+              -5.16,
+              0
+            ],
+            "yaw": 0,
+            "label_offset": [
+              0,
+              -0.62
+            ]
+          },
+          {
+            "id": "narrator",
+            "label": "Me",
+            "xyz": [
+              2.65,
+              -6.630000000000001,
+              0
+            ],
+            "yaw": 0,
+            "label_offset": [
+              0,
+              -0.62
+            ]
+          }
+        ]
+      }
+    ],
+    "links": [
+      {
+        "from": "ava",
+        "to": "brody",
+        "reveal": [
+          0,
+          0.05
+        ],
+        "start_clearance": 0.68,
+        "end_clearance": 0.68,
+        "end_offset": [
+          0,
+          0
+        ],
+        "arrowhead_size": 0.15,
+        "color": [
+          0.78,
+          0.14,
+          0.08
+        ]
+      },
+      {
+        "from": "bella",
+        "to": "chase",
+        "reveal": [
+          0.05,
+          0.1
+        ],
+        "start_clearance": 0.68,
+        "end_clearance": 0.68,
+        "end_offset": [
+          0,
+          0
+        ],
+        "arrowhead_size": 0.15,
+        "color": [
+          0.13,
+          0.35,
+          0.75
+        ]
+      },
+      {
+        "from": "cleo",
+        "to": "kai",
+        "reveal": [
+          0.1,
+          0.15
+        ],
+        "start_clearance": 0.68,
+        "end_clearance": 0.68,
+        "end_offset": [
+          0,
+          0
+        ],
+        "arrowhead_size": 0.15,
+        "color": [
+          0.56,
+          0.17,
+          0.69
+        ]
+      },
+      {
+        "from": "daisy",
+        "to": "otis",
+        "reveal": [
+          0.15,
+          0.2
+        ],
+        "start_clearance": 0.68,
+        "end_clearance": 0.68,
+        "end_offset": [
+          0,
+          0
+        ],
+        "arrowhead_size": 0.15,
+        "color": [
+          0.72,
+          0.12,
+          0.08
+        ]
+      },
+      {
+        "from": "ella",
+        "to": "leo",
+        "reveal": [
+          0.2,
+          0.25
+        ],
+        "start_clearance": 0.68,
+        "end_clearance": 0.68,
+        "end_offset": [
+          0,
+          0
+        ],
+        "arrowhead_size": 0.15,
+        "color": [
+          0.72,
+          0.12,
+          0.08
+        ]
+      },
+      {
+        "from": "faye",
+        "to": "max",
+        "reveal": [
+          0.25,
+          0.3
+        ],
+        "start_clearance": 0.68,
+        "end_clearance": 0.68,
+        "end_offset": [
+          0,
+          0
+        ],
+        "arrowhead_size": 0.15,
+        "color": [
+          0.72,
+          0.12,
+          0.08
+        ]
+      },
+      {
+        "from": "gia",
+        "to": "noah",
+        "reveal": [
+          0.3,
+          0.35
+        ],
+        "start_clearance": 0.68,
+        "end_clearance": 0.68,
+        "end_offset": [
+          0,
+          0
+        ],
+        "arrowhead_size": 0.15,
+        "color": [
+          0.72,
+          0.12,
+          0.08
+        ]
+      },
+      {
+        "from": "hana",
+        "to": "ryan",
+        "reveal": [
+          0.35,
+          0.4
+        ],
+        "start_clearance": 0.68,
+        "end_clearance": 0.68,
+        "end_offset": [
+          0,
+          0
+        ],
+        "arrowhead_size": 0.15,
+        "color": [
+          0.72,
+          0.12,
+          0.08
+        ]
+      },
+      {
+        "from": "ivy",
+        "to": "sam",
+        "reveal": [
+          0.4,
+          0.45
+        ],
+        "start_clearance": 0.68,
+        "end_clearance": 0.68,
+        "end_offset": [
+          0,
+          0
+        ],
+        "arrowhead_size": 0.15,
+        "color": [
+          0.72,
+          0.12,
+          0.08
+        ]
+      },
+      {
+        "from": "june",
+        "to": "narrator",
+        "reveal": [
+          0.45,
+          0.5
+        ],
+        "start_clearance": 0.68,
+        "end_clearance": 0.68,
+        "end_offset": [
+          0,
+          0
+        ],
+        "arrowhead_size": 0.15,
+        "color": [
+          0.72,
+          0.12,
+          0.08
+        ]
+      },
+      {
+        "from": "brody",
+        "to": "daisy",
+        "reveal": [
+          0.5,
+          0.55
+        ],
+        "start_clearance": 0.68,
+        "end_clearance": 0.68,
+        "end_offset": [
+          0,
+          0
+        ],
+        "arrowhead_size": 0.15,
+        "color": [
+          0.72,
+          0.12,
+          0.08
+        ]
+      },
+      {
+        "from": "chase",
+        "to": "ella",
+        "reveal": [
+          0.55,
+          0.6
+        ],
+        "start_clearance": 0.68,
+        "end_clearance": 0.68,
+        "end_offset": [
+          0,
+          0
+        ],
+        "arrowhead_size": 0.15,
+        "color": [
+          0.72,
+          0.12,
+          0.08
+        ]
+      },
+      {
+        "from": "kai",
+        "to": "faye",
+        "reveal": [
+          0.6,
+          0.65
+        ],
+        "start_clearance": 0.68,
+        "end_clearance": 0.68,
+        "end_offset": [
+          0,
+          0
+        ],
+        "arrowhead_size": 0.15,
+        "color": [
+          0.72,
+          0.12,
+          0.08
+        ]
+      },
+      {
+        "from": "otis",
+        "to": "gia",
+        "reveal": [
+          0.65,
+          0.7
+        ],
+        "start_clearance": 0.68,
+        "end_clearance": 0.68,
+        "end_offset": [
+          0,
+          0
+        ],
+        "arrowhead_size": 0.15,
+        "color": [
+          0.72,
+          0.12,
+          0.08
+        ]
+      },
+      {
+        "from": "leo",
+        "to": "hana",
+        "reveal": [
+          0.7,
+          0.75
+        ],
+        "start_clearance": 0.68,
+        "end_clearance": 0.68,
+        "end_offset": [
+          0,
+          0
+        ],
+        "arrowhead_size": 0.15,
+        "color": [
+          0.72,
+          0.12,
+          0.08
+        ]
+      },
+      {
+        "from": "max",
+        "to": "ivy",
+        "reveal": [
+          0.75,
+          0.8
+        ],
+        "start_clearance": 0.68,
+        "end_clearance": 0.68,
+        "end_offset": [
+          0,
+          0
+        ],
+        "arrowhead_size": 0.15,
+        "color": [
+          0.72,
+          0.12,
+          0.08
+        ]
+      },
+      {
+        "from": "noah",
+        "to": "june",
+        "reveal": [
+          0.8,
+          0.85
+        ],
+        "start_clearance": 0.68,
+        "end_clearance": 0.68,
+        "end_offset": [
+          0,
+          -0.08
+        ],
+        "arrowhead_size": 0.15,
+        "color": [
+          0.72,
+          0.12,
+          0.08
+        ]
+      },
+      {
+        "from": "ryan",
+        "to": "ava",
+        "reveal": [
+          0.85,
+          0.9
+        ],
+        "start_clearance": 0.68,
+        "end_clearance": 0.68,
+        "end_offset": [
+          0,
+          0
+        ],
+        "arrowhead_size": 0.15,
+        "color": [
+          0.72,
+          0.12,
+          0.08
+        ]
+      },
+      {
+        "from": "sam",
+        "to": "bella",
+        "reveal": [
+          0.9,
+          0.95
+        ],
+        "start_clearance": 0.68,
+        "end_clearance": 0.68,
+        "end_offset": [
+          0,
+          0
+        ],
+        "arrowhead_size": 0.15,
+        "color": [
+          0.72,
+          0.12,
+          0.08
+        ]
+      },
+      {
+        "from": "narrator",
+        "to": "june",
+        "reveal": [
+          0.95,
+          1
+        ],
+        "start_clearance": 0.68,
+        "end_clearance": 0.68,
+        "end_offset": [
+          0,
+          0.08
+        ],
+        "arrowhead_size": 0.15,
+        "color": [
+          0.12,
+          0.49,
+          0.2
+        ]
+      }
+    ],
+    "progress_keys": [
+      [
+        0,
+        0
+      ],
+      [
+        1,
+        1
+      ]
+    ],
+    "camera": {
+      "position": [
+        0,
+        0,
+        18
+      ],
+      "target": [
+        0,
+        0,
+        0
+      ],
+      "ortho_scale": 9.8
+    }
+  }
+}
