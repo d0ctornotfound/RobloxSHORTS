@@ -232,6 +232,34 @@ def main():
     camera=create(scene,"The Bench camera",42)
     bags=[paper("Brown paper bag "+str(i+1),p) for i in range(2)]
     cap=flatcap(p);stick=cane(p)
+    shadow_centres=[]
+    if n==41:
+        # Story-only stylized shadow assist: a feathered diagonal attenuation band
+        # in the existing bench/cap shaders. No geometry or locked assets changed.
+        copies={}
+        for ob in all_mesh(bench)+all_mesh(cap):
+            if ob.name.startswith("Oak") or ob in all_mesh(cap):
+                for slot in ob.material_slots:
+                    src=slot.material
+                    if not src or not src.use_nodes:continue
+                    if src.name not in copies:
+                        mat=src.copy();mat.name=src.name+" | returning shadow insert"
+                        nd=mat.node_tree.nodes;lk=mat.node_tree.links
+                        bs=next((v for v in nd if v.type=="BSDF_PRINCIPLED"),None)
+                        if bs is None:continue
+                        geo=nd.new("ShaderNodeNewGeometry");sep=nd.new("ShaderNodeSeparateXYZ");lk.new(geo.outputs["Position"],sep.inputs[0])
+                        slant=nd.new("ShaderNodeMath");slant.operation="MULTIPLY_ADD";lk.new(sep.outputs["Y"],slant.inputs[0]);slant.inputs[1].default_value=.48;lk.new(sep.outputs["X"],slant.inputs[2])
+                        c=nd.new("ShaderNodeValue");c.label="Animated approaching shadow";shadow_centres.append(c.outputs[0])
+                        delta=nd.new("ShaderNodeMath");delta.operation="SUBTRACT";lk.new(slant.outputs[0],delta.inputs[0]);lk.new(c.outputs[0],delta.inputs[1])
+                        absolute=nd.new("ShaderNodeMath");absolute.operation="ABSOLUTE";lk.new(delta.outputs[0],absolute.inputs[0])
+                        ramp=nd.new("ShaderNodeMapRange");ramp.clamp=True;ramp.interpolation_type="SMOOTHERSTEP";lk.new(absolute.outputs[0],ramp.inputs["Value"]);ramp.inputs["From Min"].default_value=.22;ramp.inputs["From Max"].default_value=.65;ramp.inputs["To Min"].default_value=.60;ramp.inputs["To Max"].default_value=0
+                        mix=nd.new("ShaderNodeMixRGB");mix.blend_type="MULTIPLY";lk.new(ramp.outputs["Result"],mix.inputs[0]);mix.inputs[2].default_value=(.22,.26,.32,1)
+                        bc=bs.inputs["Base Color"]
+                        if bc.is_linked:
+                            source=bc.links[0].from_socket;lk.remove(bc.links[0]);lk.new(source,mix.inputs[1])
+                        else:mix.inputs[1].default_value=bc.default_value
+                        lk.new(mix.outputs[0],bc);copies[src.name]=mat
+                    slot.material=copies[src.name]
     birds=[pigeon("Pigeon %02d"%i,p) for i in range(6)]
     rng=random.Random(201)
     crumbs=[ell("Bread crumb %02d"%i,(0,0,0),(.025,.020,.018),p["crumb"]) for i in range(20)]
@@ -265,6 +293,7 @@ def main():
     for f in range(num):
         global_frame=first+f;scene.frame_set(global_frame)
         u=f/(num-1);t=f/FPS
+        for socket in shadow_centres:socket.default_value=2.85-2.20*ease(u)
         m=actors.get("Milo");d=actors.get("Dad")
         if m:
             expr="neutral" if n<=12 else "worried" if n in (13,14,25,30,31,32,34) else "sad" if 35<=n<=40 else "surprised" if n==42 else "happy"
