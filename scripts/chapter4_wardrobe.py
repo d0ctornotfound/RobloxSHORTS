@@ -107,12 +107,18 @@ def torso_details(a,kind,top,accent):
     if kind=="jacket":
         rib=knit_material(a.role+" / ch4 bomber ribbing",(.028,.061,.039))
         cs._add_box(a,"ch4 wrap ribbed waistband",(c.x,c.y,lo.z+.032),(e.x+.027,e.y+.027,.069),rib,bevel=.008)
-        box("zipper tape",c.x,lo.z+e.z*.54,e.x*.061,e.z*.84,accent)
-        metal=matte(a.role+" / ch4 zipper metal",(.30,.32,.30))
-        for i in range(24):
-            box("zipper tooth",c.x+(-1 if i%2 else 1)*e.x*.009,
-                lo.z+e.z*(.15+i*.031),e.x*.025,.008,metal)
-        box("zipper slider",c.x,lo.z+e.z*.90,.027,.037,metal)
+        tape=fabric(a,"contrasting charcoal zipper tape",(32,39,36),"jacket")
+        box("zipper tape",c.x,lo.z+e.z*.54,e.x*.083,e.z*.84,tape)
+        metal=matte(a.role+" / ch4 brushed zipper metal",(.54,.56,.53))
+        # Teeth and slider must be forward of the tape, never coplanar.
+        def zip_box(label,x,z,w,h,mat,dy):
+            return cs._add_box(a,"ch4 "+label,(x,y-dy,z),(w,.014,h),mat,bevel=.002)
+        for i in range(23):
+            zip_box("zipper tooth",c.x+(-1 if i%2 else 1)*e.x*.010,
+                    lo.z+e.z*(.15+i*.032),e.x*.032,.010,metal,.023)
+        zip_box("zipper slider",c.x,lo.z+e.z*.905,.047,.052,metal,.030)
+        zip_box("zipper pull tab",c.x,lo.z+e.z*.84,.024,.064,metal,.039)
+        zip_box("zipper pull inset",c.x,lo.z+e.z*.84,.010,.033,tape,.049)
         for sign in (-1,1):
             box("ribbed stand collar",c.x+sign*e.x*.135,hi.z-e.z*.052,e.x*.20,.055,rib,sign*.20)
             px=c.x+sign*e.x*.29
