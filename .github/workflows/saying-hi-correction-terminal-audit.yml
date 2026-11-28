@@ -1,0 +1,47 @@
+name: Saying Hi — terminal correction re-audit
+on:
+  push:
+    branches: ['production/saying-hi']
+    paths: ['docs/saying_hi_correction_release_review_final.json']
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  audit:
+    if: github.ref == 'refs/heads/production/saying-hi'
+    runs-on: ubuntu-24.04
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@v4
+      - name: Audit real proof dispositions and required animatic media
+        run: |
+          set -euo pipefail
+          OUT=assets/saying_hi_review/corrections/release_audit_final
+          mkdir -p "$OUT"
+          python3 scripts/validate_shot_plan.py stories/saying_hi_plan.json | tee "$OUT/plan_validation.json"
+          set +e
+          python3 scripts/validate_saying_hi_correction_release.py --review docs/saying_hi_correction_release_review_final.json --phase proof > "$OUT/proof_gate.log" 2>&1
+          proof=$?
+          python3 scripts/validate_saying_hi_correction_release.py --review docs/saying_hi_correction_release_review_final.json --phase animatic > "$OUT/animatic_gate.log" 2>&1
+          animatic=$?
+          set -e
+          cat "$OUT/proof_gate.log" "$OUT/animatic_gate.log"
+          printf 'workflow_run_id=%s\nsource_commit=%s\nproof_exit=%s\nanimatic_exit=%s\n' "$GITHUB_RUN_ID" "$GITHUB_SHA" "$proof" "$animatic" > "$OUT/workflow_provenance.txt"
+          if [ "$proof" -ne 0 ] || [ "$animatic" -ne 0 ]; then exit 1; fi
+          sudo apt-get update
+          sudo apt-get install -y --no-install-recommends ffmpeg fonts-dejavu-core
+          python3 scripts/export_shot_animatic.py stories/saying_hi_plan.json --output assets/saying_hi_review/corrections/saying_hi_animatic.mp4 | tee "$OUT/animatic_export.log"
+          python3 scripts/validate_saying_hi_correction_release.py --review docs/saying_hi_correction_release_review_final.json --phase animatic > "$OUT/post_export_gate.log" 2>&1
+      - name: Commit actual audit output even when release fails
+        if: always()
+        run: |
+          set -euo pipefail
+          OUT=assets/saying_hi_review
+          find "$OUT" -type f ! -name SHA256SUMS -print0 | sort -z | xargs -0 sha256sum > "$OUT/SHA256SUMS"
+          sha256sum stories/saying_hi_script.txt stories/saying_hi_plan.json >> "$OUT/SHA256SUMS"
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add "$OUT"
+          git commit -m "Publish supervisor correction audit and animatic only on full gate pass"
+          git pull --rebase origin production/saying-hi
+          git push origin HEAD:refs/heads/production/saying-hi
