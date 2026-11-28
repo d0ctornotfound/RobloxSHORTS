@@ -10,6 +10,7 @@ from mathutils import Vector,Matrix,Euler
 from render_demo import cube,empty,material
 from library_props import build as build_library_prop
 from film_walk_to_mark import construct
+from render_saying_hi_shot import aim_world
 from r6_imported_cycles import Retarget
 
 def keys_at(keys,u):
@@ -73,6 +74,12 @@ class ActionTracks:
             lock,solve=construct(Retarget(driver.actors[cid]),start,direction,last-first,cycles=w.get("cycles",1))
             self.walks[cid]={"lock":lock,"solve":solve,"first":first,"last":last,"expression":w.get("expression","neutral")}
         self.initial={x["object"]:object_by_name(x["object"]).location.copy() for x in spec.get("prop_tracks",[])}
+        self.follow_origins={x["object"]:object_by_name(x["object"]).matrix_world.translation.copy() for x in spec.get("follow_tracks",[])}
+        self.actor_origins={x["actor"]:driver.actors[x["actor"]].root.matrix_world.translation.copy() for x in spec.get("follow_tracks",[])}
+        # Walk construction evaluates the imported cycle; use its declared
+        # start for the prop's initial follow anchor, not the final probe pose.
+        for cid,w in spec.get("walk_tracks",{}).items():
+            if cid in self.actor_origins:self.actor_origins[cid]=Vector(w["start"])
         self.socket_scales={x["object"]:object_by_name(x["object"]).matrix_world.to_scale().copy() for x in spec.get("socket_tracks",[])}
     def before_performance(self,index):
         result={}
@@ -91,7 +98,22 @@ class ActionTracks:
                 pos=Vector(keys_at(p["position_keys"],u))
                 ob.location=pos+(self.initial[p["object"]] if p.get("relative",False) else Vector((0,0,0)))
             if "rotation_deg_keys" in p:ob.rotation_euler=tuple(math.radians(x) for x in keys_at(p["rotation_deg_keys"],u))
+        for p in self.spec.get("follow_tracks",[]):
+            ob=object_by_name(p["object"]);actor=self.driver.actors[p["actor"]]
+            delta=actor.root.matrix_world.translation-self.actor_origins[p["actor"]]
+            if p.get("grounded",True):delta.z=0
+            ob.location=self.follow_origins[p["object"]]+delta
+            if p.get("wheel"):
+                wheel=object_by_name(p["wheel"]);wheel.rotation_euler.x=delta.length/p["wheel_radius"]
         bpy.context.view_layer.update()
+        for p in self.spec.get("aim_tracks",[]):
+            first,last=p.get("window",[0,1])
+            if not first<=u<=last:continue
+            ob=object_by_name(p["object"]);a=self.driver.actors[p["actor"]]
+            local=keys_at(p["offset_keys"],u) if "offset_keys" in p else p.get("offset",[0,0,0])
+            target=ob.matrix_world@Vector(local)
+            residual=aim_world(a,int(p["socket"]),target)
+            out[p["actor"]+" aim "+p["object"]]={"target_world":list(target),"hand_target_residual":float(residual)}
         for p in self.spec.get("socket_tracks",[]):
             first,last=p.get("window",[0,1])
             if not first<=u<=last:continue
