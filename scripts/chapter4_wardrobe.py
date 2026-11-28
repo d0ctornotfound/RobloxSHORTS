@@ -7,7 +7,7 @@ import tempfile
 from pathlib import Path
 from PIL import Image, ImageDraw
 from r6_character import R6Character, matte
-from r6_variant_character import apply_garments, remove_accessories
+from r6_variant_character import apply_garments, remove_accessories, knit_material
 from r6_variant_textures import SKINS, srgb
 from library_character import character, clothed_character
 import clothing_system as cs
@@ -79,6 +79,46 @@ def fabric(actor,label,rgb,kind,factor=1):
 def torso_details(a,kind,top,accent):
     lo,hi=a.torso_bounds;c=(lo+hi)*.5;e=hi-lo;y=lo.y-.023
     box=lambda label,x,z,w,h,m,rot=0:cs._add_box(a,"ch4 "+label,(x,y,z),(w,.027,h),m,rotation_y=rot)
+    # Construct the formal opening and lapels as raised polygonal fabric panels.
+    def panel(label,points,mat,offset=0):
+        n=len(points)
+        verts=[(c.x+e.x*x,y+depth-offset,lo.z+e.z*z) for depth in (.005,-.018) for x,z in points]
+        faces=[tuple(reversed(range(n))),tuple(range(n,2*n))]
+        faces += [(i,(i+1)%n,(i+1)%n+n,i+n) for i in range(n)]
+        me=bpy.data.meshes.new("ch4 "+label);me.from_pydata(verts,[],faces);me.update()
+        ob=bpy.data.objects.new(a.root.name+" / ch4 "+label,me)
+        bpy.context.collection.objects.link(ob);me.materials.append(mat)
+        bevel=ob.modifiers.new("Tailored edge","BEVEL");bevel.width=.002;bevel.segments=2
+        bpy.context.view_layer.update();a.attach_mesh(ob,"torso")
+    if kind=="formal":
+        shirt=matte(a.role+" / ch4 ivory underlayer",(.57,.58,.55))
+        lapel=accent
+        panel("V shirt opening",[(-.19,.985),(.19,.985),(.025,.47),(-.025,.47)],shirt)
+        for sign in (-1,1):
+            pts=[(.18,.99),(.32,.86),(.23,.78),(.30,.74),(.045,.49),(.105,.82)]
+            panel("notched lapel",[(sign*x,z) for x,z in pts],lapel,.018)
+            box("tailored welt pocket",c.x+sign*e.x*.27,lo.z+e.z*.28,e.x*.22,.025,accent,sign*.10)
+            box("front princess seam",c.x+sign*e.x*.34,lo.z+e.z*.19,.008,e.z*.25,accent,sign*.045)
+        box("lower overlapping closure",c.x,lo.z+e.z*.26,.014,e.z*.38,accent)
+        button=matte(a.role+" / ch4 suit buttons",(.07,.065,.06))
+        for f in (.42,.23):
+            cs._add_button(a,"ch4 suit closure button",(c.x+e.x*.02,y-.029,lo.z+e.z*f),.014,button)
+        return
+    if kind=="jacket":
+        rib=knit_material(a.role+" / ch4 bomber ribbing",(.028,.061,.039))
+        cs._add_box(a,"ch4 wrap ribbed waistband",(c.x,c.y,lo.z+.032),(e.x+.027,e.y+.027,.069),rib,bevel=.008)
+        box("zipper tape",c.x,lo.z+e.z*.54,e.x*.061,e.z*.84,accent)
+        metal=matte(a.role+" / ch4 zipper metal",(.30,.32,.30))
+        for i in range(24):
+            box("zipper tooth",c.x+(-1 if i%2 else 1)*e.x*.009,
+                lo.z+e.z*(.15+i*.031),e.x*.025,.008,metal)
+        box("zipper slider",c.x,lo.z+e.z*.90,.027,.037,metal)
+        for sign in (-1,1):
+            box("ribbed stand collar",c.x+sign*e.x*.135,hi.z-e.z*.052,e.x*.20,.055,rib,sign*.20)
+            px=c.x+sign*e.x*.29
+            box("angled pocket inset",px,lo.z+e.z*.30,e.x*.19,e.z*.13,top,sign*.45)
+            box("angled pocket welt",px,lo.z+e.z*.33,e.x*.20,.024,accent,sign*.45)
+        return
     # Physically raised waist hem; other details depend on garment construction.
     box("waist hem",c.x,lo.z+.025,e.x*.98,.041,accent)
     if kind in ("jacket","formal","knit","flannel","pajama","polo"):
@@ -122,7 +162,8 @@ def build_character(name,role="lead",hair="default",outfit="default"):
         cs._cover_shoulder_caps(a,top)
         cs._make_shell(a,"shirt and sleeves",(cs.TORSO_GROUP,)+cs.ARM_GROUPS,arm_cutoff=cut)
         cs._make_shell(a,"trousers",cs.LEG_GROUPS)
-        cs._add_cuffs(a,accent,cut)
+        cuff=knit_material(a.role+" / ch4 bomber cuff ribs",(.028,.061,.039)) if kind=="jacket" else accent
+        cs._add_cuffs(a,cuff,cut)
         if pkind=="jeans":cs._add_denim_pockets(a,pant)
         torso_details(a,kind,top,accent)
         if len(a.body.data.vertices)!=original_vertices or tuple(b.name for b in a.armature.data.bones)!=bones:

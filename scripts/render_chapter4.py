@@ -44,8 +44,8 @@ def main():
                      for v in mesh_points(ob))
         headlo,headhi=a.head_bounds
         z=(min(headlo.z,lo.z)+hi.z)/2
-        scale=max(1.05,(hi.z-min(headlo.z,lo.z))*1.22)
-        views=[("front",(0,-6,z),(0,0,z),scale),("side",(6,0,z),(0,0,z),scale)]
+        scale=max(1.15,(hi.z-min(headlo.z,lo.z))*1.22)
+        views=[("front",(0,-6,z),(0,0,z),scale),("side",(6,0,z),(0,0,z),scale),("back",(0,6,z),(0,0,z),scale)]
     else:
         views=[("front",(0,-6,1.2),(0,0,1.2),3.0),("side",(6,0,1.2),(0,0,1.2),3.0),
                ("back",(0,6,1.2),(0,0,1.2),3.0),("detail",(0,-4,1.38),(0,0,1.38),1.05)]
@@ -56,7 +56,7 @@ def main():
     if args.kind=="outfit":
         sheet=contact_sheet(out,label)
     else:
-        board=Image.new("RGB",(2048,1100),(28,31,35));draw=ImageDraw.Draw(board)
+        board=Image.new("RGB",(1024*len(views),1100),(28,31,35));draw=ImageDraw.Draw(board)
         draw.text((20,15),label.upper()+" — HAIR REVIEW",font=font(34),fill="white")
         for i,(name,*_) in enumerate(views):
             with Image.open(out/(name+".png")) as im:board.paste(im.convert("RGB"),(i*1024,76))
