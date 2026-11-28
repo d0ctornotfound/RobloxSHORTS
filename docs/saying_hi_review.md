@@ -495,3 +495,6 @@ Round 5 pose coverage/holds unmeasured. Native pilot numerical_pass=true; no vis
 
 ## Direction preflight interview_well_preflight run 46142562095
 Geometry/flow preflight numerical pass: False. Three native still samples per shot, not full clips; visual review and native pilot still mandatory. Evidence: assets/saying_hi_review/round6/interview_well_preflight/preflight_qc.json
+
+## Direction preflight hesitation_perspective_preflight run 46142556719
+Geometry/flow preflight numerical pass: True. Three native still samples per shot, not full clips; visual review and native pilot still mandatory. Evidence: assets/saying_hi_review/round6/hesitation_perspective_preflight/preflight_qc.json
