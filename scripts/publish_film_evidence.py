@@ -27,6 +27,19 @@ def main():
             vals="; ".join(f"{m['name']}={m['value']} ({m['status']}, n={m['samples']})" for m in s.get("measurements",[]))
             if vals:flags+="; Measurements: "+vals
             lines.append(f"| {shot} | {s['start']/30:.2f}–{s['end']/30:.2f} | {s['frames']} | {flags.replace('|','/')} |")
+        if c.get("round5_qc"):
+            before=json.loads(Path(c["round5_qc"]).read_text())["shots"]
+            comparison={}
+            lines.extend(["","### Round 5 → Round 6 per-shot comparison","","| Shot | Round 5 flags | Round 6 flags | Direction status |","|---|---:|---:|---|"])
+            for sid,new in q["shots"].items():
+                old=before[sid]
+                a_flags=old.get("flags",[]);b_flags=new.get("flags",[])
+                comparison[sid]={"start":new["start"],"end":new["end"],"before":{"flags":a_flags,"measurements":old.get("measurements",[]),"chunks":old.get("chunks",[])},
+                    "after":{"flags":b_flags,"measurements":new.get("measurements",[]),"direction":new.get("direction"),"chunks":new.get("chunks",[])}}
+                lines.append(f"| {sid} | {len(a_flags)} | {len(b_flags)} | {new.get('direction',{}).get('status','unmeasured')} |")
+            (out/"before_after_qc.json").write_text(json.dumps(comparison,indent=2)+"\n")
+            lines.append("Counts are not comparable quality scores: Round 6 adds stricter direction measurements; full before/after values and exact flagged fixes are in "+str(out/"before_after_qc.json")+".")
+            lines.append("New native staging and reusable adapters are candidate capabilities; this build demonstrates only what its actual committed renders and measured gates support. Unmeasured contact, failed geometry or unreviewed artistry is not certified.")
     else:lines.append("Per-shot QC report absent; inspect partial render logs.")
     lines.append("\nSource motion sampling is independent at 30 Hz, EEVEE 32 spatial samples, denoising off. Artistic QC is advisory; missing or invalid native media is a technical failure.")
     with Path(c["review_path"]).open("a") as f:f.write("\n".join(lines)+"\n")
