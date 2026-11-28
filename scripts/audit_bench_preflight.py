@@ -15,7 +15,28 @@ def check(root,full=False):
         if m['mode']!='preflight':issues.append('not a preflight manifest')
         if not {first,first+(last-first+1)//2,last}.issubset({r['global_frame'] for r in rows}):issues.append('missing designated samples')
         if full and (m.get('geometry_frame_count')!=last-first+1 or not m.get('geometry_pass')):issues.append('all-frame camera geometry failed or missing')
-        if full and m['shot']['camera']!='insert' and (m.get('visibility_error') or any(not v['pass'] for v in m.get('visibility',{}).values())):issues.append('rendered object-ID visibility failed or unavailable')
+        if full:
+            # Reject empty/missing visibility for any actual required hero.
+            # The three environment wides and inserts have no hero-ID target.
+            kind=m['shot']['camera']
+            expected=set() if kind=='insert' or n in (26,33,40) else {'Milo','Dad'} if n in (1,18) else {'Dad'} if n in (3,6,8,15,16,21,43,46) else {'Milo'}
+            vis=m.get('visibility') or {}
+            if m.get('visibility_error') or not expected.issubset(vis) or any(v.get('pass') is not True or v.get('visible_fraction',0)<.69 or v.get('projected_silhouette_pixels',0)<=0 for v in vis.values()):
+                issues.append('required rendered object-ID visibility failed or missing')
+            geo_path=path.parent/'geometry_all_frames.json'
+            geo=json.loads(geo_path.read_text()) if geo_path.exists() else []
+            if [r.get('frame') for r in geo]!=list(range(first,last+1)) or any(r.get('pass') is not True or not expected.issubset(r.get('heroes',{})) for r in geo):
+                issues.append('all-frame geometry evidence incomplete or failed')
+            contact_all=[(r['frame'],c) for r in geo for c in r.get('contacts',[])]
+            if n==31:
+                pickup=[(f,c) for f,c in contact_all if c.get('event')=='cap_pickup']
+                attached=[(f,c) for f,c in pickup if c.get('attached')]
+                if len(pickup)!=last-first+1 or not attached or attached[-1][0]!=last or any(c.get('grip_error',math.inf)>1e-5 for _,c in attached):
+                    issues.append('continuous cap pickup/grip missing or failed')
+            if n==48:
+                handoff=[f for f,c in contact_all if c.get('event')=='bag' and c.get('handoff')]
+                if not handoff or last-handoff[-1]<36:
+                    issues.append('final post-transfer hold below 1.5 seconds or missing evidence')
         if m['resolution']!=[540,960] or m['fps']!=24 or m['engine']!='EEVEE' or m['denoising'] is not False:issues.append('profile mismatch')
         near=max((r['near_black_percent'] for r in rows),default=math.inf)
         if near>10:issues.append('preflight darkness >10%')

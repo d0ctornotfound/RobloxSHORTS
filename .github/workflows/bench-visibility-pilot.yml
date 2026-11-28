@@ -1,0 +1,55 @@
+name: Bench — object-ID compatibility pilot
+on:
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/bench-visibility-pilot.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  diagnostic:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install Blender and dependencies
+        run: |
+          for f in /etc/apt/sources.list.d/*; do
+            if [ -f "$f" ] && grep -q "packages.microsoft.com" "$f"; then sudo mv "$f" "$f.disabled"; fi
+          done
+          sudo apt-get update -o Acquire::Retries=3
+          sudo apt-get install -y --no-install-recommends blender python3-pil python3-numpy fonts-dejavu-core libegl1 libegl-mesa0 libgl1 libgl1-mesa-dri libgbm1
+      - run: python3 scripts/library_character_assets.py
+      - name: Render shot 03 beauty and separate ID diagnostic
+        timeout-minutes: 18
+        env:
+          LIBGL_ALWAYS_SOFTWARE: "1"
+          R6_KNEE_BLEND: "1"
+        run: |
+          mkdir -p render/bench-pilot
+          set -o pipefail
+          timeout 16m blender -b --python-exit-code 1 --python scripts/render_bench.py -- --shot 3 --mode preflight --output render/bench-pilot 2>&1 | tee render/bench-pilot/render.log
+      - name: Require actual object-ID evidence
+        run: |
+          python3 - <<'PY'
+          import json
+          from pathlib import Path
+          p=Path("render/bench-pilot")
+          m=json.loads((p/"manifest.json").read_text())
+          assert m["engine"]=="EEVEE" and not m["denoising"]
+          assert not m.get("visibility_error"),m.get("visibility_error")
+          v=m["visibility"]["Dad"]
+          assert v["diagnostic_engine"]=="CYCLES_CPU_INDEXOB_ONLY"
+          assert v["projected_silhouette_pixels"]>0 and v["visible_pixels"]>=0
+          assert len(list(p.glob("id_*.exr")))>=2
+          print("Actual index-pass data:",v)
+          print("Independent geometry gate:",m["geometry_pass"])
+          PY
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: bench-object-id-pilot
+          path: render/bench-pilot/
+          if-no-files-found: warn
+          retention-days: 30

@@ -43,14 +43,33 @@ def rendered_visibility(scene,out,segment,actors,heroes):
     if not groups:return {}
     old_pct=scene.render.resolution_percentage
     old_filepath=scene.render.filepath
+    old_engine=scene.render.engine
+    old_device=scene.cycles.device
+    old_denoise=scene.cycles.use_denoising
     try:
+        # EEVEE beauty renders remain unchanged. Its compositor has no IndexOB
+        # output in the pinned CI Blender build (R3 shot 03 evidence).
+        # Use the existing repository helper in a separate low-resolution CPU
+        # Cycles object-ID diagnostic; never substitute projection for visibility.
+        scene.render.engine='CYCLES'
+        scene.cycles.device='CPU'
+        scene.cycles.use_denoising=False
         scene.render.resolution_percentage=50
+        bpy.context.view_layer.update()
         result=visibility_gate(scene,out,segment,groups)
+        if set(result)!=set(groups):raise RuntimeError('Missing object-ID groups')
         for value in result.values():
             value['visible_fraction']=1-value['occluded_fraction']
             value['threshold']=.69
+            value['diagnostic_engine']='CYCLES_CPU_INDEXOB_ONLY'
+            value['diagnostic_resolution']=[270,480]
+            value['diagnostic_denoising']=False
             value['pass']=value['projected_silhouette_pixels']>0 and value['visible_fraction']>=.69
         return result
     finally:
+        scene.cycles.device=old_device
+        scene.cycles.use_denoising=old_denoise
+        scene.render.engine=old_engine
         scene.render.resolution_percentage=old_pct
         scene.render.filepath=old_filepath
+        bpy.context.view_layer.update()
