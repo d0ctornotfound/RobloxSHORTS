@@ -95,3 +95,33 @@ def sample(scene,cam,actors,spec,grade):
         f=project(scene,cam,face_points(a))
         result["actors"][cid]={"pose":pose_signature(a),"face_height":max(0,min(1,f[3])-max(0,f[2])),"face_safe":f[4]>0 and .025<=f[0]<=f[1]<=.975 and .025<=f[2]<=f[3]<=.975}
     return result
+
+def performance(actors,spec,u,t):
+    """Authored gestures are piecewise-linear pose keys, not arbitrary jitter.
+    Explicit actor tracks only; no contact-bearing bone may be overwritten
+    without a story-adapter contact recomputation.
+    """
+    def interpolate(keys):
+        if u<=keys[0][0]:return keys[0][1]
+        for (lo,a),(hi,b) in zip(keys,keys[1:]):
+            if u<=hi:
+                w=(u-lo)/(hi-lo)
+                return [x+(y-x)*w for x,y in zip(a,b)]
+        return keys[-1][1]
+    for cid,track in spec.get("performance",{}).items():
+        if cid not in actors:raise ValueError("missing performance actor "+cid)
+        actor=actors[cid]
+        for bone in ("head","torso"):
+            if bone in track:actor.set_bone(bone,tuple(interpolate(track[bone])))
+        if "expressions" in track:
+            expression=track["expressions"][0][1]
+            for start,value in track["expressions"]:
+                if u>=start:expression=value
+            actor.pose(expression)
+    # Non-principal background business uses explicit authored group keys.
+    # Head-only so seated support and carried props are not displaced.
+    for i,cid in enumerate(spec.get("background",[])):
+        if cid not in actors:raise ValueError("missing background actor "+cid)
+        a=actors[cid];phase=t*2.7+i*.81
+        a.set_bone("head",(.045*math.sin(phase),0,.085*math.sin(phase+.9)))
+    bpy.context.view_layer.update()
