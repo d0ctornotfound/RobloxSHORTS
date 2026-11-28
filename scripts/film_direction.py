@@ -95,7 +95,8 @@ def direct_camera(scene,cam,actors,spec,u,frame,state=None):
         b=project(scene,cam,pts)
         if b[4]<=0:raise ValueError("face behind camera")
         if kind=="emotion":
-            desired=.46
+            desired=float(spec.get("emotion_face_target",.46))
+            if not .40<=desired<=.60:raise ValueError("emotion face target outside direction contract")
             lens=max(12,min(180,lens*desired/max(.001,b[3]-b[2])))
         elif kind=="interview":
             span=max(.001,b[1]-b[0]);height=max(.001,b[3]-b[2])
