@@ -93,8 +93,8 @@ def fit_camera(scene,cam,actors,target=None,wide=False):
     _,loc,center=min(candidates,key=lambda q:q[0]);frame(scene,cam,loc,center,46)
 
 class SceneUnit:
-    def __init__(self,scene,cam,cast,stage,unit,shot_ids,map_path,lineup):
-        self.scene=scene;self.cam=cam;self.cast=cast;self.stage=stage;self.unit=unit;self.ids=shot_ids;self.lineup=lineup;self.actors={};self.marks=stage["marks"];self.p=prop_mats();self.metrics=[];self.scenery=None;self.static=[];self.frame_count=0
+    def __init__(self,scene,cam,cast,stage,unit,shot_ids,map_path,lineup,variant=None):
+        self.scene=scene;self.cam=cam;self.cast=cast;self.stage=stage;self.unit=unit;self.ids=shot_ids;self.lineup=lineup;self.actors={};self.marks=stage["marks"];self.p=prop_mats();self.metrics=[];self.scenery=None;self.static=[];self.frame_count=0;self.variant=variant
         self.chart_mode=all(n in CHART for n in shot_ids)
         if self.chart_mode:
             self.setup_chart();return
@@ -271,21 +271,26 @@ class SceneUnit:
             return
         # Interview reenactments, marked at each girl's fixed well position.
         if n in (24,25,26,27,28,29,30):
-            if n==30:ids=["faye","brody"]  # variant montage support in update
+            if n==30:
+                ids={"faye_hi":["faye","brody"],"gia_seat":["gia","chase"],"hana_hi":["hana","kai"],"ivy_hi":["ivy","kai"]}[self.variant or "faye_hi"]
             g=next((cid for cid in ids if cid in self.cast["girls"]),"ava")
             p=V(self.marks["well_"+g]["xyz"]);q=V(self.marks["interview_"+g]["xyz"])
-            for i,cid in enumerate(ids[:2]):self.place(cid,p if cid==g else q,yaw_to(p,q) if cid==g else yaw_to(q,p),"happy",action="wave" if n in (27,28,30) and cid!=g else "idle",u=.5)
-            if n==26:
+            for i,cid in enumerate(ids[:2]):self.place(cid,p if cid==g else q,yaw_to(p,q) if cid==g else yaw_to(q,p),"happy",action="wave" if n in (27,28,30) and cid!=g and self.variant!="gia_seat" else "idle",u=.5)
+            if n==26 or self.variant=="gia_seat":
                 mat=self.p["seat"];cube("Chase's actual saved chair",(p.x+.70,p.y,.55),(.70,.70,.12),mat,bevel=.02)
                 for x in (-.24,.24):
                     for y in (-.24,.24):cube("Chair leg",(p.x+.70+x,p.y+y,.25),(.08,.08,.5),mat,bevel=.01)
                 self.actors["chase"].aim_arm(0,(.30,-.85,-.2))
+                bag=empty("Chase reserved school bag",(p.x+.70,p.y,.69));cube("School bag body",(0,0,.11),(.32,.24,.28),self.p["wood2"],bag,bevel=.035)
+                cube("School bag pocket",(0,-.125,.10),(.24,.045,.17),self.p["ink"],bag,bevel=.012)
             if n in (25,29):
-                girl=self.actors[g];photo=cube("Dog photograph",(0,0,0),(.30,.03,.23),self.p["dog_photo"],bevel=.004)
+                girl=self.actors[g];girl.aim_arm(1,(-.12,-.72,-.64));photo=cube("Dog photograph",(0,0,0),(.30,.03,.23),self.p["dog_photo"],bevel=.004)
                 photo.location=girl.grips[1].matrix_world.translation;photo.rotation_euler.z=girl.root.rotation_euler.z
+                asker=next(self.actors[cid] for cid in ids if cid!=g);asker.aim_arm(0,(.16,-.65,-.60));asker.set_bone("head",(.07,0,-.10))
             fit_camera(self.scene,self.cam,list(self.actors.values()));return
         if n in (10,11,16,17):
             center=V((0,4,0))
+            if n==17:ids=["chase"] if self.variant=="miss_ball" else ["kai"] if self.variant=="crayon" else ids
             for i,cid in enumerate(ids):self.place(cid,center+V(((i-(len(ids)-1)/2)*1.25,0,0)),0,"sad" if n==11 else "happy")
             if n==10:
                 cart=empty("Valentine wheelbarrow",center+V((-.7,-.9,0)));cube("Wheelbarrow tray",(0,0,.50),(.70,1.02,.23),self.p["wood2"],cart)
@@ -295,8 +300,11 @@ class SceneUnit:
             if n==11:
                 a=self.actors["narrator"];a.aim_arm(0,(.15,-.75,-.65));card=cube("Single card from Mom",a.grips[0].matrix_world.translation,(.24,.025,.19),self.p["card"],bevel=.005)
             if n==17:
-                ball=build("ball",pos=tuple(center+V((-.5,-.9,.3))),scale=.7,p=self.p)
-                kai=self.actors["kai"];kai.aim_arm(0,(.20,-.65,.45));cube("Crayon",kai.grips[0].matrix_world.translation,(.04,.04,.24),self.p["yellow"],bevel=.005)
+                if "chase" in self.actors:
+                    a=self.actors["chase"];a.pose("shocked");a.aim_arm(0,(.45,-.84,.25));a.aim_arm(1,(-.35,-.84,.25))
+                    build("ball",pos=tuple(center+V((-.85,-.9,.22))),scale=.7,p=self.p)
+                if "kai" in self.actors:
+                    kai=self.actors["kai"];kai.aim_arm(0,(.20,-.65,.45));cube("Crayon",kai.grips[0].matrix_world.translation,(.04,.04,.24),self.p["yellow"],bevel=.005)
             fit_camera(self.scene,self.cam,list(self.actors.values()));return
         # Other narrative held poses: use named characters' marks, not anonymous stand-ins.
         if len(ids)>4:ids=ids[:4]
@@ -319,14 +327,14 @@ class SceneUnit:
 
 def main():
     ap=argparse.ArgumentParser();g=ap.add_mutually_exclusive_group(required=True);g.add_argument("--unit",choices=sorted(UNITS));g.add_argument("--shot",type=int)
-    ap.add_argument("--mode",choices=["smoke","motion","still"],required=True);ap.add_argument("--map",required=True);ap.add_argument("--lineup",required=True);ap.add_argument("--output",required=True);a=ap.parse_args(sys.argv[sys.argv.index("--")+1:])
+    ap.add_argument("--variant");ap.add_argument("--mode",choices=["smoke","motion","still"],required=True);ap.add_argument("--map",required=True);ap.add_argument("--lineup",required=True);ap.add_argument("--output",required=True);a=ap.parse_args(sys.argv[sys.argv.index("--")+1:])
     out=Path(a.output).resolve();out.mkdir(parents=True,exist_ok=True)
     c,stage=load();plan=json.loads((ROOT/"stories/saying_hi_plan.json").read_text());assert plan["status"]=="retimed_actual_audio"
     ids=UNITS[a.unit] if a.unit else [a.shot];unit=a.unit or next((k for k,v in UNITS.items() if a.shot in v),f"still_{a.shot:02d}")
     shots=[plan["shots"][i-1] for i in ids];start=round(shots[0]["edit_in"]*FPS);end=round(shots[-1]["edit_out"]*FPS);count=end-start
     if a.mode=="motion" and not a.unit:raise ValueError("No full-film motion mode")
     scene=setup(540,960);cam=create(scene)
-    driver=SceneUnit(scene,cam,c,stage,unit,ids,a.map,a.lineup)
+    driver=SceneUnit(scene,cam,c,stage,unit,ids,a.map,a.lineup,a.variant)
     # A still for sentence 21 uses its held end state, while crossing proof spans 20–21.
     if unit=="crossing":
         whole=[plan["shots"][19],plan["shots"][20]]
@@ -350,7 +358,7 @@ def main():
         pixels=np.asarray(Image.open(path).convert("RGB"));row={"frame":gf,"file":path.name,"render_seconds":time.monotonic()-clock,"near_black_percent":100*float(np.mean(np.max(pixels,axis=2)<=24))}
         rendered.append(row);(out/"partial.json").write_text(json.dumps({"metrics":rec,"rendered":rendered},indent=2))
         print("SAYING_HI_RENDER_DONE",json.dumps(row),flush=True)
-    report={"unit":unit,"sentence_ids":ids,"mode":a.mode,"engine":"EEVEE","denoising":False,"eevee_spatial_samples":32,"rendered_temporal_samples_per_second":30 if a.mode=="motion" else None,"encoded_fps_target":30 if a.mode=="motion" else None,"actual_rendered_frames":len(rendered),"expected_rendered_frames":len(selected),"frame_window":[start,end],"scenery":driver.scenery,"metrics":rec,"rendered":rendered,"review":"candidate, visual and metric approval pending"}
+    report={"unit":unit,"sentence_ids":ids,"mode":a.mode,"variant":a.variant,"engine":"EEVEE","denoising":False,"eevee_spatial_samples":32,"rendered_temporal_samples_per_second":30 if a.mode=="motion" else None,"encoded_fps_target":30 if a.mode=="motion" else None,"actual_rendered_frames":len(rendered),"expected_rendered_frames":len(selected),"frame_window":[start,end],"scenery":driver.scenery,"metrics":rec,"rendered":rendered,"review":"candidate, visual and metric approval pending"}
     if unit=="crossing":
         report["stride"]=driver.lock.report();report["target_stop_error"]=(driver.lock.pos-driver.end).length
         report["calibration_candidate"]=driver.stride_candidate
