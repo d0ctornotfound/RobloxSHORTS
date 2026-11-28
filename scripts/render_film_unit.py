@@ -10,7 +10,7 @@ from mathutils import Vector
 from PIL import Image
 import numpy as np
 from film_walk_to_mark import construct
-from film_direction import apply_grade, direct_camera, performance, directed_bounce, sample as direction_sample
+from film_direction import apply_grade, direct_camera, performance, directed_bounce, directed_hand_props, sample as direction_sample
 from library_locomotion import StrideLock
 from r6_imported_cycles import Retarget
 from character_motion_correction import apply_corrected,rear_hip
@@ -105,7 +105,7 @@ def main():
         if not a.preflight or spec.get("walk") or action_tracks:raise ValueError("camera candidate search is preflight-only on stateless pose adapters")
         from film_direction import face_facing
         raw=spec["direction"];candidates=raw["camera_candidates"]
-        trials=[{"override":v,"spec":{**raw,**v},"state":{},"min_visibility":1.,"min_face_height":1.,"min_facing":1.,"max_external_blocks":0,"safe":True,"min_pencil_visibility":1.,"samples":0,"blockers":set()} for v in candidates]
+        trials=[{"override":v,"spec":{**raw,**v},"state":{},"min_visibility":1.,"min_face_height":1.,"min_facing":1.,"max_external_blocks":0,"safe":True,"min_pencil_visibility":1.,"max_prop_external_blocks":0,"samples":0,"blockers":set()} for v in candidates]
         for gf in range(first,end):
             shot=next(s for s in plan["shots"] if round(s["edit_in"]*30)<=gf<round(s["edit_out"]*30))
             n=int(shot["sentence_ids"][0]);u=(gf-round(shot["edit_in"]*30))/max(1,round(shot["edit_out"]*30)-round(shot["edit_in"]*30)-1);t=(gf-unit_start)/30
@@ -113,6 +113,7 @@ def main():
             performance(d.actors,raw,u,t)
             hero=d.actors[raw["principal"]]
             for q in trials:
+                directed_hand_props(d.actors,q["spec"],t)
                 direct_camera(scene,cam,d.actors,q["spec"],u,frame,q["state"])
                 v=vis(scene,cam,[hero.face],7);ex=vis(scene,cam,[hero.face],7,meshes(hero.root))
                 b=v["bounds"];q["safe"]&=bool(b[4]>0 and .025<=b[0]<=b[1]<=.975 and .025<=b[2]<=b[3]<=.975)
@@ -121,10 +122,12 @@ def main():
                 if raw.get("camera_search_prop"):
                     ob=bpy.data.objects.get(raw["camera_search_prop"])
                     if ob is None:raise ValueError("camera search prop missing")
-                    pv=vis(scene,cam,meshes(ob),5,meshes(hero.root))
-                    q["min_pencil_visibility"]=min(q["min_pencil_visibility"],pv["visible_fraction"] if pv["safe"] else 0.)
+                    pv=vis(scene,cam,meshes(ob),9)
+                    pe=vis(scene,cam,meshes(ob),9,meshes(hero.root))
+                    q["min_pencil_visibility"]=min(q["min_pencil_visibility"],pv["visible_fraction"] if pe["safe"] else 0.)
+                    q["max_prop_external_blocks"]=max(q["max_prop_external_blocks"],pe["blocked"])
         def rank(q):
-            return (not(q["safe"] and q["min_visibility"]>=.85 and q["min_face_height"]>=.40 and q["min_facing"]>=.65 and q["max_external_blocks"]==0),q["max_external_blocks"],max(0,.85-q["min_visibility"]),not q["safe"],max(0,.40-q["min_face_height"]),-q["min_pencil_visibility"],-q["min_visibility"])
+            return (not(q["safe"] and q["min_visibility"]>=.85 and q["min_face_height"]>=.40 and q["min_facing"]>=.65 and q["max_external_blocks"]==0 and q["min_pencil_visibility"]>=raw.get("camera_search_prop_min",0) and q["max_prop_external_blocks"]==0),q["max_external_blocks"],max(0,.85-q["min_visibility"]),not q["safe"],max(0,.40-q["min_face_height"]),-q["min_pencil_visibility"],-q["min_visibility"])
         best=min(trials,key=rank)
         camera_search={"selected":best["override"],"candidates":[{k:(sorted(v) if k=="blockers" else v) for k,v in q.items() if k not in ("state","spec")} for q in trials]}
         spec["direction"]={**raw,**best["override"]};spec["direction"].pop("camera_candidates")
@@ -163,12 +166,19 @@ def main():
         if spec.get("direction"):
             performance(d.actors,spec["direction"],su if spec.get("segment_performance") else u,t)
         if action_tracks:m["declared_socket_contacts"]=action_tracks.after_performance(gf-unit_start)
+        if spec.get("direction",{}).get("hand_props"):
+            m["directed_hand_props"]=directed_hand_props(d.actors,spec["direction"],t)
         if spec.get("direction"):
             direct_camera(scene,cam,d.actors,spec["direction"],su if spec.get("segment_performance") else u,frame,camera_state)
         frame_grade=grade
         if spec.get("direction",{}).get("grade_fill"):
             frame_grade={**grade,"directed_bounce":directed_bounce(scene,cam,spec["direction"],d.actors)}
         if gf<first:continue
+        for hp in spec.get("direction",{}).get("hand_props",[]):
+            ob=bpy.data.objects[hp["object"]];hero=d.actors[hp["actor"]];prefix=hp.get("metric_prefix","hand_prop")
+            m[prefix+"_visibility"]=vis(scene,cam,meshes(ob),9)
+            m[prefix+"_external_visibility"]=vis(scene,cam,meshes(ob),9,meshes(hero.root))
+            if hp.get("contact_function"):m[prefix+"_contact"]=resolve(hp["contact_function"])(hero,int(hp["socket"]),ob)
         # Generic external vs own-character visibility; the full original ray
         # result is retained, never reclassified as a geometry pass.
         quality={}
