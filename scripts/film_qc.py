@@ -87,8 +87,22 @@ def flow_report(rows, fps=30, expected_frames=None):
     kind=d[0]["beat_type"]
     faces={cid:{"min_height":min(x["actors"][cid]["face_height"] for x in d),"safe_all":all(x["actors"][cid]["face_safe"] for x in d)} for cid in [principal]+d[0]["listeners"] if all(cid in x["actors"] for x in d)}
     checks={"principal_motion":p["motion_coverage"]>=.8,"principal_edges":p["start_in_motion"] and p["end_in_motion"],"all_actor_holds":all(m is not None and m["held_pose_max_s"]<=.5 for m in metrics.values()),"grade_declared":all(x["grade"] and x["grade"]["preset"]=="warm_saturated_v1" for x in d)}
+    # Projection alone can pass for an edge-on or fully obstructed decal.
+    # New native samples include facing dot and final-camera ray evidence.
+    face_ids=[principal]+d[0]["listeners"] if kind=="interview" else [principal] if kind=="emotion" else []
+    if face_ids:
+        for cid in face_ids:
+            values=[x["actors"].get(cid,{}) for x in d]
+            rays=[r.get("actor_qc",{}).get(cid,{}) for r in rows]
+            if cid in faces:
+                faces[cid]["min_facing_dot"]=min((v.get("face_facing_dot",-1) for v in values),default=-1)
+                faces[cid]["min_ray_visibility"]=min((v.get("face_all",{}).get("visible_fraction",0) for v in rays),default=0)
+                faces[cid]["max_external_blocks"]=max((v.get("face_external",{}).get("blocked",999) for v in rays),default=999)
+                faces[cid]["min_ray_samples"]=min((v.get("face_all",{}).get("samples",0) for v in rays),default=0)
+        checks["readable_faces"]=all(cid in faces and faces[cid]["min_facing_dot"]>=.65 and faces[cid]["min_ray_visibility"]>=.85 and faces[cid]["max_external_blocks"]==0 and faces[cid]["min_ray_samples"]>=9 for cid in face_ids)
     if kind=="emotion":checks["face_scale"]=principal in faces and faces[principal]["min_height"]>=.40 and faces[principal]["safe_all"]
-    elif kind=="interview":checks["two_face_bounds"]=len(faces)>=2 and all(v["safe_all"] for v in faces.values())
+    elif kind=="interview":checks["two_face_bounds"]=len(faces)>=2 and all(v["safe_all"] and v["min_height"]>=.12 for v in faces.values())
+    elif kind=="action":checks["action_body_scale"]=all(r.get("actor_qc",{}).get(principal,{}).get("vertical_coverage",0)>=.25 for r in rows)
     elif kind=="geography":
         checks["body_scale"]=all(r.get("actor_qc",{}).get(principal,{}).get("vertical_coverage",0)>=.25 for r in rows) or (len(rows)/fps<=2 and all(x.get("pure_establishing",False) for x in d))
     return {"status":"numeric_pass" if all(checks.values()) else "flag","beat_type":kind,"principal":principal,"actors":metrics,"faces":faces,"checks":checks,"grade":d[0]["grade"],"threshold_scene_units":threshold,"visual_review_required":True}
