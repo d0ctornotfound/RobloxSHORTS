@@ -147,18 +147,10 @@
           ],
           "segment_performance": true,
           "declared_scene": {
-            "standing": {
-              "narrator": {
-                "position": [
-                  0,
-                  7.1,
-                  0
-                ],
-                "yaw_deg": 0,
-                "expression": "worried"
-              }
-            },
-            "seated": [],
+            "standing": {},
+            "seated": [
+              "narrator"
+            ],
             "visible_props": [],
             "empty": false
           },
@@ -170,7 +162,7 @@
             "principal": "narrator",
             "listeners": [],
             "camera_move": "push",
-            "motivation": "Establish wall, well and full circle in an opening geography view <=2s, then close on narrator observing.",
+            "motivation": "Continue the established seated wall eyeline with a motivated close push",
             "camera_offset": [
               0,
               -1,
@@ -508,7 +500,19 @@
               0,
               -0.4
             ],
-            "background": []
+            "background": [],
+            "grade_fill": {
+              "energy": 500,
+              "distance": 3,
+              "size": 3.8,
+              "height": 0.65,
+              "color": [
+                1,
+                0.88,
+                0.75
+              ],
+              "exposure": 0
+            }
           },
           "actions": {
             "build_props": [
@@ -3096,131 +3100,617 @@
     ],
     "sh07": [
       {
+        "fraction_start": 0,
+        "fraction_end": 1,
         "stage": {
-          "unit": "declared",
+          "unit": "diagram",
+          "diagram": {
+            "name": "Otis's theory",
+            "ground": {
+              "center": [
+                0,
+                0,
+                -0.025
+              ],
+              "size": [
+                13,
+                20
+              ],
+              "color": [
+                0.58,
+                0.48,
+                0.34
+              ]
+            },
+            "graphics_z": 0.035,
+            "line_radius": 0.024,
+            "font_size": 0.27,
+            "heading_size": 0.43,
+            "title": "Otis's theory",
+            "title_xyz": [
+              0,
+              8.35,
+              0.035
+            ],
+            "title_size": 0.44,
+            "label_color": [
+              0.1,
+              0.08,
+              0.055
+            ],
+            "formations": [
+              {
+                "heading": "Girls",
+                "heading_xyz": [
+                  -2.65,
+                  7.9,
+                  0.035
+                ],
+                "actors": [
+                  {
+                    "id": "ava",
+                    "label": "Ava",
+                    "xyz": [
+                      -2.65,
+                      6.6,
+                      0
+                    ],
+                    "yaw": 0,
+                    "label_offset": [
+                      0,
+                      -0.62
+                    ]
+                  },
+                  {
+                    "id": "bella",
+                    "label": "Bella",
+                    "xyz": [
+                      -2.65,
+                      5.13,
+                      0
+                    ],
+                    "yaw": 0,
+                    "label_offset": [
+                      0,
+                      -0.62
+                    ]
+                  },
+                  {
+                    "id": "cleo",
+                    "label": "Cleo",
+                    "xyz": [
+                      -2.65,
+                      3.6599999999999997,
+                      0
+                    ],
+                    "yaw": 0,
+                    "label_offset": [
+                      0,
+                      -0.62
+                    ]
+                  },
+                  {
+                    "id": "daisy",
+                    "label": "Daisy",
+                    "xyz": [
+                      -2.65,
+                      2.1899999999999995,
+                      0
+                    ],
+                    "yaw": 0,
+                    "label_offset": [
+                      0,
+                      -0.62
+                    ]
+                  },
+                  {
+                    "id": "ella",
+                    "label": "Ella",
+                    "xyz": [
+                      -2.65,
+                      0.7199999999999998,
+                      0
+                    ],
+                    "yaw": 0,
+                    "label_offset": [
+                      0,
+                      -0.62
+                    ]
+                  },
+                  {
+                    "id": "faye",
+                    "label": "Faye",
+                    "xyz": [
+                      -2.65,
+                      -0.75,
+                      0
+                    ],
+                    "yaw": 0,
+                    "label_offset": [
+                      0,
+                      -0.62
+                    ]
+                  },
+                  {
+                    "id": "gia",
+                    "label": "Gia",
+                    "xyz": [
+                      -2.65,
+                      -2.2200000000000006,
+                      0
+                    ],
+                    "yaw": 0,
+                    "label_offset": [
+                      0,
+                      -0.62
+                    ]
+                  },
+                  {
+                    "id": "hana",
+                    "label": "Hana",
+                    "xyz": [
+                      -2.65,
+                      -3.6899999999999995,
+                      0
+                    ],
+                    "yaw": 0,
+                    "label_offset": [
+                      0,
+                      -0.62
+                    ]
+                  },
+                  {
+                    "id": "ivy",
+                    "label": "Ivy",
+                    "xyz": [
+                      -2.65,
+                      -5.16,
+                      0
+                    ],
+                    "yaw": 0,
+                    "label_offset": [
+                      0,
+                      -0.62
+                    ]
+                  },
+                  {
+                    "id": "june",
+                    "label": "June",
+                    "xyz": [
+                      -2.65,
+                      -6.630000000000001,
+                      0
+                    ],
+                    "yaw": 0,
+                    "label_offset": [
+                      0,
+                      -0.62
+                    ]
+                  }
+                ]
+              },
+              {
+                "heading": "Boys",
+                "heading_xyz": [
+                  2.65,
+                  7.9,
+                  0.035
+                ],
+                "actors": [
+                  {
+                    "id": "brody",
+                    "label": "Brody",
+                    "xyz": [
+                      2.65,
+                      6.6,
+                      0
+                    ],
+                    "yaw": 0,
+                    "label_offset": [
+                      0,
+                      -0.62
+                    ]
+                  },
+                  {
+                    "id": "chase",
+                    "label": "Chase",
+                    "xyz": [
+                      2.65,
+                      5.13,
+                      0
+                    ],
+                    "yaw": 0,
+                    "label_offset": [
+                      0,
+                      -0.62
+                    ]
+                  },
+                  {
+                    "id": "kai",
+                    "label": "Kai",
+                    "xyz": [
+                      2.65,
+                      3.6599999999999997,
+                      0
+                    ],
+                    "yaw": 0,
+                    "label_offset": [
+                      0,
+                      -0.62
+                    ]
+                  },
+                  {
+                    "id": "otis",
+                    "label": "Otis  ·  0",
+                    "xyz": [
+                      2.65,
+                      2.1899999999999995,
+                      0
+                    ],
+                    "yaw": 0,
+                    "label_offset": [
+                      0,
+                      -0.62
+                    ]
+                  },
+                  {
+                    "id": "leo",
+                    "label": "Leo  ·  0",
+                    "xyz": [
+                      2.65,
+                      0.7199999999999998,
+                      0
+                    ],
+                    "yaw": 0,
+                    "label_offset": [
+                      0,
+                      -0.62
+                    ]
+                  },
+                  {
+                    "id": "max",
+                    "label": "Max  ·  0",
+                    "xyz": [
+                      2.65,
+                      -0.75,
+                      0
+                    ],
+                    "yaw": 0,
+                    "label_offset": [
+                      0,
+                      -0.62
+                    ]
+                  },
+                  {
+                    "id": "noah",
+                    "label": "Noah  ·  0",
+                    "xyz": [
+                      2.65,
+                      -2.2200000000000006,
+                      0
+                    ],
+                    "yaw": 0,
+                    "label_offset": [
+                      0,
+                      -0.62
+                    ]
+                  },
+                  {
+                    "id": "ryan",
+                    "label": "Ryan  ·  0",
+                    "xyz": [
+                      2.65,
+                      -3.6899999999999995,
+                      0
+                    ],
+                    "yaw": 0,
+                    "label_offset": [
+                      0,
+                      -0.62
+                    ]
+                  },
+                  {
+                    "id": "sam",
+                    "label": "Sam  ·  0",
+                    "xyz": [
+                      2.65,
+                      -5.16,
+                      0
+                    ],
+                    "yaw": 0,
+                    "label_offset": [
+                      0,
+                      -0.62
+                    ]
+                  },
+                  {
+                    "id": "narrator",
+                    "label": "ME · 0",
+                    "xyz": [
+                      2.65,
+                      -6.630000000000001,
+                      0
+                    ],
+                    "yaw": 0,
+                    "label_offset": [
+                      0,
+                      -0.62
+                    ]
+                  }
+                ]
+              }
+            ],
+            "links": [
+              {
+                "from": "ava",
+                "to": "brody",
+                "reveal": [
+                  0,
+                  0.1
+                ],
+                "start_clearance": 0.68,
+                "end_clearance": 0.68,
+                "end_offset": [
+                  0,
+                  -0.16
+                ],
+                "arrowhead_size": 0.15,
+                "color": [
+                  0.78,
+                  0.14,
+                  0.08
+                ]
+              },
+              {
+                "from": "bella",
+                "to": "chase",
+                "reveal": [
+                  0.1,
+                  0.2
+                ],
+                "start_clearance": 0.68,
+                "end_clearance": 0.68,
+                "end_offset": [
+                  0,
+                  -0.16
+                ],
+                "arrowhead_size": 0.15,
+                "color": [
+                  0.13,
+                  0.35,
+                  0.75
+                ]
+              },
+              {
+                "from": "cleo",
+                "to": "kai",
+                "reveal": [
+                  0.2,
+                  0.3
+                ],
+                "start_clearance": 0.68,
+                "end_clearance": 0.68,
+                "end_offset": [
+                  0,
+                  -0.24
+                ],
+                "arrowhead_size": 0.15,
+                "color": [
+                  0.56,
+                  0.17,
+                  0.69
+                ]
+              },
+              {
+                "from": "daisy",
+                "to": "brody",
+                "reveal": [
+                  0.3,
+                  0.4
+                ],
+                "start_clearance": 0.68,
+                "end_clearance": 0.68,
+                "end_offset": [
+                  0,
+                  0
+                ],
+                "arrowhead_size": 0.15,
+                "color": [
+                  0.78,
+                  0.14,
+                  0.08
+                ]
+              },
+              {
+                "from": "ella",
+                "to": "chase",
+                "reveal": [
+                  0.4,
+                  0.5
+                ],
+                "start_clearance": 0.68,
+                "end_clearance": 0.68,
+                "end_offset": [
+                  0,
+                  0
+                ],
+                "arrowhead_size": 0.15,
+                "color": [
+                  0.13,
+                  0.35,
+                  0.75
+                ]
+              },
+              {
+                "from": "faye",
+                "to": "kai",
+                "reveal": [
+                  0.5,
+                  0.6
+                ],
+                "start_clearance": 0.68,
+                "end_clearance": 0.68,
+                "end_offset": [
+                  0,
+                  -0.08
+                ],
+                "arrowhead_size": 0.15,
+                "color": [
+                  0.56,
+                  0.17,
+                  0.69
+                ]
+              },
+              {
+                "from": "gia",
+                "to": "brody",
+                "reveal": [
+                  0.6,
+                  0.7
+                ],
+                "start_clearance": 0.68,
+                "end_clearance": 0.68,
+                "end_offset": [
+                  0,
+                  0.16
+                ],
+                "arrowhead_size": 0.15,
+                "color": [
+                  0.78,
+                  0.14,
+                  0.08
+                ]
+              },
+              {
+                "from": "hana",
+                "to": "chase",
+                "reveal": [
+                  0.7,
+                  0.8
+                ],
+                "start_clearance": 0.68,
+                "end_clearance": 0.68,
+                "end_offset": [
+                  0,
+                  0.16
+                ],
+                "arrowhead_size": 0.15,
+                "color": [
+                  0.13,
+                  0.35,
+                  0.75
+                ]
+              },
+              {
+                "from": "ivy",
+                "to": "kai",
+                "reveal": [
+                  0.8,
+                  0.9
+                ],
+                "start_clearance": 0.68,
+                "end_clearance": 0.68,
+                "end_offset": [
+                  0,
+                  0.08
+                ],
+                "arrowhead_size": 0.15,
+                "color": [
+                  0.56,
+                  0.17,
+                  0.69
+                ]
+              },
+              {
+                "from": "june",
+                "to": "kai",
+                "reveal": [
+                  0.9,
+                  1
+                ],
+                "start_clearance": 0.68,
+                "end_clearance": 0.68,
+                "end_offset": [
+                  0,
+                  0.24
+                ],
+                "arrowhead_size": 0.15,
+                "color": [
+                  0.56,
+                  0.17,
+                  0.69
+                ]
+              }
+            ],
+            "progress_keys": [
+              [
+                0,
+                1
+              ],
+              [
+                1,
+                1
+              ]
+            ],
+            "camera": {
+              "position": [
+                0,
+                0,
+                18
+              ],
+              "target": [
+                0,
+                0,
+                0
+              ],
+              "ortho_scale": 9.8
+            }
+          },
           "setup_ids": [
             14
           ],
           "segment_performance": true,
-          "declared_scene": {
-            "standing": {
-              "narrator": {
-                "position": [
-                  0,
-                  7.05,
-                  0
-                ],
-                "yaw_deg": 0,
-                "expression": "sad"
-              }
-            },
-            "seated": [],
-            "visible_props": [],
-            "empty": false
-          },
-          "qc_actors": [
-            "narrator"
-          ],
+          "qc_actors": [],
           "direction": {
-            "beat_type": "emotion",
+            "beat_type": "information",
             "principal": "narrator",
             "listeners": [],
-            "camera_move": "push",
-            "motivation": "Face-filling narrator singled out at bottom of formation; no competing actors.",
+            "camera_move": "locked",
+            "motivation": "Retain actual cast formation and focus attention on the narrator's bottom-row label",
             "camera_offset": [
               0,
               -1,
               0
             ],
             "camera_elevation": 0.06,
-            "distance": 1.3,
+            "distance": 3.4,
             "lens": 35,
-            "performance": {
-              "narrator": {
-                "head": [
-                  [
-                    0,
-                    [
-                      0.05,
-                      0,
-                      -0.12
-                    ]
-                  ],
-                  [
-                    0.35,
-                    [
-                      0.13,
-                      0,
-                      0.06
-                    ]
-                  ],
-                  [
-                    0.72,
-                    [
-                      -0.07,
-                      0,
-                      0.16
-                    ]
-                  ],
-                  [
-                    1,
-                    [
-                      0.03,
-                      0,
-                      -0.07
-                    ]
-                  ]
-                ],
-                "torso": [
-                  [
-                    0,
-                    [
-                      0.02,
-                      0,
-                      0.025
-                    ]
-                  ],
-                  [
-                    0.5,
-                    [
-                      0.045,
-                      0,
-                      -0.04
-                    ]
-                  ],
-                  [
-                    1,
-                    [
-                      0.015,
-                      0,
-                      0.028
-                    ]
-                  ]
-                ],
-                "expressions": [
-                  [
-                    0,
-                    "sad"
-                  ],
-                  [
-                    0.45,
-                    "sad"
-                  ]
-                ]
-              }
-            },
-            "emotion_face_target": 0.425,
-            "target_offset": [
-              0,
-              0,
-              -0.07
-            ],
-            "push_distance": 0.03,
-            "background": []
+            "performance": {},
+            "lock_reason": "Preserve registration of actual cast formations and directional links",
+            "background": [
+              "narrator",
+              "otis",
+              "leo",
+              "max",
+              "noah",
+              "ryan",
+              "sam",
+              "ava",
+              "bella",
+              "cleo",
+              "daisy",
+              "ella",
+              "faye",
+              "gia",
+              "hana",
+              "ivy",
+              "june",
+              "brody",
+              "chase",
+              "kai"
+            ]
           }
-        },
-        "fraction_start": 0,
-        "fraction_end": 1
+        }
       }
     ],
     "sh08": [
@@ -4770,7 +5260,19 @@
               }
             },
             "interview_face_span": 0.72,
-            "background": []
+            "background": [],
+            "grade_fill": {
+              "energy": 500,
+              "distance": 3,
+              "size": 3.8,
+              "height": 0.65,
+              "color": [
+                1,
+                0.88,
+                0.75
+              ],
+              "exposure": 0
+            }
           },
           "actions": {
             "socket_tracks": [
@@ -6536,9 +7038,9 @@
                 ],
                 "arrowhead_size": 0.15,
                 "color": [
-                  0.78,
-                  0.14,
-                  0.08
+                  0.39,
+                  0.34,
+                  0.29
                 ]
               },
               {
@@ -6556,9 +7058,9 @@
                 ],
                 "arrowhead_size": 0.15,
                 "color": [
-                  0.13,
-                  0.35,
-                  0.75
+                  0.39,
+                  0.34,
+                  0.29
                 ]
               },
               {
@@ -6576,9 +7078,9 @@
                 ],
                 "arrowhead_size": 0.15,
                 "color": [
-                  0.56,
-                  0.17,
-                  0.69
+                  0.39,
+                  0.34,
+                  0.29
                 ]
               },
               {
@@ -6596,9 +7098,9 @@
                 ],
                 "arrowhead_size": 0.15,
                 "color": [
-                  0.78,
-                  0.14,
-                  0.08
+                  0.39,
+                  0.34,
+                  0.29
                 ]
               },
               {
@@ -6616,9 +7118,9 @@
                 ],
                 "arrowhead_size": 0.15,
                 "color": [
-                  0.13,
-                  0.35,
-                  0.75
+                  0.39,
+                  0.34,
+                  0.29
                 ]
               },
               {
@@ -6636,9 +7138,9 @@
                 ],
                 "arrowhead_size": 0.15,
                 "color": [
-                  0.56,
-                  0.17,
-                  0.69
+                  0.39,
+                  0.34,
+                  0.29
                 ]
               },
               {
@@ -6656,9 +7158,9 @@
                 ],
                 "arrowhead_size": 0.15,
                 "color": [
-                  0.78,
-                  0.14,
-                  0.08
+                  0.39,
+                  0.34,
+                  0.29
                 ]
               },
               {
@@ -6676,9 +7178,9 @@
                 ],
                 "arrowhead_size": 0.15,
                 "color": [
-                  0.13,
-                  0.35,
-                  0.75
+                  0.39,
+                  0.34,
+                  0.29
                 ]
               },
               {
@@ -6696,9 +7198,9 @@
                 ],
                 "arrowhead_size": 0.15,
                 "color": [
-                  0.56,
-                  0.17,
-                  0.69
+                  0.39,
+                  0.34,
+                  0.29
                 ]
               },
               {
@@ -6716,9 +7218,9 @@
                 ],
                 "arrowhead_size": 0.15,
                 "color": [
-                  0.56,
-                  0.17,
-                  0.69
+                  0.85,
+                  0.14,
+                  0.04
                 ]
               }
             ],
@@ -7760,7 +8262,19 @@
               -0.19
             ],
             "drift_distance": 0.035,
-            "background": []
+            "background": [],
+            "grade_fill": {
+              "energy": 500,
+              "distance": 3,
+              "size": 3.8,
+              "height": 0.65,
+              "color": [
+                1,
+                0.88,
+                0.75
+              ],
+              "exposure": 0
+            }
           },
           "actions": {
             "socket_tracks": [
@@ -8045,7 +8559,19 @@
               -0.19
             ],
             "drift_distance": 0.035,
-            "background": []
+            "background": [],
+            "grade_fill": {
+              "energy": 500,
+              "distance": 3,
+              "size": 3.8,
+              "height": 0.65,
+              "color": [
+                1,
+                0.88,
+                0.75
+              ],
+              "exposure": 0
+            }
           },
           "actions": {
             "build_props": [
@@ -8420,6 +8946,18 @@
                 "yaw_deg": 0,
                 "expression": "neutral"
               }
+            },
+            "grade_fill": {
+              "energy": 500,
+              "distance": 3,
+              "size": 3.8,
+              "height": 0.65,
+              "color": [
+                1,
+                0.88,
+                0.75
+              ],
+              "exposure": 0
             }
           },
           "actions": {
@@ -8976,7 +9514,19 @@
               -0.19
             ],
             "drift_distance": 0.035,
-            "background": []
+            "background": [],
+            "grade_fill": {
+              "energy": 500,
+              "distance": 3,
+              "size": 3.8,
+              "height": 0.65,
+              "color": [
+                1,
+                0.88,
+                0.75
+              ],
+              "exposure": 0
+            }
           }
         },
         "fraction_start": 0,
@@ -9227,7 +9777,19 @@
               -0.19
             ],
             "drift_distance": 0.035,
-            "background": []
+            "background": [],
+            "grade_fill": {
+              "energy": 500,
+              "distance": 3,
+              "size": 3.8,
+              "height": 0.65,
+              "color": [
+                1,
+                0.88,
+                0.75
+              ],
+              "exposure": 0
+            }
           },
           "actions": {
             "build_props": [
@@ -9625,7 +10187,19 @@
               -0.19
             ],
             "drift_distance": 0.035,
-            "background": []
+            "background": [],
+            "grade_fill": {
+              "energy": 500,
+              "distance": 3,
+              "size": 3.8,
+              "height": 0.65,
+              "color": [
+                1,
+                0.88,
+                0.75
+              ],
+              "exposure": 0
+            }
           }
         },
         "fraction_start": 0,
@@ -9849,6 +10423,18 @@
                 "yaw_deg": 0,
                 "expression": "neutral"
               }
+            },
+            "grade_fill": {
+              "energy": 500,
+              "distance": 3,
+              "size": 3.8,
+              "height": 0.65,
+              "color": [
+                1,
+                0.88,
+                0.75
+              ],
+              "exposure": 0
             }
           },
           "actions": {
@@ -10119,7 +10705,19 @@
               -0.19
             ],
             "drift_distance": 0.035,
-            "background": []
+            "background": [],
+            "grade_fill": {
+              "energy": 500,
+              "distance": 3,
+              "size": 3.8,
+              "height": 0.65,
+              "color": [
+                1,
+                0.88,
+                0.75
+              ],
+              "exposure": 0
+            }
           }
         },
         "fraction_start": 0.5,
@@ -10366,7 +10964,19 @@
               -0.19
             ],
             "drift_distance": 0.035,
-            "background": []
+            "background": [],
+            "grade_fill": {
+              "energy": 500,
+              "distance": 3,
+              "size": 3.8,
+              "height": 0.65,
+              "color": [
+                1,
+                0.88,
+                0.75
+              ],
+              "exposure": 0
+            }
           }
         },
         "fraction_start": 0.75,
@@ -11432,9 +12042,18 @@
           ],
           "segment_performance": true,
           "declared_scene": {
-            "standing": {},
+            "standing": {
+              "narrator": {
+                "position": [
+                  0.25,
+                  4.8,
+                  0
+                ],
+                "yaw_deg": 57,
+                "expression": "worried"
+              }
+            },
             "seated": [
-              "narrator",
               "otis",
               "leo",
               "max",
@@ -11466,7 +12085,7 @@
             "principal": "narrator",
             "listeners": [],
             "camera_move": "reframe",
-            "motivation": "Composed geography shows wall, well and circle. Split pure establishing <=2s or keep principal >=25%.",
+            "motivation": "Wall holds six boys; narrator remains by the well after his approach. Establish the real square and the two social groups.",
             "camera_offset": [
               0,
               -1,
@@ -12715,7 +13334,19 @@
               -0.19
             ],
             "drift_distance": 0.035,
-            "background": []
+            "background": [],
+            "grade_fill": {
+              "energy": 500,
+              "distance": 3,
+              "size": 3.8,
+              "height": 0.65,
+              "color": [
+                1,
+                0.88,
+                0.75
+              ],
+              "exposure": 0
+            }
           },
           "actions": {
             "socket_tracks": [
@@ -14368,7 +14999,19 @@
               0,
               -0.19
             ],
-            "background": []
+            "background": [],
+            "grade_fill": {
+              "energy": 500,
+              "distance": 3,
+              "size": 3.8,
+              "height": 0.65,
+              "color": [
+                1,
+                0.88,
+                0.75
+              ],
+              "exposure": 0
+            }
           },
           "actions": {
             "socket_tracks": [
@@ -14878,7 +15521,9 @@
   },
   "grade_preset": "warm_saturated_v1",
   "actor_factory": "saying_hi_cast:build_cast_actor",
-  "status": "DRAFT native staging candidate; pilot release evidence still required; do not render",
+  "status": "DRAFT: frame structure checked; new native setups still unverified; release gate not authorized",
   "direction_board": "stories/saying_hi_direction_board.json",
-  "round5_qc": "assets/saying_hi_review/round5/qc.json"
+  "round5_qc": "assets/saying_hi_review/round5/qc.json",
+  "comparison_baseline": "assets/saying_hi_review/round5/saying_hi.mp4",
+  "comparison_baseline_sha256": "b4e24648745bb6527687ac0de79096345393e34a979a871ba47fcfb0eb849585"
 }
