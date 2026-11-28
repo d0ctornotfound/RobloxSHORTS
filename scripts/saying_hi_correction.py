@@ -149,7 +149,7 @@ class CorrectedUnit(SceneUnit):
             self.tallies=add_tallies()
             if self.unit=="empty_wall":
                 # Actual front of the north wall; no actors in this beat.
-                frame(self.scene,self.cam,(0,3.9,1.35),(0,8.05,.29),22)
+                frame(self.scene,self.cam,(0,3.3,1.35),(0,8.05,.29),18)
     def prepare_stride(self,nframes):
         self.move_frames=nframes-self.pickup_frames
         if getattr(self,"cached_walk",None):
@@ -164,7 +164,7 @@ class CorrectedUnit(SceneUnit):
         # Lower fixed perspective camera, frame complete wall and fountain plus
         # route envelope. The spectators remain on their original marks.
         wall=bpy.data.objects["tally wall"];well=bpy.data.objects["Piazza fountain"]
-        anchors=worldpts([wall]+meshes(well))
+        anchors=[o.matrix_world@V(v) for o in [wall]+meshes(well) for v in o.bound_box]
         for p in (self.start,self.end):
             anchors.extend(p+V((x,y,z)) for x in (-.72,.72) for y in (-.50,.50) for z in (0,2.35))
         target=V((0,4.1,1.05));choices=[]
