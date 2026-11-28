@@ -96,7 +96,7 @@ def evaluate_gate(unit,driver,rows):
     return {"unit":unit,"samples":len(rows),"sampling_hz":30,"checks":checks,"pass":all(x["pass"] for x in checks.values()),**extra}
 
 def main():
-    ap=argparse.ArgumentParser();ap.add_argument("--unit",required=True);ap.add_argument("--mode",choices=["check","motion"],required=True);ap.add_argument("--map",required=True);ap.add_argument("--lineup",required=True);ap.add_argument("--output",required=True);ap.add_argument("--cache");a=ap.parse_args(sys.argv[sys.argv.index("--")+1:])
+    ap=argparse.ArgumentParser();ap.add_argument("--unit",required=True);ap.add_argument("--mode",choices=["check","motion"],required=True);ap.add_argument("--map",required=True);ap.add_argument("--lineup",required=True);ap.add_argument("--output",required=True);ap.add_argument("--cache");ap.add_argument("--frame-window",nargs=2,type=int);a=ap.parse_args(sys.argv[sys.argv.index("--")+1:])
     out=Path(a.output).resolve();out.mkdir(parents=True,exist_ok=True)
     c,stage=load();plan=json.loads((ROOT/"stories/saying_hi_plan.json").read_text());ids=UNITS[a.unit];shots=[plan["shots"][i-1] for i in ids]
     start=round(shots[0]["edit_in"]*FPS);end=round(shots[-1]["edit_out"]*FPS);count=end-start
@@ -125,7 +125,9 @@ def main():
         ret=driver.lock.ret;driver.lock=StrideLock(ret,"walk_cycle",FPS,driver.stride_candidate["rate"],driver.start,driver.yaw)
     if a.unit in ("dog_name","seating","closing"):
         driver.prev_feet={};driver.prev_hip={};driver.prev_phase={}
-    selected=set(range(start,end)) if a.mode=="motion" else {start,start+count//4,start+count//2,start+3*count//4,end-1}
+    render_start,render_end=(a.frame_window if a.frame_window else (start,end))
+    assert start<=render_start<render_end<=end and (not a.frame_window or a.mode=="motion")
+    selected=set(range(render_start,render_end)) if a.mode=="motion" else {start,start+count//4,start+count//2,start+3*count//4,end-1}
     if a.mode=="check" and a.unit=="dog_name":selected={r["global_frame"] for r in rows if r["metrics"]["dog_visible"]}
     if a.mode=="check" and a.unit=="june_question":
         selected.update(r["global_frame"] for r in rows if abs(r["metrics"]["pencil_shake_phase"])>.99)
@@ -140,7 +142,7 @@ def main():
     assert len(rendered)==len(selected)
     second=evaluate_gate(a.unit,driver,replay);assert second["pass"],"replay geometry changed"
     assert max(x["near_black_percent"] for x in rendered)<=10,"darkness gate failed"
-    m={"unit":a.unit,"mode":"motion" if a.mode=="motion" else "smoke","sentence_ids":ids,"engine":"EEVEE","denoising":False,"eevee_spatial_samples":32,"frame_window":[start,end],"actual_rendered_frames":len(rendered),"expected_rendered_frames":len(selected),"rendered_temporal_samples_per_second":30 if a.mode=="motion" else None,"encoded_fps_target":30 if a.mode=="motion" else None,"rendered":rendered,"metrics":rows,"geometry_gate":gate,"scenery":driver.scenery}
+    m={"unit":a.unit,"mode":"motion" if a.mode=="motion" else "smoke","sentence_ids":ids,"engine":"EEVEE","denoising":False,"eevee_spatial_samples":32,"frame_window":[render_start,render_end],"unit_frame_window":[start,end],"actual_rendered_frames":len(rendered),"expected_rendered_frames":len(selected),"rendered_temporal_samples_per_second":30 if a.mode=="motion" else None,"encoded_fps_target":30 if a.mode=="motion" else None,"rendered":rendered,"metrics":rows,"geometry_gate":gate,"scenery":driver.scenery}
     (out/"manifest.json").write_text(json.dumps(m,indent=2)+"\n")
     if a.mode=="check":
         import shutil
