@@ -206,6 +206,6 @@ def main():
     if camera_search:extra["camera_search"]=camera_search
     if action_tracks:extra["declared_walks"]=action_tracks.report()
     if spec.get("walk") and end==unit_end:
-        report=d.lock.report();extra["walk"]={**d.stride_candidate,"metrics":{k:v for k,v in report.items() if k!="records"},"root_stop_error_to_plant":(d.lock.pos-d.end).length,"final_contact_error":(Vector(d.lock.records[-1]["contact_world"])-d.end).length,"complete_unit":end==unit_end}
+        report=d.lock.report();extra["walk"]={**d.stride_candidate,"metrics":{k:v for k,v in report.items() if k!="records"},"root_stop_error_to_plant":(d.lock.pos-d.end).length,"final_contact_error":(Vector(d.lock.records[-1]["contact_world"])-d.end).length,"complete_unit":end==unit_end,"end_mode":spec["walk"].get("end_mode","stop"),"last_support":d.lock.records[-1]["support"],"last_forward_speed":d.lock.records[-1]["forward_speed"]}
     dump(out/"manifest.json",{"task":task,"preflight_only":a.preflight,"engine":"EEVEE","denoising":False,"spatial_samples":32,"render_sampling_hz":30,"rendered":rendered,"rows":rows,"extra":extra,"missing_props":[n for n,o in roots.items() if o is None]})
 if __name__=="__main__":main()
