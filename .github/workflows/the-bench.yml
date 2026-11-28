@@ -11,6 +11,10 @@ on:
         description: 'Full 48-shot render only after actual preflight review'
         type: boolean
         default: false
+      shots:
+        description: 'Preflight shot JSON list (leave empty for all 48 on manual dispatch)'
+        type: string
+        required: false
 permissions:
   contents: read
 jobs:
@@ -27,12 +31,20 @@ jobs:
       - id: matrix
         env:
           FULL: ${{ inputs.full || false }}
+          SHOTS: ${{ inputs.shots || '' }}
+          EVENT: ${{ github.event_name }}
         run: |
           if [ "$FULL" = "true" ]; then
             echo "shots=$(python3 -c 'import json; print(json.dumps(list(range(1,49))))')" >> "$GITHUB_OUTPUT"
             echo 'mode=render' >> "$GITHUB_OUTPUT"
           else
-            echo "shots=$(python3 -c 'import json; print(json.dumps(list(range(1,49))))')" >> "$GITHUB_OUTPUT"
+            if [ "$EVENT" = "push" ]; then
+              echo 'shots=[1,3,4,6,9,10,18,19]' >> "$GITHUB_OUTPUT"
+            elif [ -n "$SHOTS" ]; then
+              echo "shots=$(python3 -c 'import json,os; a=json.loads(os.environ["SHOTS"]); assert a and len(a)==len(set(a)) and all(type(i)==int and 1<=i<=48 for i in a); print(json.dumps(a))')" >> "$GITHUB_OUTPUT"
+            else
+              echo "shots=$(python3 -c 'import json; print(json.dumps(list(range(1,49))))')" >> "$GITHUB_OUTPUT"
+            fi
             echo 'mode=preflight' >> "$GITHUB_OUTPUT"
           fi
   shot:
@@ -41,7 +53,7 @@ jobs:
     timeout-minutes: 45
     strategy:
       fail-fast: false
-      max-parallel: 12
+      max-parallel: 4
       matrix:
         shot: ${{ fromJSON(needs.plan.outputs.shots) }}
     steps:

@@ -19,7 +19,7 @@ def check(root,full=False):
             # Reject empty/missing visibility for any actual required hero.
             # The three environment wides and inserts have no hero-ID target.
             kind=m['shot']['camera']
-            expected=set() if kind=='insert' or n in (26,33,40) else {'Milo','Dad'} if n in (1,18) else {'Dad'} if n in (3,6,8,15,16,21,43,46) else {'Milo'}
+            expected=set() if kind=='insert' or n in (26,33,40) else {'Milo','Dad'} if n==18 else {'Dad'} if n in (3,6,8,15,16,21,43,46) else {'Milo'}
             vis=m.get('visibility') or {}
             if m.get('visibility_error') or not expected.issubset(vis) or any(v.get('pass') is not True or v.get('visible_fraction',0)<.69 or v.get('projected_silhouette_pixels',0)<=0 for v in vis.values()):
                 issues.append('required rendered object-ID visibility failed or missing')

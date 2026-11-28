@@ -174,9 +174,36 @@ def hero_names(n,kind,actors):
     # Singles deliberately focus on the acting character; another character can
     # remain physically present outside the portrait composition.
     if kind=="insert":return []
-    if n in (1,18):return list(actors)
+    if n==18:return list(actors)
+    # Opening narration is about Milo walking to school. Dad is established in shot 03.
+    if n==1:return ["Milo"]
     if n in (3,6,8,15,16,21,43,46):return ["Dad"] if "Dad" in actors else []
     return ["Milo"] if "Milo" in actors else list(actors)
+
+def pair_camera(scene,cam,actors):
+    # Conservative bound corners propose a fixed two-shot camera; the existing
+    # all-frame exact geometry and rendered visibility tests decide acceptance.
+    boxes=[];faces=[]
+    for name in ("Milo","Dad"):
+        actor=actors[name];lo,hi=bounds(v for ob in actor.meshes() for v in mesh_points(ob))
+        boxes.append([V((x,y,z)) for x in (lo.x,hi.x) for y in (lo.y,hi.y) for z in (lo.z,hi.z)])
+        flo,fhi=bounds(mesh_points(actor.a.head));faces.append((flo+fhi)/2)
+    target=sum(faces,V((0,0,0)))/2;target.z-=.50
+    best=None
+    for angle in (0,.45,-.45,.65,-.65,.85,-.85,1.0,-1.0,1.15,-1.15):
+        for dist in (2.8,3.2,3.6,4.0,4.6,5.2,6.0):
+            for lens in (35,42,49,56,63,70):
+                for height in (.15,.45,.75):
+                    cam.location=target+V((math.sin(angle)*dist,-math.cos(angle)*dist,height));cam.data.lens=lens;point_at(cam,target);bpy.context.view_layer.update()
+                    bb=[project(scene,cam,box) for box in boxes];face=[project(scene,cam,[f]) for f in faces]
+                    cover=[b[3]-b[2] for b in bb]
+                    excess=sum(max(0,.04-b[0])+max(0,b[1]-.96)+max(0,.04-b[2])+max(0,b[3]-.96) for b in bb)
+                    shortage=sum(max(0,.45-c) for c in cover);separation=abs(face[0][0]-face[1][0]);overlap=max(0,min(bb[0][1],bb[1][1])-max(bb[0][0],bb[1][0]))
+                    cost=30*excess+12*shortage+5*max(0,.20-separation)+1.4*overlap+.25*abs(cover[0]-cover[1])+.02*abs(angle)
+                    if min(b[4] for b in bb)<=0:continue
+                    if best is None or cost<best[0]:best=(cost,cam.location.copy(),target.copy(),lens)
+    if best is None:raise RuntimeError("No pair-camera proposal")
+    return best
 
 def main():
     ap=argparse.ArgumentParser();ap.add_argument("--shot",type=int,required=True);ap.add_argument("--output",required=True);ap.add_argument("--mode",choices=["preflight","render"],default="preflight")
@@ -226,7 +253,7 @@ def main():
     num=round((shot["end"]-shot["start"])*FPS);first=round(shot["start"]*FPS)+1
     selected=set(range(num)) if args.mode=="render" else {0,num//2,num-1}
     if args.mode=="preflight" and n in (23,31,45,46,47,48):selected.update({num//4,3*num//4})
-    records=[];geometry_records=[];started=time.monotonic();cap_attached=False;cap_mount=None;cane_length=None
+    records=[];geometry_records=[];started=time.monotonic();cap_attached=False;cap_mount=None;cane_length=None;pair_setup=None
     for f in range(num):
         global_frame=first+f;scene.frame_set(global_frame)
         u=f/(num-1);t=f/FPS
@@ -244,6 +271,8 @@ def main():
         cap.location=(.83,cy,top+.01);cap.rotation_euler=(0,0,0)
         for i,(bird,head) in enumerate(birds):
             bird.location=(-1.8+i*.56,-1.20-.34*(i%3),0)
+            # Keep pigeons out of the walking corridor in the corrected shots.
+            if n in (1,9):bird.location=(.10+i*.47,-.55-.11*(i%3),0)
             bird.rotation_euler.z=.5*math.sin(i*2)+.15*math.sin(t+i)
             head.rotation_euler.x=.22+.66*max(0,math.sin(t*5+i))
         for i,c in enumerate(crumbs):
@@ -265,6 +294,21 @@ def main():
         if m and (9<=n<=24 or 35<=n<=39):
             hide(bags[1],False);bags[1].location=m.hand(1 if n in (22,23,24) else 0);bags[1].rotation_euler=(0,0,0)
         contacts=[]
+        if n==4 and d:
+            # Move the actual giving arm forward so the folded bag clears the jacket.
+            limb=d.art.arms[1];goal=limb.joint()+V((-.20,-.78,-.40)).normalized()*(limb.a+limb.b)*.79
+            error=d.aim(1,goal);bags[0].location=d.hand(1);bags[0].scale=(1.35,1.35,1.35)
+            contacts.append({"event":"paper_bag_display","target_error":float(error),"socket_error":(bags[0].location-d.hand(1)).length})
+        if n==10 and m:
+            # The locked R6 arm is posed toward the camera; the bag remains attached to its hand.
+            goal=m.hand(0)+V((.05,-.30,.18));error=m.aim(0,goal);bags[1].location=m.hand(0);bags[1].scale=(1.35,1.35,1.35)
+            contacts.append({"event":"paper_bag_display","target_error":float(error),"socket_error":(bags[1].location-m.hand(0)).length})
+        if n==19 and m and d:
+            # Inner hands bring both bags into the same plane, with a physical gap.
+            for actor,index,bag,side in ((m,1,bags[1],1),(d,0,bags[0],-1)):
+                limb=actor.art.arms[index];goal=limb.joint()+V((side*.12,-.88,-.36)).normalized()*(limb.a+limb.b)*.83
+                err=actor.aim(index,goal);bag.location=actor.hand(index);bag.scale=(1.25,1.25,1.25)
+                contacts.append({"event":"paper_bag_display","target_error":float(err),"socket_error":(bag.location-actor.hand(index)).length})
         if n==31 and m:
             # Match the seat edge with a real articulated hand. Do not attach on a timer alone.
             grip_offset=V((0,.15,-.04));goal=cap.location-grip_offset
@@ -384,6 +428,13 @@ def main():
             if n==22 and m:target=m.hand(0)
             target.z+=.10;dist=1.85 if n not in (19,27,41) else 3.4;lens=40;angle=.25
         # Portrait-specific hero/prop camera overrides, never changing the locked rigs.
+        if n==1 and m:
+            lo,hi=bounds(v for ob in m.meshes() for v in mesh_points(ob));target=(lo+hi)/2;dist=3.65;lens=48;angle=.60
+        if n in (3,6) and d:dist=3.28;lens=48
+        if n in (4,10):
+            obj=bags[0] if n==4 else bags[1];target=obj.location+V((0,-.02,-.17));dist=1.35;lens=45;angle=.10 if n==4 else -.12
+        if n==19:
+            target=(bags[0].location+bags[1].location)/2+V((0,0,-.16));dist=2.30;lens=42;angle=.02
         if n==2 and m and d:
             mc=(bounds(v for ob in m.meshes() for v in mesh_points(ob))[0]+bounds(v for ob in m.meshes() for v in mesh_points(ob))[1])/2
             target=mc;target.z=mc.z+.03;dist=3.65;lens=48;angle=.88
@@ -398,6 +449,10 @@ def main():
         if n in (45,48) and m:
             lo,hi=bounds(v for ob in m.meshes() for v in mesh_points(ob));target=(lo+hi)/2;target.x+=.10;dist=3.35;lens=49;angle=-.15
         location=target+V((math.sin(angle)*dist,-math.cos(angle)*dist,.32 if kind!="insert" else .65))
+        if n==18 and m and d:
+            if pair_setup is None:
+                pair_setup=pair_camera(scene,camera,actors);print("PAIR_CAMERA_PROPOSAL",pair_setup[0],list(pair_setup[1]),list(pair_setup[2]),pair_setup[3],flush=True)
+            _,location,target,lens=pair_setup
         camera.location=location;camera.data.lens=lens;point_at(camera,target);bpy.context.view_layer.update()
         geo=geometry(scene,camera,actors,heroes,kind)
         prop_roots={4:[bags[0]],5:[birds[0][0]],10:[bags[1]],19:bags,23:[birds[0][0]],28:[birds[0][0]],29:[cap],32:[cap],36:[cap],37:[birds[0][0]],44:[stick],47:bags}.get(n,[])
