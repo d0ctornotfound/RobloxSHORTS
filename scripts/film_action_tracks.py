@@ -10,8 +10,14 @@ from mathutils import Vector,Matrix,Euler
 from render_demo import cube,empty,material
 from library_props import build as build_library_prop
 from film_walk_to_mark import construct
-from render_saying_hi_shot import aim_world
 from r6_imported_cycles import Retarget
+
+def aim_world(actor,index,target):
+    shoulder=(actor.armature.matrix_world@actor.arms[index].matrix).translation
+    direction=actor.root.matrix_world.to_3x3().inverted()@(Vector(target)-shoulder)
+    actor.aim_arm(index,direction)
+    bpy.context.view_layer.update()
+    return (actor.grips[index].matrix_world.translation-Vector(target)).length
 
 def keys_at(keys,u):
     if not keys:raise ValueError("empty track")
