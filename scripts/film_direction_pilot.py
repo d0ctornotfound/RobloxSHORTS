@@ -34,8 +34,13 @@ def main():
         for sid in group["shots"]:
             st=next(s for s in plan["shots"] if s["id"]==sid);start=round(st["edit_in"]*30);end=round(st["edit_out"]*30)
             rs=rows.get(sid,[]);flow=flow_report(rs,expected_frames=end-start)
+            shot_tasks=[t for t in selected if t["shot"]==sid]
+            manifests=[read(chunks/t["key"]/"manifest.json") for t in shot_tasks if (chunks/t["key"]/"manifest.json").is_file()]
+            dark=max((r["near_black_percent"] for m in manifests for r in m["rendered"]),default=None)
+            walks=[m["extra"]["walk"] for m in manifests if m.get("extra",{}).get("walk",{}).get("complete_unit")]
+            gait_ok=all(w["metrics"]["pass"] and w["metrics"]["backward_frames"]==0 and w["metrics"]["stance_velocity_rms"]<=.03 and w["final_contact_error"]<=.05 and w["final_plant"] for w in walks) if walks else None
             face_blocks={cid:max(x["actor_qc"][cid]["face_external"]["blocked"] for x in rs if cid in x["actor_qc"]) for cid in sorted({cid for x in rs for cid in x["actor_qc"]})}
-            g["shots"][sid]={"start":start,"end":end,"direction":flow,"external_face_ray_blocks_max":face_blocks}
+            g["shots"][sid]={"start":start,"end":end,"direction":flow,"external_face_ray_blocks_max":face_blocks,"native_near_black_max_percent":dark,"walk_evidence":walks,"gait_gate":gait_ok}
             if baseline.is_file():
                 for label,k in (("first",start),("middle",(start+end)//2),("last",end-1)):
                     path=out/f"{sid}_round5_{label}.png"
@@ -49,7 +54,7 @@ def main():
                 for label,k in (("first",q["start"]),("middle",(q["start"]+q["end"])//2),("last",q["end"]-1)):
                     run(["ffmpeg","-y","-v","error","-i",str(film),"-vf",f"select=eq(n\\,{k-start})","-frames:v","1",str(out/f"{sid}_round6_{label}.png")])
         report["groups"][name]=g
-    report["numerical_pass"]=all(not g["missing_chunks"] and all(s["direction"]["status"]=="numeric_pass" and all(v==0 for v in s["external_face_ray_blocks_max"].values()) for s in g["shots"].values()) for g in report["groups"].values())
+    report["numerical_pass"]=all(not g["missing_chunks"] and all(s["direction"]["status"]=="numeric_pass" and all(v==0 for v in s["external_face_ray_blocks_max"].values()) and s["native_near_black_max_percent"] is not None and s["native_near_black_max_percent"]<=2 and s["gait_gate"] is not False for s in g["shots"].values()) for g in report["groups"].values())
     write(out/"pilot_qc.json",report)
     with Path(c["review_path"]).open("a") as f:
         f.write("\n## Round 6 direction pilot run "+str(report["run_id"])+"\n")
