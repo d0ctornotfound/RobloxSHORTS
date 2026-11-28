@@ -38,7 +38,7 @@ def main():
             manifests=[read(chunks/t["key"]/"manifest.json") for t in shot_tasks if (chunks/t["key"]/"manifest.json").is_file()]
             dark=max((r["near_black_percent"] for m in manifests for r in m["rendered"]),default=None)
             walks=[m["extra"]["walk"] for m in manifests if m.get("extra",{}).get("walk",{}).get("complete_unit")]
-            gait_ok=all(w["metrics"]["pass"] and w["metrics"]["backward_frames"]==0 and w["metrics"]["stance_velocity_rms"]<=.03 and w["final_contact_error"]<=.05 and w["final_plant"] for w in walks) if walks else None
+            gait_ok=all(w["metrics"]["pass"] and w["metrics"]["backward_frames"]==0 and w["metrics"]["stance_velocity_rms"]<=.03 and w["final_contact_error"]<=.05 and (w["final_plant"] if w.get("end_mode","stop")=="stop" else w.get("end_mode")=="moving_cut" and w.get("last_support") in (0,1) and w.get("last_forward_speed",0)>0) for w in walks) if walks else None
             face_blocks={cid:max(x["actor_qc"][cid]["face_external"]["blocked"] for x in rs if cid in x["actor_qc"]) for cid in sorted({cid for x in rs for cid in x["actor_qc"]})}
             g["shots"][sid]={"start":start,"end":end,"direction":flow,"external_face_ray_blocks_max":face_blocks,"native_near_black_max_percent":dark,"walk_evidence":walks,"gait_gate":gait_ok}
             if baseline.is_file():
