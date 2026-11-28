@@ -1,0 +1,105 @@
+name: Saying Hi cast and imported square smoke
+on:
+  push:
+    branches: ['production/saying-hi']
+    paths: ['.github/workflows/saying-hi-smoke.yml']
+  workflow_dispatch:
+permissions:
+  contents: write
+concurrency:
+  group: saying-hi-smoke
+  cancel-in-progress: false
+jobs:
+  smoke:
+    if: github.ref == 'refs/heads/production/saying-hi'
+    runs-on: ubuntu-24.04
+    timeout-minutes: 28
+    strategy:
+      fail-fast: false
+      matrix:
+        kind: [lineup, square]
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install Blender and locked assets
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y --no-install-recommends blender python3-pil python3-numpy fonts-dejavu-core
+          /usr/bin/python3 scripts/r6_faces.py --output assets/r6_faces
+          /usr/bin/python3 scripts/library_character_assets.py
+      - name: Fetch pinned authorized Itlay glTF
+        if: matrix.kind == 'square'
+        run: |
+          mkdir -p /tmp/saying_hi_map
+          curl --fail --location --retry 3 --max-time 180 'https://raw.githubusercontent.com/AdityapalW/Roblox-skill/54b34ba1be2e3013a9de59e40db288d8f2ebda53/Itlay/Itlay.gltf' -o /tmp/saying_hi_map/Itlay.gltf
+          test "$(git hash-object /tmp/saying_hi_map/Itlay.gltf)" = '20108af3a19fae6b5beaa5fac2e3305b56112a41'
+          sha256sum /tmp/saying_hi_map/Itlay.gltf
+      - name: One-frame smoke (lineup renders one frame per row)
+        run: |
+          mkdir -p review/${{ matrix.kind }}
+          export R6_KNEE_BLEND=1
+          set -o pipefail
+          timeout --kill-after=20s 20m blender -b --python-exit-code 1 --python scripts/render_saying_hi_smoke.py -- --kind "${{ matrix.kind }}" --map /tmp/saying_hi_map/Itlay.gltf --output "review/${{ matrix.kind }}" 2>&1 | tee "review/${{ matrix.kind }}/render.log"
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: saying-hi-smoke-${{ matrix.kind }}
+          path: review/${{ matrix.kind }}/
+          if-no-files-found: warn
+  pace:
+    if: github.ref == 'refs/heads/production/saying-hi'
+    runs-on: ubuntu-24.04
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@v4
+      - run: |
+          sudo apt-get update
+          sudo apt-get install -y --no-install-recommends espeak-ng ffmpeg
+          mkdir -p review/pace/assets/saying_hi_review review/pace/stories
+          python3 scripts/retime_shot_plan.py stories/saying_hi_plan.json --wav assets/saying_hi_review/temp_narration.wav --speed 250 --match-reference
+          python3 scripts/validate_shot_plan.py stories/saying_hi_plan.json > assets/saying_hi_review/actual_audio_validation.json
+          cp stories/saying_hi_plan.json review/pace/stories/
+          cp assets/saying_hi_review/{temp_narration.wav,temporary_pacing.json,actual_audio_validation.json} review/pace/assets/saying_hi_review/
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: saying-hi-paced-audio
+          path: review/pace/
+          if-no-files-found: warn
+  publish:
+    if: always() && github.ref == 'refs/heads/production/saying-hi'
+    needs: [smoke, pace]
+    runs-on: ubuntu-24.04
+    timeout-minutes: 8
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: production/saying-hi
+      - uses: actions/download-artifact@v4
+        with:
+          pattern: saying-hi-*
+          path: /tmp/saying-hi-smoke
+      - name: Publish actual evidence, including partial failure logs
+        run: |
+          set -euo pipefail
+          OUT=assets/saying_hi_review
+          mkdir -p "$OUT/smoke"
+          for kind in lineup square; do
+            src=/tmp/saying-hi-smoke/saying-hi-smoke-$kind
+            if test -d "$src"; then
+              mkdir -p "$OUT/smoke/$kind"
+              cp -a "$src"/. "$OUT/smoke/$kind/"
+            fi
+          done
+          pace=/tmp/saying-hi-smoke/saying-hi-paced-audio
+          if test -f "$pace/stories/saying_hi_plan.json" && test -f "$pace/assets/saying_hi_review/actual_audio_validation.json"; then
+            cp "$pace/stories/saying_hi_plan.json" stories/
+            cp "$pace/assets/saying_hi_review/"* "$OUT/"
+          fi
+          printf 'workflow_run_id=%s\nsource_commit=%s\nsmoke_result=%s\npace_result=%s\n' "$GITHUB_RUN_ID" "$GITHUB_SHA" "${{ needs.smoke.result }}" "${{ needs.pace.result }}" > "$OUT/smoke/workflow_provenance.txt"
+          find "$OUT" -type f ! -name SHA256SUMS -print0 | sort -z | xargs -0 sha256sum > "$OUT/SHA256SUMS"
+          sha256sum stories/saying_hi_script.txt stories/saying_hi_plan.json >> "$OUT/SHA256SUMS"
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add "$OUT" stories/saying_hi_plan.json
+          git commit -m "Publish actual Itlay and cast smoke evidence and paced narration"
+          git push origin HEAD:refs/heads/production/saying-hi
