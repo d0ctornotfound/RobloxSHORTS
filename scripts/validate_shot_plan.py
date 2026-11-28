@@ -52,6 +52,15 @@ def validate(p,root=Path("."),draft=False):
         require(s["sampling_rate"]>0 and s["encoded_fps"]==p["fps"],f"{sid}: invalid rate")
         if s["render_profile"]=="motion_proof":
             require(s["sampling_rate"]==s["encoded_fps"]==30,f"{sid}: motion proof requires 30 rendered samples per second")
+        if "animatic_segments" in s:
+            last=0
+            for segment in s["animatic_segments"]:
+                begin,end=segment.get("fraction_start"),segment.get("fraction_end")
+                require(isinstance(begin,(int,float)) and isinstance(end,(int,float)) and abs(begin-last)<1e-9 and begin<end<=1,f"{sid}: invalid internal segment coverage")
+                require(bool(segment.get("still_path"))!=bool(segment.get("video_path")),f"{sid}: segment needs exactly one media source")
+                require(isinstance(segment.get("video_start_frame",0),int) and segment.get("video_start_frame",0)>=0,f"{sid}: invalid clip start")
+                last=end
+            require(abs(last-1)<1e-9,f"{sid}: internal segment gap")
         if not draft:
             a,b,e,f=(s[k] for k in ("audio_in","audio_out","edit_in","edit_out"))
             require(all(isinstance(x,(int,float)) and math.isfinite(x) for x in (a,b,e,f)),f"{sid}: actual narration timings missing")
