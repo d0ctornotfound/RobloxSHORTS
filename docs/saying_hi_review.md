@@ -498,3 +498,6 @@ Geometry/flow preflight numerical pass: False. Three native still samples per sh
 
 ## Direction preflight hesitation_perspective_preflight run 46142556719
 Geometry/flow preflight numerical pass: True. Three native still samples per shot, not full clips; visual review and native pilot still mandatory. Evidence: assets/saying_hi_review/round6/hesitation_perspective_preflight/preflight_qc.json
+
+## Round 6 direction pilot run 46143017209
+Pilot numerical pass: True. Actual visual/playback inspection still mandatory; full-film pass not authorized. Evidence: assets/saying_hi_review/round6/pilot_native_interview_well/pilot_qc.json
