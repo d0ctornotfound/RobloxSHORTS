@@ -1,0 +1,504 @@
+{
+  "unit": "june_question",
+  "samples": 113,
+  "sampling_hz": 30,
+  "checks": {
+    "standing_seat_intersections": {
+      "value": 0,
+      "limit": 0,
+      "pass": true
+    },
+    "speaker_occlusion_samples": {
+      "value": 5,
+      "limit": 0,
+      "pass": false
+    },
+    "speaker_in_frame": {
+      "value": true,
+      "limit": true,
+      "pass": true
+    },
+    "speaker_front_dot": {
+      "value": 0.8314844369888306,
+      "limit": 0.72,
+      "pass": true
+    },
+    "speaker_body_visible_fraction": {
+      "value": 0.8333333333333334,
+      "limit": 0.9,
+      "pass": false
+    },
+    "speaker_body_in_frame": {
+      "value": true,
+      "limit": true,
+      "pass": true
+    },
+    "unrelated_foreground_obstruction_samples": {
+      "value": 0,
+      "limit": 0,
+      "pass": true
+    },
+    "external_pencil_occlusion_samples": {
+      "value": 0,
+      "limit": 0,
+      "pass": true
+    },
+    "pencil_in_frame": {
+      "value": true,
+      "limit": true,
+      "pass": true
+    },
+    "visible_pencil_fraction": {
+      "value": 0.9411764705882353,
+      "limit": 0.45,
+      "pass": true
+    }
+  },
+  "pass": false,
+  "camera": {
+    "location": [
+      2.6500000953674316,
+      -0.34999990463256836,
+      1.600000023841858
+    ],
+    "target": [
+      5.050000190734863,
+      3.6500000953674316,
+      1.2000000476837158
+    ],
+    "lens": 35,
+    "multi_phase_score": [
+      false,
+      4,
+      0,
+      0,
+      0,
+      0.06666666666666665,
+      0,
+      -0.832714855670929
+    ],
+    "setup_samples": [
+      {
+        "face": {
+          "samples": 25,
+          "blocked": 4,
+          "bounds": [
+            0.48861199617385864,
+            0.5804064273834229,
+            0.5698621273040771,
+            0.6340059638023376,
+            4.197843074798584
+          ],
+          "safe": true,
+          "visible_fraction": 0.84,
+          "blockers": [
+            "narrator / head knitted beanie folded brim"
+          ]
+        },
+        "body": {
+          "samples": 18,
+          "blocked": 2,
+          "bounds": [
+            0.3093956708908081,
+            0.6771333813667297,
+            0.3520600199699402,
+            0.655606746673584,
+            3.3679301738739014
+          ],
+          "safe": true,
+          "visible_fraction": 0.8888888888888888,
+          "blockers": [
+            "june / garment shell / shirt and sleeves"
+          ]
+        },
+        "dot": 0.8344626426696777,
+        "pencil": {
+          "samples": 36,
+          "blocked": 0,
+          "bounds": [
+            0.38799041509628296,
+            0.40814208984375,
+            0.5512229204177856,
+            0.5650850534439087,
+            3.2536966800689697
+          ],
+          "safe": true,
+          "visible_fraction": 1.0,
+          "blockers": []
+        },
+        "ext": {
+          "samples": 36,
+          "blocked": 0,
+          "bounds": [
+            0.38799041509628296,
+            0.40814208984375,
+            0.5512229204177856,
+            0.5650850534439087,
+            3.2536966800689697
+          ],
+          "safe": true,
+          "visible_fraction": 1.0,
+          "blockers": []
+        },
+        "foreground": {
+          "blocked": 0,
+          "objects": []
+        }
+      },
+      {
+        "face": {
+          "samples": 25,
+          "blocked": 4,
+          "bounds": [
+            0.4867720603942871,
+            0.5787817239761353,
+            0.5690537095069885,
+            0.632213294506073,
+            4.169759750366211
+          ],
+          "safe": true,
+          "visible_fraction": 0.84,
+          "blockers": [
+            "narrator / head knitted beanie folded brim"
+          ]
+        },
+        "body": {
+          "samples": 18,
+          "blocked": 2,
+          "bounds": [
+            0.30226588249206543,
+            0.6757257580757141,
+            0.3513246178627014,
+            0.65653395652771,
+            3.366359233856201
+          ],
+          "safe": true,
+          "visible_fraction": 0.8888888888888888,
+          "blockers": [
+            "june / garment shell / shirt and sleeves"
+          ]
+        },
+        "dot": 0.8356373906135559,
+        "pencil": {
+          "samples": 33,
+          "blocked": 0,
+          "bounds": [
+            0.37687742710113525,
+            0.3994455337524414,
+            0.5398324728012085,
+            0.550071120262146,
+            3.2710819244384766
+          ],
+          "safe": true,
+          "visible_fraction": 1.0,
+          "blockers": []
+        },
+        "ext": {
+          "samples": 33,
+          "blocked": 0,
+          "bounds": [
+            0.37687742710113525,
+            0.3994455337524414,
+            0.5398324728012085,
+            0.550071120262146,
+            3.2710819244384766
+          ],
+          "safe": true,
+          "visible_fraction": 1.0,
+          "blockers": []
+        },
+        "foreground": {
+          "blocked": 0,
+          "objects": []
+        }
+      },
+      {
+        "face": {
+          "samples": 25,
+          "blocked": 1,
+          "bounds": [
+            0.4852496385574341,
+            0.5763066411018372,
+            0.5681780576705933,
+            0.6314381957054138,
+            4.157159805297852
+          ],
+          "safe": true,
+          "visible_fraction": 0.96,
+          "blockers": [
+            "narrator / head knitted beanie folded brim"
+          ]
+        },
+        "body": {
+          "samples": 18,
+          "blocked": 3,
+          "bounds": [
+            0.29780060052871704,
+            0.6745310425758362,
+            0.3512040078639984,
+            0.6568782925605774,
+            3.3617923259735107
+          ],
+          "safe": true,
+          "visible_fraction": 0.8333333333333334,
+          "blockers": [
+            "Town #292e2d-0",
+            "june / garment shell / shirt and sleeves"
+          ]
+        },
+        "dot": 0.8367698192596436,
+        "pencil": {
+          "samples": 32,
+          "blocked": 0,
+          "bounds": [
+            0.3711887300014496,
+            0.3948310613632202,
+            0.541325569152832,
+            0.5522129535675049,
+            3.2631490230560303
+          ],
+          "safe": true,
+          "visible_fraction": 1.0,
+          "blockers": []
+        },
+        "ext": {
+          "samples": 32,
+          "blocked": 0,
+          "bounds": [
+            0.3711887300014496,
+            0.3948310613632202,
+            0.541325569152832,
+            0.5522129535675049,
+            3.2631490230560303
+          ],
+          "safe": true,
+          "visible_fraction": 1.0,
+          "blockers": []
+        },
+        "foreground": {
+          "blocked": 0,
+          "objects": []
+        }
+      },
+      {
+        "face": {
+          "samples": 25,
+          "blocked": 2,
+          "bounds": [
+            0.48138725757598877,
+            0.5741465091705322,
+            0.5721508264541626,
+            0.6349246501922607,
+            4.198104381561279
+          ],
+          "safe": true,
+          "visible_fraction": 0.92,
+          "blockers": [
+            "narrator / head knitted beanie folded brim"
+          ]
+        },
+        "body": {
+          "samples": 18,
+          "blocked": 2,
+          "bounds": [
+            0.30424052476882935,
+            0.6740951538085938,
+            0.3522200882434845,
+            0.6556507349014282,
+            3.3609113693237305
+          ],
+          "safe": true,
+          "visible_fraction": 0.8888888888888888,
+          "blockers": [
+            "june / garment shell / shirt and sleeves"
+          ]
+        },
+        "dot": 0.8376069068908691,
+        "pencil": {
+          "samples": 33,
+          "blocked": 1,
+          "bounds": [
+            0.3814404308795929,
+            0.4022791385650635,
+            0.5393243432044983,
+            0.5496758818626404,
+            3.2646591663360596
+          ],
+          "safe": true,
+          "visible_fraction": 0.9696969696969697,
+          "blockers": [
+            "narrator / body skinned"
+          ]
+        },
+        "ext": {
+          "samples": 33,
+          "blocked": 0,
+          "bounds": [
+            0.3814404308795929,
+            0.4022791385650635,
+            0.5393243432044983,
+            0.5496758818626404,
+            3.2646591663360596
+          ],
+          "safe": true,
+          "visible_fraction": 1.0,
+          "blockers": []
+        },
+        "foreground": {
+          "blocked": 0,
+          "objects": []
+        }
+      },
+      {
+        "face": {
+          "samples": 25,
+          "blocked": 4,
+          "bounds": [
+            0.48951104283332825,
+            0.5861651301383972,
+            0.567997932434082,
+            0.6343026757240295,
+            4.19807767868042
+          ],
+          "safe": true,
+          "visible_fraction": 0.84,
+          "blockers": [
+            "narrator / head knitted beanie folded brim"
+          ]
+        },
+        "body": {
+          "samples": 19,
+          "blocked": 2,
+          "bounds": [
+            0.3013927638530731,
+            0.6779855489730835,
+            0.35245198011398315,
+            0.6558734774589539,
+            3.3757612705230713
+          ],
+          "safe": true,
+          "visible_fraction": 0.8947368421052632,
+          "blockers": [
+            "june / garment shell / shirt and sleeves"
+          ]
+        },
+        "dot": 0.832714855670929,
+        "pencil": {
+          "samples": 34,
+          "blocked": 2,
+          "bounds": [
+            0.3756275177001953,
+            0.39916712045669556,
+            0.5653416514396667,
+            0.5833954811096191,
+            3.2393457889556885
+          ],
+          "safe": true,
+          "visible_fraction": 0.9411764705882353,
+          "blockers": [
+            "narrator / body skinned"
+          ]
+        },
+        "ext": {
+          "samples": 34,
+          "blocked": 0,
+          "bounds": [
+            0.3756275177001953,
+            0.39916712045669556,
+            0.5653416514396667,
+            0.5833954811096191,
+            3.2393457889556885
+          ],
+          "safe": true,
+          "visible_fraction": 1.0,
+          "blockers": []
+        },
+        "foreground": {
+          "blocked": 0,
+          "objects": []
+        }
+      },
+      {
+        "face": {
+          "samples": 25,
+          "blocked": 4,
+          "bounds": [
+            0.48622167110443115,
+            0.5823286771774292,
+            0.5682883858680725,
+            0.6333087682723999,
+            4.176015377044678
+          ],
+          "safe": true,
+          "visible_fraction": 0.84,
+          "blockers": [
+            "narrator / head knitted beanie folded brim"
+          ]
+        },
+        "body": {
+          "samples": 18,
+          "blocked": 2,
+          "bounds": [
+            0.3046950697898865,
+            0.6754982471466064,
+            0.3529101312160492,
+            0.6564949154853821,
+            3.3631396293640137
+          ],
+          "safe": true,
+          "visible_fraction": 0.8888888888888888,
+          "blockers": [
+            "june / garment shell / shirt and sleeves"
+          ]
+        },
+        "dot": 0.8347856998443604,
+        "pencil": {
+          "samples": 35,
+          "blocked": 1,
+          "bounds": [
+            0.3823760151863098,
+            0.4034252464771271,
+            0.555385172367096,
+            0.5706642270088196,
+            3.2412967681884766
+          ],
+          "safe": true,
+          "visible_fraction": 0.9714285714285714,
+          "blockers": [
+            "narrator / body skinned"
+          ]
+        },
+        "ext": {
+          "samples": 35,
+          "blocked": 0,
+          "bounds": [
+            0.3823760151863098,
+            0.4034252464771271,
+            0.555385172367096,
+            0.5706642270088196,
+            3.2412967681884766
+          ],
+          "safe": true,
+          "visible_fraction": 1.0,
+          "blockers": []
+        },
+        "foreground": {
+          "blocked": 0,
+          "objects": []
+        }
+      }
+    ]
+  },
+  "marks": {
+    "june": [
+      5.050000190734863,
+      1.649999976158142,
+      0.0
+    ],
+    "narrator": [
+      5.050000190734863,
+      3.6500000953674316,
+      0.0
+    ]
+  }
+}

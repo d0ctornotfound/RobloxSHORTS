@@ -1,0 +1,369 @@
+{
+  "unit": "june_answer",
+  "samples": 57,
+  "sampling_hz": 30,
+  "checks": {
+    "standing_seat_intersections": {
+      "value": 0,
+      "limit": 0,
+      "pass": true
+    },
+    "speaker_occlusion_samples": {
+      "value": 2,
+      "limit": 0,
+      "pass": false
+    },
+    "speaker_in_frame": {
+      "value": true,
+      "limit": true,
+      "pass": true
+    },
+    "speaker_front_dot": {
+      "value": 0.8340245959869819,
+      "limit": 0.72,
+      "pass": true
+    },
+    "speaker_body_visible_fraction": {
+      "value": 0.5789473684210527,
+      "limit": 0.9,
+      "pass": false
+    },
+    "speaker_body_in_frame": {
+      "value": true,
+      "limit": true,
+      "pass": true
+    },
+    "unrelated_foreground_obstruction_samples": {
+      "value": 0,
+      "limit": 0,
+      "pass": true
+    }
+  },
+  "pass": false,
+  "camera": {
+    "location": [
+      2.6500000953674316,
+      5.650000095367432,
+      1.600000023841858
+    ],
+    "target": [
+      5.050000190734863,
+      1.649999976158142,
+      1.2000000476837158
+    ],
+    "lens": 35,
+    "multi_phase_score": [
+      false,
+      2,
+      0,
+      0,
+      0,
+      0.30000000000000004,
+      0,
+      -0.8341153142598827
+    ],
+    "setup_samples": [
+      {
+        "face": {
+          "samples": 25,
+          "blocked": 0,
+          "bounds": [
+            0.4255828261375427,
+            0.5150384306907654,
+            0.5709444284439087,
+            0.6345232129096985,
+            4.23737907409668
+          ],
+          "safe": true,
+          "visible_fraction": 1.0,
+          "blockers": []
+        },
+        "body": {
+          "samples": 19,
+          "blocked": 6,
+          "bounds": [
+            0.33004099130630493,
+            0.6864528656005859,
+            0.3502315282821655,
+            0.6617542505264282,
+            4.015291213989258
+          ],
+          "safe": true,
+          "visible_fraction": 0.6842105263157895,
+          "blockers": [
+            "Town #292e2d-0",
+            "narrator / garment shell / shirt and sleeves"
+          ]
+        },
+        "dot": 0.8369221562003126,
+        "pencil": {
+          "visible_fraction": 1,
+          "safe": true,
+          "samples": 1
+        },
+        "ext": {
+          "blocked": 0,
+          "samples": 1
+        },
+        "foreground": {
+          "blocked": 0,
+          "objects": []
+        }
+      },
+      {
+        "face": {
+          "samples": 25,
+          "blocked": 0,
+          "bounds": [
+            0.42326679825782776,
+            0.5138047337532043,
+            0.5712307095527649,
+            0.6362525820732117,
+            4.240927219390869
+          ],
+          "safe": true,
+          "visible_fraction": 1.0,
+          "blockers": []
+        },
+        "body": {
+          "samples": 19,
+          "blocked": 7,
+          "bounds": [
+            0.3260292708873749,
+            0.6850206851959229,
+            0.3504224717617035,
+            0.6626933217048645,
+            3.98439621925354
+          ],
+          "safe": true,
+          "visible_fraction": 0.631578947368421,
+          "blockers": [
+            "Town #292e2d-0",
+            "narrator / garment shell / shirt and sleeves"
+          ]
+        },
+        "dot": 0.8357936019802317,
+        "pencil": {
+          "visible_fraction": 1,
+          "safe": true,
+          "samples": 1
+        },
+        "ext": {
+          "blocked": 0,
+          "samples": 1
+        },
+        "foreground": {
+          "blocked": 0,
+          "objects": []
+        }
+      },
+      {
+        "face": {
+          "samples": 25,
+          "blocked": 1,
+          "bounds": [
+            0.42093542218208313,
+            0.5128230452537537,
+            0.5710700154304504,
+            0.6372926831245422,
+            4.241592884063721
+          ],
+          "safe": true,
+          "visible_fraction": 0.96,
+          "blockers": [
+            "june / head ch4 hair cap"
+          ]
+        },
+        "body": {
+          "samples": 20,
+          "blocked": 8,
+          "bounds": [
+            0.3254806697368622,
+            0.6856650710105896,
+            0.35096850991249084,
+            0.663362979888916,
+            3.9829800128936768
+          ],
+          "safe": true,
+          "visible_fraction": 0.6,
+          "blockers": [
+            "Town #292e2d-0",
+            "narrator / garment shell / shirt and sleeves"
+          ]
+        },
+        "dot": 0.8347838398168435,
+        "pencil": {
+          "visible_fraction": 1,
+          "safe": true,
+          "samples": 1
+        },
+        "ext": {
+          "blocked": 0,
+          "samples": 1
+        },
+        "foreground": {
+          "blocked": 0,
+          "objects": []
+        }
+      },
+      {
+        "face": {
+          "samples": 25,
+          "blocked": 2,
+          "bounds": [
+            0.41769278049468994,
+            0.5126528143882751,
+            0.5690756440162659,
+            0.6359540224075317,
+            4.225716590881348
+          ],
+          "safe": true,
+          "visible_fraction": 0.92,
+          "blockers": [
+            "june / head ch4 hair cap",
+            "june / head ch4 hair locks 2"
+          ]
+        },
+        "body": {
+          "samples": 18,
+          "blocked": 6,
+          "bounds": [
+            0.33058568835258484,
+            0.6861692667007446,
+            0.351332426071167,
+            0.6638137102127075,
+            4.024715900421143
+          ],
+          "safe": true,
+          "visible_fraction": 0.6666666666666667,
+          "blockers": [
+            "Town #292e2d-0",
+            "narrator / garment shell / shirt and sleeves"
+          ]
+        },
+        "dot": 0.8341153142598827,
+        "pencil": {
+          "visible_fraction": 1,
+          "safe": true,
+          "samples": 1
+        },
+        "ext": {
+          "blocked": 0,
+          "samples": 1
+        },
+        "foreground": {
+          "blocked": 0,
+          "objects": []
+        }
+      },
+      {
+        "face": {
+          "samples": 25,
+          "blocked": 0,
+          "bounds": [
+            0.42551079392433167,
+            0.5155340433120728,
+            0.5704562067985535,
+            0.6332778930664062,
+            4.225887775421143
+          ],
+          "safe": true,
+          "visible_fraction": 1.0,
+          "blockers": []
+        },
+        "body": {
+          "samples": 19,
+          "blocked": 6,
+          "bounds": [
+            0.3301248848438263,
+            0.6852642297744751,
+            0.3501398265361786,
+            0.6620375514030457,
+            4.011613368988037
+          ],
+          "safe": true,
+          "visible_fraction": 0.6842105263157895,
+          "blockers": [
+            "Town #292e2d-0",
+            "narrator / garment shell / shirt and sleeves"
+          ]
+        },
+        "dot": 0.8372552865401772,
+        "pencil": {
+          "visible_fraction": 1,
+          "safe": true,
+          "samples": 1
+        },
+        "ext": {
+          "blocked": 0,
+          "samples": 1
+        },
+        "foreground": {
+          "blocked": 0,
+          "objects": []
+        }
+      },
+      {
+        "face": {
+          "samples": 25,
+          "blocked": 1,
+          "bounds": [
+            0.4193136394023895,
+            0.5138524174690247,
+            0.5691422820091248,
+            0.6347065567970276,
+            4.217865467071533
+          ],
+          "safe": true,
+          "visible_fraction": 0.96,
+          "blockers": [
+            "june / head ch4 hair locks 2"
+          ]
+        },
+        "body": {
+          "samples": 18,
+          "blocked": 6,
+          "bounds": [
+            0.331547349691391,
+            0.685577392578125,
+            0.3510592579841614,
+            0.6637901663780212,
+            4.027518272399902
+          ],
+          "safe": true,
+          "visible_fraction": 0.6666666666666667,
+          "blockers": [
+            "Town #292e2d-0",
+            "narrator / garment shell / shirt and sleeves"
+          ]
+        },
+        "dot": 0.8350376960309447,
+        "pencil": {
+          "visible_fraction": 1,
+          "safe": true,
+          "samples": 1
+        },
+        "ext": {
+          "blocked": 0,
+          "samples": 1
+        },
+        "foreground": {
+          "blocked": 0,
+          "objects": []
+        }
+      }
+    ]
+  },
+  "marks": {
+    "june": [
+      5.050000190734863,
+      1.649999976158142,
+      0.0
+    ],
+    "narrator": [
+      5.050000190734863,
+      3.6500000953674316,
+      0.0
+    ]
+  }
+}
