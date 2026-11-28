@@ -1,0 +1,17 @@
+name: Bench — release gate contract
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'scripts/test_assemble_bench_release.py'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  test:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - run: python3 -m py_compile scripts/assemble_bench_release.py scripts/edit_bench.py
+      - run: python3 scripts/test_assemble_bench_release.py -v
