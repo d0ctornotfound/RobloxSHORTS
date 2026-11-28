@@ -1,5 +1,5 @@
 {
-  "status": "48 uncaptioned numerical passes, 47 final-version clips eligible; old shot 44 held pending corrected production",
+  "status": "48 final-version production clips verified; final master assembly and continuous review pending",
   "verified_shots": 48,
   "shots": [
     {
@@ -606,17 +606,17 @@
     },
     {
       "shot": 44,
-      "artifact_id": 15241253312,
-      "production_run": 46090683630,
-      "preflight_run": 46089668735,
-      "source_commit": "9a8eb4c30ba4b8949a997264b9310c95d96a9928",
+      "artifact_id": 15242700654,
+      "production_run": 46093255401,
+      "preflight_run": 46092157008,
+      "source_commit": "2a1e17e6ae3d54b27fb2a7a13837c46f4f904c61",
       "frames": 60,
       "duration": 2.5,
-      "encoded_max_near_black_percent": 1.9957561728395061,
-      "sha256": "5617f7702af95f6cfb0d88b06e161465f941bfeb60747685d09341bf8bee5081",
+      "encoded_max_near_black_percent": 0.5248842592592592,
+      "sha256": "72ea3c93fac1aa010814b80506fe8be154bcf23d4937ba682fdc3d151dd41725",
       "passed": true,
-      "independent_checks": "MP4 SHA256, independently decoded darkness and 60 frames, profile, exact geometry and PNG indices",
-      "visual_status": "HOLD: caption-inclusive independent encode exceeded 2%; supersede with corrected source"
+      "independent_checks": "SHA256, decoded 60 frames at 540x960 24fps, raw indices, exact geometry, caption-inclusive isolated CRF16 encode 0.4592978395061728% max darkness",
+      "visual_status": "Sampled captioned frames inspected; coat shading flatter, cane visible; continuous master review pending."
     },
     {
       "shot": 45,
