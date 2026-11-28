@@ -1,0 +1,46 @@
+name: Saying Hi — independent committed master verification
+on:
+  push:
+    branches: ['production/saying-hi']
+    paths: ['.github/workflows/saying-hi-round5-verify.yml']
+permissions:
+  contents: read
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    steps:
+      - name: Fresh checkout of immutable publication commit
+        uses: actions/checkout@v4
+        with:
+          ref: 76f33c964b59f3421085f8d768f4711c05b0a341
+          persist-credentials: false
+      - name: Verify downloaded Git object and independent SHA-256
+        run: |
+          set -euo pipefail
+          test "$(git rev-parse HEAD)" = "76f33c964b59f3421085f8d768f4711c05b0a341"
+          test "$(git hash-object 'assets/saying_hi_review/round5/saying_hi.mp4')" = "75c869da77a10da52e4e2f79614cc827e7ef8564"
+          test "$(stat -c %s 'assets/saying_hi_review/round5/saying_hi.mp4')" = "8979317"
+          printf '%s  %s\n' 'b4e24648745bb6527687ac0de79096345393e34a979a871ba47fcfb0eb849585' 'assets/saying_hi_review/round5/saying_hi.mp4' | sha256sum -c -
+          sha256sum 'assets/saying_hi_review/round5/saying_hi.mp4'
+          git rev-parse HEAD
+          stat -c %s 'assets/saying_hi_review/round5/saying_hi.mp4'
+      - name: Independently count decoded frames and validate media
+        run: |
+          set -euo pipefail
+          command -v ffprobe || (sudo apt-get update -qq && sudo apt-get install -y ffmpeg)
+          ffprobe -v error -count_frames -show_streams -show_format -of json 'assets/saying_hi_review/round5/saying_hi.mp4' > /tmp/independent_probe.json
+          python3 - <<'PY'
+          import json
+          d=json.load(open('/tmp/independent_probe.json'))
+          v=next(s for s in d['streams'] if s['codec_type']=='video')
+          a=next(s for s in d['streams'] if s['codec_type']=='audio')
+          assert (v['width'],v['height'],v['avg_frame_rate'],int(v['nb_read_frames']),float(v['duration'])) == (540,960,'30/1',3036,101.2),v
+          assert float(a['duration']) == 101.2,a
+          print(json.dumps(dict(width=v['width'],height=v['height'],fps=v['avg_frame_rate'],decoded_frames=v['nb_read_frames'],video_duration=v['duration'],audio_duration=a['duration'],size=d['format']['size']),indent=2))
+          PY
+          ffmpeg -v error -xerror -i 'assets/saying_hi_review/round5/saying_hi.mp4' -f null -
+      - uses: actions/upload-artifact@v4
+        with:
+          name: independent-master-probe
+          path: /tmp/independent_probe.json
