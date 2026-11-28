@@ -131,7 +131,7 @@ def main():
             face=vis(scene,cam,[actor.face],7)
             external=vis(scene,cam,[actor.face],7,meshes(actor.root))
             quality[cid]={"bounds":list(b),"safe":safe(b),"vertical_coverage":b[3]-b[2],"face_all":face,"face_external":external,"own_ray_difference":max(0,face["blocked"]-external["blocked"])}
-        row={"frame":gf,"shot":shot["id"],"actor_qc":quality,"geometry":m,**({"direction":direction_sample(scene,cam,d.actors,spec["direction"],grade)} if spec.get("direction") else {})}
+        row={"frame":gf,"shot":shot["id"],"actor_qc":quality,"geometry":m,**({"direction":direction_sample(scene,cam,d.actors,spec["direction"],grade,vis,meshes)} if spec.get("direction") else {})}
         rows.append(row)
         if not a.preflight or gf in (first,(first+end)//2,end-1):
             path=out/f"frame_{gf:05d}.png";scene.render.filepath=str(path)
