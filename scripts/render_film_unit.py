@@ -100,6 +100,35 @@ def main():
         dog[0].location=pet["position"];dog[0].rotation_euler.z=math.radians(pet["yaw_deg"])
     rows=[];rendered=[];first=task["start"];end=task["end"];unit_start=task["unit_start"];unit_end=task["unit_end"]
     camera_state={};previous_shot=None
+    camera_search=None
+    if spec.get("direction",{}).get("camera_candidates"):
+        if not a.preflight or spec.get("walk") or action_tracks:raise ValueError("camera candidate search is preflight-only on stateless pose adapters")
+        from film_direction import face_facing
+        raw=spec["direction"];candidates=raw["camera_candidates"]
+        trials=[{"override":v,"spec":{**raw,**v},"state":{},"min_visibility":1.,"min_face_height":1.,"min_facing":1.,"max_external_blocks":0,"safe":True,"min_pencil_visibility":1.,"samples":0,"blockers":set()} for v in candidates]
+        for gf in range(first,end):
+            shot=next(s for s in plan["shots"] if round(s["edit_in"]*30)<=gf<round(s["edit_out"]*30))
+            n=int(shot["sentence_ids"][0]);u=(gf-round(shot["edit_in"]*30))/max(1,round(shot["edit_out"]*30)-round(shot["edit_in"]*30)-1);t=(gf-unit_start)/30
+            scene.frame_set(gf+1);d.update(n,u,t,gf-unit_start,gf/30>=shot["audio_out"])
+            performance(d.actors,raw,u,t)
+            hero=d.actors[raw["principal"]]
+            for q in trials:
+                direct_camera(scene,cam,d.actors,q["spec"],u,frame,q["state"])
+                v=vis(scene,cam,[hero.face],7);ex=vis(scene,cam,[hero.face],7,meshes(hero.root))
+                b=v["bounds"];q["safe"]&=bool(b[4]>0 and .025<=b[0]<=b[1]<=.975 and .025<=b[2]<=b[3]<=.975)
+                q["min_visibility"]=min(q["min_visibility"],v["visible_fraction"]);q["min_face_height"]=min(q["min_face_height"],b[3]-b[2]);q["min_facing"]=min(q["min_facing"],face_facing(hero,cam))
+                q["max_external_blocks"]=max(q["max_external_blocks"],ex["blocked"]);q["samples"]+=1;q["blockers"].update(v["blockers"])
+                if raw.get("camera_search_prop"):
+                    ob=bpy.data.objects.get(raw["camera_search_prop"])
+                    if ob is None:raise ValueError("camera search prop missing")
+                    pv=vis(scene,cam,meshes(ob),5,meshes(hero.root))
+                    q["min_pencil_visibility"]=min(q["min_pencil_visibility"],pv["visible_fraction"] if pv["safe"] else 0.)
+        def rank(q):
+            return (not(q["safe"] and q["min_visibility"]>=.85 and q["min_face_height"]>=.40 and q["min_facing"]>=.65 and q["max_external_blocks"]==0),q["max_external_blocks"],max(0,.85-q["min_visibility"]),not q["safe"],max(0,.40-q["min_face_height"]),-q["min_pencil_visibility"],-q["min_visibility"])
+        best=min(trials,key=rank)
+        camera_search={"selected":best["override"],"candidates":[{k:(sorted(v) if k=="blockers" else v) for k,v in q.items() if k not in ("state","spec")} for q in trials]}
+        spec["direction"]={**raw,**best["override"]};spec["direction"].pop("camera_candidates")
+        print("CAMERA_SEARCH",json.dumps(camera_search),flush=True)
     for gf in range(unit_start,end):
         shot=next(s for s in plan["shots"] if round(s["edit_in"]*30)<=gf<round(s["edit_out"]*30))
         n=int(shot["sentence_ids"][0]);u=(gf-round(shot["edit_in"]*30))/max(1,round(shot["edit_out"]*30)-round(shot["edit_in"]*30)-1);t=(gf-unit_start)/30
@@ -164,6 +193,7 @@ def main():
     assert len(rows)==end-first
     if not a.preflight:assert len(rendered)==end-first
     extra={}
+    if camera_search:extra["camera_search"]=camera_search
     if action_tracks:extra["declared_walks"]=action_tracks.report()
     if spec.get("walk") and end==unit_end:
         report=d.lock.report();extra["walk"]={**d.stride_candidate,"metrics":{k:v for k,v in report.items() if k!="records"},"root_stop_error_to_plant":(d.lock.pos-d.end).length,"final_contact_error":(Vector(d.lock.records[-1]["contact_world"])-d.end).length,"complete_unit":end==unit_end}
