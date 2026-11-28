@@ -1,0 +1,56 @@
+{
+  "status": "reviewed_actual_round4_release_hold",
+  "preflight_run_id": 46103945256,
+  "units": {
+    "chart_initial": {
+      "path": "assets/saying_hi_review/preflight/round4/chart_initial",
+      "disposition": "candidate",
+      "reason": "10-arrow layout readable; grip not contact-approved"
+    },
+    "crossing": {
+      "path": "assets/saying_hi_review/preflight/round4/crossing",
+      "disposition": "hold",
+      "reason": "locked stride fails and actor too small for foot-contact judge"
+    },
+    "otis_eyes": {
+      "path": "assets/saying_hi_review/preflight/round4/otis_eyes",
+      "disposition": "hold",
+      "reason": "head-arm intersections persist at eye-cover contact"
+    },
+    "june_question": {
+      "path": "assets/saying_hi_review/preflight/round4/june_question",
+      "disposition": "hold",
+      "reason": "face readable but foreground shoulder hides pencil"
+    },
+    "june_answer": {
+      "path": "assets/saying_hi_review/preflight/round4/june_answer",
+      "disposition": "hold",
+      "reason": "speaker visible but standing stool intersects legs"
+    },
+    "dog_name": {
+      "path": "assets/saying_hi_review/preflight/round4/dog_name",
+      "disposition": "hold",
+      "reason": "dog visible after name but stool obscures part"
+    },
+    "seating": {
+      "path": "assets/saying_hi_review/preflight/round4/seating",
+      "disposition": "hold",
+      "reason": "Waffle head partly occluded, June sliding"
+    },
+    "empty_wall": {
+      "path": "assets/saying_hi_review/preflight/round4/empty_wall",
+      "disposition": "candidate",
+      "reason": "empty wall readable"
+    },
+    "chart_final": {
+      "path": "assets/saying_hi_review/preflight/round4/chart_final",
+      "disposition": "candidate",
+      "reason": "20-arrow layout readable; grip not contact-approved"
+    },
+    "closing": {
+      "path": "assets/saying_hi_review/preflight/round4/closing",
+      "disposition": "hold",
+      "reason": "Waffle partly obscured by existing stool"
+    }
+  }
+}
