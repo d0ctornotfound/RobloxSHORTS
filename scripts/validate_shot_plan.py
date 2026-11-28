@@ -85,6 +85,17 @@ def validate(p,root=Path("."),draft=False):
         require({"from":"june","to":"kai"} in links and {"from":"narrator","to":"june"} in chart["replacement_links"],"missing critical chart links")
         require(chart["author"]=="otis","chart must belong to Otis")
         require(all(x["from"] in actors and x["to"] in actors for x in chart["replacement_links"]),"bad replacement links")
+    if "round4_readability" in p:
+        q=p["round4_readability"];s=q["seating"];x=q["crossing"]
+        require(s["seat_kind"] in ("raised_bench","fountain_rim") and bool(s["seat_name"]) and bool(s["location"]),"named raised seat required")
+        require(s["visible_horizontal_surface"] is True and s["visible_ground_support"] is True and s["hips_over_surface"] is True,"physical seat readability required")
+        require(set(s["settled_actor_ids"])=={"june","narrator"} and s["face_occlusion_max"]==0 and s["minimum_facing_dot"]>=.5,"settled facing gate weakened")
+        require(s["hip_gap_max"]<=.015 and s["lens_mm"][0]>=35 and s["lens_mm"][1]<=50 and s["lens_mm"][0]<=s["lens_mm"][1],"seating support/lens gate weakened")
+        require(s["dog_min_width_fraction"]>=.12 and s["dog_min_height_fraction"]>=.055 and s["planted_foot_drift_max"]==0 and s["move_over_min"]>=.2 and s["lateral_hip_drift_max"]<=.005,"seating continuity gate weakened")
+        require(x["final_plant"] is True and x["settle_frames"]==0 and bool(x["stride_source"]) and bool(x["destination_rule"]),"planted stride required")
+        cameras=x["locked_cameras"];require(len(cameras)==2 and all(c["locked"] is True for c in cameras),"two locked crossing cameras required as declared alternatives")
+        require(set(cameras[0]["landmarks"])=={"tally wall","Piazza fountain"} and cameras[1]["minimum_narrator_height_fraction"]>=.25 and cameras[1]["blocked_support_rays"]==0 and x["split_camera_release_requires_both_native_clips"] is True,"crossing alternative camera gate weakened")
+        require(all(shots[i-1].get("readability_gate")=="crossing" for i in (20,21)) and shots[42].get("readability_gate")=="seating","shot readability references missing")
     return {"mode":"draft_only" if draft else "actual_audio","sentences":len(rows),"shots":len(shots),"words":len(" ".join(actual).split()),"audio_duration":None if draft else duration}
 
 def main():
