@@ -50,7 +50,7 @@
         0
       ],
       "yaw_deg": 90,
-      "seat_height": 0.62
+      "seat_height": 0.46482768654823303
     },
     "narrator_seat": {
       "xyz": [
@@ -59,7 +59,7 @@
         0
       ],
       "yaw_deg": 90,
-      "seat_height": 0.62
+      "seat_height": 0.4648272395133972
     },
     "waffle": {
       "xyz": [
@@ -71,39 +71,39 @@
     },
     "wall_narrator": {
       "xyz": [
-        -3.5999999999999996,
+        0,
         8,
         0
       ],
       "yaw_deg": 0,
-      "seat_height": 0.62
+      "seat_height": 0.4648272395133972
     },
     "wall_otis": {
-      "xyz": [
-        -2.4,
-        8,
-        0
-      ],
-      "yaw_deg": 0,
-      "seat_height": 0.62
-    },
-    "wall_leo": {
       "xyz": [
         -1.2,
         8,
         0
       ],
       "yaw_deg": 0,
-      "seat_height": 0.62
+      "seat_height": 0.4648272395133972
     },
-    "wall_max": {
+    "wall_leo": {
       "xyz": [
-        0,
+        -3.5999999999999996,
         8,
         0
       ],
       "yaw_deg": 0,
-      "seat_height": 0.62
+      "seat_height": 0.4648272395133972
+    },
+    "wall_max": {
+      "xyz": [
+        -2.4,
+        8,
+        0
+      ],
+      "yaw_deg": 0,
+      "seat_height": 0.4648272395133972
     },
     "wall_noah": {
       "xyz": [
@@ -112,7 +112,7 @@
         0
       ],
       "yaw_deg": 0,
-      "seat_height": 0.62
+      "seat_height": 0.4648272395133972
     },
     "wall_ryan": {
       "xyz": [
@@ -121,7 +121,7 @@
         0
       ],
       "yaw_deg": 0,
-      "seat_height": 0.62
+      "seat_height": 0.4648272395133972
     },
     "wall_sam": {
       "xyz": [
@@ -130,7 +130,7 @@
         0
       ],
       "yaw_deg": 0,
-      "seat_height": 0.62
+      "seat_height": 0.4648272395133972
     },
     "well_ava": {
       "xyz": [
@@ -139,7 +139,7 @@
         0
       ],
       "yaw_deg": 25,
-      "seat_height": 0.62,
+      "seat_height": 0.46482762694358826,
       "eyeline": "well"
     },
     "well_bella": {
@@ -149,7 +149,7 @@
         0
       ],
       "yaw_deg": 50.833,
-      "seat_height": 0.62,
+      "seat_height": 0.4555308222770691,
       "eyeline": "well"
     },
     "well_cleo": {
@@ -159,7 +159,7 @@
         0
       ],
       "yaw_deg": 76.667,
-      "seat_height": 0.62,
+      "seat_height": 0.46482768654823303,
       "eyeline": "well"
     },
     "well_daisy": {
@@ -169,7 +169,7 @@
         0
       ],
       "yaw_deg": 102.5,
-      "seat_height": 0.62,
+      "seat_height": 0.47412365674972534,
       "eyeline": "well"
     },
     "well_ella": {
@@ -179,7 +179,7 @@
         0
       ],
       "yaw_deg": 128.333,
-      "seat_height": 0.62,
+      "seat_height": 0.4648272693157196,
       "eyeline": "well"
     },
     "well_faye": {
@@ -189,7 +189,7 @@
         0
       ],
       "yaw_deg": 154.167,
-      "seat_height": 0.62,
+      "seat_height": 0.46017929911613464,
       "eyeline": "well"
     },
     "well_gia": {
@@ -199,7 +199,7 @@
         0
       ],
       "yaw_deg": 180,
-      "seat_height": 0.62,
+      "seat_height": 0.46482720971107483,
       "eyeline": "well"
     },
     "well_hana": {
@@ -209,7 +209,7 @@
         0
       ],
       "yaw_deg": 205.833,
-      "seat_height": 0.62,
+      "seat_height": 0.4694758355617523,
       "eyeline": "well"
     },
     "well_ivy": {
@@ -219,7 +219,7 @@
         0
       ],
       "yaw_deg": 231.667,
-      "seat_height": 0.62,
+      "seat_height": 0.45553073287010193,
       "eyeline": "well"
     },
     "well_june": {
@@ -229,7 +229,7 @@
         0
       ],
       "yaw_deg": 257.5,
-      "seat_height": 0.62,
+      "seat_height": 0.46482768654823303,
       "eyeline": "well"
     },
     "well_brody": {
@@ -239,7 +239,7 @@
         0
       ],
       "yaw_deg": 283.333,
-      "seat_height": 0.62,
+      "seat_height": 0.39045512676239014,
       "eyeline": "well"
     },
     "well_chase": {
@@ -249,7 +249,7 @@
         0
       ],
       "yaw_deg": 309.167,
-      "seat_height": 0.62,
+      "seat_height": 0.4741237163543701,
       "eyeline": "well"
     },
     "well_kai": {
@@ -259,7 +259,7 @@
         0
       ],
       "yaw_deg": 335,
-      "seat_height": 0.62,
+      "seat_height": 0.4648267924785614,
       "eyeline": "well"
     },
     "interview_ava": {
@@ -676,5 +676,5 @@
     "title_initial": "Otis's theory",
     "title_final": "Otis's new chart"
   },
-  "geography_note": "Open north approach sector; north wall at y=8, well at origin. Proposed seats and marks require evaluated geometry, collision, eyeline, and stride checks. Fixed master camera on depth axis."
+  "geography_note": "Round 3 correction: recentered native source fountain (2.85 scene units diameter) as the only central water feature, existing source cobbles, north wall, north approach corridor. Fixture heights measured in round 2 static sit pose; verify actual footprint and occlusions on corrected smoke. Narrator at central wall mark beside Otis."
 }
