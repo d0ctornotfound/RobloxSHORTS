@@ -163,24 +163,34 @@ class SceneUnit:
         movement=nframes-self.pickup_frames
         if movement<12:raise ValueError("Crossing window too short")
         self.move_frames=movement;target=(self.end-self.start).length;ret=Retarget(self.a);duration=ret.clips["walk_cycle"]["duration"]
+        # Search the immutable playback in evaluated sole space, including the
+        # settle transition. The endpoint must be reached without translating
+        # the root after the fact. A final support sole is measured separately.
         candidates=[]
-        def evaluate(rate,phase):
+        def evaluate(rate,phase,settle_frames):
             lock=StrideLock(ret,"walk_cycle",FPS,rate,self.start,self.yaw);offset=phase*duration/rate
-            for i in range(movement):lock.step(offset+i/FPS,settle=ease((i-(movement-10))/9))
+            for i in range(movement):lock.step(offset+i/FPS,settle=ease((i-(movement-settle_frames))/(settle_frames-1)))
             report=lock.report();delta=lock.pos-self.end;stop=math.hypot(delta.x,delta.y)
-            # Locked pass is lexicographically mandatory, not a soft penalty.
-            row={"rate":rate,"phase":phase,"offset_seconds":offset,"stop_error_xy":stop,"pass":report["pass"],"backward_frames":report["backward_frames"],"stance_velocity_rms":report["stance_velocity_rms"],"max_contact_gap":report["max_contact_gap"],"max_floor_error":report["max_floor_error"]}
+            final=V(lock.records[-1]["contact_world"]);sole_error=(final-self.end).length
+            backward_all=sum(x["forward_speed"]<-.01 for x in lock.records[1:])
+            stance=[x["velocity"] for x in lock.records if x["continuing"]]
+            rms_all=math.sqrt(sum(x*x for x in stance)/len(stance))
+            passed=report["pass"] and report["stance_velocity_rms"]<=.03 and backward_all==0 and rms_all<=.03 and stop<=.05 and sole_error<=.05
+            row={"rate":rate,"phase":phase,"settle_frames":settle_frames,"offset_seconds":offset,"stop_error_xy":stop,"planted_sole_error":sole_error,"pass":passed,"locked_pass":report["pass"],"backward_frames":report["backward_frames"],"backward_all":backward_all,"stance_velocity_rms":report["stance_velocity_rms"],"stance_rms_all":rms_all,"max_contact_gap":report["max_contact_gap"],"max_floor_error":report["max_floor_error"],"end_root":list(lock.pos),"end_support":list(final)}
             candidates.append(row);print("CROSSING_SEARCH",json.dumps(row),flush=True)
             return row
-        rank=lambda q:(not q["pass"],q["backward_frames"],q["stop_error_xy"],q["stance_velocity_rms"])
-        for phase in (0,.125,.25,.375,.5,.625,.75,.875):evaluate(.20,phase)
+        # A centreline root mark and a single off-centre R6 sole may be
+        # geometrically incompatible. Record both; never hide either.
+        rank=lambda q:(not q["pass"],not q["locked_pass"],q["backward_all"],max(0,q["stance_rms_all"]-.03),q["stop_error_xy"]+q["planted_sole_error"])
+        for phase in (0,.125,.25,.375,.5,.625,.75,.875):
+            for rate in (.18,.20,.22):evaluate(rate,phase,10)
         best=min(candidates,key=rank)
-        for rate in (.17,.185,.195,.205,.215,.23,.245):evaluate(rate,best["phase"])
-        best=min(candidates,key=rank)
-        for rate in (max(.10,best["rate"]-.004),best["rate"]+.004):evaluate(rate,best["phase"])
+        for phase in ((best["phase"]-.04)%1,best["phase"],(best["phase"]+.04)%1):
+            for rate in (best["rate"]-.008,best["rate"],best["rate"]+.008):
+                for sf in (5,16):evaluate(rate,phase,sf)
         best=min(candidates,key=rank)
         self.stride_candidate=best;self.stride_search=candidates
-        self.stride_offset=best["offset_seconds"]
+        self.stride_offset=best["offset_seconds"];self.settle_frames=best["settle_frames"]
         self.lock=StrideLock(ret,"walk_cycle",FPS,best["rate"],self.start,self.yaw)
         for cid in self.stage["layouts"]["initial"]["wall"]+self.stage["layouts"]["initial"]["well"]:
             if cid!="narrator":self.seat(cid)
@@ -190,9 +200,9 @@ class SceneUnit:
         for p in (self.start,self.end):
             pts.extend(p+V((x,y,z)) for x in (-.85,.85) for y in (-.4,.4) for z in (0,2.6))
         lo,hi=bounds(pts);aim=(lo+hi)/2;choices=[]
-        for x in (-10.,-7.,7.,10.):
-            for y in (-10.,-7.,-4.):
-                for z in (6.,9.,12.):
+        for x in (-9.,-6.,6.,9.):
+            for y in (-7.,-4.,4.,7.):
+                for z in (2.2,3.5,5.):
                     loc=aim+V((x,y,z))
                     frame(self.scene,self.cam,loc,aim,35,ortho=12.)
                     p=project(self.scene,self.cam,pts)
@@ -218,7 +228,7 @@ class SceneUnit:
                 aim_world(a,i,a.grips[i].matrix_world.translation.lerp(target,w))
             if index<self.pickup_frames-2:return {"phase":"pickup reach","right_target_error":(a.grips[0].matrix_world.translation-self.pencil_rest).length,"left_target_error":(a.grips[1].matrix_world.translation-self.chart_rest).length}
         else:
-            k=index-self.pickup_frames;row=self.lock.step(self.stride_offset+k/FPS,settle=ease((k-(self.move_frames-10))/9));a.pose("worried" if k<self.move_frames*.75 else "neutral")
+            k=index-self.pickup_frames;row=self.lock.step(self.stride_offset+k/FPS,settle=ease((k-(self.move_frames-self.settle_frames))/(self.settle_frames-1)));a.pose("worried" if k<self.move_frames*.75 else "neutral")
         # Keep original lower body stride; only replace upper arm directions to carry.
         a.aim_arm(0,(.18,-.64,-.79));a.aim_arm(1,(-.20,-.40,-.92));bpy.context.view_layer.update()
         attachment=carry_two(self.chart,self.pencil,a.grips[1],a.grips[0])
@@ -383,7 +393,7 @@ class SceneUnit:
 
 def main():
     ap=argparse.ArgumentParser();g=ap.add_mutually_exclusive_group(required=True);g.add_argument("--unit",choices=sorted(UNITS));g.add_argument("--shot",type=int)
-    ap.add_argument("--variant");ap.add_argument("--frame-window",nargs=2,type=int);ap.add_argument("--mode",choices=["smoke","motion","still"],required=True);ap.add_argument("--map",required=True);ap.add_argument("--lineup",required=True);ap.add_argument("--output",required=True);a=ap.parse_args(sys.argv[sys.argv.index("--")+1:])
+    ap.add_argument("--variant");ap.add_argument("--frame-window",nargs=2,type=int);ap.add_argument("--mode",choices=["geometry","smoke","motion","still"],required=True);ap.add_argument("--map",required=True);ap.add_argument("--lineup",required=True);ap.add_argument("--output",required=True);a=ap.parse_args(sys.argv[sys.argv.index("--")+1:])
     out=Path(a.output).resolve();out.mkdir(parents=True,exist_ok=True)
     c,stage=load();plan=json.loads((ROOT/"stories/saying_hi_plan.json").read_text());assert plan["status"]=="retimed_actual_audio"
     ids=UNITS[a.unit] if a.unit else [a.shot];unit=a.unit or next((k for k,v in UNITS.items() if a.shot in v),f"still_{a.shot:02d}")
@@ -401,8 +411,8 @@ def main():
     render_start,render_end=(a.frame_window if a.frame_window else (start,end))
     if not (start<=render_start<render_end<=end):raise ValueError("Frame window outside proof unit")
     if a.frame_window and a.mode!="motion":raise ValueError("Chunk window only supported in motion mode")
-    selected=set(range(render_start,render_end)) if a.mode=="motion" else {start+max(0,(count-1)//2)}
-    if unit in ("dog_name","chart_initial","chart_final") and a.mode!="motion":selected={end-1}
+    selected=set() if a.mode=="geometry" else set(range(render_start,render_end)) if a.mode=="motion" else {start+max(0,(count-1)//2)}
+    if unit in ("dog_name","chart_initial","chart_final") and a.mode not in ("motion","geometry"):selected={end-1}
     rec=[];rendered=[]
     for gf in range(sim_start,sim_end):
         if gf>=render_end:break
@@ -422,6 +432,7 @@ def main():
         if a.frame_window:raise ValueError("Crossing chunking requires a full unit manifest")
         report["stride"]=driver.lock.report();report["target_stop_error"]=(driver.lock.pos-driver.end).length
         report["calibration_candidate"]=driver.stride_candidate;report["stride_search"]=driver.stride_search;report["cross_camera"]=driver.cross_camera
+        report["geometry_pass"]=driver.stride_candidate["pass"] and report["stride"]["pass"] and report["target_stop_error"]<=.05
     (out/"manifest.json").write_text(json.dumps(report,indent=2)+"\n")
     assert len(rendered)==len(selected)
     if a.mode!="motion" and rendered:
