@@ -110,11 +110,16 @@ class Round4Unit(Round3Unit):
         self.inherited_face_failures=old_face_diagnostics(self.unit)
         print("INHERITED_FACE_FAILURES",json.dumps(self.inherited_face_failures),flush=True)
         old=json.loads((diag_path(self.unit).parent/"gate.json").read_text())["camera"]
+        cached=self.reviewed_camera
         self.reviewed_camera=old
         CorrectedUnit.setup_june(self)
         a=self.actors["narrator"];b=self.actors["june"];hero=a if self.unit=="june_question" else b
         original_yaw=self.nyaw if hero==a else self.jyaw
         if hero==a:self.nyaw=original_yaw+math.radians(20)
+        if cached and "mark_yaw_deg" in cached:
+            if hero==a:self.nyaw=math.radians(cached["mark_yaw_deg"])
+            else:self.jyaw=math.radians(cached["mark_yaw_deg"])
+            frame(self.scene,self.cam,cached["location"],cached["target"],cached["lens"]);self.reverse_camera=cached;return
         base=V(old["location"]);target=V(old["target"]);candidates=[]
         n=32 if hero==a else 34
         # Small same-axis changes first; slightly wider safe framing is
@@ -157,6 +162,9 @@ class Round4Unit(Round3Unit):
         trim=material("Round4 stone bench support",(.47,.39,.28))
         self.seat_supports=[cube("Round4 fountain bench support "+str(i),(self.bench.location.x,y,(self.bench_top-.14)/2),(.63,.28,self.bench_top-.14),trim,root,bevel=.015) for i,y in enumerate((-1.35,1.35))]
         bpy.context.view_layer.update()
+        if self.reviewed_camera:
+            q=self.reviewed_camera;self.dog[0].location=q["dog_mark"];frame(self.scene,self.cam,q["position"],q["target"],q["lens"]);self.payoff_camera=q
+            self.prev_feet={};self.prev_hip={};self.prev_phase={};return
         target=V((3.05,0,1.05));options=[]
         for x in (7,8,9,10):
             for y in (-1.5,-.75,0,.75,1.5):
