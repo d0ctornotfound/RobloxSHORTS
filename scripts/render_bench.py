@@ -495,7 +495,9 @@ def main():
             pts=mesh_points(d.a.head)+[v for ob in cap.children_recursive if ob.type=="MESH" for v in mesh_points(ob)]
             lo,hi=bounds(pts);target=(lo+hi)/2+V((0,0,-.05));dist=2.70;lens=46;angle=.24
         if n==47:
-            target=(bags[0].location+bags[1].location)/2+V((0,0,-.16));dist=2.65;lens=46;angle=.08
+            # Both actual prop meshes must remain inside the portrait margins as arms open.
+            pts=[v for bag in bags for ob in bag.children_recursive if ob.type=="MESH" for v in mesh_points(ob)]
+            lo,hi=bounds(pts);target=(lo+hi)/2;dist=3.25;lens=46;angle=.08
         if n in (45,48) and m:
             # Center exact hero bounds plus the transfer prop, then use a modestly wider lens.
             prop=cap if n==45 else bags[1]

@@ -1,6 +1,6 @@
 {
   "status": "partial_verified_not_release_ready",
-  "verified_shots": 17,
+  "verified_shots": 20,
   "shots": [
     {
       "shot": 3,
@@ -59,6 +59,20 @@
       "visual_status": "sampled production frames inspected; continuous playback pending"
     },
     {
+      "shot": 9,
+      "artifact_id": 15239964217,
+      "production_run": 46088390454,
+      "preflight_run": 46087343283,
+      "source_commit": "c88b009354b8be2a6c1386ca46c6679bd4c52714",
+      "frames": 60,
+      "duration": 2.5,
+      "encoded_max_near_black_percent": 0.5854552469135802,
+      "sha256": "9cb90bb25e73cfaa634660c83f82fc1a4990eb6777135d9e8aa7d1144c606d47",
+      "passed": true,
+      "independent_checks": "SHA-256, independent decoded darkness and frame count, PNG index and geometry",
+      "visual_status": "sampled production frames inspected; continuous playback pending"
+    },
+    {
       "shot": 10,
       "artifact_id": 15240108160,
       "production_run": 46088254315,
@@ -99,6 +113,20 @@
       "passed": true,
       "independent_checks": "SHA-256, decoded darkness and frame count, raw PNG indices, exact geometry",
       "visual_status": "HOLD: two bags overlap; supersede with separated bag retest before release"
+    },
+    {
+      "shot": 22,
+      "artifact_id": 15240324720,
+      "production_run": 46088390454,
+      "preflight_run": 46086807184,
+      "source_commit": "935e5c4055ac8fe02cd4b8f3f0f18c1e5bba0f2f",
+      "frames": 60,
+      "duration": 2.5,
+      "encoded_max_near_black_percent": 0.4701003086419753,
+      "sha256": "6316213353c07b62f9d0cc2a03fa93d98339c3605124dc747dc7d3a9cf9347a1",
+      "passed": true,
+      "independent_checks": "SHA-256, independent decoded darkness and frame count, PNG index and geometry",
+      "visual_status": "sampled production frames inspected; continuous playback pending"
     },
     {
       "shot": 23,
@@ -211,6 +239,20 @@
       "passed": true,
       "independent_checks": "SHA-256, decoded frame count, dimensions, raw frame sequence, geometry records",
       "visual_status": "first and last production frames inspected; final continuous playback pending"
+    },
+    {
+      "shot": 36,
+      "artifact_id": 15240408723,
+      "production_run": 46088390454,
+      "preflight_run": 46086807184,
+      "source_commit": "935e5c4055ac8fe02cd4b8f3f0f18c1e5bba0f2f",
+      "frames": 60,
+      "duration": 2.5,
+      "encoded_max_near_black_percent": 0,
+      "sha256": "a52d344bc5624f306e02a41c9f763aec824113955b685e6bc199a5fd70132e0b",
+      "passed": true,
+      "independent_checks": "SHA-256, independent decoded darkness and frame count, PNG index and geometry",
+      "visual_status": "sampled production frames inspected; continuous playback pending"
     },
     {
       "shot": 37,
