@@ -3,6 +3,8 @@ marks and timings come from the caller's story data, never this module."""
 import importlib, math
 import bpy
 from mathutils import Vector
+from r6_character import mesh_points
+from library_camera import project
 from film_world_diagram import build, evaluate
 from character_motion_correction import apply_corrected
 from facial_expressions import enable_blinking
@@ -53,6 +55,20 @@ class DiagramDriver:
         cam.rotation_euler=(Vector(camera["target"])-cam.location).to_track_quat("-Z","Y").to_euler()
         cam.data.type="ORTHO";cam.data.ortho_scale=camera["ortho_scale"];scene.camera=cam
         bpy.context.view_layer.update()
+        if camera.get("fit_all",True):
+            # Fit once using evaluated actual cast and ground graphics, not
+            # assumed portrait/landscape ortho-scale semantics.
+            pts=[p for a in self.actors.values() for o in a.root.children_recursive if o.type=="MESH" and not o.hide_render for p in mesh_points(o)]
+            for ob in self.diagram["root"].children_recursive:
+                if ob.type in ("CURVE","FONT","MESH"):
+                    pts.extend(ob.matrix_world@Vector(v) for v in ob.bound_box)
+            if not pts:raise ValueError("empty diagram framing")
+            b=project(scene,cam,pts)
+            ratio=max(abs(v-.5) for v in b[:4])/camera.get("fit_half_extent",.45)
+            cam.data.ortho_scale*=max(.1,ratio)
+            bpy.context.view_layer.update()
+            self.diagram_bounds=list(project(scene,cam,pts))
+        else:self.diagram_bounds=None
     def place(self,cid,xyz,yaw):
         if cid in self.actors:raise ValueError("duplicate actual cast actor "+cid)
         actor=self.factory(cid,self.cast["actors"][cid]);self.actors[cid]=actor
@@ -64,4 +80,8 @@ class DiagramDriver:
         report=evaluate(self.diagram,lerp_keys(self.reveal,phase))
         report["actual_cast_ids"]=list(self.actors)
         report["phase"]=phase
+        report["framing_bounds"]=self.diagram_bounds
+        report["expected_actor_count"]=sum(len(g["actors"]) for g in self.spec["formations"])
+        report["expected_link_count"]=len(self.spec["links"])
+        report["expected_reveal"]=lerp_keys(self.reveal,phase)
         return {"world_diagram":report}
