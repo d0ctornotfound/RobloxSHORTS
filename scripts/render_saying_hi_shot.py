@@ -383,7 +383,7 @@ class SceneUnit:
 
 def main():
     ap=argparse.ArgumentParser();g=ap.add_mutually_exclusive_group(required=True);g.add_argument("--unit",choices=sorted(UNITS));g.add_argument("--shot",type=int)
-    ap.add_argument("--variant");ap.add_argument("--mode",choices=["smoke","motion","still"],required=True);ap.add_argument("--map",required=True);ap.add_argument("--lineup",required=True);ap.add_argument("--output",required=True);a=ap.parse_args(sys.argv[sys.argv.index("--")+1:])
+    ap.add_argument("--variant");ap.add_argument("--frame-window",nargs=2,type=int);ap.add_argument("--mode",choices=["smoke","motion","still"],required=True);ap.add_argument("--map",required=True);ap.add_argument("--lineup",required=True);ap.add_argument("--output",required=True);a=ap.parse_args(sys.argv[sys.argv.index("--")+1:])
     out=Path(a.output).resolve();out.mkdir(parents=True,exist_ok=True)
     c,stage=load();plan=json.loads((ROOT/"stories/saying_hi_plan.json").read_text());assert plan["status"]=="retimed_actual_audio"
     ids=UNITS[a.unit] if a.unit else [a.shot];unit=a.unit or next((k for k,v in UNITS.items() if a.shot in v),f"still_{a.shot:02d}")
@@ -398,11 +398,14 @@ def main():
         driver.prepare_stride(whole_end-whole_start)
         sim_start=whole_start;sim_end=whole_end
     else:sim_start=start;sim_end=end
-    selected=set(range(start,end)) if a.mode=="motion" else {start+max(0,(count-1)//2)}
+    render_start,render_end=(a.frame_window if a.frame_window else (start,end))
+    if not (start<=render_start<render_end<=end):raise ValueError("Frame window outside proof unit")
+    if a.frame_window and a.mode!="motion":raise ValueError("Chunk window only supported in motion mode")
+    selected=set(range(render_start,render_end)) if a.mode=="motion" else {start+max(0,(count-1)//2)}
     if unit in ("dog_name","chart_initial","chart_final") and a.mode!="motion":selected={end-1}
     rec=[];rendered=[]
     for gf in range(sim_start,sim_end):
-        if gf>=end:break
+        if gf>=render_end:break
         shot=next((x for x in plan["shots"] if round(x["edit_in"]*FPS)<=gf<round(x["edit_out"]*FPS)),shots[-1])
         n=int(shot["sentence_ids"][0]);s0=round(shot["edit_in"]*FPS);s1=round(shot["edit_out"]*FPS)
         u=(gf-s0)/max(1,s1-s0-1);t=(gf-sim_start)/FPS
@@ -414,8 +417,9 @@ def main():
         pixels=np.asarray(Image.open(path).convert("RGB"));row={"frame":gf,"file":path.name,"render_seconds":time.monotonic()-clock,"near_black_percent":100*float(np.mean(np.max(pixels,axis=2)<=24))}
         rendered.append(row);(out/"partial.json").write_text(json.dumps({"metrics":rec,"rendered":rendered},indent=2))
         print("SAYING_HI_RENDER_DONE",json.dumps(row),flush=True)
-    report={"unit":unit,"sentence_ids":ids,"mode":a.mode,"variant":a.variant,"engine":"EEVEE","denoising":False,"eevee_spatial_samples":32,"rendered_temporal_samples_per_second":30 if a.mode=="motion" else None,"encoded_fps_target":30 if a.mode=="motion" else None,"actual_rendered_frames":len(rendered),"expected_rendered_frames":len(selected),"frame_window":[start,end],"scenery":driver.scenery,"metrics":rec,"rendered":rendered,"review":"candidate, visual and metric approval pending"}
+    report={"unit":unit,"sentence_ids":ids,"mode":a.mode,"variant":a.variant,"engine":"EEVEE","denoising":False,"eevee_spatial_samples":32,"rendered_temporal_samples_per_second":30 if a.mode=="motion" else None,"encoded_fps_target":30 if a.mode=="motion" else None,"actual_rendered_frames":len(rendered),"expected_rendered_frames":len(selected),"frame_window":[render_start,render_end],"unit_frame_window":[start,end],"scenery":driver.scenery,"metrics":rec,"rendered":rendered,"review":"candidate, visual and metric approval pending"}
     if unit=="crossing":
+        if a.frame_window:raise ValueError("Crossing chunking requires a full unit manifest")
         report["stride"]=driver.lock.report();report["target_stop_error"]=(driver.lock.pos-driver.end).length
         report["calibration_candidate"]=driver.stride_candidate;report["stride_search"]=driver.stride_search;report["cross_camera"]=driver.cross_camera
     (out/"manifest.json").write_text(json.dumps(report,indent=2)+"\n")
