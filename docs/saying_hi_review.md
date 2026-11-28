@@ -412,3 +412,15 @@ Source run [46135821796](https://github.com/d0ctornotfound/RobloxSHORTS/actions/
 
 ## Round 6 direction pilot run 46135821796
 Pilot numerical pass: False. Actual visual/playback inspection still mandatory; full-film pass not authorized. Evidence: assets/saying_hi_review/round6/pilot/pilot_qc.json
+
+
+## Round 6 first pilot — terminal workflow success, direction rejected
+Run [46135821796](https://github.com/d0ctornotfound/RobloxSHORTS/actions/runs/46135821796), source 370692f55f6db1a542ae4556a47e048824cd16c2, publication 5b20d80cc8d30814057c07e29be39fdcf926215b. All 14 chunks and publication succeeded; 271 native frames in three actual clips. Reviewed actual committed middle frames, not artifacts. Warm grade visibly improves costume saturation and sunlight versus Round 5 but composition fails. No full release.
+| Shot | Before Round 5 scale/flow | After pilot scale/flow | Max hold (all actors) | External face blocks | Visual result |
+|---|---|---|---:|---:|---|
+| 20 | Wide/action; actor skeletal flow unmeasured | Tracking action; narrator 100%; spectators 0% | 3.533s | 9 | Foreground spectators and buildings compete; no clear geography. |
+| 21 | Low/wide; actor skeletal flow unmeasured | Tracking action; narrator 100%; spectators 0% | 1.700s | 11 | Foreground spectator fills frame and obscures narrator. |
+| 27 | Medium; backs/occlusion; skeletal flow unmeasured | Two-shot declared; Kai and Cleo 100%; min projected face heights 20.57%,20.93% | .033s | 2 each | Arms and lamp obscure faces; projection alone was a false positive. |
+| 32 | Low full-body shot; skeletal flow unmeasured | Emotion; narrator 100%, June 64.86%; min face height 32.45% <40% | .300s | 6 | Lamp and own sleeve obscure narrator; wrong angle and scale. |
+Committed pilot clips and SHA-256: crossing 157 frames daa0e961eaaa249670ba4da777b8b2898b44ec8ad2f187649ab7477a799d9573; interview 76 frames 710610f3ffbc87e9452110a9cf1c25c9ce396aa9cdea5737be0629a350ec5574; hesitation 38 frames fc63522c15a49b7ef38f1c34b630112ce44bcade09062448676f323a5cc0589a. All under assets/saying_hi_review/round6/pilot/. Full pilot independent decode/checksum still subject to audit job in retry run.
+Retry 1 source: ef468c8499e92379b244e3955bca078a26fe98b8; [run 46137451333](https://github.com/d0ctornotfound/RobloxSHORTS/actions/runs/46137451333). New stable-lens camera, actual face-plane normal and final-camera ray visibility gates (facing dot >=.65, visibility >=.85, external blocks zero, at least 9 rays; interview face height >=12% as additional readability proxy). Original 80% motion, 0.5s hold and 40% emotional face height unchanged. Motion signature now additionally samples actual face decal corners to avoid missing visible head movement, with same .0015 scene-unit threshold; report v1 vs v2 metric change explicitly. Reblock interview in clear north corridor, wave out to side; relocate June exchange into open corridor; shot20 natural faster walk and shot21 reverse wall reaction. All-frame geometry plus three native smoke frames per shot before retry full native render. These are candidate corrections, not certified pilot or film. No locked chapters altered.
