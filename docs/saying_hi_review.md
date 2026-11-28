@@ -451,3 +451,6 @@ Full staging draft stories/saying_hi_round6_full_stage_draft.json (fc18d0d5fd9e0
 
 ## Direction preflight pilot_retry4_preflight run 46139498600
 Geometry/flow preflight numerical pass: False. Three native still samples per shot, not full clips; visual review and native pilot still mandatory. Evidence: assets/saying_hi_review/round6/pilot_retry4_preflight/preflight_qc.json
+
+## Direction preflight grade_preflight run 46139567500
+Geometry/flow preflight numerical pass: True. Three native still samples per shot, not full clips; visual review and native pilot still mandatory. Evidence: assets/saying_hi_review/round6/grade_preflight/preflight_qc.json
