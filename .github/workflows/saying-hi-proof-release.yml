@@ -25,10 +25,10 @@ jobs:
           from pathlib import Path
           marker=json.loads(Path('production/saying_hi_proof_release.json').read_text())
           assert marker['authorized_tier']=='motion_proof_and_animatic_only'
-          assert marker['preflight_run_id']==46102453329
+          assert marker['preflight_run_id']==46103541527
           assert marker['actual_frame_reviewed'] is True
           assert marker['source_sha256']==hashlib.sha256(Path('scripts/render_saying_hi_shot.py').read_bytes()).hexdigest()
-          root=Path('assets/saying_hi_review/preflight')
+          root=Path('assets/saying_hi_review/preflight/round3')
           units=json.loads(Path('stories/saying_hi_plan.json').read_text())['proof_units']
           for unit in units:
               p=root/unit
@@ -67,7 +67,7 @@ jobs:
         run: |
           set -o pipefail
           mkdir -p "review/${{ matrix.unit }}"
-          timeout --kill-after=20s 43m blender -b --python-exit-code 1 --python scripts/render_saying_hi_shot.py -- --unit "${{ matrix.unit }}" --mode motion --map /tmp/saying_hi_map/Itlay.gltf --lineup assets/saying_hi_review/smoke/round2/lineup --output "review/${{ matrix.unit }}" 2>&1 | tee "review/${{ matrix.unit }}/render.log"
+          timeout --kill-after=20s 43m blender -b --python-exit-code 1 --python scripts/render_saying_hi_shot.py -- --unit "${{ matrix.unit }}" --mode motion --map /tmp/saying_hi_map/Itlay.gltf --lineup assets/saying_hi_review/smoke/round3/lineup --output "review/${{ matrix.unit }}" 2>&1 | tee "review/${{ matrix.unit }}/render.log"
           python3 scripts/encode_saying_hi_proof.py "review/${{ matrix.unit }}"
       - name: Preserve representative real source frames (including partial output)
         if: always()
@@ -120,7 +120,7 @@ jobs:
           test "$(git hash-object /tmp/saying_hi_map/Itlay.gltf)" = '20108af3a19fae6b5beaa5fac2e3305b56112a41'
       - name: Render held poses in independent bounded Blender processes
         run: |
-          python3 scripts/render_saying_hi_animatic_stills.py --group "${{ matrix.group }}" --groups 8 --map /tmp/saying_hi_map/Itlay.gltf --lineup assets/saying_hi_review/smoke/round2/lineup --output "review/stills"
+          python3 scripts/render_saying_hi_animatic_stills.py --group "${{ matrix.group }}" --groups 8 --map /tmp/saying_hi_map/Itlay.gltf --lineup assets/saying_hi_review/smoke/round3/lineup --output "review/stills"
       - uses: actions/upload-artifact@v4
         if: always()
         with:
