@@ -1,0 +1,15 @@
+name: Round 6 complete corrected native direction pilot
+on:
+  push:
+    branches: ['production/saying-hi']
+    paths: ['.github/workflows/saying-hi-round6-native-corrected.yml']
+  workflow_dispatch:
+permissions:
+  contents: write
+  actions: read
+jobs:
+  pilot:
+    uses: ./.github/workflows/film-direction-native-pilot.yml
+    with:
+      branch: production/saying-hi
+      config: stories/saying_hi_direction_pilot_native_corrected.json
