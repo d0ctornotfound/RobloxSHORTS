@@ -45,26 +45,26 @@
     },
     "june_seat": {
       "xyz": [
-        2.1,
-        -0.8,
+        4.9,
+        -1.8,
         0
       ],
-      "yaw_deg": 90,
+      "yaw_deg": -90,
       "seat_height": 0.46482768654823303
     },
     "narrator_seat": {
       "xyz": [
-        2.1,
+        4.9,
         0.05,
         0
       ],
-      "yaw_deg": 90,
+      "yaw_deg": -90,
       "seat_height": 0.4648272395133972
     },
     "waffle": {
       "xyz": [
-        3.1,
-        0,
+        4.05,
+        -0.93,
         0
       ],
       "yaw_deg": -90
@@ -676,5 +676,19 @@
     "title_initial": "Otis's theory",
     "title_final": "Otis's new chart"
   },
-  "geography_note": "Round 3 correction: recentered native source fountain (2.85 scene units diameter) as the only central water feature, existing source cobbles, north wall, north approach corridor. Fixture heights measured in round 2 static sit pose; verify actual footprint and occlusions on corrected smoke. Narrator at central wall mark beside Otis."
+  "geography_note": "Round 3 correction: recentered native source fountain (2.85 scene units diameter) as the only central water feature, existing source cobbles, north wall, north approach corridor. Fixture heights measured in round 2 static sit pose; verify actual footprint and occlusions on corrected smoke. Narrator at central wall mark beside Otis.",
+  "pair_bench": {
+    "center": [
+      5.46,
+      -0.875,
+      0.394827
+    ],
+    "dimensions": [
+      0.8,
+      3.25,
+      0.14
+    ],
+    "top": 0.464827,
+    "description": "Permanent bench outside the original well ring; two separate 1.85-unit marks. June sits here during the greeting sequence."
+  }
 }
