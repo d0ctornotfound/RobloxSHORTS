@@ -225,6 +225,7 @@ def main():
     area_light("Gentle story bounce",(4,-3,4),220,5,(1,.88,.76))
     area_light("Front facial fill",(-2,-4,3.4),380 if shot["atmosphere"]=="morning" else 240,5,(1,.96,.90))
     if n==2:area_light("Walking trouser shadow fill",(-3,-2.8,1.5),260,3.5,(1,.94,.87))
+    if n in (43,44):area_light("Cane and trouser shadow fill",(2.0,-3.2,1.8),520,4.0,(.94,.96,1))
     camera=create(scene,"The Bench camera",42)
     bags=[paper("Brown paper bag "+str(i+1),p) for i in range(2)]
     cap=flatcap(p);stick=cane(p)
@@ -248,7 +249,9 @@ def main():
         mode="walk" if n in (41,43,44) else "sit_down" if n==45 else "sit" if dad_seated else "idle"
         pos=(3.5,-.35,0) if n==41 else (3.1,-.75,0) if mode=="walk" else (.83,0,0)
         actors["Dad"]=Actor("Dad","dad",mode,pos,-math.pi/2 if mode=="walk" else -.12,.33 if mode=="walk" else .6)
-    if n==41:area_light("Returning actor shadow key",(6,-.95,3.15),1200,.30,(.82,.88,1))
+    if n==41:
+        area_light("Returning actor shadow key",(6,-.95,3.15),620,.48,(.82,.88,1))
+        area_light("Bench shadow detail fill",(-1.8,-3.4,2.5),500,4.0,(.96,.96,1))
     # Global timeline means per-shot processes retain the same blink schedule.
     for name,a in actors.items():enable_blinking(scene,a.a,seed=23 if name=="Milo" else 71)
     num=round((shot["end"]-shot["start"])*FPS);first=round(shot["start"]*FPS)+1
@@ -338,7 +341,7 @@ def main():
             lo,hi=bounds(mesh_points(d.a.head));center=(lo+hi)/2
             mount=V((center.x,center.y,hi.z-.045));offset=V((-.25,0,.035))
             if cap_mount is None:cap_mount=d.hand(0)-offset
-            alpha=ease(u/.76);desired=cap_mount.lerp(mount,alpha)+V((-.46*math.sin(math.pi*alpha),-.10*math.sin(math.pi*alpha),.21*math.sin(math.pi*alpha)))
+            alpha=ease(u/.76);desired=cap_mount.lerp(mount,alpha)+V((-.48*math.sin(math.pi*alpha),.14*math.sin(math.pi*alpha),.34*math.sin(math.pi*alpha)))
             if u<.82:
                 err=d.aim(0,desired+offset);cap.location=d.hand(0)-offset
                 contacts.append({"event":"cap_don","target_error":float(err),"mount_gap":(cap.location-mount).length,"released":False})
@@ -415,7 +418,7 @@ def main():
                 if n==47:
                     # Pull folded bags upward and forward from the two outer jacket sides.
                     index=1-i;limb=d.art.arms[index];shoulder=limb.joint();length=limb.a+limb.b
-                    direction=V(((-1,1)[index]*.28,-.24-.48*ease(u),-.86+.38*ease(u))).normalized()
+                    direction=V(((-1,1)[index]*(.10+.30*ease(u)),-.14-.68*ease(u),-.92+.47*ease(u))).normalized()
                     error=d.aim(index,shoulder+direction*length*.77)
                     bag.location=d.hand(index)
                     contacts.append({"event":"bag_retrieval","bag":i,"target_error":float(error),"socket_error":(bag.location-d.hand(index)).length})
@@ -480,14 +483,15 @@ def main():
         if n==44:
             tip=stick.matrix_world@V((0,0,-1.0225));target=stick.location.lerp(tip,.5);dist=2.85;lens=45;angle=-.55
         if n==46 and d:
-            lo,hi=bounds(mesh_points(d.a.head));target=(lo+hi)/2+V((-.12,0,-.05));dist=2.40;lens=48;angle=-.20
+            pts=mesh_points(d.a.head)+[v for ob in cap.children_recursive if ob.type=="MESH" for v in mesh_points(ob)]
+            lo,hi=bounds(pts);target=(lo+hi)/2+V((0,0,-.05));dist=2.70;lens=46;angle=.24
         if n==47:
-            target=(bags[0].location+bags[1].location)/2+V((0,0,-.15));dist=3.3;lens=42;angle=.03
+            target=(bags[0].location+bags[1].location)/2+V((0,0,-.16));dist=2.65;lens=46;angle=.08
         if n in (45,48) and m:
             # Center exact hero bounds plus the transfer prop, then use a modestly wider lens.
             prop=cap if n==45 else bags[1]
             pts=[v for ob in m.meshes() for v in mesh_points(ob)]+[v for ob in prop.children_recursive if ob.type=="MESH" for v in mesh_points(ob)]
-            lo,hi=bounds(pts);target=(lo+hi)/2;dist=3.55;lens=48;angle=-.15
+            lo,hi=bounds(pts);target=(lo+hi)/2;dist=3.55;lens=48;angle=.40 if n==45 else .32
         location=target+V((math.sin(angle)*dist,-math.cos(angle)*dist,.32 if kind!="insert" else .65))
         camera.location=location;camera.data.lens=lens;point_at(camera,target);bpy.context.view_layer.update()
         geo=geometry(scene,camera,actors,heroes,kind)
