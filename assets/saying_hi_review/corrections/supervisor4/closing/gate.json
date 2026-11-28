@@ -1,0 +1,71 @@
+{
+  "unit": "closing",
+  "samples": 43,
+  "sampling_hz": 30,
+  "checks": {
+    "dog_occlusion_samples": {
+      "value": 0,
+      "limit": 0,
+      "pass": true
+    },
+    "dog_fully_in_frame": {
+      "value": true,
+      "limit": true,
+      "pass": true
+    },
+    "payoff_actor_full_body_in_frame": {
+      "value": false,
+      "limit": true,
+      "pass": false
+    },
+    "dog_floor_error": {
+      "value": 9.313225746154785e-10,
+      "limit": 0.002,
+      "pass": true
+    },
+    "june_lateral_hip_drift_outside_step": {
+      "value": 0.0,
+      "limit": 0.005,
+      "pass": true
+    },
+    "settled_hip_plane_error": {
+      "value": 5.364418029785156e-07,
+      "limit": 0.015,
+      "pass": true
+    },
+    "planted_floor_error": {
+      "value": 0.0,
+      "limit": 0.002,
+      "pass": true
+    },
+    "continuing_planted_foot_drift": {
+      "value": 0,
+      "limit": 0.005,
+      "pass": true
+    }
+  },
+  "pass": false,
+  "dog_visible_frames": 43,
+  "minimum_dog_samples": 64,
+  "camera": {
+    "position": [
+      2.8,
+      -1.45,
+      2.25
+    ],
+    "target": [
+      4.599999904632568,
+      -0.8700000047683716,
+      1.0
+    ],
+    "lens": 22,
+    "dog_mark": [
+      4.1,
+      -1.28,
+      0
+    ],
+    "setup_blockers": [],
+    "setup_min_actor_coverage": 0.27494820952415466
+  },
+  "dog_blockers": []
+}
