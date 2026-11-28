@@ -1,0 +1,56 @@
+name: Saying Hi planning verification
+on:
+  push:
+    branches: ['production/saying-hi']
+    paths: ['.github/workflows/saying-hi-planning.yml']
+  workflow_dispatch:
+permissions:
+  contents: write
+concurrency:
+  group: saying-hi-planning-${{ github.ref }}
+  cancel-in-progress: false
+jobs:
+  planning:
+    if: github.ref == 'refs/heads/production/saying-hi'
+    runs-on: ubuntu-24.04
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install local free TTS and design board dependencies
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y --no-install-recommends espeak-ng python3-pil fonts-dejavu-core
+      - name: Validate, exercise rejection, retime actual PCM
+        run: |
+          set -euo pipefail
+          OUT=assets/saying_hi_review
+          mkdir -p "$OUT"
+          python3 -m py_compile scripts/validate_shot_plan.py scripts/retime_shot_plan.py scripts/export_shot_animatic.py scripts/shot_chart_links.py scripts/saying_hi_contacts.py scripts/saying_hi_square.py
+          python3 scripts/validate_shot_plan.py stories/saying_hi_plan.json --draft | tee "$OUT/draft_validation.json"
+          set +e
+          python3 scripts/validate_shot_plan.py stories/saying_hi_plan.json --draft --demonstrate-failure > "$OUT/deliberate_failure.log" 2>&1
+          code=$?
+          set -e
+          cat "$OUT/deliberate_failure.log"
+          echo "exit_code=$code" >> "$OUT/deliberate_failure.log"
+          test "$code" -ne 0
+          grep -F "verbatim narration mismatch" "$OUT/deliberate_failure.log"
+          python3 scripts/retime_shot_plan.py stories/saying_hi_plan.json --wav "$OUT/temp_narration.wav"
+          python3 scripts/validate_shot_plan.py stories/saying_hi_plan.json | tee "$OUT/actual_audio_validation.json"
+          /usr/bin/python3 scripts/shot_chart_links.py --cast stories/saying_hi_cast.json --staging stories/saying_hi_staging.json --output "$OUT"
+          sha256sum "$OUT"/temp_narration.wav "$OUT"/chart*png stories/saying_hi_script.txt stories/saying_hi_plan.json > "$OUT/SHA256SUMS"
+      - name: Commit real planning evidence to story branch
+        run: |
+          set -euo pipefail
+          printf 'workflow_run_id=%s\nsource_commit=%s\n' "$GITHUB_RUN_ID" "$GITHUB_SHA" > assets/saying_hi_review/workflow_provenance.txt
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add stories/saying_hi_plan.json assets/saying_hi_review
+          git commit -m "Publish actual TTS retiming, validation logs and chart design boards"
+          git push origin HEAD:refs/heads/production/saying-hi
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: saying-hi-planning-evidence
+          path: assets/saying_hi_review/
+          if-no-files-found: warn
