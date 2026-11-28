@@ -1,6 +1,9 @@
 name: Reusable native film production
 on:
   workflow_call:
+    outputs:
+      evidence_commit:
+        value: ${{ jobs.publish.outputs.evidence_commit }}
     inputs:
       branch:
         type: string
@@ -30,6 +33,9 @@ jobs:
           set -euo pipefail
           PLAN=$(python3 -c 'import json,os;print(json.load(open(os.environ["CONFIG"]))["plan"])')
           python3 scripts/validate_shot_plan.py "$PLAN"
+          if python3 -c 'import json,os,sys;sys.exit(0 if json.load(open(os.environ["CONFIG"])).get("round5_qc") else 1)'; then
+            python3 scripts/film_direction_release.py --config "$CONFIG"
+          fi
           python3 -m py_compile scripts/film_timeline.py scripts/render_film_unit.py scripts/film_walk_to_mark.py scripts/publish_film_evidence.py
           python3 scripts/film_timeline.py --config "$CONFIG" matrix > matrix.json
           python3 - <<'PY'
@@ -91,6 +97,8 @@ jobs:
     if: always() && needs.plan.result == 'success'
     runs-on: ubuntu-24.04
     timeout-minutes: 60
+    outputs:
+      evidence_commit: ${{ steps.commit.outputs.sha }}
     env:
       CONFIG: ${{ inputs.config }}
       OUT: ${{ needs.plan.outputs.out }}
@@ -124,6 +132,7 @@ jobs:
             ${{ needs.plan.outputs.out }}/*.json
           if-no-files-found: warn
       - name: Permanently commit film and evidence on the authorized branch
+        id: commit
         if: always()
         run: |
           set -euo pipefail
@@ -139,3 +148,4 @@ jobs:
           git commit -m "Publish native film run $GITHUB_RUN_ID and measured QC"
           git pull --rebase origin "$BRANCH"
           git push origin "HEAD:refs/heads/$BRANCH"
+          echo "sha=$(git rev-parse HEAD)" >> "$GITHUB_OUTPUT"
