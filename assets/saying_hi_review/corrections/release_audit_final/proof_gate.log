@@ -1,0 +1,20 @@
+PLAN {"mode": "actual_audio", "sentences": 48, "shots": 48, "words": 443, "audio_duration": 101.2}
+VALIDATED_NATIVE [{"unit": "chart_initial", "frames": 309, "sha256": "fbc3aae091ab9c1b7b9a953f2e21b51a13b31f051155e972b5af775a33ac1d38", "path": "assets/saying_hi_review/proofs/chart_initial/chart_initial.mp4"}, {"unit": "otis_eyes", "frames": 30, "sha256": "99265e576fcfebb03ba88edd31bd403bbb02833e51b889e0e2a8e54df8b31d4f", "path": "assets/saying_hi_review/corrections/native/otis_eyes/otis_eyes.mp4"}, {"unit": "dog_name", "frames": 29, "sha256": "48d9b5b4117a34327c3da2c74892c0eb61d27100bade29eb5c3172dcbd819eda", "path": "assets/saying_hi_review/corrections/native/dog_name/dog_name.mp4"}, {"unit": "seating", "frames": 51, "sha256": "b4abac170578f20cbf90da97ed7c1db8e3f4e0053967ecc0ecca2dff84fd778c", "path": "assets/saying_hi_review/corrections/native/seating/seating.mp4"}, {"unit": "empty_wall", "frames": 42, "sha256": "248b61db60904b5e6b81de7de1e776de63fa846e61899926c95765280ac55adf", "path": "assets/saying_hi_review/corrections/native/empty_wall/empty_wall.mp4"}, {"unit": "chart_final", "frames": 79, "sha256": "8a01fbea9c1991d3518cb2596ae3f3d5c0725d91b3f497e9891228ffd785271c", "path": "assets/saying_hi_review/proofs/chart_final/chart_final.mp4"}, {"unit": "closing", "frames": 43, "sha256": "7636a24a866d561bd62b876e75bf4903a479a7152318c34a23b9633c193b2d23", "path": "assets/saying_hi_review/corrections/native/closing/closing.mp4"}]
+FAIL crossing: planted_stop_error FAIL value=0.87236262395862 limit=0.05 at assets/saying_hi_review/corrections/supervisor5/crossing/gate.json
+FAIL crossing: stance_rms_including_settle FAIL value=0.04148344315842737 limit=0.03 at assets/saying_hi_review/corrections/supervisor5/crossing/gate.json
+FAIL crossing: locked_stance_rms FAIL value=0.043420746846802395 limit=0.03 at assets/saying_hi_review/corrections/supervisor5/crossing/gate.json
+FAIL crossing: support_ray_blocked_frames FAIL value=23 limit=0 at assets/saying_hi_review/corrections/supervisor5/crossing/gate.json
+FAIL crossing: geometry gate not passed
+FAIL crossing: VISUAL HOLD: Endpoint .872362624, stance RMS .041483443, 23 support-ray blocked frames; earlier endpoint .03136914 failed backward/RMS/framing; independent 42-candidate run 46107573634 also failed: planted sole .62829465, all-frame backward 3, RMS .02408198; no candidate meets all
+FAIL crossing: native proof missing: assets/saying_hi_review/corrections/native/crossing/crossing.mp4
+FAIL june_question: speaker_occlusion_samples FAIL value=5 limit=0 at assets/saying_hi_review/corrections/supervisor8/june_question/gate.json
+FAIL june_question: speaker_body_visible_fraction FAIL value=0.8333333333333334 limit=0.9 at assets/saying_hi_review/corrections/supervisor8/june_question/gate.json
+FAIL june_question: geometry gate not passed
+FAIL june_question: VISUAL HOLD: Round 8: 5 blocked face samples, body visibility .83333333; pencil .94117647, zero external blockage and seat intersections pass
+FAIL june_question: native proof missing: assets/saying_hi_review/corrections/native/june_question/june_question.mp4
+FAIL june_answer: speaker_occlusion_samples FAIL value=2 limit=0 at assets/saying_hi_review/corrections/supervisor8/june_answer/gate.json
+FAIL june_answer: speaker_body_visible_fraction FAIL value=0.5789473684210527 limit=0.9 at assets/saying_hi_review/corrections/supervisor8/june_answer/gate.json
+FAIL june_answer: geometry gate not passed
+FAIL june_answer: VISUAL HOLD: Round 8: 2 blocked face samples, body visibility .57894737; zero seat intersections
+FAIL june_answer: native proof missing: assets/saying_hi_review/corrections/native/june_answer/june_answer.mp4
+RELEASE BLOCKED: 17 checks failed
