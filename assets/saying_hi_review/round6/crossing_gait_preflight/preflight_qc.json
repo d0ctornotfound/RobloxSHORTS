@@ -1,0 +1,387 @@
+{
+  "run_id": "46139408779",
+  "source_commit": "76a63bef9cffe8556ec5946c43200bb50adfd934",
+  "status": "preflight_only",
+  "shots": {
+    "sh20": {
+      "status": "pass",
+      "direction": {
+        "status": "numeric_pass",
+        "beat_type": "action",
+        "principal": "narrator",
+        "actors": {
+          "ava": {
+            "motion_coverage": 1.0,
+            "held_pose_max_s": 0.03333333333333333,
+            "start_in_motion": true,
+            "end_in_motion": true,
+            "transitions": 105
+          },
+          "bella": {
+            "motion_coverage": 1.0,
+            "held_pose_max_s": 0.03333333333333333,
+            "start_in_motion": true,
+            "end_in_motion": true,
+            "transitions": 105
+          },
+          "brody": {
+            "motion_coverage": 1.0,
+            "held_pose_max_s": 0.03333333333333333,
+            "start_in_motion": true,
+            "end_in_motion": true,
+            "transitions": 105
+          },
+          "chase": {
+            "motion_coverage": 1.0,
+            "held_pose_max_s": 0.03333333333333333,
+            "start_in_motion": true,
+            "end_in_motion": true,
+            "transitions": 105
+          },
+          "cleo": {
+            "motion_coverage": 1.0,
+            "held_pose_max_s": 0.03333333333333333,
+            "start_in_motion": true,
+            "end_in_motion": true,
+            "transitions": 105
+          },
+          "daisy": {
+            "motion_coverage": 1.0,
+            "held_pose_max_s": 0.03333333333333333,
+            "start_in_motion": true,
+            "end_in_motion": true,
+            "transitions": 105
+          },
+          "ella": {
+            "motion_coverage": 1.0,
+            "held_pose_max_s": 0.03333333333333333,
+            "start_in_motion": true,
+            "end_in_motion": true,
+            "transitions": 105
+          },
+          "faye": {
+            "motion_coverage": 1.0,
+            "held_pose_max_s": 0.03333333333333333,
+            "start_in_motion": true,
+            "end_in_motion": true,
+            "transitions": 105
+          },
+          "gia": {
+            "motion_coverage": 1.0,
+            "held_pose_max_s": 0.03333333333333333,
+            "start_in_motion": true,
+            "end_in_motion": true,
+            "transitions": 105
+          },
+          "hana": {
+            "motion_coverage": 1.0,
+            "held_pose_max_s": 0.03333333333333333,
+            "start_in_motion": true,
+            "end_in_motion": true,
+            "transitions": 105
+          },
+          "ivy": {
+            "motion_coverage": 1.0,
+            "held_pose_max_s": 0.03333333333333333,
+            "start_in_motion": true,
+            "end_in_motion": true,
+            "transitions": 105
+          },
+          "june": {
+            "motion_coverage": 1.0,
+            "held_pose_max_s": 0.03333333333333333,
+            "start_in_motion": true,
+            "end_in_motion": true,
+            "transitions": 105
+          },
+          "kai": {
+            "motion_coverage": 1.0,
+            "held_pose_max_s": 0.03333333333333333,
+            "start_in_motion": true,
+            "end_in_motion": true,
+            "transitions": 105
+          },
+          "leo": {
+            "motion_coverage": 1.0,
+            "held_pose_max_s": 0.03333333333333333,
+            "start_in_motion": true,
+            "end_in_motion": true,
+            "transitions": 105
+          },
+          "max": {
+            "motion_coverage": 1.0,
+            "held_pose_max_s": 0.03333333333333333,
+            "start_in_motion": true,
+            "end_in_motion": true,
+            "transitions": 105
+          },
+          "narrator": {
+            "motion_coverage": 1.0,
+            "held_pose_max_s": 0.03333333333333333,
+            "start_in_motion": true,
+            "end_in_motion": true,
+            "transitions": 105
+          },
+          "noah": {
+            "motion_coverage": 1.0,
+            "held_pose_max_s": 0.03333333333333333,
+            "start_in_motion": true,
+            "end_in_motion": true,
+            "transitions": 105
+          },
+          "otis": {
+            "motion_coverage": 1.0,
+            "held_pose_max_s": 0.03333333333333333,
+            "start_in_motion": true,
+            "end_in_motion": true,
+            "transitions": 105
+          },
+          "ryan": {
+            "motion_coverage": 1.0,
+            "held_pose_max_s": 0.03333333333333333,
+            "start_in_motion": true,
+            "end_in_motion": true,
+            "transitions": 105
+          },
+          "sam": {
+            "motion_coverage": 1.0,
+            "held_pose_max_s": 0.03333333333333333,
+            "start_in_motion": true,
+            "end_in_motion": true,
+            "transitions": 105
+          }
+        },
+        "faces": {
+          "narrator": {
+            "min_height": 0.11579680442810059,
+            "safe_all": true
+          }
+        },
+        "checks": {
+          "principal_motion": true,
+          "principal_edges": true,
+          "all_actor_holds": true,
+          "grade_declared": true,
+          "action_body_scale": true
+        },
+        "grade": {
+          "preset": "warm_saturated_v1",
+          "look": "AgX - Medium High Contrast",
+          "exposure": -0.12,
+          "saturation": 1.18
+        },
+        "threshold_scene_units": 0.0015,
+        "visual_review_required": true
+      },
+      "external_face_ray_blocks_max": {
+        "narrator": 0
+      },
+      "smoke_frames": [
+        {
+          "frame": 1422,
+          "render_seconds": 65.54389915000002,
+          "near_black_percent": 1.156057098765432
+        },
+        {
+          "frame": 1475,
+          "render_seconds": 30.97387253400001,
+          "near_black_percent": 0.49209104938271603
+        },
+        {
+          "frame": 1527,
+          "render_seconds": 30.8038679120001,
+          "near_black_percent": 0.21469907407407404
+        }
+      ],
+      "extra": {
+        "walk": {
+          "cycle_count": 1,
+          "phase": 0.49411764705882355,
+          "rate": 0.28823529271518483,
+          "offset_seconds": 1.4000000000000001,
+          "start_support": 1,
+          "final_support": 0,
+          "same_foot": false,
+          "final_plant": true,
+          "destination": [
+            -0.23380574584007263,
+            3.26106595993042,
+            0.014111833646893501
+          ],
+          "root_destination": [
+            0.006610319018363953,
+            4.07327938079834,
+            0.000147525905049406
+          ],
+          "source_transition_indices": [
+            1,
+            59,
+            121,
+            179
+          ],
+          "method": "native gait-only phase search and exact replay; no endpoint fit",
+          "phase_strategy": "gait_gate",
+          "phase_diagnostics": {
+            "grid": 680,
+            "selected": {
+              "phase": 0.49411764705882355,
+              "predicted_backwards": 1,
+              "predicted_same_foot": false,
+              "predicted_final_plant": true,
+              "predicted_max_gap": 0.014111838056123815,
+              "predicted_forward_speed": 1.0329599029877607,
+              "exact_backwards": 1,
+              "exact_rms": 7.18497603529332e-05,
+              "exact_gap": 0.014111833646893501,
+              "exact_pass": false,
+              "exact_same_foot": false,
+              "exact_final_plant": true
+            },
+            "exact_candidates": [
+              {
+                "phase": 0.011764705882352941,
+                "predicted_backwards": 1,
+                "predicted_same_foot": false,
+                "predicted_final_plant": true,
+                "predicted_max_gap": 0.014111838056123815,
+                "predicted_forward_speed": 1.0329599029877607,
+                "exact_backwards": 1,
+                "exact_rms": 0.04675289595284011,
+                "exact_gap": 0.014111833646893501,
+                "exact_pass": false,
+                "exact_same_foot": false,
+                "exact_final_plant": true
+              },
+              {
+                "phase": 0.49411764705882355,
+                "predicted_backwards": 1,
+                "predicted_same_foot": false,
+                "predicted_final_plant": true,
+                "predicted_max_gap": 0.014111838056123815,
+                "predicted_forward_speed": 1.0329599029877607,
+                "exact_backwards": 1,
+                "exact_rms": 7.18497603529332e-05,
+                "exact_gap": 0.014111833646893501,
+                "exact_pass": false,
+                "exact_same_foot": false,
+                "exact_final_plant": true
+              },
+              {
+                "phase": 0.0014705882352941176,
+                "predicted_backwards": 1,
+                "predicted_same_foot": false,
+                "predicted_final_plant": true,
+                "predicted_max_gap": 0.015106883831322193,
+                "predicted_forward_speed": 1.033797025680542,
+                "exact_backwards": 1,
+                "exact_rms": 0.03971832759152264,
+                "exact_gap": 0.015106874518096447,
+                "exact_pass": false,
+                "exact_same_foot": false,
+                "exact_final_plant": true
+              },
+              {
+                "phase": 0.49558823529411766,
+                "predicted_backwards": 1,
+                "predicted_same_foot": false,
+                "predicted_final_plant": true,
+                "predicted_max_gap": 0.015106883831322193,
+                "predicted_forward_speed": 1.033797025680542,
+                "exact_backwards": 1,
+                "exact_rms": 0.05004960488747336,
+                "exact_gap": 0.015106874518096447,
+                "exact_pass": false,
+                "exact_same_foot": false,
+                "exact_final_plant": true
+              },
+              {
+                "phase": 0.010294117647058823,
+                "predicted_backwards": 1,
+                "predicted_same_foot": false,
+                "predicted_final_plant": true,
+                "predicted_max_gap": 0.016232035122811794,
+                "predicted_forward_speed": 1.0349965516258688,
+                "exact_backwards": 1,
+                "exact_rms": 0.053775605885542144,
+                "exact_gap": 0.016231613233685493,
+                "exact_pass": false,
+                "exact_same_foot": false,
+                "exact_final_plant": true
+              },
+              {
+                "phase": 0.49264705882352944,
+                "predicted_backwards": 1,
+                "predicted_same_foot": false,
+                "predicted_final_plant": true,
+                "predicted_max_gap": 0.016232035122811794,
+                "predicted_forward_speed": 1.0349965516258688,
+                "exact_backwards": 1,
+                "exact_rms": 0.007227734186544632,
+                "exact_gap": 0.016231970861554146,
+                "exact_pass": false,
+                "exact_same_foot": false,
+                "exact_final_plant": true
+              },
+              {
+                "phase": 0.0,
+                "predicted_backwards": 1,
+                "predicted_same_foot": true,
+                "predicted_final_plant": false,
+                "predicted_max_gap": 0.014111838056123815,
+                "predicted_forward_speed": 1.0329599029877607,
+                "exact_backwards": 1,
+                "exact_rms": 0.046470447422258844,
+                "exact_gap": 0.014111833646893501,
+                "exact_pass": false,
+                "exact_same_foot": true,
+                "exact_final_plant": false
+              },
+              {
+                "phase": 0.023529411764705882,
+                "predicted_backwards": 1,
+                "predicted_same_foot": true,
+                "predicted_final_plant": false,
+                "predicted_max_gap": 0.014111838056123815,
+                "predicted_forward_speed": 1.0329599029877607,
+                "exact_backwards": 1,
+                "exact_rms": 0.046470446735135125,
+                "exact_gap": 0.014111833646893501,
+                "exact_pass": false,
+                "exact_same_foot": true,
+                "exact_final_plant": false
+              }
+            ]
+          },
+          "original_destination": [
+            0.0,
+            3.9000000953674316,
+            0.0
+          ],
+          "planned_mark_change": 0.6805153203129632,
+          "metrics": {
+            "cycle": "walk_cycle",
+            "fps": 30,
+            "rate": 0.28823529271518483,
+            "mean_forward_speed": 1.0329599029877607,
+            "derived_stride": 2.926719725131989,
+            "stance_samples": 82,
+            "stance_velocity_rms": 7.18497603529332e-05,
+            "max_continuing_velocity": 0.00062436813165782,
+            "max_contact_gap": 0.014111833646893501,
+            "max_floor_error": 9.725749805511441e-07,
+            "backward_frames": 1,
+            "flight_frames": 0,
+            "max_airborne_height": 0,
+            "max_penetration": 9.725749805511441e-07,
+            "pass": false
+          },
+          "root_stop_error_to_plant": 0.8471632095290492,
+          "final_contact_error": 0.0,
+          "complete_unit": true
+        }
+      }
+    }
+  },
+  "native_pilot_authorized": false,
+  "numerical_pass": true
+}
