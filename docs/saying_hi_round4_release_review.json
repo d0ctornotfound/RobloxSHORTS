@@ -1,0 +1,61 @@
+{
+  "round": "Round 4: all replacements require actual native clips and supervisor visual approval",
+  "units": {
+    "chart_initial": {
+      "disposition": "supervisor_accepted",
+      "video_path": "assets/saying_hi_review/proofs/chart_initial/chart_initial.mp4"
+    },
+    "chart_final": {
+      "disposition": "supervisor_accepted",
+      "video_path": "assets/saying_hi_review/proofs/chart_final/chart_final.mp4"
+    },
+    "crossing": {
+      "disposition": "hold",
+      "reason": "No complete passing Round 4 native proof",
+      "geometry_path": "assets/saying_hi_review/corrections/round4_precheck/crossing",
+      "video_path": "assets/saying_hi_review/corrections/round4_native/crossing/crossing.mp4"
+    },
+    "otis_eyes": {
+      "disposition": "reviewed_pass",
+      "reason": "Zero head-arm intersection on every frame, actual check and native midpoint reviewed",
+      "geometry_path": "assets/saying_hi_review/corrections/supervisor1/otis_eyes",
+      "video_path": "assets/saying_hi_review/corrections/native/otis_eyes/otis_eyes.mp4"
+    },
+    "june_question": {
+      "disposition": "hold",
+      "reason": "No complete passing Round 4 native proof",
+      "geometry_path": "assets/saying_hi_review/corrections/round4_precheck/june_question",
+      "video_path": "assets/saying_hi_review/corrections/round4_native/june_question/june_question.mp4"
+    },
+    "june_answer": {
+      "disposition": "hold",
+      "reason": "No complete passing Round 4 native proof",
+      "geometry_path": "assets/saying_hi_review/corrections/round4_precheck/june_answer",
+      "video_path": "assets/saying_hi_review/corrections/round4_native/june_answer/june_answer.mp4"
+    },
+    "dog_name": {
+      "disposition": "reviewed_pass",
+      "reason": "Zero dog blockage, full frame, actual check frames reviewed",
+      "geometry_path": "assets/saying_hi_review/corrections/supervisor7/dog_name",
+      "video_path": "assets/saying_hi_review/corrections/native/dog_name/dog_name.mp4"
+    },
+    "seating": {
+      "disposition": "hold",
+      "reason": "No complete passing Round 4 native proof",
+      "geometry_path": "assets/saying_hi_review/corrections/round4_precheck/seating",
+      "video_path": "assets/saying_hi_review/corrections/round4_native/seating/seating.mp4"
+    },
+    "empty_wall": {
+      "disposition": "reviewed_pass",
+      "reason": "35 tally strokes, zero boys and zero wall/tally obstruction; native midpoint reviewed",
+      "geometry_path": "assets/saying_hi_review/corrections/supervisor4/empty_wall",
+      "video_path": "assets/saying_hi_review/corrections/native/empty_wall/empty_wall.mp4"
+    },
+    "closing": {
+      "disposition": "reviewed_pass",
+      "reason": "Zero dog blockage, full frame, actual check frames reviewed",
+      "geometry_path": "assets/saying_hi_review/corrections/supervisor7/closing",
+      "video_path": "assets/saying_hi_review/corrections/native/closing/closing.mp4"
+    }
+  }
+}

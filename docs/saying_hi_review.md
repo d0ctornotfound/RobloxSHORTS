@@ -242,3 +242,76 @@ Crossing candidate samples one complete cycle at 48 phases using locked StrideLo
 Seating candidate uses named raised fountain-side bench adjacent to original Piazza fountain, actual stone supports extending to ground, physical hip-over-seat checks, 35–50mm front-facing cameras; actors and Waffle yaw +90, dog in front, prior stool fixtures hidden only in this shot. New settled face occlusion 0 and per-actor facing dot ≥.5, named horizontal support legibility with visible surface and supports and hips above it. These are measurable proxies; still require visual review. Existing contact, size and drift gates remain. Candidate is NOT approval.
 
 Source driver ec3d57339a7f34ec500f87b03152f708873be609, plan declaration 8950aeb741dad728f714f8d3e96fcabf78a4bd39, validator 173f7d06a66f33673d7ddb7da8b0a0f959fa4a79, cached replay a274981fc0bc67647b25e75bf12d665030d098db. Precheck workflow 0ea3739dfb4c089db37c6c5a7be9c61fcad62719, run [46123443558](https://github.com/d0ctornotfound/RobloxSHORTS/actions/runs/46123443558), active at handover. Face baseline 43dd36de6f864d38e9f44afa5062068cea5a04c9; separate planned native paths c73b9ee1c8dedaecb667ab58bcc8d1cff4e155d2; terminal reporting/audit script 6234dff2b7f446b494feea3e9ec937dc15413857; conditional native workflow 5ff7b00fea97f9c1bf991e0d13efd0841ba13773. It requires full numeric pass and actual smoke images, bounded per-chunk replay, preserves old clips, and records audit without inventing visual approval. No new Round 4 measurements or motion are asserted before evidence publication. Last verified numbers remain Round 3 above; crossing, C1, C2, seating visual readability and full animatic remain held. No paid voice/full film.
+
+## Round 4 terminal CI evidence
+Precheck run 46123443558; downstream run 46123546984.
+
+### crossing: 157 samples, geometry FAIL
+- locked_stride_pass: False (limit True; FAIL)
+- planted_stop_error: 0.6800700703407035 (limit 0.05; FAIL)
+- backward_frames_including_settle: 2 (limit 0; FAIL)
+- stance_rms_including_settle: 0.032403885809847204 (limit 0.03; FAIL)
+- settled_support_drift: 0.0 (limit 0.005; PASS)
+- locked_stance_rms: 0.032403885809847204 (limit 0.03; FAIL)
+- camera_geography_fitted: True (limit True; PASS)
+- narrator_vertical_coverage: 0.16733554005622864 (limit 0.14; PASS)
+- full_body_safe: True (limit True; PASS)
+- support_ray_blocked_frames: 66 (limit 0; FAIL)
+- root_stop_error_xy: 1.444058870398074 (limit 0.05; FAIL)
+- final_plant_contact_gap: 0.005604578647762537 (limit 0.02; PASS)
+- round3_narrator_vertical_coverage: 0.16733554005622864 (limit 0.25; FAIL)
+- no_settle_blend: 0 (limit 0; PASS)
+- same_foot_full_cycle: False (limit True; FAIL)
+- final_sample_is_plant: False (limit True; FAIL)
+- max_contact_gap: 0.016231970861554146 (limit 0.02; PASS)
+- Separate low camera: {"position": [-2.0, 1.3598802089691162, 0.6999999284744263], "target": [0.0, 3.359880208969116, 1.0499999523162842], "lens": 28, "setup_coverage": 0.2938092350959778, "setup_blocked": 0, "samples": 47, "coverage": 0.2954699397087097, "blocked_support_rays": 45, "full_body_safe": true, "pass": false}
+- Selected support-point solution: {"rate": 0.1801470579469905, "phase": 0.5, "yaw": 0.0, "settle_frames": 0, "hold_frames": 1, "cycle_count": 1, "stride_length": 4.368143558502197, "stride_source": "same-foot evaluated support-point displacement projected along route", "start_support": [0.18574640154838562, 7.637294769287109, -3.386986691111815e-09], "end_support": [-0.2373168170452118, 3.269151210784912, 0.005604578647762537], "support_displacement": [-0.4230632185935974, -4.368143558502197, 0.005604581907391548], "destination": [0.0, 2.6318564414978027, 0.0], "original_destination": [0.0, 3.9000000953674316, 0.0], "root_stop_error_xy": 1.4440588669404926, "planted_stop_error": 0.6800700703407035, "final_support": 0, "start_support_index": 1, "same_foot": false, "final_plant": false, "final_contact_gap": 0.005604578647762537, "locked_pass": false, "backward_frames": 2, "stance_rms": 0.032403885809847204, "max_contact_gap": 0.016231970861554146, "pass": false}
+- Native delivery: not delivered
+### june_question: 113 samples, geometry FAIL
+- standing_seat_intersections: 0 (limit 0; PASS)
+- speaker_occlusion_samples: 1 (limit 0; FAIL)
+- speaker_in_frame: True (limit True; PASS)
+- speaker_front_dot: 0.5289075151085854 (limit 0.72; FAIL)
+- speaker_body_visible_fraction: 1.0 (limit 0.9; PASS)
+- speaker_body_in_frame: False (limit True; FAIL)
+- unrelated_foreground_obstruction_samples: 0 (limit 0; PASS)
+- external_pencil_occlusion_samples: 0 (limit 0; PASS)
+- pencil_in_frame: False (limit True; FAIL)
+- visible_pencil_fraction: 1.0 (limit 0.45; PASS)
+- round3_pencil_nonregression: 1.0 (limit 0.8421052631578947; PASS)
+- Remaining face failures by frame/object: [{"global_frame": 2091, "blocked": 1, "objects": ["narrator / head knitted beanie folded brim"]}, {"global_frame": 2092, "blocked": 1, "objects": ["narrator / head knitted beanie folded brim"]}, {"global_frame": 2096, "blocked": 1, "objects": ["narrator / head knitted beanie folded brim"]}, {"global_frame": 2097, "blocked": 1, "objects": ["narrator / head knitted beanie folded brim"]}, {"global_frame": 2098, "blocked": 1, "objects": ["narrator / head knitted beanie folded brim"]}, {"global_frame": 2099, "blocked": 1, "objects": ["narrator / head knitted beanie folded brim"]}, {"global_frame": 2100, "blocked": 1, "objects": ["narrator / head knitted beanie folded brim"]}, {"global_frame": 2101, "blocked": 1, "objects": ["narrator / head knitted beanie folded brim"]}, {"global_frame": 2102, "blocked": 1, "objects": ["narrator / head knitted beanie folded brim"]}, {"global_frame": 2103, "blocked": 1, "objects": ["narrator / head knitted beanie folded brim"]}, {"global_frame": 2104, "blocked": 1, "objects": ["narrator / head knitted beanie folded brim"]}, {"global_frame": 2105, "blocked": 1, "objects": ["narrator / head knitted beanie folded brim"]}, {"global_frame": 2106, "blocked": 1, "objects": ["narrator / head knitted beanie folded brim"]}, {"global_frame": 2107, "blocked": 1, "objects": ["narrator / head knitted beanie folded brim"]}, {"global_frame": 2108, "blocked": 1, "objects": ["narrator / head knitted beanie folded brim"]}, {"global_frame": 2109, "blocked": 1, "objects": ["narrator / head knitted beanie folded brim"]}, {"global_frame": 2110, "blocked": 1, "objects": ["narrator / head knitted beanie folded brim"]}, {"global_frame": 2111, "blocked": 1, "objects": ["narrator / head knitted beanie folded brim"]}, {"global_frame": 2112, "blocked": 1, "objects": ["narrator / head knitted beanie folded brim"]}, {"global_frame": 2113, "blocked": 1, "objects": ["narrator / head knitted beanie folded brim"]}, {"global_frame": 2114, "blocked": 1, "objects": ["narrator / head knitted beanie folded brim"]}, {"global_frame": 2116, "blocked": 1, "objects": ["narrator / head knitted beanie folded brim"]}, {"global_frame": 2117, "blocked": 1, "objects": ["narrator / head knitted beanie folded brim"]}, {"global_frame": 2118, "blocked": 1, "objects": ["narrator / head knitted beanie folded brim"]}, {"global_frame": 2119, "blocked": 1, "objects": ["narrator / head knitted beanie folded brim"]}, {"global_frame": 2166, "blocked": 1, "objects": ["narrator / head knitted beanie folded brim"]}, {"global_frame": 2167, "blocked": 1, "objects": ["narrator / head knitted beanie folded brim"]}, {"global_frame": 2168, "blocked": 1, "objects": ["narrator / head knitted beanie folded brim"]}, {"global_frame": 2169, "blocked": 1, "objects": ["narrator / head knitted beanie folded brim"]}, {"global_frame": 2170, "blocked": 1, "objects": ["narrator / head knitted beanie folded brim"]}, {"global_frame": 2171, "blocked": 1, "objects": ["narrator / head knitted beanie folded brim"]}, {"global_frame": 2172, "blocked": 1, "objects": ["narrator / head knitted beanie folded brim"]}]
+- Native delivery: not delivered
+### june_answer: 57 samples, geometry FAIL
+- standing_seat_intersections: 0 (limit 0; PASS)
+- speaker_occlusion_samples: 2 (limit 0; FAIL)
+- speaker_in_frame: True (limit True; PASS)
+- speaker_front_dot: 0.728014248222518 (limit 0.72; PASS)
+- speaker_body_visible_fraction: 1.0 (limit 0.9; PASS)
+- speaker_body_in_frame: True (limit True; PASS)
+- unrelated_foreground_obstruction_samples: 0 (limit 0; PASS)
+- Remaining face failures by frame/object: [{"global_frame": 2201, "blocked": 1, "objects": ["june / head ch4 hair cap"]}, {"global_frame": 2202, "blocked": 1, "objects": ["june / head ch4 hair cap"]}, {"global_frame": 2203, "blocked": 1, "objects": ["june / head ch4 hair cap"]}, {"global_frame": 2204, "blocked": 1, "objects": ["june / head ch4 hair cap"]}, {"global_frame": 2205, "blocked": 1, "objects": ["june / head ch4 hair cap"]}, {"global_frame": 2206, "blocked": 1, "objects": ["june / head ch4 hair cap"]}, {"global_frame": 2207, "blocked": 1, "objects": ["june / head ch4 hair cap"]}, {"global_frame": 2208, "blocked": 1, "objects": ["june / head ch4 hair cap"]}, {"global_frame": 2209, "blocked": 1, "objects": ["june / head ch4 hair cap"]}, {"global_frame": 2210, "blocked": 1, "objects": ["june / head ch4 hair cap"]}, {"global_frame": 2211, "blocked": 1, "objects": ["june / head ch4 hair cap"]}, {"global_frame": 2212, "blocked": 1, "objects": ["june / head ch4 hair cap"]}, {"global_frame": 2213, "blocked": 1, "objects": ["june / head ch4 hair cap"]}, {"global_frame": 2214, "blocked": 1, "objects": ["june / head ch4 hair cap"]}, {"global_frame": 2215, "blocked": 1, "objects": ["june / head ch4 hair cap"]}, {"global_frame": 2216, "blocked": 1, "objects": ["june / head ch4 hair cap"]}, {"global_frame": 2217, "blocked": 1, "objects": ["june / head ch4 hair cap"]}, {"global_frame": 2218, "blocked": 1, "objects": ["june / head ch4 hair cap"]}, {"global_frame": 2219, "blocked": 1, "objects": ["june / head ch4 hair cap"]}, {"global_frame": 2220, "blocked": 1, "objects": ["june / head ch4 hair cap"]}, {"global_frame": 2221, "blocked": 1, "objects": ["june / head ch4 hair cap"]}, {"global_frame": 2222, "blocked": 1, "objects": ["june / head ch4 hair cap"]}, {"global_frame": 2223, "blocked": 1, "objects": ["june / head ch4 hair cap"]}, {"global_frame": 2224, "blocked": 1, "objects": ["june / head ch4 hair cap"]}, {"global_frame": 2225, "blocked": 1, "objects": ["june / head ch4 hair cap"]}, {"global_frame": 2226, "blocked": 1, "objects": ["june / head ch4 hair cap"]}, {"global_frame": 2227, "blocked": 1, "objects": ["june / head ch4 hair cap"]}, {"global_frame": 2228, "blocked": 1, "objects": ["june / head ch4 hair cap"]}, {"global_frame": 2229, "blocked": 1, "objects": ["june / head ch4 hair cap"]}, {"global_frame": 2230, "blocked": 1, "objects": ["june / head ch4 hair cap"]}, {"global_frame": 2231, "blocked": 1, "objects": ["june / head ch4 hair cap"]}, {"global_frame": 2232, "blocked": 1, "objects": ["june / head ch4 hair cap"]}, {"global_frame": 2233, "blocked": 1, "objects": ["june / head ch4 hair cap"]}, {"global_frame": 2234, "blocked": 1, "objects": ["june / head ch4 hair cap"]}, {"global_frame": 2235, "blocked": 1, "objects": ["june / head ch4 hair cap"]}, {"global_frame": 2236, "blocked": 1, "objects": ["june / head ch4 hair cap"]}, {"global_frame": 2237, "blocked": 1, "objects": ["june / head ch4 hair cap"]}, {"global_frame": 2238, "blocked": 1, "objects": ["june / head ch4 hair cap"]}, {"global_frame": 2239, "blocked": 1, "objects": ["june / head ch4 hair cap"]}, {"global_frame": 2240, "blocked": 1, "objects": ["june / head ch4 hair cap"]}, {"global_frame": 2241, "blocked": 1, "objects": ["june / head ch4 hair cap"]}, {"global_frame": 2242, "blocked": 1, "objects": ["june / head ch4 hair cap"]}, {"global_frame": 2243, "blocked": 1, "objects": ["june / head ch4 hair cap"]}, {"global_frame": 2244, "blocked": 1, "objects": ["june / head ch4 hair cap"]}, {"global_frame": 2245, "blocked": 2, "objects": ["june / head ch4 hair cap"]}, {"global_frame": 2246, "blocked": 1, "objects": ["june / head ch4 hair cap"]}, {"global_frame": 2247, "blocked": 1, "objects": ["june / head ch4 hair cap"]}, {"global_frame": 2248, "blocked": 1, "objects": ["june / head ch4 hair cap"]}, {"global_frame": 2249, "blocked": 1, "objects": ["june / head ch4 hair cap"]}, {"global_frame": 2250, "blocked": 1, "objects": ["june / head ch4 hair cap"]}, {"global_frame": 2251, "blocked": 1, "objects": ["june / head ch4 hair cap"]}, {"global_frame": 2252, "blocked": 1, "objects": ["june / head ch4 hair cap"]}, {"global_frame": 2253, "blocked": 1, "objects": ["june / head ch4 hair cap"]}, {"global_frame": 2254, "blocked": 1, "objects": ["june / head ch4 hair cap"]}, {"global_frame": 2255, "blocked": 1, "objects": ["june / head ch4 hair cap"]}, {"global_frame": 2256, "blocked": 1, "objects": ["june / head ch4 hair cap"]}, {"global_frame": 2257, "blocked": 1, "objects": ["june / head ch4 hair cap"]}]
+- Native delivery: not delivered
+### seating: 51 samples, geometry FAIL
+- dog_occlusion_samples: 0 (limit 0; PASS)
+- dog_fully_in_frame: True (limit True; PASS)
+- payoff_actor_full_body_in_frame: False (limit True; FAIL)
+- dog_floor_error: 1.5832483768463135e-08 (limit 0.002; PASS)
+- june_lateral_hip_drift_outside_step: 0.0 (limit 0.005; PASS)
+- settled_hip_plane_error: 5.960464477539063e-08 (limit 0.015; PASS)
+- planted_floor_error: 0.0 (limit 0.002; PASS)
+- continuing_planted_foot_drift: 0 (limit 0.005; PASS)
+- actual_move_over_displacement: 0.24000000953674316 (limit 0.2; PASS)
+- normal_lens_mm: 35.0 (limit [35, 50]; PASS)
+- round3_planted_drift: 0 (limit 0; PASS)
+- dog_min_width_fraction: 0.18016934394836426 (limit 0.12; PASS)
+- dog_min_height_fraction: 0.0791131854057312 (limit 0.055; PASS)
+- june_settled_face_occlusion: 2 (limit 0; FAIL)
+- june_settled_facing_dot: 0.8608598930576328 (limit 0.5; PASS)
+- narrator_settled_face_occlusion: 3 (limit 0; FAIL)
+- narrator_settled_facing_dot: 0.9897761998502737 (limit 0.5; PASS)
+- named_supported_seat_legibility: True (limit True; PASS)
+- Native delivery: not delivered
+
+Plan exit 0; proof audit exit 1; animatic audit exit 1; export exit None (None means not invoked).
+No supervisor visual approval inferred. Prior six native proofs and historical seating remain intact. No full-film render or paid voice. No gate lowered.
+ROUND 4 RELEASE BLOCKED until visual review and all strict checks pass.
