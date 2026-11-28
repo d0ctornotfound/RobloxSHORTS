@@ -1,0 +1,443 @@
+{
+  "kind": "square",
+  "engine": "EEVEE",
+  "denoising": false,
+  "eevee_spatial_samples": 32,
+  "temporal_samples": 1,
+  "status": "candidate smoke",
+  "cast": {
+    "narrator": {
+      "scale": 1,
+      "mark": {
+        "xyz": [
+          -3.5999999999999996,
+          8,
+          0
+        ],
+        "yaw_deg": 0,
+        "seat_height": 0.62
+      },
+      "contact": {
+        "hip_z": 0.4648272395133972,
+        "foot_plane_gaps": [
+          0.0,
+          0.0
+        ]
+      },
+      "bounds": null
+    },
+    "otis": {
+      "scale": 1,
+      "mark": {
+        "xyz": [
+          -2.4,
+          8,
+          0
+        ],
+        "yaw_deg": 0,
+        "seat_height": 0.62
+      },
+      "contact": {
+        "hip_z": 0.4648272395133972,
+        "foot_plane_gaps": [
+          0.0,
+          0.0
+        ]
+      },
+      "bounds": null
+    },
+    "june": {
+      "scale": 1,
+      "mark": {
+        "xyz": [
+          3.2218,
+          -0.7143,
+          0
+        ],
+        "yaw_deg": 257.5,
+        "seat_height": 0.62,
+        "eyeline": "well"
+      },
+      "contact": {
+        "hip_z": 0.46482768654823303,
+        "foot_plane_gaps": [
+          0.0,
+          0.0
+        ]
+      },
+      "bounds": null
+    },
+    "brody": {
+      "scale": 0.84,
+      "mark": {
+        "xyz": [
+          3.211,
+          0.761,
+          0
+        ],
+        "yaw_deg": 283.333,
+        "seat_height": 0.62,
+        "eyeline": "well"
+      },
+      "contact": {
+        "hip_z": 0.39045512676239014,
+        "foot_plane_gaps": [
+          0.0,
+          0.0
+        ]
+      },
+      "bounds": null
+    },
+    "chase": {
+      "scale": 1.02,
+      "mark": {
+        "xyz": [
+          2.5585,
+          2.0842,
+          0
+        ],
+        "yaw_deg": 309.167,
+        "seat_height": 0.62,
+        "eyeline": "well"
+      },
+      "contact": {
+        "hip_z": 0.4741237163543701,
+        "foot_plane_gaps": [
+          5.960464477539063e-08,
+          5.960464477539063e-08
+        ]
+      },
+      "bounds": null
+    },
+    "kai": {
+      "scale": 1,
+      "mark": {
+        "xyz": [
+          1.3946,
+          2.9908,
+          0
+        ],
+        "yaw_deg": 335,
+        "seat_height": 0.62,
+        "eyeline": "well"
+      },
+      "contact": {
+        "hip_z": 0.4648267924785614,
+        "foot_plane_gaps": [
+          0.0,
+          0.0
+        ]
+      },
+      "bounds": null
+    },
+    "ava": {
+      "scale": 1,
+      "mark": {
+        "xyz": [
+          -1.3946,
+          2.9908,
+          0
+        ],
+        "yaw_deg": 25,
+        "seat_height": 0.62,
+        "eyeline": "well"
+      },
+      "contact": {
+        "hip_z": 0.46482762694358826,
+        "foot_plane_gaps": [
+          0.0,
+          0.0
+        ]
+      },
+      "bounds": null
+    },
+    "bella": {
+      "scale": 0.98,
+      "mark": {
+        "xyz": [
+          -2.5585,
+          2.0842,
+          0
+        ],
+        "yaw_deg": 50.833,
+        "seat_height": 0.62,
+        "eyeline": "well"
+      },
+      "contact": {
+        "hip_z": 0.4555308222770691,
+        "foot_plane_gaps": [
+          2.9802322387695312e-08,
+          2.9802322387695312e-08
+        ]
+      },
+      "bounds": null
+    },
+    "cleo": {
+      "scale": 1,
+      "mark": {
+        "xyz": [
+          -3.211,
+          0.761,
+          0
+        ],
+        "yaw_deg": 76.667,
+        "seat_height": 0.62,
+        "eyeline": "well"
+      },
+      "contact": {
+        "hip_z": 0.46482768654823303,
+        "foot_plane_gaps": [
+          0.0,
+          0.0
+        ]
+      },
+      "bounds": null
+    },
+    "daisy": {
+      "scale": 1.02,
+      "mark": {
+        "xyz": [
+          -3.2218,
+          -0.7143,
+          0
+        ],
+        "yaw_deg": 102.5,
+        "seat_height": 0.62,
+        "eyeline": "well"
+      },
+      "contact": {
+        "hip_z": 0.47412365674972534,
+        "foot_plane_gaps": [
+          5.960464477539063e-08,
+          5.960464477539063e-08
+        ]
+      },
+      "bounds": null
+    },
+    "ella": {
+      "scale": 1,
+      "mark": {
+        "xyz": [
+          -2.5886,
+          -2.0468,
+          0
+        ],
+        "yaw_deg": 128.333,
+        "seat_height": 0.62,
+        "eyeline": "well"
+      },
+      "contact": {
+        "hip_z": 0.4648272693157196,
+        "foot_plane_gaps": [
+          0.0,
+          0.0
+        ]
+      },
+      "bounds": null
+    },
+    "faye": {
+      "scale": 0.99,
+      "mark": {
+        "xyz": [
+          -1.438,
+          -2.9702,
+          0
+        ],
+        "yaw_deg": 154.167,
+        "seat_height": 0.62,
+        "eyeline": "well"
+      },
+      "contact": {
+        "hip_z": 0.46017929911613464,
+        "foot_plane_gaps": [
+          0.0,
+          0.0
+        ]
+      },
+      "bounds": null
+    },
+    "gia": {
+      "scale": 1,
+      "mark": {
+        "xyz": [
+          0,
+          -3.3,
+          0
+        ],
+        "yaw_deg": 180,
+        "seat_height": 0.62,
+        "eyeline": "well"
+      },
+      "contact": {
+        "hip_z": 0.46482720971107483,
+        "foot_plane_gaps": [
+          0.0,
+          0.0
+        ]
+      },
+      "bounds": null
+    },
+    "hana": {
+      "scale": 1.01,
+      "mark": {
+        "xyz": [
+          1.438,
+          -2.9702,
+          0
+        ],
+        "yaw_deg": 205.833,
+        "seat_height": 0.62,
+        "eyeline": "well"
+      },
+      "contact": {
+        "hip_z": 0.4694758355617523,
+        "foot_plane_gaps": [
+          0.0,
+          0.0
+        ]
+      },
+      "bounds": null
+    },
+    "ivy": {
+      "scale": 0.98,
+      "mark": {
+        "xyz": [
+          2.5886,
+          -2.0468,
+          0
+        ],
+        "yaw_deg": 231.667,
+        "seat_height": 0.62,
+        "eyeline": "well"
+      },
+      "contact": {
+        "hip_z": 0.45553073287010193,
+        "foot_plane_gaps": [
+          2.9802322387695312e-08,
+          2.9802322387695312e-08
+        ]
+      },
+      "bounds": null
+    },
+    "leo": {
+      "scale": 1,
+      "mark": {
+        "xyz": [
+          -1.2,
+          8,
+          0
+        ],
+        "yaw_deg": 0,
+        "seat_height": 0.62
+      },
+      "contact": {
+        "hip_z": 0.4648272395133972,
+        "foot_plane_gaps": [
+          0.0,
+          0.0
+        ]
+      },
+      "bounds": null
+    },
+    "max": {
+      "scale": 1.01,
+      "mark": {
+        "xyz": [
+          0,
+          8,
+          0
+        ],
+        "yaw_deg": 0,
+        "seat_height": 0.62
+      },
+      "contact": {
+        "hip_z": 0.4694754183292389,
+        "foot_plane_gaps": [
+          0.0,
+          0.0
+        ]
+      },
+      "bounds": null
+    },
+    "noah": {
+      "scale": 0.98,
+      "mark": {
+        "xyz": [
+          1.2,
+          8,
+          0
+        ],
+        "yaw_deg": 0,
+        "seat_height": 0.62
+      },
+      "contact": {
+        "hip_z": 0.45553067326545715,
+        "foot_plane_gaps": [
+          2.9802322387695312e-08,
+          2.9802322387695312e-08
+        ]
+      },
+      "bounds": null
+    },
+    "ryan": {
+      "scale": 1.02,
+      "mark": {
+        "xyz": [
+          2.4,
+          8,
+          0
+        ],
+        "yaw_deg": 0,
+        "seat_height": 0.62
+      },
+      "contact": {
+        "hip_z": 0.47412458062171936,
+        "foot_plane_gaps": [
+          5.960464477539063e-08,
+          5.960464477539063e-08
+        ]
+      },
+      "bounds": null
+    },
+    "sam": {
+      "scale": 0.99,
+      "mark": {
+        "xyz": [
+          3.5999999999999996,
+          8,
+          0
+        ],
+        "yaw_deg": 0,
+        "seat_height": 0.62
+      },
+      "contact": {
+        "hip_z": 0.4601788818836212,
+        "foot_plane_gaps": [
+          0.0,
+          0.0
+        ]
+      },
+      "bounds": null
+    }
+  },
+  "scenery": {
+    "repository": "AdityapalW/Roblox-skill",
+    "commit": "54b34ba1be2e3013a9de59e40db288d8f2ebda53",
+    "file": "Itlay/Itlay.gltf",
+    "git_blob": "20108af3a19fae6b5beaa5fac2e3305b56112a41",
+    "mesh_objects": 196,
+    "objects": 207,
+    "transform": "native Blender glTF axis conversion; root identity",
+    "texture_provenance": "Repository README: procedural geometry/textures with selected CC0 Poly Haven photo textures; individual texture attribution not supplied by source manifest.",
+    "adaptation": "Story-local level platform, well, wall and seats; imported map objects remain present, no imported material changes. Alignment subject to smoke review."
+  },
+  "image": {
+    "file": "square_group_smoke.png",
+    "render_seconds": 46.284686265000005,
+    "resolution": [
+      1440,
+      1080
+    ],
+    "near_black_percent": 0.28935185185185186
+  }
+}
