@@ -1,0 +1,487 @@
+{
+  "status": "design_only",
+  "coordinates": "actor +X right, -Y forward, +Z up; yaw around Z in degrees; support heights proposed, not measured",
+  "set": "square",
+  "marks": {
+    "well": {
+      "xyz": [
+        0,
+        0,
+        0
+      ],
+      "yaw_deg": 0
+    },
+    "wall": {
+      "xyz": [
+        0,
+        8,
+        0
+      ],
+      "yaw_deg": 0
+    },
+    "cross_start": {
+      "xyz": [
+        0,
+        7,
+        0
+      ],
+      "yaw_deg": 0
+    },
+    "cross_end": {
+      "xyz": [
+        0,
+        2.2,
+        0
+      ],
+      "yaw_deg": 0
+    },
+    "interview": {
+      "xyz": [
+        0,
+        2.2,
+        0
+      ],
+      "yaw_deg": 0
+    },
+    "june_seat": {
+      "xyz": [
+        2.1,
+        -0.8,
+        0
+      ],
+      "yaw_deg": 90,
+      "seat_height": 0.62
+    },
+    "narrator_seat": {
+      "xyz": [
+        2.1,
+        0.05,
+        0
+      ],
+      "yaw_deg": 90,
+      "seat_height": 0.62
+    },
+    "waffle": {
+      "xyz": [
+        3.1,
+        0,
+        0
+      ],
+      "yaw_deg": -90
+    },
+    "wall_narrator": {
+      "xyz": [
+        -3.5999999999999996,
+        8,
+        0
+      ],
+      "yaw_deg": 0,
+      "seat_height": 0.62
+    },
+    "wall_otis": {
+      "xyz": [
+        -2.4,
+        8,
+        0
+      ],
+      "yaw_deg": 0,
+      "seat_height": 0.62
+    },
+    "wall_leo": {
+      "xyz": [
+        -1.2,
+        8,
+        0
+      ],
+      "yaw_deg": 0,
+      "seat_height": 0.62
+    },
+    "wall_max": {
+      "xyz": [
+        0,
+        8,
+        0
+      ],
+      "yaw_deg": 0,
+      "seat_height": 0.62
+    },
+    "wall_noah": {
+      "xyz": [
+        1.2,
+        8,
+        0
+      ],
+      "yaw_deg": 0,
+      "seat_height": 0.62
+    },
+    "wall_ryan": {
+      "xyz": [
+        2.4,
+        8,
+        0
+      ],
+      "yaw_deg": 0,
+      "seat_height": 0.62
+    },
+    "wall_sam": {
+      "xyz": [
+        3.5999999999999996,
+        8,
+        0
+      ],
+      "yaw_deg": 0,
+      "seat_height": 0.62
+    },
+    "well_ava": {
+      "xyz": [
+        3.3,
+        0,
+        0
+      ],
+      "yaw_deg": 90,
+      "seat_height": 0.62,
+      "eyeline": "well"
+    },
+    "well_bella": {
+      "xyz": [
+        2.922,
+        1.5336,
+        0
+      ],
+      "yaw_deg": 117.692,
+      "seat_height": 0.62,
+      "eyeline": "well"
+    },
+    "well_cleo": {
+      "xyz": [
+        1.8746,
+        2.7158,
+        0
+      ],
+      "yaw_deg": 145.385,
+      "seat_height": 0.62,
+      "eyeline": "well"
+    },
+    "well_daisy": {
+      "xyz": [
+        0.3978,
+        3.2759,
+        0
+      ],
+      "yaw_deg": 173.077,
+      "seat_height": 0.62,
+      "eyeline": "well"
+    },
+    "well_ella": {
+      "xyz": [
+        -1.1702,
+        3.0856,
+        0
+      ],
+      "yaw_deg": 200.769,
+      "seat_height": 0.62,
+      "eyeline": "well"
+    },
+    "well_faye": {
+      "xyz": [
+        -2.4701,
+        2.1883,
+        0
+      ],
+      "yaw_deg": 228.462,
+      "seat_height": 0.62,
+      "eyeline": "well"
+    },
+    "well_gia": {
+      "xyz": [
+        -3.2041,
+        0.7897,
+        0
+      ],
+      "yaw_deg": 256.154,
+      "seat_height": 0.62,
+      "eyeline": "well"
+    },
+    "well_hana": {
+      "xyz": [
+        -3.2041,
+        -0.7897,
+        0
+      ],
+      "yaw_deg": 283.846,
+      "seat_height": 0.62,
+      "eyeline": "well"
+    },
+    "well_ivy": {
+      "xyz": [
+        -2.4701,
+        -2.1883,
+        0
+      ],
+      "yaw_deg": 311.538,
+      "seat_height": 0.62,
+      "eyeline": "well"
+    },
+    "well_june": {
+      "xyz": [
+        -1.1702,
+        -3.0856,
+        0
+      ],
+      "yaw_deg": 339.231,
+      "seat_height": 0.62,
+      "eyeline": "well"
+    },
+    "well_brody": {
+      "xyz": [
+        0.3978,
+        -3.2759,
+        0
+      ],
+      "yaw_deg": 366.923,
+      "seat_height": 0.62,
+      "eyeline": "well"
+    },
+    "well_chase": {
+      "xyz": [
+        1.8746,
+        -2.7158,
+        0
+      ],
+      "yaw_deg": 394.615,
+      "seat_height": 0.62,
+      "eyeline": "well"
+    },
+    "well_kai": {
+      "xyz": [
+        2.922,
+        -1.5336,
+        0
+      ],
+      "yaw_deg": 422.308,
+      "seat_height": 0.62,
+      "eyeline": "well"
+    }
+  },
+  "layouts": {
+    "initial": {
+      "wall": [
+        "narrator",
+        "otis",
+        "leo",
+        "max",
+        "noah",
+        "ryan",
+        "sam"
+      ],
+      "well": [
+        "ava",
+        "bella",
+        "cleo",
+        "daisy",
+        "ella",
+        "faye",
+        "gia",
+        "hana",
+        "ivy",
+        "june",
+        "brody",
+        "chase",
+        "kai"
+      ]
+    },
+    "crossing": {
+      "route": [
+        "cross_start",
+        "cross_end"
+      ],
+      "actor": "narrator",
+      "remaining_wall": [
+        "otis",
+        "leo",
+        "max",
+        "noah",
+        "ryan",
+        "sam"
+      ]
+    },
+    "ending": {
+      "wall": [],
+      "well": [
+        "ava",
+        "bella",
+        "cleo",
+        "daisy",
+        "ella",
+        "faye",
+        "gia",
+        "hana",
+        "ivy",
+        "june",
+        "brody",
+        "chase",
+        "kai",
+        "narrator",
+        "otis",
+        "leo",
+        "max",
+        "noah",
+        "ryan",
+        "sam"
+      ]
+    }
+  },
+  "chart": {
+    "girls": [
+      "ava",
+      "bella",
+      "cleo",
+      "daisy",
+      "ella",
+      "faye",
+      "gia",
+      "hana",
+      "ivy",
+      "june"
+    ],
+    "boys": [
+      "brody",
+      "chase",
+      "kai",
+      "otis",
+      "leo",
+      "max",
+      "noah",
+      "ryan",
+      "sam",
+      "narrator"
+    ],
+    "initial_links": [
+      {
+        "from": "ava",
+        "to": "brody"
+      },
+      {
+        "from": "bella",
+        "to": "chase"
+      },
+      {
+        "from": "cleo",
+        "to": "kai"
+      },
+      {
+        "from": "daisy",
+        "to": "brody"
+      },
+      {
+        "from": "ella",
+        "to": "chase"
+      },
+      {
+        "from": "faye",
+        "to": "kai"
+      },
+      {
+        "from": "gia",
+        "to": "brody"
+      },
+      {
+        "from": "hana",
+        "to": "chase"
+      },
+      {
+        "from": "ivy",
+        "to": "kai"
+      },
+      {
+        "from": "june",
+        "to": "kai"
+      }
+    ],
+    "replacement_links": [
+      {
+        "from": "ava",
+        "to": "brody"
+      },
+      {
+        "from": "bella",
+        "to": "chase"
+      },
+      {
+        "from": "cleo",
+        "to": "kai"
+      },
+      {
+        "from": "daisy",
+        "to": "otis"
+      },
+      {
+        "from": "ella",
+        "to": "leo"
+      },
+      {
+        "from": "faye",
+        "to": "max"
+      },
+      {
+        "from": "gia",
+        "to": "noah"
+      },
+      {
+        "from": "hana",
+        "to": "ryan"
+      },
+      {
+        "from": "ivy",
+        "to": "sam"
+      },
+      {
+        "from": "june",
+        "to": "narrator"
+      },
+      {
+        "from": "brody",
+        "to": "daisy"
+      },
+      {
+        "from": "chase",
+        "to": "ella"
+      },
+      {
+        "from": "kai",
+        "to": "faye"
+      },
+      {
+        "from": "otis",
+        "to": "gia"
+      },
+      {
+        "from": "leo",
+        "to": "hana"
+      },
+      {
+        "from": "max",
+        "to": "ivy"
+      },
+      {
+        "from": "noah",
+        "to": "june"
+      },
+      {
+        "from": "ryan",
+        "to": "ava"
+      },
+      {
+        "from": "sam",
+        "to": "bella"
+      },
+      {
+        "from": "narrator",
+        "to": "june"
+      }
+    ],
+    "author": "otis",
+    "title_initial": "Otis's theory",
+    "title_final": "Otis's new chart"
+  }
+}
