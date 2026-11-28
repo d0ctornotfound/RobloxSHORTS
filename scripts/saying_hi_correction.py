@@ -9,6 +9,7 @@ from bpy_extras.object_utils import world_to_camera_view
 from render_saying_hi_shot import SceneUnit,V,ease,clamp,frame,actor_points,show,FPS,mesh_points,bounds,cube,material,empty,project,group_tree,tree_for_object,hand_contact,carry_two,waffle_pose,seat_setup,neutral_feet,sit_pose,rear_hip,Articulation,ArticulatedClothes,Retarget,StrideLock,yaw_to
 from saying_hi_contacts import surface_tree
 from saying_hi_square import build_square
+from saying_hi_walk_phase_search import PhaseStrideLock,search_walk_warp
 
 def meshes(root):
     return [o for o in [root]+list(root.children_recursive) if o.type=="MESH" and not o.hide_render]
@@ -168,10 +169,10 @@ class CorrectedUnit(SceneUnit):
         self.move_frames=nframes-self.pickup_frames
         if getattr(self,"cached_walk",None):
             best=self.cached_walk;rows=[best];ret=Retarget(self.a)
-        else:best,rows,ret=search_walk(self.a,self.start,self.end,nframes,self.pickup_frames)
+        else:best,rows,ret=search_walk_warp(self.a,self.start,self.end,nframes,self.pickup_frames)
         self.stride_candidate=best;self.stride_search=rows;self.yaw=best["yaw"]
-        self.stride_offset=best["phase"]*ret.clips["walk_cycle"]["duration"]/best["rate"]
-        self.lock=StrideLock(ret,"walk_cycle",FPS,best["rate"],self.start,self.yaw)
+        self.stride_offset=0 if best.get("phase_schedule") else best["phase"]*ret.clips["walk_cycle"]["duration"]/best["rate"]
+        self.lock=self.new_walk_lock(ret)
         self.settle_len=best["settle_frames"];self.hold=best["hold_frames"]
         for cid in self.stage["layouts"]["initial"]["wall"]+self.stage["layouts"]["initial"]["well"]:
             if cid!="narrator":self.seat(cid)
@@ -181,24 +182,41 @@ class CorrectedUnit(SceneUnit):
         anchors=[o.matrix_world@V(v) for o in [wall]+meshes(well) for v in o.bound_box]
         for p in (self.start,self.end):
             anchors.extend(p+V((x,y,z)) for x in (-.72,.72) for y in (-.50,.50) for z in (0,2.35))
-        target=V((0,4.1,1.05));choices=[]
-        for x in (-6.,-4.,-2.,0.,2.,4.,6.):
-            for y in (-8.,-6.,-4.):
-                for z in (2.6,3.3,4.1,5.0):
+        choices=[]
+        # Use the continuous maximal safe lens rather than 4-mm increments.
+        # Fit actual wall/fountain in the camera; no geography movement.
+        for x in (-6.,-4.5,-3.,-1.5,0.,1.5,3.,4.5,6.):
+            for y in (-12.,-9.,-6.,-4.,-2.5):
+                for z in (1.8,2.3,2.8,3.3,4.0):
                     loc=V((x,y,z))
-                    for lens in (20,24,28,32,36):
-                        frame(self.scene,self.cam,loc,target,lens)
+                    for tz in (.55,.85,1.15,1.45):
+                        target=V((0,4.05,tz))
+                        frame(self.scene,self.cam,loc,target,30)
                         b=project(self.scene,self.cam,anchors)
-                        if b[4]<=0 or not (.035<=b[0]<=b[1]<=.965 and .035<=b[2]<=b[3]<=.965):continue
+                        if b[4]<=0:continue
+                        extent=max(abs(b[0]-.5),abs(b[1]-.5),abs(b[2]-.5),abs(b[3]-.5))
+                        lens=30*.464/max(.01,extent)
+                        if not 14<=lens<=85:continue
+                        frame(self.scene,self.cam,loc,target,lens);b=project(self.scene,self.cam,anchors)
+                        if not (.035<=b[0]<=b[1]<=.965 and .035<=b[2]<=b[3]<=.965):continue
                         cov=min(project(self.scene,self.cam,[p,p+V((0,0,2.28))])[3]-project(self.scene,self.cam,[p,p+V((0,0,2.28))])[2] for p in (self.start,self.end))
-                        # Penalize large height and reward coverage, no geography change.
-                        choices.append((cov-.003*z,cov,loc.copy(),lens,list(b)))
-        if not choices:
+                        choices.append((cov,loc.copy(),target.copy(),lens,list(b)))
+        choices.sort(key=lambda q:q[0],reverse=True);checked=[]
+        own=set(meshes(self.a.root))
+        for cov,loc,target,lens,b in choices[:80]:
+            frame(self.scene,self.cam,loc,target,lens)
+            blocked=sum(not visible_ray(self.scene,self.cam,self.start.lerp(self.end,u)+V((0,0,.10)),own) for u in (0,.125,.25,.375,.5,.625,.75,.875,1))
+            checked.append((blocked,cov,loc,target,lens,b))
+        if not checked:
             frame(self.scene,self.cam,(0,-9,4),(0,4,1.05),20)
             self.cross_camera={"candidate_found":False,"min_vertical_coverage":0}
         else:
-            _,cov,loc,lens,b=max(choices,key=lambda q:q[0]);frame(self.scene,self.cam,loc,target,lens)
-            self.cross_camera={"candidate_found":True,"position":list(loc),"target":list(target),"lens":lens,"geography_bounds":b,"min_vertical_coverage":cov}
+            blocked,cov,loc,target,lens,b=min(checked,key=lambda q:(q[0],-q[1],q[2].z));frame(self.scene,self.cam,loc,target,lens)
+            self.cross_camera={"candidate_found":True,"position":list(loc),"target":list(target),"lens":lens,"geography_bounds":b,"min_vertical_coverage":cov,"setup_blocked_route_rays":blocked}
+    def new_walk_lock(self,ret):
+        best=self.stride_candidate
+        if best.get("phase_schedule"):return PhaseStrideLock(ret,best["rate"],self.start,self.yaw,best["phase_schedule"])
+        return StrideLock(ret,"walk_cycle",FPS,best["rate"],self.start,self.yaw)
     def update_crossing(self,index,u,t):
         # Keep original pickup and dual-prop carry, but use the exact solved
         # settle schedule rather than the old hard-coded ten-frame blend.
