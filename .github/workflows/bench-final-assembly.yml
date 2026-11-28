@@ -4,29 +4,52 @@ on:
     branches: [main]
     paths:
       - 'production/bench_release_manifest.json'
+  workflow_run:
+    workflows: ['Bench — full-frame production chunks']
+    types: [completed]
   workflow_dispatch:
 permissions:
   contents: read
   actions: read
+concurrency:
+  group: bench-final-assembly
+  cancel-in-progress: false
 jobs:
   assemble:
     runs-on: ubuntu-24.04
     timeout-minutes: 45
     steps:
       - uses: actions/checkout@v4
-      - name: Require 48 explicit release entries
+        with:
+          ref: main
+      - name: Check exact production jobs and artifacts
+        id: check
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           python3 - <<'PY'
-          import json
+          import json,subprocess,os
           m=json.load(open('production/bench_release_manifest.json'))
           assert m['status']=='ready_for_assembly'
-          a=m['shots']
-          assert sorted(e['shot'] for e in a)==list(range(1,49))
+          a=m['shots']; assert sorted(e['shot'] for e in a)==list(range(1,49))
+          repo=os.environ['GITHUB_REPOSITORY']
+          runs={}
+          for run in sorted({e['production_run'] for e in a}):
+              def api(suffix):
+                  return json.loads(subprocess.check_output(['gh','api',f'repos/{repo}/actions/runs/{run}/{suffix}?per_page=100']))
+              runs[run]=(api('jobs')['jobs'],api('artifacts')['artifacts'])
+          missing=[]
           for e in a:
-              assert type(e['production_run']) is int and type(e['preflight_run']) is int
-              assert len(e['source_commit'])==40
+              n=e['shot']; jobs,arts=runs[e['production_run']]
+              j=[x for x in jobs if x['name'].startswith(f'chunk ({n},') or x['name'].startswith(f'chunk ({n})')]
+              art=[x for x in arts if x['name']==f'bench-production-shot-{n}' and not x['expired']]
+              if len(j)!=1 or j[0]['conclusion']!='success' or len(art)!=1:
+                  missing.append({'shot':n,'run':e['production_run'],'job_status':[(x['status'],x['conclusion']) for x in j],'artifacts':len(art)})
+          print('PENDING_OR_FAILED',json.dumps(missing))
+          with open(os.environ['GITHUB_OUTPUT'],'a') as f: f.write('ready='+str(not missing).lower()+'\n')
           PY
       - name: Download each exact production artifact
+        if: steps.check.outputs.ready == 'true'
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
@@ -36,16 +59,17 @@ jobs:
           from pathlib import Path
           a=json.load(open('production/bench_release_manifest.json'))['shots']
           for e in a:
-              n=e['shot'];p=Path('chunks')/f'shot_{n:02d}'
-              p.mkdir()
+              n=e['shot'];p=Path('chunks')/f'shot_{n:02d}';p.mkdir()
               subprocess.run(['gh','run','download',str(e['production_run']),'--name',f'bench-production-shot-{n}','--dir',str(p)],check=True)
           PY
       - name: Install encoding dependencies
+        if: steps.check.outputs.ready == 'true'
         run: sudo apt-get update && sudo apt-get install -y ffmpeg python3-pil fonts-dejavu-core
       - name: Validate and assemble 120-second visual master
+        if: steps.check.outputs.ready == 'true'
         run: python3 scripts/assemble_bench_release.py --chunks chunks --release production/bench_release_manifest.json --output render/bench-final
       - uses: actions/upload-artifact@v4
-        if: always()
+        if: always() && steps.check.outputs.ready == 'true'
         with:
           name: bench-final-visual-master
           path: |

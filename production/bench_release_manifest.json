@@ -1,0 +1,331 @@
+{
+  "status": "ready_for_assembly",
+  "note": "Pinned candidate source selection, NOT a claim that all artifacts have passed. Gate requires each exact job success, available artifact, full frame and geometry validation. Human playback review still required.",
+  "shots": [
+    {
+      "shot": 1,
+      "production_run": 46090683630,
+      "preflight_run": 46089668735,
+      "source_commit": "9a8eb4c30ba4b8949a997264b9310c95d96a9928"
+    },
+    {
+      "shot": 2,
+      "production_run": 46088851627,
+      "preflight_run": 46088390440,
+      "source_commit": "99ff7dd78c34357c1c3a5783e7c0fd6c8b3c8b40",
+      "sha256": "99d90a0383409a2b414602ee91f30ed923b8e07c111e82de478cba847a9fb26e"
+    },
+    {
+      "shot": 3,
+      "production_run": 46088254315,
+      "preflight_run": 46087343283,
+      "source_commit": "c88b009354b8be2a6c1386ca46c6679bd4c52714",
+      "sha256": "4db9b092e38f5a9a1691ebc57b4b82853bb4690fe831cb3dd434c1a97ab3c660"
+    },
+    {
+      "shot": 4,
+      "production_run": 46088851627,
+      "preflight_run": 46088254113,
+      "source_commit": "10e18274a9277d59e918b3670764a297a5c91cdf",
+      "sha256": "002b413c6cb25c500f5aa7f922d604d4fe179be793247697da088686d8a22fd3"
+    },
+    {
+      "shot": 5,
+      "production_run": 46088254315,
+      "preflight_run": 46086807184,
+      "source_commit": "935e5c4055ac8fe02cd4b8f3f0f18c1e5bba0f2f",
+      "sha256": "2ae5d0c9128d02440e2be425c449a78721ba0010f87b6b0e1480130513c4d4b2"
+    },
+    {
+      "shot": 6,
+      "production_run": 46088254315,
+      "preflight_run": 46087343283,
+      "source_commit": "c88b009354b8be2a6c1386ca46c6679bd4c52714",
+      "sha256": "c281e765e6c12106394827ceb7785456a957f5e228c9c99cd0da02c482b5d0d2"
+    },
+    {
+      "shot": 7,
+      "production_run": 46088390454,
+      "preflight_run": 46087958140,
+      "source_commit": "749057616ff364a80a14f5f3ca8ccd3677bfb2c5",
+      "sha256": "7e44e7828257c63ba881790775d64f6210a20a585bbe64339799ce19ebe885c4"
+    },
+    {
+      "shot": 8,
+      "production_run": 46088390454,
+      "preflight_run": 46087958140,
+      "source_commit": "749057616ff364a80a14f5f3ca8ccd3677bfb2c5",
+      "sha256": "2c1f4350fa95fe983e90b9a1f6ffb0ff0ad29f61cf2acd0c49140469149e8f1e"
+    },
+    {
+      "shot": 9,
+      "production_run": 46088390454,
+      "preflight_run": 46087343283,
+      "source_commit": "c88b009354b8be2a6c1386ca46c6679bd4c52714",
+      "sha256": "9cb90bb25e73cfaa634660c83f82fc1a4990eb6777135d9e8aa7d1144c606d47"
+    },
+    {
+      "shot": 10,
+      "production_run": 46088254315,
+      "preflight_run": 46087343283,
+      "source_commit": "c88b009354b8be2a6c1386ca46c6679bd4c52714",
+      "sha256": "d37436435b9d8e5747b823d8488237246a3de0f3b52b9e810e73e26b6aec7f76"
+    },
+    {
+      "shot": 11,
+      "production_run": 46088390454,
+      "preflight_run": 46087958140,
+      "source_commit": "749057616ff364a80a14f5f3ca8ccd3677bfb2c5",
+      "sha256": "8525c7a15f1e7a683b1750f0aecbf8efac0a0f07730a642f92c509eb19706fb2"
+    },
+    {
+      "shot": 12,
+      "production_run": 46088254315,
+      "preflight_run": 46086807184,
+      "source_commit": "935e5c4055ac8fe02cd4b8f3f0f18c1e5bba0f2f",
+      "sha256": "603cd69df4cb5237fc8a2320cdffc09711981070a1d2c4a1bdb579fbf323e1df"
+    },
+    {
+      "shot": 13,
+      "production_run": 46088390454,
+      "preflight_run": 46087958140,
+      "source_commit": "749057616ff364a80a14f5f3ca8ccd3677bfb2c5",
+      "sha256": "dab8e87ae83287ea2b9a9b07e57a1b7c16a771b5b06737153bca41d2528fb7e3"
+    },
+    {
+      "shot": 14,
+      "production_run": 46088390454,
+      "preflight_run": 46087958140,
+      "source_commit": "749057616ff364a80a14f5f3ca8ccd3677bfb2c5",
+      "sha256": "3ccebd3fc01c9e6a776352dccd13f2587c91b924fea87e6581b54b07886f3287"
+    },
+    {
+      "shot": 15,
+      "production_run": 46088390454,
+      "preflight_run": 46087958140,
+      "source_commit": "749057616ff364a80a14f5f3ca8ccd3677bfb2c5",
+      "sha256": "e9874c9e2d852a3387901a3f12d2f58e9d3bb5ecf6ef6b7555c06f656e2ab118"
+    },
+    {
+      "shot": 16,
+      "production_run": 46088390454,
+      "preflight_run": 46087958140,
+      "source_commit": "749057616ff364a80a14f5f3ca8ccd3677bfb2c5",
+      "sha256": "b1088e801228bf1163c1c77898a351d828ed15eb227ccdf9ade53b82efce6ef6"
+    },
+    {
+      "shot": 17,
+      "production_run": 46088958383,
+      "preflight_run": 46088390440,
+      "source_commit": "99ff7dd78c34357c1c3a5783e7c0fd6c8b3c8b40",
+      "sha256": "00786a4dd90ee965b95fedccdea743d9f457811cd8e6d68c81e2ebd601a19d07"
+    },
+    {
+      "shot": 18,
+      "production_run": 46088390454,
+      "preflight_run": 46087958140,
+      "source_commit": "749057616ff364a80a14f5f3ca8ccd3677bfb2c5"
+    },
+    {
+      "shot": 19,
+      "production_run": 46090791494,
+      "preflight_run": 46089843950,
+      "source_commit": "6c1660ec1c55785752cb5bcbb91de9527201fbcc"
+    },
+    {
+      "shot": 20,
+      "production_run": 46088390454,
+      "preflight_run": 46087958140,
+      "source_commit": "749057616ff364a80a14f5f3ca8ccd3677bfb2c5",
+      "sha256": "0d06c8b1511207a91f3c55195aa48ad50e6c8a06a230ad1af9ea4a4659d0b3fc"
+    },
+    {
+      "shot": 21,
+      "production_run": 46088390454,
+      "preflight_run": 46087958140,
+      "source_commit": "749057616ff364a80a14f5f3ca8ccd3677bfb2c5",
+      "sha256": "cc8c2c982f2daafc9f0d7118ff215cbf98c7142808a2a4d60e373baabfae42fb"
+    },
+    {
+      "shot": 22,
+      "production_run": 46088390454,
+      "preflight_run": 46086807184,
+      "source_commit": "935e5c4055ac8fe02cd4b8f3f0f18c1e5bba0f2f",
+      "sha256": "6316213353c07b62f9d0cc2a03fa93d98339c3605124dc747dc7d3a9cf9347a1"
+    },
+    {
+      "shot": 23,
+      "production_run": 46088254315,
+      "preflight_run": 46087716942,
+      "source_commit": "7997a45da1b14e69934fb2248ef0d193c44d145a",
+      "sha256": "ecc9f2d15caa57a29fdac4fa5596ec9f2cadcfac867909ce280d93f9716a7f21"
+    },
+    {
+      "shot": 24,
+      "production_run": 46088254315,
+      "preflight_run": 46087716942,
+      "source_commit": "7997a45da1b14e69934fb2248ef0d193c44d145a",
+      "sha256": "e09b4b5223b6508d33c414eb720cab7a0eb62a7557f97c608879eaa3ad3571ea"
+    },
+    {
+      "shot": 25,
+      "production_run": 46088254315,
+      "preflight_run": 46087716942,
+      "source_commit": "7997a45da1b14e69934fb2248ef0d193c44d145a",
+      "sha256": "00131d98ba3e25ce2a67e90c0d0fd2b387bcf830442dc1e7a7693260475dd56b"
+    },
+    {
+      "shot": 26,
+      "production_run": 46088254315,
+      "preflight_run": 46086807184,
+      "source_commit": "935e5c4055ac8fe02cd4b8f3f0f18c1e5bba0f2f",
+      "sha256": "5904759598bbcd30bd6ab5eccbb6e2f01e928adb1bf464afbb1b75498aed3df1"
+    },
+    {
+      "shot": 27,
+      "production_run": 46088390454,
+      "preflight_run": 46086807184,
+      "source_commit": "935e5c4055ac8fe02cd4b8f3f0f18c1e5bba0f2f",
+      "sha256": "23276a37ccca6b4e62d8a741077c95adc0a2b7645bb16278f79a88c6ee34a504"
+    },
+    {
+      "shot": 28,
+      "production_run": 46088254315,
+      "preflight_run": 46086807184,
+      "source_commit": "935e5c4055ac8fe02cd4b8f3f0f18c1e5bba0f2f",
+      "sha256": "36679aa12ddbe0b599c7982a6a47578613b14eb69ec772f1572f58091b71a4da"
+    },
+    {
+      "shot": 29,
+      "production_run": 46088390454,
+      "preflight_run": 46086807184,
+      "source_commit": "935e5c4055ac8fe02cd4b8f3f0f18c1e5bba0f2f",
+      "sha256": "03479ecc0487d4d3187dd08465e37d53562612299dc6d8aa8d30c59d66f47a29"
+    },
+    {
+      "shot": 30,
+      "production_run": 46088571771,
+      "preflight_run": 46087958140,
+      "source_commit": "749057616ff364a80a14f5f3ca8ccd3677bfb2c5",
+      "sha256": "fdf37abb9636ce4677032b04b48ab7fc54159cf5de1873e84e8c356423efd7d5"
+    },
+    {
+      "shot": 31,
+      "production_run": 46089668726,
+      "preflight_run": 46088639648,
+      "source_commit": "42fa36d33ae47e415cd0ee81a8e26eba4b1264e8"
+    },
+    {
+      "shot": 32,
+      "production_run": 46088390454,
+      "preflight_run": 46087716942,
+      "source_commit": "7997a45da1b14e69934fb2248ef0d193c44d145a",
+      "sha256": "89b9c368fbab9705a385c9f5ad1f53cef1a7a91f7a3d01798e12329ff170854f"
+    },
+    {
+      "shot": 33,
+      "production_run": 46088254315,
+      "preflight_run": 46086807184,
+      "source_commit": "935e5c4055ac8fe02cd4b8f3f0f18c1e5bba0f2f",
+      "sha256": "841cbf5b67e0b0e7104455f9c9a01599a3c33bfbb87706c17bc82b621745ef16"
+    },
+    {
+      "shot": 34,
+      "production_run": 46088571771,
+      "preflight_run": 46087958140,
+      "source_commit": "749057616ff364a80a14f5f3ca8ccd3677bfb2c5",
+      "sha256": "ef18747df78524e29cbff74adaf0ac7928157e4842d5939975b168592eb9d24d"
+    },
+    {
+      "shot": 35,
+      "production_run": 46088571771,
+      "preflight_run": 46087958140,
+      "source_commit": "749057616ff364a80a14f5f3ca8ccd3677bfb2c5",
+      "sha256": "beafc88025c609b56951fa12278f5bb254631d42cf1cc3c4a67012ec78b2459d"
+    },
+    {
+      "shot": 36,
+      "production_run": 46088390454,
+      "preflight_run": 46086807184,
+      "source_commit": "935e5c4055ac8fe02cd4b8f3f0f18c1e5bba0f2f",
+      "sha256": "a52d344bc5624f306e02a41c9f763aec824113955b685e6bc199a5fd70132e0b"
+    },
+    {
+      "shot": 37,
+      "production_run": 46088254315,
+      "preflight_run": 46086807184,
+      "source_commit": "935e5c4055ac8fe02cd4b8f3f0f18c1e5bba0f2f",
+      "sha256": "a9058dcabbb84d0b2c5f2c4ee778485bdd959a557b3ea4aa45c7fac869c22f2d"
+    },
+    {
+      "shot": 38,
+      "production_run": 46088571771,
+      "preflight_run": 46087958140,
+      "source_commit": "749057616ff364a80a14f5f3ca8ccd3677bfb2c5",
+      "sha256": "41ff22e74b2a01d54b4aff22d40f577eb7fcb2b1487f99aac2cbde52f5f0f658"
+    },
+    {
+      "shot": 39,
+      "production_run": 46088571771,
+      "preflight_run": 46087958140,
+      "source_commit": "749057616ff364a80a14f5f3ca8ccd3677bfb2c5",
+      "sha256": "695420ac0ded653450b3ab4e258174192c7a89ce9cb606f5c7e3e2a60dff4e70"
+    },
+    {
+      "shot": 40,
+      "production_run": 46088390454,
+      "preflight_run": 46086807184,
+      "source_commit": "935e5c4055ac8fe02cd4b8f3f0f18c1e5bba0f2f",
+      "sha256": "733025837a8031915aafbfc0c560c4ff4952280d7abf13475a6581ff45dd846d"
+    },
+    {
+      "shot": 41,
+      "production_run": 46091013538,
+      "preflight_run": 46090683656,
+      "source_commit": "cf6cf3546bc52d672073a1c1d1ab107e0d9c50c6"
+    },
+    {
+      "shot": 42,
+      "production_run": 46088571771,
+      "preflight_run": 46087958140,
+      "source_commit": "749057616ff364a80a14f5f3ca8ccd3677bfb2c5",
+      "sha256": "12680948a3ec90418c2cad25650f207330f958e9e8ca479bc3fea4dd8e0d6b06"
+    },
+    {
+      "shot": 43,
+      "production_run": 46090683630,
+      "preflight_run": 46089668735,
+      "source_commit": "9a8eb4c30ba4b8949a997264b9310c95d96a9928"
+    },
+    {
+      "shot": 44,
+      "production_run": 46090683630,
+      "preflight_run": 46089668735,
+      "source_commit": "9a8eb4c30ba4b8949a997264b9310c95d96a9928"
+    },
+    {
+      "shot": 45,
+      "production_run": 46090078016,
+      "preflight_run": 46088571736,
+      "source_commit": "eca5487b9140f669f41dd2200e378ae207bbb83b"
+    },
+    {
+      "shot": 46,
+      "production_run": 46090683630,
+      "preflight_run": 46089843950,
+      "source_commit": "6c1660ec1c55785752cb5bcbb91de9527201fbcc"
+    },
+    {
+      "shot": 47,
+      "production_run": 46090791494,
+      "preflight_run": 46090077973,
+      "source_commit": "93d0b5676f2b60cb35395e8959245e8fe3e935ca"
+    },
+    {
+      "shot": 48,
+      "production_run": 46090791494,
+      "preflight_run": 46090333348,
+      "source_commit": "0829719cd4b4cb06b4af8010cad68572fe62e445"
+    }
+  ]
+}

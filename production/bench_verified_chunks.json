@@ -1,6 +1,6 @@
 {
   "status": "partial_verified_not_release_ready",
-  "verified_shots": 37,
+  "verified_shots": 38,
   "shots": [
     {
       "shot": 2,
@@ -253,6 +253,20 @@
       "passed": true,
       "independent_checks": "SHA256, independent decoded count and darkness, geometry and PNG sequence",
       "visual_status": "Milo-focused framing; Dad partly cropped. Continuous playback pending"
+    },
+    {
+      "shot": 21,
+      "artifact_id": 15240962689,
+      "production_run": 46088390454,
+      "preflight_run": 46087958140,
+      "source_commit": "749057616ff364a80a14f5f3ca8ccd3677bfb2c5",
+      "frames": 60,
+      "duration": 2.5,
+      "encoded_max_near_black_percent": 1.0949074074074074,
+      "sha256": "cc8c2c982f2daafc9f0d7118ff215cbf98c7142808a2a4d60e373baabfae42fb",
+      "passed": true,
+      "independent_checks": "SHA256, decoded frame count and darkness, raw PNG indices and geometry",
+      "visual_status": "sampled frames inspected; continuous playback pending"
     },
     {
       "shot": 22,

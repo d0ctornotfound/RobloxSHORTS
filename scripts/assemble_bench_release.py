@@ -19,6 +19,7 @@ def verify(root, entries, complete=True):
         assert q["passed"] is True and q["frames"]==60 and q["duration"]==2.5
         assert q["encoded_max_near_black_percent"]<=2
         assert hashlib.sha256((p/"preview.mp4").read_bytes()).hexdigest()==q["sha256"]
+        if "sha256" in e: assert q["sha256"]==e["sha256"], "Pinned clip hash mismatch"
         assert m["mode"]=="render" and int(m["shot"]["id"])==n and m["frames"]==60
         assert m["resolution"]==[540,960] and m["fps"]==24 and m["engine"]=="EEVEE" and m["denoising"] is False
         assert m["geometry_pass"] and len(g)==60
