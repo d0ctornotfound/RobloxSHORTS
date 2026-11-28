@@ -20,7 +20,7 @@
       "narration": "In this town, all of the girls like only the same three boys.",
       "reference_audio_in": 0,
       "reference_audio_out": 2.62,
-      "audio_in": 0.0,
+      "audio_in": 0,
       "audio_out": 2.62,
       "edit_in": 0,
       "edit_out": 2.96,
@@ -194,7 +194,16 @@
       "sampling_rate": 30,
       "encoded_fps": 30,
       "proof": "A",
-      "still_path": "assets/saying_hi_review/stills/sh04.png"
+      "still_path": "assets/saying_hi_review/stills/sh04.png",
+      "animatic_segments": [
+        {
+          "fraction_start": 0,
+          "fraction_end": 1,
+          "video_path": "assets/saying_hi_review/proofs/chart_initial/chart_initial.mp4",
+          "video_start_frame": 0
+        }
+      ],
+      "proof_unit": "chart_initial"
     },
     {
       "id": "sh05",
@@ -236,7 +245,16 @@
       "sampling_rate": 30,
       "encoded_fps": 30,
       "proof": "A",
-      "still_path": "assets/saying_hi_review/stills/sh05.png"
+      "still_path": "assets/saying_hi_review/stills/sh05.png",
+      "animatic_segments": [
+        {
+          "fraction_start": 0,
+          "fraction_end": 1,
+          "video_path": "assets/saying_hi_review/proofs/chart_initial/chart_initial.mp4",
+          "video_start_frame": 92
+        }
+      ],
+      "proof_unit": "chart_initial"
     },
     {
       "id": "sh06",
@@ -277,7 +295,16 @@
       "sampling_rate": 30,
       "encoded_fps": 30,
       "proof": "A",
-      "still_path": "assets/saying_hi_review/stills/sh06.png"
+      "still_path": "assets/saying_hi_review/stills/sh06.png",
+      "animatic_segments": [
+        {
+          "fraction_start": 0,
+          "fraction_end": 1,
+          "video_path": "assets/saying_hi_review/proofs/chart_initial/chart_initial.mp4",
+          "video_start_frame": 224
+        }
+      ],
+      "proof_unit": "chart_initial"
     },
     {
       "id": "sh07",
@@ -320,7 +347,16 @@
       "sampling_rate": 30,
       "encoded_fps": 30,
       "proof": "A",
-      "still_path": "assets/saying_hi_review/stills/sh07.png"
+      "still_path": "assets/saying_hi_review/stills/sh07.png",
+      "animatic_segments": [
+        {
+          "fraction_start": 0,
+          "fraction_end": 1,
+          "video_path": "assets/saying_hi_review/proofs/chart_initial/chart_initial.mp4",
+          "video_start_frame": 276
+        }
+      ],
+      "proof_unit": "chart_initial"
     },
     {
       "id": "sh08",
@@ -754,7 +790,35 @@
       "sampling_rate": 1,
       "encoded_fps": 30,
       "proof": null,
-      "still_path": "assets/saying_hi_review/stills/sh17.png"
+      "still_path": "assets/saying_hi_review/stills/sh17.png",
+      "animatic_segments": [
+        {
+          "fraction_start": 0,
+          "fraction_end": 0.5,
+          "still_path": "assets/saying_hi_review/stills/sh17_miss_ball.png",
+          "variant": "miss_ball"
+        },
+        {
+          "fraction_start": 0.5,
+          "fraction_end": 1,
+          "still_path": "assets/saying_hi_review/stills/sh17_crayon.png",
+          "variant": "crayon"
+        }
+      ],
+      "internal_beats": [
+        {
+          "variant": "miss_ball",
+          "edit_in": 37.18,
+          "edit_out": 38.5,
+          "note": "provisional equal subdivision of actual sentence chunk; not word alignment"
+        },
+        {
+          "variant": "crayon",
+          "edit_in": 38.5,
+          "edit_out": 39.82,
+          "note": "provisional equal subdivision of actual sentence chunk; not word alignment"
+        }
+      ]
     },
     {
       "id": "sh18",
@@ -899,7 +963,16 @@
       "sampling_rate": 30,
       "encoded_fps": 30,
       "proof": "B",
-      "still_path": "assets/saying_hi_review/stills/sh20.png"
+      "still_path": "assets/saying_hi_review/stills/sh20.png",
+      "animatic_segments": [
+        {
+          "fraction_start": 0,
+          "fraction_end": 1,
+          "video_path": "assets/saying_hi_review/proofs/crossing/crossing.mp4",
+          "video_start_frame": 0
+        }
+      ],
+      "proof_unit": "crossing"
     },
     {
       "id": "sh21",
@@ -956,11 +1029,20 @@
       "dependencies": [
         "sh20"
       ],
-      "render_profile": "animatic",
-      "sampling_rate": 1,
+      "render_profile": "motion_proof",
+      "sampling_rate": 30,
       "encoded_fps": 30,
-      "proof": null,
-      "still_path": "assets/saying_hi_review/stills/sh21.png"
+      "proof": "B",
+      "still_path": "assets/saying_hi_review/stills/sh21.png",
+      "animatic_segments": [
+        {
+          "fraction_start": 0,
+          "fraction_end": 1,
+          "video_path": "assets/saying_hi_review/proofs/crossing/crossing.mp4",
+          "video_start_frame": 106
+        }
+      ],
+      "proof_unit": "crossing"
     },
     {
       "id": "sh22",
@@ -999,7 +1081,16 @@
       "sampling_rate": 30,
       "encoded_fps": 30,
       "proof": "B",
-      "still_path": "assets/saying_hi_review/stills/sh22.png"
+      "still_path": "assets/saying_hi_review/stills/sh22.png",
+      "animatic_segments": [
+        {
+          "fraction_start": 0,
+          "fraction_end": 1,
+          "video_path": "assets/saying_hi_review/proofs/otis_eyes/otis_eyes.mp4",
+          "video_start_frame": 0
+        }
+      ],
+      "proof_unit": "otis_eyes"
     },
     {
       "id": "sh23",
@@ -1350,10 +1441,56 @@
       "proof": null,
       "still_path": "assets/saying_hi_review/stills/sh30.png",
       "internal_beats": [
-        "Faye: hi",
-        "Gia: a seat",
-        "Hana: hi",
-        "Ivy: hi"
+        {
+          "variant": "faye_hi",
+          "edit_in": 65.92,
+          "edit_out": 66.84,
+          "note": "provisional equal subdivision of actual sentence chunk; not word alignment"
+        },
+        {
+          "variant": "gia_seat",
+          "edit_in": 66.84,
+          "edit_out": 67.75999999999999,
+          "note": "provisional equal subdivision of actual sentence chunk; not word alignment"
+        },
+        {
+          "variant": "hana_hi",
+          "edit_in": 67.75999999999999,
+          "edit_out": 68.67999999999999,
+          "note": "provisional equal subdivision of actual sentence chunk; not word alignment"
+        },
+        {
+          "variant": "ivy_hi",
+          "edit_in": 68.67999999999999,
+          "edit_out": 69.6,
+          "note": "provisional equal subdivision of actual sentence chunk; not word alignment"
+        }
+      ],
+      "animatic_segments": [
+        {
+          "fraction_start": 0,
+          "fraction_end": 0.25,
+          "still_path": "assets/saying_hi_review/stills/sh30_faye_hi.png",
+          "variant": "faye_hi"
+        },
+        {
+          "fraction_start": 0.25,
+          "fraction_end": 0.5,
+          "still_path": "assets/saying_hi_review/stills/sh30_gia_seat.png",
+          "variant": "gia_seat"
+        },
+        {
+          "fraction_start": 0.5,
+          "fraction_end": 0.75,
+          "still_path": "assets/saying_hi_review/stills/sh30_hana_hi.png",
+          "variant": "hana_hi"
+        },
+        {
+          "fraction_start": 0.75,
+          "fraction_end": 1,
+          "still_path": "assets/saying_hi_review/stills/sh30_ivy_hi.png",
+          "variant": "ivy_hi"
+        }
       ]
     },
     {
@@ -1397,7 +1534,16 @@
       "sampling_rate": 30,
       "encoded_fps": 30,
       "proof": "C",
-      "still_path": "assets/saying_hi_review/stills/sh31.png"
+      "still_path": "assets/saying_hi_review/stills/sh31.png",
+      "animatic_segments": [
+        {
+          "fraction_start": 0,
+          "fraction_end": 1,
+          "video_path": "assets/saying_hi_review/proofs/june_question/june_question.mp4",
+          "video_start_frame": 0
+        }
+      ],
+      "proof_unit": "june_question"
     },
     {
       "id": "sh32",
@@ -1440,7 +1586,16 @@
       "sampling_rate": 30,
       "encoded_fps": 30,
       "proof": "C",
-      "still_path": "assets/saying_hi_review/stills/sh32.png"
+      "still_path": "assets/saying_hi_review/stills/sh32.png",
+      "animatic_segments": [
+        {
+          "fraction_start": 0,
+          "fraction_end": 1,
+          "video_path": "assets/saying_hi_review/proofs/june_question/june_question.mp4",
+          "video_start_frame": 46
+        }
+      ],
+      "proof_unit": "june_question"
     },
     {
       "id": "sh33",
@@ -1483,7 +1638,16 @@
       "sampling_rate": 30,
       "encoded_fps": 30,
       "proof": "C",
-      "still_path": "assets/saying_hi_review/stills/sh33.png"
+      "still_path": "assets/saying_hi_review/stills/sh33.png",
+      "animatic_segments": [
+        {
+          "fraction_start": 0,
+          "fraction_end": 1,
+          "video_path": "assets/saying_hi_review/proofs/june_question/june_question.mp4",
+          "video_start_frame": 84
+        }
+      ],
+      "proof_unit": "june_question"
     },
     {
       "id": "sh34",
@@ -1523,7 +1687,16 @@
       "sampling_rate": 30,
       "encoded_fps": 30,
       "proof": "C",
-      "still_path": "assets/saying_hi_review/stills/sh34.png"
+      "still_path": "assets/saying_hi_review/stills/sh34.png",
+      "animatic_segments": [
+        {
+          "fraction_start": 0,
+          "fraction_end": 1,
+          "video_path": "assets/saying_hi_review/proofs/june_answer/june_answer.mp4",
+          "video_start_frame": 0
+        }
+      ],
+      "proof_unit": "june_answer"
     },
     {
       "id": "sh35",
@@ -1879,7 +2052,16 @@
       "sampling_rate": 30,
       "encoded_fps": 30,
       "proof": "D",
-      "still_path": "assets/saying_hi_review/stills/sh42.png"
+      "still_path": "assets/saying_hi_review/stills/sh42.png",
+      "animatic_segments": [
+        {
+          "fraction_start": 0,
+          "fraction_end": 1,
+          "video_path": "assets/saying_hi_review/proofs/dog_name/dog_name.mp4",
+          "video_start_frame": 0
+        }
+      ],
+      "proof_unit": "dog_name"
     },
     {
       "id": "sh43",
@@ -1924,7 +2106,16 @@
       "sampling_rate": 30,
       "encoded_fps": 30,
       "proof": "D",
-      "still_path": "assets/saying_hi_review/stills/sh43.png"
+      "still_path": "assets/saying_hi_review/stills/sh43.png",
+      "animatic_segments": [
+        {
+          "fraction_start": 0,
+          "fraction_end": 1,
+          "video_path": "assets/saying_hi_review/proofs/seating/seating.mp4",
+          "video_start_frame": 0
+        }
+      ],
+      "proof_unit": "seating"
     },
     {
       "id": "sh44",
@@ -2003,7 +2194,16 @@
       "sampling_rate": 30,
       "encoded_fps": 30,
       "proof": "D",
-      "still_path": "assets/saying_hi_review/stills/sh45.png"
+      "still_path": "assets/saying_hi_review/stills/sh45.png",
+      "animatic_segments": [
+        {
+          "fraction_start": 0,
+          "fraction_end": 1,
+          "video_path": "assets/saying_hi_review/proofs/empty_wall/empty_wall.mp4",
+          "video_start_frame": 0
+        }
+      ],
+      "proof_unit": "empty_wall"
     },
     {
       "id": "sh46",
@@ -2016,7 +2216,7 @@
       "audio_in": 95.36,
       "audio_out": 97.64,
       "edit_in": 95.36,
-      "edit_out": 98.0,
+      "edit_out": 98,
       "understand": "Otis replaces original theory with new many-link chart.",
       "action": "Same overhead layout, old paper removed and replacement paper with many dashed links, including narrator to June.",
       "cast": [
@@ -2045,7 +2245,16 @@
       "sampling_rate": 30,
       "encoded_fps": 30,
       "proof": "D",
-      "still_path": "assets/saying_hi_review/stills/sh46.png"
+      "still_path": "assets/saying_hi_review/stills/sh46.png",
+      "animatic_segments": [
+        {
+          "fraction_start": 0,
+          "fraction_end": 1,
+          "video_path": "assets/saying_hi_review/proofs/chart_final/chart_final.mp4",
+          "video_start_frame": 0
+        }
+      ],
+      "proof_unit": "chart_final"
     },
     {
       "id": "sh47",
@@ -2055,9 +2264,9 @@
       "narration": "He says it's still called hypergamy.",
       "reference_audio_in": 98,
       "reference_audio_out": 99.28,
-      "audio_in": 98.0,
+      "audio_in": 98,
       "audio_out": 99.28,
-      "edit_in": 98.0,
+      "edit_in": 98,
       "edit_out": 99.78,
       "understand": "Otis still clings to the label.",
       "action": "Otis holds replacement chart and shrugs using approved acting.",
@@ -2130,7 +2339,55 @@
       "sampling_rate": 30,
       "encoded_fps": 30,
       "proof": "D",
-      "still_path": "assets/saying_hi_review/stills/sh48.png"
+      "still_path": "assets/saying_hi_review/stills/sh48.png",
+      "animatic_segments": [
+        {
+          "fraction_start": 0,
+          "fraction_end": 1,
+          "video_path": "assets/saying_hi_review/proofs/closing/closing.mp4",
+          "video_start_frame": 0
+        }
+      ],
+      "proof_unit": "closing"
     }
-  ]
+  ],
+  "proof_units": {
+    "chart_initial": [
+      4,
+      5,
+      6,
+      7
+    ],
+    "crossing": [
+      20,
+      21
+    ],
+    "otis_eyes": [
+      22
+    ],
+    "june_question": [
+      31,
+      32,
+      33
+    ],
+    "june_answer": [
+      34
+    ],
+    "dog_name": [
+      42
+    ],
+    "seating": [
+      43
+    ],
+    "empty_wall": [
+      45
+    ],
+    "chart_final": [
+      46
+    ],
+    "closing": [
+      48
+    ]
+  },
+  "animatic_policy": "Held actual rendered poses plus native 30-fps proof clips; exact frame intervals, no full-film render. Internal montage timing provisional within measured temporary sentence PCM."
 }
