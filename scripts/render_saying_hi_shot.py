@@ -139,7 +139,7 @@ class SceneUnit:
     def update_chart(self,n,u,t):
         mode=CHART[n];progress=ease(u) if mode in ("columns","arrows","replacement") and n in (4,5,46) else 1
         if n==46:progress=.25+.75*progress
-        key=(mode,round(progress*(20 if mode in ("columns","replacement") else 10)))
+        key=(mode,max(1,math.ceil(20*progress)) if mode=="columns" else math.floor((20 if mode=="replacement" else 10)*progress+1e-8))
         if key!=self.last_board:
             img,info=portrait_board(self.stage,self.lineup,mode,progress);arr=np.array(img.convert("RGBA"),dtype=np.float32)[::-1]/255.
             self.img.pixels.foreach_set(arr.ravel());self.img.update();self.last_board=key;self.boardinfo=info
@@ -291,7 +291,7 @@ class SceneUnit:
                 cart=empty("Valentine wheelbarrow",center+V((-.7,-.9,0)));cube("Wheelbarrow tray",(0,0,.50),(.70,1.02,.23),self.p["wood2"],cart)
                 for i in range(12):cube("Valentine card",((i%4-.5)*.13,(i//4-1)*.17,.67+.025*i),(.16,.19,.028),self.p["card"],cart,bevel=.005)
                 for x in (-.27,.27):cube("Cart handle",(x,.73,.61),(.06,.64,.07),self.p["wood2"],cart)
-                cylinder("Wheel",(0,-.55,.20),.18,.12,self.p["ink"],cart,rotation=(0,math.pi/2,0)) if False else sphere("Wheel",(cart.location.x,cart.location.y-.55,.20),(.15,.36,.36),self.p["ink"])
+                sphere("Wheel",(cart.location.x,cart.location.y-.55,.20),(.15,.36,.36),self.p["ink"])
             if n==11:
                 a=self.actors["narrator"];a.aim_arm(0,(.15,-.75,-.65));card=cube("Single card from Mom",a.grips[0].matrix_world.translation,(.24,.025,.19),self.p["card"],bevel=.005)
             if n==17:
@@ -352,7 +352,7 @@ def main():
         print("SAYING_HI_RENDER_DONE",json.dumps(row),flush=True)
     report={"unit":unit,"sentence_ids":ids,"mode":a.mode,"engine":"EEVEE","denoising":False,"eevee_spatial_samples":32,"rendered_temporal_samples_per_second":30 if a.mode=="motion" else None,"encoded_fps_target":30 if a.mode=="motion" else None,"actual_rendered_frames":len(rendered),"expected_rendered_frames":len(selected),"frame_window":[start,end],"scenery":driver.scenery,"metrics":rec,"rendered":rendered,"review":"candidate, visual and metric approval pending"}
     if unit=="crossing":
-        report["stride"]=driver.lock.report();report["target_stop_error"]=(V(driver.lock.pos[:2]+(0,)) if False else (driver.lock.pos-driver.end)).length
+        report["stride"]=driver.lock.report();report["target_stop_error"]=(driver.lock.pos-driver.end).length
         report["calibration_candidate"]=driver.stride_candidate
     (out/"manifest.json").write_text(json.dumps(report,indent=2)+"\n")
     assert len(rendered)==len(selected)
