@@ -337,3 +337,7 @@ Remaining defect ledger (Round 4 values supersede Round 3 diagnostic measurement
 - R3-10 BLOCK: complete timed animatic absent, release audit 30/37 failures.
 
 ROUND 4 INCOMPLETE — RELEASE BLOCKED. All 12 unit geometry JSON/gate/log files and five provenance/audit files plus native provenance are permanently committed; no new media exists to publish. No new corrective workflow launched for this status-only handover.
+
+
+## Round 5 — full-film acceptance test, candidate source
+Supervisor replaced strict artistic release blocking with measured QC flags; technical completeness is still mandatory. Existing approved native units remain immutable. The acceptance target is the complete 48-shot, 101.20 s / 3036-frame master, not a still animatic or isolated proof. New general tools: `scripts/film_walk_to_mark.py` (deterministic whole-cycle plant calibration), `scripts/render_film_unit.py` (data-driven scene adapter, native sampling, performance tracks, external vs own face rays), `scripts/film_timeline.py` (coverage compiler, verified native reuse, chunk encoding, narration assembly and measured per-shot QC). Story staging is `stories/saying_hi_film_stage.json`. Existing story-specific scene adapters are still needed and are not proof of generic set construction. Known incomplete acting/prop tasks are explicitly declared in staging data; no quality approval or completed film is asserted at source commit. No chapters 1–4 edits; no paid voice.
