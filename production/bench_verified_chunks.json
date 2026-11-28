@@ -1,6 +1,6 @@
 {
   "status": "partial_verified_not_release_ready",
-  "verified_shots": 11,
+  "verified_shots": 13,
   "shots": [
     {
       "shot": 3,
@@ -40,6 +40,20 @@
       "duration": 2.5,
       "encoded_max_near_black_percent": 1.0424382716049383,
       "sha256": "c281e765e6c12106394827ceb7785456a957f5e228c9c99cd0da02c482b5d0d2",
+      "passed": true,
+      "independent_checks": "SHA-256, independently decoded darkness and frame count, profile, raw PNG indices, exact geometry",
+      "visual_status": "sampled production frames inspected; continuous playback pending"
+    },
+    {
+      "shot": 10,
+      "artifact_id": 15240108160,
+      "production_run": 46088254315,
+      "preflight_run": 46087343283,
+      "source_commit": "c88b009354b8be2a6c1386ca46c6679bd4c52714",
+      "frames": 60,
+      "duration": 2.5,
+      "encoded_max_near_black_percent": 0.425733024691358,
+      "sha256": "d37436435b9d8e5747b823d8488237246a3de0f3b52b9e810e73e26b6aec7f76",
       "passed": true,
       "independent_checks": "SHA-256, independently decoded darkness and frame count, profile, raw PNG indices, exact geometry",
       "visual_status": "sampled production frames inspected; continuous playback pending"
@@ -155,6 +169,20 @@
       "passed": true,
       "independent_checks": "SHA-256, decoded frame count, dimensions, raw frame sequence, geometry records",
       "visual_status": "first and last production frames inspected; final continuous playback pending"
+    },
+    {
+      "shot": 40,
+      "artifact_id": 15240497259,
+      "production_run": 46088390454,
+      "preflight_run": 46086807184,
+      "source_commit": "935e5c4055ac8fe02cd4b8f3f0f18c1e5bba0f2f",
+      "frames": 60,
+      "duration": 2.5,
+      "encoded_max_near_black_percent": 0,
+      "sha256": "733025837a8031915aafbfc0c560c4ff4952280d7abf13475a6581ff45dd846d",
+      "passed": true,
+      "independent_checks": "SHA-256, independently decoded darkness and frame count, profile, raw PNG indices, exact geometry",
+      "visual_status": "sampled production frames inspected; continuous playback pending"
     }
   ]
 }
