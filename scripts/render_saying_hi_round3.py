@@ -1,7 +1,9 @@
 """Round 3 story-local proof candidate. No locked implementation edits.
 Only changed units may use this driver; existing native clips stay immutable.
 """
-import math,json
+import math,json,sys
+from pathlib import Path
+sys.path.insert(0,str(Path(__file__).resolve().parent))
 import bpy
 from mathutils import Matrix
 from render_saying_hi_shot import SceneUnit,V,FPS,frame,actor_points,project,Retarget,StrideLock,yaw_to,show,cube,material
