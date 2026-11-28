@@ -23,7 +23,7 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - run: python3 scripts/library_story_plan.py stories/the_bench_plan.json
-      - run: python3 -m py_compile scripts/render_bench.py scripts/edit_bench.py
+      - run: python3 -m py_compile scripts/render_bench.py scripts/edit_bench.py scripts/bench_camera_qa.py scripts/audit_bench_preflight.py
       - id: matrix
         env:
           FULL: ${{ inputs.full || false }}
@@ -32,7 +32,7 @@ jobs:
             echo "shots=$(python3 -c 'import json; print(json.dumps(list(range(1,49))))')" >> "$GITHUB_OUTPUT"
             echo 'mode=render' >> "$GITHUB_OUTPUT"
           else
-            echo 'shots=[2,16,23,31,35,48]' >> "$GITHUB_OUTPUT"
+            echo "shots=$(python3 -c 'import json; print(json.dumps(list(range(1,49))))')" >> "$GITHUB_OUTPUT"
             echo 'mode=preflight' >> "$GITHUB_OUTPUT"
           fi
   shot:
@@ -87,6 +87,7 @@ jobs:
           mkdir -p render/bench-package
           if [ "${{ needs.plan.outputs.mode }}" = "preflight" ]; then
             python3 scripts/edit_bench.py --chunks chunks --output render/bench-package --preflight
+            python3 scripts/audit_bench_preflight.py --chunks chunks --output render/bench-package/preflight_audit.json --full
           else
             python3 scripts/edit_bench.py --chunks chunks --output render/bench-package
           fi

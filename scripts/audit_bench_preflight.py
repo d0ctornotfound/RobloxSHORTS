@@ -3,7 +3,7 @@
 import argparse,json,math
 from pathlib import Path
 REPRESENTATIVE={2,16,23,31,35,48}
-HEROES={2:('Milo','Dad'),31:('Milo',),35:('Milo',),48:('Milo','Dad')}
+HEROES={2:('Milo',),31:('Milo',),35:('Milo',),48:('Milo',)}
 def check(root,full=False):
     shots={}
     for path in sorted(Path(root).rglob('manifest.json')):
@@ -13,7 +13,9 @@ def check(root,full=False):
         rows=m['records'];first=round(m['shot']['start']*24)+1;last=round(m['shot']['end']*24)
         issues=[]
         if m['mode']!='preflight':issues.append('not a preflight manifest')
-        if [r['global_frame'] for r in rows]!=[first,first+(last-first+1)//2,last]:issues.append('missing designated samples')
+        if not {first,first+(last-first+1)//2,last}.issubset({r['global_frame'] for r in rows}):issues.append('missing designated samples')
+        if full and (m.get('geometry_frame_count')!=last-first+1 or not m.get('geometry_pass')):issues.append('all-frame camera geometry failed or missing')
+        if full and m['shot']['camera']!='insert' and (m.get('visibility_error') or any(not v['pass'] for v in m.get('visibility',{}).values())):issues.append('rendered object-ID visibility failed or unavailable')
         if m['resolution']!=[540,960] or m['fps']!=24 or m['engine']!='EEVEE' or m['denoising'] is not False:issues.append('profile mismatch')
         near=max((r['near_black_percent'] for r in rows),default=math.inf)
         if near>10:issues.append('preflight darkness >10%')
@@ -38,7 +40,7 @@ def check(root,full=False):
         shots[n]={'act':m['shot']['act'],'samples':len(rows),'max_near_black_percent':near,'max_shell_source_gap':max((g['max_source_gap'] for g in garments),default=None),'min_projected_hero_height':coverage,'body_projection_in_frame':bounds,'contacts':contact,'render_seconds':[r['render_seconds'] for r in rows],'issues':issues,'manifest':str(path)}
     required=set(range(1,49)) if full else REPRESENTATIVE
     missing=sorted(required-shots.keys())
-    return {'scope':'all 48 shots' if full else 'six representative shots','required_shots':len(required),'observed_shots':len(shots),'missing_shots':missing,'numerical_pass':not missing and all(not v['issues'] for v in shots.values()),'visual_approval':False,'limitations':['No rendered object-ID visibility measurement in the source manifests; 69% actual visibility not established.','Projection cannot prove visibility or physical contact.','Contact tolerances are story-local diagnostics, not changes to locked chapter gates.','Full mode checks completeness for 48 shots; projection/contact checks presently cover only the representative subset. All shots require actual pixel inspection.'],'shots':shots}
+    return {'scope':'all 48 shots' if full else 'six representative shots','required_shots':len(required),'observed_shots':len(shots),'missing_shots':missing,'numerical_pass':not missing and all(not v['issues'] for v in shots.values()),'visual_approval':False,'limitations':['Object-ID visibility is measured only where supplied; missing or failed diagnostics do not certify 69% actual visibility.','Projection cannot prove visibility or physical contact.','Contact tolerances are story-local diagnostics, not changes to locked chapter gates.','Full mode checks all-frame geometry and available object-ID diagnostics; contact checks are representative. All shots require actual pixel inspection.'],'shots':shots}
 def main():
     p=argparse.ArgumentParser();p.add_argument('--chunks',required=True);p.add_argument('--output',required=True);p.add_argument('--full',action='store_true');p.add_argument('--enforce',action='store_true');a=p.parse_args()
     result=check(a.chunks,a.full);Path(a.output).write_text(json.dumps(result,indent=2)+'\n');print(json.dumps({k:v for k,v in result.items() if k!='shots'},indent=2))
