@@ -1,6 +1,6 @@
 {
   "status": "partial_verified_not_release_ready",
-  "verified_shots": 38,
+  "verified_shots": 40,
   "shots": [
     {
       "shot": 2,
@@ -227,6 +227,20 @@
       "visual_status": "sampled production frames inspected; continuous playback pending"
     },
     {
+      "shot": 18,
+      "artifact_id": 15241211240,
+      "production_run": 46088390454,
+      "preflight_run": 46087958140,
+      "source_commit": "749057616ff364a80a14f5f3ca8ccd3677bfb2c5",
+      "frames": 60,
+      "duration": 2.5,
+      "encoded_max_near_black_percent": 0.8254243827160495,
+      "sha256": "463bc056d25587cefb7dd4699d7c6a97c3b2718ce72e39b4d083d7d0a0ad32ca",
+      "passed": true,
+      "independent_checks": "SHA256, decoded 60 frames and darkness, geometry and PNG sequence",
+      "visual_status": "Milo focal composition, Dad partly cropped; sampled review completed"
+    },
+    {
       "shot": 19,
       "artifact_id": 15240284089,
       "production_run": 46088390454,
@@ -395,6 +409,20 @@
       "visual_status": "sampled production frames inspected; continuous playback pending"
     },
     {
+      "shot": 31,
+      "artifact_id": 15241222031,
+      "production_run": 46089668726,
+      "preflight_run": 46088639648,
+      "source_commit": "42fa36d33ae47e415cd0ee81a8e26eba4b1264e8",
+      "frames": 60,
+      "duration": 2.5,
+      "encoded_max_near_black_percent": 0.5765817901234568,
+      "sha256": "e918861bdb0e4d9514aec0c3d63ce66b6c5226c50e07f034a9ab10b82dbde7ed",
+      "passed": true,
+      "independent_checks": "SHA256, decoded 60 frames and darkness, geometry and PNG sequence",
+      "visual_status": "Cap pickup visible in sampled frames; continuous review pending"
+    },
+    {
       "shot": 32,
       "artifact_id": 15241155607,
       "production_run": 46088390454,
@@ -536,16 +564,15 @@
     }
   ],
   "preview_excerpt": {
-    "first_shot": 22,
-    "last_shot": 29,
+    "first_shot": 20,
+    "last_shot": 40,
     "source_time": [
-      52.5,
-      72.5
+      47.5,
+      100
     ],
-    "frames": 480,
-    "duration": 20,
+    "frames": 1260,
+    "duration": 52.5,
     "encoded_max_near_black_percent": 1.4822530864197532,
-    "sha256": "4a7218b25e7c3a85f1918f686d165cf5d1f8606611acc6800caa502ca52f2a6e",
-    "note": "local QA concatenation of actual verified clips, no synthetic frames, silent and uncaptioned"
+    "note": "Local QA concatenation of exact production clips; no narration or captions"
   }
 }
