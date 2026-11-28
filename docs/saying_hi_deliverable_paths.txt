@@ -1,4 +1,3 @@
-
 .github/workflows/saying-hi-animatic-stills.yml
 .github/workflows/saying-hi-chart-proof.yml
 .github/workflows/saying-hi-crossing-retry.yml
@@ -8,6 +7,7 @@
 .github/workflows/saying-hi-proof-preflight.yml
 .github/workflows/saying-hi-proof-release.yml
 .github/workflows/saying-hi-release-audit.yml
+.github/workflows/saying-hi-round3-audit.yml
 .github/workflows/saying-hi-round3-precheck.yml
 .github/workflows/saying-hi-smoke.yml
 Base: 95bb49139880436595d66dbba498d03fdd4eb7d6
@@ -443,6 +443,7 @@ assets/saying_hi_review/temporary_pacing.json
 assets/saying_hi_review/workflow_provenance.txt
 docs/saying_hi_deliverable_paths.txt
 docs/saying_hi_review.md
+docs/saying_hi_round3_release_review.json
 scripts/encode_saying_hi_proof.py
 scripts/export_shot_animatic.py
 scripts/merge_saying_hi_chart_chunks.py
