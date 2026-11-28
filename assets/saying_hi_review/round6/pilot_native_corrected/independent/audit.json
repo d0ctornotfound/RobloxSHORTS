@@ -1,0 +1,638 @@
+{
+  "evidence_commit": "af99e946786b69b6b4887355d301c2fa8bcfb25c",
+  "qc_sha256": "e405112d73ccef4ab5593df118b6c5fdbdf34c683418e3b73fcf1c337ad2c495",
+  "baseline": {
+    "path": "assets/saying_hi_review/round5/saying_hi.mp4",
+    "sha256": "b4e24648745bb6527687ac0de79096345393e34a979a871ba47fcfb0eb849585",
+    "frames": 3036,
+    "duration": 101.2,
+    "bytes": 8979317,
+    "resolution": [
+      540,
+      960
+    ],
+    "fps": 30,
+    "audio_duration": 101.2,
+    "full_decode": "pass"
+  },
+  "run_id": "46141438017",
+  "clips": {
+    "crossing": {
+      "path": "assets/saying_hi_review/round6/pilot_native_corrected/crossing.mp4",
+      "sha256": "dfd9d76a2c4e748c6de9f066e96e131535d3351920bdc678acd3eb5367e5999d",
+      "frames": 157,
+      "duration": 5.233333333333333,
+      "bytes": 1571109,
+      "resolution": [
+        540,
+        960
+      ],
+      "fps": 30,
+      "audio_duration": 5.233016,
+      "full_decode": "pass"
+    },
+    "interview": {
+      "path": "assets/saying_hi_review/round6/pilot_native_corrected/interview.mp4",
+      "sha256": "945339db919fb1c8f4cce874cc30b84009516eedc70a8fc4c5ce0703b0bf2df7",
+      "frames": 76,
+      "duration": 2.533333333333333,
+      "bytes": 396400,
+      "resolution": [
+        540,
+        960
+      ],
+      "fps": 30,
+      "audio_duration": 2.533016,
+      "full_decode": "pass"
+    },
+    "hesitation": {
+      "path": "assets/saying_hi_review/round6/pilot_native_corrected/hesitation.mp4",
+      "sha256": "1ca527e68f7de614e8a647c0327a357502f262bac3b7558a5a0d09e0eea31849",
+      "frames": 38,
+      "duration": 1.2666666666666666,
+      "bytes": 240009,
+      "resolution": [
+        540,
+        960
+      ],
+      "fps": 30,
+      "audio_duration": 1.266984,
+      "full_decode": "pass"
+    }
+  },
+  "shots": {
+    "sh20": {
+      "before": {
+        "frames": 106,
+        "saturation": 0.2658409358173541,
+        "warm_red_minus_blue": 0.03007963259843917,
+        "luma": 0.5007620388982492,
+        "near_black_fraction": 0.0,
+        "consecutive_exact_duplicates": 0
+      },
+      "after": {
+        "frames": 106,
+        "saturation": 0.3948007993020187,
+        "warm_red_minus_blue": -0.04693394799102886,
+        "luma": 0.42409338771678046,
+        "near_black_fraction": 0.004646008036338225,
+        "consecutive_exact_duplicates": 0
+      },
+      "direction": {
+        "status": "numeric_pass",
+        "beat_type": "action",
+        "principal": "narrator",
+        "actors": {
+          "ava": {
+            "motion_coverage": 1.0,
+            "held_pose_max_s": 0.03333333333333333,
+            "start_in_motion": true,
+            "end_in_motion": true,
+            "transitions": 105
+          },
+          "bella": {
+            "motion_coverage": 1.0,
+            "held_pose_max_s": 0.03333333333333333,
+            "start_in_motion": true,
+            "end_in_motion": true,
+            "transitions": 105
+          },
+          "brody": {
+            "motion_coverage": 1.0,
+            "held_pose_max_s": 0.03333333333333333,
+            "start_in_motion": true,
+            "end_in_motion": true,
+            "transitions": 105
+          },
+          "chase": {
+            "motion_coverage": 1.0,
+            "held_pose_max_s": 0.03333333333333333,
+            "start_in_motion": true,
+            "end_in_motion": true,
+            "transitions": 105
+          },
+          "cleo": {
+            "motion_coverage": 1.0,
+            "held_pose_max_s": 0.03333333333333333,
+            "start_in_motion": true,
+            "end_in_motion": true,
+            "transitions": 105
+          },
+          "daisy": {
+            "motion_coverage": 1.0,
+            "held_pose_max_s": 0.03333333333333333,
+            "start_in_motion": true,
+            "end_in_motion": true,
+            "transitions": 105
+          },
+          "ella": {
+            "motion_coverage": 1.0,
+            "held_pose_max_s": 0.03333333333333333,
+            "start_in_motion": true,
+            "end_in_motion": true,
+            "transitions": 105
+          },
+          "faye": {
+            "motion_coverage": 1.0,
+            "held_pose_max_s": 0.03333333333333333,
+            "start_in_motion": true,
+            "end_in_motion": true,
+            "transitions": 105
+          },
+          "gia": {
+            "motion_coverage": 1.0,
+            "held_pose_max_s": 0.03333333333333333,
+            "start_in_motion": true,
+            "end_in_motion": true,
+            "transitions": 105
+          },
+          "hana": {
+            "motion_coverage": 1.0,
+            "held_pose_max_s": 0.03333333333333333,
+            "start_in_motion": true,
+            "end_in_motion": true,
+            "transitions": 105
+          },
+          "ivy": {
+            "motion_coverage": 1.0,
+            "held_pose_max_s": 0.03333333333333333,
+            "start_in_motion": true,
+            "end_in_motion": true,
+            "transitions": 105
+          },
+          "june": {
+            "motion_coverage": 1.0,
+            "held_pose_max_s": 0.03333333333333333,
+            "start_in_motion": true,
+            "end_in_motion": true,
+            "transitions": 105
+          },
+          "kai": {
+            "motion_coverage": 1.0,
+            "held_pose_max_s": 0.03333333333333333,
+            "start_in_motion": true,
+            "end_in_motion": true,
+            "transitions": 105
+          },
+          "leo": {
+            "motion_coverage": 1.0,
+            "held_pose_max_s": 0.03333333333333333,
+            "start_in_motion": true,
+            "end_in_motion": true,
+            "transitions": 105
+          },
+          "max": {
+            "motion_coverage": 1.0,
+            "held_pose_max_s": 0.03333333333333333,
+            "start_in_motion": true,
+            "end_in_motion": true,
+            "transitions": 105
+          },
+          "narrator": {
+            "motion_coverage": 1.0,
+            "held_pose_max_s": 0.03333333333333333,
+            "start_in_motion": true,
+            "end_in_motion": true,
+            "transitions": 105
+          },
+          "noah": {
+            "motion_coverage": 1.0,
+            "held_pose_max_s": 0.03333333333333333,
+            "start_in_motion": true,
+            "end_in_motion": true,
+            "transitions": 105
+          },
+          "otis": {
+            "motion_coverage": 1.0,
+            "held_pose_max_s": 0.03333333333333333,
+            "start_in_motion": true,
+            "end_in_motion": true,
+            "transitions": 105
+          },
+          "ryan": {
+            "motion_coverage": 1.0,
+            "held_pose_max_s": 0.03333333333333333,
+            "start_in_motion": true,
+            "end_in_motion": true,
+            "transitions": 105
+          },
+          "sam": {
+            "motion_coverage": 1.0,
+            "held_pose_max_s": 0.03333333333333333,
+            "start_in_motion": true,
+            "end_in_motion": true,
+            "transitions": 105
+          }
+        },
+        "faces": {
+          "narrator": {
+            "min_height": 0.11579573154449463,
+            "safe_all": true
+          }
+        },
+        "checks": {
+          "principal_motion": true,
+          "principal_edges": true,
+          "all_actor_holds": true,
+          "grade_declared": true,
+          "action_body_scale": true
+        },
+        "grade": {
+          "preset": "warm_saturated_v1",
+          "look": "AgX - Medium High Contrast",
+          "exposure": -0.12,
+          "saturation": 1.18
+        },
+        "threshold_scene_units": 0.0015,
+        "visual_review_required": true
+      },
+      "review_frames": [
+        "assets/saying_hi_review/round6/pilot_native_corrected/independent/sh20_01422.png",
+        "assets/saying_hi_review/round6/pilot_native_corrected/independent/sh20_01443.png",
+        "assets/saying_hi_review/round6/pilot_native_corrected/independent/sh20_01464.png",
+        "assets/saying_hi_review/round6/pilot_native_corrected/independent/sh20_01485.png",
+        "assets/saying_hi_review/round6/pilot_native_corrected/independent/sh20_01506.png",
+        "assets/saying_hi_review/round6/pilot_native_corrected/independent/sh20_01527.png"
+      ]
+    },
+    "sh21": {
+      "before": {
+        "frames": 51,
+        "saturation": 0.27631604588026165,
+        "warm_red_minus_blue": -0.03574347888513944,
+        "luma": 0.48986067298131103,
+        "near_black_fraction": 9.834180585814572e-05,
+        "consecutive_exact_duplicates": 0
+      },
+      "after": {
+        "frames": 51,
+        "saturation": 0.2991203473922328,
+        "warm_red_minus_blue": -0.0003600081402686592,
+        "luma": 0.5694855811362982,
+        "near_black_fraction": 0.00034797869765190026,
+        "consecutive_exact_duplicates": 0
+      },
+      "direction": {
+        "status": "numeric_pass",
+        "beat_type": "action",
+        "principal": "otis",
+        "actors": {
+          "ava": {
+            "motion_coverage": 1.0,
+            "held_pose_max_s": 0.03333333333333333,
+            "start_in_motion": true,
+            "end_in_motion": true,
+            "transitions": 50
+          },
+          "bella": {
+            "motion_coverage": 1.0,
+            "held_pose_max_s": 0.03333333333333333,
+            "start_in_motion": true,
+            "end_in_motion": true,
+            "transitions": 50
+          },
+          "brody": {
+            "motion_coverage": 1.0,
+            "held_pose_max_s": 0.03333333333333333,
+            "start_in_motion": true,
+            "end_in_motion": true,
+            "transitions": 50
+          },
+          "chase": {
+            "motion_coverage": 1.0,
+            "held_pose_max_s": 0.03333333333333333,
+            "start_in_motion": true,
+            "end_in_motion": true,
+            "transitions": 50
+          },
+          "cleo": {
+            "motion_coverage": 1.0,
+            "held_pose_max_s": 0.03333333333333333,
+            "start_in_motion": true,
+            "end_in_motion": true,
+            "transitions": 50
+          },
+          "daisy": {
+            "motion_coverage": 1.0,
+            "held_pose_max_s": 0.03333333333333333,
+            "start_in_motion": true,
+            "end_in_motion": true,
+            "transitions": 50
+          },
+          "ella": {
+            "motion_coverage": 1.0,
+            "held_pose_max_s": 0.03333333333333333,
+            "start_in_motion": true,
+            "end_in_motion": true,
+            "transitions": 50
+          },
+          "faye": {
+            "motion_coverage": 1.0,
+            "held_pose_max_s": 0.03333333333333333,
+            "start_in_motion": true,
+            "end_in_motion": true,
+            "transitions": 50
+          },
+          "gia": {
+            "motion_coverage": 1.0,
+            "held_pose_max_s": 0.03333333333333333,
+            "start_in_motion": true,
+            "end_in_motion": true,
+            "transitions": 50
+          },
+          "hana": {
+            "motion_coverage": 1.0,
+            "held_pose_max_s": 0.03333333333333333,
+            "start_in_motion": true,
+            "end_in_motion": true,
+            "transitions": 50
+          },
+          "ivy": {
+            "motion_coverage": 1.0,
+            "held_pose_max_s": 0.03333333333333333,
+            "start_in_motion": true,
+            "end_in_motion": true,
+            "transitions": 50
+          },
+          "june": {
+            "motion_coverage": 1.0,
+            "held_pose_max_s": 0.03333333333333333,
+            "start_in_motion": true,
+            "end_in_motion": true,
+            "transitions": 50
+          },
+          "kai": {
+            "motion_coverage": 1.0,
+            "held_pose_max_s": 0.03333333333333333,
+            "start_in_motion": true,
+            "end_in_motion": true,
+            "transitions": 50
+          },
+          "leo": {
+            "motion_coverage": 1.0,
+            "held_pose_max_s": 0.03333333333333333,
+            "start_in_motion": true,
+            "end_in_motion": true,
+            "transitions": 50
+          },
+          "max": {
+            "motion_coverage": 1.0,
+            "held_pose_max_s": 0.03333333333333333,
+            "start_in_motion": true,
+            "end_in_motion": true,
+            "transitions": 50
+          },
+          "narrator": {
+            "motion_coverage": 1.0,
+            "held_pose_max_s": 0.03333333333333333,
+            "start_in_motion": true,
+            "end_in_motion": true,
+            "transitions": 50
+          },
+          "noah": {
+            "motion_coverage": 1.0,
+            "held_pose_max_s": 0.03333333333333333,
+            "start_in_motion": true,
+            "end_in_motion": true,
+            "transitions": 50
+          },
+          "otis": {
+            "motion_coverage": 1.0,
+            "held_pose_max_s": 0.03333333333333333,
+            "start_in_motion": true,
+            "end_in_motion": true,
+            "transitions": 50
+          },
+          "ryan": {
+            "motion_coverage": 1.0,
+            "held_pose_max_s": 0.03333333333333333,
+            "start_in_motion": true,
+            "end_in_motion": true,
+            "transitions": 50
+          },
+          "sam": {
+            "motion_coverage": 1.0,
+            "held_pose_max_s": 0.03333333333333333,
+            "start_in_motion": true,
+            "end_in_motion": true,
+            "transitions": 50
+          }
+        },
+        "faces": {
+          "otis": {
+            "min_height": 0.07827901840209961,
+            "safe_all": true
+          }
+        },
+        "checks": {
+          "principal_motion": true,
+          "principal_edges": true,
+          "all_actor_holds": true,
+          "grade_declared": true,
+          "action_body_scale": true
+        },
+        "grade": {
+          "preset": "warm_saturated_v1",
+          "look": "AgX - Medium High Contrast",
+          "exposure": -0.12,
+          "saturation": 1.18,
+          "directed_bounce": {
+            "energy": 450.0,
+            "color": [
+              1.0,
+              0.8799999952316284,
+              0.75
+            ],
+            "size": 4.0,
+            "exposure": 0.019999999552965164,
+            "position": [
+              -1.029828667640686,
+              5.346616268157959,
+              2.296809196472168
+            ]
+          }
+        },
+        "threshold_scene_units": 0.0015,
+        "visual_review_required": true
+      },
+      "review_frames": [
+        "assets/saying_hi_review/round6/pilot_native_corrected/independent/sh21_01528.png",
+        "assets/saying_hi_review/round6/pilot_native_corrected/independent/sh21_01538.png",
+        "assets/saying_hi_review/round6/pilot_native_corrected/independent/sh21_01548.png",
+        "assets/saying_hi_review/round6/pilot_native_corrected/independent/sh21_01558.png",
+        "assets/saying_hi_review/round6/pilot_native_corrected/independent/sh21_01568.png",
+        "assets/saying_hi_review/round6/pilot_native_corrected/independent/sh21_01578.png"
+      ]
+    },
+    "sh27": {
+      "before": {
+        "frames": 76,
+        "saturation": 0.21661507681012696,
+        "warm_red_minus_blue": -0.06247151272789829,
+        "luma": 0.493408536598284,
+        "near_black_fraction": 0.0033148554256010395,
+        "consecutive_exact_duplicates": 0
+      },
+      "after": {
+        "frames": 76,
+        "saturation": 0.36439836680613213,
+        "warm_red_minus_blue": 0.01643656873893394,
+        "luma": 0.6281932610720256,
+        "near_black_fraction": 0.00015229044834307991,
+        "consecutive_exact_duplicates": 0
+      },
+      "direction": {
+        "status": "numeric_pass",
+        "beat_type": "interview",
+        "principal": "kai",
+        "actors": {
+          "cleo": {
+            "motion_coverage": 1.0,
+            "held_pose_max_s": 0.03333333333333333,
+            "start_in_motion": true,
+            "end_in_motion": true,
+            "transitions": 75
+          },
+          "kai": {
+            "motion_coverage": 1.0,
+            "held_pose_max_s": 0.03333333333333333,
+            "start_in_motion": true,
+            "end_in_motion": true,
+            "transitions": 75
+          }
+        },
+        "faces": {
+          "kai": {
+            "min_height": 0.12936586141586304,
+            "safe_all": true,
+            "min_facing_dot": 0.9194951970130205,
+            "min_ray_visibility": 0.92,
+            "max_external_blocks": 0,
+            "min_ray_samples": 25
+          },
+          "cleo": {
+            "min_height": 0.12916910648345947,
+            "safe_all": true,
+            "min_facing_dot": 0.909734919667244,
+            "min_ray_visibility": 0.92,
+            "max_external_blocks": 0,
+            "min_ray_samples": 25
+          }
+        },
+        "checks": {
+          "principal_motion": true,
+          "principal_edges": true,
+          "all_actor_holds": true,
+          "grade_declared": true,
+          "readable_faces": true,
+          "two_face_bounds": true
+        },
+        "grade": {
+          "preset": "warm_saturated_v1",
+          "look": "AgX - Medium High Contrast",
+          "exposure": -0.12,
+          "saturation": 1.18,
+          "directed_bounce": {
+            "energy": 1100.0,
+            "color": [
+              1.0,
+              0.8700000047683716,
+              0.7200000286102295
+            ],
+            "size": 3.5,
+            "exposure": 0.05000000074505806,
+            "position": [
+              -0.1874459981918335,
+              7.312939643859863,
+              2.7947988510131836
+            ]
+          }
+        },
+        "threshold_scene_units": 0.0015,
+        "visual_review_required": true
+      },
+      "review_frames": [
+        "assets/saying_hi_review/round6/pilot_native_corrected/independent/sh27_01807.png",
+        "assets/saying_hi_review/round6/pilot_native_corrected/independent/sh27_01822.png",
+        "assets/saying_hi_review/round6/pilot_native_corrected/independent/sh27_01837.png",
+        "assets/saying_hi_review/round6/pilot_native_corrected/independent/sh27_01852.png",
+        "assets/saying_hi_review/round6/pilot_native_corrected/independent/sh27_01867.png",
+        "assets/saying_hi_review/round6/pilot_native_corrected/independent/sh27_01882.png"
+      ]
+    },
+    "sh32": {
+      "before": {
+        "frames": 38,
+        "saturation": 0.28773178760547435,
+        "warm_red_minus_blue": -0.0733769222438812,
+        "luma": 0.4450219475499746,
+        "near_black_fraction": 0.0007716049382716049,
+        "consecutive_exact_duplicates": 0
+      },
+      "after": {
+        "frames": 38,
+        "saturation": 0.6984578322462982,
+        "warm_red_minus_blue": -0.049118905196907044,
+        "luma": 0.30932213652550294,
+        "near_black_fraction": 0.007294712475633528,
+        "consecutive_exact_duplicates": 0
+      },
+      "direction": {
+        "status": "numeric_pass",
+        "beat_type": "emotion",
+        "principal": "narrator",
+        "actors": {
+          "june": {
+            "motion_coverage": 1.0,
+            "held_pose_max_s": 0.03333333333333333,
+            "start_in_motion": true,
+            "end_in_motion": true,
+            "transitions": 37
+          },
+          "narrator": {
+            "motion_coverage": 1.0,
+            "held_pose_max_s": 0.03333333333333333,
+            "start_in_motion": true,
+            "end_in_motion": true,
+            "transitions": 37
+          }
+        },
+        "faces": {
+          "narrator": {
+            "min_height": 0.4201969504356384,
+            "safe_all": true,
+            "min_facing_dot": 0.9066850868985057,
+            "min_ray_visibility": 0.92,
+            "max_external_blocks": 0,
+            "min_ray_samples": 25
+          }
+        },
+        "checks": {
+          "principal_motion": true,
+          "principal_edges": true,
+          "all_actor_holds": true,
+          "grade_declared": true,
+          "readable_faces": true,
+          "face_scale": true
+        },
+        "grade": {
+          "preset": "warm_saturated_v1",
+          "look": "AgX - Medium High Contrast",
+          "exposure": -0.12,
+          "saturation": 1.18
+        },
+        "threshold_scene_units": 0.0015,
+        "visual_review_required": true
+      },
+      "review_frames": [
+        "assets/saying_hi_review/round6/pilot_native_corrected/independent/sh32_02134.png",
+        "assets/saying_hi_review/round6/pilot_native_corrected/independent/sh32_02141.png",
+        "assets/saying_hi_review/round6/pilot_native_corrected/independent/sh32_02149.png",
+        "assets/saying_hi_review/round6/pilot_native_corrected/independent/sh32_02156.png",
+        "assets/saying_hi_review/round6/pilot_native_corrected/independent/sh32_02164.png",
+        "assets/saying_hi_review/round6/pilot_native_corrected/independent/sh32_02171.png"
+      ]
+    }
+  },
+  "visual_review_required": true
+}
