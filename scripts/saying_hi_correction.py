@@ -152,7 +152,9 @@ class CorrectedUnit(SceneUnit):
                 frame(self.scene,self.cam,(0,3.9,1.35),(0,8.05,.29),22)
     def prepare_stride(self,nframes):
         self.move_frames=nframes-self.pickup_frames
-        best,rows,ret=search_walk(self.a,self.start,self.end,nframes,self.pickup_frames)
+        if getattr(self,"cached_walk",None):
+            best=self.cached_walk;rows=[best];ret=Retarget(self.a)
+        else:best,rows,ret=search_walk(self.a,self.start,self.end,nframes,self.pickup_frames)
         self.stride_candidate=best;self.stride_search=rows;self.yaw=best["yaw"]
         self.stride_offset=best["phase"]*ret.clips["walk_cycle"]["duration"]/best["rate"]
         self.lock=StrideLock(ret,"walk_cycle",FPS,best["rate"],self.start,self.yaw)
@@ -284,25 +286,51 @@ class CorrectedUnit(SceneUnit):
         super().setup_seating()
         # Move only dog/shot camera, not the plaza. Foreground of bench, away
         # from all original ring fixtures. Camera faces pair from clear side.
-        self.dog[0].location=(4.20,-.82,0)
-        frame(self.scene,self.cam,(2.0,-.86,2.25),(4.95,-.87,1.05),31)
+        self.dog[0].location=(4.05,-.92,0)
+        frame(self.scene,self.cam,(3.55,-4.5,2.65),(4.80,-.87,1.05),34)
         self.prev_hip={}
     def update_seating(self,n,u,t,after_name=True):
-        # Keep June's pelvis/feet on the calibrated final mark. Her welcoming
-        # movement is a head/torso gesture, not a root or foot slide.
+        # June stands, takes two small lateral steps, then re-sits. Her hip
+        # is not translated during either seated phase or the sit itself.
         records={}
         for cid,item in self.seat_data.items():
             a,art,cloth,feet,seat,pos,yaw=item
-            f=ease(clamp((u-.20)/.75)) if n==43 and cid=="narrator" else 0 if n==42 and cid=="narrator" else 1
-            sit_pose(a,art,"sit",f,t,yaw,feet,None,seat);art.shift(pos);cloth.sync()
-            a.pose("happy");a.set_bone("head",(.035*math.sin(t*4) if cid=="june" else 0,0,.12 if cid=="june" else -.12))
-            soles=art.soles();old=self.prev_feet.get(cid);hip=(a.armature.matrix_world@a.bones["torso"].matrix).translation
-            if cid not in self.prev_hip:self.prev_hip[cid]=hip.copy()
-            records[cid]={"seated_fraction_command":f,"signed_rear_hip_gap":float(rear_hip(a)[0]-self.bench_top),"signed_foot_gaps":[float(v.z) for v in soles],"foot_step_drift":[float((v-w).length) for v,w in zip(soles,old)] if old else None,"lateral_hip_drift":abs((hip-self.prev_hip[cid]).y)}
+            moving=[False,False];phase="seated";targets=[v.copy() for v in feet]
+            if cid=="june":
+                delta=V((0,.24,0))
+                if n==42:
+                    f=1;targets=[v+delta for v in targets];phase="initial_seated"
+                    sit_pose(a,art,"sit",f,t,yaw,targets,None,seat)
+                elif n==43 and u<.25:
+                    f=u/.25;targets=[v+delta for v in targets];phase="rise"
+                    sit_pose(a,art,"stand_up",f,t,yaw,targets,None,seat)
+                elif n==43 and u<.57:
+                    phase="step";v=(u-.25)/.32
+                    for i in range(2):
+                        q=clamp(v*2-i);targets[i]+=delta*(1-ease(q))+V((0,0,.055*math.sin(math.pi*q)))
+                        moving[i]=0<q<1
+                    f=0;sit_pose(a,art,"sit",0,t,yaw,targets,None,seat)
+                elif n==43:
+                    phase="sit" if u<.94 else "seated";f=clamp((u-.57)/.37)
+                    sit_pose(a,art,"sit",f,t,yaw,targets,None,seat)
+                else:
+                    f=1;sit_pose(a,art,"sit",f,t,yaw,targets,None,seat)
+            else:
+                f=ease(clamp((u-.20)/.75)) if n==43 else 0 if n==42 else 1
+                phase="standing" if f==0 else "sit" if f<1 else "seated"
+                sit_pose(a,art,"sit",f,t,yaw,targets,None,seat)
+            art.shift(pos);cloth.sync();a.pose("happy")
+            a.set_bone("head",(.035*math.sin(t*4) if cid=="june" else 0,0,.12 if cid=="june" else -.12))
+            bpy.context.view_layer.update()
+            soles=art.soles();old=self.prev_feet.get(cid)
+            hip=(a.armature.matrix_world@a.bones["torso"].matrix).translation
+            if self.prev_phase.get(cid)!=phase:self.prev_hip[cid]=hip.copy()
+            self.prev_phase[cid]=phase
+            records[cid]={"phase":phase,"seated_fraction_command":f,"signed_rear_hip_gap":float(rear_hip(a)[0]-self.bench_top),"signed_foot_gaps":[float(v.z) for v in soles],"foot_step_drift":[float((v-w).length) for v,w in zip(soles,old)] if old else None,"moving_feet":moving,"lateral_hip_drift":abs((hip-self.prev_hip[cid]).y),"limbs":art.length_metrics(),"hip_world":list(hip)}
             self.prev_feet[cid]=[v.copy() for v in soles]
         visible=n!=42 or after_name;show(self.dog[0],visible)
         dog_metric=waffle_pose(self.dog,"roll_over" if n==43 else "lie_down",ease(u)) if visible else None
-        return {"seat_top":self.bench_top,"seat_contacts":records,"waffle":dog_metric,"dog_visible":visible,"dog_visibility":object_visibility(self.scene,self.cam,meshes(self.dog[0]),11) if visible else None,"note":"June stays on the planted calibrated mark; head/torso welcome rather than sliding feet."}
+        return {"seat_top":self.bench_top,"seat_contacts":records,"waffle":dog_metric,"dog_visible":visible,"dog_visibility":object_visibility(self.scene,self.cam,meshes(self.dog[0]),11) if visible else None,"note":"Separate rise, planted lateral steps, sit; no lateral root translation during sit."}
     def update(self,n,u,t,index,after_name=True):
         if self.unit=="empty_wall":
             return {"tally_count":len(self.tallies),"wall_visibility":object_visibility(self.scene,self.cam,[bpy.data.objects["tally wall"]],9),"tally_visibility":object_visibility(self.scene,self.cam,self.tallies,15),"boys_on_wall":len(self.actors)}
