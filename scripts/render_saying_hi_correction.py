@@ -46,6 +46,12 @@ def evaluate_gate(unit,driver,rows):
         check("speaker_occlusion_samples",b,0,b==0 and s>0)
         safe=all(m["speaker_visibility"]["safe"] for m in ms)
         check("speaker_in_frame",safe,True,safe)
+        dot=min(m["speaker_front_dot"] for m in ms)
+        check("speaker_front_dot",dot,.72,dot>=.72)
+        body=min(m["speaker_body_visibility"]["visible_fraction"] for m in ms)
+        check("speaker_body_visible_fraction",body,.90,body>=.90)
+        safe_body=all(m["speaker_body_visibility"]["safe"] for m in ms)
+        check("speaker_body_in_frame",safe_body,True,safe_body)
         if unit=="june_question":
             x=[m["pencil_external_visibility"] for m in ms];y=[m["pencil_visibility"] for m in ms]
             b=max(m["blocked"] for m in x);s=min(m["samples"] for m in x)
