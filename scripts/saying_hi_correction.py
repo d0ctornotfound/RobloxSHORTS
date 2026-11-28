@@ -278,17 +278,62 @@ class CorrectedUnit(SceneUnit):
         seat.location=(3.12,-.70,s[0]-.055);seat.rotation_euler.z=self.jyaw
         ped=bpy.data.objects["pedestal june"];ped.location=(3.12,-.70,(s[0]-.11)/2);ped.dimensions=(.40,.37,s[0]-.11)
         self.interview_fixtures=[o for o in meshes(root) if o.name.startswith(("seat ","pedestal ","Actual pair seat","Pair bench leg"))]
-        # Side-on reverse with both faces and the raised pencil on the near side.
-        if self.unit=="june_question":loc=(1.9,1.95,1.95);aim=(5.05,2.95,1.43);lens=35
-        else:loc=(1.9,3.45,1.95);aim=(5.05,2.25,1.43);lens=35
-        frame(self.scene,self.cam,loc,aim,lens);self.reverse_camera={"location":list(loc),"target":list(aim),"lens":lens}
-    def update_june(self,n,u,t):
+        hero=a if self.unit=="june_question" else b
+        pos=self.np if hero==a else self.jp;yaw=self.nyaw if hero==a else self.jyaw
+        forward=V((math.sin(yaw),-math.cos(yaw),0));side=V((math.cos(yaw),math.sin(yaw),0))
+        target=pos+V((0,0,1.20));self.reverse_camera={}
+        frame(self.scene,self.cam,pos+forward*3.3+side*1.5+V((0,0,2)),target,40)
+        self.pose_june(32 if self.unit=="june_question" else 34,.5,.45)
+        choices=[]
+        for sign in (-1,1):
+            for d in (2.7,3.3,4.0):
+                for lateral in (1.45,1.8,2.2):
+                    for lens in (35,42,48):
+                        loc=pos+forward*d+side*lateral*sign+V((0,0,1.85))
+                        frame(self.scene,self.cam,loc,target,lens)
+                        face=object_visibility(self.scene,self.cam,[hero.face],7)
+                        body=object_visibility(self.scene,self.cam,meshes(hero.root),7,meshes(self.chart)+meshes(self.pencil))
+                        dot=self.front_dot(hero)
+                        if self.unit=="june_question":
+                            pencil=object_visibility(self.scene,self.cam,meshes(self.pencil),9)
+                            ext=object_visibility(self.scene,self.cam,meshes(self.pencil),9,meshes(a.root))
+                        else:pencil={"visible_fraction":1,"safe":True,"samples":1};ext={"blocked":0,"samples":1}
+                        valid=face["samples"]>0 and face["blocked"]==0 and face["safe"] and dot>=.72 and body["safe"] and body["visible_fraction"]>=.90 and pencil["safe"] and pencil["visible_fraction"]>=.45 and ext["blocked"]==0 and ext["samples"]>0
+                        score=(not valid,face["blocked"],ext["blocked"],max(0,.72-dot),max(0,.45-pencil["visible_fraction"]),1-body["visible_fraction"],-dot,-(body["bounds"][3]-body["bounds"][2]))
+                        choices.append((score,loc.copy(),lens,face,body,dot,pencil,ext))
+        _,loc,lens,face,body,dot,pencil,ext=min(choices,key=lambda x:x[0]);frame(self.scene,self.cam,loc,target,lens)
+        self.reverse_camera={"location":list(loc),"target":list(target),"lens":lens,"setup_face":face,"setup_body":body,"setup_front_dot":dot,"setup_pencil":pencil,"setup_external_pencil":ext}
+    def front_dot(self,a):
+        pts=mesh_points(a.face);center=sum(pts,V((0,0,0)))/len(pts)
+        forward=(a.root.matrix_world.to_3x3()@V((0,-1,0))).normalized()
+        return float(forward.dot((self.cam.location-center).normalized()))
+    def pose_june(self,n,u,t):
         m=super().update_june(n,u,t)
+        a=self.actors["narrator"]
+        if self.unit=="june_question":
+            # Right shoulder is anatomical -X; lift outwards rather than
+            # across the torso. Keep a real pencil anchor at the grip, with
+            # exposed shaft above it (not a camera-space overlay).
+            a.aim_arm(0,(-.42+.04*math.sin(t*25),-.72,-.15+.08*math.sin(t*23)))
+            bpy.context.view_layer.update()
+            grip=a.grips[0].matrix_world.translation.copy()
+            self.pencil.rotation_euler=(.18,0,self.nyaw)
+            bpy.context.view_layer.update()
+            axis=(self.pencil.matrix_world.to_3x3()@V((0,0,1))).normalized()
+            self.pencil.location=grip+axis*.085;bpy.context.view_layer.update()
+            m["socket_alignment"]["pencil"]={"exposed_shaft_grip_anchor_error":(self.pencil.location-axis*.085-grip).length}
+            m["pencil_contact"]=hand_contact(a,0,self.pencil)
+            m["pencil_projection"]=list(project(self.scene,self.cam,worldpts(meshes(self.pencil))))
+        return m
+    def update_june(self,n,u,t):
+        m=self.pose_june(n,u,t)
         a=self.actors["narrator"];b=self.actors["june"]
         pairs,detail=collision_pairs([a,b],self.interview_fixtures)
         m["standing_seat_intersections"]=pairs;m["seat_overlap_detail"]=detail
         hero=a if self.unit=="june_question" else b
-        m["speaker_visibility"]=object_visibility(self.scene,self.cam,[hero.face],5)
+        m["speaker_visibility"]=object_visibility(self.scene,self.cam,[hero.face],7)
+        m["speaker_front_dot"]=self.front_dot(hero)
+        m["speaker_body_visibility"]=object_visibility(self.scene,self.cam,meshes(hero.root),7,meshes(self.chart)+meshes(self.pencil))
         if self.unit=="june_question":
             m["pencil_visibility"]=object_visibility(self.scene,self.cam,meshes(self.pencil),9)
             m["pencil_external_visibility"]=object_visibility(self.scene,self.cam,meshes(self.pencil),9,meshes(a.root))
