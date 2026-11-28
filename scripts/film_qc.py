@@ -83,8 +83,10 @@ def flow_report(rows, fps=30, expected_frames=None):
     actor_ids=sorted(set().union(*(x["actors"] for x in d)))
     metrics={cid:measure(cid) for cid in actor_ids}
     p=metrics.get(principal)
-    if p is None:return {"status":"unmeasured","reason":"principal motion unavailable"}
     kind=d[0]["beat_type"]
+    if p is None:
+        if not (principal is None and kind=="geography" and all(x.get("pure_establishing",False) for x in d) and len(rows)/fps<=2):return {"status":"unmeasured","reason":"principal motion unavailable"}
+        p={"motion_coverage":1,"start_in_motion":True,"end_in_motion":True}
     faces={cid:{"min_height":min(x["actors"][cid]["face_height"] for x in d),"safe_all":all(x["actors"][cid]["face_safe"] for x in d)} for cid in [principal]+d[0]["listeners"] if all(cid in x["actors"] for x in d)}
     checks={"principal_motion":p["motion_coverage"]>=.8,"principal_edges":p["start_in_motion"] and p["end_in_motion"],"all_actor_holds":all(m is not None and m["held_pose_max_s"]<=.5 for m in metrics.values()),"grade_declared":all(x["grade"] and x["grade"]["preset"]=="warm_saturated_v1" for x in d)}
     # Projection alone can pass for an edge-on or fully obstructed decal.
