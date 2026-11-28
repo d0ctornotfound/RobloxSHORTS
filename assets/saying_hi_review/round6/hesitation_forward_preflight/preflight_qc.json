@@ -1,0 +1,1570 @@
+{
+  "run_id": "46143773738",
+  "source_commit": "174914d5914c180be0e84b5e31a3e61d07890cfa",
+  "status": "preflight_only",
+  "shots": {
+    "sh32": {
+      "status": "flag",
+      "direction": {
+        "status": "flag",
+        "beat_type": "emotion",
+        "principal": "narrator",
+        "actors": {
+          "june": {
+            "motion_coverage": 1.0,
+            "held_pose_max_s": 0.03333333333333333,
+            "start_in_motion": true,
+            "end_in_motion": true,
+            "transitions": 37
+          },
+          "narrator": {
+            "motion_coverage": 0.972972972972973,
+            "held_pose_max_s": 0.06666666666666667,
+            "start_in_motion": true,
+            "end_in_motion": true,
+            "transitions": 37
+          }
+        },
+        "faces": {
+          "narrator": {
+            "min_height": 0.4061241149902344,
+            "safe_all": false,
+            "min_facing_dot": 0.9222761588171124,
+            "min_ray_visibility": 0.07999999999999996,
+            "max_external_blocks": 20,
+            "min_ray_samples": 25
+          }
+        },
+        "checks": {
+          "principal_motion": true,
+          "principal_edges": true,
+          "all_actor_holds": true,
+          "grade_declared": true,
+          "readable_faces": false,
+          "face_scale": false
+        },
+        "grade": {
+          "preset": "warm_saturated_v1",
+          "look": "AgX - Medium High Contrast",
+          "exposure": -0.12,
+          "saturation": 1.18
+        },
+        "threshold_scene_units": 0.0015,
+        "visual_review_required": true
+      },
+      "external_face_ray_blocks_max": {
+        "narrator": 20
+      },
+      "smoke_frames": [
+        {
+          "frame": 2134,
+          "render_seconds": 37.18055105199997,
+          "near_black_percent": 1.3171296296296295
+        },
+        {
+          "frame": 2153,
+          "render_seconds": 12.826209148000032,
+          "near_black_percent": 1.994405864197531
+        },
+        {
+          "frame": 2171,
+          "render_seconds": 12.642072804000009,
+          "near_black_percent": 1.1558641975308643
+        }
+      ],
+      "extra": {
+        "camera_search": {
+          "selected": {
+            "camera_offset": [
+              0.62,
+              -0.78,
+              0
+            ],
+            "camera_elevation": -0.1,
+            "distance": 3.3,
+            "emotion_face_target": 0.426,
+            "target_offset": [
+              -0.045,
+              -0.065,
+              -0.24
+            ],
+            "hand_props": [
+              {
+                "actor": "narrator",
+                "socket": 0,
+                "object": "narrator yellow pencil",
+                "aim": [
+                  -0.25,
+                  -1,
+                  0.14
+                ],
+                "shake_amplitude": [
+                  0.018,
+                  0,
+                  0.033
+                ],
+                "shake_frequency": [
+                  25,
+                  25,
+                  23
+                ],
+                "shaft_lift": [
+                  0,
+                  0,
+                  1.25
+                ],
+                "anchor_offset": 0.105,
+                "metric_prefix": "pencil",
+                "contact_function": "render_saying_hi_shot:hand_contact"
+              }
+            ]
+          },
+          "candidates": [
+            {
+              "override": {
+                "camera_offset": [
+                  0.84,
+                  -0.54,
+                  0
+                ],
+                "camera_elevation": -0.1,
+                "distance": 3.3,
+                "emotion_face_target": 0.426,
+                "target_offset": [
+                  -0.045,
+                  -0.065,
+                  -0.24
+                ],
+                "hand_props": [
+                  {
+                    "actor": "narrator",
+                    "socket": 0,
+                    "object": "narrator yellow pencil",
+                    "aim": [
+                      0.1,
+                      -1,
+                      0.12
+                    ],
+                    "shake_amplitude": [
+                      0.018,
+                      0,
+                      0.033
+                    ],
+                    "shake_frequency": [
+                      25,
+                      25,
+                      23
+                    ],
+                    "shaft_lift": [
+                      0,
+                      0,
+                      1.25
+                    ],
+                    "anchor_offset": 0.105,
+                    "metric_prefix": "pencil",
+                    "contact_function": "render_saying_hi_shot:hand_contact"
+                  }
+                ]
+              },
+              "min_visibility": 0.0,
+              "min_face_height": 0.4046202600002289,
+              "min_facing": 0.9800125155597925,
+              "max_external_blocks": 26,
+              "safe": false,
+              "min_pencil_visibility": 0.0,
+              "max_prop_external_blocks": 49,
+              "samples": 38,
+              "blockers": [
+                "june / garment shell / shirt and sleeves",
+                "june / head skinned"
+              ]
+            },
+            {
+              "override": {
+                "camera_offset": [
+                  0.84,
+                  -0.54,
+                  0
+                ],
+                "camera_elevation": -0.1,
+                "distance": 3.3,
+                "emotion_face_target": 0.426,
+                "target_offset": [
+                  -0.045,
+                  -0.065,
+                  -0.32
+                ],
+                "hand_props": [
+                  {
+                    "actor": "narrator",
+                    "socket": 0,
+                    "object": "narrator yellow pencil",
+                    "aim": [
+                      0.1,
+                      -1,
+                      0.12
+                    ],
+                    "shake_amplitude": [
+                      0.018,
+                      0,
+                      0.033
+                    ],
+                    "shake_frequency": [
+                      25,
+                      25,
+                      23
+                    ],
+                    "shaft_lift": [
+                      0,
+                      0,
+                      1.25
+                    ],
+                    "anchor_offset": 0.105,
+                    "metric_prefix": "pencil",
+                    "contact_function": "render_saying_hi_shot:hand_contact"
+                  }
+                ]
+              },
+              "min_visibility": 0.0,
+              "min_face_height": 0.403048038482666,
+              "min_facing": 0.9750685477629304,
+              "max_external_blocks": 25,
+              "safe": false,
+              "min_pencil_visibility": 0.0,
+              "max_prop_external_blocks": 49,
+              "samples": 38,
+              "blockers": [
+                "june / garment shell / shirt and sleeves",
+                "june / head skinned"
+              ]
+            },
+            {
+              "override": {
+                "camera_offset": [
+                  0.84,
+                  -0.54,
+                  0
+                ],
+                "camera_elevation": -0.1,
+                "distance": 3.3,
+                "emotion_face_target": 0.426,
+                "target_offset": [
+                  -0.045,
+                  -0.065,
+                  -0.24
+                ],
+                "hand_props": [
+                  {
+                    "actor": "narrator",
+                    "socket": 0,
+                    "object": "narrator yellow pencil",
+                    "aim": [
+                      -0.25,
+                      -1,
+                      0.14
+                    ],
+                    "shake_amplitude": [
+                      0.018,
+                      0,
+                      0.033
+                    ],
+                    "shake_frequency": [
+                      25,
+                      25,
+                      23
+                    ],
+                    "shaft_lift": [
+                      0,
+                      0,
+                      1.25
+                    ],
+                    "anchor_offset": 0.105,
+                    "metric_prefix": "pencil",
+                    "contact_function": "render_saying_hi_shot:hand_contact"
+                  }
+                ]
+              },
+              "min_visibility": 0.0,
+              "min_face_height": 0.4046202600002289,
+              "min_facing": 0.9800125155597925,
+              "max_external_blocks": 26,
+              "safe": false,
+              "min_pencil_visibility": 0.0,
+              "max_prop_external_blocks": 13,
+              "samples": 38,
+              "blockers": [
+                "june / garment shell / shirt and sleeves",
+                "june / head skinned"
+              ]
+            },
+            {
+              "override": {
+                "camera_offset": [
+                  0.84,
+                  -0.54,
+                  0
+                ],
+                "camera_elevation": -0.1,
+                "distance": 3.3,
+                "emotion_face_target": 0.426,
+                "target_offset": [
+                  -0.045,
+                  -0.065,
+                  -0.32
+                ],
+                "hand_props": [
+                  {
+                    "actor": "narrator",
+                    "socket": 0,
+                    "object": "narrator yellow pencil",
+                    "aim": [
+                      -0.25,
+                      -1,
+                      0.14
+                    ],
+                    "shake_amplitude": [
+                      0.018,
+                      0,
+                      0.033
+                    ],
+                    "shake_frequency": [
+                      25,
+                      25,
+                      23
+                    ],
+                    "shaft_lift": [
+                      0,
+                      0,
+                      1.25
+                    ],
+                    "anchor_offset": 0.105,
+                    "metric_prefix": "pencil",
+                    "contact_function": "render_saying_hi_shot:hand_contact"
+                  }
+                ]
+              },
+              "min_visibility": 0.0,
+              "min_face_height": 0.403048038482666,
+              "min_facing": 0.9750685477629304,
+              "max_external_blocks": 25,
+              "safe": false,
+              "min_pencil_visibility": 0.0,
+              "max_prop_external_blocks": 17,
+              "samples": 38,
+              "blockers": [
+                "june / garment shell / shirt and sleeves",
+                "june / head skinned"
+              ]
+            },
+            {
+              "override": {
+                "camera_offset": [
+                  0.84,
+                  -0.54,
+                  0
+                ],
+                "camera_elevation": -0.1,
+                "distance": 3.3,
+                "emotion_face_target": 0.426,
+                "target_offset": [
+                  -0.045,
+                  -0.065,
+                  -0.24
+                ],
+                "hand_props": [
+                  {
+                    "actor": "narrator",
+                    "socket": 0,
+                    "object": "narrator yellow pencil",
+                    "aim": [
+                      0.38,
+                      -1,
+                      0.12
+                    ],
+                    "shake_amplitude": [
+                      0.018,
+                      0,
+                      0.033
+                    ],
+                    "shake_frequency": [
+                      25,
+                      25,
+                      23
+                    ],
+                    "shaft_lift": [
+                      0,
+                      0,
+                      1.25
+                    ],
+                    "anchor_offset": 0.105,
+                    "metric_prefix": "pencil",
+                    "contact_function": "render_saying_hi_shot:hand_contact"
+                  }
+                ]
+              },
+              "min_visibility": 0.0,
+              "min_face_height": 0.4046202600002289,
+              "min_facing": 0.9800125155597925,
+              "max_external_blocks": 26,
+              "safe": false,
+              "min_pencil_visibility": 0.0,
+              "max_prop_external_blocks": 28,
+              "samples": 38,
+              "blockers": [
+                "june / garment shell / shirt and sleeves",
+                "june / head skinned"
+              ]
+            },
+            {
+              "override": {
+                "camera_offset": [
+                  0.84,
+                  -0.54,
+                  0
+                ],
+                "camera_elevation": -0.1,
+                "distance": 3.3,
+                "emotion_face_target": 0.426,
+                "target_offset": [
+                  -0.045,
+                  -0.065,
+                  -0.32
+                ],
+                "hand_props": [
+                  {
+                    "actor": "narrator",
+                    "socket": 0,
+                    "object": "narrator yellow pencil",
+                    "aim": [
+                      0.38,
+                      -1,
+                      0.12
+                    ],
+                    "shake_amplitude": [
+                      0.018,
+                      0,
+                      0.033
+                    ],
+                    "shake_frequency": [
+                      25,
+                      25,
+                      23
+                    ],
+                    "shaft_lift": [
+                      0,
+                      0,
+                      1.25
+                    ],
+                    "anchor_offset": 0.105,
+                    "metric_prefix": "pencil",
+                    "contact_function": "render_saying_hi_shot:hand_contact"
+                  }
+                ]
+              },
+              "min_visibility": 0.0,
+              "min_face_height": 0.403048038482666,
+              "min_facing": 0.9750685477629304,
+              "max_external_blocks": 25,
+              "safe": false,
+              "min_pencil_visibility": 0.0,
+              "max_prop_external_blocks": 28,
+              "samples": 38,
+              "blockers": [
+                "june / garment shell / shirt and sleeves",
+                "june / head skinned"
+              ]
+            },
+            {
+              "override": {
+                "camera_offset": [
+                  0.84,
+                  -0.54,
+                  0
+                ],
+                "camera_elevation": -0.1,
+                "distance": 3.3,
+                "emotion_face_target": 0.426,
+                "target_offset": [
+                  -0.045,
+                  -0.065,
+                  -0.24
+                ],
+                "hand_props": [
+                  {
+                    "actor": "narrator",
+                    "socket": 0,
+                    "object": "narrator yellow pencil",
+                    "aim": [
+                      -0.05,
+                      -1,
+                      -0.05
+                    ],
+                    "shake_amplitude": [
+                      0.018,
+                      0,
+                      0.033
+                    ],
+                    "shake_frequency": [
+                      25,
+                      25,
+                      23
+                    ],
+                    "shaft_lift": [
+                      0,
+                      0,
+                      1.25
+                    ],
+                    "anchor_offset": 0.105,
+                    "metric_prefix": "pencil",
+                    "contact_function": "render_saying_hi_shot:hand_contact"
+                  }
+                ]
+              },
+              "min_visibility": 0.0,
+              "min_face_height": 0.4046202600002289,
+              "min_facing": 0.9800125155597925,
+              "max_external_blocks": 26,
+              "safe": false,
+              "min_pencil_visibility": 0.0,
+              "max_prop_external_blocks": 38,
+              "samples": 38,
+              "blockers": [
+                "june / garment shell / shirt and sleeves",
+                "june / head skinned"
+              ]
+            },
+            {
+              "override": {
+                "camera_offset": [
+                  0.84,
+                  -0.54,
+                  0
+                ],
+                "camera_elevation": -0.1,
+                "distance": 3.3,
+                "emotion_face_target": 0.426,
+                "target_offset": [
+                  -0.045,
+                  -0.065,
+                  -0.32
+                ],
+                "hand_props": [
+                  {
+                    "actor": "narrator",
+                    "socket": 0,
+                    "object": "narrator yellow pencil",
+                    "aim": [
+                      -0.05,
+                      -1,
+                      -0.05
+                    ],
+                    "shake_amplitude": [
+                      0.018,
+                      0,
+                      0.033
+                    ],
+                    "shake_frequency": [
+                      25,
+                      25,
+                      23
+                    ],
+                    "shaft_lift": [
+                      0,
+                      0,
+                      1.25
+                    ],
+                    "anchor_offset": 0.105,
+                    "metric_prefix": "pencil",
+                    "contact_function": "render_saying_hi_shot:hand_contact"
+                  }
+                ]
+              },
+              "min_visibility": 0.0,
+              "min_face_height": 0.403048038482666,
+              "min_facing": 0.9750685477629304,
+              "max_external_blocks": 25,
+              "safe": false,
+              "min_pencil_visibility": 0.0,
+              "max_prop_external_blocks": 38,
+              "samples": 38,
+              "blockers": [
+                "june / garment shell / shirt and sleeves",
+                "june / head skinned"
+              ]
+            },
+            {
+              "override": {
+                "camera_offset": [
+                  0.95,
+                  -0.3,
+                  0
+                ],
+                "camera_elevation": -0.1,
+                "distance": 3.3,
+                "emotion_face_target": 0.426,
+                "target_offset": [
+                  -0.045,
+                  -0.065,
+                  -0.24
+                ],
+                "hand_props": [
+                  {
+                    "actor": "narrator",
+                    "socket": 0,
+                    "object": "narrator yellow pencil",
+                    "aim": [
+                      0.1,
+                      -1,
+                      0.12
+                    ],
+                    "shake_amplitude": [
+                      0.018,
+                      0,
+                      0.033
+                    ],
+                    "shake_frequency": [
+                      25,
+                      25,
+                      23
+                    ],
+                    "shaft_lift": [
+                      0,
+                      0,
+                      1.25
+                    ],
+                    "anchor_offset": 0.105,
+                    "metric_prefix": "pencil",
+                    "contact_function": "render_saying_hi_shot:hand_contact"
+                  }
+                ]
+              },
+              "min_visibility": 0.07999999999999996,
+              "min_face_height": 0.41254228353500366,
+              "min_facing": 0.9503756104968488,
+              "max_external_blocks": 23,
+              "safe": false,
+              "min_pencil_visibility": 0.0,
+              "max_prop_external_blocks": 33,
+              "samples": 38,
+              "blockers": [
+                "june / bead.001",
+                "june / braid lock.004",
+                "june / face decal",
+                "june / garment shell / shirt and sleeves",
+                "june / head skinned"
+              ]
+            },
+            {
+              "override": {
+                "camera_offset": [
+                  0.95,
+                  -0.3,
+                  0
+                ],
+                "camera_elevation": -0.1,
+                "distance": 3.3,
+                "emotion_face_target": 0.426,
+                "target_offset": [
+                  -0.045,
+                  -0.065,
+                  -0.32
+                ],
+                "hand_props": [
+                  {
+                    "actor": "narrator",
+                    "socket": 0,
+                    "object": "narrator yellow pencil",
+                    "aim": [
+                      0.1,
+                      -1,
+                      0.12
+                    ],
+                    "shake_amplitude": [
+                      0.018,
+                      0,
+                      0.033
+                    ],
+                    "shake_frequency": [
+                      25,
+                      25,
+                      23
+                    ],
+                    "shaft_lift": [
+                      0,
+                      0,
+                      1.25
+                    ],
+                    "anchor_offset": 0.105,
+                    "metric_prefix": "pencil",
+                    "contact_function": "render_saying_hi_shot:hand_contact"
+                  }
+                ]
+              },
+              "min_visibility": 0.0,
+              "min_face_height": 0.41105175018310547,
+              "min_facing": 0.9454974550753832,
+              "max_external_blocks": 26,
+              "safe": false,
+              "min_pencil_visibility": 0.0,
+              "max_prop_external_blocks": 33,
+              "samples": 38,
+              "blockers": [
+                "june / garment shell / shirt and sleeves"
+              ]
+            },
+            {
+              "override": {
+                "camera_offset": [
+                  0.95,
+                  -0.3,
+                  0
+                ],
+                "camera_elevation": -0.1,
+                "distance": 3.3,
+                "emotion_face_target": 0.426,
+                "target_offset": [
+                  -0.045,
+                  -0.065,
+                  -0.24
+                ],
+                "hand_props": [
+                  {
+                    "actor": "narrator",
+                    "socket": 0,
+                    "object": "narrator yellow pencil",
+                    "aim": [
+                      -0.25,
+                      -1,
+                      0.14
+                    ],
+                    "shake_amplitude": [
+                      0.018,
+                      0,
+                      0.033
+                    ],
+                    "shake_frequency": [
+                      25,
+                      25,
+                      23
+                    ],
+                    "shaft_lift": [
+                      0,
+                      0,
+                      1.25
+                    ],
+                    "anchor_offset": 0.105,
+                    "metric_prefix": "pencil",
+                    "contact_function": "render_saying_hi_shot:hand_contact"
+                  }
+                ]
+              },
+              "min_visibility": 0.07999999999999996,
+              "min_face_height": 0.41254228353500366,
+              "min_facing": 0.9503756104968488,
+              "max_external_blocks": 23,
+              "safe": false,
+              "min_pencil_visibility": 0.0,
+              "max_prop_external_blocks": 19,
+              "samples": 38,
+              "blockers": [
+                "june / bead.001",
+                "june / braid lock.004",
+                "june / face decal",
+                "june / garment shell / shirt and sleeves",
+                "june / head skinned"
+              ]
+            },
+            {
+              "override": {
+                "camera_offset": [
+                  0.95,
+                  -0.3,
+                  0
+                ],
+                "camera_elevation": -0.1,
+                "distance": 3.3,
+                "emotion_face_target": 0.426,
+                "target_offset": [
+                  -0.045,
+                  -0.065,
+                  -0.32
+                ],
+                "hand_props": [
+                  {
+                    "actor": "narrator",
+                    "socket": 0,
+                    "object": "narrator yellow pencil",
+                    "aim": [
+                      -0.25,
+                      -1,
+                      0.14
+                    ],
+                    "shake_amplitude": [
+                      0.018,
+                      0,
+                      0.033
+                    ],
+                    "shake_frequency": [
+                      25,
+                      25,
+                      23
+                    ],
+                    "shaft_lift": [
+                      0,
+                      0,
+                      1.25
+                    ],
+                    "anchor_offset": 0.105,
+                    "metric_prefix": "pencil",
+                    "contact_function": "render_saying_hi_shot:hand_contact"
+                  }
+                ]
+              },
+              "min_visibility": 0.0,
+              "min_face_height": 0.41105175018310547,
+              "min_facing": 0.9454974550753832,
+              "max_external_blocks": 26,
+              "safe": false,
+              "min_pencil_visibility": 0.0,
+              "max_prop_external_blocks": 19,
+              "samples": 38,
+              "blockers": [
+                "june / garment shell / shirt and sleeves"
+              ]
+            },
+            {
+              "override": {
+                "camera_offset": [
+                  0.95,
+                  -0.3,
+                  0
+                ],
+                "camera_elevation": -0.1,
+                "distance": 3.3,
+                "emotion_face_target": 0.426,
+                "target_offset": [
+                  -0.045,
+                  -0.065,
+                  -0.24
+                ],
+                "hand_props": [
+                  {
+                    "actor": "narrator",
+                    "socket": 0,
+                    "object": "narrator yellow pencil",
+                    "aim": [
+                      0.38,
+                      -1,
+                      0.12
+                    ],
+                    "shake_amplitude": [
+                      0.018,
+                      0,
+                      0.033
+                    ],
+                    "shake_frequency": [
+                      25,
+                      25,
+                      23
+                    ],
+                    "shaft_lift": [
+                      0,
+                      0,
+                      1.25
+                    ],
+                    "anchor_offset": 0.105,
+                    "metric_prefix": "pencil",
+                    "contact_function": "render_saying_hi_shot:hand_contact"
+                  }
+                ]
+              },
+              "min_visibility": 0.07999999999999996,
+              "min_face_height": 0.41254228353500366,
+              "min_facing": 0.9503756104968488,
+              "max_external_blocks": 23,
+              "safe": false,
+              "min_pencil_visibility": 0.0,
+              "max_prop_external_blocks": 49,
+              "samples": 38,
+              "blockers": [
+                "june / bead.001",
+                "june / braid lock.004",
+                "june / face decal",
+                "june / garment shell / shirt and sleeves",
+                "june / head skinned"
+              ]
+            },
+            {
+              "override": {
+                "camera_offset": [
+                  0.95,
+                  -0.3,
+                  0
+                ],
+                "camera_elevation": -0.1,
+                "distance": 3.3,
+                "emotion_face_target": 0.426,
+                "target_offset": [
+                  -0.045,
+                  -0.065,
+                  -0.32
+                ],
+                "hand_props": [
+                  {
+                    "actor": "narrator",
+                    "socket": 0,
+                    "object": "narrator yellow pencil",
+                    "aim": [
+                      0.38,
+                      -1,
+                      0.12
+                    ],
+                    "shake_amplitude": [
+                      0.018,
+                      0,
+                      0.033
+                    ],
+                    "shake_frequency": [
+                      25,
+                      25,
+                      23
+                    ],
+                    "shaft_lift": [
+                      0,
+                      0,
+                      1.25
+                    ],
+                    "anchor_offset": 0.105,
+                    "metric_prefix": "pencil",
+                    "contact_function": "render_saying_hi_shot:hand_contact"
+                  }
+                ]
+              },
+              "min_visibility": 0.0,
+              "min_face_height": 0.41105175018310547,
+              "min_facing": 0.9454974550753832,
+              "max_external_blocks": 26,
+              "safe": false,
+              "min_pencil_visibility": 0.0,
+              "max_prop_external_blocks": 49,
+              "samples": 38,
+              "blockers": [
+                "june / garment shell / shirt and sleeves"
+              ]
+            },
+            {
+              "override": {
+                "camera_offset": [
+                  0.95,
+                  -0.3,
+                  0
+                ],
+                "camera_elevation": -0.1,
+                "distance": 3.3,
+                "emotion_face_target": 0.426,
+                "target_offset": [
+                  -0.045,
+                  -0.065,
+                  -0.24
+                ],
+                "hand_props": [
+                  {
+                    "actor": "narrator",
+                    "socket": 0,
+                    "object": "narrator yellow pencil",
+                    "aim": [
+                      -0.05,
+                      -1,
+                      -0.05
+                    ],
+                    "shake_amplitude": [
+                      0.018,
+                      0,
+                      0.033
+                    ],
+                    "shake_frequency": [
+                      25,
+                      25,
+                      23
+                    ],
+                    "shaft_lift": [
+                      0,
+                      0,
+                      1.25
+                    ],
+                    "anchor_offset": 0.105,
+                    "metric_prefix": "pencil",
+                    "contact_function": "render_saying_hi_shot:hand_contact"
+                  }
+                ]
+              },
+              "min_visibility": 0.07999999999999996,
+              "min_face_height": 0.41254228353500366,
+              "min_facing": 0.9503756104968488,
+              "max_external_blocks": 23,
+              "safe": false,
+              "min_pencil_visibility": 0.0,
+              "max_prop_external_blocks": 24,
+              "samples": 38,
+              "blockers": [
+                "june / bead.001",
+                "june / braid lock.004",
+                "june / face decal",
+                "june / garment shell / shirt and sleeves",
+                "june / head skinned"
+              ]
+            },
+            {
+              "override": {
+                "camera_offset": [
+                  0.95,
+                  -0.3,
+                  0
+                ],
+                "camera_elevation": -0.1,
+                "distance": 3.3,
+                "emotion_face_target": 0.426,
+                "target_offset": [
+                  -0.045,
+                  -0.065,
+                  -0.32
+                ],
+                "hand_props": [
+                  {
+                    "actor": "narrator",
+                    "socket": 0,
+                    "object": "narrator yellow pencil",
+                    "aim": [
+                      -0.05,
+                      -1,
+                      -0.05
+                    ],
+                    "shake_amplitude": [
+                      0.018,
+                      0,
+                      0.033
+                    ],
+                    "shake_frequency": [
+                      25,
+                      25,
+                      23
+                    ],
+                    "shaft_lift": [
+                      0,
+                      0,
+                      1.25
+                    ],
+                    "anchor_offset": 0.105,
+                    "metric_prefix": "pencil",
+                    "contact_function": "render_saying_hi_shot:hand_contact"
+                  }
+                ]
+              },
+              "min_visibility": 0.0,
+              "min_face_height": 0.41105175018310547,
+              "min_facing": 0.9454974550753832,
+              "max_external_blocks": 26,
+              "safe": false,
+              "min_pencil_visibility": 0.0,
+              "max_prop_external_blocks": 24,
+              "samples": 38,
+              "blockers": [
+                "june / garment shell / shirt and sleeves"
+              ]
+            },
+            {
+              "override": {
+                "camera_offset": [
+                  0.62,
+                  -0.78,
+                  0
+                ],
+                "camera_elevation": -0.1,
+                "distance": 3.3,
+                "emotion_face_target": 0.426,
+                "target_offset": [
+                  -0.045,
+                  -0.065,
+                  -0.24
+                ],
+                "hand_props": [
+                  {
+                    "actor": "narrator",
+                    "socket": 0,
+                    "object": "narrator yellow pencil",
+                    "aim": [
+                      0.1,
+                      -1,
+                      0.12
+                    ],
+                    "shake_amplitude": [
+                      0.018,
+                      0,
+                      0.033
+                    ],
+                    "shake_frequency": [
+                      25,
+                      25,
+                      23
+                    ],
+                    "shaft_lift": [
+                      0,
+                      0,
+                      1.25
+                    ],
+                    "anchor_offset": 0.105,
+                    "metric_prefix": "pencil",
+                    "contact_function": "render_saying_hi_shot:hand_contact"
+                  }
+                ]
+              },
+              "min_visibility": 0.0,
+              "min_face_height": 0.4061241149902344,
+              "min_facing": 0.9222761588171124,
+              "max_external_blocks": 21,
+              "safe": false,
+              "min_pencil_visibility": 0.0,
+              "max_prop_external_blocks": 8,
+              "samples": 38,
+              "blockers": [
+                "june / garment shell / shirt and sleeves",
+                "narrator / body skinned",
+                "narrator / garment shell / shirt and sleeves",
+                "narrator / head knitted beanie folded brim",
+                "pencil yellow shaft"
+              ]
+            },
+            {
+              "override": {
+                "camera_offset": [
+                  0.62,
+                  -0.78,
+                  0
+                ],
+                "camera_elevation": -0.1,
+                "distance": 3.3,
+                "emotion_face_target": 0.426,
+                "target_offset": [
+                  -0.045,
+                  -0.065,
+                  -0.32
+                ],
+                "hand_props": [
+                  {
+                    "actor": "narrator",
+                    "socket": 0,
+                    "object": "narrator yellow pencil",
+                    "aim": [
+                      0.1,
+                      -1,
+                      0.12
+                    ],
+                    "shake_amplitude": [
+                      0.018,
+                      0,
+                      0.033
+                    ],
+                    "shake_frequency": [
+                      25,
+                      25,
+                      23
+                    ],
+                    "shaft_lift": [
+                      0,
+                      0,
+                      1.25
+                    ],
+                    "anchor_offset": 0.105,
+                    "metric_prefix": "pencil",
+                    "contact_function": "render_saying_hi_shot:hand_contact"
+                  }
+                ]
+              },
+              "min_visibility": 0.0,
+              "min_face_height": 0.40594422817230225,
+              "min_facing": 0.917656768579036,
+              "max_external_blocks": 25,
+              "safe": false,
+              "min_pencil_visibility": 0.0,
+              "max_prop_external_blocks": 13,
+              "samples": 38,
+              "blockers": [
+                "june / garment shell / shirt and sleeves",
+                "narrator / body skinned",
+                "narrator / garment shell / shirt and sleeves",
+                "narrator / head knitted beanie folded brim",
+                "pencil yellow shaft"
+              ]
+            },
+            {
+              "override": {
+                "camera_offset": [
+                  0.62,
+                  -0.78,
+                  0
+                ],
+                "camera_elevation": -0.1,
+                "distance": 3.3,
+                "emotion_face_target": 0.426,
+                "target_offset": [
+                  -0.045,
+                  -0.065,
+                  -0.24
+                ],
+                "hand_props": [
+                  {
+                    "actor": "narrator",
+                    "socket": 0,
+                    "object": "narrator yellow pencil",
+                    "aim": [
+                      -0.25,
+                      -1,
+                      0.14
+                    ],
+                    "shake_amplitude": [
+                      0.018,
+                      0,
+                      0.033
+                    ],
+                    "shake_frequency": [
+                      25,
+                      25,
+                      23
+                    ],
+                    "shaft_lift": [
+                      0,
+                      0,
+                      1.25
+                    ],
+                    "anchor_offset": 0.105,
+                    "metric_prefix": "pencil",
+                    "contact_function": "render_saying_hi_shot:hand_contact"
+                  }
+                ]
+              },
+              "min_visibility": 0.07999999999999996,
+              "min_face_height": 0.4061241149902344,
+              "min_facing": 0.9222761588171124,
+              "max_external_blocks": 20,
+              "safe": false,
+              "min_pencil_visibility": 0.0,
+              "max_prop_external_blocks": 0,
+              "samples": 38,
+              "blockers": [
+                "june / garment shell / shirt and sleeves",
+                "narrator / head knitted beanie folded brim"
+              ]
+            },
+            {
+              "override": {
+                "camera_offset": [
+                  0.62,
+                  -0.78,
+                  0
+                ],
+                "camera_elevation": -0.1,
+                "distance": 3.3,
+                "emotion_face_target": 0.426,
+                "target_offset": [
+                  -0.045,
+                  -0.065,
+                  -0.32
+                ],
+                "hand_props": [
+                  {
+                    "actor": "narrator",
+                    "socket": 0,
+                    "object": "narrator yellow pencil",
+                    "aim": [
+                      -0.25,
+                      -1,
+                      0.14
+                    ],
+                    "shake_amplitude": [
+                      0.018,
+                      0,
+                      0.033
+                    ],
+                    "shake_frequency": [
+                      25,
+                      25,
+                      23
+                    ],
+                    "shaft_lift": [
+                      0,
+                      0,
+                      1.25
+                    ],
+                    "anchor_offset": 0.105,
+                    "metric_prefix": "pencil",
+                    "contact_function": "render_saying_hi_shot:hand_contact"
+                  }
+                ]
+              },
+              "min_visibility": 0.040000000000000036,
+              "min_face_height": 0.40594422817230225,
+              "min_facing": 0.917656768579036,
+              "max_external_blocks": 24,
+              "safe": false,
+              "min_pencil_visibility": 0.0,
+              "max_prop_external_blocks": 7,
+              "samples": 38,
+              "blockers": [
+                "june / garment shell / shirt and sleeves",
+                "narrator / head knitted beanie folded brim"
+              ]
+            },
+            {
+              "override": {
+                "camera_offset": [
+                  0.62,
+                  -0.78,
+                  0
+                ],
+                "camera_elevation": -0.1,
+                "distance": 3.3,
+                "emotion_face_target": 0.426,
+                "target_offset": [
+                  -0.045,
+                  -0.065,
+                  -0.24
+                ],
+                "hand_props": [
+                  {
+                    "actor": "narrator",
+                    "socket": 0,
+                    "object": "narrator yellow pencil",
+                    "aim": [
+                      0.38,
+                      -1,
+                      0.12
+                    ],
+                    "shake_amplitude": [
+                      0.018,
+                      0,
+                      0.033
+                    ],
+                    "shake_frequency": [
+                      25,
+                      25,
+                      23
+                    ],
+                    "shaft_lift": [
+                      0,
+                      0,
+                      1.25
+                    ],
+                    "anchor_offset": 0.105,
+                    "metric_prefix": "pencil",
+                    "contact_function": "render_saying_hi_shot:hand_contact"
+                  }
+                ]
+              },
+              "min_visibility": 0.0,
+              "min_face_height": 0.4061241149902344,
+              "min_facing": 0.9222761588171124,
+              "max_external_blocks": 21,
+              "safe": false,
+              "min_pencil_visibility": 0.0,
+              "max_prop_external_blocks": 22,
+              "samples": 38,
+              "blockers": [
+                "june / garment shell / shirt and sleeves",
+                "narrator / body skinned",
+                "narrator / garment shell / shirt and sleeves",
+                "narrator / right_arm fabric cuff",
+                "pencil yellow shaft"
+              ]
+            },
+            {
+              "override": {
+                "camera_offset": [
+                  0.62,
+                  -0.78,
+                  0
+                ],
+                "camera_elevation": -0.1,
+                "distance": 3.3,
+                "emotion_face_target": 0.426,
+                "target_offset": [
+                  -0.045,
+                  -0.065,
+                  -0.32
+                ],
+                "hand_props": [
+                  {
+                    "actor": "narrator",
+                    "socket": 0,
+                    "object": "narrator yellow pencil",
+                    "aim": [
+                      0.38,
+                      -1,
+                      0.12
+                    ],
+                    "shake_amplitude": [
+                      0.018,
+                      0,
+                      0.033
+                    ],
+                    "shake_frequency": [
+                      25,
+                      25,
+                      23
+                    ],
+                    "shaft_lift": [
+                      0,
+                      0,
+                      1.25
+                    ],
+                    "anchor_offset": 0.105,
+                    "metric_prefix": "pencil",
+                    "contact_function": "render_saying_hi_shot:hand_contact"
+                  }
+                ]
+              },
+              "min_visibility": 0.0,
+              "min_face_height": 0.40594422817230225,
+              "min_facing": 0.917656768579036,
+              "max_external_blocks": 24,
+              "safe": false,
+              "min_pencil_visibility": 0.0,
+              "max_prop_external_blocks": 21,
+              "samples": 38,
+              "blockers": [
+                "june / garment shell / shirt and sleeves",
+                "narrator / body skinned",
+                "narrator / garment shell / shirt and sleeves",
+                "narrator / right_arm fabric cuff",
+                "pencil yellow shaft"
+              ]
+            },
+            {
+              "override": {
+                "camera_offset": [
+                  0.62,
+                  -0.78,
+                  0
+                ],
+                "camera_elevation": -0.1,
+                "distance": 3.3,
+                "emotion_face_target": 0.426,
+                "target_offset": [
+                  -0.045,
+                  -0.065,
+                  -0.24
+                ],
+                "hand_props": [
+                  {
+                    "actor": "narrator",
+                    "socket": 0,
+                    "object": "narrator yellow pencil",
+                    "aim": [
+                      -0.05,
+                      -1,
+                      -0.05
+                    ],
+                    "shake_amplitude": [
+                      0.018,
+                      0,
+                      0.033
+                    ],
+                    "shake_frequency": [
+                      25,
+                      25,
+                      23
+                    ],
+                    "shaft_lift": [
+                      0,
+                      0,
+                      1.25
+                    ],
+                    "anchor_offset": 0.105,
+                    "metric_prefix": "pencil",
+                    "contact_function": "render_saying_hi_shot:hand_contact"
+                  }
+                ]
+              },
+              "min_visibility": 0.040000000000000036,
+              "min_face_height": 0.4061241149902344,
+              "min_facing": 0.9222761588171124,
+              "max_external_blocks": 20,
+              "safe": false,
+              "min_pencil_visibility": 0.09677419354838712,
+              "max_prop_external_blocks": 28,
+              "samples": 38,
+              "blockers": [
+                "june / garment shell / shirt and sleeves",
+                "narrator / body skinned",
+                "narrator / garment shell / shirt and sleeves",
+                "narrator / head knitted beanie folded brim"
+              ]
+            },
+            {
+              "override": {
+                "camera_offset": [
+                  0.62,
+                  -0.78,
+                  0
+                ],
+                "camera_elevation": -0.1,
+                "distance": 3.3,
+                "emotion_face_target": 0.426,
+                "target_offset": [
+                  -0.045,
+                  -0.065,
+                  -0.32
+                ],
+                "hand_props": [
+                  {
+                    "actor": "narrator",
+                    "socket": 0,
+                    "object": "narrator yellow pencil",
+                    "aim": [
+                      -0.05,
+                      -1,
+                      -0.05
+                    ],
+                    "shake_amplitude": [
+                      0.018,
+                      0,
+                      0.033
+                    ],
+                    "shake_frequency": [
+                      25,
+                      25,
+                      23
+                    ],
+                    "shaft_lift": [
+                      0,
+                      0,
+                      1.25
+                    ],
+                    "anchor_offset": 0.105,
+                    "metric_prefix": "pencil",
+                    "contact_function": "render_saying_hi_shot:hand_contact"
+                  }
+                ]
+              },
+              "min_visibility": 0.040000000000000036,
+              "min_face_height": 0.40594422817230225,
+              "min_facing": 0.917656768579036,
+              "max_external_blocks": 24,
+              "safe": false,
+              "min_pencil_visibility": 0.0,
+              "max_prop_external_blocks": 34,
+              "samples": 38,
+              "blockers": [
+                "june / garment shell / shirt and sleeves",
+                "narrator / body skinned",
+                "narrator / garment shell / shirt and sleeves",
+                "narrator / head knitted beanie folded brim"
+              ]
+            }
+          ]
+        }
+      }
+    }
+  },
+  "native_pilot_authorized": false,
+  "numerical_pass": false
+}
