@@ -14,7 +14,7 @@ def meshes(root):
     return [o for o in [root]+list(root.children_recursive) if o.type=="MESH" and not o.hide_render]
 def worldpts(objs):
     return [p for o in objs for p in mesh_points(o)]
-def visible_ray(scene,cam,target,allowed):
+def visible_ray(scene,cam,target,allowed,blocker_names=None):
     # Nearest scene hit, skip explicitly hidden render geometry. Perspective only.
     origin=cam.location.copy();v=target-origin;distance=v.length
     if distance<1e-6:return False
@@ -24,7 +24,10 @@ def visible_ray(scene,cam,target,allowed):
         if not hit:return True
         ob=ob.original
         if ob in allowed:return True
-        if not ob.hide_render:return (p-target).length<.004
+        if not ob.hide_render:
+            ok=(p-target).length<.004
+            if not ok and blocker_names is not None:blocker_names.append(ob.name)
+            return ok
         origin=p+direction*.002;distance=(target-origin).dot(direction)
         if distance<=0:return True
     return False
@@ -35,7 +38,7 @@ def object_visibility(scene,cam,objs,grid=7,allowed_extra=()):
     trees=[tree_for_object(o) for o in objs];allowed=set(objs)|set(allowed_extra)
     f=cam.data.view_frame(scene=scene);xmin=min(v.x/v.z for v in f);xmax=max(v.x/v.z for v in f);ymin=min(v.y/v.z for v in f);ymax=max(v.y/v.z for v in f)
     # Blender camera local -Z; world_to_camera_view x,y increase to right/up.
-    tested=blocked=0
+    tested=blocked=0;blockers=[]
     for x in np.linspace(p[0],p[1],grid):
         for y in np.linspace(p[2],p[3],grid):
             local=V((-(xmax-(xmax-xmin)*x),-(ymax-(ymax-ymin)*y),-1))
@@ -44,9 +47,9 @@ def object_visibility(scene,cam,objs,grid=7,allowed_extra=()):
             hits=[h for h in hits if h[0] is not None]
             if not hits:continue
             target=min(hits,key=lambda h:h[3])[0];tested+=1
-            blocked+=not visible_ray(scene,cam,target,allowed)
+            blocked+=not visible_ray(scene,cam,target,allowed,blockers)
     safe=p[4]>0 and .035<=p[0]<=p[1]<=.965 and .035<=p[2]<=p[3]<=.965
-    return {"samples":tested,"blocked":blocked,"bounds":list(p),"safe":bool(safe),"visible_fraction":1-blocked/tested if tested else 0}
+    return {"samples":tested,"blocked":blocked,"bounds":list(p),"safe":bool(safe),"visible_fraction":1-blocked/tested if tested else 0,"blockers":sorted(set(blockers))}
 
 def tally_visibility(scene,cam,objs):
     # Every individual charcoal stroke must project safely and have at least
@@ -340,11 +343,32 @@ class CorrectedUnit(SceneUnit):
         return m
     def setup_seating(self):
         super().setup_seating()
-        # Move only dog/shot camera, not the plaza. Foreground of bench, away
-        # from all original ring fixtures. Camera faces pair from clear side.
-        self.dog[0].location=(4.05,-.92,0)
-        frame(self.scene,self.cam,(3.55,-4.5,2.65),(4.80,-.87,1.05),34)
         self.prev_hip={};self.prev_phase={}
+        # Common camera/mark for all three payoff units. Evaluate actual
+        # standing, seated, and roll poses before selecting a composition.
+        cameras=[((2.55,-.85,2.45),20),((2.8,-1.45,2.25),22),((3.15,-1.0,2.2),17),((2.65,-2.4,2.4),24),((3.3,-3.4,2.4),28),((3.55,-4.5,2.65),34),((3.1,2.6,2.5),28),((2.6,.1,2.35),20)]
+        marks=[(4.05,-.92,0),(4.10,-1.28,0),(4.15,-1.52,0),(3.86,-1.45,0),(4.15,-.45,0),(3.86,-.25,0)]
+        choices=[];target=V((4.60,-.87,1.00))
+        for loc,lens in cameras:
+            frame(self.scene,self.cam,loc,target,lens)
+            for mark in marks:
+                self.dog[0].location=mark
+                worst=0;safe=True;min_samples=10000;actor_safe=True;min_cov=1;blocked_by=set()
+                for n,u in ((42,1),(43,0),(43,.25),(43,.5),(43,.75),(43,1),(48,1)):
+                    self.prev_feet={};self.prev_hip={};self.prev_phase={}
+                    m=self.update_seating(n,u,u,True);v=m["dog_visibility"]
+                    worst=max(worst,v["blocked"]);safe=safe and v["safe"];min_samples=min(min_samples,v["samples"]);blocked_by.update(v.get("blockers",[]))
+                    for a in self.actors.values():
+                        p=project(self.scene,self.cam,actor_points(a))
+                        actor_safe=actor_safe and p[4]>0 and .035<=p[0]<=p[1]<=.965 and .035<=p[2]<=p[3]<=.965
+                        min_cov=min(min_cov,p[3]-p[2])
+                valid=worst==0 and safe and min_samples>0 and actor_safe
+                score=(not valid,worst,not safe,not actor_safe,-min_cov,abs(loc[1]+.87))
+                choices.append((score,loc,lens,mark,sorted(blocked_by),min_cov))
+        _,loc,lens,mark,blockers,cov=min(choices,key=lambda q:q[0])
+        self.dog[0].location=mark;frame(self.scene,self.cam,loc,target,lens)
+        self.payoff_camera={"position":list(loc),"target":list(target),"lens":lens,"dog_mark":list(mark),"setup_blockers":blockers,"setup_min_actor_coverage":cov}
+        self.prev_feet={};self.prev_hip={};self.prev_phase={}
     def update_seating(self,n,u,t,after_name=True):
         # June stands, takes two small lateral steps, then re-sits. Her hip
         # is not translated during either seated phase or the sit itself.
@@ -386,8 +410,8 @@ class CorrectedUnit(SceneUnit):
             self.prev_feet[cid]=[v.copy() for v in soles]
         visible=n!=42 or after_name;show(self.dog[0],visible)
         dog_metric=waffle_pose(self.dog,"roll_over" if n==43 else "lie_down",ease(u)) if visible else None
-        return {"seat_top":self.bench_top,"seat_contacts":records,"waffle":dog_metric,"dog_visible":visible,"dog_visibility":object_visibility(self.scene,self.cam,meshes(self.dog[0]),11) if visible else None,"note":"Separate rise, planted lateral steps, sit; no lateral root translation during sit."}
+        return {"seat_top":self.bench_top,"seat_contacts":records,"waffle":dog_metric,"dog_visible":visible,"dog_visibility":object_visibility(self.scene,self.cam,meshes(self.dog[0]),11) if visible else None,"actor_bounds":{cid:list(project(self.scene,self.cam,actor_points(a))) for cid,a in self.actors.items()},"note":"Separate rise, planted lateral steps, sit; no lateral root translation during sit."}
     def update(self,n,u,t,index,after_name=True):
         if self.unit=="empty_wall":
-            return {"tally_count":len(self.tallies),"wall_visibility":object_visibility(self.scene,self.cam,[bpy.data.objects["tally wall"]],9,self.tallies),"tally_visibility":tally_visibility(self.scene,self.cam,self.tallies),"boys_on_wall":len(self.actors)}
+            return {"tally_count":len(self.tallies),"wall_visibility":object_visibility(self.scene,self.cam,[bpy.data.objects["tally wall"],bpy.data.objects["wall cap"]],9,self.tallies),"tally_visibility":tally_visibility(self.scene,self.cam,self.tallies),"boys_on_wall":len(self.actors)}
         return super().update(n,u,t,index,after_name)
