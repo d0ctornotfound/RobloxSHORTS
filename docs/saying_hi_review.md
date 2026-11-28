@@ -478,3 +478,17 @@ The three outstanding prior runs 46139498600, 46139408779, 46139567500 all compl
 
 ## Round 6 direction pilot run 46141438017
 Pilot numerical pass: True. Actual visual/playback inspection still mandatory; full-film pass not authorized. Evidence: assets/saying_hi_review/round6/pilot_native_corrected/pilot_qc.json
+
+### Native corrected pilot 46141438017 — terminal, numerical pass, targeted visual corrections
+All 19 render chunks, publication and independent verification completed SUCCESS. Publication af99e946786b69b6b4887355d301c2fa8bcfb25c; independent audit visible at 58b9bdfdb34a783dbae018e333e349e6474c4809. Exact three clips (540×960, 30 fps, 271 total frames, zero consecutive exact duplicates), SHA-256:
+- crossing.mp4, 157 frames, dfd9d76a2c4e748c6de9f066e96e131535d3351920bdc678acd3eb5367e5999d
+- interview.mp4, 76 frames, 945339db919fb1c8f4cce874cc30b84009516eedc70a8fc4c5ce0703b0bf2df7
+- hesitation.mp4, 38 frames, 1ca527e68f7de614e8a647c0327a357502f262bac3b7558a5a0d09e0eea31849
+All paths under assets/saying_hi_review/round6/pilot_native_corrected/. Independent audit uses fresh exact publication checkout; pilot QC SHA-256 e405112d73ccef4ab5593df118b6c5fdbdf34c683418e3b73fcf1c337ad2c495.
+| Shot | Round 5 observed scale | Round 6 observed scale | Motion / max hold | Saturation before→after (composition-dependent) | Native source max near-black | Visual judgment |
+|---|---|---|---|---|---|---|
+| 20 | wide crowded | front tracking action | 100% / .0333s | .266→.395 | 1.169% | Clear principal and carried props; cut on continuing gait, not a verified stop; 0 backward frames. |
+| 21 | low wide crossing continuation | medium wall reaction | 100% / .0333s | .276→.299 | .307% | Otis's expression changes, seated reaction readable. |
+| 27 | backs/blocked faces | frontal two-shot | 100% / .0333s | .217→.364 | .153% | Both faces readable, but well reduced to tiny spout glimpse and empty sky competes. Needs landmark correction. |
+| 32 | low full-body | face-filling emotional | 100% / .0333s | .288→.698 | 1.290% | 42.02% face height; 92% face rays, readable worried transition, but pencil entirely out of crop while narration explicitly names it. Needs action detail correction. |
+Round 5 pose coverage/holds unmeasured. Native pilot numerical_pass=true; no visual release certificate issued. The original checklist's composition/narrative requirements are not replaced by saturation statistics or pose-motion proxies. Reviewed first/middle/last native decoded frames from exact committed evidence. Targeted correction runs: 46142556719 (perspective-compressed hesitation candidate, config 2e6204752c97d8bffdb63439c74bce80f73f0d0b, workflow 68202f126d5d00ab226e836d40da7a4595f23fe3); 46142562095 (interview well, config 68e859c6e49639b980bc30e2f1fa1263033931c9, workflow 709a16c69e71a1779d64424057bc5702fdb51b06). Only failed compositions targeted; native crossing group remains eligible for retention after exact digest validation. No gate threshold changed. Full staging remains unrendered.
