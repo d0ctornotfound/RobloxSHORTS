@@ -433,3 +433,6 @@ Run 46137451333 completed successfully; committed evidence bf2e2dd6943779eff6b8d
 
 ## Direction preflight pilot_retry2_preflight run 46138050916
 Geometry/flow preflight numerical pass: False. Three native still samples per shot, not full clips; visual review and native pilot still mandatory. Evidence: assets/saying_hi_review/round6/pilot_retry2_preflight/preflight_qc.json
+
+## Direction preflight pilot_retry3_preflight run 46138881373
+Geometry/flow preflight numerical pass: False. Three native still samples per shot, not full clips; visual review and native pilot still mandatory. Evidence: assets/saying_hi_review/round6/pilot_retry3_preflight/preflight_qc.json
