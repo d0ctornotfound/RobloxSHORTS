@@ -494,6 +494,13 @@ def main():
             lo,hi=bounds(pts);target=(lo+hi)/2;dist=3.55;lens=48;angle=.40 if n==45 else .32
         location=target+V((math.sin(angle)*dist,-math.cos(angle)*dist,.32 if kind!="insert" else .65))
         camera.location=location;camera.data.lens=lens;point_at(camera,target);bpy.context.view_layer.update()
+        if n==31:
+            # R7 proved the hero safely framed on all 60 frames and the cap
+            # right edge at x=.996–1.000. Truck camera right without changing
+            # lens, actor staging or contact. Exact geometry is still gated.
+            right=camera.matrix_world.to_3x3()@V((1,0,0))
+            shift=right*.13
+            camera.location+=shift;target+=shift;point_at(camera,target);bpy.context.view_layer.update()
         geo=geometry(scene,camera,actors,heroes,kind)
         prop_roots={4:[bags[0]],5:[birds[0][0]],10:[bags[1]],19:bags,23:[birds[0][0]],24:[birds[0][0]],28:[birds[0][0]],29:[cap],31:[cap],32:[cap],36:[cap],37:[birds[0][0]],43:[stick],44:[stick],45:[cap],46:[cap],47:bags,48:[bags[1]]}.get(n,[])
         props={ob.name:prop_geometry(scene,camera,ob) for ob in prop_roots if any(not x.hide_render for x in ob.children_recursive if x.type=="MESH")}
