@@ -1,0 +1,72 @@
+{
+  "release_disposition": "accepted_with_residuals",
+  "reviewer_authorization": "Supervisor continuation instruction: if a shot is numerically passing and visually readable, accept it and record the residual defect honestly in the weak list. No numeric gate relaxed.",
+  "review_scope": "Committed independent decode and inspected still samples; no claim of continuous human playback review. Warm grade assessed from visible color and comparative statistics, not a universal red-channel increase.",
+  "shots": {
+    "sh20": {
+      "pilot_qc_sha256": "e405112d73ccef4ab5593df118b6c5fdbdf34c683418e3b73fcf1c337ad2c495",
+      "scale_correct": true,
+      "faces_readable": true,
+      "motion_coverage": true,
+      "no_long_holds": true,
+      "grade_warm_vs_baseline": true,
+      "continuity_and_contacts": false,
+      "reviewed_frames": [
+        "assets/saying_hi_review/round6/pilot_native_corrected/independent/sh20_01464.png"
+      ],
+      "notes": "Clear forward tracking action, readable worried face, chart and pencil in hand, warm costume lighting and saturation; exact gait pass.",
+      "accepted_residuals": {
+        "continuity_and_contacts": "Moving cut not a completed stop; endpoint root-to-plant discrepancy retained as a weak note."
+      }
+    },
+    "sh21": {
+      "pilot_qc_sha256": "e405112d73ccef4ab5593df118b6c5fdbdf34c683418e3b73fcf1c337ad2c495",
+      "scale_correct": true,
+      "faces_readable": true,
+      "motion_coverage": true,
+      "no_long_holds": true,
+      "grade_warm_vs_baseline": true,
+      "continuity_and_contacts": false,
+      "reviewed_frames": [
+        "assets/saying_hi_review/round6/pilot_native_corrected/independent/sh21_01548.png"
+      ],
+      "notes": "Readable Otis seated wall reaction, warmer bounce and clear expression. Background head motion measured; no separate human continuity/contact certification.",
+      "accepted_residuals": {
+        "continuity_and_contacts": "The cut and visible seated reaction are readable; full contact/eyeline playback not independently human-reviewed."
+      }
+    },
+    "sh27": {
+      "pilot_qc_sha256": "d45371241f2a4e78f95f740602fd5d5afd8cafb28fa238feb75b3f533bc9d5ab",
+      "scale_correct": false,
+      "faces_readable": true,
+      "motion_coverage": true,
+      "no_long_holds": true,
+      "grade_warm_vs_baseline": true,
+      "continuity_and_contacts": false,
+      "reviewed_frames": [
+        "assets/saying_hi_review/round6/pilot_native_interview_well/independent/sh27_01837.png"
+      ],
+      "notes": "Both faces visible and expressions change; well basin readable; warmer grade. Full-ish two-shot rather than ideal close. New tighter preflight failed numeric framing and landmark gates, so retain verified native well version.",
+      "accepted_residuals": {
+        "scale_correct": "Faces are readable at the passed 12% numeric floor, but excess sky and nearly full-body framing weaken intimacy.",
+        "continuity_and_contacts": "Eye-line and contact continuity not independently human-certified; visible well and readable pair accepted for this production."
+      }
+    },
+    "sh32": {
+      "pilot_qc_sha256": "e405112d73ccef4ab5593df118b6c5fdbdf34c683418e3b73fcf1c337ad2c495",
+      "scale_correct": true,
+      "faces_readable": true,
+      "motion_coverage": true,
+      "no_long_holds": true,
+      "grade_warm_vs_baseline": true,
+      "continuity_and_contacts": false,
+      "reviewed_frames": [
+        "assets/saying_hi_review/round6/pilot_native_corrected/independent/sh32_02171.png"
+      ],
+      "notes": "Face-filling emotional beat with 42.02% minimum face height, expressive eyebrows and frown, warm orange/blue grade. Forward-hand preflight failed visibility; retain native face-safe version.",
+      "accepted_residuals": {
+        "continuity_and_contacts": "Pencil is outside frame; the literal shaking-pencil action is not visually demonstrated. This remains a specific weak shot, not a contact pass."
+      }
+    }
+  }
+}
