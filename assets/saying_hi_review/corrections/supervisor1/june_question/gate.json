@@ -1,0 +1,63 @@
+{
+  "unit": "june_question",
+  "samples": 113,
+  "sampling_hz": 30,
+  "checks": {
+    "standing_seat_intersections": {
+      "value": 0,
+      "limit": 0,
+      "pass": true
+    },
+    "speaker_occlusion_samples": {
+      "value": 4,
+      "limit": 0,
+      "pass": false
+    },
+    "speaker_in_frame": {
+      "value": true,
+      "limit": true,
+      "pass": true
+    },
+    "external_pencil_occlusion_samples": {
+      "value": 0,
+      "limit": 0,
+      "pass": true
+    },
+    "pencil_in_frame": {
+      "value": true,
+      "limit": true,
+      "pass": true
+    },
+    "visible_pencil_fraction": {
+      "value": 0.0,
+      "limit": 0.45,
+      "pass": false
+    }
+  },
+  "pass": false,
+  "camera": {
+    "location": [
+      1.9,
+      1.95,
+      1.95
+    ],
+    "target": [
+      5.05,
+      2.95,
+      1.43
+    ],
+    "lens": 35
+  },
+  "marks": {
+    "june": [
+      5.050000190734863,
+      1.649999976158142,
+      0.0
+    ],
+    "narrator": [
+      5.050000190734863,
+      3.6500000953674316,
+      0.0
+    ]
+  }
+}

@@ -1,0 +1,48 @@
+{
+  "unit": "june_answer",
+  "samples": 57,
+  "sampling_hz": 30,
+  "checks": {
+    "standing_seat_intersections": {
+      "value": 0,
+      "limit": 0,
+      "pass": true
+    },
+    "speaker_occlusion_samples": {
+      "value": 0,
+      "limit": 0,
+      "pass": true
+    },
+    "speaker_in_frame": {
+      "value": true,
+      "limit": true,
+      "pass": true
+    }
+  },
+  "pass": true,
+  "camera": {
+    "location": [
+      1.9,
+      3.45,
+      1.95
+    ],
+    "target": [
+      5.05,
+      2.25,
+      1.43
+    ],
+    "lens": 35
+  },
+  "marks": {
+    "june": [
+      5.050000190734863,
+      1.649999976158142,
+      0.0
+    ],
+    "narrator": [
+      5.050000190734863,
+      3.6500000953674316,
+      0.0
+    ]
+  }
+}

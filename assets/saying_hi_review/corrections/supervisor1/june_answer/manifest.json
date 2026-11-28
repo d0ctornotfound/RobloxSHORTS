@@ -1,0 +1,2531 @@
+{
+  "unit": "june_answer",
+  "mode": "smoke",
+  "sentence_ids": [
+    34
+  ],
+  "engine": "EEVEE",
+  "denoising": false,
+  "eevee_spatial_samples": 32,
+  "frame_window": [
+    2201,
+    2258
+  ],
+  "actual_rendered_frames": 5,
+  "expected_rendered_frames": 5,
+  "rendered_temporal_samples_per_second": null,
+  "encoded_fps_target": null,
+  "rendered": [
+    {
+      "frame": 2201,
+      "file": "frame_02201.png",
+      "render_seconds": 26.571345559999997,
+      "near_black_percent": 0.8371913580246912
+    },
+    {
+      "frame": 2215,
+      "file": "frame_02215.png",
+      "render_seconds": 9.07601771600001,
+      "near_black_percent": 0.7924382716049382
+    },
+    {
+      "frame": 2229,
+      "file": "frame_02229.png",
+      "render_seconds": 9.093064493000014,
+      "near_black_percent": 0.7895447530864198
+    },
+    {
+      "frame": 2243,
+      "file": "frame_02243.png",
+      "render_seconds": 9.051373521000016,
+      "near_black_percent": 0.8447145061728395
+    },
+    {
+      "frame": 2257,
+      "file": "frame_02257.png",
+      "render_seconds": 9.118153192999984,
+      "near_black_percent": 0.8572530864197532
+    }
+  ],
+  "metrics": [
+    {
+      "global_frame": 2201,
+      "sentence": 34,
+      "metrics": {
+        "reverse_camera": {
+          "location": [
+            1.9,
+            3.45,
+            1.95
+          ],
+          "target": [
+            5.05,
+            2.25,
+            1.43
+          ],
+          "lens": 35
+        },
+        "june_face_projection": [
+          0.5589707493782043,
+          0.6203857660293579,
+          0.558517575263977,
+          0.6412153244018555,
+          3.177830457687378
+        ],
+        "head_reaction": true,
+        "standing_seat_intersections": 0,
+        "seat_overlap_detail": [],
+        "speaker_visibility": {
+          "samples": 9,
+          "blocked": 0,
+          "bounds": [
+            0.5589707493782043,
+            0.6203857660293579,
+            0.558517575263977,
+            0.6412153244018555,
+            3.177830457687378
+          ],
+          "safe": true,
+          "visible_fraction": 1.0
+        }
+      }
+    },
+    {
+      "global_frame": 2202,
+      "sentence": 34,
+      "metrics": {
+        "reverse_camera": {
+          "location": [
+            1.9,
+            3.45,
+            1.95
+          ],
+          "target": [
+            5.05,
+            2.25,
+            1.43
+          ],
+          "lens": 35
+        },
+        "june_face_projection": [
+          0.5586099028587341,
+          0.6200825572013855,
+          0.5589025020599365,
+          0.641592264175415,
+          3.1791303157806396
+        ],
+        "head_reaction": true,
+        "standing_seat_intersections": 0,
+        "seat_overlap_detail": [],
+        "speaker_visibility": {
+          "samples": 9,
+          "blocked": 0,
+          "bounds": [
+            0.5586099028587341,
+            0.6200825572013855,
+            0.5589025020599365,
+            0.641592264175415,
+            3.1791303157806396
+          ],
+          "safe": true,
+          "visible_fraction": 1.0
+        }
+      }
+    },
+    {
+      "global_frame": 2203,
+      "sentence": 34,
+      "metrics": {
+        "reverse_camera": {
+          "location": [
+            1.9,
+            3.45,
+            1.95
+          ],
+          "target": [
+            5.05,
+            2.25,
+            1.43
+          ],
+          "lens": 35
+        },
+        "june_face_projection": [
+          0.5582513809204102,
+          0.619775652885437,
+          0.5592836141586304,
+          0.6419625282287598,
+          3.1804358959198
+        ],
+        "head_reaction": true,
+        "standing_seat_intersections": 0,
+        "seat_overlap_detail": [],
+        "speaker_visibility": {
+          "samples": 9,
+          "blocked": 0,
+          "bounds": [
+            0.5582513809204102,
+            0.619775652885437,
+            0.5592836141586304,
+            0.6419625282287598,
+            3.1804358959198
+          ],
+          "safe": true,
+          "visible_fraction": 1.0
+        }
+      }
+    },
+    {
+      "global_frame": 2204,
+      "sentence": 34,
+      "metrics": {
+        "reverse_camera": {
+          "location": [
+            1.9,
+            3.45,
+            1.95
+          ],
+          "target": [
+            5.05,
+            2.25,
+            1.43
+          ],
+          "lens": 35
+        },
+        "june_face_projection": [
+          0.557896614074707,
+          0.6194631457328796,
+          0.5596572756767273,
+          0.6423226594924927,
+          3.1817383766174316
+        ],
+        "head_reaction": true,
+        "standing_seat_intersections": 0,
+        "seat_overlap_detail": [],
+        "speaker_visibility": {
+          "samples": 9,
+          "blocked": 0,
+          "bounds": [
+            0.557896614074707,
+            0.6194631457328796,
+            0.5596572756767273,
+            0.6423226594924927,
+            3.1817383766174316
+          ],
+          "safe": true,
+          "visible_fraction": 1.0
+        }
+      }
+    },
+    {
+      "global_frame": 2205,
+      "sentence": 34,
+      "metrics": {
+        "reverse_camera": {
+          "location": [
+            1.9,
+            3.45,
+            1.95
+          ],
+          "target": [
+            5.05,
+            2.25,
+            1.43
+          ],
+          "lens": 35
+        },
+        "june_face_projection": [
+          0.5575472712516785,
+          0.6191432476043701,
+          0.5600197315216064,
+          0.6426690816879272,
+          3.183030366897583
+        ],
+        "head_reaction": true,
+        "standing_seat_intersections": 0,
+        "seat_overlap_detail": [],
+        "speaker_visibility": {
+          "samples": 9,
+          "blocked": 0,
+          "bounds": [
+            0.5575472712516785,
+            0.6191432476043701,
+            0.5600197315216064,
+            0.6426690816879272,
+            3.183030366897583
+          ],
+          "safe": true,
+          "visible_fraction": 1.0
+        }
+      }
+    },
+    {
+      "global_frame": 2206,
+      "sentence": 34,
+      "metrics": {
+        "reverse_camera": {
+          "location": [
+            1.9,
+            3.45,
+            1.95
+          ],
+          "target": [
+            5.05,
+            2.25,
+            1.43
+          ],
+          "lens": 35
+        },
+        "june_face_projection": [
+          0.5572050213813782,
+          0.6188147664070129,
+          0.5603676438331604,
+          0.6429987549781799,
+          3.184300661087036
+        ],
+        "head_reaction": true,
+        "standing_seat_intersections": 0,
+        "seat_overlap_detail": [],
+        "speaker_visibility": {
+          "samples": 9,
+          "blocked": 0,
+          "bounds": [
+            0.5572050213813782,
+            0.6188147664070129,
+            0.5603676438331604,
+            0.6429987549781799,
+            3.184300661087036
+          ],
+          "safe": true,
+          "visible_fraction": 1.0
+        }
+      }
+    },
+    {
+      "global_frame": 2207,
+      "sentence": 34,
+      "metrics": {
+        "reverse_camera": {
+          "location": [
+            1.9,
+            3.45,
+            1.95
+          ],
+          "target": [
+            5.05,
+            2.25,
+            1.43
+          ],
+          "lens": 35
+        },
+        "june_face_projection": [
+          0.556871235370636,
+          0.6184762120246887,
+          0.5606974363327026,
+          0.6433085799217224,
+          3.185542345046997
+        ],
+        "head_reaction": true,
+        "standing_seat_intersections": 0,
+        "seat_overlap_detail": [],
+        "speaker_visibility": {
+          "samples": 9,
+          "blocked": 0,
+          "bounds": [
+            0.556871235370636,
+            0.6184762120246887,
+            0.5606974363327026,
+            0.6433085799217224,
+            3.185542345046997
+          ],
+          "safe": true,
+          "visible_fraction": 1.0
+        }
+      }
+    },
+    {
+      "global_frame": 2208,
+      "sentence": 34,
+      "metrics": {
+        "reverse_camera": {
+          "location": [
+            1.9,
+            3.45,
+            1.95
+          ],
+          "target": [
+            5.05,
+            2.25,
+            1.43
+          ],
+          "lens": 35
+        },
+        "june_face_projection": [
+          0.5565475225448608,
+          0.6181265711784363,
+          0.5610060691833496,
+          0.6435957551002502,
+          3.186744451522827
+        ],
+        "head_reaction": true,
+        "standing_seat_intersections": 0,
+        "seat_overlap_detail": [],
+        "speaker_visibility": {
+          "samples": 9,
+          "blocked": 0,
+          "bounds": [
+            0.5565475225448608,
+            0.6181265711784363,
+            0.5610060691833496,
+            0.6435957551002502,
+            3.186744451522827
+          ],
+          "safe": true,
+          "visible_fraction": 1.0
+        }
+      }
+    },
+    {
+      "global_frame": 2209,
+      "sentence": 34,
+      "metrics": {
+        "reverse_camera": {
+          "location": [
+            1.9,
+            3.45,
+            1.95
+          ],
+          "target": [
+            5.05,
+            2.25,
+            1.43
+          ],
+          "lens": 35
+        },
+        "june_face_projection": [
+          0.5562352538108826,
+          0.6177650094032288,
+          0.5612906217575073,
+          0.6438578367233276,
+          3.187899351119995
+        ],
+        "head_reaction": true,
+        "standing_seat_intersections": 0,
+        "seat_overlap_detail": [],
+        "speaker_visibility": {
+          "samples": 10,
+          "blocked": 0,
+          "bounds": [
+            0.5562352538108826,
+            0.6177650094032288,
+            0.5612906217575073,
+            0.6438578367233276,
+            3.187899351119995
+          ],
+          "safe": true,
+          "visible_fraction": 1.0
+        }
+      }
+    },
+    {
+      "global_frame": 2210,
+      "sentence": 34,
+      "metrics": {
+        "reverse_camera": {
+          "location": [
+            1.9,
+            3.45,
+            1.95
+          ],
+          "target": [
+            5.05,
+            2.25,
+            1.43
+          ],
+          "lens": 35
+        },
+        "june_face_projection": [
+          0.5559358596801758,
+          0.6173909902572632,
+          0.5615485310554504,
+          0.6440927982330322,
+          3.188997268676758
+        ],
+        "head_reaction": true,
+        "standing_seat_intersections": 0,
+        "seat_overlap_detail": [],
+        "speaker_visibility": {
+          "samples": 10,
+          "blocked": 0,
+          "bounds": [
+            0.5559358596801758,
+            0.6173909902572632,
+            0.5615485310554504,
+            0.6440927982330322,
+            3.188997268676758
+          ],
+          "safe": true,
+          "visible_fraction": 1.0
+        }
+      }
+    },
+    {
+      "global_frame": 2211,
+      "sentence": 34,
+      "metrics": {
+        "reverse_camera": {
+          "location": [
+            1.9,
+            3.45,
+            1.95
+          ],
+          "target": [
+            5.05,
+            2.25,
+            1.43
+          ],
+          "lens": 35
+        },
+        "june_face_projection": [
+          0.5556507110595703,
+          0.6170042157173157,
+          0.5617773532867432,
+          0.6442986130714417,
+          3.1900312900543213
+        ],
+        "head_reaction": true,
+        "standing_seat_intersections": 0,
+        "seat_overlap_detail": [],
+        "speaker_visibility": {
+          "samples": 10,
+          "blocked": 0,
+          "bounds": [
+            0.5556507110595703,
+            0.6170042157173157,
+            0.5617773532867432,
+            0.6442986130714417,
+            3.1900312900543213
+          ],
+          "safe": true,
+          "visible_fraction": 1.0
+        }
+      }
+    },
+    {
+      "global_frame": 2212,
+      "sentence": 34,
+      "metrics": {
+        "reverse_camera": {
+          "location": [
+            1.9,
+            3.45,
+            1.95
+          ],
+          "target": [
+            5.05,
+            2.25,
+            1.43
+          ],
+          "lens": 35
+        },
+        "june_face_projection": [
+          0.5553808212280273,
+          0.616604745388031,
+          0.5617926120758057,
+          0.6444738507270813,
+          3.190992593765259
+        ],
+        "head_reaction": true,
+        "standing_seat_intersections": 0,
+        "seat_overlap_detail": [],
+        "speaker_visibility": {
+          "samples": 9,
+          "blocked": 0,
+          "bounds": [
+            0.5553808212280273,
+            0.616604745388031,
+            0.5617926120758057,
+            0.6444738507270813,
+            3.190992593765259
+          ],
+          "safe": true,
+          "visible_fraction": 1.0
+        }
+      }
+    },
+    {
+      "global_frame": 2213,
+      "sentence": 34,
+      "metrics": {
+        "reverse_camera": {
+          "location": [
+            1.9,
+            3.45,
+            1.95
+          ],
+          "target": [
+            5.05,
+            2.25,
+            1.43
+          ],
+          "lens": 35
+        },
+        "june_face_projection": [
+          0.555127739906311,
+          0.6161931157112122,
+          0.5617328882217407,
+          0.6446171402931213,
+          3.191873788833618
+        ],
+        "head_reaction": true,
+        "standing_seat_intersections": 0,
+        "seat_overlap_detail": [],
+        "speaker_visibility": {
+          "samples": 10,
+          "blocked": 0,
+          "bounds": [
+            0.555127739906311,
+            0.6161931157112122,
+            0.5617328882217407,
+            0.6446171402931213,
+            3.191873788833618
+          ],
+          "safe": true,
+          "visible_fraction": 1.0
+        }
+      }
+    },
+    {
+      "global_frame": 2214,
+      "sentence": 34,
+      "metrics": {
+        "reverse_camera": {
+          "location": [
+            1.9,
+            3.45,
+            1.95
+          ],
+          "target": [
+            5.05,
+            2.25,
+            1.43
+          ],
+          "lens": 35
+        },
+        "june_face_projection": [
+          0.554892361164093,
+          0.6157698631286621,
+          0.5616567134857178,
+          0.6447274684906006,
+          3.192668914794922
+        ],
+        "head_reaction": true,
+        "standing_seat_intersections": 0,
+        "seat_overlap_detail": [],
+        "speaker_visibility": {
+          "samples": 10,
+          "blocked": 0,
+          "bounds": [
+            0.554892361164093,
+            0.6157698631286621,
+            0.5616567134857178,
+            0.6447274684906006,
+            3.192668914794922
+          ],
+          "safe": true,
+          "visible_fraction": 1.0
+        }
+      }
+    },
+    {
+      "global_frame": 2215,
+      "sentence": 34,
+      "metrics": {
+        "reverse_camera": {
+          "location": [
+            1.9,
+            3.45,
+            1.95
+          ],
+          "target": [
+            5.05,
+            2.25,
+            1.43
+          ],
+          "lens": 35
+        },
+        "june_face_projection": [
+          0.5546759366989136,
+          0.6153362989425659,
+          0.5615640878677368,
+          0.6448044180870056,
+          3.193371295928955
+        ],
+        "head_reaction": true,
+        "standing_seat_intersections": 0,
+        "seat_overlap_detail": [],
+        "speaker_visibility": {
+          "samples": 10,
+          "blocked": 0,
+          "bounds": [
+            0.5546759366989136,
+            0.6153362989425659,
+            0.5615640878677368,
+            0.6448044180870056,
+            3.193371295928955
+          ],
+          "safe": true,
+          "visible_fraction": 1.0
+        }
+      }
+    },
+    {
+      "global_frame": 2216,
+      "sentence": 34,
+      "metrics": {
+        "reverse_camera": {
+          "location": [
+            1.9,
+            3.45,
+            1.95
+          ],
+          "target": [
+            5.05,
+            2.25,
+            1.43
+          ],
+          "lens": 35
+        },
+        "june_face_projection": [
+          0.5544793605804443,
+          0.6148937940597534,
+          0.5614550113677979,
+          0.6448473930358887,
+          3.193976402282715
+        ],
+        "head_reaction": true,
+        "standing_seat_intersections": 0,
+        "seat_overlap_detail": [],
+        "speaker_visibility": {
+          "samples": 9,
+          "blocked": 0,
+          "bounds": [
+            0.5544793605804443,
+            0.6148937940597534,
+            0.5614550113677979,
+            0.6448473930358887,
+            3.193976402282715
+          ],
+          "safe": true,
+          "visible_fraction": 1.0
+        }
+      }
+    },
+    {
+      "global_frame": 2217,
+      "sentence": 34,
+      "metrics": {
+        "reverse_camera": {
+          "location": [
+            1.9,
+            3.45,
+            1.95
+          ],
+          "target": [
+            5.05,
+            2.25,
+            1.43
+          ],
+          "lens": 35
+        },
+        "june_face_projection": [
+          0.5543035268783569,
+          0.6144441962242126,
+          0.5613300800323486,
+          0.6448563933372498,
+          3.194479465484619
+        ],
+        "head_reaction": true,
+        "standing_seat_intersections": 0,
+        "seat_overlap_detail": [],
+        "speaker_visibility": {
+          "samples": 9,
+          "blocked": 0,
+          "bounds": [
+            0.5543035268783569,
+            0.6144441962242126,
+            0.5613300800323486,
+            0.6448563933372498,
+            3.194479465484619
+          ],
+          "safe": true,
+          "visible_fraction": 1.0
+        }
+      }
+    },
+    {
+      "global_frame": 2218,
+      "sentence": 34,
+      "metrics": {
+        "reverse_camera": {
+          "location": [
+            1.9,
+            3.45,
+            1.95
+          ],
+          "target": [
+            5.05,
+            2.25,
+            1.43
+          ],
+          "lens": 35
+        },
+        "june_face_projection": [
+          0.5541493892669678,
+          0.6139896512031555,
+          0.5611900687217712,
+          0.644831657409668,
+          3.194877862930298
+        ],
+        "head_reaction": true,
+        "standing_seat_intersections": 0,
+        "seat_overlap_detail": [],
+        "speaker_visibility": {
+          "samples": 11,
+          "blocked": 0,
+          "bounds": [
+            0.5541493892669678,
+            0.6139896512031555,
+            0.5611900687217712,
+            0.644831657409668,
+            3.194877862930298
+          ],
+          "safe": true,
+          "visible_fraction": 1.0
+        }
+      }
+    },
+    {
+      "global_frame": 2219,
+      "sentence": 34,
+      "metrics": {
+        "reverse_camera": {
+          "location": [
+            1.9,
+            3.45,
+            1.95
+          ],
+          "target": [
+            5.05,
+            2.25,
+            1.43
+          ],
+          "lens": 35
+        },
+        "june_face_projection": [
+          0.5540174841880798,
+          0.613532543182373,
+          0.5610356330871582,
+          0.6447736024856567,
+          3.195168972015381
+        ],
+        "head_reaction": true,
+        "standing_seat_intersections": 0,
+        "seat_overlap_detail": [],
+        "speaker_visibility": {
+          "samples": 10,
+          "blocked": 0,
+          "bounds": [
+            0.5540174841880798,
+            0.613532543182373,
+            0.5610356330871582,
+            0.6447736024856567,
+            3.195168972015381
+          ],
+          "safe": true,
+          "visible_fraction": 1.0
+        }
+      }
+    },
+    {
+      "global_frame": 2220,
+      "sentence": 34,
+      "metrics": {
+        "reverse_camera": {
+          "location": [
+            1.9,
+            3.45,
+            1.95
+          ],
+          "target": [
+            5.05,
+            2.25,
+            1.43
+          ],
+          "lens": 35
+        },
+        "june_face_projection": [
+          0.5539084672927856,
+          0.6130757927894592,
+          0.5608681440353394,
+          0.6446830034255981,
+          3.1953516006469727
+        ],
+        "head_reaction": true,
+        "standing_seat_intersections": 0,
+        "seat_overlap_detail": [],
+        "speaker_visibility": {
+          "samples": 10,
+          "blocked": 0,
+          "bounds": [
+            0.5539084672927856,
+            0.6130757927894592,
+            0.5608681440353394,
+            0.6446830034255981,
+            3.1953516006469727
+          ],
+          "safe": true,
+          "visible_fraction": 1.0
+        }
+      }
+    },
+    {
+      "global_frame": 2221,
+      "sentence": 34,
+      "metrics": {
+        "reverse_camera": {
+          "location": [
+            1.9,
+            3.45,
+            1.95
+          ],
+          "target": [
+            5.05,
+            2.25,
+            1.43
+          ],
+          "lens": 35
+        },
+        "june_face_projection": [
+          0.5538180470466614,
+          0.6126225590705872,
+          0.5606889128684998,
+          0.6445608139038086,
+          3.195425033569336
+        ],
+        "head_reaction": true,
+        "standing_seat_intersections": 0,
+        "seat_overlap_detail": [],
+        "speaker_visibility": {
+          "samples": 10,
+          "blocked": 0,
+          "bounds": [
+            0.5538180470466614,
+            0.6126225590705872,
+            0.5606889128684998,
+            0.6445608139038086,
+            3.195425033569336
+          ],
+          "safe": true,
+          "visible_fraction": 1.0
+        }
+      }
+    },
+    {
+      "global_frame": 2222,
+      "sentence": 34,
+      "metrics": {
+        "reverse_camera": {
+          "location": [
+            1.9,
+            3.45,
+            1.95
+          ],
+          "target": [
+            5.05,
+            2.25,
+            1.43
+          ],
+          "lens": 35
+        },
+        "june_face_projection": [
+          0.5534315705299377,
+          0.6121760010719299,
+          0.5604995489120483,
+          0.6444087028503418,
+          3.195390224456787
+        ],
+        "head_reaction": true,
+        "standing_seat_intersections": 0,
+        "seat_overlap_detail": [],
+        "speaker_visibility": {
+          "samples": 9,
+          "blocked": 0,
+          "bounds": [
+            0.5534315705299377,
+            0.6121760010719299,
+            0.5604995489120483,
+            0.6444087028503418,
+            3.195390224456787
+          ],
+          "safe": true,
+          "visible_fraction": 1.0
+        }
+      }
+    },
+    {
+      "global_frame": 2223,
+      "sentence": 34,
+      "metrics": {
+        "reverse_camera": {
+          "location": [
+            1.9,
+            3.45,
+            1.95
+          ],
+          "target": [
+            5.05,
+            2.25,
+            1.43
+          ],
+          "lens": 35
+        },
+        "june_face_projection": [
+          0.5530506372451782,
+          0.6117399334907532,
+          0.5603018403053284,
+          0.6442279815673828,
+          3.1952483654022217
+        ],
+        "head_reaction": true,
+        "standing_seat_intersections": 0,
+        "seat_overlap_detail": [],
+        "speaker_visibility": {
+          "samples": 9,
+          "blocked": 0,
+          "bounds": [
+            0.5530506372451782,
+            0.6117399334907532,
+            0.5603018403053284,
+            0.6442279815673828,
+            3.1952483654022217
+          ],
+          "safe": true,
+          "visible_fraction": 1.0
+        }
+      }
+    },
+    {
+      "global_frame": 2224,
+      "sentence": 34,
+      "metrics": {
+        "reverse_camera": {
+          "location": [
+            1.9,
+            3.45,
+            1.95
+          ],
+          "target": [
+            5.05,
+            2.25,
+            1.43
+          ],
+          "lens": 35
+        },
+        "june_face_projection": [
+          0.5526784062385559,
+          0.6116797924041748,
+          0.5600977540016174,
+          0.6440205574035645,
+          3.195002317428589
+        ],
+        "head_reaction": true,
+        "standing_seat_intersections": 0,
+        "seat_overlap_detail": [],
+        "speaker_visibility": {
+          "samples": 9,
+          "blocked": 0,
+          "bounds": [
+            0.5526784062385559,
+            0.6116797924041748,
+            0.5600977540016174,
+            0.6440205574035645,
+            3.195002317428589
+          ],
+          "safe": true,
+          "visible_fraction": 1.0
+        }
+      }
+    },
+    {
+      "global_frame": 2225,
+      "sentence": 34,
+      "metrics": {
+        "reverse_camera": {
+          "location": [
+            1.9,
+            3.45,
+            1.95
+          ],
+          "target": [
+            5.05,
+            2.25,
+            1.43
+          ],
+          "lens": 35
+        },
+        "june_face_projection": [
+          0.5523183941841125,
+          0.6116896867752075,
+          0.5598896145820618,
+          0.643788754940033,
+          3.1946544647216797
+        ],
+        "head_reaction": true,
+        "standing_seat_intersections": 0,
+        "seat_overlap_detail": [],
+        "speaker_visibility": {
+          "samples": 9,
+          "blocked": 0,
+          "bounds": [
+            0.5523183941841125,
+            0.6116896867752075,
+            0.5598896145820618,
+            0.643788754940033,
+            3.1946544647216797
+          ],
+          "safe": true,
+          "visible_fraction": 1.0
+        }
+      }
+    },
+    {
+      "global_frame": 2226,
+      "sentence": 34,
+      "metrics": {
+        "reverse_camera": {
+          "location": [
+            1.9,
+            3.45,
+            1.95
+          ],
+          "target": [
+            5.05,
+            2.25,
+            1.43
+          ],
+          "lens": 35
+        },
+        "june_face_projection": [
+          0.5519741773605347,
+          0.6117286086082458,
+          0.5596794486045837,
+          0.6435346603393555,
+          3.1942105293273926
+        ],
+        "head_reaction": true,
+        "standing_seat_intersections": 0,
+        "seat_overlap_detail": [],
+        "speaker_visibility": {
+          "samples": 9,
+          "blocked": 0,
+          "bounds": [
+            0.5519741773605347,
+            0.6117286086082458,
+            0.5596794486045837,
+            0.6435346603393555,
+            3.1942105293273926
+          ],
+          "safe": true,
+          "visible_fraction": 1.0
+        }
+      }
+    },
+    {
+      "global_frame": 2227,
+      "sentence": 34,
+      "metrics": {
+        "reverse_camera": {
+          "location": [
+            1.9,
+            3.45,
+            1.95
+          ],
+          "target": [
+            5.05,
+            2.25,
+            1.43
+          ],
+          "lens": 35
+        },
+        "june_face_projection": [
+          0.5516495704650879,
+          0.6117963790893555,
+          0.5594700574874878,
+          0.6432612538337708,
+          3.193673849105835
+        ],
+        "head_reaction": true,
+        "standing_seat_intersections": 0,
+        "seat_overlap_detail": [],
+        "speaker_visibility": {
+          "samples": 9,
+          "blocked": 0,
+          "bounds": [
+            0.5516495704650879,
+            0.6117963790893555,
+            0.5594700574874878,
+            0.6432612538337708,
+            3.193673849105835
+          ],
+          "safe": true,
+          "visible_fraction": 1.0
+        }
+      }
+    },
+    {
+      "global_frame": 2228,
+      "sentence": 34,
+      "metrics": {
+        "reverse_camera": {
+          "location": [
+            1.9,
+            3.45,
+            1.95
+          ],
+          "target": [
+            5.05,
+            2.25,
+            1.43
+          ],
+          "lens": 35
+        },
+        "june_face_projection": [
+          0.5513482093811035,
+          0.6118927001953125,
+          0.5592637658119202,
+          0.6429710984230042,
+          3.1930503845214844
+        ],
+        "head_reaction": true,
+        "standing_seat_intersections": 0,
+        "seat_overlap_detail": [],
+        "speaker_visibility": {
+          "samples": 9,
+          "blocked": 0,
+          "bounds": [
+            0.5513482093811035,
+            0.6118927001953125,
+            0.5592637658119202,
+            0.6429710984230042,
+            3.1930503845214844
+          ],
+          "safe": true,
+          "visible_fraction": 1.0
+        }
+      }
+    },
+    {
+      "global_frame": 2229,
+      "sentence": 34,
+      "metrics": {
+        "reverse_camera": {
+          "location": [
+            1.9,
+            3.45,
+            1.95
+          ],
+          "target": [
+            5.05,
+            2.25,
+            1.43
+          ],
+          "lens": 35
+        },
+        "june_face_projection": [
+          0.5510757565498352,
+          0.6120206713676453,
+          0.5591738224029541,
+          0.6427978873252869,
+          3.1922335624694824
+        ],
+        "head_reaction": true,
+        "standing_seat_intersections": 0,
+        "seat_overlap_detail": [],
+        "speaker_visibility": {
+          "samples": 9,
+          "blocked": 0,
+          "bounds": [
+            0.5510757565498352,
+            0.6120206713676453,
+            0.5591738224029541,
+            0.6427978873252869,
+            3.1922335624694824
+          ],
+          "safe": true,
+          "visible_fraction": 1.0
+        }
+      }
+    },
+    {
+      "global_frame": 2230,
+      "sentence": 34,
+      "metrics": {
+        "reverse_camera": {
+          "location": [
+            1.9,
+            3.45,
+            1.95
+          ],
+          "target": [
+            5.05,
+            2.25,
+            1.43
+          ],
+          "lens": 35
+        },
+        "june_face_projection": [
+          0.5508352518081665,
+          0.6121780872344971,
+          0.5591611862182617,
+          0.6426956653594971,
+          3.1912717819213867
+        ],
+        "head_reaction": true,
+        "standing_seat_intersections": 0,
+        "seat_overlap_detail": [],
+        "speaker_visibility": {
+          "samples": 9,
+          "blocked": 0,
+          "bounds": [
+            0.5508352518081665,
+            0.6121780872344971,
+            0.5591611862182617,
+            0.6426956653594971,
+            3.1912717819213867
+          ],
+          "safe": true,
+          "visible_fraction": 1.0
+        }
+      }
+    },
+    {
+      "global_frame": 2231,
+      "sentence": 34,
+      "metrics": {
+        "reverse_camera": {
+          "location": [
+            1.9,
+            3.45,
+            1.95
+          ],
+          "target": [
+            5.05,
+            2.25,
+            1.43
+          ],
+          "lens": 35
+        },
+        "june_face_projection": [
+          0.5506295561790466,
+          0.6123613715171814,
+          0.5591557025909424,
+          0.6425818204879761,
+          3.190247058868408
+        ],
+        "head_reaction": true,
+        "standing_seat_intersections": 0,
+        "seat_overlap_detail": [],
+        "speaker_visibility": {
+          "samples": 9,
+          "blocked": 0,
+          "bounds": [
+            0.5506295561790466,
+            0.6123613715171814,
+            0.5591557025909424,
+            0.6425818204879761,
+            3.190247058868408
+          ],
+          "safe": true,
+          "visible_fraction": 1.0
+        }
+      }
+    },
+    {
+      "global_frame": 2232,
+      "sentence": 34,
+      "metrics": {
+        "reverse_camera": {
+          "location": [
+            1.9,
+            3.45,
+            1.95
+          ],
+          "target": [
+            5.05,
+            2.25,
+            1.43
+          ],
+          "lens": 35
+        },
+        "june_face_projection": [
+          0.5504621267318726,
+          0.6125693321228027,
+          0.5591576099395752,
+          0.6424569487571716,
+          3.189168930053711
+        ],
+        "head_reaction": true,
+        "standing_seat_intersections": 0,
+        "seat_overlap_detail": [],
+        "speaker_visibility": {
+          "samples": 9,
+          "blocked": 0,
+          "bounds": [
+            0.5504621267318726,
+            0.6125693321228027,
+            0.5591576099395752,
+            0.6424569487571716,
+            3.189168930053711
+          ],
+          "safe": true,
+          "visible_fraction": 1.0
+        }
+      }
+    },
+    {
+      "global_frame": 2233,
+      "sentence": 34,
+      "metrics": {
+        "reverse_camera": {
+          "location": [
+            1.9,
+            3.45,
+            1.95
+          ],
+          "target": [
+            5.05,
+            2.25,
+            1.43
+          ],
+          "lens": 35
+        },
+        "june_face_projection": [
+          0.5503365993499756,
+          0.6128004789352417,
+          0.5591670870780945,
+          0.6423215866088867,
+          3.188047409057617
+        ],
+        "head_reaction": true,
+        "standing_seat_intersections": 0,
+        "seat_overlap_detail": [],
+        "speaker_visibility": {
+          "samples": 9,
+          "blocked": 0,
+          "bounds": [
+            0.5503365993499756,
+            0.6128004789352417,
+            0.5591670870780945,
+            0.6423215866088867,
+            3.188047409057617
+          ],
+          "safe": true,
+          "visible_fraction": 1.0
+        }
+      }
+    },
+    {
+      "global_frame": 2234,
+      "sentence": 34,
+      "metrics": {
+        "reverse_camera": {
+          "location": [
+            1.9,
+            3.45,
+            1.95
+          ],
+          "target": [
+            5.05,
+            2.25,
+            1.43
+          ],
+          "lens": 35
+        },
+        "june_face_projection": [
+          0.5502562522888184,
+          0.6130533814430237,
+          0.5591843128204346,
+          0.6421765089035034,
+          3.186891794204712
+        ],
+        "head_reaction": true,
+        "standing_seat_intersections": 0,
+        "seat_overlap_detail": [],
+        "speaker_visibility": {
+          "samples": 9,
+          "blocked": 0,
+          "bounds": [
+            0.5502562522888184,
+            0.6130533814430237,
+            0.5591843128204346,
+            0.6421765089035034,
+            3.186891794204712
+          ],
+          "safe": true,
+          "visible_fraction": 1.0
+        }
+      }
+    },
+    {
+      "global_frame": 2235,
+      "sentence": 34,
+      "metrics": {
+        "reverse_camera": {
+          "location": [
+            1.9,
+            3.45,
+            1.95
+          ],
+          "target": [
+            5.05,
+            2.25,
+            1.43
+          ],
+          "lens": 35
+        },
+        "june_face_projection": [
+          0.5502241253852844,
+          0.6133261322975159,
+          0.5592095255851746,
+          0.6420227289199829,
+          3.185713052749634
+        ],
+        "head_reaction": true,
+        "standing_seat_intersections": 0,
+        "seat_overlap_detail": [],
+        "speaker_visibility": {
+          "samples": 9,
+          "blocked": 0,
+          "bounds": [
+            0.5502241253852844,
+            0.6133261322975159,
+            0.5592095255851746,
+            0.6420227289199829,
+            3.185713052749634
+          ],
+          "safe": true,
+          "visible_fraction": 1.0
+        }
+      }
+    },
+    {
+      "global_frame": 2236,
+      "sentence": 34,
+      "metrics": {
+        "reverse_camera": {
+          "location": [
+            1.9,
+            3.45,
+            1.95
+          ],
+          "target": [
+            5.05,
+            2.25,
+            1.43
+          ],
+          "lens": 35
+        },
+        "june_face_projection": [
+          0.5502429604530334,
+          0.6136171817779541,
+          0.5592430233955383,
+          0.6418613195419312,
+          3.1845204830169678
+        ],
+        "head_reaction": true,
+        "standing_seat_intersections": 0,
+        "seat_overlap_detail": [],
+        "speaker_visibility": {
+          "samples": 9,
+          "blocked": 0,
+          "bounds": [
+            0.5502429604530334,
+            0.6136171817779541,
+            0.5592430233955383,
+            0.6418613195419312,
+            3.1845204830169678
+          ],
+          "safe": true,
+          "visible_fraction": 1.0
+        }
+      }
+    },
+    {
+      "global_frame": 2237,
+      "sentence": 34,
+      "metrics": {
+        "reverse_camera": {
+          "location": [
+            1.9,
+            3.45,
+            1.95
+          ],
+          "target": [
+            5.05,
+            2.25,
+            1.43
+          ],
+          "lens": 35
+        },
+        "june_face_projection": [
+          0.5503156185150146,
+          0.6139248013496399,
+          0.5591546893119812,
+          0.6416934728622437,
+          3.1833231449127197
+        ],
+        "head_reaction": true,
+        "standing_seat_intersections": 0,
+        "seat_overlap_detail": [],
+        "speaker_visibility": {
+          "samples": 9,
+          "blocked": 0,
+          "bounds": [
+            0.5503156185150146,
+            0.6139248013496399,
+            0.5591546893119812,
+            0.6416934728622437,
+            3.1833231449127197
+          ],
+          "safe": true,
+          "visible_fraction": 1.0
+        }
+      }
+    },
+    {
+      "global_frame": 2238,
+      "sentence": 34,
+      "metrics": {
+        "reverse_camera": {
+          "location": [
+            1.9,
+            3.45,
+            1.95
+          ],
+          "target": [
+            5.05,
+            2.25,
+            1.43
+          ],
+          "lens": 35
+        },
+        "june_face_projection": [
+          0.5504440069198608,
+          0.6142468452453613,
+          0.5589672923088074,
+          0.6415204405784607,
+          3.1821300983428955
+        ],
+        "head_reaction": true,
+        "standing_seat_intersections": 0,
+        "seat_overlap_detail": [],
+        "speaker_visibility": {
+          "samples": 9,
+          "blocked": 0,
+          "bounds": [
+            0.5504440069198608,
+            0.6142468452453613,
+            0.5589672923088074,
+            0.6415204405784607,
+            3.1821300983428955
+          ],
+          "safe": true,
+          "visible_fraction": 1.0
+        }
+      }
+    },
+    {
+      "global_frame": 2239,
+      "sentence": 34,
+      "metrics": {
+        "reverse_camera": {
+          "location": [
+            1.9,
+            3.45,
+            1.95
+          ],
+          "target": [
+            5.05,
+            2.25,
+            1.43
+          ],
+          "lens": 35
+        },
+        "june_face_projection": [
+          0.5506299734115601,
+          0.6145814657211304,
+          0.5587767958641052,
+          0.6413438320159912,
+          3.180950164794922
+        ],
+        "head_reaction": true,
+        "standing_seat_intersections": 0,
+        "seat_overlap_detail": [],
+        "speaker_visibility": {
+          "samples": 9,
+          "blocked": 0,
+          "bounds": [
+            0.5506299734115601,
+            0.6145814657211304,
+            0.5587767958641052,
+            0.6413438320159912,
+            3.180950164794922
+          ],
+          "safe": true,
+          "visible_fraction": 1.0
+        }
+      }
+    },
+    {
+      "global_frame": 2240,
+      "sentence": 34,
+      "metrics": {
+        "reverse_camera": {
+          "location": [
+            1.9,
+            3.45,
+            1.95
+          ],
+          "target": [
+            5.05,
+            2.25,
+            1.43
+          ],
+          "lens": 35
+        },
+        "june_face_projection": [
+          0.550875186920166,
+          0.6149268746376038,
+          0.5585846900939941,
+          0.6411650776863098,
+          3.179790735244751
+        ],
+        "head_reaction": true,
+        "standing_seat_intersections": 0,
+        "seat_overlap_detail": [],
+        "speaker_visibility": {
+          "samples": 10,
+          "blocked": 0,
+          "bounds": [
+            0.550875186920166,
+            0.6149268746376038,
+            0.5585846900939941,
+            0.6411650776863098,
+            3.179790735244751
+          ],
+          "safe": true,
+          "visible_fraction": 1.0
+        }
+      }
+    },
+    {
+      "global_frame": 2241,
+      "sentence": 34,
+      "metrics": {
+        "reverse_camera": {
+          "location": [
+            1.9,
+            3.45,
+            1.95
+          ],
+          "target": [
+            5.05,
+            2.25,
+            1.43
+          ],
+          "lens": 35
+        },
+        "june_face_projection": [
+          0.5511804819107056,
+          0.6152809858322144,
+          0.5583924055099487,
+          0.6409856081008911,
+          3.178658962249756
+        ],
+        "head_reaction": true,
+        "standing_seat_intersections": 0,
+        "seat_overlap_detail": [],
+        "speaker_visibility": {
+          "samples": 9,
+          "blocked": 0,
+          "bounds": [
+            0.5511804819107056,
+            0.6152809858322144,
+            0.5583924055099487,
+            0.6409856081008911,
+            3.178658962249756
+          ],
+          "safe": true,
+          "visible_fraction": 1.0
+        }
+      }
+    },
+    {
+      "global_frame": 2242,
+      "sentence": 34,
+      "metrics": {
+        "reverse_camera": {
+          "location": [
+            1.9,
+            3.45,
+            1.95
+          ],
+          "target": [
+            5.05,
+            2.25,
+            1.43
+          ],
+          "lens": 35
+        },
+        "june_face_projection": [
+          0.5515466928482056,
+          0.6156420707702637,
+          0.5582014322280884,
+          0.6408069729804993,
+          3.177563428878784
+        ],
+        "head_reaction": true,
+        "standing_seat_intersections": 0,
+        "seat_overlap_detail": [],
+        "speaker_visibility": {
+          "samples": 9,
+          "blocked": 0,
+          "bounds": [
+            0.5515466928482056,
+            0.6156420707702637,
+            0.5582014322280884,
+            0.6408069729804993,
+            3.177563428878784
+          ],
+          "safe": true,
+          "visible_fraction": 1.0
+        }
+      }
+    },
+    {
+      "global_frame": 2243,
+      "sentence": 34,
+      "metrics": {
+        "reverse_camera": {
+          "location": [
+            1.9,
+            3.45,
+            1.95
+          ],
+          "target": [
+            5.05,
+            2.25,
+            1.43
+          ],
+          "lens": 35
+        },
+        "june_face_projection": [
+          0.5519738793373108,
+          0.6160081624984741,
+          0.5580133199691772,
+          0.640630841255188,
+          3.1765072345733643
+        ],
+        "head_reaction": true,
+        "standing_seat_intersections": 0,
+        "seat_overlap_detail": [],
+        "speaker_visibility": {
+          "samples": 9,
+          "blocked": 0,
+          "bounds": [
+            0.5519738793373108,
+            0.6160081624984741,
+            0.5580133199691772,
+            0.640630841255188,
+            3.1765072345733643
+          ],
+          "safe": true,
+          "visible_fraction": 1.0
+        }
+      }
+    },
+    {
+      "global_frame": 2244,
+      "sentence": 34,
+      "metrics": {
+        "reverse_camera": {
+          "location": [
+            1.9,
+            3.45,
+            1.95
+          ],
+          "target": [
+            5.05,
+            2.25,
+            1.43
+          ],
+          "lens": 35
+        },
+        "june_face_projection": [
+          0.5524618625640869,
+          0.6163775324821472,
+          0.5578294396400452,
+          0.6404584050178528,
+          3.1754984855651855
+        ],
+        "head_reaction": true,
+        "standing_seat_intersections": 0,
+        "seat_overlap_detail": [],
+        "speaker_visibility": {
+          "samples": 9,
+          "blocked": 0,
+          "bounds": [
+            0.5524618625640869,
+            0.6163775324821472,
+            0.5578294396400452,
+            0.6404584050178528,
+            3.1754984855651855
+          ],
+          "safe": true,
+          "visible_fraction": 1.0
+        }
+      }
+    },
+    {
+      "global_frame": 2245,
+      "sentence": 34,
+      "metrics": {
+        "reverse_camera": {
+          "location": [
+            1.9,
+            3.45,
+            1.95
+          ],
+          "target": [
+            5.05,
+            2.25,
+            1.43
+          ],
+          "lens": 35
+        },
+        "june_face_projection": [
+          0.5530096888542175,
+          0.616748571395874,
+          0.5576512813568115,
+          0.6402913928031921,
+          3.1745405197143555
+        ],
+        "head_reaction": true,
+        "standing_seat_intersections": 0,
+        "seat_overlap_detail": [],
+        "speaker_visibility": {
+          "samples": 9,
+          "blocked": 0,
+          "bounds": [
+            0.5530096888542175,
+            0.616748571395874,
+            0.5576512813568115,
+            0.6402913928031921,
+            3.1745405197143555
+          ],
+          "safe": true,
+          "visible_fraction": 1.0
+        }
+      }
+    },
+    {
+      "global_frame": 2246,
+      "sentence": 34,
+      "metrics": {
+        "reverse_camera": {
+          "location": [
+            1.9,
+            3.45,
+            1.95
+          ],
+          "target": [
+            5.05,
+            2.25,
+            1.43
+          ],
+          "lens": 35
+        },
+        "june_face_projection": [
+          0.553616464138031,
+          0.6171196699142456,
+          0.5574800968170166,
+          0.640130877494812,
+          3.1736369132995605
+        ],
+        "head_reaction": true,
+        "standing_seat_intersections": 0,
+        "seat_overlap_detail": [],
+        "speaker_visibility": {
+          "samples": 9,
+          "blocked": 0,
+          "bounds": [
+            0.553616464138031,
+            0.6171196699142456,
+            0.5574800968170166,
+            0.640130877494812,
+            3.1736369132995605
+          ],
+          "safe": true,
+          "visible_fraction": 1.0
+        }
+      }
+    },
+    {
+      "global_frame": 2247,
+      "sentence": 34,
+      "metrics": {
+        "reverse_camera": {
+          "location": [
+            1.9,
+            3.45,
+            1.95
+          ],
+          "target": [
+            5.05,
+            2.25,
+            1.43
+          ],
+          "lens": 35
+        },
+        "june_face_projection": [
+          0.5542802810668945,
+          0.617489218711853,
+          0.557317316532135,
+          0.639978289604187,
+          3.17279314994812
+        ],
+        "head_reaction": true,
+        "standing_seat_intersections": 0,
+        "seat_overlap_detail": [],
+        "speaker_visibility": {
+          "samples": 9,
+          "blocked": 0,
+          "bounds": [
+            0.5542802810668945,
+            0.617489218711853,
+            0.557317316532135,
+            0.639978289604187,
+            3.17279314994812
+          ],
+          "safe": true,
+          "visible_fraction": 1.0
+        }
+      }
+    },
+    {
+      "global_frame": 2248,
+      "sentence": 34,
+      "metrics": {
+        "reverse_camera": {
+          "location": [
+            1.9,
+            3.45,
+            1.95
+          ],
+          "target": [
+            5.05,
+            2.25,
+            1.43
+          ],
+          "lens": 35
+        },
+        "june_face_projection": [
+          0.5549989342689514,
+          0.617855966091156,
+          0.5571640729904175,
+          0.6398345232009888,
+          3.172010898590088
+        ],
+        "head_reaction": true,
+        "standing_seat_intersections": 0,
+        "seat_overlap_detail": [],
+        "speaker_visibility": {
+          "samples": 9,
+          "blocked": 0,
+          "bounds": [
+            0.5549989342689514,
+            0.617855966091156,
+            0.5571640729904175,
+            0.6398345232009888,
+            3.172010898590088
+          ],
+          "safe": true,
+          "visible_fraction": 1.0
+        }
+      }
+    },
+    {
+      "global_frame": 2249,
+      "sentence": 34,
+      "metrics": {
+        "reverse_camera": {
+          "location": [
+            1.9,
+            3.45,
+            1.95
+          ],
+          "target": [
+            5.05,
+            2.25,
+            1.43
+          ],
+          "lens": 35
+        },
+        "june_face_projection": [
+          0.555769681930542,
+          0.6182184219360352,
+          0.5570217370986938,
+          0.6397010684013367,
+          3.171292543411255
+        ],
+        "head_reaction": true,
+        "standing_seat_intersections": 0,
+        "seat_overlap_detail": [],
+        "speaker_visibility": {
+          "samples": 9,
+          "blocked": 0,
+          "bounds": [
+            0.555769681930542,
+            0.6182184219360352,
+            0.5570217370986938,
+            0.6397010684013367,
+            3.171292543411255
+          ],
+          "safe": true,
+          "visible_fraction": 1.0
+        }
+      }
+    },
+    {
+      "global_frame": 2250,
+      "sentence": 34,
+      "metrics": {
+        "reverse_camera": {
+          "location": [
+            1.9,
+            3.45,
+            1.95
+          ],
+          "target": [
+            5.05,
+            2.25,
+            1.43
+          ],
+          "lens": 35
+        },
+        "june_face_projection": [
+          0.5565894842147827,
+          0.6185755729675293,
+          0.5568913221359253,
+          0.6395784616470337,
+          3.1706385612487793
+        ],
+        "head_reaction": true,
+        "standing_seat_intersections": 0,
+        "seat_overlap_detail": [],
+        "speaker_visibility": {
+          "samples": 10,
+          "blocked": 0,
+          "bounds": [
+            0.5565894842147827,
+            0.6185755729675293,
+            0.5568913221359253,
+            0.6395784616470337,
+            3.1706385612487793
+          ],
+          "safe": true,
+          "visible_fraction": 1.0
+        }
+      }
+    },
+    {
+      "global_frame": 2251,
+      "sentence": 34,
+      "metrics": {
+        "reverse_camera": {
+          "location": [
+            1.9,
+            3.45,
+            1.95
+          ],
+          "target": [
+            5.05,
+            2.25,
+            1.43
+          ],
+          "lens": 35
+        },
+        "june_face_projection": [
+          0.5574545860290527,
+          0.6189262866973877,
+          0.5567739009857178,
+          0.6394678950309753,
+          3.1700515747070312
+        ],
+        "head_reaction": true,
+        "standing_seat_intersections": 0,
+        "seat_overlap_detail": [],
+        "speaker_visibility": {
+          "samples": 10,
+          "blocked": 0,
+          "bounds": [
+            0.5574545860290527,
+            0.6189262866973877,
+            0.5567739009857178,
+            0.6394678950309753,
+            3.1700515747070312
+          ],
+          "safe": true,
+          "visible_fraction": 1.0
+        }
+      }
+    },
+    {
+      "global_frame": 2252,
+      "sentence": 34,
+      "metrics": {
+        "reverse_camera": {
+          "location": [
+            1.9,
+            3.45,
+            1.95
+          ],
+          "target": [
+            5.05,
+            2.25,
+            1.43
+          ],
+          "lens": 35
+        },
+        "june_face_projection": [
+          0.5583608150482178,
+          0.6192695498466492,
+          0.5566704869270325,
+          0.6393700838088989,
+          3.1695313453674316
+        ],
+        "head_reaction": true,
+        "standing_seat_intersections": 0,
+        "seat_overlap_detail": [],
+        "speaker_visibility": {
+          "samples": 9,
+          "blocked": 0,
+          "bounds": [
+            0.5583608150482178,
+            0.6192695498466492,
+            0.5566704869270325,
+            0.6393700838088989,
+            3.1695313453674316
+          ],
+          "safe": true,
+          "visible_fraction": 1.0
+        }
+      }
+    },
+    {
+      "global_frame": 2253,
+      "sentence": 34,
+      "metrics": {
+        "reverse_camera": {
+          "location": [
+            1.9,
+            3.45,
+            1.95
+          ],
+          "target": [
+            5.05,
+            2.25,
+            1.43
+          ],
+          "lens": 35
+        },
+        "june_face_projection": [
+          0.5593034625053406,
+          0.6196043491363525,
+          0.5565819144248962,
+          0.6392856240272522,
+          3.169076919555664
+        ],
+        "head_reaction": true,
+        "standing_seat_intersections": 0,
+        "seat_overlap_detail": [],
+        "speaker_visibility": {
+          "samples": 9,
+          "blocked": 0,
+          "bounds": [
+            0.5593034625053406,
+            0.6196043491363525,
+            0.5565819144248962,
+            0.6392856240272522,
+            3.169076919555664
+          ],
+          "safe": true,
+          "visible_fraction": 1.0
+        }
+      }
+    },
+    {
+      "global_frame": 2254,
+      "sentence": 34,
+      "metrics": {
+        "reverse_camera": {
+          "location": [
+            1.9,
+            3.45,
+            1.95
+          ],
+          "target": [
+            5.05,
+            2.25,
+            1.43
+          ],
+          "lens": 35
+        },
+        "june_face_projection": [
+          0.5602775812149048,
+          0.6206173300743103,
+          0.5565090775489807,
+          0.6392150521278381,
+          3.168689489364624
+        ],
+        "head_reaction": true,
+        "standing_seat_intersections": 0,
+        "seat_overlap_detail": [],
+        "speaker_visibility": {
+          "samples": 9,
+          "blocked": 0,
+          "bounds": [
+            0.5602775812149048,
+            0.6206173300743103,
+            0.5565090775489807,
+            0.6392150521278381,
+            3.168689489364624
+          ],
+          "safe": true,
+          "visible_fraction": 1.0
+        }
+      }
+    },
+    {
+      "global_frame": 2255,
+      "sentence": 34,
+      "metrics": {
+        "reverse_camera": {
+          "location": [
+            1.9,
+            3.45,
+            1.95
+          ],
+          "target": [
+            5.05,
+            2.25,
+            1.43
+          ],
+          "lens": 35
+        },
+        "june_face_projection": [
+          0.5612775683403015,
+          0.6217412352561951,
+          0.5564526915550232,
+          0.639159083366394,
+          3.1683664321899414
+        ],
+        "head_reaction": true,
+        "standing_seat_intersections": 0,
+        "seat_overlap_detail": [],
+        "speaker_visibility": {
+          "samples": 10,
+          "blocked": 0,
+          "bounds": [
+            0.5612775683403015,
+            0.6217412352561951,
+            0.5564526915550232,
+            0.639159083366394,
+            3.1683664321899414
+          ],
+          "safe": true,
+          "visible_fraction": 1.0
+        }
+      }
+    },
+    {
+      "global_frame": 2256,
+      "sentence": 34,
+      "metrics": {
+        "reverse_camera": {
+          "location": [
+            1.9,
+            3.45,
+            1.95
+          ],
+          "target": [
+            5.05,
+            2.25,
+            1.43
+          ],
+          "lens": 35
+        },
+        "june_face_projection": [
+          0.5617060661315918,
+          0.6228887438774109,
+          0.5565143823623657,
+          0.6392244100570679,
+          3.1680147647857666
+        ],
+        "head_reaction": true,
+        "standing_seat_intersections": 0,
+        "seat_overlap_detail": [],
+        "speaker_visibility": {
+          "samples": 9,
+          "blocked": 0,
+          "bounds": [
+            0.5617060661315918,
+            0.6228887438774109,
+            0.5565143823623657,
+            0.6392244100570679,
+            3.1680147647857666
+          ],
+          "safe": true,
+          "visible_fraction": 1.0
+        }
+      }
+    },
+    {
+      "global_frame": 2257,
+      "sentence": 34,
+      "metrics": {
+        "reverse_camera": {
+          "location": [
+            1.9,
+            3.45,
+            1.95
+          ],
+          "target": [
+            5.05,
+            2.25,
+            1.43
+          ],
+          "lens": 35
+        },
+        "june_face_projection": [
+          0.5619952082633972,
+          0.6240529417991638,
+          0.5566986203193665,
+          0.639415442943573,
+          3.167630672454834
+        ],
+        "head_reaction": true,
+        "standing_seat_intersections": 0,
+        "seat_overlap_detail": [],
+        "speaker_visibility": {
+          "samples": 10,
+          "blocked": 0,
+          "bounds": [
+            0.5619952082633972,
+            0.6240529417991638,
+            0.5566986203193665,
+            0.639415442943573,
+            3.167630672454834
+          ],
+          "safe": true,
+          "visible_fraction": 1.0
+        }
+      }
+    }
+  ],
+  "geometry_gate": {
+    "unit": "june_answer",
+    "samples": 57,
+    "sampling_hz": 30,
+    "checks": {
+      "standing_seat_intersections": {
+        "value": 0,
+        "limit": 0,
+        "pass": true
+      },
+      "speaker_occlusion_samples": {
+        "value": 0,
+        "limit": 0,
+        "pass": true
+      },
+      "speaker_in_frame": {
+        "value": true,
+        "limit": true,
+        "pass": true
+      }
+    },
+    "pass": true,
+    "camera": {
+      "location": [
+        1.9,
+        3.45,
+        1.95
+      ],
+      "target": [
+        5.05,
+        2.25,
+        1.43
+      ],
+      "lens": 35
+    },
+    "marks": {
+      "june": [
+        5.050000190734863,
+        1.649999976158142,
+        0.0
+      ],
+      "narrator": [
+        5.050000190734863,
+        3.6500000953674316,
+        0.0
+      ]
+    }
+  },
+  "scenery": {
+    "repository": "AdityapalW/Roblox-skill",
+    "commit": "54b34ba1be2e3013a9de59e40db288d8f2ebda53",
+    "file": "Itlay/Itlay.gltf",
+    "git_blob": "20108af3a19fae6b5beaa5fac2e3305b56112a41",
+    "mesh_objects": 196,
+    "objects": 207,
+    "transform": "native Blender glTF axis conversion; root identity",
+    "texture_provenance": "Repository README: procedural geometry/textures with selected CC0 Poly Haven photo textures; individual texture attribution not supplied by source manifest.",
+    "native_well_adaptation": {
+      "source_group": "Piazza fountain",
+      "mesh_children": 6,
+      "original_world_min": [
+        -3.9600000381469727,
+        -7.960000038146973,
+        2.98023217215615e-10
+      ],
+      "original_world_max": [
+        3.9600000381469727,
+        -0.039999961853027344,
+        3.8241324424743652
+      ],
+      "uniform_scale": 0.35984848138203784,
+      "adapted_world_min": [
+        -1.4249999523162842,
+        -1.4250000715255737,
+        0.0
+      ],
+      "adapted_world_max": [
+        1.4249999523162842,
+        1.4249999523162842,
+        1.376108169555664
+      ],
+      "note": "Native source stone water feature is the story well; no duplicate added well, material assignments unchanged."
+    },
+    "adaptation": "Actual source fountain recentered/scaled as the sole central water feature; source cobbles and facades preserved. Story-local wall and seats calibrated from measured seated pose data. No duplicate fountain or replacement paving."
+  }
+}

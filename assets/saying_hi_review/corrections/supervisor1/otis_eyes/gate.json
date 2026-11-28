@@ -1,0 +1,105 @@
+{
+  "unit": "otis_eyes",
+  "samples": 30,
+  "sampling_hz": 30,
+  "checks": {
+    "max_head_arm_intersections": {
+      "value": 0,
+      "limit": 0,
+      "pass": true
+    },
+    "covered_eye_samples_at_full_pose": {
+      "value": 2,
+      "limit": 2,
+      "pass": true
+    }
+  },
+  "pass": true,
+  "eye_solution": [
+    0.22,
+    0.48,
+    0.1,
+    0.4,
+    -1.0
+  ],
+  "search_candidates": [
+    {
+      "params": [
+        0.22,
+        0.22,
+        0.16,
+        0.4,
+        -1.0
+      ],
+      "max_head_intersections": 0,
+      "covered_eye_samples": 1
+    },
+    {
+      "params": [
+        0.22,
+        0.28,
+        0.16,
+        0.4,
+        -1.0
+      ],
+      "max_head_intersections": 31,
+      "covered_eye_samples": 1
+    },
+    {
+      "params": [
+        0.22,
+        0.28,
+        0.16,
+        1,
+        -0.8
+      ],
+      "max_head_intersections": 18,
+      "covered_eye_samples": 1
+    },
+    {
+      "params": [
+        0.22,
+        0.48,
+        0.04,
+        0.4,
+        -1.0
+      ],
+      "max_head_intersections": 0,
+      "covered_eye_samples": 1
+    },
+    {
+      "params": [
+        0.22,
+        0.48,
+        0.04,
+        1,
+        -0.8
+      ],
+      "max_head_intersections": 0,
+      "covered_eye_samples": 1
+    },
+    {
+      "params": [
+        0.22,
+        0.48,
+        0.04,
+        1,
+        -0.25
+      ],
+      "max_head_intersections": 0,
+      "covered_eye_samples": 1
+    },
+    {
+      "params": [
+        0.22,
+        0.48,
+        0.1,
+        0.4,
+        -1.0
+      ],
+      "max_head_intersections": 0,
+      "covered_eye_samples": 2
+    }
+  ],
+  "max_hand_target_gap": 0.11868303298447334
+}

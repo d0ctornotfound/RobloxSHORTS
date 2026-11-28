@@ -1,0 +1,43 @@
+{
+  "unit": "empty_wall",
+  "samples": 42,
+  "sampling_hz": 30,
+  "checks": {
+    "wall_tally_strokes": {
+      "value": 35,
+      "limit": 35,
+      "pass": true
+    },
+    "boys_on_wall": {
+      "value": 0,
+      "limit": 0,
+      "pass": true
+    },
+    "wall_visibility_occlusion_samples": {
+      "value": 8,
+      "limit": 0,
+      "pass": false
+    },
+    "wall_visibility_in_frame": {
+      "value": true,
+      "limit": true,
+      "pass": true
+    },
+    "tally_visibility_occlusion_samples": {
+      "value": 0,
+      "limit": 0,
+      "pass": true
+    },
+    "tally_visibility_in_frame": {
+      "value": true,
+      "limit": true,
+      "pass": true
+    }
+  },
+  "pass": false,
+  "camera": [
+    0.0,
+    3.299999952316284,
+    1.350000023841858
+  ]
+}
