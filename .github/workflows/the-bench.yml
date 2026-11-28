@@ -1,0 +1,102 @@
+name: The Bench — skill-only exam
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'scripts/render_bench.py'
+      - '.github/workflows/the-bench.yml'
+  workflow_dispatch:
+    inputs:
+      full:
+        description: 'Full 48-shot render only after actual preflight review'
+        type: boolean
+        default: false
+permissions:
+  contents: read
+jobs:
+  plan:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 5
+    outputs:
+      shots: ${{ steps.matrix.outputs.shots }}
+      mode: ${{ steps.matrix.outputs.mode }}
+    steps:
+      - uses: actions/checkout@v4
+      - run: python3 scripts/library_story_plan.py stories/the_bench_plan.json
+      - run: python3 -m py_compile scripts/render_bench.py scripts/edit_bench.py
+      - id: matrix
+        env:
+          FULL: ${{ inputs.full || false }}
+        run: |
+          if [ "$FULL" = "true" ]; then
+            echo "shots=$(python3 -c 'import json; print(json.dumps(list(range(1,49))))')" >> "$GITHUB_OUTPUT"
+            echo 'mode=render' >> "$GITHUB_OUTPUT"
+          else
+            echo 'shots=[2,16,23,31,35,48]' >> "$GITHUB_OUTPUT"
+            echo 'mode=preflight' >> "$GITHUB_OUTPUT"
+          fi
+  shot:
+    needs: plan
+    runs-on: ubuntu-24.04
+    timeout-minutes: 45
+    strategy:
+      fail-fast: false
+      max-parallel: 12
+      matrix:
+        shot: ${{ fromJSON(needs.plan.outputs.shots) }}
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install Blender and dependencies
+        run: |
+          for f in /etc/apt/sources.list.d/*; do
+            if [ -f "$f" ] && grep -q "packages.microsoft.com" "$f"; then sudo mv "$f" "$f.disabled"; fi
+          done
+          sudo apt-get update -o Acquire::Retries=3
+          sudo apt-get install -y --no-install-recommends blender python3-pil python3-numpy fonts-dejavu-core libegl1 libegl-mesa0 libgl1 libgl1-mesa-dri libgbm1
+      - run: python3 scripts/library_character_assets.py
+      - name: Render isolated shot
+        timeout-minutes: 35
+        env:
+          LIBGL_ALWAYS_SOFTWARE: "1"
+          R6_KNEE_BLEND: "1"
+        run: |
+          mkdir -p render/bench
+          set -o pipefail
+          timeout 32m blender -b --python-exit-code 1 --python scripts/render_bench.py -- --shot "${{ matrix.shot }}" --mode "${{ needs.plan.outputs.mode }}" --output render/bench 2>&1 | tee render/bench/render.log
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: bench-shot-${{ matrix.shot }}
+          path: render/bench/
+          retention-days: 30
+          if-no-files-found: warn
+  package:
+    needs: [plan,shot]
+    if: always() && needs.plan.result == 'success'
+    runs-on: ubuntu-24.04
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/download-artifact@v4
+        with:
+          pattern: bench-shot-*
+          path: chunks
+      - run: sudo apt-get update && sudo apt-get install -y python3-pil ffmpeg fonts-dejavu-core
+      - name: Assemble actual per-act contact sheets and complete video if all frames exist
+        run: |
+          mkdir -p render/bench-package
+          if [ "${{ needs.plan.outputs.mode }}" = "preflight" ]; then
+            python3 scripts/edit_bench.py --chunks chunks --output render/bench-package --preflight
+          else
+            python3 scripts/edit_bench.py --chunks chunks --output render/bench-package
+          fi
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: bench-package
+          path: |
+            render/bench-package/*.png
+            render/bench-package/*.json
+            render/bench-package/*.mp4
+          if-no-files-found: warn
+          retention-days: 30
