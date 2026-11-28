@@ -28,11 +28,11 @@ def visible_ray(scene,cam,target,allowed):
         origin=p+direction*.002;distance=(target-origin).dot(direction)
         if distance<=0:return True
     return False
-def object_visibility(scene,cam,objs,grid=7):
+def object_visibility(scene,cam,objs,grid=7,allowed_extra=()):
     """Screen-silhouette ray samples. Compare nearest target BVH hit to actual
     nearest scene hit, so hidden/back vertices are not treated as occlusion."""
     pts=worldpts(objs);p=project(scene,cam,pts)
-    trees=[tree_for_object(o) for o in objs];allowed=set(objs)
+    trees=[tree_for_object(o) for o in objs];allowed=set(objs)|set(allowed_extra)
     f=cam.data.view_frame(scene=scene);xmin=min(v.x/v.z for v in f);xmax=max(v.x/v.z for v in f);ymin=min(v.y/v.z for v in f);ymax=max(v.y/v.z for v in f)
     # Blender camera local -Z; world_to_camera_view x,y increase to right/up.
     tested=blocked=0
@@ -236,7 +236,7 @@ class CorrectedUnit(SceneUnit):
                             overlap=sum(x["head_arm_overlap_pairs"] for x in m["eyes"]);gap=max(x["hand_target_gap"] for x in m["eyes"])
                             candidates.append((overlap,2-m["eye_samples_covered"],gap,p))
             candidates.sort();tested=[]
-            for _,_,_,p in candidates[:16]:
+            for _,_,_,p in candidates[:24]:
                 ms=[self.eyes_pose(i/29,i/30,p) for i in range(30)]
                 pairs=max(x["head_arm_overlap_pairs"] for m in ms for x in m["eyes"])
                 coverage=min(m["eye_samples_covered"] for m in ms if m["coverage_progress"]>.99)
@@ -248,7 +248,7 @@ class CorrectedUnit(SceneUnit):
     def setup_june(self):
         # Separate standing interview marks from the fixed well seats, no
         # relocation of wall or well. Use the permanent bench as nearby seat.
-        self.jp=V((4.65,-1.75,0));self.np=V((4.65,.35,0));self.jyaw=yaw_to(self.jp,self.np);self.nyaw=yaw_to(self.np,self.jp)
+        self.jp=V((5.05,1.65,0));self.np=V((5.05,3.65,0));self.jyaw=yaw_to(self.jp,self.np);self.nyaw=yaw_to(self.np,self.jp)
         a=self.place("narrator",self.np,self.nyaw,"worried");b=self.place("june",self.jp,self.jyaw,"happy")
         # Seat placement helper calibrates actual support dimensions, then put
         # the unoccupied interview seat behind June, outside both body envelopes.
@@ -266,8 +266,8 @@ class CorrectedUnit(SceneUnit):
         ped=bpy.data.objects["pedestal june"];ped.location=(3.12,-.70,(s[0]-.11)/2);ped.dimensions=(.40,.37,s[0]-.11)
         self.interview_fixtures=[o for o in meshes(root) if o.name.startswith(("seat ","pedestal ","Actual pair seat","Pair bench leg"))]
         # Side-on reverse with both faces and the raised pencil on the near side.
-        if self.unit=="june_question":loc=(1.7,1.65,1.85);aim=(4.65,-.20,1.43);lens=38
-        else:loc=(1.7,-3.1,1.85);aim=(4.65,-1.0,1.43);lens=38
+        if self.unit=="june_question":loc=(1.9,1.95,1.95);aim=(5.05,2.95,1.43);lens=35
+        else:loc=(1.9,3.45,1.95);aim=(5.05,2.25,1.43);lens=35
         frame(self.scene,self.cam,loc,aim,lens);self.reverse_camera={"location":list(loc),"target":list(aim),"lens":lens}
     def update_june(self,n,u,t):
         m=super().update_june(n,u,t)
@@ -278,6 +278,7 @@ class CorrectedUnit(SceneUnit):
         m["speaker_visibility"]=object_visibility(self.scene,self.cam,[hero.face],5)
         if self.unit=="june_question":
             m["pencil_visibility"]=object_visibility(self.scene,self.cam,meshes(self.pencil),9)
+            m["pencil_external_visibility"]=object_visibility(self.scene,self.cam,meshes(self.pencil),9,meshes(a.root))
         return m
     def setup_seating(self):
         super().setup_seating()
