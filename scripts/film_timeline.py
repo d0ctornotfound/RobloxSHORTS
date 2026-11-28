@@ -89,7 +89,18 @@ def assemble(c,tasks,chunks,out):
     for s in plan["shots"]:
         q=qc[s["id"]];q["flags"]+=c.get("known_weaknesses",{}).get(s["id"],[])
         if c.get("grade_preset"):
-            q["direction"]=flow_report(samples.get(s["id"],[]), expected_frames=q["end"]-q["start"])
+            rs=samples.get(s["id"],[])
+            windows={}
+            for row in rs:
+                key=tuple(row.get("unit_window",[q["start"],q["end"]]))
+                windows.setdefault(key,[]).append(row)
+            if len(windows)>1:
+                parts=[]
+                for key,rr in sorted(windows.items()):
+                    first=max(q["start"],key[0]);last=min(q["end"],key[1])
+                    parts.append({"start":first,"end":last,"direction":flow_report(rr,expected_frames=last-first)})
+                q["direction"]={"status":"numeric_pass" if sum(x["end"]-x["start"] for x in parts)==q["end"]-q["start"] and all(x["direction"]["status"]=="numeric_pass" for x in parts) else "flag","segments":parts}
+            else:q["direction"]=flow_report(rs, expected_frames=q["end"]-q["start"])
             if q["direction"]["status"]!="numeric_pass":q["flags"].append("direction QC: "+q["direction"]["status"])
         q["measurements"]=evaluate_qc(samples.get(s["id"],[]),c.get("qc_rules",{}).get(s["id"],[]))
         for m in q["measurements"]:
