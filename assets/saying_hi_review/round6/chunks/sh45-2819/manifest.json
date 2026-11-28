@@ -1,0 +1,1415 @@
+{
+  "task": {
+    "key": "sh45-2819",
+    "shot": "sh45",
+    "start": 2819,
+    "end": 2843,
+    "unit_start": 2819,
+    "unit_end": 2861,
+    "sentence_ids": [
+      45
+    ],
+    "stage": {
+      "unit": "declared",
+      "setup_ids": [
+        14
+      ],
+      "segment_performance": true,
+      "declared_scene": {
+        "standing": {},
+        "seated": [],
+        "visible_props": [],
+        "empty": true
+      },
+      "qc_actors": [],
+      "direction": {
+        "beat_type": "geography",
+        "principal": null,
+        "listeners": [],
+        "camera_move": "drift",
+        "motivation": "Empty wall geography with visible well group if framing permits; pure establishing <=2s.",
+        "camera_offset": [
+          0,
+          -1,
+          0
+        ],
+        "camera_elevation": 0.06,
+        "distance": 3.4,
+        "lens": 35,
+        "performance": {},
+        "pure_establishing": true,
+        "camera_path": [
+          {
+            "u": 0,
+            "position": [
+              0,
+              3.5,
+              3.6
+            ],
+            "target": [
+              0,
+              8,
+              0.7
+            ],
+            "lens": 26
+          },
+          {
+            "u": 1,
+            "position": [
+              0.22,
+              3.7,
+              3.6
+            ],
+            "target": [
+              0,
+              8,
+              0.7
+            ],
+            "lens": 26
+          }
+        ],
+        "landmarks": [
+          {
+            "id": "empty wall",
+            "objects": [
+              "tally wall"
+            ],
+            "min_visible_fraction": 0.6
+          }
+        ],
+        "background": []
+      }
+    }
+  },
+  "preflight_only": false,
+  "engine": "EEVEE",
+  "denoising": false,
+  "spatial_samples": 32,
+  "render_sampling_hz": 30,
+  "rendered": [
+    {
+      "frame": 2819,
+      "render_seconds": 26.827338185000002,
+      "near_black_percent": 0.6145833333333333
+    },
+    {
+      "frame": 2820,
+      "render_seconds": 11.660711386000003,
+      "near_black_percent": 0.6122685185185185
+    },
+    {
+      "frame": 2821,
+      "render_seconds": 11.637756569000004,
+      "near_black_percent": 0.6149691358024691
+    },
+    {
+      "frame": 2822,
+      "render_seconds": 11.722795076000011,
+      "near_black_percent": 0.6128472222222223
+    },
+    {
+      "frame": 2823,
+      "render_seconds": 11.657472858000006,
+      "near_black_percent": 0.6122685185185185
+    },
+    {
+      "frame": 2824,
+      "render_seconds": 11.542717847999995,
+      "near_black_percent": 0.6141975308641976
+    },
+    {
+      "frame": 2825,
+      "render_seconds": 11.524390072000017,
+      "near_black_percent": 0.6138117283950617
+    },
+    {
+      "frame": 2826,
+      "render_seconds": 11.579443756000018,
+      "near_black_percent": 0.6143904320987654
+    },
+    {
+      "frame": 2827,
+      "render_seconds": 11.551292778000004,
+      "near_black_percent": 0.6186342592592592
+    },
+    {
+      "frame": 2828,
+      "render_seconds": 11.453107253999974,
+      "near_black_percent": 0.6209490740740741
+    },
+    {
+      "frame": 2829,
+      "render_seconds": 11.49165436200002,
+      "near_black_percent": 0.6197916666666666
+    },
+    {
+      "frame": 2830,
+      "render_seconds": 11.538070779000009,
+      "near_black_percent": 0.623070987654321
+    },
+    {
+      "frame": 2831,
+      "render_seconds": 11.538646663000009,
+      "near_black_percent": 0.6205632716049383
+    },
+    {
+      "frame": 2832,
+      "render_seconds": 11.595082150999986,
+      "near_black_percent": 0.6255787037037037
+    },
+    {
+      "frame": 2833,
+      "render_seconds": 11.575683580000032,
+      "near_black_percent": 0.6248070987654321
+    },
+    {
+      "frame": 2834,
+      "render_seconds": 11.395645487999957,
+      "near_black_percent": 0.6278935185185185
+    },
+    {
+      "frame": 2835,
+      "render_seconds": 11.360859029999972,
+      "near_black_percent": 0.6257716049382716
+    },
+    {
+      "frame": 2836,
+      "render_seconds": 11.393316977999973,
+      "near_black_percent": 0.6257716049382716
+    },
+    {
+      "frame": 2837,
+      "render_seconds": 11.396968716000003,
+      "near_black_percent": 0.6294367283950617
+    },
+    {
+      "frame": 2838,
+      "render_seconds": 11.467495096999983,
+      "near_black_percent": 0.6275077160493827
+    },
+    {
+      "frame": 2839,
+      "render_seconds": 11.500156593999975,
+      "near_black_percent": 0.6309799382716049
+    },
+    {
+      "frame": 2840,
+      "render_seconds": 11.499612620999983,
+      "near_black_percent": 0.6300154320987654
+    },
+    {
+      "frame": 2841,
+      "render_seconds": 11.470196261000012,
+      "near_black_percent": 0.6346450617283951
+    },
+    {
+      "frame": 2842,
+      "render_seconds": 11.453176122000002,
+      "near_black_percent": 0.6332947530864197
+    }
+  ],
+  "rows": [
+    {
+      "frame": 2819,
+      "shot": "sh45",
+      "unit_window": [
+        2819,
+        2861
+      ],
+      "actor_qc": {},
+      "geometry": {
+        "held_pose": true,
+        "static_seating": []
+      },
+      "direction": {
+        "beat_type": "geography",
+        "principal": null,
+        "listeners": [],
+        "camera_move": "drift",
+        "grade": {
+          "preset": "warm_saturated_v1",
+          "look": "AgX - Medium High Contrast",
+          "exposure": -0.12,
+          "saturation": 1.18
+        },
+        "actors": {},
+        "pure_establishing": true,
+        "landmarks": {
+          "empty wall": {
+            "pass": false,
+            "width": 1,
+            "height": 0.051894694566726685,
+            "ray": {
+              "samples": 12,
+              "blocked": 6,
+              "bounds": [
+                -0.06289172172546387,
+                1.0628917217254639,
+                0.4562014043331146,
+                0.5080960988998413,
+                5.438560485839844
+              ],
+              "safe": false,
+              "visible_fraction": 0.5,
+              "blockers": [
+                "wall cap"
+              ]
+            }
+          }
+        }
+      }
+    },
+    {
+      "frame": 2820,
+      "shot": "sh45",
+      "unit_window": [
+        2819,
+        2861
+      ],
+      "actor_qc": {},
+      "geometry": {
+        "held_pose": true,
+        "static_seating": []
+      },
+      "direction": {
+        "beat_type": "geography",
+        "principal": null,
+        "listeners": [],
+        "camera_move": "drift",
+        "grade": {
+          "preset": "warm_saturated_v1",
+          "look": "AgX - Medium High Contrast",
+          "exposure": -0.12,
+          "saturation": 1.18
+        },
+        "actors": {},
+        "pure_establishing": true,
+        "landmarks": {
+          "empty wall": {
+            "pass": true,
+            "width": 1,
+            "height": 0.052347809076309204,
+            "ray": {
+              "samples": 9,
+              "blocked": 3,
+              "bounds": [
+                -0.06287125498056412,
+                1.0637364387512207,
+                0.4559551179409027,
+                0.5083029270172119,
+                5.430334568023682
+              ],
+              "safe": false,
+              "visible_fraction": 0.6666666666666667,
+              "blockers": [
+                "wall cap"
+              ]
+            }
+          }
+        }
+      }
+    },
+    {
+      "frame": 2821,
+      "shot": "sh45",
+      "unit_window": [
+        2819,
+        2861
+      ],
+      "actor_qc": {},
+      "geometry": {
+        "held_pose": true,
+        "static_seating": []
+      },
+      "direction": {
+        "beat_type": "geography",
+        "principal": null,
+        "listeners": [],
+        "camera_move": "drift",
+        "grade": {
+          "preset": "warm_saturated_v1",
+          "look": "AgX - Medium High Contrast",
+          "exposure": -0.12,
+          "saturation": 1.18
+        },
+        "actors": {},
+        "pure_establishing": true,
+        "landmarks": {
+          "empty wall": {
+            "pass": true,
+            "width": 1,
+            "height": 0.05280295014381409,
+            "ray": {
+              "samples": 9,
+              "blocked": 3,
+              "bounds": [
+                -0.06284862011671066,
+                1.0645827054977417,
+                0.45570746064186096,
+                0.508510410785675,
+                5.422109603881836
+              ],
+              "safe": false,
+              "visible_fraction": 0.6666666666666667,
+              "blockers": [
+                "wall cap"
+              ]
+            }
+          }
+        }
+      }
+    },
+    {
+      "frame": 2822,
+      "shot": "sh45",
+      "unit_window": [
+        2819,
+        2861
+      ],
+      "actor_qc": {},
+      "geometry": {
+        "held_pose": true,
+        "static_seating": []
+      },
+      "direction": {
+        "beat_type": "geography",
+        "principal": null,
+        "listeners": [],
+        "camera_move": "drift",
+        "grade": {
+          "preset": "warm_saturated_v1",
+          "look": "AgX - Medium High Contrast",
+          "exposure": -0.12,
+          "saturation": 1.18
+        },
+        "actors": {},
+        "pure_establishing": true,
+        "landmarks": {
+          "empty wall": {
+            "pass": true,
+            "width": 1,
+            "height": 0.05326011776924133,
+            "ray": {
+              "samples": 9,
+              "blocked": 3,
+              "bounds": [
+                -0.0628240555524826,
+                1.0654308795928955,
+                0.45545831322669983,
+                0.5087184309959412,
+                5.413884162902832
+              ],
+              "safe": false,
+              "visible_fraction": 0.6666666666666667,
+              "blockers": [
+                "wall cap"
+              ]
+            }
+          }
+        }
+      }
+    },
+    {
+      "frame": 2823,
+      "shot": "sh45",
+      "unit_window": [
+        2819,
+        2861
+      ],
+      "actor_qc": {},
+      "geometry": {
+        "held_pose": true,
+        "static_seating": []
+      },
+      "direction": {
+        "beat_type": "geography",
+        "principal": null,
+        "listeners": [],
+        "camera_move": "drift",
+        "grade": {
+          "preset": "warm_saturated_v1",
+          "look": "AgX - Medium High Contrast",
+          "exposure": -0.12,
+          "saturation": 1.18
+        },
+        "actors": {},
+        "pure_establishing": true,
+        "landmarks": {
+          "empty wall": {
+            "pass": true,
+            "width": 1,
+            "height": 0.053719401359558105,
+            "ray": {
+              "samples": 9,
+              "blocked": 3,
+              "bounds": [
+                -0.06279706209897995,
+                1.0662806034088135,
+                0.455207884311676,
+                0.5089272856712341,
+                5.405660152435303
+              ],
+              "safe": false,
+              "visible_fraction": 0.6666666666666667,
+              "blockers": [
+                "wall cap"
+              ]
+            }
+          }
+        }
+      }
+    },
+    {
+      "frame": 2824,
+      "shot": "sh45",
+      "unit_window": [
+        2819,
+        2861
+      ],
+      "actor_qc": {},
+      "geometry": {
+        "held_pose": true,
+        "static_seating": []
+      },
+      "direction": {
+        "beat_type": "geography",
+        "principal": null,
+        "listeners": [],
+        "camera_move": "drift",
+        "grade": {
+          "preset": "warm_saturated_v1",
+          "look": "AgX - Medium High Contrast",
+          "exposure": -0.12,
+          "saturation": 1.18
+        },
+        "actors": {},
+        "pure_establishing": true,
+        "landmarks": {
+          "empty wall": {
+            "pass": true,
+            "width": 1,
+            "height": 0.054180651903152466,
+            "ray": {
+              "samples": 9,
+              "blocked": 3,
+              "bounds": [
+                -0.06276793777942657,
+                1.0671321153640747,
+                0.45495596528053284,
+                0.5091366171836853,
+                5.397435665130615
+              ],
+              "safe": false,
+              "visible_fraction": 0.6666666666666667,
+              "blockers": [
+                "wall cap"
+              ]
+            }
+          }
+        }
+      }
+    },
+    {
+      "frame": 2825,
+      "shot": "sh45",
+      "unit_window": [
+        2819,
+        2861
+      ],
+      "actor_qc": {},
+      "geometry": {
+        "held_pose": true,
+        "static_seating": []
+      },
+      "direction": {
+        "beat_type": "geography",
+        "principal": null,
+        "listeners": [],
+        "camera_move": "drift",
+        "grade": {
+          "preset": "warm_saturated_v1",
+          "look": "AgX - Medium High Contrast",
+          "exposure": -0.12,
+          "saturation": 1.18
+        },
+        "actors": {},
+        "pure_establishing": true,
+        "landmarks": {
+          "empty wall": {
+            "pass": true,
+            "width": 1,
+            "height": 0.05464401841163635,
+            "ray": {
+              "samples": 9,
+              "blocked": 3,
+              "bounds": [
+                -0.06273670494556427,
+                1.0679854154586792,
+                0.4547026455402374,
+                0.5093466639518738,
+                5.389211177825928
+              ],
+              "safe": false,
+              "visible_fraction": 0.6666666666666667,
+              "blockers": [
+                "wall cap"
+              ]
+            }
+          }
+        }
+      }
+    },
+    {
+      "frame": 2826,
+      "shot": "sh45",
+      "unit_window": [
+        2819,
+        2861
+      ],
+      "actor_qc": {},
+      "geometry": {
+        "held_pose": true,
+        "static_seating": []
+      },
+      "direction": {
+        "beat_type": "geography",
+        "principal": null,
+        "listeners": [],
+        "camera_move": "drift",
+        "grade": {
+          "preset": "warm_saturated_v1",
+          "look": "AgX - Medium High Contrast",
+          "exposure": -0.12,
+          "saturation": 1.18
+        },
+        "actors": {},
+        "pure_establishing": true,
+        "landmarks": {
+          "empty wall": {
+            "pass": true,
+            "width": 1,
+            "height": 0.05510953068733215,
+            "ray": {
+              "samples": 9,
+              "blocked": 3,
+              "bounds": [
+                -0.0627031922340393,
+                1.0688402652740479,
+                0.4544476568698883,
+                0.5095571875572205,
+                5.380987644195557
+              ],
+              "safe": false,
+              "visible_fraction": 0.6666666666666667,
+              "blockers": [
+                "wall cap"
+              ]
+            }
+          }
+        }
+      }
+    },
+    {
+      "frame": 2827,
+      "shot": "sh45",
+      "unit_window": [
+        2819,
+        2861
+      ],
+      "actor_qc": {},
+      "geometry": {
+        "held_pose": true,
+        "static_seating": []
+      },
+      "direction": {
+        "beat_type": "geography",
+        "principal": null,
+        "listeners": [],
+        "camera_move": "drift",
+        "grade": {
+          "preset": "warm_saturated_v1",
+          "look": "AgX - Medium High Contrast",
+          "exposure": -0.12,
+          "saturation": 1.18
+        },
+        "actors": {},
+        "pure_establishing": true,
+        "landmarks": {
+          "empty wall": {
+            "pass": true,
+            "width": 1,
+            "height": 0.055576980113983154,
+            "ray": {
+              "samples": 9,
+              "blocked": 3,
+              "bounds": [
+                -0.06266754865646362,
+                1.0696969032287598,
+                0.4541914463043213,
+                0.5097684264183044,
+                5.372764587402344
+              ],
+              "safe": false,
+              "visible_fraction": 0.6666666666666667,
+              "blockers": [
+                "wall cap"
+              ]
+            }
+          }
+        }
+      }
+    },
+    {
+      "frame": 2828,
+      "shot": "sh45",
+      "unit_window": [
+        2819,
+        2861
+      ],
+      "actor_qc": {},
+      "geometry": {
+        "held_pose": true,
+        "static_seating": []
+      },
+      "direction": {
+        "beat_type": "geography",
+        "principal": null,
+        "listeners": [],
+        "camera_move": "drift",
+        "grade": {
+          "preset": "warm_saturated_v1",
+          "look": "AgX - Medium High Contrast",
+          "exposure": -0.12,
+          "saturation": 1.18
+        },
+        "actors": {},
+        "pure_establishing": true,
+        "landmarks": {
+          "empty wall": {
+            "pass": true,
+            "width": 1,
+            "height": 0.05604660511016846,
+            "ray": {
+              "samples": 9,
+              "blocked": 3,
+              "bounds": [
+                -0.06262969970703125,
+                1.070555329322815,
+                0.4539337754249573,
+                0.5099803805351257,
+                5.364541053771973
+              ],
+              "safe": false,
+              "visible_fraction": 0.6666666666666667,
+              "blockers": [
+                "wall cap"
+              ]
+            }
+          }
+        }
+      }
+    },
+    {
+      "frame": 2829,
+      "shot": "sh45",
+      "unit_window": [
+        2819,
+        2861
+      ],
+      "actor_qc": {},
+      "geometry": {
+        "held_pose": true,
+        "static_seating": []
+      },
+      "direction": {
+        "beat_type": "geography",
+        "principal": null,
+        "listeners": [],
+        "camera_move": "drift",
+        "grade": {
+          "preset": "warm_saturated_v1",
+          "look": "AgX - Medium High Contrast",
+          "exposure": -0.12,
+          "saturation": 1.18
+        },
+        "actors": {},
+        "pure_establishing": true,
+        "landmarks": {
+          "empty wall": {
+            "pass": true,
+            "width": 1,
+            "height": 0.056518346071243286,
+            "ray": {
+              "samples": 9,
+              "blocked": 3,
+              "bounds": [
+                -0.06258963793516159,
+                1.0714153051376343,
+                0.4536745846271515,
+                0.5101929306983948,
+                5.356319904327393
+              ],
+              "safe": false,
+              "visible_fraction": 0.6666666666666667,
+              "blockers": [
+                "wall cap"
+              ]
+            }
+          }
+        }
+      }
+    },
+    {
+      "frame": 2830,
+      "shot": "sh45",
+      "unit_window": [
+        2819,
+        2861
+      ],
+      "actor_qc": {},
+      "geometry": {
+        "held_pose": true,
+        "static_seating": []
+      },
+      "direction": {
+        "beat_type": "geography",
+        "principal": null,
+        "listeners": [],
+        "camera_move": "drift",
+        "grade": {
+          "preset": "warm_saturated_v1",
+          "look": "AgX - Medium High Contrast",
+          "exposure": -0.12,
+          "saturation": 1.18
+        },
+        "actors": {},
+        "pure_establishing": true,
+        "landmarks": {
+          "empty wall": {
+            "pass": true,
+            "width": 1,
+            "height": 0.05699220299720764,
+            "ray": {
+              "samples": 9,
+              "blocked": 3,
+              "bounds": [
+                -0.06254734843969345,
+                1.0722770690917969,
+                0.45341387391090393,
+                0.5104060769081116,
+                5.348097801208496
+              ],
+              "safe": false,
+              "visible_fraction": 0.6666666666666667,
+              "blockers": [
+                "wall cap"
+              ]
+            }
+          }
+        }
+      }
+    },
+    {
+      "frame": 2831,
+      "shot": "sh45",
+      "unit_window": [
+        2819,
+        2861
+      ],
+      "actor_qc": {},
+      "geometry": {
+        "held_pose": true,
+        "static_seating": []
+      },
+      "direction": {
+        "beat_type": "geography",
+        "principal": null,
+        "listeners": [],
+        "camera_move": "drift",
+        "grade": {
+          "preset": "warm_saturated_v1",
+          "look": "AgX - Medium High Contrast",
+          "exposure": -0.12,
+          "saturation": 1.18
+        },
+        "actors": {},
+        "pure_establishing": true,
+        "landmarks": {
+          "empty wall": {
+            "pass": true,
+            "width": 1,
+            "height": 0.057468146085739136,
+            "ray": {
+              "samples": 9,
+              "blocked": 2,
+              "bounds": [
+                -0.0625028982758522,
+                1.0731406211853027,
+                0.45315179228782654,
+                0.5106199383735657,
+                5.339874744415283
+              ],
+              "safe": false,
+              "visible_fraction": 0.7777777777777778,
+              "blockers": [
+                "wall cap"
+              ]
+            }
+          }
+        }
+      }
+    },
+    {
+      "frame": 2832,
+      "shot": "sh45",
+      "unit_window": [
+        2819,
+        2861
+      ],
+      "actor_qc": {},
+      "geometry": {
+        "held_pose": true,
+        "static_seating": []
+      },
+      "direction": {
+        "beat_type": "geography",
+        "principal": null,
+        "listeners": [],
+        "camera_move": "drift",
+        "grade": {
+          "preset": "warm_saturated_v1",
+          "look": "AgX - Medium High Contrast",
+          "exposure": -0.12,
+          "saturation": 1.18
+        },
+        "actors": {},
+        "pure_establishing": true,
+        "landmarks": {
+          "empty wall": {
+            "pass": true,
+            "width": 1,
+            "height": 0.05794617533683777,
+            "ray": {
+              "samples": 9,
+              "blocked": 2,
+              "bounds": [
+                -0.062456127256155014,
+                1.0740059614181519,
+                0.4528881013393402,
+                0.510834276676178,
+                5.331655025482178
+              ],
+              "safe": false,
+              "visible_fraction": 0.7777777777777778,
+              "blockers": [
+                "wall cap"
+              ]
+            }
+          }
+        }
+      }
+    },
+    {
+      "frame": 2833,
+      "shot": "sh45",
+      "unit_window": [
+        2819,
+        2861
+      ],
+      "actor_qc": {},
+      "geometry": {
+        "held_pose": true,
+        "static_seating": []
+      },
+      "direction": {
+        "beat_type": "geography",
+        "principal": null,
+        "listeners": [],
+        "camera_move": "drift",
+        "grade": {
+          "preset": "warm_saturated_v1",
+          "look": "AgX - Medium High Contrast",
+          "exposure": -0.12,
+          "saturation": 1.18
+        },
+        "actors": {},
+        "pure_establishing": true,
+        "landmarks": {
+          "empty wall": {
+            "pass": true,
+            "width": 1,
+            "height": 0.058426350355148315,
+            "ray": {
+              "samples": 9,
+              "blocked": 2,
+              "bounds": [
+                -0.06240714341402054,
+                1.0748727321624756,
+                0.4526230990886688,
+                0.5110494494438171,
+                5.323434352874756
+              ],
+              "safe": false,
+              "visible_fraction": 0.7777777777777778,
+              "blockers": [
+                "wall cap"
+              ]
+            }
+          }
+        }
+      }
+    },
+    {
+      "frame": 2834,
+      "shot": "sh45",
+      "unit_window": [
+        2819,
+        2861
+      ],
+      "actor_qc": {},
+      "geometry": {
+        "held_pose": true,
+        "static_seating": []
+      },
+      "direction": {
+        "beat_type": "geography",
+        "principal": null,
+        "listeners": [],
+        "camera_move": "drift",
+        "grade": {
+          "preset": "warm_saturated_v1",
+          "look": "AgX - Medium High Contrast",
+          "exposure": -0.12,
+          "saturation": 1.18
+        },
+        "actors": {},
+        "pure_establishing": true,
+        "landmarks": {
+          "empty wall": {
+            "pass": true,
+            "width": 1,
+            "height": 0.05890864133834839,
+            "ray": {
+              "samples": 9,
+              "blocked": 2,
+              "bounds": [
+                -0.06235601007938385,
+                1.0757415294647217,
+                0.4523565173149109,
+                0.5112651586532593,
+                5.315214157104492
+              ],
+              "safe": false,
+              "visible_fraction": 0.7777777777777778,
+              "blockers": [
+                "wall cap"
+              ]
+            }
+          }
+        }
+      }
+    },
+    {
+      "frame": 2835,
+      "shot": "sh45",
+      "unit_window": [
+        2819,
+        2861
+      ],
+      "actor_qc": {},
+      "geometry": {
+        "held_pose": true,
+        "static_seating": []
+      },
+      "direction": {
+        "beat_type": "geography",
+        "principal": null,
+        "listeners": [],
+        "camera_move": "drift",
+        "grade": {
+          "preset": "warm_saturated_v1",
+          "look": "AgX - Medium High Contrast",
+          "exposure": -0.12,
+          "saturation": 1.18
+        },
+        "actors": {},
+        "pure_establishing": true,
+        "landmarks": {
+          "empty wall": {
+            "pass": true,
+            "width": 1,
+            "height": 0.05939313769340515,
+            "ray": {
+              "samples": 9,
+              "blocked": 2,
+              "bounds": [
+                -0.06230266019701958,
+                1.0766119956970215,
+                0.45208826661109924,
+                0.5114814043045044,
+                5.3069939613342285
+              ],
+              "safe": false,
+              "visible_fraction": 0.7777777777777778,
+              "blockers": [
+                "wall cap"
+              ]
+            }
+          }
+        }
+      }
+    },
+    {
+      "frame": 2836,
+      "shot": "sh45",
+      "unit_window": [
+        2819,
+        2861
+      ],
+      "actor_qc": {},
+      "geometry": {
+        "held_pose": true,
+        "static_seating": []
+      },
+      "direction": {
+        "beat_type": "geography",
+        "principal": null,
+        "listeners": [],
+        "camera_move": "drift",
+        "grade": {
+          "preset": "warm_saturated_v1",
+          "look": "AgX - Medium High Contrast",
+          "exposure": -0.12,
+          "saturation": 1.18
+        },
+        "actors": {},
+        "pure_establishing": true,
+        "landmarks": {
+          "empty wall": {
+            "pass": true,
+            "width": 1,
+            "height": 0.05987966060638428,
+            "ray": {
+              "samples": 9,
+              "blocked": 2,
+              "bounds": [
+                -0.062246907502412796,
+                1.0774840116500854,
+                0.45181864500045776,
+                0.511698305606842,
+                5.2987751960754395
+              ],
+              "safe": false,
+              "visible_fraction": 0.7777777777777778,
+              "blockers": [
+                "wall cap"
+              ]
+            }
+          }
+        }
+      }
+    },
+    {
+      "frame": 2837,
+      "shot": "sh45",
+      "unit_window": [
+        2819,
+        2861
+      ],
+      "actor_qc": {},
+      "geometry": {
+        "held_pose": true,
+        "static_seating": []
+      },
+      "direction": {
+        "beat_type": "geography",
+        "principal": null,
+        "listeners": [],
+        "camera_move": "drift",
+        "grade": {
+          "preset": "warm_saturated_v1",
+          "look": "AgX - Medium High Contrast",
+          "exposure": -0.12,
+          "saturation": 1.18
+        },
+        "actors": {},
+        "pure_establishing": true,
+        "landmarks": {
+          "empty wall": {
+            "pass": true,
+            "width": 1,
+            "height": 0.06036841869354248,
+            "ray": {
+              "samples": 9,
+              "blocked": 2,
+              "bounds": [
+                -0.062189020216464996,
+                1.0783578157424927,
+                0.4515473246574402,
+                0.5119157433509827,
+                5.290556907653809
+              ],
+              "safe": false,
+              "visible_fraction": 0.7777777777777778,
+              "blockers": [
+                "wall cap"
+              ]
+            }
+          }
+        }
+      }
+    },
+    {
+      "frame": 2838,
+      "shot": "sh45",
+      "unit_window": [
+        2819,
+        2861
+      ],
+      "actor_qc": {},
+      "geometry": {
+        "held_pose": true,
+        "static_seating": []
+      },
+      "direction": {
+        "beat_type": "geography",
+        "principal": null,
+        "listeners": [],
+        "camera_move": "drift",
+        "grade": {
+          "preset": "warm_saturated_v1",
+          "look": "AgX - Medium High Contrast",
+          "exposure": -0.12,
+          "saturation": 1.18
+        },
+        "actors": {},
+        "pure_establishing": true,
+        "landmarks": {
+          "empty wall": {
+            "pass": true,
+            "width": 1,
+            "height": 0.060859352350234985,
+            "ray": {
+              "samples": 9,
+              "blocked": 2,
+              "bounds": [
+                -0.06212884560227394,
+                1.0792335271835327,
+                0.45127466320991516,
+                0.5121340155601501,
+                5.2823381423950195
+              ],
+              "safe": false,
+              "visible_fraction": 0.7777777777777778,
+              "blockers": [
+                "wall cap"
+              ]
+            }
+          }
+        }
+      }
+    },
+    {
+      "frame": 2839,
+      "shot": "sh45",
+      "unit_window": [
+        2819,
+        2861
+      ],
+      "actor_qc": {},
+      "geometry": {
+        "held_pose": true,
+        "static_seating": []
+      },
+      "direction": {
+        "beat_type": "geography",
+        "principal": null,
+        "listeners": [],
+        "camera_move": "drift",
+        "grade": {
+          "preset": "warm_saturated_v1",
+          "look": "AgX - Medium High Contrast",
+          "exposure": -0.12,
+          "saturation": 1.18
+        },
+        "actors": {},
+        "pure_establishing": true,
+        "landmarks": {
+          "empty wall": {
+            "pass": true,
+            "width": 1,
+            "height": 0.06135246157646179,
+            "ray": {
+              "samples": 9,
+              "blocked": 2,
+              "bounds": [
+                -0.06206628680229187,
+                1.0801106691360474,
+                0.45100054144859314,
+                0.5123530030250549,
+                5.274120807647705
+              ],
+              "safe": false,
+              "visible_fraction": 0.7777777777777778,
+              "blockers": [
+                "wall cap"
+              ]
+            }
+          }
+        }
+      }
+    },
+    {
+      "frame": 2840,
+      "shot": "sh45",
+      "unit_window": [
+        2819,
+        2861
+      ],
+      "actor_qc": {},
+      "geometry": {
+        "held_pose": true,
+        "static_seating": []
+      },
+      "direction": {
+        "beat_type": "geography",
+        "principal": null,
+        "listeners": [],
+        "camera_move": "drift",
+        "grade": {
+          "preset": "warm_saturated_v1",
+          "look": "AgX - Medium High Contrast",
+          "exposure": -0.12,
+          "saturation": 1.18
+        },
+        "actors": {},
+        "pure_establishing": true,
+        "landmarks": {
+          "empty wall": {
+            "pass": true,
+            "width": 1,
+            "height": 0.0618477463722229,
+            "ray": {
+              "samples": 9,
+              "blocked": 2,
+              "bounds": [
+                -0.062001559883356094,
+                1.0809897184371948,
+                0.45072466135025024,
+                0.5125724077224731,
+                5.265904426574707
+              ],
+              "safe": false,
+              "visible_fraction": 0.7777777777777778,
+              "blockers": [
+                "wall cap"
+              ]
+            }
+          }
+        }
+      }
+    },
+    {
+      "frame": 2841,
+      "shot": "sh45",
+      "unit_window": [
+        2819,
+        2861
+      ],
+      "actor_qc": {},
+      "geometry": {
+        "held_pose": true,
+        "static_seating": []
+      },
+      "direction": {
+        "beat_type": "geography",
+        "principal": null,
+        "listeners": [],
+        "camera_move": "drift",
+        "grade": {
+          "preset": "warm_saturated_v1",
+          "look": "AgX - Medium High Contrast",
+          "exposure": -0.12,
+          "saturation": 1.18
+        },
+        "actors": {},
+        "pure_establishing": true,
+        "landmarks": {
+          "empty wall": {
+            "pass": true,
+            "width": 1,
+            "height": 0.06234517693519592,
+            "ray": {
+              "samples": 9,
+              "blocked": 2,
+              "bounds": [
+                -0.061934612691402435,
+                1.081870436668396,
+                0.45044729113578796,
+                0.5127924680709839,
+                5.257688045501709
+              ],
+              "safe": false,
+              "visible_fraction": 0.7777777777777778,
+              "blockers": [
+                "wall cap"
+              ]
+            }
+          }
+        }
+      }
+    },
+    {
+      "frame": 2842,
+      "shot": "sh45",
+      "unit_window": [
+        2819,
+        2861
+      ],
+      "actor_qc": {},
+      "geometry": {
+        "held_pose": true,
+        "static_seating": []
+      },
+      "direction": {
+        "beat_type": "geography",
+        "principal": null,
+        "listeners": [],
+        "camera_move": "drift",
+        "grade": {
+          "preset": "warm_saturated_v1",
+          "look": "AgX - Medium High Contrast",
+          "exposure": -0.12,
+          "saturation": 1.18
+        },
+        "actors": {},
+        "pure_establishing": true,
+        "landmarks": {
+          "empty wall": {
+            "pass": true,
+            "width": 1,
+            "height": 0.06284478306770325,
+            "ray": {
+              "samples": 9,
+              "blocked": 2,
+              "bounds": [
+                -0.06186528503894806,
+                1.0827529430389404,
+                0.4501684010028839,
+                0.5130131840705872,
+                5.249471664428711
+              ],
+              "safe": false,
+              "visible_fraction": 0.7777777777777778,
+              "blockers": [
+                "wall cap"
+              ]
+            }
+          }
+        }
+      }
+    }
+  ],
+  "extra": {},
+  "missing_props": []
+}

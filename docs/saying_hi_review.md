@@ -514,3 +514,116 @@ Both targeted preflights are terminal, with committed evidence retained. Run 461
 The supervisor explicitly authorized accepting numerically passing, visually readable native shots with honestly retained residual defects rather than repeating marginal corrections. The selected independently decoded native sources are 46141438017 (crossing/wall sh20–21 and hesitation sh32, exact publication af99e946786b69b6b4887355d301c2fa8bcfb25c) and 46143017209 attempt 2 (interview sh27, exact publication 07d3ebb3831a38fc698b227b5c8d798ca4ae9f90). All selected shots have 100% measured principal pose coverage and .033333s maximum holds, no external face ray blocks; sh32 min face height .420197 and own-ray visibility .92; sh27 both faces safely framed, min heights .122207/.121983, own visibility .916667/.92, well landmark measured visible. Sh27 remains wider than ideal, with excess sky; sh32 pencil outside crop. Sh20 moving cut not a completed stop. The independent committed native audit proves full decode and hashes; the assistant inspected decoded samples, not continuous playback. Full visual and physical-contact mastery is not certified.
 Release evidence: assets/saying_hi_review/round6/pilot_release_review.json (SHA-256 4ca4e152df1392093a5e2840609296d8340cd5ae27a0745d21190ca81cceb0b4; commit 3c505412eb1204b7aa033a36875f73b6db871520). Generic multi-source release check commit f6d5012f727938004dead0fe612b8f54501a1d5d retains numerical, digest, independent decode, exact selected staging and reviewed-frame evidence requirements. Explicit residual acceptance is confined to visual scale/contact/continuity, not motion/face/grade numerical failures. Original strict single-source contract unchanged.
 Full-film staging stories/saying_hi_round6_full_stage.json, commit 6abdf3f743e28c82ce6e9929fea0dcc25a99cb50, launch a1af972a4093891f378591dc20e080308384777c, run 46144679468: 48 shots, 26 prior flagged shots explicitly redirected, 154 native render tasks, 3036 target frames, 101.20s. No Round 5 footage reuse: a prior lack of flags does not establish conformance to new direction grammar; every shot is staged for new native rendering, including the selected pilot shots. Original script and temporary narration remain unchanged, no burned captions; EEVEE, denoising off, 540x960/30Hz, smoke before each chunk. Full master and per-shot before/after independent audit are pending actual workflow results; no rendered final claim at launch.
+
+## Full-film workflow run 46144679468
+
+Technical master verified: 101.20s, 3036 frames, source sampling 30 Hz, encoded 30 fps, SHA-256 5257e73b9c6aba9f69d791df4c059cb15e07ea14ee792253786dc5d330812b23. Visual approval pending.
+Master: assets/saying_hi_review/round6/saying_hi.mp4
+
+| Shot | Timeline (s) | Native frames delivered | Measured flags / specific known fixes |
+|---|---|---:|---|
+| sh01 | 0.00–2.97 | 89 | sh01-53 narrator: external blocked=0, safe=False, coverage=1.9100; sh01-77 narrator: external blocked=0, safe=False, coverage=1.9372; direction QC: flag |
+| sh02 | 2.97–4.07 | 33 | sh02-89 narrator: external blocked=0, safe=False, coverage=0.5701; sh02-89 otis: external blocked=0, safe=False, coverage=0.5597; sh02-113 narrator: external blocked=0, safe=False, coverage=0.5735; sh02-113 otis: external blocked=0, safe=False, coverage=0.5629; book detail not implemented by legacy set adapter; use a readable actual book prop; direction QC: flag |
+| sh03 | 4.07–6.77 | 81 | sh03-122 narrator: external blocked=0, safe=False, coverage=0.4195; sh03-146 narrator: external blocked=0, safe=False, coverage=0.4220; sh03-170 narrator: external blocked=0, safe=False, coverage=0.4232; sh03-194 narrator: external blocked=0, safe=False, coverage=0.4290; chart-making staging is preliminary; add physical book-to-paper and drawing contact |
+| sh04 | 6.77–9.83 | 92 | No flagged measurement; human visual review pending. |
+| sh05 | 9.83–14.23 | 132 | No flagged measurement; human visual review pending. |
+| sh06 | 14.23–15.97 | 52 | No flagged measurement; human visual review pending. |
+| sh07 | 15.97–17.07 | 33 | No flagged measurement; human visual review pending. |
+| sh08 | 17.07–20.97 | 117 | sh08-512 brody: external blocked=10, safe=True, coverage=0.1843; sh08-536 brody: external blocked=12, safe=True, coverage=0.1829; sh08-560 brody: external blocked=12, safe=True, coverage=0.1819; sh08-584 brody: external blocked=6, safe=True, coverage=0.1822; sh08-608 brody: external blocked=4, safe=True, coverage=0.1829; direction QC: flag |
+| sh09 | 20.97–23.73 | 83 | No flagged measurement; human visual review pending. |
+| sh10 | 23.73–26.03 | 69 | sh10-712: near-black 2.31539% >2%; wheelbarrow motion lacks verified hand/wheel contact |
+| sh11 | 26.03–28.07 | 61 | sh11-781 narrator: external blocked=0, safe=False, coverage=1.9000; sh11-805 narrator: external blocked=0, safe=False, coverage=1.9720; sh11-829 narrator: external blocked=0, safe=False, coverage=1.9210; Mom-card opening is not yet articulated; direction QC: flag |
+| sh12 | 28.07–28.90 | 25 | sh12-842 narrator: external blocked=0, safe=False, coverage=0.5734; sh12-842 otis: external blocked=0, safe=False, coverage=0.5615; sh12-866 narrator: external blocked=0, safe=False, coverage=0.5824; sh12-866 otis: external blocked=0, safe=False, coverage=0.5645; direction QC: flag |
+| sh13 | 28.90–32.50 | 108 | group shot requires visible chart and directed explanation review |
+| sh14 | 32.50–33.63 | 34 | sh14-975 narrator: external blocked=0, safe=False, coverage=1.7680; sh14-999 narrator: external blocked=0, safe=False, coverage=1.7724; direction QC: flag |
+| sh15 | 33.63–35.17 | 46 | No flagged measurement; human visual review pending. |
+| sh16 | 35.17–37.17 | 60 | sh16-1055 brody: external blocked=24, safe=True, coverage=0.2280; sh16-1079 brody: external blocked=20, safe=True, coverage=0.2279; sh16-1103 brody: external blocked=24, safe=True, coverage=0.2305; direction QC: flag |
+| sh17 | 37.17–39.83 | 80 | sh17-1155 kai: external blocked=0, safe=False, coverage=0.4861; ball trajectory and crayon contact unverified |
+| sh18 | 39.83–43.63 | 114 | sh18-1243 narrator: external blocked=0, safe=False, coverage=1.7680; sh18-1267 narrator: external blocked=0, safe=False, coverage=1.7690; sh18-1291 narrator: external blocked=0, safe=False, coverage=1.7736; chart insert only; narrator's look toward June still needs a distinct cut; direction QC: flag |
+| sh19 | 43.63–47.40 | 113 | sh19-1309 narrator: external blocked=0, safe=False, coverage=1.8855; sh19-1333 narrator: external blocked=0, safe=False, coverage=1.9350; sh19-1357 narrator: external blocked=0, safe=False, coverage=1.9800; sh19-1381 narrator: external blocked=0, safe=False, coverage=2.0135; sh19-1405 narrator: external blocked=0, safe=False, coverage=2.0654; separate narrator and June geography not verified; direction QC: flag |
+| sh20 | 47.40–50.93 | 106 | root_stop 0.6705140695243841 > 0.05; last source sample not support transition; Moving cut: locked native gait passed, no verified full stop; old endpoint discrepancy retained.; wide body height: 0.16713184118270874 (limit min 0.25; flag); wide support rays blocked: 41 (limit eq 0; flag); Measurements: wide body height=0.16713184118270874 (flag, n=86); wide support rays blocked=41 (flag, n=86) |
+| sh21 | 50.93–52.63 | 51 | stop timing and root-vs-plant QC require check |
+| sh22 | 52.63–53.63 | 30 | sh22-1579 otis: external blocked=19, safe=True, coverage=0.4834; sh22-1603 otis: external blocked=19, safe=True, coverage=0.4960 |
+| sh23 | 53.63–55.23 | 48 | interview approach uses legacy staging; actual continuous walk not implemented |
+| sh24 | 55.23–55.90 | 20 | sh24-1657 ava: external blocked=10, safe=False, coverage=0.6089; sh24-1657 narrator: external blocked=0, safe=False, coverage=0.5926; direction QC: flag |
+| sh25 | 55.90–58.17 | 68 | sh25-1677 ava: external blocked=0, safe=False, coverage=0.6358; sh25-1677 brody: external blocked=5, safe=False, coverage=0.4880; sh25-1701 ava: external blocked=0, safe=False, coverage=0.6302; sh25-1701 brody: external blocked=1, safe=False, coverage=0.4875; sh25-1725 ava: external blocked=0, safe=False, coverage=0.6296; sh25-1725 brody: external blocked=0, safe=False, coverage=0.4899; dog behavior and photo composition require review; direction QC: flag |
+| sh26 | 58.17–60.23 | 62 | sh26-1745 bella: external blocked=0, safe=False, coverage=0.4779; sh26-1745 chase: external blocked=0, safe=False, coverage=0.5090; sh26-1769 bella: external blocked=0, safe=False, coverage=0.4657; sh26-1769 chase: external blocked=0, safe=False, coverage=0.5083; sh26-1793 bella: external blocked=0, safe=False, coverage=0.4581; sh26-1793 chase: external blocked=0, safe=False, coverage=0.5074; bag movement and seat placement are analytic; hand attachment and support not verified; direction QC: flag |
+| sh27 | 60.23–62.77 | 76 | sh27-1807 cleo: external blocked=0, safe=False, coverage=0.5694; sh27-1807 kai: external blocked=0, safe=False, coverage=0.5768; sh27-1831 cleo: external blocked=0, safe=False, coverage=0.5666; sh27-1831 kai: external blocked=0, safe=False, coverage=0.5767; sh27-1855 cleo: external blocked=0, safe=False, coverage=0.5674; sh27-1855 kai: external blocked=0, safe=False, coverage=0.5636; sh27-1879 cleo: external blocked=0, safe=False, coverage=0.5685; sh27-1879 kai: external blocked=0, safe=False, coverage=0.5641; Native well-side interview: both faces readable and well visible, but nearly full-body framing and excess sky rather than ideal intimate close two-shot. |
+| sh28 | 62.77–64.47 | 51 | sh28-1883 brody: external blocked=0, safe=False, coverage=0.4712; sh28-1883 daisy: external blocked=0, safe=False, coverage=0.6313; sh28-1907 brody: external blocked=0, safe=False, coverage=0.4708; sh28-1907 daisy: external blocked=0, safe=False, coverage=0.6310; sh28-1931 brody: external blocked=0, safe=False, coverage=0.4738; sh28-1931 daisy: external blocked=0, safe=False, coverage=0.6414; direction QC: flag |
+| sh29 | 64.47–65.93 | 44 | sh29-1934 chase: external blocked=6, safe=False, coverage=0.6067; sh29-1934 ella: external blocked=8, safe=False, coverage=0.5837; sh29-1958 chase: external blocked=3, safe=False, coverage=0.6082; sh29-1958 ella: external blocked=4, safe=False, coverage=0.5825; dog behavior and photo composition require review; direction QC: flag |
+| sh30 | 65.93–69.60 | 110 | sh30-1978 brody: external blocked=0, safe=False, coverage=0.4854; sh30-1978 faye: external blocked=0, safe=False, coverage=0.5714; sh30-2002 brody: external blocked=0, safe=False, coverage=0.4880; sh30-2002 faye: external blocked=0, safe=False, coverage=0.5804; sh30-2006 chase: external blocked=0, safe=False, coverage=0.5062; sh30-2006 gia: external blocked=0, safe=False, coverage=0.4753; sh30-2030 chase: external blocked=0, safe=False, coverage=0.5054; sh30-2030 gia: external blocked=0, safe=False, coverage=0.4725; sh30-2033 hana: external blocked=10, safe=False, coverage=0.5736; sh30-2033 kai: external blocked=0, safe=False, coverage=0.5716; sh30-2057 hana: external blocked=0, safe=False, coverage=0.5816; sh30-2057 kai: external blocked=0, safe=False, coverage=0.5763; sh30-2060 ivy: external blocked=10, safe=False, coverage=0.5411; sh30-2060 kai: external blocked=0, safe=False, coverage=0.5984; sh30-2084 ivy: external blocked=1, safe=False, coverage=0.5469; sh30-2084 kai: external blocked=0, safe=False, coverage=0.6028; montage saved-seat action is analytic; physical contact not verified; direction QC: flag |
+| sh31 | 69.60–71.13 | 46 | legacy reverse framing, external and own-face rays separated in new QC; standing-seat intersections: None (limit eq 0; unmeasured); speaker facing dot: None (limit min 0.72; unmeasured); speaker body visibility: None (limit min 0.9; unmeasured); speaker body safe: None (limit eq True; unmeasured); unrelated foreground ray blocks: None (limit eq 0; unmeasured); pencil external rays blocked: None (limit eq 0; unmeasured); pencil visible fraction: None (limit min 0.8421052631578947; unmeasured); pencil safe frame: None (limit eq True; unmeasured); Measurements: standing-seat intersections=None (unmeasured, n=0); speaker facing dot=None (unmeasured, n=0); speaker body visibility=None (unmeasured, n=0); speaker body safe=None (unmeasured, n=0); unrelated foreground ray blocks=None (unmeasured, n=0); pencil external rays blocked=None (unmeasured, n=0); pencil visible fraction=None (unmeasured, n=0); pencil safe frame=None (unmeasured, n=0) |
+| sh32 | 71.13–72.40 | 38 | sh32-2134 narrator: external blocked=0, safe=False, coverage=3.4609; sh32-2158 narrator: external blocked=0, safe=False, coverage=3.7605; Native face-filling hesitation passes face and flow; shaking pencil outside frame, literal prop action not demonstrated.; speaker body safe: False (limit eq True; flag); pencil safe frame: False (limit eq True; flag); Measurements: standing-seat intersections=0 (pass, n=38); speaker facing dot=0.9158072173595428 (pass, n=38); speaker body visibility=1.0 (pass, n=38); speaker body safe=False (flag, n=38); unrelated foreground ray blocks=0 (pass, n=38); pencil external rays blocked=0 (pass, n=38); pencil visible fraction=1.0 (pass, n=38); pencil safe frame=False (flag, n=38) |
+| sh33 | 72.40–73.37 | 29 | sh33-2172 narrator: external blocked=0, safe=False, coverage=2.0706; sh33-2196 narrator: external blocked=0, safe=False, coverage=2.0630; narrator facing and pencil readability require playback review; direction QC: flag; speaker body visibility: 0.05882352941176472 (limit min 0.9; flag); speaker body safe: False (limit eq True; flag); unrelated foreground ray blocks: 9 (limit eq 0; flag); pencil external rays blocked: 19 (limit eq 0; flag); pencil visible fraction: 0.0 (limit min 0.8421052631578947; flag); pencil safe frame: False (limit eq True; flag); Measurements: standing-seat intersections=0 (pass, n=29); speaker facing dot=0.932354748249054 (pass, n=29); speaker body visibility=0.05882352941176472 (flag, n=29); speaker body safe=False (flag, n=29); unrelated foreground ray blocks=9 (flag, n=29); pencil external rays blocked=19 (flag, n=29); pencil visible fraction=0.0 (flag, n=29); pencil safe frame=False (flag, n=29) |
+| sh34 | 73.37–75.27 | 57 | sh34-2201: near-black 19.47049% >2%; sh34-2201 june: external blocked=0, safe=False, coverage=2.3052; sh34-2225: near-black 18.30421% >2%; sh34-2225 june: external blocked=0, safe=False, coverage=2.2711; sh34-2249: near-black 15.00887% >2%; sh34-2249 june: external blocked=0, safe=False, coverage=2.3692; June response needs playback review; speaker facing dot: -0.9262747839093208 (limit min 0.72; flag); speaker body safe: False (limit eq True; flag); Measurements: standing-seat intersections=0 (pass, n=57); speaker facing dot=-0.9262747839093208 (flag, n=57); speaker body visibility=1.0 (pass, n=57); speaker body safe=False (flag, n=57); unrelated foreground ray blocks=0 (pass, n=57) |
+| sh35 | 75.27–76.43 | 35 | sh35-2258 narrator: external blocked=0, safe=False, coverage=1.6697; sh35-2282 narrator: external blocked=0, safe=False, coverage=1.6733; direction QC: flag |
+| sh36 | 76.43–78.97 | 76 | No flagged measurement; human visual review pending. |
+| sh37 | 78.97–81.97 | 90 | sh37-2369 narrator: external blocked=0, safe=False, coverage=1.8403; sh37-2393 narrator: external blocked=0, safe=False, coverage=1.8565; sh37-2417 narrator: external blocked=0, safe=False, coverage=1.8532; sh37-2441 narrator: external blocked=0, safe=False, coverage=1.8605; direction QC: flag |
+| sh38 | 81.97–84.10 | 64 | sh38-2507 brody: external blocked=17, safe=True, coverage=0.2021; direction QC: flag |
+| sh39 | 84.10–86.03 | 58 | chart insert is not a physical handheld close |
+| sh40 | 86.03–87.50 | 44 | sh40-2581 narrator: external blocked=0, safe=False, coverage=1.4893; sh40-2605 narrator: external blocked=0, safe=False, coverage=1.5218; direction QC: flag |
+| sh41 | 87.50–89.47 | 59 | sh41-2625 june: external blocked=10, safe=False, coverage=0.6087; sh41-2625 narrator: external blocked=0, safe=False, coverage=0.5952; sh41-2649 june: external blocked=9, safe=False, coverage=0.6053; sh41-2649 narrator: external blocked=0, safe=False, coverage=0.5926; sh41-2673 june: external blocked=3, safe=False, coverage=0.6072; sh41-2673 narrator: external blocked=0, safe=False, coverage=0.5960; direction QC: flag |
+| sh42 | 89.47–90.43 | 29 | No flagged measurement; human visual review pending. |
+| sh43 | 90.43–92.13 | 51 | sh43-2713 narrator: external blocked=0, safe=False, coverage=0.3591; sh43-2737 narrator: external blocked=0, safe=False, coverage=0.2866; named bench motion uses Round 4 candidate; full actor frame and own-face rays previously failed; settled all-face ray blocks (incl own): 3 (limit eq 0; flag); Measurements: dog occlusion=0 (pass, n=51); dog safe frame=True (pass, n=51); dog width=0.18016934394836426 (pass, n=51); dog height=0.0791131854057312 (pass, n=51); dog floor gap=1.5832483768463135e-08 (pass, n=51); seated hip gap=5.960464477539063e-08 (pass, n=6); settled facing=0.8608598930576328 (pass, n=6); settled all-face ray blocks (incl own)=3 (flag, n=6); named seat surface safe=True (pass, n=3); named seat surface visibility=0.29032258064516125 (pass, n=3); hips over seat surface=True (pass, n=6); raised support height=0.46482717990875244 (pass, n=3); seat supports reach ground=True (pass, n=3); move-over displacement=0.24000000953674316 (pass, n=51) |
+| sh44 | 92.13–93.97 | 55 | sh44-2764 max: external blocked=0, safe=False, coverage=0.2296; sh44-2788 max: external blocked=0, safe=False, coverage=0.2320; Monday crossing not yet driven by deterministic walk tracks; staged arrival only; direction QC: flag |
+| sh45 | 93.97–95.37 | 42 | direction QC: flag |
+| sh46 | 95.37–98.00 | 79 | No flagged measurement; human visual review pending. |
+| sh47 | 98.00–99.77 | 53 | sh47-2940 narrator: external blocked=0, safe=False, coverage=0.5721; sh47-2940 otis: external blocked=0, safe=False, coverage=0.5609; sh47-2964 narrator: external blocked=0, safe=False, coverage=0.5710; sh47-2964 otis: external blocked=0, safe=False, coverage=0.5606; sh47-2988 narrator: external blocked=0, safe=False, coverage=0.5795; sh47-2988 otis: external blocked=0, safe=False, coverage=0.5637; replacement-chart prop detail and shrug are approximate; direction QC: flag |
+| sh48 | 99.77–101.20 | 43 | No flagged measurement; human visual review pending. |
+
+### Round 5 → Round 6 per-shot comparison
+
+| Shot | Round 5 flags | Round 6 flags | Direction status |
+|---|---:|---:|---|
+| sh01 | 0 | 3 | flag |
+| sh02 | 1 | 6 | flag |
+| sh03 | 1 | 5 | numeric_pass |
+| sh04 | 0 | 0 | numeric_pass |
+| sh05 | 0 | 0 | numeric_pass |
+| sh06 | 0 | 0 | numeric_pass |
+| sh07 | 0 | 0 | numeric_pass |
+| sh08 | 0 | 6 | flag |
+| sh09 | 0 | 0 | numeric_pass |
+| sh10 | 1 | 2 | numeric_pass |
+| sh11 | 1 | 5 | flag |
+| sh12 | 0 | 5 | flag |
+| sh13 | 1 | 1 | numeric_pass |
+| sh14 | 0 | 3 | flag |
+| sh15 | 0 | 0 | numeric_pass |
+| sh16 | 0 | 4 | flag |
+| sh17 | 1 | 2 | numeric_pass |
+| sh18 | 6 | 5 | flag |
+| sh19 | 1 | 7 | flag |
+| sh20 | 3 | 5 | numeric_pass |
+| sh21 | 6 | 1 | numeric_pass |
+| sh22 | 0 | 2 | numeric_pass |
+| sh23 | 1 | 1 | numeric_pass |
+| sh24 | 1 | 3 | flag |
+| sh25 | 4 | 8 | flag |
+| sh26 | 8 | 8 | flag |
+| sh27 | 4 | 9 | numeric_pass |
+| sh28 | 3 | 7 | flag |
+| sh29 | 3 | 6 | flag |
+| sh30 | 5 | 18 | flag |
+| sh31 | 6 | 9 | numeric_pass |
+| sh32 | 3 | 5 | numeric_pass |
+| sh33 | 3 | 10 | flag |
+| sh34 | 4 | 9 | numeric_pass |
+| sh35 | 0 | 3 | flag |
+| sh36 | 0 | 0 | numeric_pass |
+| sh37 | 0 | 5 | flag |
+| sh38 | 0 | 2 | flag |
+| sh39 | 4 | 1 | numeric_pass |
+| sh40 | 0 | 3 | flag |
+| sh41 | 0 | 7 | flag |
+| sh42 | 0 | 0 | numeric_pass |
+| sh43 | 4 | 4 | numeric_pass |
+| sh44 | 1 | 4 | flag |
+| sh45 | 0 | 1 | flag |
+| sh46 | 0 | 0 | numeric_pass |
+| sh47 | 1 | 8 | flag |
+| sh48 | 0 | 0 | numeric_pass |
+Counts are not comparable quality scores: Round 6 adds stricter direction measurements; full before/after values and exact flagged fixes are in assets/saying_hi_review/round6/before_after_qc.json.
+New native staging and reusable adapters are candidate capabilities; this build demonstrates only what its actual committed renders and measured gates support. Unmeasured contact, failed geometry or unreviewed artistry is not certified.
+
+Source motion sampling is independent at 30 Hz, EEVEE 32 spatial samples, denoising off. Artistic QC is advisory; missing or invalid native media is a technical failure.
