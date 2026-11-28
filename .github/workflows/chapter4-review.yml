@@ -1,4 +1,4 @@
-name: Chapter 4 — Round 2 focused review
+name: Chapter 4 — Round 3 targeted review and PNG publication
 on:
   push:
     branches: [main]
@@ -27,61 +27,9 @@ jobs:
             kind: hair
             item: rounded_bob
             motion: none
-          - actor: dad
-            kind: hair
-            item: default
-            motion: none
-          - actor: dad
-            kind: hair
-            item: short_crew
-            motion: none
-          - actor: dad
-            kind: hair
-            item: side_part
-            motion: none
-          - actor: librarian
-            kind: hair
-            item: default
-            motion: none
-          - actor: librarian
-            kind: hair
-            item: rounded_bob
-            motion: none
-          - actor: patron_green
-            kind: hair
-            item: messy_fringe
-            motion: none
-          - actor: patron_blue
-            kind: hair
-            item: curly_crop
-            motion: none
           - actor: lead
             kind: outfit
             item: forest_bomber
-            motion: none
-          - actor: dad
-            kind: outfit
-            item: charcoal_suit
-            motion: none
-          - actor: teacher
-            kind: outfit
-            item: navy_formal
-            motion: none
-          - actor: librarian
-            kind: outfit
-            item: plum_blazer
-            motion: none
-          - actor: librarian
-            kind: outfit
-            item: teal_cardigan
-            motion: none
-          - actor: patron_green
-            kind: outfit
-            item: school_polo
-            motion: none
-          - actor: patron_blue
-            kind: outfit
-            item: sports_kit
             motion: none
           - actor: lead
             kind: clearance
@@ -90,14 +38,6 @@ jobs:
           - actor: lead
             kind: clearance
             item: forest_bomber
-            motion: sit
-          - actor: friend
-            kind: clearance
-            item: rugby_polo
-            motion: walk
-          - actor: friend
-            kind: clearance
-            item: rugby_polo
             motion: sit
     steps:
       - uses: actions/checkout@v4
@@ -134,3 +74,47 @@ jobs:
           path: render/chapter4/
           if-no-files-found: warn
           retention-days: 30
+  publish-boards:
+    name: Publish complete round 2 and 3 PNG evidence to repository
+    needs: render-item
+    if: ${{ always() && needs.render-item.result == 'success' }}
+    runs-on: ubuntu-24.04
+    timeout-minutes: 12
+    permissions:
+      contents: write
+      actions: read
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+      - name: Download verified Round 2 source artifacts
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: gh run download 46096074284 --repo "${GITHUB_REPOSITORY}" --dir /tmp/ch4-r2
+      - uses: actions/download-artifact@v4
+        with:
+          path: /tmp/ch4-r3
+          pattern: chapter4-*
+      - name: Assemble PNG review boards and provenance
+        run: |
+          python3 -m pip install --quiet Pillow
+          python3 scripts/publish_chapter4_review.py /tmp/ch4-r2 /tmp/ch4-r3 "${GITHUB_RUN_ID}"
+      - name: Commit verified PNG files
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add assets/chapter4_review/
+          git diff --cached --stat
+          if git diff --cached --quiet; then echo "Boards already committed"; else
+            git commit -m "Publish Chapter 4 Round 2 and 3 actual render PNG review boards"
+            git pull --rebase origin main
+            git push origin HEAD:main
+          fi
+          git rev-parse HEAD
+      - name: Upload review packet as supplementary evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: chapter4-review-published-pngs
+          path: assets/chapter4_review/
+          if-no-files-found: warn
