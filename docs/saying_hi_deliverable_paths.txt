@@ -1,12 +1,4 @@
-Saying Hi branch handover: exact committed paths
-Base: 95bb49139880436595d66dbba498d03fdd4eb7d6
-Evidence snapshot: 36596cfb327e2cc84b75bcbecda31795f00fb97e
-Inventory itself is included in the following list; generated after the snapshot.
-Existing modified files: SKILL.md
-Deleted files: 0
-Total changed/added paths including this inventory: 449
 
-PATHS
 .github/workflows/saying-hi-animatic-stills.yml
 .github/workflows/saying-hi-chart-proof.yml
 .github/workflows/saying-hi-crossing-retry.yml
@@ -16,12 +8,26 @@ PATHS
 .github/workflows/saying-hi-proof-preflight.yml
 .github/workflows/saying-hi-proof-release.yml
 .github/workflows/saying-hi-release-audit.yml
+.github/workflows/saying-hi-round3-precheck.yml
 .github/workflows/saying-hi-smoke.yml
+Base: 95bb49139880436595d66dbba498d03fdd4eb7d6
+Deleted files: 0
+Evidence snapshot: 36596cfb327e2cc84b75bcbecda31795f00fb97e
+Existing modified files: SKILL.md
+Inventory itself is included in the following list; generated after the snapshot.
+PATHS
 SKILL.md
+Saying Hi branch handover: exact committed paths
+Total changed/added paths including this inventory: 449
 assets/saying_hi_review/SHA256SUMS
 assets/saying_hi_review/actual_audio_validation.json
 assets/saying_hi_review/chart_initial_design.png
 assets/saying_hi_review/chart_replacement_design.png
+assets/saying_hi_review/corrections/round3_precheck/crossing/render.log
+assets/saying_hi_review/corrections/round3_precheck/june_answer/render.log
+assets/saying_hi_review/corrections/round3_precheck/june_question/render.log
+assets/saying_hi_review/corrections/round3_precheck/seating/render.log
+assets/saying_hi_review/corrections/round3_precheck/workflow_provenance.txt
 assets/saying_hi_review/deliberate_failure.log
 assets/saying_hi_review/draft_validation.json
 assets/saying_hi_review/map_diagnostic/source_scene_graph.json
@@ -441,6 +447,7 @@ scripts/encode_saying_hi_proof.py
 scripts/export_shot_animatic.py
 scripts/merge_saying_hi_chart_chunks.py
 scripts/render_saying_hi_animatic_stills.py
+scripts/render_saying_hi_round3.py
 scripts/render_saying_hi_shot.py
 scripts/render_saying_hi_smoke.py
 scripts/retime_shot_plan.py
