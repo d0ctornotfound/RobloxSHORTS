@@ -1,0 +1,105 @@
+{
+  "run_id": "46143862836",
+  "source_commit": "d1a3098b698821850bf8a4b2034be7336ee1f8e5",
+  "status": "preflight_only",
+  "shots": {
+    "sh27": {
+      "status": "flag",
+      "direction": {
+        "status": "flag",
+        "beat_type": "interview",
+        "principal": "kai",
+        "actors": {
+          "cleo": {
+            "motion_coverage": 1.0,
+            "held_pose_max_s": 0.03333333333333333,
+            "start_in_motion": true,
+            "end_in_motion": true,
+            "transitions": 75
+          },
+          "kai": {
+            "motion_coverage": 1.0,
+            "held_pose_max_s": 0.03333333333333333,
+            "start_in_motion": true,
+            "end_in_motion": true,
+            "transitions": 75
+          }
+        },
+        "faces": {
+          "kai": {
+            "min_height": 0.20938542485237122,
+            "safe_all": false,
+            "min_facing_dot": 0.8994770720601082,
+            "min_ray_visibility": 0.92,
+            "max_external_blocks": 0,
+            "min_ray_samples": 25
+          },
+          "cleo": {
+            "min_height": 0.17224672436714172,
+            "safe_all": true,
+            "min_facing_dot": 0.8839371134527028,
+            "min_ray_visibility": 0.92,
+            "max_external_blocks": 0,
+            "min_ray_samples": 25
+          }
+        },
+        "checks": {
+          "principal_motion": true,
+          "principal_edges": true,
+          "all_actor_holds": true,
+          "grade_declared": true,
+          "readable_faces": true,
+          "two_face_bounds": false,
+          "landmarks_visible": false
+        },
+        "grade": {
+          "preset": "warm_saturated_v1",
+          "look": "AgX - Medium High Contrast",
+          "exposure": -0.12,
+          "saturation": 1.18,
+          "directed_bounce": {
+            "energy": 680.0,
+            "color": [
+              1.0,
+              0.8799999952316284,
+              0.75
+            ],
+            "size": 4.0,
+            "exposure": 0.019999999552965164,
+            "position": [
+              -0.19207371771335602,
+              5.396986961364746,
+              2.7950899600982666
+            ]
+          }
+        },
+        "threshold_scene_units": 0.0015,
+        "visual_review_required": true
+      },
+      "external_face_ray_blocks_max": {
+        "cleo": 0,
+        "kai": 0
+      },
+      "smoke_frames": [
+        {
+          "frame": 1807,
+          "render_seconds": 33.40162709200001,
+          "near_black_percent": 0.26446759259259256
+        },
+        {
+          "frame": 1845,
+          "render_seconds": 14.485904394000016,
+          "near_black_percent": 0.6898148148148148
+        },
+        {
+          "frame": 1882,
+          "render_seconds": 14.488940361999994,
+          "near_black_percent": 0.4814814814814815
+        }
+      ],
+      "extra": {}
+    }
+  },
+  "native_pilot_authorized": false,
+  "numerical_pass": false
+}
