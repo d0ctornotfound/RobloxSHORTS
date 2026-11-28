@@ -1,0 +1,2502 @@
+{
+  "rendered": [
+    {
+      "frame": 1807,
+      "render_seconds": 38.700274491000016,
+      "near_black_percent": 0.6078317901234568
+    },
+    {
+      "frame": 1808,
+      "render_seconds": 15.445757232999995,
+      "near_black_percent": 0.60570987654321
+    },
+    {
+      "frame": 1809,
+      "render_seconds": 15.407562833999975,
+      "near_black_percent": 0.6026234567901235
+    },
+    {
+      "frame": 1810,
+      "render_seconds": 15.364918500999977,
+      "near_black_percent": 0.6014660493827161
+    },
+    {
+      "frame": 1811,
+      "render_seconds": 15.329385456000011,
+      "near_black_percent": 0.5995370370370371
+    },
+    {
+      "frame": 1812,
+      "render_seconds": 15.359077024000044,
+      "near_black_percent": 0.5935570987654321
+    },
+    {
+      "frame": 1813,
+      "render_seconds": 15.355556406000005,
+      "near_black_percent": 0.5949074074074074
+    },
+    {
+      "frame": 1814,
+      "render_seconds": 15.344562523999969,
+      "near_black_percent": 0.5923996913580247
+    },
+    {
+      "frame": 1815,
+      "render_seconds": 15.37856007199997,
+      "near_black_percent": 0.5900848765432098
+    },
+    {
+      "frame": 1816,
+      "render_seconds": 15.301557716000048,
+      "near_black_percent": 0.5889274691358024
+    },
+    {
+      "frame": 1817,
+      "render_seconds": 15.343885681000017,
+      "near_black_percent": 0.586033950617284
+    },
+    {
+      "frame": 1818,
+      "render_seconds": 15.39628989900001,
+      "near_black_percent": 0.5852623456790124
+    },
+    {
+      "frame": 1819,
+      "render_seconds": 15.419521686999985,
+      "near_black_percent": 0.5829475308641976
+    },
+    {
+      "frame": 1820,
+      "render_seconds": 15.393772041999966,
+      "near_black_percent": 0.5827546296296295
+    },
+    {
+      "frame": 1821,
+      "render_seconds": 15.42906236999994,
+      "near_black_percent": 0.5802469135802469
+    },
+    {
+      "frame": 1822,
+      "render_seconds": 15.430719846999978,
+      "near_black_percent": 0.5842978395061729
+    },
+    {
+      "frame": 1823,
+      "render_seconds": 15.436139198999967,
+      "near_black_percent": 0.5889274691358024
+    },
+    {
+      "frame": 1824,
+      "render_seconds": 15.445779654000034,
+      "near_black_percent": 0.5873842592592593
+    },
+    {
+      "frame": 1825,
+      "render_seconds": 15.44109636799999,
+      "near_black_percent": 0.5868055555555555
+    },
+    {
+      "frame": 1826,
+      "render_seconds": 15.454727733000027,
+      "near_black_percent": 0.5885416666666666
+    },
+    {
+      "frame": 1827,
+      "render_seconds": 15.42893062600001,
+      "near_black_percent": 0.5868055555555555
+    },
+    {
+      "frame": 1828,
+      "render_seconds": 15.470087675999935,
+      "near_black_percent": 0.5846836419753086
+    },
+    {
+      "frame": 1829,
+      "render_seconds": 15.433134693999932,
+      "near_black_percent": 0.5837191358024691
+    },
+    {
+      "frame": 1830,
+      "render_seconds": 15.433837228000016,
+      "near_black_percent": 0.5827546296296295
+    }
+  ],
+  "rows": [
+    {
+      "frame": 1807,
+      "shot": "sh27",
+      "actor_qc": {
+        "cleo": {
+          "bounds": [
+            0.1901198923587799,
+            0.6982604265213013,
+            0.30247610807418823,
+            0.7007465362548828,
+            4.115870952606201
+          ],
+          "safe": true,
+          "vertical_coverage": 0.3982704281806946,
+          "face_all": {
+            "samples": 9,
+            "blocked": 9,
+            "bounds": [
+              0.3581458330154419,
+              0.5084191560745239,
+              0.5913894772529602,
+              0.6786587834358215,
+              4.223630428314209
+            ],
+            "safe": true,
+            "visible_fraction": 0.0,
+            "blockers": [
+              "kai / head skinned",
+              "kai / hoodie folded hood"
+            ]
+          },
+          "face_external": {
+            "samples": 9,
+            "blocked": 9,
+            "bounds": [
+              0.3581458330154419,
+              0.5084191560745239,
+              0.5913894772529602,
+              0.6786587834358215,
+              4.223630428314209
+            ],
+            "safe": true,
+            "visible_fraction": 0.0,
+            "blockers": [
+              "kai / head skinned",
+              "kai / hoodie folded hood"
+            ]
+          },
+          "own_ray_difference": 0
+        },
+        "kai": {
+          "bounds": [
+            0.0926387831568718,
+            0.7797994017601013,
+            0.21742813289165497,
+            0.7460779547691345,
+            3.080458641052246
+          ],
+          "safe": true,
+          "vertical_coverage": 0.5286498218774796,
+          "face_all": {
+            "samples": 9,
+            "blocked": 9,
+            "bounds": [
+              0.3670271039009094,
+              0.566928505897522,
+              0.5926445722579956,
+              0.7058495879173279,
+              3.659053325653076
+            ],
+            "safe": true,
+            "visible_fraction": 0.0,
+            "blockers": [
+              "kai / head skinned",
+              "kai / hoodie folded hood"
+            ]
+          },
+          "face_external": {
+            "samples": 9,
+            "blocked": 0,
+            "bounds": [
+              0.3670271039009094,
+              0.566928505897522,
+              0.5926445722579956,
+              0.7058495879173279,
+              3.659053325653076
+            ],
+            "safe": true,
+            "visible_fraction": 1.0,
+            "blockers": []
+          },
+          "own_ray_difference": 9
+        }
+      },
+      "geometry": {
+        "held_pose": true,
+        "static_seating": []
+      }
+    },
+    {
+      "frame": 1808,
+      "shot": "sh27",
+      "actor_qc": {
+        "cleo": {
+          "bounds": [
+            0.1901198923587799,
+            0.6972875595092773,
+            0.30247610807418823,
+            0.7007817625999451,
+            4.093319416046143
+          ],
+          "safe": true,
+          "vertical_coverage": 0.39830565452575684,
+          "face_all": {
+            "samples": 9,
+            "blocked": 9,
+            "bounds": [
+              0.3576292097568512,
+              0.5084388852119446,
+              0.5911045074462891,
+              0.6786640882492065,
+              4.2222676277160645
+            ],
+            "safe": true,
+            "visible_fraction": 0.0,
+            "blockers": [
+              "kai / head skinned",
+              "kai / hoodie folded hood"
+            ]
+          },
+          "face_external": {
+            "samples": 9,
+            "blocked": 9,
+            "bounds": [
+              0.3576292097568512,
+              0.5084388852119446,
+              0.5911045074462891,
+              0.6786640882492065,
+              4.2222676277160645
+            ],
+            "safe": true,
+            "visible_fraction": 0.0,
+            "blockers": [
+              "kai / head skinned",
+              "kai / hoodie folded hood"
+            ]
+          },
+          "own_ray_difference": 0
+        },
+        "kai": {
+          "bounds": [
+            0.0926387831568718,
+            0.7786053419113159,
+            0.21742813289165497,
+            0.746097981929779,
+            3.080458641052246
+          ],
+          "safe": true,
+          "vertical_coverage": 0.5286698490381241,
+          "face_all": {
+            "samples": 9,
+            "blocked": 9,
+            "bounds": [
+              0.36699798703193665,
+              0.5672999024391174,
+              0.5923235416412354,
+              0.7056811451911926,
+              3.6606295108795166
+            ],
+            "safe": true,
+            "visible_fraction": 0.0,
+            "blockers": [
+              "kai / head skinned",
+              "kai / hoodie folded hood"
+            ]
+          },
+          "face_external": {
+            "samples": 9,
+            "blocked": 0,
+            "bounds": [
+              0.36699798703193665,
+              0.5672999024391174,
+              0.5923235416412354,
+              0.7056811451911926,
+              3.6606295108795166
+            ],
+            "safe": true,
+            "visible_fraction": 1.0,
+            "blockers": []
+          },
+          "own_ray_difference": 9
+        }
+      },
+      "geometry": {
+        "held_pose": true,
+        "static_seating": []
+      }
+    },
+    {
+      "frame": 1809,
+      "shot": "sh27",
+      "actor_qc": {
+        "cleo": {
+          "bounds": [
+            0.1901198923587799,
+            0.6961401700973511,
+            0.30247610807418823,
+            0.7008147239685059,
+            4.067514896392822
+          ],
+          "safe": true,
+          "vertical_coverage": 0.3983386158943176,
+          "face_all": {
+            "samples": 9,
+            "blocked": 9,
+            "bounds": [
+              0.3571161925792694,
+              0.5084596276283264,
+              0.5908201932907104,
+              0.6786676049232483,
+              4.220910549163818
+            ],
+            "safe": true,
+            "visible_fraction": 0.0,
+            "blockers": [
+              "kai / head skinned",
+              "kai / hoodie folded hood"
+            ]
+          },
+          "face_external": {
+            "samples": 9,
+            "blocked": 9,
+            "bounds": [
+              0.3571161925792694,
+              0.5084596276283264,
+              0.5908201932907104,
+              0.6786676049232483,
+              4.220910549163818
+            ],
+            "safe": true,
+            "visible_fraction": 0.0,
+            "blockers": [
+              "kai / head skinned",
+              "kai / hoodie folded hood"
+            ]
+          },
+          "own_ray_difference": 0
+        },
+        "kai": {
+          "bounds": [
+            0.0926387831568718,
+            0.7771275639533997,
+            0.21742813289165497,
+            0.7461147904396057,
+            3.080458641052246
+          ],
+          "safe": true,
+          "vertical_coverage": 0.5286866575479507,
+          "face_all": {
+            "samples": 9,
+            "blocked": 9,
+            "bounds": [
+              0.3669676184654236,
+              0.5676664113998413,
+              0.592003583908081,
+              0.7055115103721619,
+              3.6622002124786377
+            ],
+            "safe": true,
+            "visible_fraction": 0.0,
+            "blockers": [
+              "kai / head skinned",
+              "kai / hoodie folded hood"
+            ]
+          },
+          "face_external": {
+            "samples": 9,
+            "blocked": 0,
+            "bounds": [
+              0.3669676184654236,
+              0.5676664113998413,
+              0.592003583908081,
+              0.7055115103721619,
+              3.6622002124786377
+            ],
+            "safe": true,
+            "visible_fraction": 1.0,
+            "blockers": []
+          },
+          "own_ray_difference": 9
+        }
+      },
+      "geometry": {
+        "held_pose": true,
+        "static_seating": []
+      }
+    },
+    {
+      "frame": 1810,
+      "shot": "sh27",
+      "actor_qc": {
+        "cleo": {
+          "bounds": [
+            0.1901198923587799,
+            0.6948078870773315,
+            0.30247610807418823,
+            0.7008451223373413,
+            4.037915229797363
+          ],
+          "safe": true,
+          "vertical_coverage": 0.3983690142631531,
+          "face_all": {
+            "samples": 9,
+            "blocked": 9,
+            "bounds": [
+              0.3566076457500458,
+              0.5084813237190247,
+              0.5905370116233826,
+              0.6786692142486572,
+              4.219561576843262
+            ],
+            "safe": true,
+            "visible_fraction": 0.0,
+            "blockers": [
+              "kai / head skinned",
+              "kai / hoodie folded hood"
+            ]
+          },
+          "face_external": {
+            "samples": 9,
+            "blocked": 9,
+            "bounds": [
+              0.3566076457500458,
+              0.5084813237190247,
+              0.5905370116233826,
+              0.6786692142486572,
+              4.219561576843262
+            ],
+            "safe": true,
+            "visible_fraction": 0.0,
+            "blockers": [
+              "kai / head skinned",
+              "kai / hoodie folded hood"
+            ]
+          },
+          "own_ray_difference": 0
+        },
+        "kai": {
+          "bounds": [
+            0.0926387831568718,
+            0.7752830982208252,
+            0.21742813289165497,
+            0.7461284399032593,
+            3.080458641052246
+          ],
+          "safe": true,
+          "vertical_coverage": 0.5287003070116043,
+          "face_all": {
+            "samples": 9,
+            "blocked": 9,
+            "bounds": [
+              0.3669361472129822,
+              0.5680275559425354,
+              0.59168541431427,
+              0.7053410410881042,
+              3.6637630462646484
+            ],
+            "safe": true,
+            "visible_fraction": 0.0,
+            "blockers": [
+              "kai / head skinned",
+              "kai / hoodie folded hood"
+            ]
+          },
+          "face_external": {
+            "samples": 9,
+            "blocked": 0,
+            "bounds": [
+              0.3669361472129822,
+              0.5680275559425354,
+              0.59168541431427,
+              0.7053410410881042,
+              3.6637630462646484
+            ],
+            "safe": true,
+            "visible_fraction": 1.0,
+            "blockers": []
+          },
+          "own_ray_difference": 9
+        }
+      },
+      "geometry": {
+        "held_pose": true,
+        "static_seating": []
+      }
+    },
+    {
+      "frame": 1811,
+      "shot": "sh27",
+      "actor_qc": {
+        "cleo": {
+          "bounds": [
+            0.1901198923587799,
+            0.6932103037834167,
+            0.30247610807418823,
+            0.700873076915741,
+            4.003930568695068
+          ],
+          "safe": true,
+          "vertical_coverage": 0.39839696884155273,
+          "face_all": {
+            "samples": 9,
+            "blocked": 9,
+            "bounds": [
+              0.35610446333885193,
+              0.5085040330886841,
+              0.5902554988861084,
+              0.6786691546440125,
+              4.218222618103027
+            ],
+            "safe": true,
+            "visible_fraction": 0.0,
+            "blockers": [
+              "kai / head skinned",
+              "kai / hoodie folded hood"
+            ]
+          },
+          "face_external": {
+            "samples": 9,
+            "blocked": 9,
+            "bounds": [
+              0.35610446333885193,
+              0.5085040330886841,
+              0.5902554988861084,
+              0.6786691546440125,
+              4.218222618103027
+            ],
+            "safe": true,
+            "visible_fraction": 0.0,
+            "blockers": [
+              "kai / head skinned",
+              "kai / hoodie folded hood"
+            ]
+          },
+          "own_ray_difference": 0
+        },
+        "kai": {
+          "bounds": [
+            0.0926387831568718,
+            0.7730027437210083,
+            0.21742813289165497,
+            0.7461389899253845,
+            3.080458641052246
+          ],
+          "safe": true,
+          "vertical_coverage": 0.5287108570337296,
+          "face_all": {
+            "samples": 9,
+            "blocked": 9,
+            "bounds": [
+              0.3669036626815796,
+              0.568382740020752,
+              0.5913693904876709,
+              0.7051700353622437,
+              3.6653151512145996
+            ],
+            "safe": true,
+            "visible_fraction": 0.0,
+            "blockers": [
+              "kai / head skinned",
+              "kai / hoodie folded hood"
+            ]
+          },
+          "face_external": {
+            "samples": 9,
+            "blocked": 0,
+            "bounds": [
+              0.3669036626815796,
+              0.568382740020752,
+              0.5913693904876709,
+              0.7051700353622437,
+              3.6653151512145996
+            ],
+            "safe": true,
+            "visible_fraction": 1.0,
+            "blockers": []
+          },
+          "own_ray_difference": 9
+        }
+      },
+      "geometry": {
+        "held_pose": true,
+        "static_seating": []
+      }
+    },
+    {
+      "frame": 1812,
+      "shot": "sh27",
+      "actor_qc": {
+        "cleo": {
+          "bounds": [
+            0.1901198923587799,
+            0.691285252571106,
+            0.30247610807418823,
+            0.7008985280990601,
+            3.9649910926818848
+          ],
+          "safe": true,
+          "vertical_coverage": 0.3984224200248718,
+          "face_all": {
+            "samples": 9,
+            "blocked": 9,
+            "bounds": [
+              0.3556075692176819,
+              0.5085276365280151,
+              0.5899761915206909,
+              0.6786673069000244,
+              4.2168965339660645
+            ],
+            "safe": true,
+            "visible_fraction": 0.0,
+            "blockers": [
+              "kai / head skinned",
+              "kai / hoodie folded hood"
+            ]
+          },
+          "face_external": {
+            "samples": 9,
+            "blocked": 9,
+            "bounds": [
+              0.3556075692176819,
+              0.5085276365280151,
+              0.5899761915206909,
+              0.6786673069000244,
+              4.2168965339660645
+            ],
+            "safe": true,
+            "visible_fraction": 0.0,
+            "blockers": [
+              "kai / head skinned",
+              "kai / hoodie folded hood"
+            ]
+          },
+          "own_ray_difference": 0
+        },
+        "kai": {
+          "bounds": [
+            0.0926387831568718,
+            0.7700928449630737,
+            0.21742813289165497,
+            0.7461462616920471,
+            3.080458641052246
+          ],
+          "safe": true,
+          "vertical_coverage": 0.5287181288003922,
+          "face_all": {
+            "samples": 9,
+            "blocked": 9,
+            "bounds": [
+              0.3668701648712158,
+              0.5687313079833984,
+              0.5910561084747314,
+              0.7049985527992249,
+              3.666853904724121
+            ],
+            "safe": true,
+            "visible_fraction": 0.0,
+            "blockers": [
+              "kai / head skinned",
+              "kai / hoodie folded hood"
+            ]
+          },
+          "face_external": {
+            "samples": 9,
+            "blocked": 0,
+            "bounds": [
+              0.3668701648712158,
+              0.5687313079833984,
+              0.5910561084747314,
+              0.7049985527992249,
+              3.666853904724121
+            ],
+            "safe": true,
+            "visible_fraction": 1.0,
+            "blockers": []
+          },
+          "own_ray_difference": 9
+        }
+      },
+      "geometry": {
+        "held_pose": true,
+        "static_seating": []
+      }
+    },
+    {
+      "frame": 1813,
+      "shot": "sh27",
+      "actor_qc": {
+        "cleo": {
+          "bounds": [
+            0.1901198923587799,
+            0.6889610886573792,
+            0.30247610807418823,
+            0.7009215950965881,
+            3.9206807613372803
+          ],
+          "safe": true,
+          "vertical_coverage": 0.3984454870223999,
+          "face_all": {
+            "samples": 9,
+            "blocked": 9,
+            "bounds": [
+              0.35511764883995056,
+              0.5085520148277283,
+              0.5896995067596436,
+              0.6786637306213379,
+              4.215586185455322
+            ],
+            "safe": true,
+            "visible_fraction": 0.0,
+            "blockers": [
+              "kai / head skinned",
+              "kai / hoodie folded hood"
+            ]
+          },
+          "face_external": {
+            "samples": 9,
+            "blocked": 9,
+            "bounds": [
+              0.35511764883995056,
+              0.5085520148277283,
+              0.5896995067596436,
+              0.6786637306213379,
+              4.215586185455322
+            ],
+            "safe": true,
+            "visible_fraction": 0.0,
+            "blockers": [
+              "kai / head skinned",
+              "kai / hoodie folded hood"
+            ]
+          },
+          "own_ray_difference": 0
+        },
+        "kai": {
+          "bounds": [
+            0.0926387831568718,
+            0.7663558125495911,
+            0.21742813289165497,
+            0.746150553226471,
+            3.080458641052246
+          ],
+          "safe": true,
+          "vertical_coverage": 0.528722420334816,
+          "face_all": {
+            "samples": 9,
+            "blocked": 9,
+            "bounds": [
+              0.3668358027935028,
+              0.5690728425979614,
+              0.5907462239265442,
+              0.7048273682594299,
+              3.668377161026001
+            ],
+            "safe": true,
+            "visible_fraction": 0.0,
+            "blockers": [
+              "kai / head skinned",
+              "kai / hoodie folded hood"
+            ]
+          },
+          "face_external": {
+            "samples": 9,
+            "blocked": 0,
+            "bounds": [
+              0.3668358027935028,
+              0.5690728425979614,
+              0.5907462239265442,
+              0.7048273682594299,
+              3.668377161026001
+            ],
+            "safe": true,
+            "visible_fraction": 1.0,
+            "blockers": []
+          },
+          "own_ray_difference": 9
+        }
+      },
+      "geometry": {
+        "held_pose": true,
+        "static_seating": []
+      }
+    },
+    {
+      "frame": 1814,
+      "shot": "sh27",
+      "actor_qc": {
+        "cleo": {
+          "bounds": [
+            0.1901198923587799,
+            0.6861649751663208,
+            0.30247610807418823,
+            0.7009420990943909,
+            3.871000051498413
+          ],
+          "safe": true,
+          "vertical_coverage": 0.39846599102020264,
+          "face_all": {
+            "samples": 9,
+            "blocked": 9,
+            "bounds": [
+              0.354635626077652,
+              0.5085771679878235,
+              0.5894259214401245,
+              0.6786584258079529,
+              4.214292526245117
+            ],
+            "safe": true,
+            "visible_fraction": 0.0,
+            "blockers": [
+              "kai / head skinned",
+              "kai / hoodie folded hood"
+            ]
+          },
+          "face_external": {
+            "samples": 9,
+            "blocked": 9,
+            "bounds": [
+              0.354635626077652,
+              0.5085771679878235,
+              0.5894259214401245,
+              0.6786584258079529,
+              4.214292526245117
+            ],
+            "safe": true,
+            "visible_fraction": 0.0,
+            "blockers": [
+              "kai / head skinned",
+              "kai / hoodie folded hood"
+            ]
+          },
+          "own_ray_difference": 0
+        },
+        "kai": {
+          "bounds": [
+            0.0926387831568718,
+            0.7615469098091125,
+            0.21742813289165497,
+            0.746151864528656,
+            3.080458641052246
+          ],
+          "safe": true,
+          "vertical_coverage": 0.528723731637001,
+          "face_all": {
+            "samples": 9,
+            "blocked": 9,
+            "bounds": [
+              0.3668006360530853,
+              0.5694068074226379,
+              0.5904400944709778,
+              0.7046566009521484,
+              3.6698808670043945
+            ],
+            "safe": true,
+            "visible_fraction": 0.0,
+            "blockers": [
+              "kai / head skinned",
+              "kai / hoodie folded hood"
+            ]
+          },
+          "face_external": {
+            "samples": 9,
+            "blocked": 0,
+            "bounds": [
+              0.3668006360530853,
+              0.5694068074226379,
+              0.5904400944709778,
+              0.7046566009521484,
+              3.6698808670043945
+            ],
+            "safe": true,
+            "visible_fraction": 1.0,
+            "blockers": []
+          },
+          "own_ray_difference": 9
+        }
+      },
+      "geometry": {
+        "held_pose": true,
+        "static_seating": []
+      }
+    },
+    {
+      "frame": 1815,
+      "shot": "sh27",
+      "actor_qc": {
+        "cleo": {
+          "bounds": [
+            0.1901198923587799,
+            0.6828432083129883,
+            0.30247610807418823,
+            0.7009602785110474,
+            3.816751480102539
+          ],
+          "safe": true,
+          "vertical_coverage": 0.39848417043685913,
+          "face_all": {
+            "samples": 9,
+            "blocked": 9,
+            "bounds": [
+              0.35416221618652344,
+              0.5086029767990112,
+              0.5891560912132263,
+              0.6786516904830933,
+              4.21301794052124
+            ],
+            "safe": true,
+            "visible_fraction": 0.0,
+            "blockers": [
+              "kai / head skinned",
+              "kai / hoodie folded hood"
+            ]
+          },
+          "face_external": {
+            "samples": 9,
+            "blocked": 9,
+            "bounds": [
+              0.35416221618652344,
+              0.5086029767990112,
+              0.5891560912132263,
+              0.6786516904830933,
+              4.21301794052124
+            ],
+            "safe": true,
+            "visible_fraction": 0.0,
+            "blockers": [
+              "kai / head skinned",
+              "kai / hoodie folded hood"
+            ]
+          },
+          "own_ray_difference": 0
+        },
+        "kai": {
+          "bounds": [
+            0.0926387831568718,
+            0.7553905844688416,
+            0.21742813289165497,
+            0.7461502552032471,
+            3.080458641052246
+          ],
+          "safe": true,
+          "vertical_coverage": 0.5287221223115921,
+          "face_all": {
+            "samples": 9,
+            "blocked": 9,
+            "bounds": [
+              0.36676478385925293,
+              0.5697327256202698,
+              0.5901384353637695,
+              0.7044864892959595,
+              3.671363592147827
+            ],
+            "safe": true,
+            "visible_fraction": 0.0,
+            "blockers": [
+              "kai / head skinned",
+              "kai / hoodie folded hood"
+            ]
+          },
+          "face_external": {
+            "samples": 9,
+            "blocked": 0,
+            "bounds": [
+              0.36676478385925293,
+              0.5697327256202698,
+              0.5901384353637695,
+              0.7044864892959595,
+              3.671363592147827
+            ],
+            "safe": true,
+            "visible_fraction": 1.0,
+            "blockers": []
+          },
+          "own_ray_difference": 9
+        }
+      },
+      "geometry": {
+        "held_pose": true,
+        "static_seating": []
+      }
+    },
+    {
+      "frame": 1816,
+      "shot": "sh27",
+      "actor_qc": {
+        "cleo": {
+          "bounds": [
+            0.1901198923587799,
+            0.6790003180503845,
+            0.30247610807418823,
+            0.7009760737419128,
+            3.7600252628326416
+          ],
+          "safe": true,
+          "vertical_coverage": 0.3984999656677246,
+          "face_all": {
+            "samples": 9,
+            "blocked": 9,
+            "bounds": [
+              0.353698194026947,
+              0.5086293816566467,
+              0.5888902544975281,
+              0.6786434054374695,
+              4.211764812469482
+            ],
+            "safe": true,
+            "visible_fraction": 0.0,
+            "blockers": [
+              "kai / head skinned",
+              "kai / hoodie folded hood"
+            ]
+          },
+          "face_external": {
+            "samples": 9,
+            "blocked": 9,
+            "bounds": [
+              0.353698194026947,
+              0.5086293816566467,
+              0.5888902544975281,
+              0.6786434054374695,
+              4.211764812469482
+            ],
+            "safe": true,
+            "visible_fraction": 0.0,
+            "blockers": [
+              "kai / head skinned",
+              "kai / hoodie folded hood"
+            ]
+          },
+          "own_ray_difference": 0
+        },
+        "kai": {
+          "bounds": [
+            0.0926387831568718,
+            0.7476345300674438,
+            0.21742813289165497,
+            0.7461459636688232,
+            3.080458641052246
+          ],
+          "safe": true,
+          "vertical_coverage": 0.5287178307771683,
+          "face_all": {
+            "samples": 9,
+            "blocked": 9,
+            "bounds": [
+              0.36672842502593994,
+              0.5700501799583435,
+              0.5898416042327881,
+              0.704317569732666,
+              3.6728219985961914
+            ],
+            "safe": true,
+            "visible_fraction": 0.0,
+            "blockers": [
+              "kai / head skinned",
+              "kai / hoodie folded hood"
+            ]
+          },
+          "face_external": {
+            "samples": 9,
+            "blocked": 0,
+            "bounds": [
+              0.36672842502593994,
+              0.5700501799583435,
+              0.5898416042327881,
+              0.704317569732666,
+              3.6728219985961914
+            ],
+            "safe": true,
+            "visible_fraction": 1.0,
+            "blockers": []
+          },
+          "own_ray_difference": 9
+        }
+      },
+      "geometry": {
+        "held_pose": true,
+        "static_seating": []
+      }
+    },
+    {
+      "frame": 1817,
+      "shot": "sh27",
+      "actor_qc": {
+        "cleo": {
+          "bounds": [
+            0.1901198923587799,
+            0.674758791923523,
+            0.30247610807418823,
+            0.7009896636009216,
+            3.7053780555725098
+          ],
+          "safe": true,
+          "vertical_coverage": 0.3985135555267334,
+          "face_all": {
+            "samples": 9,
+            "blocked": 9,
+            "bounds": [
+              0.35324427485466003,
+              0.5086562633514404,
+              0.5886291265487671,
+              0.6786337494850159,
+              4.210535526275635
+            ],
+            "safe": true,
+            "visible_fraction": 0.0,
+            "blockers": [
+              "kai / head skinned",
+              "kai / hoodie folded hood"
+            ]
+          },
+          "face_external": {
+            "samples": 9,
+            "blocked": 9,
+            "bounds": [
+              0.35324427485466003,
+              0.5086562633514404,
+              0.5886291265487671,
+              0.6786337494850159,
+              4.210535526275635
+            ],
+            "safe": true,
+            "visible_fraction": 0.0,
+            "blockers": [
+              "kai / head skinned",
+              "kai / hoodie folded hood"
+            ]
+          },
+          "own_ray_difference": 0
+        },
+        "kai": {
+          "bounds": [
+            0.0926387831568718,
+            0.7405462265014648,
+            0.21742813289165497,
+            0.7461390495300293,
+            3.080458641052246
+          ],
+          "safe": true,
+          "vertical_coverage": 0.5287109166383743,
+          "face_all": {
+            "samples": 9,
+            "blocked": 9,
+            "bounds": [
+              0.3666916489601135,
+              0.5703588128089905,
+              0.5895501971244812,
+              0.7041503190994263,
+              3.674255847930908
+            ],
+            "safe": true,
+            "visible_fraction": 0.0,
+            "blockers": [
+              "kai / head skinned",
+              "kai / hoodie folded hood"
+            ]
+          },
+          "face_external": {
+            "samples": 9,
+            "blocked": 0,
+            "bounds": [
+              0.3666916489601135,
+              0.5703588128089905,
+              0.5895501971244812,
+              0.7041503190994263,
+              3.674255847930908
+            ],
+            "safe": true,
+            "visible_fraction": 1.0,
+            "blockers": []
+          },
+          "own_ray_difference": 9
+        }
+      },
+      "geometry": {
+        "held_pose": true,
+        "static_seating": []
+      }
+    },
+    {
+      "frame": 1818,
+      "shot": "sh27",
+      "actor_qc": {
+        "cleo": {
+          "bounds": [
+            0.1901198923587799,
+            0.670412003993988,
+            0.30247610807418823,
+            0.7010010480880737,
+            3.6590919494628906
+          ],
+          "safe": true,
+          "vertical_coverage": 0.3985249400138855,
+          "face_all": {
+            "samples": 9,
+            "blocked": 9,
+            "bounds": [
+              0.352801114320755,
+              0.5086835026741028,
+              0.5883728861808777,
+              0.6786227822303772,
+              4.209331512451172
+            ],
+            "safe": true,
+            "visible_fraction": 0.0,
+            "blockers": [
+              "kai / head skinned",
+              "kai / hoodie folded hood"
+            ]
+          },
+          "face_external": {
+            "samples": 9,
+            "blocked": 9,
+            "bounds": [
+              0.352801114320755,
+              0.5086835026741028,
+              0.5883728861808777,
+              0.6786227822303772,
+              4.209331512451172
+            ],
+            "safe": true,
+            "visible_fraction": 0.0,
+            "blockers": [
+              "kai / head skinned",
+              "kai / hoodie folded hood"
+            ]
+          },
+          "own_ray_difference": 0
+        },
+        "kai": {
+          "bounds": [
+            0.0926387831568718,
+            0.7385942935943604,
+            0.21742813289165497,
+            0.7461296319961548,
+            3.080458641052246
+          ],
+          "safe": true,
+          "vertical_coverage": 0.5287014991044998,
+          "face_all": {
+            "samples": 9,
+            "blocked": 9,
+            "bounds": [
+              0.3666544556617737,
+              0.5706581473350525,
+              0.5892646908760071,
+              0.7039849162101746,
+              3.675659656524658
+            ],
+            "safe": true,
+            "visible_fraction": 0.0,
+            "blockers": [
+              "kai / head skinned",
+              "kai / hoodie folded hood"
+            ]
+          },
+          "face_external": {
+            "samples": 9,
+            "blocked": 0,
+            "bounds": [
+              0.3666544556617737,
+              0.5706581473350525,
+              0.5892646908760071,
+              0.7039849162101746,
+              3.675659656524658
+            ],
+            "safe": true,
+            "visible_fraction": 1.0,
+            "blockers": []
+          },
+          "own_ray_difference": 9
+        }
+      },
+      "geometry": {
+        "held_pose": true,
+        "static_seating": []
+      }
+    },
+    {
+      "frame": 1819,
+      "shot": "sh27",
+      "actor_qc": {
+        "cleo": {
+          "bounds": [
+            0.1901198923587799,
+            0.6667559742927551,
+            0.30247610807418823,
+            0.7010103464126587,
+            3.624774217605591
+          ],
+          "safe": true,
+          "vertical_coverage": 0.39853423833847046,
+          "face_all": {
+            "samples": 9,
+            "blocked": 9,
+            "bounds": [
+              0.35236939787864685,
+              0.508711040019989,
+              0.5881221294403076,
+              0.6786105036735535,
+              4.208155155181885
+            ],
+            "safe": true,
+            "visible_fraction": 0.0,
+            "blockers": [
+              "kai / head skinned",
+              "kai / hoodie folded hood"
+            ]
+          },
+          "face_external": {
+            "samples": 9,
+            "blocked": 9,
+            "bounds": [
+              0.35236939787864685,
+              0.508711040019989,
+              0.5881221294403076,
+              0.6786105036735535,
+              4.208155155181885
+            ],
+            "safe": true,
+            "visible_fraction": 0.0,
+            "blockers": [
+              "kai / head skinned",
+              "kai / hoodie folded hood"
+            ]
+          },
+          "own_ray_difference": 0
+        },
+        "kai": {
+          "bounds": [
+            0.0926387831568718,
+            0.7368312478065491,
+            0.21742813289165497,
+            0.7461179494857788,
+            3.080458641052246
+          ],
+          "safe": true,
+          "vertical_coverage": 0.5286898165941238,
+          "face_all": {
+            "samples": 9,
+            "blocked": 9,
+            "bounds": [
+              0.3666171729564667,
+              0.57094806432724,
+              0.5889855027198792,
+              0.7038217782974243,
+              3.676521062850952
+            ],
+            "safe": true,
+            "visible_fraction": 0.0,
+            "blockers": [
+              "kai / head skinned",
+              "kai / hoodie folded hood"
+            ]
+          },
+          "face_external": {
+            "samples": 9,
+            "blocked": 0,
+            "bounds": [
+              0.3666171729564667,
+              0.57094806432724,
+              0.5889855027198792,
+              0.7038217782974243,
+              3.676521062850952
+            ],
+            "safe": true,
+            "visible_fraction": 1.0,
+            "blockers": []
+          },
+          "own_ray_difference": 9
+        }
+      },
+      "geometry": {
+        "held_pose": true,
+        "static_seating": []
+      }
+    },
+    {
+      "frame": 1820,
+      "shot": "sh27",
+      "actor_qc": {
+        "cleo": {
+          "bounds": [
+            0.1901198923587799,
+            0.6642473340034485,
+            0.30247610807418823,
+            0.7010174989700317,
+            3.607609748840332
+          ],
+          "safe": true,
+          "vertical_coverage": 0.3985413908958435,
+          "face_all": {
+            "samples": 9,
+            "blocked": 9,
+            "bounds": [
+              0.35194969177246094,
+              0.5087388157844543,
+              0.5878772735595703,
+              0.6785973310470581,
+              4.207008361816406
+            ],
+            "safe": true,
+            "visible_fraction": 0.0,
+            "blockers": [
+              "kai / head skinned",
+              "kai / hoodie folded hood"
+            ]
+          },
+          "face_external": {
+            "samples": 9,
+            "blocked": 9,
+            "bounds": [
+              0.35194969177246094,
+              0.5087388157844543,
+              0.5878772735595703,
+              0.6785973310470581,
+              4.207008361816406
+            ],
+            "safe": true,
+            "visible_fraction": 0.0,
+            "blockers": [
+              "kai / head skinned",
+              "kai / hoodie folded hood"
+            ]
+          },
+          "own_ray_difference": 0
+        },
+        "kai": {
+          "bounds": [
+            0.0926387831568718,
+            0.7353534698486328,
+            0.21742813289165497,
+            0.7461040616035461,
+            3.080458641052246
+          ],
+          "safe": true,
+          "vertical_coverage": 0.5286759287118912,
+          "face_all": {
+            "samples": 9,
+            "blocked": 9,
+            "bounds": [
+              0.36657974123954773,
+              0.57122802734375,
+              0.5887131690979004,
+              0.7036612033843994,
+              3.6765012741088867
+            ],
+            "safe": true,
+            "visible_fraction": 0.0,
+            "blockers": [
+              "kai / head skinned",
+              "kai / hoodie folded hood"
+            ]
+          },
+          "face_external": {
+            "samples": 9,
+            "blocked": 0,
+            "bounds": [
+              0.36657974123954773,
+              0.57122802734375,
+              0.5887131690979004,
+              0.7036612033843994,
+              3.6765012741088867
+            ],
+            "safe": true,
+            "visible_fraction": 1.0,
+            "blockers": []
+          },
+          "own_ray_difference": 9
+        }
+      },
+      "geometry": {
+        "held_pose": true,
+        "static_seating": []
+      }
+    },
+    {
+      "frame": 1821,
+      "shot": "sh27",
+      "actor_qc": {
+        "cleo": {
+          "bounds": [
+            0.1901198923587799,
+            0.6626715064048767,
+            0.30247610807418823,
+            0.7010230422019958,
+            3.6097664833068848
+          ],
+          "safe": true,
+          "vertical_coverage": 0.3985469341278076,
+          "face_all": {
+            "samples": 9,
+            "blocked": 9,
+            "bounds": [
+              0.3515426516532898,
+              0.5087665915489197,
+              0.587638795375824,
+              0.6785832047462463,
+              4.205892562866211
+            ],
+            "safe": true,
+            "visible_fraction": 0.0,
+            "blockers": [
+              "kai / head skinned",
+              "kai / hoodie folded hood"
+            ]
+          },
+          "face_external": {
+            "samples": 9,
+            "blocked": 9,
+            "bounds": [
+              0.3515426516532898,
+              0.5087665915489197,
+              0.587638795375824,
+              0.6785832047462463,
+              4.205892562866211
+            ],
+            "safe": true,
+            "visible_fraction": 0.0,
+            "blockers": [
+              "kai / head skinned",
+              "kai / hoodie folded hood"
+            ]
+          },
+          "own_ray_difference": 0
+        },
+        "kai": {
+          "bounds": [
+            0.0926387831568718,
+            0.7344238758087158,
+            0.21742813289165497,
+            0.7460883855819702,
+            3.080458641052246
+          ],
+          "safe": true,
+          "vertical_coverage": 0.5286602526903152,
+          "face_all": {
+            "samples": 9,
+            "blocked": 9,
+            "bounds": [
+              0.3665424585342407,
+              0.5714979767799377,
+              0.5884481072425842,
+              0.7035037279129028,
+              3.6764791011810303
+            ],
+            "safe": true,
+            "visible_fraction": 0.0,
+            "blockers": [
+              "kai / head skinned",
+              "kai / hoodie folded hood"
+            ]
+          },
+          "face_external": {
+            "samples": 9,
+            "blocked": 0,
+            "bounds": [
+              0.3665424585342407,
+              0.5714979767799377,
+              0.5884481072425842,
+              0.7035037279129028,
+              3.6764791011810303
+            ],
+            "safe": true,
+            "visible_fraction": 1.0,
+            "blockers": []
+          },
+          "own_ray_difference": 9
+        }
+      },
+      "geometry": {
+        "held_pose": true,
+        "static_seating": []
+      }
+    },
+    {
+      "frame": 1822,
+      "shot": "sh27",
+      "actor_qc": {
+        "cleo": {
+          "bounds": [
+            0.1901198923587799,
+            0.6620991230010986,
+            0.30247610807418823,
+            0.7010266184806824,
+            3.6272058486938477
+          ],
+          "safe": true,
+          "vertical_coverage": 0.39855051040649414,
+          "face_all": {
+            "samples": 9,
+            "blocked": 9,
+            "bounds": [
+              0.3511488437652588,
+              0.508794367313385,
+              0.5874069929122925,
+              0.6785681843757629,
+              4.20481014251709
+            ],
+            "safe": true,
+            "visible_fraction": 0.0,
+            "blockers": [
+              "kai / head skinned",
+              "kai / hoodie folded hood"
+            ]
+          },
+          "face_external": {
+            "samples": 9,
+            "blocked": 9,
+            "bounds": [
+              0.3511488437652588,
+              0.508794367313385,
+              0.5874069929122925,
+              0.6785681843757629,
+              4.20481014251709
+            ],
+            "safe": true,
+            "visible_fraction": 0.0,
+            "blockers": [
+              "kai / head skinned",
+              "kai / hoodie folded hood"
+            ]
+          },
+          "own_ray_difference": 0
+        },
+        "kai": {
+          "bounds": [
+            0.0926387831568718,
+            0.7339580059051514,
+            0.21742813289165497,
+            0.7460710406303406,
+            3.080458641052246
+          ],
+          "safe": true,
+          "vertical_coverage": 0.5286429077386856,
+          "face_all": {
+            "samples": 9,
+            "blocked": 9,
+            "bounds": [
+              0.36650529503822327,
+              0.5717575550079346,
+              0.5881907939910889,
+              0.7033495903015137,
+              3.6764564514160156
+            ],
+            "safe": true,
+            "visible_fraction": 0.0,
+            "blockers": [
+              "kai / head skinned",
+              "kai / hoodie folded hood"
+            ]
+          },
+          "face_external": {
+            "samples": 9,
+            "blocked": 0,
+            "bounds": [
+              0.36650529503822327,
+              0.5717575550079346,
+              0.5881907939910889,
+              0.7033495903015137,
+              3.6764564514160156
+            ],
+            "safe": true,
+            "visible_fraction": 1.0,
+            "blockers": []
+          },
+          "own_ray_difference": 9
+        }
+      },
+      "geometry": {
+        "held_pose": true,
+        "static_seating": []
+      }
+    },
+    {
+      "frame": 1823,
+      "shot": "sh27",
+      "actor_qc": {
+        "cleo": {
+          "bounds": [
+            0.1901198923587799,
+            0.6623899936676025,
+            0.30247610807418823,
+            0.7010287046432495,
+            3.6550581455230713
+          ],
+          "safe": true,
+          "vertical_coverage": 0.3985525965690613,
+          "face_all": {
+            "samples": 9,
+            "blocked": 9,
+            "bounds": [
+              0.3507687747478485,
+              0.5088220238685608,
+              0.587182343006134,
+              0.678552508354187,
+              4.203761577606201
+            ],
+            "safe": true,
+            "visible_fraction": 0.0,
+            "blockers": [
+              "kai / head skinned",
+              "kai / hoodie folded hood"
+            ]
+          },
+          "face_external": {
+            "samples": 9,
+            "blocked": 9,
+            "bounds": [
+              0.3507687747478485,
+              0.5088220238685608,
+              0.587182343006134,
+              0.678552508354187,
+              4.203761577606201
+            ],
+            "safe": true,
+            "visible_fraction": 0.0,
+            "blockers": [
+              "kai / head skinned",
+              "kai / hoodie folded hood"
+            ]
+          },
+          "own_ray_difference": 0
+        },
+        "kai": {
+          "bounds": [
+            0.0926387831568718,
+            0.7335115671157837,
+            0.21742813289165497,
+            0.7460521459579468,
+            3.080458641052246
+          ],
+          "safe": true,
+          "vertical_coverage": 0.5286240130662918,
+          "face_all": {
+            "samples": 9,
+            "blocked": 9,
+            "bounds": [
+              0.36646848917007446,
+              0.5720066428184509,
+              0.587941586971283,
+              0.7031991481781006,
+              3.676431894302368
+            ],
+            "safe": true,
+            "visible_fraction": 0.0,
+            "blockers": [
+              "kai / head skinned",
+              "kai / hoodie folded hood"
+            ]
+          },
+          "face_external": {
+            "samples": 9,
+            "blocked": 0,
+            "bounds": [
+              0.36646848917007446,
+              0.5720066428184509,
+              0.587941586971283,
+              0.7031991481781006,
+              3.676431894302368
+            ],
+            "safe": true,
+            "visible_fraction": 1.0,
+            "blockers": []
+          },
+          "own_ray_difference": 9
+        }
+      },
+      "geometry": {
+        "held_pose": true,
+        "static_seating": []
+      }
+    },
+    {
+      "frame": 1824,
+      "shot": "sh27",
+      "actor_qc": {
+        "cleo": {
+          "bounds": [
+            0.1901198923587799,
+            0.663272500038147,
+            0.30247610807418823,
+            0.7050778269767761,
+            3.6882827281951904
+          ],
+          "safe": true,
+          "vertical_coverage": 0.4026017189025879,
+          "face_all": {
+            "samples": 9,
+            "blocked": 9,
+            "bounds": [
+              0.35040292143821716,
+              0.5088493824005127,
+              0.5869652032852173,
+              0.6785362958908081,
+              4.202749729156494
+            ],
+            "safe": true,
+            "visible_fraction": 0.0,
+            "blockers": [
+              "kai / head skinned",
+              "kai / hoodie folded hood"
+            ]
+          },
+          "face_external": {
+            "samples": 9,
+            "blocked": 9,
+            "bounds": [
+              0.35040292143821716,
+              0.5088493824005127,
+              0.5869652032852173,
+              0.6785362958908081,
+              4.202749729156494
+            ],
+            "safe": true,
+            "visible_fraction": 0.0,
+            "blockers": [
+              "kai / head skinned",
+              "kai / hoodie folded hood"
+            ]
+          },
+          "own_ray_difference": 0
+        },
+        "kai": {
+          "bounds": [
+            0.0926387831568718,
+            0.733036994934082,
+            0.21742813289165497,
+            0.7460321187973022,
+            3.080458641052246
+          ],
+          "safe": true,
+          "vertical_coverage": 0.5286039859056473,
+          "face_all": {
+            "samples": 9,
+            "blocked": 9,
+            "bounds": [
+              0.36643221974372864,
+              0.5722448825836182,
+              0.5877009034156799,
+              0.7030529379844666,
+              3.6764068603515625
+            ],
+            "safe": true,
+            "visible_fraction": 0.0,
+            "blockers": [
+              "kai / head skinned",
+              "kai / hoodie folded hood"
+            ]
+          },
+          "face_external": {
+            "samples": 9,
+            "blocked": 0,
+            "bounds": [
+              0.36643221974372864,
+              0.5722448825836182,
+              0.5877009034156799,
+              0.7030529379844666,
+              3.6764068603515625
+            ],
+            "safe": true,
+            "visible_fraction": 1.0,
+            "blockers": []
+          },
+          "own_ray_difference": 9
+        }
+      },
+      "geometry": {
+        "held_pose": true,
+        "static_seating": []
+      }
+    },
+    {
+      "frame": 1825,
+      "shot": "sh27",
+      "actor_qc": {
+        "cleo": {
+          "bounds": [
+            0.1901198923587799,
+            0.6645244359970093,
+            0.30247610807418823,
+            0.7181800007820129,
+            3.7014551162719727
+          ],
+          "safe": true,
+          "vertical_coverage": 0.4157038927078247,
+          "face_all": {
+            "samples": 9,
+            "blocked": 9,
+            "bounds": [
+              0.35005176067352295,
+              0.508876383304596,
+              0.5867559313774109,
+              0.6785196661949158,
+              4.201776027679443
+            ],
+            "safe": true,
+            "visible_fraction": 0.0,
+            "blockers": [
+              "kai / head skinned",
+              "kai / hoodie folded hood"
+            ]
+          },
+          "face_external": {
+            "samples": 9,
+            "blocked": 9,
+            "bounds": [
+              0.35005176067352295,
+              0.508876383304596,
+              0.5867559313774109,
+              0.6785196661949158,
+              4.201776027679443
+            ],
+            "safe": true,
+            "visible_fraction": 0.0,
+            "blockers": [
+              "kai / head skinned",
+              "kai / hoodie folded hood"
+            ]
+          },
+          "own_ray_difference": 0
+        },
+        "kai": {
+          "bounds": [
+            0.0926387831568718,
+            0.7325143814086914,
+            0.21742813289165497,
+            0.746010959148407,
+            3.080458641052246
+          ],
+          "safe": true,
+          "vertical_coverage": 0.528582826256752,
+          "face_all": {
+            "samples": 9,
+            "blocked": 9,
+            "bounds": [
+              0.3663965165615082,
+              0.572472333908081,
+              0.5874691605567932,
+              0.7029109597206116,
+              3.6763806343078613
+            ],
+            "safe": true,
+            "visible_fraction": 0.0,
+            "blockers": [
+              "kai / head skinned",
+              "kai / hoodie folded hood"
+            ]
+          },
+          "face_external": {
+            "samples": 9,
+            "blocked": 0,
+            "bounds": [
+              0.3663965165615082,
+              0.572472333908081,
+              0.5874691605567932,
+              0.7029109597206116,
+              3.6763806343078613
+            ],
+            "safe": true,
+            "visible_fraction": 1.0,
+            "blockers": []
+          },
+          "own_ray_difference": 9
+        }
+      },
+      "geometry": {
+        "held_pose": true,
+        "static_seating": []
+      }
+    },
+    {
+      "frame": 1826,
+      "shot": "sh27",
+      "actor_qc": {
+        "cleo": {
+          "bounds": [
+            0.1901198923587799,
+            0.66596919298172,
+            0.30247610807418823,
+            0.7281979918479919,
+            3.7109179496765137
+          ],
+          "safe": true,
+          "vertical_coverage": 0.4257218837738037,
+          "face_all": {
+            "samples": 9,
+            "blocked": 9,
+            "bounds": [
+              0.3497157394886017,
+              0.508902907371521,
+              0.5865548849105835,
+              0.6785026788711548,
+              4.200841426849365
+            ],
+            "safe": true,
+            "visible_fraction": 0.0,
+            "blockers": [
+              "kai / head skinned",
+              "kai / hoodie folded hood"
+            ]
+          },
+          "face_external": {
+            "samples": 9,
+            "blocked": 9,
+            "bounds": [
+              0.3497157394886017,
+              0.508902907371521,
+              0.5865548849105835,
+              0.6785026788711548,
+              4.200841426849365
+            ],
+            "safe": true,
+            "visible_fraction": 0.0,
+            "blockers": [
+              "kai / head skinned",
+              "kai / hoodie folded hood"
+            ]
+          },
+          "own_ray_difference": 0
+        },
+        "kai": {
+          "bounds": [
+            0.0926387831568718,
+            0.7319437861442566,
+            0.21742813289165497,
+            0.7459890842437744,
+            3.080458641052246
+          ],
+          "safe": true,
+          "vertical_coverage": 0.5285609513521194,
+          "face_all": {
+            "samples": 9,
+            "blocked": 9,
+            "bounds": [
+              0.3663615882396698,
+              0.5726886987686157,
+              0.5872466564178467,
+              0.7027738690376282,
+              3.6763551235198975
+            ],
+            "safe": true,
+            "visible_fraction": 0.0,
+            "blockers": [
+              "kai / head skinned",
+              "kai / hoodie folded hood"
+            ]
+          },
+          "face_external": {
+            "samples": 9,
+            "blocked": 0,
+            "bounds": [
+              0.3663615882396698,
+              0.5726886987686157,
+              0.5872466564178467,
+              0.7027738690376282,
+              3.6763551235198975
+            ],
+            "safe": true,
+            "visible_fraction": 1.0,
+            "blockers": []
+          },
+          "own_ray_difference": 9
+        }
+      },
+      "geometry": {
+        "held_pose": true,
+        "static_seating": []
+      }
+    },
+    {
+      "frame": 1827,
+      "shot": "sh27",
+      "actor_qc": {
+        "cleo": {
+          "bounds": [
+            0.1901198923587799,
+            0.6674811840057373,
+            0.30247610807418823,
+            0.7358496189117432,
+            3.7217884063720703
+          ],
+          "safe": true,
+          "vertical_coverage": 0.43337351083755493,
+          "face_all": {
+            "samples": 9,
+            "blocked": 9,
+            "bounds": [
+              0.349395215511322,
+              0.5089287757873535,
+              0.586362361907959,
+              0.678485631942749,
+              4.199947834014893
+            ],
+            "safe": true,
+            "visible_fraction": 0.0,
+            "blockers": [
+              "kai / head skinned",
+              "kai / hoodie folded hood"
+            ]
+          },
+          "face_external": {
+            "samples": 9,
+            "blocked": 9,
+            "bounds": [
+              0.349395215511322,
+              0.5089287757873535,
+              0.586362361907959,
+              0.678485631942749,
+              4.199947834014893
+            ],
+            "safe": true,
+            "visible_fraction": 0.0,
+            "blockers": [
+              "kai / head skinned",
+              "kai / hoodie folded hood"
+            ]
+          },
+          "own_ray_difference": 0
+        },
+        "kai": {
+          "bounds": [
+            0.0926387831568718,
+            0.7316251993179321,
+            0.21742813289165497,
+            0.7459676265716553,
+            3.080458641052246
+          ],
+          "safe": true,
+          "vertical_coverage": 0.5285394936800003,
+          "face_all": {
+            "samples": 9,
+            "blocked": 9,
+            "bounds": [
+              0.3663276135921478,
+              0.5728939771652222,
+              0.5870338082313538,
+              0.7026417851448059,
+              3.6763288974761963
+            ],
+            "safe": true,
+            "visible_fraction": 0.0,
+            "blockers": [
+              "kai / head skinned",
+              "kai / hoodie folded hood"
+            ]
+          },
+          "face_external": {
+            "samples": 9,
+            "blocked": 0,
+            "bounds": [
+              0.3663276135921478,
+              0.5728939771652222,
+              0.5870338082313538,
+              0.7026417851448059,
+              3.6763288974761963
+            ],
+            "safe": true,
+            "visible_fraction": 1.0,
+            "blockers": []
+          },
+          "own_ray_difference": 9
+        }
+      },
+      "geometry": {
+        "held_pose": true,
+        "static_seating": []
+      }
+    },
+    {
+      "frame": 1828,
+      "shot": "sh27",
+      "actor_qc": {
+        "cleo": {
+          "bounds": [
+            0.1901198923587799,
+            0.668977677822113,
+            0.30247610807418823,
+            0.7417159080505371,
+            3.7329788208007812
+          ],
+          "safe": true,
+          "vertical_coverage": 0.4392397999763489,
+          "face_all": {
+            "samples": 9,
+            "blocked": 9,
+            "bounds": [
+              0.3490906357765198,
+              0.5089539289474487,
+              0.5861787796020508,
+              0.6784685850143433,
+              4.199096202850342
+            ],
+            "safe": true,
+            "visible_fraction": 0.0,
+            "blockers": [
+              "kai / head skinned",
+              "kai / hoodie folded hood"
+            ]
+          },
+          "face_external": {
+            "samples": 9,
+            "blocked": 9,
+            "bounds": [
+              0.3490906357765198,
+              0.5089539289474487,
+              0.5861787796020508,
+              0.6784685850143433,
+              4.199096202850342
+            ],
+            "safe": true,
+            "visible_fraction": 0.0,
+            "blockers": [
+              "kai / head skinned",
+              "kai / hoodie folded hood"
+            ]
+          },
+          "own_ray_difference": 0
+        },
+        "kai": {
+          "bounds": [
+            0.0926387831568718,
+            0.7314108610153198,
+            0.21742813289165497,
+            0.7459459900856018,
+            3.080458641052246
+          ],
+          "safe": true,
+          "vertical_coverage": 0.5285178571939468,
+          "face_all": {
+            "samples": 9,
+            "blocked": 9,
+            "bounds": [
+              0.36629462242126465,
+              0.5730879902839661,
+              0.5868309736251831,
+              0.702515184879303,
+              3.676301956176758
+            ],
+            "safe": true,
+            "visible_fraction": 0.0,
+            "blockers": [
+              "kai / head skinned",
+              "kai / hoodie folded hood"
+            ]
+          },
+          "face_external": {
+            "samples": 9,
+            "blocked": 0,
+            "bounds": [
+              0.36629462242126465,
+              0.5730879902839661,
+              0.5868309736251831,
+              0.702515184879303,
+              3.676301956176758
+            ],
+            "safe": true,
+            "visible_fraction": 1.0,
+            "blockers": []
+          },
+          "own_ray_difference": 9
+        }
+      },
+      "geometry": {
+        "held_pose": true,
+        "static_seating": []
+      }
+    },
+    {
+      "frame": 1829,
+      "shot": "sh27",
+      "actor_qc": {
+        "cleo": {
+          "bounds": [
+            0.1901198923587799,
+            0.6704074144363403,
+            0.30247610807418823,
+            0.7462517619132996,
+            3.7438673973083496
+          ],
+          "safe": true,
+          "vertical_coverage": 0.44377565383911133,
+          "face_all": {
+            "samples": 9,
+            "blocked": 9,
+            "bounds": [
+              0.3488023579120636,
+              0.5089782476425171,
+              0.586004376411438,
+              0.6784517168998718,
+              4.1982879638671875
+            ],
+            "safe": true,
+            "visible_fraction": 0.0,
+            "blockers": [
+              "kai / head skinned",
+              "kai / hoodie folded hood"
+            ]
+          },
+          "face_external": {
+            "samples": 9,
+            "blocked": 9,
+            "bounds": [
+              0.3488023579120636,
+              0.5089782476425171,
+              0.586004376411438,
+              0.6784517168998718,
+              4.1982879638671875
+            ],
+            "safe": true,
+            "visible_fraction": 0.0,
+            "blockers": [
+              "kai / head skinned",
+              "kai / hoodie folded hood"
+            ]
+          },
+          "own_ray_difference": 0
+        },
+        "kai": {
+          "bounds": [
+            0.0926387831568718,
+            0.7311330437660217,
+            0.21742813289165497,
+            0.7459241151809692,
+            3.080458641052246
+          ],
+          "safe": true,
+          "vertical_coverage": 0.5284959822893143,
+          "face_all": {
+            "samples": 9,
+            "blocked": 9,
+            "bounds": [
+              0.3662627339363098,
+              0.5732706785202026,
+              0.5866383910179138,
+              0.7023942470550537,
+              3.6762752532958984
+            ],
+            "safe": true,
+            "visible_fraction": 0.0,
+            "blockers": [
+              "kai / head skinned",
+              "kai / hoodie folded hood"
+            ]
+          },
+          "face_external": {
+            "samples": 9,
+            "blocked": 0,
+            "bounds": [
+              0.3662627339363098,
+              0.5732706785202026,
+              0.5866383910179138,
+              0.7023942470550537,
+              3.6762752532958984
+            ],
+            "safe": true,
+            "visible_fraction": 1.0,
+            "blockers": []
+          },
+          "own_ray_difference": 9
+        }
+      },
+      "geometry": {
+        "held_pose": true,
+        "static_seating": []
+      }
+    },
+    {
+      "frame": 1830,
+      "shot": "sh27",
+      "actor_qc": {
+        "cleo": {
+          "bounds": [
+            0.1901198923587799,
+            0.6717411279678345,
+            0.30247610807418823,
+            0.7498369216918945,
+            3.7541487216949463
+          ],
+          "safe": true,
+          "vertical_coverage": 0.4473608136177063,
+          "face_all": {
+            "samples": 9,
+            "blocked": 9,
+            "bounds": [
+              0.3485305905342102,
+              0.5090016722679138,
+              0.5858393907546997,
+              0.6784351468086243,
+              4.197524547576904
+            ],
+            "safe": true,
+            "visible_fraction": 0.0,
+            "blockers": [
+              "kai / head skinned",
+              "kai / hoodie folded hood"
+            ]
+          },
+          "face_external": {
+            "samples": 9,
+            "blocked": 9,
+            "bounds": [
+              0.3485305905342102,
+              0.5090016722679138,
+              0.5858393907546997,
+              0.6784351468086243,
+              4.197524547576904
+            ],
+            "safe": true,
+            "visible_fraction": 0.0,
+            "blockers": [
+              "kai / head skinned",
+              "kai / hoodie folded hood"
+            ]
+          },
+          "own_ray_difference": 0
+        },
+        "kai": {
+          "bounds": [
+            0.0926387831568718,
+            0.7308120727539062,
+            0.21742813289165497,
+            0.7459023594856262,
+            3.080458641052246
+          ],
+          "safe": true,
+          "vertical_coverage": 0.5284742265939713,
+          "face_all": {
+            "samples": 9,
+            "blocked": 9,
+            "bounds": [
+              0.3662322163581848,
+              0.5734421014785767,
+              0.5864563584327698,
+              0.7022793889045715,
+              3.6762495040893555
+            ],
+            "safe": true,
+            "visible_fraction": 0.0,
+            "blockers": [
+              "kai / head skinned",
+              "kai / hoodie folded hood"
+            ]
+          },
+          "face_external": {
+            "samples": 9,
+            "blocked": 0,
+            "bounds": [
+              0.3662322163581848,
+              0.5734421014785767,
+              0.5864563584327698,
+              0.7022793889045715,
+              3.6762495040893555
+            ],
+            "safe": true,
+            "visible_fraction": 1.0,
+            "blockers": []
+          },
+          "own_ray_difference": 9
+        }
+      },
+      "geometry": {
+        "held_pose": true,
+        "static_seating": []
+      }
+    }
+  ]
+}

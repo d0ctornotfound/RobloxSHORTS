@@ -1,0 +1,1016 @@
+{
+  "rendered": [
+    {
+      "frame": 1518,
+      "render_seconds": 49.416673023000044,
+      "near_black_percent": 0.1527777777777778
+    },
+    {
+      "frame": 1519,
+      "render_seconds": 25.808613640999965,
+      "near_black_percent": 0.15297067901234568
+    },
+    {
+      "frame": 1520,
+      "render_seconds": 25.77805119300001,
+      "near_black_percent": 0.15258487654320987
+    },
+    {
+      "frame": 1521,
+      "render_seconds": 25.754607396999972,
+      "near_black_percent": 0.1527777777777778
+    },
+    {
+      "frame": 1522,
+      "render_seconds": 25.783739943,
+      "near_black_percent": 0.15239197530864196
+    },
+    {
+      "frame": 1523,
+      "render_seconds": 25.81245803600001,
+      "near_black_percent": 0.15239197530864196
+    },
+    {
+      "frame": 1524,
+      "render_seconds": 25.761119678,
+      "near_black_percent": 0.15239197530864196
+    },
+    {
+      "frame": 1525,
+      "render_seconds": 25.74269604400007,
+      "near_black_percent": 0.15239197530864196
+    },
+    {
+      "frame": 1526,
+      "render_seconds": 25.755355439000027,
+      "near_black_percent": 0.15239197530864196
+    },
+    {
+      "frame": 1527,
+      "render_seconds": 25.696934458999976,
+      "near_black_percent": 0.15258487654320987
+    }
+  ],
+  "rows": [
+    {
+      "frame": 1518,
+      "shot": "sh20",
+      "actor_qc": {
+        "narrator": {
+          "bounds": [
+            0.39557039737701416,
+            0.6254740953445435,
+            0.4661301076412201,
+            0.6548634767532349,
+            11.644880294799805
+          ],
+          "safe": true,
+          "vertical_coverage": 0.18873336911201477,
+          "face_all": {
+            "samples": 9,
+            "blocked": 0,
+            "bounds": [
+              0.47930365800857544,
+              0.5459722876548767,
+              0.5990504026412964,
+              0.6368387937545776,
+              11.88214111328125
+            ],
+            "safe": true,
+            "visible_fraction": 1.0,
+            "blockers": []
+          },
+          "face_external": {
+            "samples": 9,
+            "blocked": 0,
+            "bounds": [
+              0.47930365800857544,
+              0.5459722876548767,
+              0.5990504026412964,
+              0.6368387937545776,
+              11.88214111328125
+            ],
+            "safe": true,
+            "visible_fraction": 1.0,
+            "blockers": []
+          },
+          "own_ray_difference": 0
+        }
+      },
+      "geometry": {
+        "phase": "carry",
+        "socket_alignment": {
+          "chart": {
+            "socket_to_target_error": 0.0
+          },
+          "pencil": {
+            "socket_to_target_error": 0.0
+          }
+        },
+        "chart_contact": {
+          "sampled_min_arm_surface_gap": 0.0025004935450851917,
+          "arm_prop_overlap_pairs": 48,
+          "scope": "whole rigid arm surface; not signed distal-hand penetration"
+        },
+        "pencil_contact": {
+          "sampled_min_arm_surface_gap": 0.030152056366205215,
+          "arm_prop_overlap_pairs": 14,
+          "scope": "whole rigid arm surface; not signed distal-hand penetration"
+        },
+        "stride": {
+          "time": 2.571111111111111,
+          "support": 0,
+          "continuing": true,
+          "contact_world": [
+            -0.17647352814674377,
+            4.731639862060547,
+            -1.0947942996608617e-08
+          ],
+          "flight": false,
+          "velocity": 1.2072234296818164e-05,
+          "floor_error": -1.0947942996608617e-08,
+          "contact_gap": -1.0947942996608617e-08,
+          "forward_speed": 0.7537508010864258,
+          "root": [
+            0.0814790427684784,
+            5.387081623077393,
+            0.035821329802274704
+          ],
+          "settle": 0
+        },
+        "foot_visible": false,
+        "actor_bounds": [
+          0.39557039737701416,
+          0.6254740953445435,
+          0.4661301076412201,
+          0.6548634767532349,
+          11.644880294799805
+        ]
+      }
+    },
+    {
+      "frame": 1519,
+      "shot": "sh20",
+      "actor_qc": {
+        "narrator": {
+          "bounds": [
+            0.39542078971862793,
+            0.6257888674736023,
+            0.466216504573822,
+            0.6542347073554993,
+            11.61357307434082
+          ],
+          "safe": true,
+          "vertical_coverage": 0.18801820278167725,
+          "face_all": {
+            "samples": 9,
+            "blocked": 0,
+            "bounds": [
+              0.4792935252189636,
+              0.5461156964302063,
+              0.5982968807220459,
+              0.6361714005470276,
+              11.853073120117188
+            ],
+            "safe": true,
+            "visible_fraction": 1.0,
+            "blockers": []
+          },
+          "face_external": {
+            "samples": 9,
+            "blocked": 0,
+            "bounds": [
+              0.4792935252189636,
+              0.5461156964302063,
+              0.5982968807220459,
+              0.6361714005470276,
+              11.853073120117188
+            ],
+            "safe": true,
+            "visible_fraction": 1.0,
+            "blockers": []
+          },
+          "own_ray_difference": 0
+        }
+      },
+      "geometry": {
+        "phase": "carry",
+        "socket_alignment": {
+          "chart": {
+            "socket_to_target_error": 0.0
+          },
+          "pencil": {
+            "socket_to_target_error": 0.0
+          }
+        },
+        "chart_contact": {
+          "sampled_min_arm_surface_gap": 0.002492364030331373,
+          "arm_prop_overlap_pairs": 48,
+          "scope": "whole rigid arm surface; not signed distal-hand penetration"
+        },
+        "pencil_contact": {
+          "sampled_min_arm_surface_gap": 0.03021649271249771,
+          "arm_prop_overlap_pairs": 14,
+          "scope": "whole rigid arm surface; not signed distal-hand penetration"
+        },
+        "stride": {
+          "time": 2.604444444444445,
+          "support": 0,
+          "continuing": true,
+          "contact_world": [
+            -0.17647352814674377,
+            4.731639862060547,
+            -4.4599369175557513e-07
+          ],
+          "flight": false,
+          "velocity": 1.305137266356858e-05,
+          "floor_error": -4.4599369175557513e-07,
+          "contact_gap": -4.4599369175557513e-07,
+          "forward_speed": 0.9770125150680542,
+          "root": [
+            0.08266925811767578,
+            5.3545145988464355,
+            0.02892640046775341
+          ],
+          "settle": 0
+        },
+        "foot_visible": false,
+        "actor_bounds": [
+          0.39542078971862793,
+          0.6257888674736023,
+          0.466216504573822,
+          0.6542347073554993,
+          11.61357307434082
+        ]
+      }
+    },
+    {
+      "frame": 1520,
+      "shot": "sh20",
+      "actor_qc": {
+        "narrator": {
+          "bounds": [
+            0.395186185836792,
+            0.6261444091796875,
+            0.46628323197364807,
+            0.6538021564483643,
+            11.571897506713867
+          ],
+          "safe": true,
+          "vertical_coverage": 0.1875189244747162,
+          "face_all": {
+            "samples": 9,
+            "blocked": 0,
+            "bounds": [
+              0.47924718260765076,
+              0.5462733507156372,
+              0.5977000594139099,
+              0.6356908082962036,
+              11.814534187316895
+            ],
+            "safe": true,
+            "visible_fraction": 1.0,
+            "blockers": []
+          },
+          "face_external": {
+            "samples": 9,
+            "blocked": 0,
+            "bounds": [
+              0.47924718260765076,
+              0.5462733507156372,
+              0.5977000594139099,
+              0.6356908082962036,
+              11.814534187316895
+            ],
+            "safe": true,
+            "visible_fraction": 1.0,
+            "blockers": []
+          },
+          "own_ray_difference": 0
+        }
+      },
+      "geometry": {
+        "phase": "carry",
+        "socket_alignment": {
+          "chart": {
+            "socket_to_target_error": 0.0
+          },
+          "pencil": {
+            "socket_to_target_error": 0.0
+          }
+        },
+        "chart_contact": {
+          "sampled_min_arm_surface_gap": 0.002480790950357914,
+          "arm_prop_overlap_pairs": 48,
+          "scope": "whole rigid arm surface; not signed distal-hand penetration"
+        },
+        "pencil_contact": {
+          "sampled_min_arm_surface_gap": 0.030316727235913277,
+          "arm_prop_overlap_pairs": 14,
+          "scope": "whole rigid arm surface; not signed distal-hand penetration"
+        },
+        "stride": {
+          "time": 2.637777777777778,
+          "support": 0,
+          "continuing": true,
+          "contact_world": [
+            -0.17647355794906616,
+            4.731639862060547,
+            -5.271339205137338e-07
+          ],
+          "flight": false,
+          "velocity": 2.593207222422593e-06,
+          "floor_error": -5.271339205137338e-07,
+          "contact_gap": -5.271339205137338e-07,
+          "forward_speed": 1.2488758563995361,
+          "root": [
+            0.08386549353599548,
+            5.312885284423828,
+            0.024580469354987144
+          ],
+          "settle": 0
+        },
+        "foot_visible": false,
+        "actor_bounds": [
+          0.395186185836792,
+          0.6261444091796875,
+          0.46628323197364807,
+          0.6538021564483643,
+          11.571897506713867
+        ]
+      }
+    },
+    {
+      "frame": 1521,
+      "shot": "sh20",
+      "actor_qc": {
+        "narrator": {
+          "bounds": [
+            0.3949138820171356,
+            0.626470148563385,
+            0.46586355566978455,
+            0.6529948115348816,
+            11.529762268066406
+          ],
+          "safe": true,
+          "vertical_coverage": 0.18713125586509705,
+          "face_all": {
+            "samples": 9,
+            "blocked": 0,
+            "bounds": [
+              0.47916579246520996,
+              0.5463967323303223,
+              0.5967168211936951,
+              0.6348211169242859,
+              11.775528907775879
+            ],
+            "safe": true,
+            "visible_fraction": 1.0,
+            "blockers": []
+          },
+          "face_external": {
+            "samples": 9,
+            "blocked": 0,
+            "bounds": [
+              0.47916579246520996,
+              0.5463967323303223,
+              0.5967168211936951,
+              0.6348211169242859,
+              11.775528907775879
+            ],
+            "safe": true,
+            "visible_fraction": 1.0,
+            "blockers": []
+          },
+          "own_ray_difference": 0
+        }
+      },
+      "geometry": {
+        "phase": "carry",
+        "socket_alignment": {
+          "chart": {
+            "socket_to_target_error": 0.0
+          },
+          "pencil": {
+            "socket_to_target_error": 0.0
+          }
+        },
+        "chart_contact": {
+          "sampled_min_arm_surface_gap": 0.0024696325417608023,
+          "arm_prop_overlap_pairs": 48,
+          "scope": "whole rigid arm surface; not signed distal-hand penetration"
+        },
+        "pencil_contact": {
+          "sampled_min_arm_surface_gap": 0.030417656525969505,
+          "arm_prop_overlap_pairs": 14,
+          "scope": "whole rigid arm surface; not signed distal-hand penetration"
+        },
+        "stride": {
+          "time": 2.671111111111111,
+          "support": 0,
+          "continuing": true,
+          "contact_world": [
+            -0.17647352814674377,
+            4.731639862060547,
+            -4.2970376057382964e-07
+          ],
+          "flight": false,
+          "velocity": 3.056588513941078e-06,
+          "floor_error": -4.2970376057382964e-07,
+          "contact_gap": -4.2970376057382964e-07,
+          "forward_speed": 1.2927228212356567,
+          "root": [
+            0.08484914898872375,
+            5.269794464111328,
+            0.015464496798813343
+          ],
+          "settle": 0
+        },
+        "foot_visible": false,
+        "actor_bounds": [
+          0.3949138820171356,
+          0.626470148563385,
+          0.46586355566978455,
+          0.6529948115348816,
+          11.529762268066406
+        ]
+      }
+    },
+    {
+      "frame": 1522,
+      "shot": "sh20",
+      "actor_qc": {
+        "narrator": {
+          "bounds": [
+            0.39464837312698364,
+            0.6267013549804688,
+            0.46428927779197693,
+            0.6524683833122253,
+            11.494854927062988
+          ],
+          "safe": true,
+          "vertical_coverage": 0.1881791055202484,
+          "face_all": {
+            "samples": 9,
+            "blocked": 0,
+            "bounds": [
+              0.47905266284942627,
+              0.5464480519294739,
+              0.5960517525672913,
+              0.6342493891716003,
+              11.743282318115234
+            ],
+            "safe": true,
+            "visible_fraction": 1.0,
+            "blockers": []
+          },
+          "face_external": {
+            "samples": 9,
+            "blocked": 0,
+            "bounds": [
+              0.47905266284942627,
+              0.5464480519294739,
+              0.5960517525672913,
+              0.6342493891716003,
+              11.743282318115234
+            ],
+            "safe": true,
+            "visible_fraction": 1.0,
+            "blockers": []
+          },
+          "own_ray_difference": 0
+        }
+      },
+      "geometry": {
+        "phase": "carry",
+        "socket_alignment": {
+          "chart": {
+            "socket_to_target_error": 0.0
+          },
+          "pencil": {
+            "socket_to_target_error": 0.0
+          }
+        },
+        "chart_contact": {
+          "sampled_min_arm_surface_gap": 0.00246024364605546,
+          "arm_prop_overlap_pairs": 48,
+          "scope": "whole rigid arm surface; not signed distal-hand penetration"
+        },
+        "pencil_contact": {
+          "sampled_min_arm_surface_gap": 0.030501164495944977,
+          "arm_prop_overlap_pairs": 14,
+          "scope": "whole rigid arm surface; not signed distal-hand penetration"
+        },
+        "stride": {
+          "time": 2.7044444444444444,
+          "support": 0,
+          "continuing": true,
+          "contact_world": [
+            -0.17647351324558258,
+            4.731639862060547,
+            -5.067204256192781e-07
+          ],
+          "flight": false,
+          "velocity": 2.3533487241198007e-06,
+          "floor_error": -5.067204256192781e-07,
+          "contact_gap": -5.067204256192781e-07,
+          "forward_speed": 1.0619562864303589,
+          "root": [
+            0.08541533350944519,
+            5.234395980834961,
+            0.009528428316116333
+          ],
+          "settle": 0
+        },
+        "foot_visible": false,
+        "actor_bounds": [
+          0.39464837312698364,
+          0.6267013549804688,
+          0.46428927779197693,
+          0.6524683833122253,
+          11.494854927062988
+        ]
+      }
+    },
+    {
+      "frame": 1523,
+      "shot": "sh20",
+      "actor_qc": {
+        "narrator": {
+          "bounds": [
+            0.39438384771347046,
+            0.6268801689147949,
+            0.46303147077560425,
+            0.6521361470222473,
+            11.464042663574219
+          ],
+          "safe": true,
+          "vertical_coverage": 0.18910467624664307,
+          "face_all": {
+            "samples": 9,
+            "blocked": 0,
+            "bounds": [
+              0.47891873121261597,
+              0.546454668045044,
+              0.5956026911735535,
+              0.6338818073272705,
+              11.714603424072266
+            ],
+            "safe": true,
+            "visible_fraction": 1.0,
+            "blockers": []
+          },
+          "face_external": {
+            "samples": 9,
+            "blocked": 0,
+            "bounds": [
+              0.47891873121261597,
+              0.546454668045044,
+              0.5956026911735535,
+              0.6338818073272705,
+              11.714603424072266
+            ],
+            "safe": true,
+            "visible_fraction": 1.0,
+            "blockers": []
+          },
+          "own_ray_difference": 0
+        }
+      },
+      "geometry": {
+        "phase": "carry",
+        "socket_alignment": {
+          "chart": {
+            "socket_to_target_error": 0.0
+          },
+          "pencil": {
+            "socket_to_target_error": 0.0
+          }
+        },
+        "chart_contact": {
+          "sampled_min_arm_surface_gap": 0.00245204521343112,
+          "arm_prop_overlap_pairs": 48,
+          "scope": "whole rigid arm surface; not signed distal-hand penetration"
+        },
+        "pencil_contact": {
+          "sampled_min_arm_surface_gap": 0.03057403303682804,
+          "arm_prop_overlap_pairs": 14,
+          "scope": "whole rigid arm surface; not signed distal-hand penetration"
+        },
+        "stride": {
+          "time": 2.737777777777778,
+          "support": 0,
+          "continuing": true,
+          "contact_world": [
+            -0.17647354304790497,
+            4.731640338897705,
+            -8.196792578019085e-07
+          ],
+          "flight": false,
+          "velocity": 1.7134309966701858e-05,
+          "floor_error": -8.196792578019085e-07,
+          "contact_gap": -8.196792578019085e-07,
+          "forward_speed": 0.9277716279029846,
+          "root": [
+            0.08573907613754272,
+            5.203470230102539,
+            0.0058351606130599976
+          ],
+          "settle": 0
+        },
+        "foot_visible": false,
+        "actor_bounds": [
+          0.39438384771347046,
+          0.6268801689147949,
+          0.46303147077560425,
+          0.6521361470222473,
+          11.464042663574219
+        ]
+      }
+    },
+    {
+      "frame": 1524,
+      "shot": "sh20",
+      "actor_qc": {
+        "narrator": {
+          "bounds": [
+            0.3941022455692291,
+            0.6272172331809998,
+            0.46177390217781067,
+            0.6516770720481873,
+            11.433303833007812
+          ],
+          "safe": true,
+          "vertical_coverage": 0.1899031698703766,
+          "face_all": {
+            "samples": 9,
+            "blocked": 0,
+            "bounds": [
+              0.47876739501953125,
+              0.5464411377906799,
+              0.5950236916542053,
+              0.633381724357605,
+              11.685770034790039
+            ],
+            "safe": true,
+            "visible_fraction": 1.0,
+            "blockers": []
+          },
+          "face_external": {
+            "samples": 9,
+            "blocked": 0,
+            "bounds": [
+              0.47876739501953125,
+              0.5464411377906799,
+              0.5950236916542053,
+              0.633381724357605,
+              11.685770034790039
+            ],
+            "safe": true,
+            "visible_fraction": 1.0,
+            "blockers": []
+          },
+          "own_ray_difference": 0
+        }
+      },
+      "geometry": {
+        "phase": "carry",
+        "socket_alignment": {
+          "chart": {
+            "socket_to_target_error": 0.0
+          },
+          "pencil": {
+            "socket_to_target_error": 0.0
+          }
+        },
+        "chart_contact": {
+          "sampled_min_arm_surface_gap": 0.002444411860778928,
+          "arm_prop_overlap_pairs": 48,
+          "scope": "whole rigid arm surface; not signed distal-hand penetration"
+        },
+        "pencil_contact": {
+          "sampled_min_arm_surface_gap": 0.030647454783320427,
+          "arm_prop_overlap_pairs": 14,
+          "scope": "whole rigid arm surface; not signed distal-hand penetration"
+        },
+        "stride": {
+          "time": 2.7711111111111113,
+          "support": 0,
+          "continuing": true,
+          "contact_world": [
+            -0.17647354304790497,
+            4.731639862060547,
+            -5.365458264350309e-07
+          ],
+          "flight": false,
+          "velocity": 1.6636838453997524e-05,
+          "floor_error": -5.365458264350309e-07,
+          "contact_gap": -5.365458264350309e-07,
+          "forward_speed": 0.934712290763855,
+          "root": [
+            0.08596751093864441,
+            5.172313213348389,
+            0.0005374551983550191
+          ],
+          "settle": 0
+        },
+        "foot_visible": false,
+        "actor_bounds": [
+          0.3941022455692291,
+          0.6272172331809998,
+          0.46177390217781067,
+          0.6516770720481873,
+          11.433303833007812
+        ]
+      }
+    },
+    {
+      "frame": 1525,
+      "shot": "sh20",
+      "actor_qc": {
+        "narrator": {
+          "bounds": [
+            0.3936059772968292,
+            0.6276960372924805,
+            0.4601130783557892,
+            0.6513686180114746,
+            11.384592056274414
+          ],
+          "safe": true,
+          "vertical_coverage": 0.19125553965568542,
+          "face_all": {
+            "samples": 9,
+            "blocked": 0,
+            "bounds": [
+              0.4784863591194153,
+              0.5463898181915283,
+              0.5945192575454712,
+              0.6330094337463379,
+              11.640334129333496
+            ],
+            "safe": true,
+            "visible_fraction": 1.0,
+            "blockers": []
+          },
+          "face_external": {
+            "samples": 9,
+            "blocked": 0,
+            "bounds": [
+              0.4784863591194153,
+              0.5463898181915283,
+              0.5945192575454712,
+              0.6330094337463379,
+              11.640334129333496
+            ],
+            "safe": true,
+            "visible_fraction": 1.0,
+            "blockers": []
+          },
+          "own_ray_difference": 0
+        }
+      },
+      "geometry": {
+        "phase": "carry",
+        "socket_alignment": {
+          "chart": {
+            "socket_to_target_error": 0.0
+          },
+          "pencil": {
+            "socket_to_target_error": 0.0
+          }
+        },
+        "chart_contact": {
+          "sampled_min_arm_surface_gap": 0.002430949592962861,
+          "arm_prop_overlap_pairs": 48,
+          "scope": "whole rigid arm surface; not signed distal-hand penetration"
+        },
+        "pencil_contact": {
+          "sampled_min_arm_surface_gap": 0.030777204781770706,
+          "arm_prop_overlap_pairs": 14,
+          "scope": "whole rigid arm surface; not signed distal-hand penetration"
+        },
+        "stride": {
+          "time": 2.8044444444444445,
+          "support": 0,
+          "continuing": true,
+          "contact_world": [
+            -0.17647354304790497,
+            4.731639862060547,
+            -5.58968793029635e-07
+          ],
+          "flight": false,
+          "velocity": 6.726890040092521e-07,
+          "floor_error": -5.58968793029635e-07,
+          "contact_gap": -5.58968793029635e-07,
+          "forward_speed": 1.4265498518943787,
+          "root": [
+            0.085410475730896,
+            5.124761581420898,
+            -0.0026607883628457785
+          ],
+          "settle": 0
+        },
+        "foot_visible": false,
+        "actor_bounds": [
+          0.3936059772968292,
+          0.6276960372924805,
+          0.4601130783557892,
+          0.6513686180114746,
+          11.384592056274414
+        ]
+      }
+    },
+    {
+      "frame": 1526,
+      "shot": "sh20",
+      "actor_qc": {
+        "narrator": {
+          "bounds": [
+            0.3930593729019165,
+            0.628205418586731,
+            0.4590490758419037,
+            0.6515490412712097,
+            11.331785202026367
+          ],
+          "safe": true,
+          "vertical_coverage": 0.19249996542930603,
+          "face_all": {
+            "samples": 9,
+            "blocked": 0,
+            "bounds": [
+              0.4781765043735504,
+              0.5463309288024902,
+              0.5944948196411133,
+              0.6331329345703125,
+              11.591011047363281
+            ],
+            "safe": true,
+            "visible_fraction": 1.0,
+            "blockers": []
+          },
+          "face_external": {
+            "samples": 9,
+            "blocked": 0,
+            "bounds": [
+              0.4781765043735504,
+              0.5463309288024902,
+              0.5944948196411133,
+              0.6331329345703125,
+              11.591011047363281
+            ],
+            "safe": true,
+            "visible_fraction": 1.0,
+            "blockers": []
+          },
+          "own_ray_difference": 0
+        }
+      },
+      "geometry": {
+        "phase": "carry",
+        "socket_alignment": {
+          "chart": {
+            "socket_to_target_error": 0.0
+          },
+          "pencil": {
+            "socket_to_target_error": 0.0
+          }
+        },
+        "chart_contact": {
+          "sampled_min_arm_surface_gap": 0.0024170437827706337,
+          "arm_prop_overlap_pairs": 46,
+          "scope": "whole rigid arm surface; not signed distal-hand penetration"
+        },
+        "pencil_contact": {
+          "sampled_min_arm_surface_gap": 0.03091549687087536,
+          "arm_prop_overlap_pairs": 14,
+          "scope": "whole rigid arm surface; not signed distal-hand penetration"
+        },
+        "stride": {
+          "time": 2.8377777777777777,
+          "support": 0,
+          "continuing": true,
+          "contact_world": [
+            -0.17647352814674377,
+            4.731639862060547,
+            -5.183199505154334e-07
+          ],
+          "flight": false,
+          "velocity": 1.298820871352901e-06,
+          "floor_error": -5.183199505154334e-07,
+          "contact_gap": -5.183199505154334e-07,
+          "forward_speed": 1.5035560727119446,
+          "root": [
+            0.08472537994384766,
+            5.074643135070801,
+            0.0004639444232452661
+          ],
+          "settle": 0
+        },
+        "foot_visible": false,
+        "actor_bounds": [
+          0.3930593729019165,
+          0.628205418586731,
+          0.4590490758419037,
+          0.6515490412712097,
+          11.331785202026367
+        ]
+      }
+    },
+    {
+      "frame": 1527,
+      "shot": "sh20",
+      "actor_qc": {
+        "narrator": {
+          "bounds": [
+            0.39247894287109375,
+            0.6286967992782593,
+            0.45905303955078125,
+            0.652595043182373,
+            11.278209686279297
+          ],
+          "safe": true,
+          "vertical_coverage": 0.1935420036315918,
+          "face_all": {
+            "samples": 9,
+            "blocked": 0,
+            "bounds": [
+              0.47784122824668884,
+              0.5462511777877808,
+              0.5953501462936401,
+              0.6341456174850464,
+              11.540802001953125
+            ],
+            "safe": true,
+            "visible_fraction": 1.0,
+            "blockers": []
+          },
+          "face_external": {
+            "samples": 9,
+            "blocked": 0,
+            "bounds": [
+              0.47784122824668884,
+              0.5462511777877808,
+              0.5953501462936401,
+              0.6341456174850464,
+              11.540802001953125
+            ],
+            "safe": true,
+            "visible_fraction": 1.0,
+            "blockers": []
+          },
+          "own_ray_difference": 0
+        }
+      },
+      "geometry": {
+        "phase": "carry",
+        "socket_alignment": {
+          "chart": {
+            "socket_to_target_error": 0.0
+          },
+          "pencil": {
+            "socket_to_target_error": 0.0
+          }
+        },
+        "chart_contact": {
+          "sampled_min_arm_surface_gap": 0.002404270227998495,
+          "arm_prop_overlap_pairs": 46,
+          "scope": "whole rigid arm surface; not signed distal-hand penetration"
+        },
+        "pencil_contact": {
+          "sampled_min_arm_surface_gap": 0.03105013258755207,
+          "arm_prop_overlap_pairs": 14,
+          "scope": "whole rigid arm surface; not signed distal-hand penetration"
+        },
+        "stride": {
+          "time": 2.8711111111111114,
+          "support": 0,
+          "continuing": true,
+          "contact_world": [
+            -0.17647354304790497,
+            4.731639862060547,
+            -1.2399432591791992e-07
+          ],
+          "flight": false,
+          "velocity": 1.1838212714820536e-05,
+          "floor_error": -1.2399432591791992e-07,
+          "contact_gap": -1.2399432591791992e-07,
+          "forward_speed": 1.4589473605155945,
+          "root": [
+            0.08388355374336243,
+            5.0260114669799805,
+            0.014596705324947834
+          ],
+          "settle": 0
+        },
+        "foot_visible": false,
+        "actor_bounds": [
+          0.39247894287109375,
+          0.6286967992782593,
+          0.45905303955078125,
+          0.652595043182373,
+          11.278209686279297
+        ]
+      }
+    }
+  ]
+}

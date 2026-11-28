@@ -1,0 +1,165 @@
+{
+  "task": {
+    "key": "sh30-2057",
+    "shot": "sh30",
+    "start": 2057,
+    "end": 2060,
+    "unit_start": 2033,
+    "unit_end": 2060,
+    "sentence_ids": [
+      30
+    ],
+    "stage": {
+      "unit": "still_30",
+      "variant": "hana_hi",
+      "actors": {
+        "faye": {
+          "arm": {
+            "end": [
+              -0.4,
+              -0.5,
+              0.8
+            ],
+            "index": 1
+          },
+          "head": [
+            0.08,
+            0,
+            0.08
+          ]
+        },
+        "brody": {
+          "arm": {
+            "end": [
+              0.4,
+              -0.5,
+              0.8
+            ],
+            "index": 0
+          },
+          "head": [
+            0.08,
+            0,
+            0.08
+          ]
+        },
+        "chase": {
+          "arm": {
+            "end": [
+              0.4,
+              -0.7,
+              -0.4
+            ],
+            "index": 0
+          },
+          "head": [
+            0.08,
+            0,
+            0.08
+          ]
+        },
+        "hana": {
+          "arm": {
+            "end": [
+              -0.4,
+              -0.5,
+              0.8
+            ],
+            "index": 1
+          },
+          "head": [
+            0.08,
+            0,
+            0.08
+          ]
+        },
+        "ivy": {
+          "arm": {
+            "end": [
+              -0.4,
+              -0.5,
+              0.8
+            ],
+            "index": 1
+          },
+          "head": [
+            0.08,
+            0,
+            0.08
+          ]
+        },
+        "kai": {
+          "arm": {
+            "end": [
+              0.4,
+              -0.5,
+              0.8
+            ],
+            "index": 0
+          },
+          "head": [
+            0.08,
+            0,
+            0.08
+          ]
+        }
+      },
+      "qc_actors": [
+        "faye",
+        "gia"
+      ]
+    }
+  },
+  "engine": "EEVEE",
+  "denoising": false,
+  "spatial_samples": 32,
+  "render_sampling_hz": 30,
+  "rendered": [
+    {
+      "frame": 2057,
+      "render_seconds": 44.30805718100001,
+      "near_black_percent": 1.3184799382716048
+    },
+    {
+      "frame": 2058,
+      "render_seconds": 16.53520471600001,
+      "near_black_percent": 1.3215663580246915
+    },
+    {
+      "frame": 2059,
+      "render_seconds": 16.58938304899999,
+      "near_black_percent": 1.3153935185185186
+    }
+  ],
+  "rows": [
+    {
+      "frame": 2057,
+      "shot": "sh30",
+      "actor_qc": {},
+      "geometry": {
+        "held_pose": true,
+        "static_seating": []
+      }
+    },
+    {
+      "frame": 2058,
+      "shot": "sh30",
+      "actor_qc": {},
+      "geometry": {
+        "held_pose": true,
+        "static_seating": []
+      }
+    },
+    {
+      "frame": 2059,
+      "shot": "sh30",
+      "actor_qc": {},
+      "geometry": {
+        "held_pose": true,
+        "static_seating": []
+      }
+    }
+  ],
+  "extra": {},
+  "missing_props": []
+}

@@ -1,0 +1,459 @@
+{
+  "task": {
+    "key": "sh30-2060",
+    "shot": "sh30",
+    "start": 2060,
+    "end": 2084,
+    "unit_start": 2060,
+    "unit_end": 2088,
+    "sentence_ids": [
+      30
+    ],
+    "stage": {
+      "unit": "still_30",
+      "variant": "ivy_hi",
+      "actors": {
+        "faye": {
+          "arm": {
+            "end": [
+              -0.4,
+              -0.5,
+              0.8
+            ],
+            "index": 1
+          },
+          "head": [
+            0.08,
+            0,
+            0.08
+          ]
+        },
+        "brody": {
+          "arm": {
+            "end": [
+              0.4,
+              -0.5,
+              0.8
+            ],
+            "index": 0
+          },
+          "head": [
+            0.08,
+            0,
+            0.08
+          ]
+        },
+        "chase": {
+          "arm": {
+            "end": [
+              0.4,
+              -0.7,
+              -0.4
+            ],
+            "index": 0
+          },
+          "head": [
+            0.08,
+            0,
+            0.08
+          ]
+        },
+        "hana": {
+          "arm": {
+            "end": [
+              -0.4,
+              -0.5,
+              0.8
+            ],
+            "index": 1
+          },
+          "head": [
+            0.08,
+            0,
+            0.08
+          ]
+        },
+        "ivy": {
+          "arm": {
+            "end": [
+              -0.4,
+              -0.5,
+              0.8
+            ],
+            "index": 1
+          },
+          "head": [
+            0.08,
+            0,
+            0.08
+          ]
+        },
+        "kai": {
+          "arm": {
+            "end": [
+              0.4,
+              -0.5,
+              0.8
+            ],
+            "index": 0
+          },
+          "head": [
+            0.08,
+            0,
+            0.08
+          ]
+        }
+      },
+      "qc_actors": [
+        "faye",
+        "gia"
+      ]
+    }
+  },
+  "engine": "EEVEE",
+  "denoising": false,
+  "spatial_samples": 32,
+  "render_sampling_hz": 30,
+  "rendered": [
+    {
+      "frame": 2060,
+      "render_seconds": 36.105553053999984,
+      "near_black_percent": 0.37364969135802467
+    },
+    {
+      "frame": 2061,
+      "render_seconds": 11.036303089999933,
+      "near_black_percent": 0.3732638888888889
+    },
+    {
+      "frame": 2062,
+      "render_seconds": 11.067443857000058,
+      "near_black_percent": 0.3763503086419753
+    },
+    {
+      "frame": 2063,
+      "render_seconds": 11.040039673000024,
+      "near_black_percent": 0.38233024691358025
+    },
+    {
+      "frame": 2064,
+      "render_seconds": 11.041455500999973,
+      "near_black_percent": 0.3765432098765432
+    },
+    {
+      "frame": 2065,
+      "render_seconds": 11.048820617000047,
+      "near_black_percent": 0.3777006172839506
+    },
+    {
+      "frame": 2066,
+      "render_seconds": 10.970987032000039,
+      "near_black_percent": 0.30266203703703703
+    },
+    {
+      "frame": 2067,
+      "render_seconds": 10.956805672999963,
+      "near_black_percent": 0.11651234567901234
+    },
+    {
+      "frame": 2068,
+      "render_seconds": 10.925919811000085,
+      "near_black_percent": 0.07291666666666667
+    },
+    {
+      "frame": 2069,
+      "render_seconds": 10.953878423999981,
+      "near_black_percent": 0.07233796296296297
+    },
+    {
+      "frame": 2070,
+      "render_seconds": 10.971181708000017,
+      "near_black_percent": 0.07233796296296297
+    },
+    {
+      "frame": 2071,
+      "render_seconds": 10.989921249999952,
+      "near_black_percent": 0.07233796296296297
+    },
+    {
+      "frame": 2072,
+      "render_seconds": 11.19794592200003,
+      "near_black_percent": 0.07233796296296297
+    },
+    {
+      "frame": 2073,
+      "render_seconds": 11.145743491000076,
+      "near_black_percent": 0.07233796296296297
+    },
+    {
+      "frame": 2074,
+      "render_seconds": 11.100067343999967,
+      "near_black_percent": 0.07233796296296297
+    },
+    {
+      "frame": 2075,
+      "render_seconds": 11.164105525999958,
+      "near_black_percent": 0.07233796296296297
+    },
+    {
+      "frame": 2076,
+      "render_seconds": 11.076703890999966,
+      "near_black_percent": 0.07233796296296297
+    },
+    {
+      "frame": 2077,
+      "render_seconds": 11.162850990000038,
+      "near_black_percent": 0.07233796296296297
+    },
+    {
+      "frame": 2078,
+      "render_seconds": 11.111018860999934,
+      "near_black_percent": 0.07233796296296297
+    },
+    {
+      "frame": 2079,
+      "render_seconds": 11.018638673000055,
+      "near_black_percent": 0.07291666666666667
+    },
+    {
+      "frame": 2080,
+      "render_seconds": 11.08474266799999,
+      "near_black_percent": 0.11651234567901234
+    },
+    {
+      "frame": 2081,
+      "render_seconds": 11.071009244999914,
+      "near_black_percent": 0.30266203703703703
+    },
+    {
+      "frame": 2082,
+      "render_seconds": 11.119326168999919,
+      "near_black_percent": 0.3777006172839506
+    },
+    {
+      "frame": 2083,
+      "render_seconds": 11.079501360999984,
+      "near_black_percent": 0.3715277777777778
+    }
+  ],
+  "rows": [
+    {
+      "frame": 2060,
+      "shot": "sh30",
+      "actor_qc": {},
+      "geometry": {
+        "held_pose": true,
+        "static_seating": []
+      }
+    },
+    {
+      "frame": 2061,
+      "shot": "sh30",
+      "actor_qc": {},
+      "geometry": {
+        "held_pose": true,
+        "static_seating": []
+      }
+    },
+    {
+      "frame": 2062,
+      "shot": "sh30",
+      "actor_qc": {},
+      "geometry": {
+        "held_pose": true,
+        "static_seating": []
+      }
+    },
+    {
+      "frame": 2063,
+      "shot": "sh30",
+      "actor_qc": {},
+      "geometry": {
+        "held_pose": true,
+        "static_seating": []
+      }
+    },
+    {
+      "frame": 2064,
+      "shot": "sh30",
+      "actor_qc": {},
+      "geometry": {
+        "held_pose": true,
+        "static_seating": []
+      }
+    },
+    {
+      "frame": 2065,
+      "shot": "sh30",
+      "actor_qc": {},
+      "geometry": {
+        "held_pose": true,
+        "static_seating": []
+      }
+    },
+    {
+      "frame": 2066,
+      "shot": "sh30",
+      "actor_qc": {},
+      "geometry": {
+        "held_pose": true,
+        "static_seating": []
+      }
+    },
+    {
+      "frame": 2067,
+      "shot": "sh30",
+      "actor_qc": {},
+      "geometry": {
+        "held_pose": true,
+        "static_seating": []
+      }
+    },
+    {
+      "frame": 2068,
+      "shot": "sh30",
+      "actor_qc": {},
+      "geometry": {
+        "held_pose": true,
+        "static_seating": []
+      }
+    },
+    {
+      "frame": 2069,
+      "shot": "sh30",
+      "actor_qc": {},
+      "geometry": {
+        "held_pose": true,
+        "static_seating": []
+      }
+    },
+    {
+      "frame": 2070,
+      "shot": "sh30",
+      "actor_qc": {},
+      "geometry": {
+        "held_pose": true,
+        "static_seating": []
+      }
+    },
+    {
+      "frame": 2071,
+      "shot": "sh30",
+      "actor_qc": {},
+      "geometry": {
+        "held_pose": true,
+        "static_seating": []
+      }
+    },
+    {
+      "frame": 2072,
+      "shot": "sh30",
+      "actor_qc": {},
+      "geometry": {
+        "held_pose": true,
+        "static_seating": []
+      }
+    },
+    {
+      "frame": 2073,
+      "shot": "sh30",
+      "actor_qc": {},
+      "geometry": {
+        "held_pose": true,
+        "static_seating": []
+      }
+    },
+    {
+      "frame": 2074,
+      "shot": "sh30",
+      "actor_qc": {},
+      "geometry": {
+        "held_pose": true,
+        "static_seating": []
+      }
+    },
+    {
+      "frame": 2075,
+      "shot": "sh30",
+      "actor_qc": {},
+      "geometry": {
+        "held_pose": true,
+        "static_seating": []
+      }
+    },
+    {
+      "frame": 2076,
+      "shot": "sh30",
+      "actor_qc": {},
+      "geometry": {
+        "held_pose": true,
+        "static_seating": []
+      }
+    },
+    {
+      "frame": 2077,
+      "shot": "sh30",
+      "actor_qc": {},
+      "geometry": {
+        "held_pose": true,
+        "static_seating": []
+      }
+    },
+    {
+      "frame": 2078,
+      "shot": "sh30",
+      "actor_qc": {},
+      "geometry": {
+        "held_pose": true,
+        "static_seating": []
+      }
+    },
+    {
+      "frame": 2079,
+      "shot": "sh30",
+      "actor_qc": {},
+      "geometry": {
+        "held_pose": true,
+        "static_seating": []
+      }
+    },
+    {
+      "frame": 2080,
+      "shot": "sh30",
+      "actor_qc": {},
+      "geometry": {
+        "held_pose": true,
+        "static_seating": []
+      }
+    },
+    {
+      "frame": 2081,
+      "shot": "sh30",
+      "actor_qc": {},
+      "geometry": {
+        "held_pose": true,
+        "static_seating": []
+      }
+    },
+    {
+      "frame": 2082,
+      "shot": "sh30",
+      "actor_qc": {},
+      "geometry": {
+        "held_pose": true,
+        "static_seating": []
+      }
+    },
+    {
+      "frame": 2083,
+      "shot": "sh30",
+      "actor_qc": {},
+      "geometry": {
+        "held_pose": true,
+        "static_seating": []
+      }
+    }
+  ],
+  "extra": {},
+  "missing_props": []
+}

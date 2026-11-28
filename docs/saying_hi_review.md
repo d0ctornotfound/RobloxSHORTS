@@ -343,3 +343,61 @@ ROUND 4 INCOMPLETE — RELEASE BLOCKED. All 12 unit geometry JSON/gate/log files
 Supervisor replaced strict artistic release blocking with measured QC flags; technical completeness is still mandatory. Existing approved native units remain immutable. The acceptance target is the complete 48-shot, 101.20 s / 3036-frame master, not a still animatic or isolated proof. New general tools: `scripts/film_walk_to_mark.py` (deterministic whole-cycle plant calibration), `scripts/render_film_unit.py` (data-driven scene adapter, native sampling, performance tracks, external vs own face rays), `scripts/film_timeline.py` (coverage compiler, verified native reuse, chunk encoding, narration assembly and measured per-shot QC). Story staging is `stories/saying_hi_film_stage.json`. Existing story-specific scene adapters are still needed and are not proof of generic set construction. Known incomplete acting/prop tasks are explicitly declared in staging data; no quality approval or completed film is asserted at source commit. No chapters 1–4 edits; no paid voice.
 
 Round 5 generic QC extension: declarative selectors and thresholds in story staging now expose pencil/speaker, split-camera, dog, settled actor, raised bench and move-over measurements with per-shot values, limits, counts, and explicit unmeasured flags. This is a source-level addition, not completed render evidence. The active render source remains the prior pinned launch commit; only downstream assembly/reporting is extended. The current render uses a 5x5 generic face grid and preserves the prior specialized 7x7 all-face metrics separately; it is not a pixel-level guarantee.
+
+## Full-film workflow run 46126758952
+
+Technical master verified: 101.20s, 3036 frames, source sampling 30 Hz, encoded 30 fps, SHA-256 b4e24648745bb6527687ac0de79096345393e34a979a871ba47fcfb0eb849585. Visual approval pending.
+Master: assets/saying_hi_review/round5/saying_hi.mp4
+
+| Shot | Timeline (s) | Native frames delivered | Measured flags / specific known fixes |
+|---|---|---:|---|
+| sh01 | 0.00–2.97 | 89 | No flagged measurement; human visual review pending. |
+| sh02 | 2.97–4.07 | 33 | book detail not implemented by legacy set adapter; use a readable actual book prop |
+| sh03 | 4.07–6.77 | 81 | chart-making staging is preliminary; add physical book-to-paper and drawing contact |
+| sh04 | 6.77–9.83 | 92 | No flagged measurement; human visual review pending. |
+| sh05 | 9.83–14.23 | 132 | No flagged measurement; human visual review pending. |
+| sh06 | 14.23–15.97 | 52 | No flagged measurement; human visual review pending. |
+| sh07 | 15.97–17.07 | 33 | No flagged measurement; human visual review pending. |
+| sh08 | 17.07–20.97 | 117 | No flagged measurement; human visual review pending. |
+| sh09 | 20.97–23.73 | 83 | No flagged measurement; human visual review pending. |
+| sh10 | 23.73–26.03 | 69 | wheelbarrow motion lacks verified hand/wheel contact |
+| sh11 | 26.03–28.07 | 61 | Mom-card opening is not yet articulated |
+| sh12 | 28.07–28.90 | 25 | No flagged measurement; human visual review pending. |
+| sh13 | 28.90–32.50 | 108 | group shot requires visible chart and directed explanation review |
+| sh14 | 32.50–33.63 | 34 | No flagged measurement; human visual review pending. |
+| sh15 | 33.63–35.17 | 46 | No flagged measurement; human visual review pending. |
+| sh16 | 35.17–37.17 | 60 | No flagged measurement; human visual review pending. |
+| sh17 | 37.17–39.83 | 80 | ball trajectory and crayon contact unverified |
+| sh18 | 39.83–43.63 | 114 | sh18-1195 otis: external blocked=0, safe=False, coverage=0.4130; sh18-1219 otis: external blocked=0, safe=False, coverage=0.4170; sh18-1243 otis: external blocked=0, safe=False, coverage=0.4173; sh18-1267 otis: external blocked=0, safe=False, coverage=0.4153; sh18-1291 otis: external blocked=0, safe=False, coverage=0.4303; chart insert only; narrator's look toward June still needs a distinct cut |
+| sh19 | 43.63–47.40 | 113 | separate narrator and June geography not verified |
+| sh20 | 47.40–50.93 | 106 | new deterministic stride and split-camera stop require visual check; wide body height: 0.1670866310596466 (limit min 0.25; flag); wide support rays blocked: 20 (limit eq 0; flag); Measurements: wide body height=0.1670866310596466 (flag, n=86); wide support rays blocked=20 (flag, n=86) |
+| sh21 | 50.93–52.63 | 51 | root_stop 0.8420716357577563 > 0.05; backward 2 > 0; stance_rms 0.04083648391338081 > 0.03; last source sample not support transition; stop timing and root-vs-plant QC require check; low support rays blocked: 45 (limit eq 0; flag); Measurements: low body height=0.29544201493263245 (pass, n=47); low support rays blocked=45 (flag, n=47) |
+| sh22 | 52.63–53.63 | 30 | No flagged measurement; human visual review pending. |
+| sh23 | 53.63–55.23 | 48 | interview approach uses legacy staging; actual continuous walk not implemented |
+| sh24 | 55.23–55.90 | 20 | sh24-1657 narrator: external blocked=9, safe=True, coverage=0.4769 |
+| sh25 | 55.90–58.17 | 68 | sh25-1677 brody: external blocked=9, safe=True, coverage=0.3787; sh25-1701 brody: external blocked=9, safe=True, coverage=0.3786; sh25-1725 brody: external blocked=9, safe=True, coverage=0.3791; dog behavior and photo composition require review |
+| sh26 | 58.17–60.23 | 62 | sh26-1745: near-black 2.91300% >2%; sh26-1745 bella: external blocked=0, safe=False, coverage=0.8719; sh26-1769: near-black 2.97338% >2%; sh26-1769 bella: external blocked=0, safe=False, coverage=0.8243; sh26-1769 chase: external blocked=7, safe=True, coverage=0.4847; sh26-1793: near-black 2.04533% >2%; sh26-1793 bella: external blocked=0, safe=False, coverage=0.8092; bag movement and seat placement are analytic; hand attachment and support not verified |
+| sh27 | 60.23–62.77 | 76 | sh27-1807 cleo: external blocked=9, safe=True, coverage=0.3983; sh27-1831 cleo: external blocked=9, safe=True, coverage=0.4504; sh27-1855 cleo: external blocked=9, safe=True, coverage=0.3984; sh27-1879 cleo: external blocked=9, safe=True, coverage=0.3983 |
+| sh28 | 62.77–64.47 | 51 | sh28-1883 brody: external blocked=9, safe=True, coverage=0.3289; sh28-1907 brody: external blocked=9, safe=True, coverage=0.3289; sh28-1931 brody: external blocked=9, safe=True, coverage=0.3289 |
+| sh29 | 64.47–65.93 | 44 | sh29-1934 ella: external blocked=9, safe=True, coverage=0.4666; sh29-1958 ella: external blocked=9, safe=True, coverage=0.4666; dog behavior and photo composition require review |
+| sh30 | 65.93–69.60 | 110 | sh30-1978: near-black 2.21431% >2%; sh30-2002: near-black 2.01235% >2%; sh30-2006 gia: external blocked=0, safe=False, coverage=0.5204; sh30-2030 gia: external blocked=0, safe=False, coverage=0.5223; montage saved-seat action is analytic; physical contact not verified |
+| sh31 | 69.60–71.13 | 46 | sh31-2088 narrator: external blocked=0, safe=False, coverage=0.5015; sh31-2112 narrator: external blocked=0, safe=False, coverage=0.5006; legacy reverse framing, external and own-face rays separated in new QC; speaker facing dot: 0.5289075151085854 (limit min 0.72; flag); speaker body safe: False (limit eq True; flag); pencil safe frame: False (limit eq True; flag); Measurements: standing-seat intersections=0 (pass, n=46); speaker facing dot=0.5289075151085854 (flag, n=46); speaker body visibility=1.0 (pass, n=46); speaker body safe=False (flag, n=46); unrelated foreground ray blocks=0 (pass, n=46); pencil external rays blocked=0 (pass, n=46); pencil visible fraction=1.0 (pass, n=46); pencil safe frame=False (flag, n=46) |
+| sh32 | 71.13–72.40 | 38 | pencil motion and safe framing need playback review; speaker facing dot: 0.5293610319495201 (limit min 0.72; flag); pencil safe frame: False (limit eq True; flag); Measurements: standing-seat intersections=0 (pass, n=38); speaker facing dot=0.5293610319495201 (flag, n=38); speaker body visibility=1.0 (pass, n=38); speaker body safe=True (pass, n=38); unrelated foreground ray blocks=0 (pass, n=38); pencil external rays blocked=0 (pass, n=38); pencil visible fraction=1.0 (pass, n=38); pencil safe frame=False (flag, n=38) |
+| sh33 | 72.40–73.37 | 29 | narrator facing and pencil readability require playback review; speaker facing dot: 0.5293032750487328 (limit min 0.72; flag); pencil safe frame: False (limit eq True; flag); Measurements: standing-seat intersections=0 (pass, n=29); speaker facing dot=0.5293032750487328 (flag, n=29); speaker body visibility=1.0 (pass, n=29); speaker body safe=True (pass, n=29); unrelated foreground ray blocks=0 (pass, n=29); pencil external rays blocked=0 (pass, n=29); pencil visible fraction=1.0 (pass, n=29); pencil safe frame=False (flag, n=29) |
+| sh34 | 73.37–75.27 | 57 | sh34-2201: near-black 2.17843% >2%; sh34-2225: near-black 2.24653% >2%; sh34-2249: near-black 2.15702% >2%; June response needs playback review; Measurements: standing-seat intersections=0 (pass, n=57); speaker facing dot=0.728014248222518 (pass, n=57); speaker body visibility=1.0 (pass, n=57); speaker body safe=True (pass, n=57); unrelated foreground ray blocks=0 (pass, n=57) |
+| sh35 | 75.27–76.43 | 35 | No flagged measurement; human visual review pending. |
+| sh36 | 76.43–78.97 | 76 | No flagged measurement; human visual review pending. |
+| sh37 | 78.97–81.97 | 90 | No flagged measurement; human visual review pending. |
+| sh38 | 81.97–84.10 | 64 | No flagged measurement; human visual review pending. |
+| sh39 | 84.10–86.03 | 58 | sh39-2523 otis: external blocked=0, safe=False, coverage=0.4130; sh39-2547 otis: external blocked=0, safe=False, coverage=0.4170; sh39-2571 otis: external blocked=0, safe=False, coverage=0.4173; chart insert is not a physical handheld close |
+| sh40 | 86.03–87.50 | 44 | No flagged measurement; human visual review pending. |
+| sh41 | 87.50–89.47 | 59 | No flagged measurement; human visual review pending. |
+| sh42 | 89.47–90.43 | 29 | No flagged measurement; human visual review pending. |
+| sh43 | 90.43–92.13 | 51 | sh43-2713 narrator: external blocked=0, safe=False, coverage=0.3575; sh43-2737 narrator: external blocked=0, safe=False, coverage=0.2891; named bench motion uses Round 4 candidate; full actor frame and own-face rays previously failed; settled all-face ray blocks (incl own): 3 (limit eq 0; flag); Measurements: dog occlusion=0 (pass, n=51); dog safe frame=True (pass, n=51); dog width=0.18016934394836426 (pass, n=51); dog height=0.0791131854057312 (pass, n=51); dog floor gap=1.5832483768463135e-08 (pass, n=51); seated hip gap=5.960464477539063e-08 (pass, n=6); settled facing=0.8608598930576328 (pass, n=6); settled all-face ray blocks (incl own)=3 (flag, n=6); named seat surface safe=True (pass, n=3); named seat surface visibility=0.29032258064516125 (pass, n=3); hips over seat surface=True (pass, n=6); raised support height=0.46482717990875244 (pass, n=3); seat supports reach ground=True (pass, n=3); move-over displacement=0.24000000953674316 (pass, n=51) |
+| sh44 | 92.13–93.97 | 55 | Monday crossing not yet driven by deterministic walk tracks; staged arrival only |
+| sh45 | 93.97–95.37 | 42 | No flagged measurement; human visual review pending. |
+| sh46 | 95.37–98.00 | 79 | No flagged measurement; human visual review pending. |
+| sh47 | 98.00–99.77 | 53 | replacement-chart prop detail and shrug are approximate |
+| sh48 | 99.77–101.20 | 43 | No flagged measurement; human visual review pending. |
+
+Source motion sampling is independent at 30 Hz, EEVEE 32 spatial samples, denoising off. Artistic QC is advisory; missing or invalid native media is a technical failure.

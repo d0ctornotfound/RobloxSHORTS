@@ -1,0 +1,5974 @@
+{
+  "rendered": [
+    {
+      "frame": 915,
+      "render_seconds": 33.126102245,
+      "near_black_percent": 0.11477623456790124
+    },
+    {
+      "frame": 916,
+      "render_seconds": 11.834374655999994,
+      "near_black_percent": 0.11477623456790124
+    },
+    {
+      "frame": 917,
+      "render_seconds": 11.680468694000012,
+      "near_black_percent": 0.11477623456790124
+    },
+    {
+      "frame": 918,
+      "render_seconds": 12.028544108999995,
+      "near_black_percent": 0.11477623456790124
+    },
+    {
+      "frame": 919,
+      "render_seconds": 11.966702339999983,
+      "near_black_percent": 0.11477623456790124
+    },
+    {
+      "frame": 920,
+      "render_seconds": 12.061006142999986,
+      "near_black_percent": 0.11477623456790124
+    },
+    {
+      "frame": 921,
+      "render_seconds": 11.853895378000004,
+      "near_black_percent": 0.11477623456790124
+    },
+    {
+      "frame": 922,
+      "render_seconds": 12.18257468500002,
+      "near_black_percent": 0.11477623456790124
+    },
+    {
+      "frame": 923,
+      "render_seconds": 11.683404018000004,
+      "near_black_percent": 0.11477623456790124
+    },
+    {
+      "frame": 924,
+      "render_seconds": 11.873229277000007,
+      "near_black_percent": 0.11477623456790124
+    },
+    {
+      "frame": 925,
+      "render_seconds": 11.852401834999995,
+      "near_black_percent": 0.11477623456790124
+    },
+    {
+      "frame": 926,
+      "render_seconds": 11.652169811999983,
+      "near_black_percent": 0.11477623456790124
+    },
+    {
+      "frame": 927,
+      "render_seconds": 11.953137377000019,
+      "near_black_percent": 0.11477623456790124
+    },
+    {
+      "frame": 928,
+      "render_seconds": 11.802177180000001,
+      "near_black_percent": 0.11477623456790124
+    },
+    {
+      "frame": 929,
+      "render_seconds": 12.067134891000023,
+      "near_black_percent": 0.11477623456790124
+    },
+    {
+      "frame": 930,
+      "render_seconds": 11.932214984999973,
+      "near_black_percent": 0.11477623456790124
+    },
+    {
+      "frame": 931,
+      "render_seconds": 11.983483608000029,
+      "near_black_percent": 0.11477623456790124
+    },
+    {
+      "frame": 932,
+      "render_seconds": 12.06307459499999,
+      "near_black_percent": 0.11477623456790124
+    },
+    {
+      "frame": 933,
+      "render_seconds": 12.055447759999993,
+      "near_black_percent": 0.11477623456790124
+    },
+    {
+      "frame": 934,
+      "render_seconds": 12.396402540999986,
+      "near_black_percent": 0.11477623456790124
+    },
+    {
+      "frame": 935,
+      "render_seconds": 12.041668356000002,
+      "near_black_percent": 0.11496913580246913
+    },
+    {
+      "frame": 936,
+      "render_seconds": 12.363621834000014,
+      "near_black_percent": 0.11496913580246913
+    },
+    {
+      "frame": 937,
+      "render_seconds": 12.305722314999969,
+      "near_black_percent": 0.11496913580246913
+    },
+    {
+      "frame": 938,
+      "render_seconds": 12.162699860999965,
+      "near_black_percent": 0.11496913580246913
+    }
+  ],
+  "rows": [
+    {
+      "frame": 915,
+      "shot": "sh13",
+      "actor_qc": {
+        "narrator": {
+          "bounds": [
+            0.535283625125885,
+            0.5845984220504761,
+            0.503587543964386,
+            0.536560595035553,
+            26.434738159179688
+          ],
+          "safe": true,
+          "vertical_coverage": 0.03297305107116699,
+          "face_all": {
+            "samples": 9,
+            "blocked": 1,
+            "bounds": [
+              0.5486932992935181,
+              0.5602797865867615,
+              0.5240458846092224,
+              0.531855583190918,
+              26.434738159179688
+            ],
+            "safe": true,
+            "visible_fraction": 0.8888888888888888,
+            "blockers": [
+              "narrator / head knitted beanie folded brim"
+            ]
+          },
+          "face_external": {
+            "samples": 9,
+            "blocked": 0,
+            "bounds": [
+              0.5486932992935181,
+              0.5602797865867615,
+              0.5240458846092224,
+              0.531855583190918,
+              26.434738159179688
+            ],
+            "safe": true,
+            "visible_fraction": 1.0,
+            "blockers": []
+          },
+          "own_ray_difference": 1
+        },
+        "otis": {
+          "bounds": [
+            0.5084676146507263,
+            0.5571075677871704,
+            0.5070211291313171,
+            0.5382959842681885,
+            26.73491668701172
+          ],
+          "safe": true,
+          "vertical_coverage": 0.03127485513687134,
+          "face_all": {
+            "samples": 11,
+            "blocked": 3,
+            "bounds": [
+              0.5203557014465332,
+              0.532185435295105,
+              0.5270609259605408,
+              0.5340888500213623,
+              26.97523307800293
+            ],
+            "safe": true,
+            "visible_fraction": 0.7272727272727273,
+            "blockers": [
+              "otis / body skinned",
+              "otis / round glasses"
+            ]
+          },
+          "face_external": {
+            "samples": 11,
+            "blocked": 0,
+            "bounds": [
+              0.5203557014465332,
+              0.532185435295105,
+              0.5270609259605408,
+              0.5340888500213623,
+              26.97523307800293
+            ],
+            "safe": true,
+            "visible_fraction": 1.0,
+            "blockers": []
+          },
+          "own_ray_difference": 3
+        }
+      },
+      "geometry": {
+        "held_pose": true,
+        "static_seating": [
+          [
+            "narrator",
+            {
+              "hip_z": 0.4648272395133972,
+              "calibrated_seat_center": [
+                1.1473894119262695e-06,
+                8.55907154083252,
+                -0.42907118797302246
+              ],
+              "seat_footprint": [
+                1.4938984870910645,
+                0.7869494074583054
+              ],
+              "declared_top": 0.4648272395133972,
+              "hip_minus_declared_top": 0.0,
+              "foot_plane_gaps": [
+                0.0,
+                0.0
+              ]
+            }
+          ],
+          [
+            "otis",
+            {
+              "hip_z": 0.4648272395133972,
+              "calibrated_seat_center": [
+                -1.1999988555908203,
+                8.55907154083252,
+                -0.42907118797302246
+              ],
+              "seat_footprint": [
+                1.4938984870910645,
+                0.7869494074583054
+              ],
+              "declared_top": 0.4648272395133972,
+              "hip_minus_declared_top": 0.0,
+              "foot_plane_gaps": [
+                0.0,
+                0.0
+              ]
+            }
+          ],
+          [
+            "leo",
+            {
+              "hip_z": 0.4648272395133972,
+              "calibrated_seat_center": [
+                -3.599998712539673,
+                8.55907154083252,
+                -0.42907118797302246
+              ],
+              "seat_footprint": [
+                1.4938984870910645,
+                0.7869494074583054
+              ],
+              "declared_top": 0.4648272395133972,
+              "hip_minus_declared_top": 0.0,
+              "foot_plane_gaps": [
+                0.0,
+                0.0
+              ]
+            }
+          ],
+          [
+            "max",
+            {
+              "hip_z": 0.4694754183292389,
+              "calibrated_seat_center": [
+                -2.399998903274536,
+                8.563362121582031,
+                -0.4333620071411133
+              ],
+              "seat_footprint": [
+                1.5028374552726746,
+                0.7914187723398209
+              ],
+              "declared_top": 0.4648272395133972,
+              "hip_minus_declared_top": 0.004648178815841675,
+              "foot_plane_gaps": [
+                0.0,
+                0.0
+              ]
+            }
+          ],
+          [
+            "noah",
+            {
+              "hip_z": 0.45553067326545715,
+              "calibrated_seat_center": [
+                1.2000011205673218,
+                8.55048942565918,
+                -0.42048972845077515
+              ],
+              "seat_footprint": [
+                1.4760204911231996,
+                0.778010334968567
+              ],
+              "declared_top": 0.4648272395133972,
+              "hip_minus_declared_top": -0.009296566247940063,
+              "foot_plane_gaps": [
+                2.9802322387695312e-08,
+                2.9802322387695312e-08
+              ]
+            }
+          ],
+          [
+            "ryan",
+            {
+              "hip_z": 0.47412458062171936,
+              "calibrated_seat_center": [
+                2.400001287460327,
+                8.567652702331543,
+                -0.43765270709991455
+              ],
+              "seat_footprint": [
+                1.5117764830589295,
+                0.7958883607387544
+              ],
+              "declared_top": 0.4648272395133972,
+              "hip_minus_declared_top": 0.009297341108322144,
+              "foot_plane_gaps": [
+                5.960464477539063e-08,
+                5.960464477539063e-08
+              ]
+            }
+          ],
+          [
+            "sam",
+            {
+              "hip_z": 0.4601788818836212,
+              "calibrated_seat_center": [
+                3.600001096725464,
+                8.554780960083008,
+                -0.4247805178165436
+              ],
+              "seat_footprint": [
+                1.4849594593048097,
+                0.7824799382686616
+              ],
+              "declared_top": 0.4648272395133972,
+              "hip_minus_declared_top": -0.004648357629776001,
+              "foot_plane_gaps": [
+                0.0,
+                0.0
+              ]
+            }
+          ]
+        ]
+      }
+    },
+    {
+      "frame": 916,
+      "shot": "sh13",
+      "actor_qc": {
+        "narrator": {
+          "bounds": [
+            0.535283625125885,
+            0.5845984220504761,
+            0.503587543964386,
+            0.536560595035553,
+            26.434738159179688
+          ],
+          "safe": true,
+          "vertical_coverage": 0.03297305107116699,
+          "face_all": {
+            "samples": 9,
+            "blocked": 1,
+            "bounds": [
+              0.5486932992935181,
+              0.5602797865867615,
+              0.5240458846092224,
+              0.531855583190918,
+              26.434738159179688
+            ],
+            "safe": true,
+            "visible_fraction": 0.8888888888888888,
+            "blockers": [
+              "narrator / head knitted beanie folded brim"
+            ]
+          },
+          "face_external": {
+            "samples": 9,
+            "blocked": 0,
+            "bounds": [
+              0.5486932992935181,
+              0.5602797865867615,
+              0.5240458846092224,
+              0.531855583190918,
+              26.434738159179688
+            ],
+            "safe": true,
+            "visible_fraction": 1.0,
+            "blockers": []
+          },
+          "own_ray_difference": 1
+        },
+        "otis": {
+          "bounds": [
+            0.5084702372550964,
+            0.5571075677871704,
+            0.5070211291313171,
+            0.5382959246635437,
+            26.733898162841797
+          ],
+          "safe": true,
+          "vertical_coverage": 0.03127479553222656,
+          "face_all": {
+            "samples": 9,
+            "blocked": 4,
+            "bounds": [
+              0.5203506946563721,
+              0.5321859121322632,
+              0.5270608067512512,
+              0.5340858697891235,
+              26.975194931030273
+            ],
+            "safe": true,
+            "visible_fraction": 0.5555555555555556,
+            "blockers": [
+              "otis / body skinned",
+              "otis / garment shell / shirt and sleeves",
+              "otis / round glasses"
+            ]
+          },
+          "face_external": {
+            "samples": 9,
+            "blocked": 0,
+            "bounds": [
+              0.5203506946563721,
+              0.5321859121322632,
+              0.5270608067512512,
+              0.5340858697891235,
+              26.975194931030273
+            ],
+            "safe": true,
+            "visible_fraction": 1.0,
+            "blockers": []
+          },
+          "own_ray_difference": 4
+        }
+      },
+      "geometry": {
+        "held_pose": true,
+        "static_seating": [
+          [
+            "narrator",
+            {
+              "hip_z": 0.4648272395133972,
+              "calibrated_seat_center": [
+                1.1473894119262695e-06,
+                8.55907154083252,
+                -0.42907118797302246
+              ],
+              "seat_footprint": [
+                1.4938984870910645,
+                0.7869494074583054
+              ],
+              "declared_top": 0.4648272395133972,
+              "hip_minus_declared_top": 0.0,
+              "foot_plane_gaps": [
+                0.0,
+                0.0
+              ]
+            }
+          ],
+          [
+            "otis",
+            {
+              "hip_z": 0.4648272395133972,
+              "calibrated_seat_center": [
+                -1.1999988555908203,
+                8.55907154083252,
+                -0.42907118797302246
+              ],
+              "seat_footprint": [
+                1.4938984870910645,
+                0.7869494074583054
+              ],
+              "declared_top": 0.4648272395133972,
+              "hip_minus_declared_top": 0.0,
+              "foot_plane_gaps": [
+                0.0,
+                0.0
+              ]
+            }
+          ],
+          [
+            "leo",
+            {
+              "hip_z": 0.4648272395133972,
+              "calibrated_seat_center": [
+                -3.599998712539673,
+                8.55907154083252,
+                -0.42907118797302246
+              ],
+              "seat_footprint": [
+                1.4938984870910645,
+                0.7869494074583054
+              ],
+              "declared_top": 0.4648272395133972,
+              "hip_minus_declared_top": 0.0,
+              "foot_plane_gaps": [
+                0.0,
+                0.0
+              ]
+            }
+          ],
+          [
+            "max",
+            {
+              "hip_z": 0.4694754183292389,
+              "calibrated_seat_center": [
+                -2.399998903274536,
+                8.563362121582031,
+                -0.4333620071411133
+              ],
+              "seat_footprint": [
+                1.5028374552726746,
+                0.7914187723398209
+              ],
+              "declared_top": 0.4648272395133972,
+              "hip_minus_declared_top": 0.004648178815841675,
+              "foot_plane_gaps": [
+                0.0,
+                0.0
+              ]
+            }
+          ],
+          [
+            "noah",
+            {
+              "hip_z": 0.45553067326545715,
+              "calibrated_seat_center": [
+                1.2000011205673218,
+                8.55048942565918,
+                -0.42048972845077515
+              ],
+              "seat_footprint": [
+                1.4760204911231996,
+                0.778010334968567
+              ],
+              "declared_top": 0.4648272395133972,
+              "hip_minus_declared_top": -0.009296566247940063,
+              "foot_plane_gaps": [
+                2.9802322387695312e-08,
+                2.9802322387695312e-08
+              ]
+            }
+          ],
+          [
+            "ryan",
+            {
+              "hip_z": 0.47412458062171936,
+              "calibrated_seat_center": [
+                2.400001287460327,
+                8.567652702331543,
+                -0.43765270709991455
+              ],
+              "seat_footprint": [
+                1.5117764830589295,
+                0.7958883607387544
+              ],
+              "declared_top": 0.4648272395133972,
+              "hip_minus_declared_top": 0.009297341108322144,
+              "foot_plane_gaps": [
+                5.960464477539063e-08,
+                5.960464477539063e-08
+              ]
+            }
+          ],
+          [
+            "sam",
+            {
+              "hip_z": 0.4601788818836212,
+              "calibrated_seat_center": [
+                3.600001096725464,
+                8.554780960083008,
+                -0.4247805178165436
+              ],
+              "seat_footprint": [
+                1.4849594593048097,
+                0.7824799382686616
+              ],
+              "declared_top": 0.4648272395133972,
+              "hip_minus_declared_top": -0.004648357629776001,
+              "foot_plane_gaps": [
+                0.0,
+                0.0
+              ]
+            }
+          ]
+        ]
+      }
+    },
+    {
+      "frame": 917,
+      "shot": "sh13",
+      "actor_qc": {
+        "narrator": {
+          "bounds": [
+            0.535283625125885,
+            0.5845984220504761,
+            0.503587543964386,
+            0.536560595035553,
+            26.434738159179688
+          ],
+          "safe": true,
+          "vertical_coverage": 0.03297305107116699,
+          "face_all": {
+            "samples": 9,
+            "blocked": 1,
+            "bounds": [
+              0.5486932992935181,
+              0.5602797865867615,
+              0.5240458846092224,
+              0.531855583190918,
+              26.434738159179688
+            ],
+            "safe": true,
+            "visible_fraction": 0.8888888888888888,
+            "blockers": [
+              "narrator / head knitted beanie folded brim"
+            ]
+          },
+          "face_external": {
+            "samples": 9,
+            "blocked": 0,
+            "bounds": [
+              0.5486932992935181,
+              0.5602797865867615,
+              0.5240458846092224,
+              0.531855583190918,
+              26.434738159179688
+            ],
+            "safe": true,
+            "visible_fraction": 1.0,
+            "blockers": []
+          },
+          "own_ray_difference": 1
+        },
+        "otis": {
+          "bounds": [
+            0.5084723830223083,
+            0.5571075677871704,
+            0.5070211291313171,
+            0.5382959246635437,
+            26.733104705810547
+          ],
+          "safe": true,
+          "vertical_coverage": 0.03127479553222656,
+          "face_all": {
+            "samples": 9,
+            "blocked": 4,
+            "bounds": [
+              0.5203467607498169,
+              0.5321862697601318,
+              0.5270607471466064,
+              0.5340834856033325,
+              26.97516632080078
+            ],
+            "safe": true,
+            "visible_fraction": 0.5555555555555556,
+            "blockers": [
+              "otis / body skinned",
+              "otis / garment shell / shirt and sleeves",
+              "otis / round glasses"
+            ]
+          },
+          "face_external": {
+            "samples": 9,
+            "blocked": 0,
+            "bounds": [
+              0.5203467607498169,
+              0.5321862697601318,
+              0.5270607471466064,
+              0.5340834856033325,
+              26.97516632080078
+            ],
+            "safe": true,
+            "visible_fraction": 1.0,
+            "blockers": []
+          },
+          "own_ray_difference": 4
+        }
+      },
+      "geometry": {
+        "held_pose": true,
+        "static_seating": [
+          [
+            "narrator",
+            {
+              "hip_z": 0.4648272395133972,
+              "calibrated_seat_center": [
+                1.1473894119262695e-06,
+                8.55907154083252,
+                -0.42907118797302246
+              ],
+              "seat_footprint": [
+                1.4938984870910645,
+                0.7869494074583054
+              ],
+              "declared_top": 0.4648272395133972,
+              "hip_minus_declared_top": 0.0,
+              "foot_plane_gaps": [
+                0.0,
+                0.0
+              ]
+            }
+          ],
+          [
+            "otis",
+            {
+              "hip_z": 0.4648272395133972,
+              "calibrated_seat_center": [
+                -1.1999988555908203,
+                8.55907154083252,
+                -0.42907118797302246
+              ],
+              "seat_footprint": [
+                1.4938984870910645,
+                0.7869494074583054
+              ],
+              "declared_top": 0.4648272395133972,
+              "hip_minus_declared_top": 0.0,
+              "foot_plane_gaps": [
+                0.0,
+                0.0
+              ]
+            }
+          ],
+          [
+            "leo",
+            {
+              "hip_z": 0.4648272395133972,
+              "calibrated_seat_center": [
+                -3.599998712539673,
+                8.55907154083252,
+                -0.42907118797302246
+              ],
+              "seat_footprint": [
+                1.4938984870910645,
+                0.7869494074583054
+              ],
+              "declared_top": 0.4648272395133972,
+              "hip_minus_declared_top": 0.0,
+              "foot_plane_gaps": [
+                0.0,
+                0.0
+              ]
+            }
+          ],
+          [
+            "max",
+            {
+              "hip_z": 0.4694754183292389,
+              "calibrated_seat_center": [
+                -2.399998903274536,
+                8.563362121582031,
+                -0.4333620071411133
+              ],
+              "seat_footprint": [
+                1.5028374552726746,
+                0.7914187723398209
+              ],
+              "declared_top": 0.4648272395133972,
+              "hip_minus_declared_top": 0.004648178815841675,
+              "foot_plane_gaps": [
+                0.0,
+                0.0
+              ]
+            }
+          ],
+          [
+            "noah",
+            {
+              "hip_z": 0.45553067326545715,
+              "calibrated_seat_center": [
+                1.2000011205673218,
+                8.55048942565918,
+                -0.42048972845077515
+              ],
+              "seat_footprint": [
+                1.4760204911231996,
+                0.778010334968567
+              ],
+              "declared_top": 0.4648272395133972,
+              "hip_minus_declared_top": -0.009296566247940063,
+              "foot_plane_gaps": [
+                2.9802322387695312e-08,
+                2.9802322387695312e-08
+              ]
+            }
+          ],
+          [
+            "ryan",
+            {
+              "hip_z": 0.47412458062171936,
+              "calibrated_seat_center": [
+                2.400001287460327,
+                8.567652702331543,
+                -0.43765270709991455
+              ],
+              "seat_footprint": [
+                1.5117764830589295,
+                0.7958883607387544
+              ],
+              "declared_top": 0.4648272395133972,
+              "hip_minus_declared_top": 0.009297341108322144,
+              "foot_plane_gaps": [
+                5.960464477539063e-08,
+                5.960464477539063e-08
+              ]
+            }
+          ],
+          [
+            "sam",
+            {
+              "hip_z": 0.4601788818836212,
+              "calibrated_seat_center": [
+                3.600001096725464,
+                8.554780960083008,
+                -0.4247805178165436
+              ],
+              "seat_footprint": [
+                1.4849594593048097,
+                0.7824799382686616
+              ],
+              "declared_top": 0.4648272395133972,
+              "hip_minus_declared_top": -0.004648357629776001,
+              "foot_plane_gaps": [
+                0.0,
+                0.0
+              ]
+            }
+          ]
+        ]
+      }
+    },
+    {
+      "frame": 918,
+      "shot": "sh13",
+      "actor_qc": {
+        "narrator": {
+          "bounds": [
+            0.535283625125885,
+            0.5845984220504761,
+            0.503587543964386,
+            0.536560595035553,
+            26.434738159179688
+          ],
+          "safe": true,
+          "vertical_coverage": 0.03297305107116699,
+          "face_all": {
+            "samples": 9,
+            "blocked": 1,
+            "bounds": [
+              0.5486932992935181,
+              0.5602797865867615,
+              0.5240458846092224,
+              0.531855583190918,
+              26.434738159179688
+            ],
+            "safe": true,
+            "visible_fraction": 0.8888888888888888,
+            "blockers": [
+              "narrator / head knitted beanie folded brim"
+            ]
+          },
+          "face_external": {
+            "samples": 9,
+            "blocked": 0,
+            "bounds": [
+              0.5486932992935181,
+              0.5602797865867615,
+              0.5240458846092224,
+              0.531855583190918,
+              26.434738159179688
+            ],
+            "safe": true,
+            "visible_fraction": 1.0,
+            "blockers": []
+          },
+          "own_ray_difference": 1
+        },
+        "otis": {
+          "bounds": [
+            0.5084739327430725,
+            0.5571075677871704,
+            0.5070211291313171,
+            0.5382958650588989,
+            26.732519149780273
+          ],
+          "safe": true,
+          "vertical_coverage": 0.03127473592758179,
+          "face_all": {
+            "samples": 9,
+            "blocked": 4,
+            "bounds": [
+              0.5203437805175781,
+              0.5321865677833557,
+              0.5270606875419617,
+              0.5340816378593445,
+              26.97514533996582
+            ],
+            "safe": true,
+            "visible_fraction": 0.5555555555555556,
+            "blockers": [
+              "otis / body skinned",
+              "otis / garment shell / shirt and sleeves",
+              "otis / round glasses"
+            ]
+          },
+          "face_external": {
+            "samples": 9,
+            "blocked": 0,
+            "bounds": [
+              0.5203437805175781,
+              0.5321865677833557,
+              0.5270606875419617,
+              0.5340816378593445,
+              26.97514533996582
+            ],
+            "safe": true,
+            "visible_fraction": 1.0,
+            "blockers": []
+          },
+          "own_ray_difference": 4
+        }
+      },
+      "geometry": {
+        "held_pose": true,
+        "static_seating": [
+          [
+            "narrator",
+            {
+              "hip_z": 0.4648272395133972,
+              "calibrated_seat_center": [
+                1.1473894119262695e-06,
+                8.55907154083252,
+                -0.42907118797302246
+              ],
+              "seat_footprint": [
+                1.4938984870910645,
+                0.7869494074583054
+              ],
+              "declared_top": 0.4648272395133972,
+              "hip_minus_declared_top": 0.0,
+              "foot_plane_gaps": [
+                0.0,
+                0.0
+              ]
+            }
+          ],
+          [
+            "otis",
+            {
+              "hip_z": 0.4648272395133972,
+              "calibrated_seat_center": [
+                -1.1999988555908203,
+                8.55907154083252,
+                -0.42907118797302246
+              ],
+              "seat_footprint": [
+                1.4938984870910645,
+                0.7869494074583054
+              ],
+              "declared_top": 0.4648272395133972,
+              "hip_minus_declared_top": 0.0,
+              "foot_plane_gaps": [
+                0.0,
+                0.0
+              ]
+            }
+          ],
+          [
+            "leo",
+            {
+              "hip_z": 0.4648272395133972,
+              "calibrated_seat_center": [
+                -3.599998712539673,
+                8.55907154083252,
+                -0.42907118797302246
+              ],
+              "seat_footprint": [
+                1.4938984870910645,
+                0.7869494074583054
+              ],
+              "declared_top": 0.4648272395133972,
+              "hip_minus_declared_top": 0.0,
+              "foot_plane_gaps": [
+                0.0,
+                0.0
+              ]
+            }
+          ],
+          [
+            "max",
+            {
+              "hip_z": 0.4694754183292389,
+              "calibrated_seat_center": [
+                -2.399998903274536,
+                8.563362121582031,
+                -0.4333620071411133
+              ],
+              "seat_footprint": [
+                1.5028374552726746,
+                0.7914187723398209
+              ],
+              "declared_top": 0.4648272395133972,
+              "hip_minus_declared_top": 0.004648178815841675,
+              "foot_plane_gaps": [
+                0.0,
+                0.0
+              ]
+            }
+          ],
+          [
+            "noah",
+            {
+              "hip_z": 0.45553067326545715,
+              "calibrated_seat_center": [
+                1.2000011205673218,
+                8.55048942565918,
+                -0.42048972845077515
+              ],
+              "seat_footprint": [
+                1.4760204911231996,
+                0.778010334968567
+              ],
+              "declared_top": 0.4648272395133972,
+              "hip_minus_declared_top": -0.009296566247940063,
+              "foot_plane_gaps": [
+                2.9802322387695312e-08,
+                2.9802322387695312e-08
+              ]
+            }
+          ],
+          [
+            "ryan",
+            {
+              "hip_z": 0.47412458062171936,
+              "calibrated_seat_center": [
+                2.400001287460327,
+                8.567652702331543,
+                -0.43765270709991455
+              ],
+              "seat_footprint": [
+                1.5117764830589295,
+                0.7958883607387544
+              ],
+              "declared_top": 0.4648272395133972,
+              "hip_minus_declared_top": 0.009297341108322144,
+              "foot_plane_gaps": [
+                5.960464477539063e-08,
+                5.960464477539063e-08
+              ]
+            }
+          ],
+          [
+            "sam",
+            {
+              "hip_z": 0.4601788818836212,
+              "calibrated_seat_center": [
+                3.600001096725464,
+                8.554780960083008,
+                -0.4247805178165436
+              ],
+              "seat_footprint": [
+                1.4849594593048097,
+                0.7824799382686616
+              ],
+              "declared_top": 0.4648272395133972,
+              "hip_minus_declared_top": -0.004648357629776001,
+              "foot_plane_gaps": [
+                0.0,
+                0.0
+              ]
+            }
+          ]
+        ]
+      }
+    },
+    {
+      "frame": 919,
+      "shot": "sh13",
+      "actor_qc": {
+        "narrator": {
+          "bounds": [
+            0.535283625125885,
+            0.5845984220504761,
+            0.503587543964386,
+            0.536560595035553,
+            26.434738159179688
+          ],
+          "safe": true,
+          "vertical_coverage": 0.03297305107116699,
+          "face_all": {
+            "samples": 9,
+            "blocked": 1,
+            "bounds": [
+              0.5486932992935181,
+              0.5602797865867615,
+              0.5240458846092224,
+              0.531855583190918,
+              26.434738159179688
+            ],
+            "safe": true,
+            "visible_fraction": 0.8888888888888888,
+            "blockers": [
+              "narrator / head knitted beanie folded brim"
+            ]
+          },
+          "face_external": {
+            "samples": 9,
+            "blocked": 0,
+            "bounds": [
+              0.5486932992935181,
+              0.5602797865867615,
+              0.5240458846092224,
+              0.531855583190918,
+              26.434738159179688
+            ],
+            "safe": true,
+            "visible_fraction": 1.0,
+            "blockers": []
+          },
+          "own_ray_difference": 1
+        },
+        "otis": {
+          "bounds": [
+            0.5084750056266785,
+            0.5571075677871704,
+            0.5070211291313171,
+            0.5382958650588989,
+            26.73213768005371
+          ],
+          "safe": true,
+          "vertical_coverage": 0.03127473592758179,
+          "face_all": {
+            "samples": 10,
+            "blocked": 4,
+            "bounds": [
+              0.5203418135643005,
+              0.53218674659729,
+              0.5270606279373169,
+              0.534080445766449,
+              26.975130081176758
+            ],
+            "safe": true,
+            "visible_fraction": 0.6,
+            "blockers": [
+              "otis / body skinned",
+              "otis / garment shell / shirt and sleeves",
+              "otis / round glasses"
+            ]
+          },
+          "face_external": {
+            "samples": 10,
+            "blocked": 0,
+            "bounds": [
+              0.5203418135643005,
+              0.53218674659729,
+              0.5270606279373169,
+              0.534080445766449,
+              26.975130081176758
+            ],
+            "safe": true,
+            "visible_fraction": 1.0,
+            "blockers": []
+          },
+          "own_ray_difference": 4
+        }
+      },
+      "geometry": {
+        "held_pose": true,
+        "static_seating": [
+          [
+            "narrator",
+            {
+              "hip_z": 0.4648272395133972,
+              "calibrated_seat_center": [
+                1.1473894119262695e-06,
+                8.55907154083252,
+                -0.42907118797302246
+              ],
+              "seat_footprint": [
+                1.4938984870910645,
+                0.7869494074583054
+              ],
+              "declared_top": 0.4648272395133972,
+              "hip_minus_declared_top": 0.0,
+              "foot_plane_gaps": [
+                0.0,
+                0.0
+              ]
+            }
+          ],
+          [
+            "otis",
+            {
+              "hip_z": 0.4648272395133972,
+              "calibrated_seat_center": [
+                -1.1999988555908203,
+                8.55907154083252,
+                -0.42907118797302246
+              ],
+              "seat_footprint": [
+                1.4938984870910645,
+                0.7869494074583054
+              ],
+              "declared_top": 0.4648272395133972,
+              "hip_minus_declared_top": 0.0,
+              "foot_plane_gaps": [
+                0.0,
+                0.0
+              ]
+            }
+          ],
+          [
+            "leo",
+            {
+              "hip_z": 0.4648272395133972,
+              "calibrated_seat_center": [
+                -3.599998712539673,
+                8.55907154083252,
+                -0.42907118797302246
+              ],
+              "seat_footprint": [
+                1.4938984870910645,
+                0.7869494074583054
+              ],
+              "declared_top": 0.4648272395133972,
+              "hip_minus_declared_top": 0.0,
+              "foot_plane_gaps": [
+                0.0,
+                0.0
+              ]
+            }
+          ],
+          [
+            "max",
+            {
+              "hip_z": 0.4694754183292389,
+              "calibrated_seat_center": [
+                -2.399998903274536,
+                8.563362121582031,
+                -0.4333620071411133
+              ],
+              "seat_footprint": [
+                1.5028374552726746,
+                0.7914187723398209
+              ],
+              "declared_top": 0.4648272395133972,
+              "hip_minus_declared_top": 0.004648178815841675,
+              "foot_plane_gaps": [
+                0.0,
+                0.0
+              ]
+            }
+          ],
+          [
+            "noah",
+            {
+              "hip_z": 0.45553067326545715,
+              "calibrated_seat_center": [
+                1.2000011205673218,
+                8.55048942565918,
+                -0.42048972845077515
+              ],
+              "seat_footprint": [
+                1.4760204911231996,
+                0.778010334968567
+              ],
+              "declared_top": 0.4648272395133972,
+              "hip_minus_declared_top": -0.009296566247940063,
+              "foot_plane_gaps": [
+                2.9802322387695312e-08,
+                2.9802322387695312e-08
+              ]
+            }
+          ],
+          [
+            "ryan",
+            {
+              "hip_z": 0.47412458062171936,
+              "calibrated_seat_center": [
+                2.400001287460327,
+                8.567652702331543,
+                -0.43765270709991455
+              ],
+              "seat_footprint": [
+                1.5117764830589295,
+                0.7958883607387544
+              ],
+              "declared_top": 0.4648272395133972,
+              "hip_minus_declared_top": 0.009297341108322144,
+              "foot_plane_gaps": [
+                5.960464477539063e-08,
+                5.960464477539063e-08
+              ]
+            }
+          ],
+          [
+            "sam",
+            {
+              "hip_z": 0.4601788818836212,
+              "calibrated_seat_center": [
+                3.600001096725464,
+                8.554780960083008,
+                -0.4247805178165436
+              ],
+              "seat_footprint": [
+                1.4849594593048097,
+                0.7824799382686616
+              ],
+              "declared_top": 0.4648272395133972,
+              "hip_minus_declared_top": -0.004648357629776001,
+              "foot_plane_gaps": [
+                0.0,
+                0.0
+              ]
+            }
+          ]
+        ]
+      }
+    },
+    {
+      "frame": 920,
+      "shot": "sh13",
+      "actor_qc": {
+        "narrator": {
+          "bounds": [
+            0.535283625125885,
+            0.5845984220504761,
+            0.503587543964386,
+            0.536560595035553,
+            26.434738159179688
+          ],
+          "safe": true,
+          "vertical_coverage": 0.03297305107116699,
+          "face_all": {
+            "samples": 9,
+            "blocked": 1,
+            "bounds": [
+              0.5486932992935181,
+              0.5602797865867615,
+              0.5240458846092224,
+              0.531855583190918,
+              26.434738159179688
+            ],
+            "safe": true,
+            "visible_fraction": 0.8888888888888888,
+            "blockers": [
+              "narrator / head knitted beanie folded brim"
+            ]
+          },
+          "face_external": {
+            "samples": 9,
+            "blocked": 0,
+            "bounds": [
+              0.5486932992935181,
+              0.5602797865867615,
+              0.5240458846092224,
+              0.531855583190918,
+              26.434738159179688
+            ],
+            "safe": true,
+            "visible_fraction": 1.0,
+            "blockers": []
+          },
+          "own_ray_difference": 1
+        },
+        "otis": {
+          "bounds": [
+            0.5084755420684814,
+            0.5571075677871704,
+            0.5070211291313171,
+            0.5382958650588989,
+            26.73194694519043
+          ],
+          "safe": true,
+          "vertical_coverage": 0.03127473592758179,
+          "face_all": {
+            "samples": 9,
+            "blocked": 4,
+            "bounds": [
+              0.5203408002853394,
+              0.5321868062019348,
+              0.5270606279373169,
+              0.5340798497200012,
+              26.975122451782227
+            ],
+            "safe": true,
+            "visible_fraction": 0.5555555555555556,
+            "blockers": [
+              "otis / body skinned",
+              "otis / garment shell / shirt and sleeves",
+              "otis / round glasses"
+            ]
+          },
+          "face_external": {
+            "samples": 9,
+            "blocked": 0,
+            "bounds": [
+              0.5203408002853394,
+              0.5321868062019348,
+              0.5270606279373169,
+              0.5340798497200012,
+              26.975122451782227
+            ],
+            "safe": true,
+            "visible_fraction": 1.0,
+            "blockers": []
+          },
+          "own_ray_difference": 4
+        }
+      },
+      "geometry": {
+        "held_pose": true,
+        "static_seating": [
+          [
+            "narrator",
+            {
+              "hip_z": 0.4648272395133972,
+              "calibrated_seat_center": [
+                1.1473894119262695e-06,
+                8.55907154083252,
+                -0.42907118797302246
+              ],
+              "seat_footprint": [
+                1.4938984870910645,
+                0.7869494074583054
+              ],
+              "declared_top": 0.4648272395133972,
+              "hip_minus_declared_top": 0.0,
+              "foot_plane_gaps": [
+                0.0,
+                0.0
+              ]
+            }
+          ],
+          [
+            "otis",
+            {
+              "hip_z": 0.4648272395133972,
+              "calibrated_seat_center": [
+                -1.1999988555908203,
+                8.55907154083252,
+                -0.42907118797302246
+              ],
+              "seat_footprint": [
+                1.4938984870910645,
+                0.7869494074583054
+              ],
+              "declared_top": 0.4648272395133972,
+              "hip_minus_declared_top": 0.0,
+              "foot_plane_gaps": [
+                0.0,
+                0.0
+              ]
+            }
+          ],
+          [
+            "leo",
+            {
+              "hip_z": 0.4648272395133972,
+              "calibrated_seat_center": [
+                -3.599998712539673,
+                8.55907154083252,
+                -0.42907118797302246
+              ],
+              "seat_footprint": [
+                1.4938984870910645,
+                0.7869494074583054
+              ],
+              "declared_top": 0.4648272395133972,
+              "hip_minus_declared_top": 0.0,
+              "foot_plane_gaps": [
+                0.0,
+                0.0
+              ]
+            }
+          ],
+          [
+            "max",
+            {
+              "hip_z": 0.4694754183292389,
+              "calibrated_seat_center": [
+                -2.399998903274536,
+                8.563362121582031,
+                -0.4333620071411133
+              ],
+              "seat_footprint": [
+                1.5028374552726746,
+                0.7914187723398209
+              ],
+              "declared_top": 0.4648272395133972,
+              "hip_minus_declared_top": 0.004648178815841675,
+              "foot_plane_gaps": [
+                0.0,
+                0.0
+              ]
+            }
+          ],
+          [
+            "noah",
+            {
+              "hip_z": 0.45553067326545715,
+              "calibrated_seat_center": [
+                1.2000011205673218,
+                8.55048942565918,
+                -0.42048972845077515
+              ],
+              "seat_footprint": [
+                1.4760204911231996,
+                0.778010334968567
+              ],
+              "declared_top": 0.4648272395133972,
+              "hip_minus_declared_top": -0.009296566247940063,
+              "foot_plane_gaps": [
+                2.9802322387695312e-08,
+                2.9802322387695312e-08
+              ]
+            }
+          ],
+          [
+            "ryan",
+            {
+              "hip_z": 0.47412458062171936,
+              "calibrated_seat_center": [
+                2.400001287460327,
+                8.567652702331543,
+                -0.43765270709991455
+              ],
+              "seat_footprint": [
+                1.5117764830589295,
+                0.7958883607387544
+              ],
+              "declared_top": 0.4648272395133972,
+              "hip_minus_declared_top": 0.009297341108322144,
+              "foot_plane_gaps": [
+                5.960464477539063e-08,
+                5.960464477539063e-08
+              ]
+            }
+          ],
+          [
+            "sam",
+            {
+              "hip_z": 0.4601788818836212,
+              "calibrated_seat_center": [
+                3.600001096725464,
+                8.554780960083008,
+                -0.4247805178165436
+              ],
+              "seat_footprint": [
+                1.4849594593048097,
+                0.7824799382686616
+              ],
+              "declared_top": 0.4648272395133972,
+              "hip_minus_declared_top": -0.004648357629776001,
+              "foot_plane_gaps": [
+                0.0,
+                0.0
+              ]
+            }
+          ]
+        ]
+      }
+    },
+    {
+      "frame": 921,
+      "shot": "sh13",
+      "actor_qc": {
+        "narrator": {
+          "bounds": [
+            0.535283625125885,
+            0.5845984220504761,
+            0.503587543964386,
+            0.536560595035553,
+            26.434738159179688
+          ],
+          "safe": true,
+          "vertical_coverage": 0.03297305107116699,
+          "face_all": {
+            "samples": 9,
+            "blocked": 1,
+            "bounds": [
+              0.5486932992935181,
+              0.5602797865867615,
+              0.5240458846092224,
+              0.531855583190918,
+              26.434738159179688
+            ],
+            "safe": true,
+            "visible_fraction": 0.8888888888888888,
+            "blockers": [
+              "narrator / head knitted beanie folded brim"
+            ]
+          },
+          "face_external": {
+            "samples": 9,
+            "blocked": 0,
+            "bounds": [
+              0.5486932992935181,
+              0.5602797865867615,
+              0.5240458846092224,
+              0.531855583190918,
+              26.434738159179688
+            ],
+            "safe": true,
+            "visible_fraction": 1.0,
+            "blockers": []
+          },
+          "own_ray_difference": 1
+        },
+        "otis": {
+          "bounds": [
+            0.5084755420684814,
+            0.5571075677871704,
+            0.5070211291313171,
+            0.5382958650588989,
+            26.73194694519043
+          ],
+          "safe": true,
+          "vertical_coverage": 0.03127473592758179,
+          "face_all": {
+            "samples": 9,
+            "blocked": 4,
+            "bounds": [
+              0.5203408002853394,
+              0.5321868062019348,
+              0.5270606279373169,
+              0.5340798497200012,
+              26.975122451782227
+            ],
+            "safe": true,
+            "visible_fraction": 0.5555555555555556,
+            "blockers": [
+              "otis / body skinned",
+              "otis / garment shell / shirt and sleeves",
+              "otis / round glasses"
+            ]
+          },
+          "face_external": {
+            "samples": 9,
+            "blocked": 0,
+            "bounds": [
+              0.5203408002853394,
+              0.5321868062019348,
+              0.5270606279373169,
+              0.5340798497200012,
+              26.975122451782227
+            ],
+            "safe": true,
+            "visible_fraction": 1.0,
+            "blockers": []
+          },
+          "own_ray_difference": 4
+        }
+      },
+      "geometry": {
+        "held_pose": true,
+        "static_seating": [
+          [
+            "narrator",
+            {
+              "hip_z": 0.4648272395133972,
+              "calibrated_seat_center": [
+                1.1473894119262695e-06,
+                8.55907154083252,
+                -0.42907118797302246
+              ],
+              "seat_footprint": [
+                1.4938984870910645,
+                0.7869494074583054
+              ],
+              "declared_top": 0.4648272395133972,
+              "hip_minus_declared_top": 0.0,
+              "foot_plane_gaps": [
+                0.0,
+                0.0
+              ]
+            }
+          ],
+          [
+            "otis",
+            {
+              "hip_z": 0.4648272395133972,
+              "calibrated_seat_center": [
+                -1.1999988555908203,
+                8.55907154083252,
+                -0.42907118797302246
+              ],
+              "seat_footprint": [
+                1.4938984870910645,
+                0.7869494074583054
+              ],
+              "declared_top": 0.4648272395133972,
+              "hip_minus_declared_top": 0.0,
+              "foot_plane_gaps": [
+                0.0,
+                0.0
+              ]
+            }
+          ],
+          [
+            "leo",
+            {
+              "hip_z": 0.4648272395133972,
+              "calibrated_seat_center": [
+                -3.599998712539673,
+                8.55907154083252,
+                -0.42907118797302246
+              ],
+              "seat_footprint": [
+                1.4938984870910645,
+                0.7869494074583054
+              ],
+              "declared_top": 0.4648272395133972,
+              "hip_minus_declared_top": 0.0,
+              "foot_plane_gaps": [
+                0.0,
+                0.0
+              ]
+            }
+          ],
+          [
+            "max",
+            {
+              "hip_z": 0.4694754183292389,
+              "calibrated_seat_center": [
+                -2.399998903274536,
+                8.563362121582031,
+                -0.4333620071411133
+              ],
+              "seat_footprint": [
+                1.5028374552726746,
+                0.7914187723398209
+              ],
+              "declared_top": 0.4648272395133972,
+              "hip_minus_declared_top": 0.004648178815841675,
+              "foot_plane_gaps": [
+                0.0,
+                0.0
+              ]
+            }
+          ],
+          [
+            "noah",
+            {
+              "hip_z": 0.45553067326545715,
+              "calibrated_seat_center": [
+                1.2000011205673218,
+                8.55048942565918,
+                -0.42048972845077515
+              ],
+              "seat_footprint": [
+                1.4760204911231996,
+                0.778010334968567
+              ],
+              "declared_top": 0.4648272395133972,
+              "hip_minus_declared_top": -0.009296566247940063,
+              "foot_plane_gaps": [
+                2.9802322387695312e-08,
+                2.9802322387695312e-08
+              ]
+            }
+          ],
+          [
+            "ryan",
+            {
+              "hip_z": 0.47412458062171936,
+              "calibrated_seat_center": [
+                2.400001287460327,
+                8.567652702331543,
+                -0.43765270709991455
+              ],
+              "seat_footprint": [
+                1.5117764830589295,
+                0.7958883607387544
+              ],
+              "declared_top": 0.4648272395133972,
+              "hip_minus_declared_top": 0.009297341108322144,
+              "foot_plane_gaps": [
+                5.960464477539063e-08,
+                5.960464477539063e-08
+              ]
+            }
+          ],
+          [
+            "sam",
+            {
+              "hip_z": 0.4601788818836212,
+              "calibrated_seat_center": [
+                3.600001096725464,
+                8.554780960083008,
+                -0.4247805178165436
+              ],
+              "seat_footprint": [
+                1.4849594593048097,
+                0.7824799382686616
+              ],
+              "declared_top": 0.4648272395133972,
+              "hip_minus_declared_top": -0.004648357629776001,
+              "foot_plane_gaps": [
+                0.0,
+                0.0
+              ]
+            }
+          ]
+        ]
+      }
+    },
+    {
+      "frame": 922,
+      "shot": "sh13",
+      "actor_qc": {
+        "narrator": {
+          "bounds": [
+            0.535283625125885,
+            0.5845984220504761,
+            0.503587543964386,
+            0.536560595035553,
+            26.434738159179688
+          ],
+          "safe": true,
+          "vertical_coverage": 0.03297305107116699,
+          "face_all": {
+            "samples": 9,
+            "blocked": 1,
+            "bounds": [
+              0.5486932992935181,
+              0.5602797865867615,
+              0.5240458846092224,
+              0.531855583190918,
+              26.434738159179688
+            ],
+            "safe": true,
+            "visible_fraction": 0.8888888888888888,
+            "blockers": [
+              "narrator / head knitted beanie folded brim"
+            ]
+          },
+          "face_external": {
+            "samples": 9,
+            "blocked": 0,
+            "bounds": [
+              0.5486932992935181,
+              0.5602797865867615,
+              0.5240458846092224,
+              0.531855583190918,
+              26.434738159179688
+            ],
+            "safe": true,
+            "visible_fraction": 1.0,
+            "blockers": []
+          },
+          "own_ray_difference": 1
+        },
+        "otis": {
+          "bounds": [
+            0.5084750056266785,
+            0.5571075677871704,
+            0.5070211291313171,
+            0.5382958650588989,
+            26.73213768005371
+          ],
+          "safe": true,
+          "vertical_coverage": 0.03127473592758179,
+          "face_all": {
+            "samples": 10,
+            "blocked": 4,
+            "bounds": [
+              0.5203418135643005,
+              0.53218674659729,
+              0.5270606279373169,
+              0.534080445766449,
+              26.975130081176758
+            ],
+            "safe": true,
+            "visible_fraction": 0.6,
+            "blockers": [
+              "otis / body skinned",
+              "otis / garment shell / shirt and sleeves",
+              "otis / round glasses"
+            ]
+          },
+          "face_external": {
+            "samples": 10,
+            "blocked": 0,
+            "bounds": [
+              0.5203418135643005,
+              0.53218674659729,
+              0.5270606279373169,
+              0.534080445766449,
+              26.975130081176758
+            ],
+            "safe": true,
+            "visible_fraction": 1.0,
+            "blockers": []
+          },
+          "own_ray_difference": 4
+        }
+      },
+      "geometry": {
+        "held_pose": true,
+        "static_seating": [
+          [
+            "narrator",
+            {
+              "hip_z": 0.4648272395133972,
+              "calibrated_seat_center": [
+                1.1473894119262695e-06,
+                8.55907154083252,
+                -0.42907118797302246
+              ],
+              "seat_footprint": [
+                1.4938984870910645,
+                0.7869494074583054
+              ],
+              "declared_top": 0.4648272395133972,
+              "hip_minus_declared_top": 0.0,
+              "foot_plane_gaps": [
+                0.0,
+                0.0
+              ]
+            }
+          ],
+          [
+            "otis",
+            {
+              "hip_z": 0.4648272395133972,
+              "calibrated_seat_center": [
+                -1.1999988555908203,
+                8.55907154083252,
+                -0.42907118797302246
+              ],
+              "seat_footprint": [
+                1.4938984870910645,
+                0.7869494074583054
+              ],
+              "declared_top": 0.4648272395133972,
+              "hip_minus_declared_top": 0.0,
+              "foot_plane_gaps": [
+                0.0,
+                0.0
+              ]
+            }
+          ],
+          [
+            "leo",
+            {
+              "hip_z": 0.4648272395133972,
+              "calibrated_seat_center": [
+                -3.599998712539673,
+                8.55907154083252,
+                -0.42907118797302246
+              ],
+              "seat_footprint": [
+                1.4938984870910645,
+                0.7869494074583054
+              ],
+              "declared_top": 0.4648272395133972,
+              "hip_minus_declared_top": 0.0,
+              "foot_plane_gaps": [
+                0.0,
+                0.0
+              ]
+            }
+          ],
+          [
+            "max",
+            {
+              "hip_z": 0.4694754183292389,
+              "calibrated_seat_center": [
+                -2.399998903274536,
+                8.563362121582031,
+                -0.4333620071411133
+              ],
+              "seat_footprint": [
+                1.5028374552726746,
+                0.7914187723398209
+              ],
+              "declared_top": 0.4648272395133972,
+              "hip_minus_declared_top": 0.004648178815841675,
+              "foot_plane_gaps": [
+                0.0,
+                0.0
+              ]
+            }
+          ],
+          [
+            "noah",
+            {
+              "hip_z": 0.45553067326545715,
+              "calibrated_seat_center": [
+                1.2000011205673218,
+                8.55048942565918,
+                -0.42048972845077515
+              ],
+              "seat_footprint": [
+                1.4760204911231996,
+                0.778010334968567
+              ],
+              "declared_top": 0.4648272395133972,
+              "hip_minus_declared_top": -0.009296566247940063,
+              "foot_plane_gaps": [
+                2.9802322387695312e-08,
+                2.9802322387695312e-08
+              ]
+            }
+          ],
+          [
+            "ryan",
+            {
+              "hip_z": 0.47412458062171936,
+              "calibrated_seat_center": [
+                2.400001287460327,
+                8.567652702331543,
+                -0.43765270709991455
+              ],
+              "seat_footprint": [
+                1.5117764830589295,
+                0.7958883607387544
+              ],
+              "declared_top": 0.4648272395133972,
+              "hip_minus_declared_top": 0.009297341108322144,
+              "foot_plane_gaps": [
+                5.960464477539063e-08,
+                5.960464477539063e-08
+              ]
+            }
+          ],
+          [
+            "sam",
+            {
+              "hip_z": 0.4601788818836212,
+              "calibrated_seat_center": [
+                3.600001096725464,
+                8.554780960083008,
+                -0.4247805178165436
+              ],
+              "seat_footprint": [
+                1.4849594593048097,
+                0.7824799382686616
+              ],
+              "declared_top": 0.4648272395133972,
+              "hip_minus_declared_top": -0.004648357629776001,
+              "foot_plane_gaps": [
+                0.0,
+                0.0
+              ]
+            }
+          ]
+        ]
+      }
+    },
+    {
+      "frame": 923,
+      "shot": "sh13",
+      "actor_qc": {
+        "narrator": {
+          "bounds": [
+            0.535283625125885,
+            0.5845984220504761,
+            0.503587543964386,
+            0.536560595035553,
+            26.434738159179688
+          ],
+          "safe": true,
+          "vertical_coverage": 0.03297305107116699,
+          "face_all": {
+            "samples": 9,
+            "blocked": 1,
+            "bounds": [
+              0.5486932992935181,
+              0.5602797865867615,
+              0.5240458846092224,
+              0.531855583190918,
+              26.434738159179688
+            ],
+            "safe": true,
+            "visible_fraction": 0.8888888888888888,
+            "blockers": [
+              "narrator / head knitted beanie folded brim"
+            ]
+          },
+          "face_external": {
+            "samples": 9,
+            "blocked": 0,
+            "bounds": [
+              0.5486932992935181,
+              0.5602797865867615,
+              0.5240458846092224,
+              0.531855583190918,
+              26.434738159179688
+            ],
+            "safe": true,
+            "visible_fraction": 1.0,
+            "blockers": []
+          },
+          "own_ray_difference": 1
+        },
+        "otis": {
+          "bounds": [
+            0.5084739327430725,
+            0.5571075677871704,
+            0.5070211291313171,
+            0.5382958650588989,
+            26.732519149780273
+          ],
+          "safe": true,
+          "vertical_coverage": 0.03127473592758179,
+          "face_all": {
+            "samples": 9,
+            "blocked": 4,
+            "bounds": [
+              0.5203437805175781,
+              0.5321865677833557,
+              0.5270606875419617,
+              0.5340816378593445,
+              26.97514533996582
+            ],
+            "safe": true,
+            "visible_fraction": 0.5555555555555556,
+            "blockers": [
+              "otis / body skinned",
+              "otis / garment shell / shirt and sleeves",
+              "otis / round glasses"
+            ]
+          },
+          "face_external": {
+            "samples": 9,
+            "blocked": 0,
+            "bounds": [
+              0.5203437805175781,
+              0.5321865677833557,
+              0.5270606875419617,
+              0.5340816378593445,
+              26.97514533996582
+            ],
+            "safe": true,
+            "visible_fraction": 1.0,
+            "blockers": []
+          },
+          "own_ray_difference": 4
+        }
+      },
+      "geometry": {
+        "held_pose": true,
+        "static_seating": [
+          [
+            "narrator",
+            {
+              "hip_z": 0.4648272395133972,
+              "calibrated_seat_center": [
+                1.1473894119262695e-06,
+                8.55907154083252,
+                -0.42907118797302246
+              ],
+              "seat_footprint": [
+                1.4938984870910645,
+                0.7869494074583054
+              ],
+              "declared_top": 0.4648272395133972,
+              "hip_minus_declared_top": 0.0,
+              "foot_plane_gaps": [
+                0.0,
+                0.0
+              ]
+            }
+          ],
+          [
+            "otis",
+            {
+              "hip_z": 0.4648272395133972,
+              "calibrated_seat_center": [
+                -1.1999988555908203,
+                8.55907154083252,
+                -0.42907118797302246
+              ],
+              "seat_footprint": [
+                1.4938984870910645,
+                0.7869494074583054
+              ],
+              "declared_top": 0.4648272395133972,
+              "hip_minus_declared_top": 0.0,
+              "foot_plane_gaps": [
+                0.0,
+                0.0
+              ]
+            }
+          ],
+          [
+            "leo",
+            {
+              "hip_z": 0.4648272395133972,
+              "calibrated_seat_center": [
+                -3.599998712539673,
+                8.55907154083252,
+                -0.42907118797302246
+              ],
+              "seat_footprint": [
+                1.4938984870910645,
+                0.7869494074583054
+              ],
+              "declared_top": 0.4648272395133972,
+              "hip_minus_declared_top": 0.0,
+              "foot_plane_gaps": [
+                0.0,
+                0.0
+              ]
+            }
+          ],
+          [
+            "max",
+            {
+              "hip_z": 0.4694754183292389,
+              "calibrated_seat_center": [
+                -2.399998903274536,
+                8.563362121582031,
+                -0.4333620071411133
+              ],
+              "seat_footprint": [
+                1.5028374552726746,
+                0.7914187723398209
+              ],
+              "declared_top": 0.4648272395133972,
+              "hip_minus_declared_top": 0.004648178815841675,
+              "foot_plane_gaps": [
+                0.0,
+                0.0
+              ]
+            }
+          ],
+          [
+            "noah",
+            {
+              "hip_z": 0.45553067326545715,
+              "calibrated_seat_center": [
+                1.2000011205673218,
+                8.55048942565918,
+                -0.42048972845077515
+              ],
+              "seat_footprint": [
+                1.4760204911231996,
+                0.778010334968567
+              ],
+              "declared_top": 0.4648272395133972,
+              "hip_minus_declared_top": -0.009296566247940063,
+              "foot_plane_gaps": [
+                2.9802322387695312e-08,
+                2.9802322387695312e-08
+              ]
+            }
+          ],
+          [
+            "ryan",
+            {
+              "hip_z": 0.47412458062171936,
+              "calibrated_seat_center": [
+                2.400001287460327,
+                8.567652702331543,
+                -0.43765270709991455
+              ],
+              "seat_footprint": [
+                1.5117764830589295,
+                0.7958883607387544
+              ],
+              "declared_top": 0.4648272395133972,
+              "hip_minus_declared_top": 0.009297341108322144,
+              "foot_plane_gaps": [
+                5.960464477539063e-08,
+                5.960464477539063e-08
+              ]
+            }
+          ],
+          [
+            "sam",
+            {
+              "hip_z": 0.4601788818836212,
+              "calibrated_seat_center": [
+                3.600001096725464,
+                8.554780960083008,
+                -0.4247805178165436
+              ],
+              "seat_footprint": [
+                1.4849594593048097,
+                0.7824799382686616
+              ],
+              "declared_top": 0.4648272395133972,
+              "hip_minus_declared_top": -0.004648357629776001,
+              "foot_plane_gaps": [
+                0.0,
+                0.0
+              ]
+            }
+          ]
+        ]
+      }
+    },
+    {
+      "frame": 924,
+      "shot": "sh13",
+      "actor_qc": {
+        "narrator": {
+          "bounds": [
+            0.535283625125885,
+            0.5845984220504761,
+            0.503587543964386,
+            0.536560595035553,
+            26.434738159179688
+          ],
+          "safe": true,
+          "vertical_coverage": 0.03297305107116699,
+          "face_all": {
+            "samples": 9,
+            "blocked": 1,
+            "bounds": [
+              0.5486932992935181,
+              0.5602797865867615,
+              0.5240458846092224,
+              0.531855583190918,
+              26.434738159179688
+            ],
+            "safe": true,
+            "visible_fraction": 0.8888888888888888,
+            "blockers": [
+              "narrator / head knitted beanie folded brim"
+            ]
+          },
+          "face_external": {
+            "samples": 9,
+            "blocked": 0,
+            "bounds": [
+              0.5486932992935181,
+              0.5602797865867615,
+              0.5240458846092224,
+              0.531855583190918,
+              26.434738159179688
+            ],
+            "safe": true,
+            "visible_fraction": 1.0,
+            "blockers": []
+          },
+          "own_ray_difference": 1
+        },
+        "otis": {
+          "bounds": [
+            0.5084723830223083,
+            0.5571075677871704,
+            0.5070211291313171,
+            0.5382959246635437,
+            26.733104705810547
+          ],
+          "safe": true,
+          "vertical_coverage": 0.03127479553222656,
+          "face_all": {
+            "samples": 9,
+            "blocked": 4,
+            "bounds": [
+              0.5203467607498169,
+              0.5321862697601318,
+              0.5270607471466064,
+              0.5340834856033325,
+              26.97516632080078
+            ],
+            "safe": true,
+            "visible_fraction": 0.5555555555555556,
+            "blockers": [
+              "otis / body skinned",
+              "otis / garment shell / shirt and sleeves",
+              "otis / round glasses"
+            ]
+          },
+          "face_external": {
+            "samples": 9,
+            "blocked": 0,
+            "bounds": [
+              0.5203467607498169,
+              0.5321862697601318,
+              0.5270607471466064,
+              0.5340834856033325,
+              26.97516632080078
+            ],
+            "safe": true,
+            "visible_fraction": 1.0,
+            "blockers": []
+          },
+          "own_ray_difference": 4
+        }
+      },
+      "geometry": {
+        "held_pose": true,
+        "static_seating": [
+          [
+            "narrator",
+            {
+              "hip_z": 0.4648272395133972,
+              "calibrated_seat_center": [
+                1.1473894119262695e-06,
+                8.55907154083252,
+                -0.42907118797302246
+              ],
+              "seat_footprint": [
+                1.4938984870910645,
+                0.7869494074583054
+              ],
+              "declared_top": 0.4648272395133972,
+              "hip_minus_declared_top": 0.0,
+              "foot_plane_gaps": [
+                0.0,
+                0.0
+              ]
+            }
+          ],
+          [
+            "otis",
+            {
+              "hip_z": 0.4648272395133972,
+              "calibrated_seat_center": [
+                -1.1999988555908203,
+                8.55907154083252,
+                -0.42907118797302246
+              ],
+              "seat_footprint": [
+                1.4938984870910645,
+                0.7869494074583054
+              ],
+              "declared_top": 0.4648272395133972,
+              "hip_minus_declared_top": 0.0,
+              "foot_plane_gaps": [
+                0.0,
+                0.0
+              ]
+            }
+          ],
+          [
+            "leo",
+            {
+              "hip_z": 0.4648272395133972,
+              "calibrated_seat_center": [
+                -3.599998712539673,
+                8.55907154083252,
+                -0.42907118797302246
+              ],
+              "seat_footprint": [
+                1.4938984870910645,
+                0.7869494074583054
+              ],
+              "declared_top": 0.4648272395133972,
+              "hip_minus_declared_top": 0.0,
+              "foot_plane_gaps": [
+                0.0,
+                0.0
+              ]
+            }
+          ],
+          [
+            "max",
+            {
+              "hip_z": 0.4694754183292389,
+              "calibrated_seat_center": [
+                -2.399998903274536,
+                8.563362121582031,
+                -0.4333620071411133
+              ],
+              "seat_footprint": [
+                1.5028374552726746,
+                0.7914187723398209
+              ],
+              "declared_top": 0.4648272395133972,
+              "hip_minus_declared_top": 0.004648178815841675,
+              "foot_plane_gaps": [
+                0.0,
+                0.0
+              ]
+            }
+          ],
+          [
+            "noah",
+            {
+              "hip_z": 0.45553067326545715,
+              "calibrated_seat_center": [
+                1.2000011205673218,
+                8.55048942565918,
+                -0.42048972845077515
+              ],
+              "seat_footprint": [
+                1.4760204911231996,
+                0.778010334968567
+              ],
+              "declared_top": 0.4648272395133972,
+              "hip_minus_declared_top": -0.009296566247940063,
+              "foot_plane_gaps": [
+                2.9802322387695312e-08,
+                2.9802322387695312e-08
+              ]
+            }
+          ],
+          [
+            "ryan",
+            {
+              "hip_z": 0.47412458062171936,
+              "calibrated_seat_center": [
+                2.400001287460327,
+                8.567652702331543,
+                -0.43765270709991455
+              ],
+              "seat_footprint": [
+                1.5117764830589295,
+                0.7958883607387544
+              ],
+              "declared_top": 0.4648272395133972,
+              "hip_minus_declared_top": 0.009297341108322144,
+              "foot_plane_gaps": [
+                5.960464477539063e-08,
+                5.960464477539063e-08
+              ]
+            }
+          ],
+          [
+            "sam",
+            {
+              "hip_z": 0.4601788818836212,
+              "calibrated_seat_center": [
+                3.600001096725464,
+                8.554780960083008,
+                -0.4247805178165436
+              ],
+              "seat_footprint": [
+                1.4849594593048097,
+                0.7824799382686616
+              ],
+              "declared_top": 0.4648272395133972,
+              "hip_minus_declared_top": -0.004648357629776001,
+              "foot_plane_gaps": [
+                0.0,
+                0.0
+              ]
+            }
+          ]
+        ]
+      }
+    },
+    {
+      "frame": 925,
+      "shot": "sh13",
+      "actor_qc": {
+        "narrator": {
+          "bounds": [
+            0.535283625125885,
+            0.5845984220504761,
+            0.503587543964386,
+            0.536560595035553,
+            26.434738159179688
+          ],
+          "safe": true,
+          "vertical_coverage": 0.03297305107116699,
+          "face_all": {
+            "samples": 9,
+            "blocked": 1,
+            "bounds": [
+              0.5486932992935181,
+              0.5602797865867615,
+              0.5240458846092224,
+              0.531855583190918,
+              26.434738159179688
+            ],
+            "safe": true,
+            "visible_fraction": 0.8888888888888888,
+            "blockers": [
+              "narrator / head knitted beanie folded brim"
+            ]
+          },
+          "face_external": {
+            "samples": 9,
+            "blocked": 0,
+            "bounds": [
+              0.5486932992935181,
+              0.5602797865867615,
+              0.5240458846092224,
+              0.531855583190918,
+              26.434738159179688
+            ],
+            "safe": true,
+            "visible_fraction": 1.0,
+            "blockers": []
+          },
+          "own_ray_difference": 1
+        },
+        "otis": {
+          "bounds": [
+            0.5084702372550964,
+            0.5571075677871704,
+            0.5070211291313171,
+            0.5382959246635437,
+            26.733898162841797
+          ],
+          "safe": true,
+          "vertical_coverage": 0.03127479553222656,
+          "face_all": {
+            "samples": 9,
+            "blocked": 4,
+            "bounds": [
+              0.5203506946563721,
+              0.5321859121322632,
+              0.5270608067512512,
+              0.5340858697891235,
+              26.975194931030273
+            ],
+            "safe": true,
+            "visible_fraction": 0.5555555555555556,
+            "blockers": [
+              "otis / body skinned",
+              "otis / garment shell / shirt and sleeves",
+              "otis / round glasses"
+            ]
+          },
+          "face_external": {
+            "samples": 9,
+            "blocked": 0,
+            "bounds": [
+              0.5203506946563721,
+              0.5321859121322632,
+              0.5270608067512512,
+              0.5340858697891235,
+              26.975194931030273
+            ],
+            "safe": true,
+            "visible_fraction": 1.0,
+            "blockers": []
+          },
+          "own_ray_difference": 4
+        }
+      },
+      "geometry": {
+        "held_pose": true,
+        "static_seating": [
+          [
+            "narrator",
+            {
+              "hip_z": 0.4648272395133972,
+              "calibrated_seat_center": [
+                1.1473894119262695e-06,
+                8.55907154083252,
+                -0.42907118797302246
+              ],
+              "seat_footprint": [
+                1.4938984870910645,
+                0.7869494074583054
+              ],
+              "declared_top": 0.4648272395133972,
+              "hip_minus_declared_top": 0.0,
+              "foot_plane_gaps": [
+                0.0,
+                0.0
+              ]
+            }
+          ],
+          [
+            "otis",
+            {
+              "hip_z": 0.4648272395133972,
+              "calibrated_seat_center": [
+                -1.1999988555908203,
+                8.55907154083252,
+                -0.42907118797302246
+              ],
+              "seat_footprint": [
+                1.4938984870910645,
+                0.7869494074583054
+              ],
+              "declared_top": 0.4648272395133972,
+              "hip_minus_declared_top": 0.0,
+              "foot_plane_gaps": [
+                0.0,
+                0.0
+              ]
+            }
+          ],
+          [
+            "leo",
+            {
+              "hip_z": 0.4648272395133972,
+              "calibrated_seat_center": [
+                -3.599998712539673,
+                8.55907154083252,
+                -0.42907118797302246
+              ],
+              "seat_footprint": [
+                1.4938984870910645,
+                0.7869494074583054
+              ],
+              "declared_top": 0.4648272395133972,
+              "hip_minus_declared_top": 0.0,
+              "foot_plane_gaps": [
+                0.0,
+                0.0
+              ]
+            }
+          ],
+          [
+            "max",
+            {
+              "hip_z": 0.4694754183292389,
+              "calibrated_seat_center": [
+                -2.399998903274536,
+                8.563362121582031,
+                -0.4333620071411133
+              ],
+              "seat_footprint": [
+                1.5028374552726746,
+                0.7914187723398209
+              ],
+              "declared_top": 0.4648272395133972,
+              "hip_minus_declared_top": 0.004648178815841675,
+              "foot_plane_gaps": [
+                0.0,
+                0.0
+              ]
+            }
+          ],
+          [
+            "noah",
+            {
+              "hip_z": 0.45553067326545715,
+              "calibrated_seat_center": [
+                1.2000011205673218,
+                8.55048942565918,
+                -0.42048972845077515
+              ],
+              "seat_footprint": [
+                1.4760204911231996,
+                0.778010334968567
+              ],
+              "declared_top": 0.4648272395133972,
+              "hip_minus_declared_top": -0.009296566247940063,
+              "foot_plane_gaps": [
+                2.9802322387695312e-08,
+                2.9802322387695312e-08
+              ]
+            }
+          ],
+          [
+            "ryan",
+            {
+              "hip_z": 0.47412458062171936,
+              "calibrated_seat_center": [
+                2.400001287460327,
+                8.567652702331543,
+                -0.43765270709991455
+              ],
+              "seat_footprint": [
+                1.5117764830589295,
+                0.7958883607387544
+              ],
+              "declared_top": 0.4648272395133972,
+              "hip_minus_declared_top": 0.009297341108322144,
+              "foot_plane_gaps": [
+                5.960464477539063e-08,
+                5.960464477539063e-08
+              ]
+            }
+          ],
+          [
+            "sam",
+            {
+              "hip_z": 0.4601788818836212,
+              "calibrated_seat_center": [
+                3.600001096725464,
+                8.554780960083008,
+                -0.4247805178165436
+              ],
+              "seat_footprint": [
+                1.4849594593048097,
+                0.7824799382686616
+              ],
+              "declared_top": 0.4648272395133972,
+              "hip_minus_declared_top": -0.004648357629776001,
+              "foot_plane_gaps": [
+                0.0,
+                0.0
+              ]
+            }
+          ]
+        ]
+      }
+    },
+    {
+      "frame": 926,
+      "shot": "sh13",
+      "actor_qc": {
+        "narrator": {
+          "bounds": [
+            0.535283625125885,
+            0.5845984220504761,
+            0.503587543964386,
+            0.536560595035553,
+            26.434738159179688
+          ],
+          "safe": true,
+          "vertical_coverage": 0.03297305107116699,
+          "face_all": {
+            "samples": 9,
+            "blocked": 1,
+            "bounds": [
+              0.5486932992935181,
+              0.5602797865867615,
+              0.5240458846092224,
+              0.531855583190918,
+              26.434738159179688
+            ],
+            "safe": true,
+            "visible_fraction": 0.8888888888888888,
+            "blockers": [
+              "narrator / head knitted beanie folded brim"
+            ]
+          },
+          "face_external": {
+            "samples": 9,
+            "blocked": 0,
+            "bounds": [
+              0.5486932992935181,
+              0.5602797865867615,
+              0.5240458846092224,
+              0.531855583190918,
+              26.434738159179688
+            ],
+            "safe": true,
+            "visible_fraction": 1.0,
+            "blockers": []
+          },
+          "own_ray_difference": 1
+        },
+        "otis": {
+          "bounds": [
+            0.5084676146507263,
+            0.5571075677871704,
+            0.5070211291313171,
+            0.5382959842681885,
+            26.73491668701172
+          ],
+          "safe": true,
+          "vertical_coverage": 0.03127485513687134,
+          "face_all": {
+            "samples": 11,
+            "blocked": 3,
+            "bounds": [
+              0.5203557014465332,
+              0.532185435295105,
+              0.5270609259605408,
+              0.5340888500213623,
+              26.97523307800293
+            ],
+            "safe": true,
+            "visible_fraction": 0.7272727272727273,
+            "blockers": [
+              "otis / body skinned",
+              "otis / round glasses"
+            ]
+          },
+          "face_external": {
+            "samples": 11,
+            "blocked": 0,
+            "bounds": [
+              0.5203557014465332,
+              0.532185435295105,
+              0.5270609259605408,
+              0.5340888500213623,
+              26.97523307800293
+            ],
+            "safe": true,
+            "visible_fraction": 1.0,
+            "blockers": []
+          },
+          "own_ray_difference": 3
+        }
+      },
+      "geometry": {
+        "held_pose": true,
+        "static_seating": [
+          [
+            "narrator",
+            {
+              "hip_z": 0.4648272395133972,
+              "calibrated_seat_center": [
+                1.1473894119262695e-06,
+                8.55907154083252,
+                -0.42907118797302246
+              ],
+              "seat_footprint": [
+                1.4938984870910645,
+                0.7869494074583054
+              ],
+              "declared_top": 0.4648272395133972,
+              "hip_minus_declared_top": 0.0,
+              "foot_plane_gaps": [
+                0.0,
+                0.0
+              ]
+            }
+          ],
+          [
+            "otis",
+            {
+              "hip_z": 0.4648272395133972,
+              "calibrated_seat_center": [
+                -1.1999988555908203,
+                8.55907154083252,
+                -0.42907118797302246
+              ],
+              "seat_footprint": [
+                1.4938984870910645,
+                0.7869494074583054
+              ],
+              "declared_top": 0.4648272395133972,
+              "hip_minus_declared_top": 0.0,
+              "foot_plane_gaps": [
+                0.0,
+                0.0
+              ]
+            }
+          ],
+          [
+            "leo",
+            {
+              "hip_z": 0.4648272395133972,
+              "calibrated_seat_center": [
+                -3.599998712539673,
+                8.55907154083252,
+                -0.42907118797302246
+              ],
+              "seat_footprint": [
+                1.4938984870910645,
+                0.7869494074583054
+              ],
+              "declared_top": 0.4648272395133972,
+              "hip_minus_declared_top": 0.0,
+              "foot_plane_gaps": [
+                0.0,
+                0.0
+              ]
+            }
+          ],
+          [
+            "max",
+            {
+              "hip_z": 0.4694754183292389,
+              "calibrated_seat_center": [
+                -2.399998903274536,
+                8.563362121582031,
+                -0.4333620071411133
+              ],
+              "seat_footprint": [
+                1.5028374552726746,
+                0.7914187723398209
+              ],
+              "declared_top": 0.4648272395133972,
+              "hip_minus_declared_top": 0.004648178815841675,
+              "foot_plane_gaps": [
+                0.0,
+                0.0
+              ]
+            }
+          ],
+          [
+            "noah",
+            {
+              "hip_z": 0.45553067326545715,
+              "calibrated_seat_center": [
+                1.2000011205673218,
+                8.55048942565918,
+                -0.42048972845077515
+              ],
+              "seat_footprint": [
+                1.4760204911231996,
+                0.778010334968567
+              ],
+              "declared_top": 0.4648272395133972,
+              "hip_minus_declared_top": -0.009296566247940063,
+              "foot_plane_gaps": [
+                2.9802322387695312e-08,
+                2.9802322387695312e-08
+              ]
+            }
+          ],
+          [
+            "ryan",
+            {
+              "hip_z": 0.47412458062171936,
+              "calibrated_seat_center": [
+                2.400001287460327,
+                8.567652702331543,
+                -0.43765270709991455
+              ],
+              "seat_footprint": [
+                1.5117764830589295,
+                0.7958883607387544
+              ],
+              "declared_top": 0.4648272395133972,
+              "hip_minus_declared_top": 0.009297341108322144,
+              "foot_plane_gaps": [
+                5.960464477539063e-08,
+                5.960464477539063e-08
+              ]
+            }
+          ],
+          [
+            "sam",
+            {
+              "hip_z": 0.4601788818836212,
+              "calibrated_seat_center": [
+                3.600001096725464,
+                8.554780960083008,
+                -0.4247805178165436
+              ],
+              "seat_footprint": [
+                1.4849594593048097,
+                0.7824799382686616
+              ],
+              "declared_top": 0.4648272395133972,
+              "hip_minus_declared_top": -0.004648357629776001,
+              "foot_plane_gaps": [
+                0.0,
+                0.0
+              ]
+            }
+          ]
+        ]
+      }
+    },
+    {
+      "frame": 927,
+      "shot": "sh13",
+      "actor_qc": {
+        "narrator": {
+          "bounds": [
+            0.535283625125885,
+            0.5845984220504761,
+            0.503587543964386,
+            0.536560595035553,
+            26.434738159179688
+          ],
+          "safe": true,
+          "vertical_coverage": 0.03297305107116699,
+          "face_all": {
+            "samples": 9,
+            "blocked": 1,
+            "bounds": [
+              0.5486932992935181,
+              0.5602797865867615,
+              0.5240458846092224,
+              0.531855583190918,
+              26.434738159179688
+            ],
+            "safe": true,
+            "visible_fraction": 0.8888888888888888,
+            "blockers": [
+              "narrator / head knitted beanie folded brim"
+            ]
+          },
+          "face_external": {
+            "samples": 9,
+            "blocked": 0,
+            "bounds": [
+              0.5486932992935181,
+              0.5602797865867615,
+              0.5240458846092224,
+              0.531855583190918,
+              26.434738159179688
+            ],
+            "safe": true,
+            "visible_fraction": 1.0,
+            "blockers": []
+          },
+          "own_ray_difference": 1
+        },
+        "otis": {
+          "bounds": [
+            0.5084643959999084,
+            0.5571075677871704,
+            0.5070211291313171,
+            0.5382960438728333,
+            26.736177444458008
+          ],
+          "safe": true,
+          "vertical_coverage": 0.03127491474151611,
+          "face_all": {
+            "samples": 11,
+            "blocked": 3,
+            "bounds": [
+              0.520361602306366,
+              0.532184898853302,
+              0.5270610451698303,
+              0.5340924263000488,
+              26.975276947021484
+            ],
+            "safe": true,
+            "visible_fraction": 0.7272727272727273,
+            "blockers": [
+              "otis / body skinned",
+              "otis / round glasses"
+            ]
+          },
+          "face_external": {
+            "samples": 11,
+            "blocked": 0,
+            "bounds": [
+              0.520361602306366,
+              0.532184898853302,
+              0.5270610451698303,
+              0.5340924263000488,
+              26.975276947021484
+            ],
+            "safe": true,
+            "visible_fraction": 1.0,
+            "blockers": []
+          },
+          "own_ray_difference": 3
+        }
+      },
+      "geometry": {
+        "held_pose": true,
+        "static_seating": [
+          [
+            "narrator",
+            {
+              "hip_z": 0.4648272395133972,
+              "calibrated_seat_center": [
+                1.1473894119262695e-06,
+                8.55907154083252,
+                -0.42907118797302246
+              ],
+              "seat_footprint": [
+                1.4938984870910645,
+                0.7869494074583054
+              ],
+              "declared_top": 0.4648272395133972,
+              "hip_minus_declared_top": 0.0,
+              "foot_plane_gaps": [
+                0.0,
+                0.0
+              ]
+            }
+          ],
+          [
+            "otis",
+            {
+              "hip_z": 0.4648272395133972,
+              "calibrated_seat_center": [
+                -1.1999988555908203,
+                8.55907154083252,
+                -0.42907118797302246
+              ],
+              "seat_footprint": [
+                1.4938984870910645,
+                0.7869494074583054
+              ],
+              "declared_top": 0.4648272395133972,
+              "hip_minus_declared_top": 0.0,
+              "foot_plane_gaps": [
+                0.0,
+                0.0
+              ]
+            }
+          ],
+          [
+            "leo",
+            {
+              "hip_z": 0.4648272395133972,
+              "calibrated_seat_center": [
+                -3.599998712539673,
+                8.55907154083252,
+                -0.42907118797302246
+              ],
+              "seat_footprint": [
+                1.4938984870910645,
+                0.7869494074583054
+              ],
+              "declared_top": 0.4648272395133972,
+              "hip_minus_declared_top": 0.0,
+              "foot_plane_gaps": [
+                0.0,
+                0.0
+              ]
+            }
+          ],
+          [
+            "max",
+            {
+              "hip_z": 0.4694754183292389,
+              "calibrated_seat_center": [
+                -2.399998903274536,
+                8.563362121582031,
+                -0.4333620071411133
+              ],
+              "seat_footprint": [
+                1.5028374552726746,
+                0.7914187723398209
+              ],
+              "declared_top": 0.4648272395133972,
+              "hip_minus_declared_top": 0.004648178815841675,
+              "foot_plane_gaps": [
+                0.0,
+                0.0
+              ]
+            }
+          ],
+          [
+            "noah",
+            {
+              "hip_z": 0.45553067326545715,
+              "calibrated_seat_center": [
+                1.2000011205673218,
+                8.55048942565918,
+                -0.42048972845077515
+              ],
+              "seat_footprint": [
+                1.4760204911231996,
+                0.778010334968567
+              ],
+              "declared_top": 0.4648272395133972,
+              "hip_minus_declared_top": -0.009296566247940063,
+              "foot_plane_gaps": [
+                2.9802322387695312e-08,
+                2.9802322387695312e-08
+              ]
+            }
+          ],
+          [
+            "ryan",
+            {
+              "hip_z": 0.47412458062171936,
+              "calibrated_seat_center": [
+                2.400001287460327,
+                8.567652702331543,
+                -0.43765270709991455
+              ],
+              "seat_footprint": [
+                1.5117764830589295,
+                0.7958883607387544
+              ],
+              "declared_top": 0.4648272395133972,
+              "hip_minus_declared_top": 0.009297341108322144,
+              "foot_plane_gaps": [
+                5.960464477539063e-08,
+                5.960464477539063e-08
+              ]
+            }
+          ],
+          [
+            "sam",
+            {
+              "hip_z": 0.4601788818836212,
+              "calibrated_seat_center": [
+                3.600001096725464,
+                8.554780960083008,
+                -0.4247805178165436
+              ],
+              "seat_footprint": [
+                1.4849594593048097,
+                0.7824799382686616
+              ],
+              "declared_top": 0.4648272395133972,
+              "hip_minus_declared_top": -0.004648357629776001,
+              "foot_plane_gaps": [
+                0.0,
+                0.0
+              ]
+            }
+          ]
+        ]
+      }
+    },
+    {
+      "frame": 928,
+      "shot": "sh13",
+      "actor_qc": {
+        "narrator": {
+          "bounds": [
+            0.535283625125885,
+            0.5845984220504761,
+            0.503587543964386,
+            0.536560595035553,
+            26.434738159179688
+          ],
+          "safe": true,
+          "vertical_coverage": 0.03297305107116699,
+          "face_all": {
+            "samples": 9,
+            "blocked": 1,
+            "bounds": [
+              0.5486932992935181,
+              0.5602797865867615,
+              0.5240458846092224,
+              0.531855583190918,
+              26.434738159179688
+            ],
+            "safe": true,
+            "visible_fraction": 0.8888888888888888,
+            "blockers": [
+              "narrator / head knitted beanie folded brim"
+            ]
+          },
+          "face_external": {
+            "samples": 9,
+            "blocked": 0,
+            "bounds": [
+              0.5486932992935181,
+              0.5602797865867615,
+              0.5240458846092224,
+              0.531855583190918,
+              26.434738159179688
+            ],
+            "safe": true,
+            "visible_fraction": 1.0,
+            "blockers": []
+          },
+          "own_ray_difference": 1
+        },
+        "otis": {
+          "bounds": [
+            0.5084606409072876,
+            0.5571075677871704,
+            0.5070211291313171,
+            0.538296103477478,
+            26.737701416015625
+          ],
+          "safe": true,
+          "vertical_coverage": 0.03127497434616089,
+          "face_all": {
+            "samples": 9,
+            "blocked": 3,
+            "bounds": [
+              0.5203685164451599,
+              0.5321843028068542,
+              0.5270611643791199,
+              0.5340965986251831,
+              26.97532844543457
+            ],
+            "safe": true,
+            "visible_fraction": 0.6666666666666667,
+            "blockers": [
+              "otis / body skinned",
+              "otis / garment shell / shirt and sleeves",
+              "otis / round glasses"
+            ]
+          },
+          "face_external": {
+            "samples": 9,
+            "blocked": 0,
+            "bounds": [
+              0.5203685164451599,
+              0.5321843028068542,
+              0.5270611643791199,
+              0.5340965986251831,
+              26.97532844543457
+            ],
+            "safe": true,
+            "visible_fraction": 1.0,
+            "blockers": []
+          },
+          "own_ray_difference": 3
+        }
+      },
+      "geometry": {
+        "held_pose": true,
+        "static_seating": [
+          [
+            "narrator",
+            {
+              "hip_z": 0.4648272395133972,
+              "calibrated_seat_center": [
+                1.1473894119262695e-06,
+                8.55907154083252,
+                -0.42907118797302246
+              ],
+              "seat_footprint": [
+                1.4938984870910645,
+                0.7869494074583054
+              ],
+              "declared_top": 0.4648272395133972,
+              "hip_minus_declared_top": 0.0,
+              "foot_plane_gaps": [
+                0.0,
+                0.0
+              ]
+            }
+          ],
+          [
+            "otis",
+            {
+              "hip_z": 0.4648272395133972,
+              "calibrated_seat_center": [
+                -1.1999988555908203,
+                8.55907154083252,
+                -0.42907118797302246
+              ],
+              "seat_footprint": [
+                1.4938984870910645,
+                0.7869494074583054
+              ],
+              "declared_top": 0.4648272395133972,
+              "hip_minus_declared_top": 0.0,
+              "foot_plane_gaps": [
+                0.0,
+                0.0
+              ]
+            }
+          ],
+          [
+            "leo",
+            {
+              "hip_z": 0.4648272395133972,
+              "calibrated_seat_center": [
+                -3.599998712539673,
+                8.55907154083252,
+                -0.42907118797302246
+              ],
+              "seat_footprint": [
+                1.4938984870910645,
+                0.7869494074583054
+              ],
+              "declared_top": 0.4648272395133972,
+              "hip_minus_declared_top": 0.0,
+              "foot_plane_gaps": [
+                0.0,
+                0.0
+              ]
+            }
+          ],
+          [
+            "max",
+            {
+              "hip_z": 0.4694754183292389,
+              "calibrated_seat_center": [
+                -2.399998903274536,
+                8.563362121582031,
+                -0.4333620071411133
+              ],
+              "seat_footprint": [
+                1.5028374552726746,
+                0.7914187723398209
+              ],
+              "declared_top": 0.4648272395133972,
+              "hip_minus_declared_top": 0.004648178815841675,
+              "foot_plane_gaps": [
+                0.0,
+                0.0
+              ]
+            }
+          ],
+          [
+            "noah",
+            {
+              "hip_z": 0.45553067326545715,
+              "calibrated_seat_center": [
+                1.2000011205673218,
+                8.55048942565918,
+                -0.42048972845077515
+              ],
+              "seat_footprint": [
+                1.4760204911231996,
+                0.778010334968567
+              ],
+              "declared_top": 0.4648272395133972,
+              "hip_minus_declared_top": -0.009296566247940063,
+              "foot_plane_gaps": [
+                2.9802322387695312e-08,
+                2.9802322387695312e-08
+              ]
+            }
+          ],
+          [
+            "ryan",
+            {
+              "hip_z": 0.47412458062171936,
+              "calibrated_seat_center": [
+                2.400001287460327,
+                8.567652702331543,
+                -0.43765270709991455
+              ],
+              "seat_footprint": [
+                1.5117764830589295,
+                0.7958883607387544
+              ],
+              "declared_top": 0.4648272395133972,
+              "hip_minus_declared_top": 0.009297341108322144,
+              "foot_plane_gaps": [
+                5.960464477539063e-08,
+                5.960464477539063e-08
+              ]
+            }
+          ],
+          [
+            "sam",
+            {
+              "hip_z": 0.4601788818836212,
+              "calibrated_seat_center": [
+                3.600001096725464,
+                8.554780960083008,
+                -0.4247805178165436
+              ],
+              "seat_footprint": [
+                1.4849594593048097,
+                0.7824799382686616
+              ],
+              "declared_top": 0.4648272395133972,
+              "hip_minus_declared_top": -0.004648357629776001,
+              "foot_plane_gaps": [
+                0.0,
+                0.0
+              ]
+            }
+          ]
+        ]
+      }
+    },
+    {
+      "frame": 929,
+      "shot": "sh13",
+      "actor_qc": {
+        "narrator": {
+          "bounds": [
+            0.535283625125885,
+            0.5845984220504761,
+            0.503587543964386,
+            0.536560595035553,
+            26.434738159179688
+          ],
+          "safe": true,
+          "vertical_coverage": 0.03297305107116699,
+          "face_all": {
+            "samples": 9,
+            "blocked": 1,
+            "bounds": [
+              0.5486932992935181,
+              0.5602797865867615,
+              0.5240458846092224,
+              0.531855583190918,
+              26.434738159179688
+            ],
+            "safe": true,
+            "visible_fraction": 0.8888888888888888,
+            "blockers": [
+              "narrator / head knitted beanie folded brim"
+            ]
+          },
+          "face_external": {
+            "samples": 9,
+            "blocked": 0,
+            "bounds": [
+              0.5486932992935181,
+              0.5602797865867615,
+              0.5240458846092224,
+              0.531855583190918,
+              26.434738159179688
+            ],
+            "safe": true,
+            "visible_fraction": 1.0,
+            "blockers": []
+          },
+          "own_ray_difference": 1
+        },
+        "otis": {
+          "bounds": [
+            0.5084563493728638,
+            0.5571075677871704,
+            0.5070211291313171,
+            0.5382961630821228,
+            26.739517211914062
+          ],
+          "safe": true,
+          "vertical_coverage": 0.031275033950805664,
+          "face_all": {
+            "samples": 9,
+            "blocked": 3,
+            "bounds": [
+              0.520376443862915,
+              0.5321835875511169,
+              0.5270613431930542,
+              0.5341013669967651,
+              26.975387573242188
+            ],
+            "safe": true,
+            "visible_fraction": 0.6666666666666667,
+            "blockers": [
+              "otis / body skinned",
+              "otis / garment shell / shirt and sleeves",
+              "otis / round glasses"
+            ]
+          },
+          "face_external": {
+            "samples": 9,
+            "blocked": 0,
+            "bounds": [
+              0.520376443862915,
+              0.5321835875511169,
+              0.5270613431930542,
+              0.5341013669967651,
+              26.975387573242188
+            ],
+            "safe": true,
+            "visible_fraction": 1.0,
+            "blockers": []
+          },
+          "own_ray_difference": 3
+        }
+      },
+      "geometry": {
+        "held_pose": true,
+        "static_seating": [
+          [
+            "narrator",
+            {
+              "hip_z": 0.4648272395133972,
+              "calibrated_seat_center": [
+                1.1473894119262695e-06,
+                8.55907154083252,
+                -0.42907118797302246
+              ],
+              "seat_footprint": [
+                1.4938984870910645,
+                0.7869494074583054
+              ],
+              "declared_top": 0.4648272395133972,
+              "hip_minus_declared_top": 0.0,
+              "foot_plane_gaps": [
+                0.0,
+                0.0
+              ]
+            }
+          ],
+          [
+            "otis",
+            {
+              "hip_z": 0.4648272395133972,
+              "calibrated_seat_center": [
+                -1.1999988555908203,
+                8.55907154083252,
+                -0.42907118797302246
+              ],
+              "seat_footprint": [
+                1.4938984870910645,
+                0.7869494074583054
+              ],
+              "declared_top": 0.4648272395133972,
+              "hip_minus_declared_top": 0.0,
+              "foot_plane_gaps": [
+                0.0,
+                0.0
+              ]
+            }
+          ],
+          [
+            "leo",
+            {
+              "hip_z": 0.4648272395133972,
+              "calibrated_seat_center": [
+                -3.599998712539673,
+                8.55907154083252,
+                -0.42907118797302246
+              ],
+              "seat_footprint": [
+                1.4938984870910645,
+                0.7869494074583054
+              ],
+              "declared_top": 0.4648272395133972,
+              "hip_minus_declared_top": 0.0,
+              "foot_plane_gaps": [
+                0.0,
+                0.0
+              ]
+            }
+          ],
+          [
+            "max",
+            {
+              "hip_z": 0.4694754183292389,
+              "calibrated_seat_center": [
+                -2.399998903274536,
+                8.563362121582031,
+                -0.4333620071411133
+              ],
+              "seat_footprint": [
+                1.5028374552726746,
+                0.7914187723398209
+              ],
+              "declared_top": 0.4648272395133972,
+              "hip_minus_declared_top": 0.004648178815841675,
+              "foot_plane_gaps": [
+                0.0,
+                0.0
+              ]
+            }
+          ],
+          [
+            "noah",
+            {
+              "hip_z": 0.45553067326545715,
+              "calibrated_seat_center": [
+                1.2000011205673218,
+                8.55048942565918,
+                -0.42048972845077515
+              ],
+              "seat_footprint": [
+                1.4760204911231996,
+                0.778010334968567
+              ],
+              "declared_top": 0.4648272395133972,
+              "hip_minus_declared_top": -0.009296566247940063,
+              "foot_plane_gaps": [
+                2.9802322387695312e-08,
+                2.9802322387695312e-08
+              ]
+            }
+          ],
+          [
+            "ryan",
+            {
+              "hip_z": 0.47412458062171936,
+              "calibrated_seat_center": [
+                2.400001287460327,
+                8.567652702331543,
+                -0.43765270709991455
+              ],
+              "seat_footprint": [
+                1.5117764830589295,
+                0.7958883607387544
+              ],
+              "declared_top": 0.4648272395133972,
+              "hip_minus_declared_top": 0.009297341108322144,
+              "foot_plane_gaps": [
+                5.960464477539063e-08,
+                5.960464477539063e-08
+              ]
+            }
+          ],
+          [
+            "sam",
+            {
+              "hip_z": 0.4601788818836212,
+              "calibrated_seat_center": [
+                3.600001096725464,
+                8.554780960083008,
+                -0.4247805178165436
+              ],
+              "seat_footprint": [
+                1.4849594593048097,
+                0.7824799382686616
+              ],
+              "declared_top": 0.4648272395133972,
+              "hip_minus_declared_top": -0.004648357629776001,
+              "foot_plane_gaps": [
+                0.0,
+                0.0
+              ]
+            }
+          ]
+        ]
+      }
+    },
+    {
+      "frame": 930,
+      "shot": "sh13",
+      "actor_qc": {
+        "narrator": {
+          "bounds": [
+            0.535283625125885,
+            0.5845984220504761,
+            0.503587543964386,
+            0.536560595035553,
+            26.434738159179688
+          ],
+          "safe": true,
+          "vertical_coverage": 0.03297305107116699,
+          "face_all": {
+            "samples": 9,
+            "blocked": 1,
+            "bounds": [
+              0.5486932992935181,
+              0.5602797865867615,
+              0.5240458846092224,
+              0.531855583190918,
+              26.434738159179688
+            ],
+            "safe": true,
+            "visible_fraction": 0.8888888888888888,
+            "blockers": [
+              "narrator / head knitted beanie folded brim"
+            ]
+          },
+          "face_external": {
+            "samples": 9,
+            "blocked": 0,
+            "bounds": [
+              0.5486932992935181,
+              0.5602797865867615,
+              0.5240458846092224,
+              0.531855583190918,
+              26.434738159179688
+            ],
+            "safe": true,
+            "visible_fraction": 1.0,
+            "blockers": []
+          },
+          "own_ray_difference": 1
+        },
+        "otis": {
+          "bounds": [
+            0.5084514617919922,
+            0.5571075677871704,
+            0.5070211291313171,
+            0.5382961630821228,
+            26.741653442382812
+          ],
+          "safe": true,
+          "vertical_coverage": 0.031275033950805664,
+          "face_all": {
+            "samples": 10,
+            "blocked": 3,
+            "bounds": [
+              0.5203853249549866,
+              0.5321828126907349,
+              0.5270615220069885,
+              0.5341066718101501,
+              26.975454330444336
+            ],
+            "safe": true,
+            "visible_fraction": 0.7,
+            "blockers": [
+              "otis / body skinned",
+              "otis / garment shell / shirt and sleeves",
+              "otis / round glasses"
+            ]
+          },
+          "face_external": {
+            "samples": 10,
+            "blocked": 0,
+            "bounds": [
+              0.5203853249549866,
+              0.5321828126907349,
+              0.5270615220069885,
+              0.5341066718101501,
+              26.975454330444336
+            ],
+            "safe": true,
+            "visible_fraction": 1.0,
+            "blockers": []
+          },
+          "own_ray_difference": 3
+        }
+      },
+      "geometry": {
+        "held_pose": true,
+        "static_seating": [
+          [
+            "narrator",
+            {
+              "hip_z": 0.4648272395133972,
+              "calibrated_seat_center": [
+                1.1473894119262695e-06,
+                8.55907154083252,
+                -0.42907118797302246
+              ],
+              "seat_footprint": [
+                1.4938984870910645,
+                0.7869494074583054
+              ],
+              "declared_top": 0.4648272395133972,
+              "hip_minus_declared_top": 0.0,
+              "foot_plane_gaps": [
+                0.0,
+                0.0
+              ]
+            }
+          ],
+          [
+            "otis",
+            {
+              "hip_z": 0.4648272395133972,
+              "calibrated_seat_center": [
+                -1.1999988555908203,
+                8.55907154083252,
+                -0.42907118797302246
+              ],
+              "seat_footprint": [
+                1.4938984870910645,
+                0.7869494074583054
+              ],
+              "declared_top": 0.4648272395133972,
+              "hip_minus_declared_top": 0.0,
+              "foot_plane_gaps": [
+                0.0,
+                0.0
+              ]
+            }
+          ],
+          [
+            "leo",
+            {
+              "hip_z": 0.4648272395133972,
+              "calibrated_seat_center": [
+                -3.599998712539673,
+                8.55907154083252,
+                -0.42907118797302246
+              ],
+              "seat_footprint": [
+                1.4938984870910645,
+                0.7869494074583054
+              ],
+              "declared_top": 0.4648272395133972,
+              "hip_minus_declared_top": 0.0,
+              "foot_plane_gaps": [
+                0.0,
+                0.0
+              ]
+            }
+          ],
+          [
+            "max",
+            {
+              "hip_z": 0.4694754183292389,
+              "calibrated_seat_center": [
+                -2.399998903274536,
+                8.563362121582031,
+                -0.4333620071411133
+              ],
+              "seat_footprint": [
+                1.5028374552726746,
+                0.7914187723398209
+              ],
+              "declared_top": 0.4648272395133972,
+              "hip_minus_declared_top": 0.004648178815841675,
+              "foot_plane_gaps": [
+                0.0,
+                0.0
+              ]
+            }
+          ],
+          [
+            "noah",
+            {
+              "hip_z": 0.45553067326545715,
+              "calibrated_seat_center": [
+                1.2000011205673218,
+                8.55048942565918,
+                -0.42048972845077515
+              ],
+              "seat_footprint": [
+                1.4760204911231996,
+                0.778010334968567
+              ],
+              "declared_top": 0.4648272395133972,
+              "hip_minus_declared_top": -0.009296566247940063,
+              "foot_plane_gaps": [
+                2.9802322387695312e-08,
+                2.9802322387695312e-08
+              ]
+            }
+          ],
+          [
+            "ryan",
+            {
+              "hip_z": 0.47412458062171936,
+              "calibrated_seat_center": [
+                2.400001287460327,
+                8.567652702331543,
+                -0.43765270709991455
+              ],
+              "seat_footprint": [
+                1.5117764830589295,
+                0.7958883607387544
+              ],
+              "declared_top": 0.4648272395133972,
+              "hip_minus_declared_top": 0.009297341108322144,
+              "foot_plane_gaps": [
+                5.960464477539063e-08,
+                5.960464477539063e-08
+              ]
+            }
+          ],
+          [
+            "sam",
+            {
+              "hip_z": 0.4601788818836212,
+              "calibrated_seat_center": [
+                3.600001096725464,
+                8.554780960083008,
+                -0.4247805178165436
+              ],
+              "seat_footprint": [
+                1.4849594593048097,
+                0.7824799382686616
+              ],
+              "declared_top": 0.4648272395133972,
+              "hip_minus_declared_top": -0.004648357629776001,
+              "foot_plane_gaps": [
+                0.0,
+                0.0
+              ]
+            }
+          ]
+        ]
+      }
+    },
+    {
+      "frame": 931,
+      "shot": "sh13",
+      "actor_qc": {
+        "narrator": {
+          "bounds": [
+            0.535283625125885,
+            0.5845984220504761,
+            0.503587543964386,
+            0.536560595035553,
+            26.434738159179688
+          ],
+          "safe": true,
+          "vertical_coverage": 0.03297305107116699,
+          "face_all": {
+            "samples": 9,
+            "blocked": 1,
+            "bounds": [
+              0.5486932992935181,
+              0.5602797865867615,
+              0.5240458846092224,
+              0.531855583190918,
+              26.434738159179688
+            ],
+            "safe": true,
+            "visible_fraction": 0.8888888888888888,
+            "blockers": [
+              "narrator / head knitted beanie folded brim"
+            ]
+          },
+          "face_external": {
+            "samples": 9,
+            "blocked": 0,
+            "bounds": [
+              0.5486932992935181,
+              0.5602797865867615,
+              0.5240458846092224,
+              0.531855583190918,
+              26.434738159179688
+            ],
+            "safe": true,
+            "visible_fraction": 1.0,
+            "blockers": []
+          },
+          "own_ray_difference": 1
+        },
+        "otis": {
+          "bounds": [
+            0.5084459185600281,
+            0.5571075677871704,
+            0.5070211291313171,
+            0.5382962226867676,
+            26.7441463470459
+          ],
+          "safe": true,
+          "vertical_coverage": 0.03127509355545044,
+          "face_all": {
+            "samples": 9,
+            "blocked": 3,
+            "bounds": [
+              0.5203951597213745,
+              0.5321819186210632,
+              0.5270617008209229,
+              0.5341125726699829,
+              26.975526809692383
+            ],
+            "safe": true,
+            "visible_fraction": 0.6666666666666667,
+            "blockers": [
+              "otis / body skinned",
+              "otis / garment shell / shirt and sleeves",
+              "otis / round glasses"
+            ]
+          },
+          "face_external": {
+            "samples": 9,
+            "blocked": 0,
+            "bounds": [
+              0.5203951597213745,
+              0.5321819186210632,
+              0.5270617008209229,
+              0.5341125726699829,
+              26.975526809692383
+            ],
+            "safe": true,
+            "visible_fraction": 1.0,
+            "blockers": []
+          },
+          "own_ray_difference": 3
+        }
+      },
+      "geometry": {
+        "held_pose": true,
+        "static_seating": [
+          [
+            "narrator",
+            {
+              "hip_z": 0.4648272395133972,
+              "calibrated_seat_center": [
+                1.1473894119262695e-06,
+                8.55907154083252,
+                -0.42907118797302246
+              ],
+              "seat_footprint": [
+                1.4938984870910645,
+                0.7869494074583054
+              ],
+              "declared_top": 0.4648272395133972,
+              "hip_minus_declared_top": 0.0,
+              "foot_plane_gaps": [
+                0.0,
+                0.0
+              ]
+            }
+          ],
+          [
+            "otis",
+            {
+              "hip_z": 0.4648272395133972,
+              "calibrated_seat_center": [
+                -1.1999988555908203,
+                8.55907154083252,
+                -0.42907118797302246
+              ],
+              "seat_footprint": [
+                1.4938984870910645,
+                0.7869494074583054
+              ],
+              "declared_top": 0.4648272395133972,
+              "hip_minus_declared_top": 0.0,
+              "foot_plane_gaps": [
+                0.0,
+                0.0
+              ]
+            }
+          ],
+          [
+            "leo",
+            {
+              "hip_z": 0.4648272395133972,
+              "calibrated_seat_center": [
+                -3.599998712539673,
+                8.55907154083252,
+                -0.42907118797302246
+              ],
+              "seat_footprint": [
+                1.4938984870910645,
+                0.7869494074583054
+              ],
+              "declared_top": 0.4648272395133972,
+              "hip_minus_declared_top": 0.0,
+              "foot_plane_gaps": [
+                0.0,
+                0.0
+              ]
+            }
+          ],
+          [
+            "max",
+            {
+              "hip_z": 0.4694754183292389,
+              "calibrated_seat_center": [
+                -2.399998903274536,
+                8.563362121582031,
+                -0.4333620071411133
+              ],
+              "seat_footprint": [
+                1.5028374552726746,
+                0.7914187723398209
+              ],
+              "declared_top": 0.4648272395133972,
+              "hip_minus_declared_top": 0.004648178815841675,
+              "foot_plane_gaps": [
+                0.0,
+                0.0
+              ]
+            }
+          ],
+          [
+            "noah",
+            {
+              "hip_z": 0.45553067326545715,
+              "calibrated_seat_center": [
+                1.2000011205673218,
+                8.55048942565918,
+                -0.42048972845077515
+              ],
+              "seat_footprint": [
+                1.4760204911231996,
+                0.778010334968567
+              ],
+              "declared_top": 0.4648272395133972,
+              "hip_minus_declared_top": -0.009296566247940063,
+              "foot_plane_gaps": [
+                2.9802322387695312e-08,
+                2.9802322387695312e-08
+              ]
+            }
+          ],
+          [
+            "ryan",
+            {
+              "hip_z": 0.47412458062171936,
+              "calibrated_seat_center": [
+                2.400001287460327,
+                8.567652702331543,
+                -0.43765270709991455
+              ],
+              "seat_footprint": [
+                1.5117764830589295,
+                0.7958883607387544
+              ],
+              "declared_top": 0.4648272395133972,
+              "hip_minus_declared_top": 0.009297341108322144,
+              "foot_plane_gaps": [
+                5.960464477539063e-08,
+                5.960464477539063e-08
+              ]
+            }
+          ],
+          [
+            "sam",
+            {
+              "hip_z": 0.4601788818836212,
+              "calibrated_seat_center": [
+                3.600001096725464,
+                8.554780960083008,
+                -0.4247805178165436
+              ],
+              "seat_footprint": [
+                1.4849594593048097,
+                0.7824799382686616
+              ],
+              "declared_top": 0.4648272395133972,
+              "hip_minus_declared_top": -0.004648357629776001,
+              "foot_plane_gaps": [
+                0.0,
+                0.0
+              ]
+            }
+          ]
+        ]
+      }
+    },
+    {
+      "frame": 932,
+      "shot": "sh13",
+      "actor_qc": {
+        "narrator": {
+          "bounds": [
+            0.535283625125885,
+            0.5845984220504761,
+            0.503587543964386,
+            0.536560595035553,
+            26.434738159179688
+          ],
+          "safe": true,
+          "vertical_coverage": 0.03297305107116699,
+          "face_all": {
+            "samples": 9,
+            "blocked": 1,
+            "bounds": [
+              0.5486932992935181,
+              0.5602797865867615,
+              0.5240458846092224,
+              0.531855583190918,
+              26.434738159179688
+            ],
+            "safe": true,
+            "visible_fraction": 0.8888888888888888,
+            "blockers": [
+              "narrator / head knitted beanie folded brim"
+            ]
+          },
+          "face_external": {
+            "samples": 9,
+            "blocked": 0,
+            "bounds": [
+              0.5486932992935181,
+              0.5602797865867615,
+              0.5240458846092224,
+              0.531855583190918,
+              26.434738159179688
+            ],
+            "safe": true,
+            "visible_fraction": 1.0,
+            "blockers": []
+          },
+          "own_ray_difference": 1
+        },
+        "otis": {
+          "bounds": [
+            0.508439838886261,
+            0.5571075677871704,
+            0.5070211291313171,
+            0.5382962822914124,
+            26.747039794921875
+          ],
+          "safe": true,
+          "vertical_coverage": 0.031275153160095215,
+          "face_all": {
+            "samples": 9,
+            "blocked": 3,
+            "bounds": [
+              0.5204059481620789,
+              0.5321809649467468,
+              0.527061939239502,
+              0.5341190695762634,
+              26.975608825683594
+            ],
+            "safe": true,
+            "visible_fraction": 0.6666666666666667,
+            "blockers": [
+              "otis / body skinned",
+              "otis / right_arm fabric cuff",
+              "otis / round glasses"
+            ]
+          },
+          "face_external": {
+            "samples": 9,
+            "blocked": 0,
+            "bounds": [
+              0.5204059481620789,
+              0.5321809649467468,
+              0.527061939239502,
+              0.5341190695762634,
+              26.975608825683594
+            ],
+            "safe": true,
+            "visible_fraction": 1.0,
+            "blockers": []
+          },
+          "own_ray_difference": 3
+        }
+      },
+      "geometry": {
+        "held_pose": true,
+        "static_seating": [
+          [
+            "narrator",
+            {
+              "hip_z": 0.4648272395133972,
+              "calibrated_seat_center": [
+                1.1473894119262695e-06,
+                8.55907154083252,
+                -0.42907118797302246
+              ],
+              "seat_footprint": [
+                1.4938984870910645,
+                0.7869494074583054
+              ],
+              "declared_top": 0.4648272395133972,
+              "hip_minus_declared_top": 0.0,
+              "foot_plane_gaps": [
+                0.0,
+                0.0
+              ]
+            }
+          ],
+          [
+            "otis",
+            {
+              "hip_z": 0.4648272395133972,
+              "calibrated_seat_center": [
+                -1.1999988555908203,
+                8.55907154083252,
+                -0.42907118797302246
+              ],
+              "seat_footprint": [
+                1.4938984870910645,
+                0.7869494074583054
+              ],
+              "declared_top": 0.4648272395133972,
+              "hip_minus_declared_top": 0.0,
+              "foot_plane_gaps": [
+                0.0,
+                0.0
+              ]
+            }
+          ],
+          [
+            "leo",
+            {
+              "hip_z": 0.4648272395133972,
+              "calibrated_seat_center": [
+                -3.599998712539673,
+                8.55907154083252,
+                -0.42907118797302246
+              ],
+              "seat_footprint": [
+                1.4938984870910645,
+                0.7869494074583054
+              ],
+              "declared_top": 0.4648272395133972,
+              "hip_minus_declared_top": 0.0,
+              "foot_plane_gaps": [
+                0.0,
+                0.0
+              ]
+            }
+          ],
+          [
+            "max",
+            {
+              "hip_z": 0.4694754183292389,
+              "calibrated_seat_center": [
+                -2.399998903274536,
+                8.563362121582031,
+                -0.4333620071411133
+              ],
+              "seat_footprint": [
+                1.5028374552726746,
+                0.7914187723398209
+              ],
+              "declared_top": 0.4648272395133972,
+              "hip_minus_declared_top": 0.004648178815841675,
+              "foot_plane_gaps": [
+                0.0,
+                0.0
+              ]
+            }
+          ],
+          [
+            "noah",
+            {
+              "hip_z": 0.45553067326545715,
+              "calibrated_seat_center": [
+                1.2000011205673218,
+                8.55048942565918,
+                -0.42048972845077515
+              ],
+              "seat_footprint": [
+                1.4760204911231996,
+                0.778010334968567
+              ],
+              "declared_top": 0.4648272395133972,
+              "hip_minus_declared_top": -0.009296566247940063,
+              "foot_plane_gaps": [
+                2.9802322387695312e-08,
+                2.9802322387695312e-08
+              ]
+            }
+          ],
+          [
+            "ryan",
+            {
+              "hip_z": 0.47412458062171936,
+              "calibrated_seat_center": [
+                2.400001287460327,
+                8.567652702331543,
+                -0.43765270709991455
+              ],
+              "seat_footprint": [
+                1.5117764830589295,
+                0.7958883607387544
+              ],
+              "declared_top": 0.4648272395133972,
+              "hip_minus_declared_top": 0.009297341108322144,
+              "foot_plane_gaps": [
+                5.960464477539063e-08,
+                5.960464477539063e-08
+              ]
+            }
+          ],
+          [
+            "sam",
+            {
+              "hip_z": 0.4601788818836212,
+              "calibrated_seat_center": [
+                3.600001096725464,
+                8.554780960083008,
+                -0.4247805178165436
+              ],
+              "seat_footprint": [
+                1.4849594593048097,
+                0.7824799382686616
+              ],
+              "declared_top": 0.4648272395133972,
+              "hip_minus_declared_top": -0.004648357629776001,
+              "foot_plane_gaps": [
+                0.0,
+                0.0
+              ]
+            }
+          ]
+        ]
+      }
+    },
+    {
+      "frame": 933,
+      "shot": "sh13",
+      "actor_qc": {
+        "narrator": {
+          "bounds": [
+            0.535283625125885,
+            0.5845984220504761,
+            0.503587543964386,
+            0.536560595035553,
+            26.434738159179688
+          ],
+          "safe": true,
+          "vertical_coverage": 0.03297305107116699,
+          "face_all": {
+            "samples": 9,
+            "blocked": 1,
+            "bounds": [
+              0.5486932992935181,
+              0.5602797865867615,
+              0.5240458846092224,
+              0.531855583190918,
+              26.434738159179688
+            ],
+            "safe": true,
+            "visible_fraction": 0.8888888888888888,
+            "blockers": [
+              "narrator / head knitted beanie folded brim"
+            ]
+          },
+          "face_external": {
+            "samples": 9,
+            "blocked": 0,
+            "bounds": [
+              0.5486932992935181,
+              0.5602797865867615,
+              0.5240458846092224,
+              0.531855583190918,
+              26.434738159179688
+            ],
+            "safe": true,
+            "visible_fraction": 1.0,
+            "blockers": []
+          },
+          "own_ray_difference": 1
+        },
+        "otis": {
+          "bounds": [
+            0.5084331035614014,
+            0.5571075677871704,
+            0.5070211291313171,
+            0.5382963418960571,
+            26.750381469726562
+          ],
+          "safe": true,
+          "vertical_coverage": 0.03127521276473999,
+          "face_all": {
+            "samples": 9,
+            "blocked": 3,
+            "bounds": [
+              0.5204177498817444,
+              0.5321799516677856,
+              0.5270622372627258,
+              0.5341261029243469,
+              26.975696563720703
+            ],
+            "safe": true,
+            "visible_fraction": 0.6666666666666667,
+            "blockers": [
+              "otis / body skinned",
+              "otis / right_arm fabric cuff",
+              "otis / round glasses"
+            ]
+          },
+          "face_external": {
+            "samples": 9,
+            "blocked": 0,
+            "bounds": [
+              0.5204177498817444,
+              0.5321799516677856,
+              0.5270622372627258,
+              0.5341261029243469,
+              26.975696563720703
+            ],
+            "safe": true,
+            "visible_fraction": 1.0,
+            "blockers": []
+          },
+          "own_ray_difference": 3
+        }
+      },
+      "geometry": {
+        "held_pose": true,
+        "static_seating": [
+          [
+            "narrator",
+            {
+              "hip_z": 0.4648272395133972,
+              "calibrated_seat_center": [
+                1.1473894119262695e-06,
+                8.55907154083252,
+                -0.42907118797302246
+              ],
+              "seat_footprint": [
+                1.4938984870910645,
+                0.7869494074583054
+              ],
+              "declared_top": 0.4648272395133972,
+              "hip_minus_declared_top": 0.0,
+              "foot_plane_gaps": [
+                0.0,
+                0.0
+              ]
+            }
+          ],
+          [
+            "otis",
+            {
+              "hip_z": 0.4648272395133972,
+              "calibrated_seat_center": [
+                -1.1999988555908203,
+                8.55907154083252,
+                -0.42907118797302246
+              ],
+              "seat_footprint": [
+                1.4938984870910645,
+                0.7869494074583054
+              ],
+              "declared_top": 0.4648272395133972,
+              "hip_minus_declared_top": 0.0,
+              "foot_plane_gaps": [
+                0.0,
+                0.0
+              ]
+            }
+          ],
+          [
+            "leo",
+            {
+              "hip_z": 0.4648272395133972,
+              "calibrated_seat_center": [
+                -3.599998712539673,
+                8.55907154083252,
+                -0.42907118797302246
+              ],
+              "seat_footprint": [
+                1.4938984870910645,
+                0.7869494074583054
+              ],
+              "declared_top": 0.4648272395133972,
+              "hip_minus_declared_top": 0.0,
+              "foot_plane_gaps": [
+                0.0,
+                0.0
+              ]
+            }
+          ],
+          [
+            "max",
+            {
+              "hip_z": 0.4694754183292389,
+              "calibrated_seat_center": [
+                -2.399998903274536,
+                8.563362121582031,
+                -0.4333620071411133
+              ],
+              "seat_footprint": [
+                1.5028374552726746,
+                0.7914187723398209
+              ],
+              "declared_top": 0.4648272395133972,
+              "hip_minus_declared_top": 0.004648178815841675,
+              "foot_plane_gaps": [
+                0.0,
+                0.0
+              ]
+            }
+          ],
+          [
+            "noah",
+            {
+              "hip_z": 0.45553067326545715,
+              "calibrated_seat_center": [
+                1.2000011205673218,
+                8.55048942565918,
+                -0.42048972845077515
+              ],
+              "seat_footprint": [
+                1.4760204911231996,
+                0.778010334968567
+              ],
+              "declared_top": 0.4648272395133972,
+              "hip_minus_declared_top": -0.009296566247940063,
+              "foot_plane_gaps": [
+                2.9802322387695312e-08,
+                2.9802322387695312e-08
+              ]
+            }
+          ],
+          [
+            "ryan",
+            {
+              "hip_z": 0.47412458062171936,
+              "calibrated_seat_center": [
+                2.400001287460327,
+                8.567652702331543,
+                -0.43765270709991455
+              ],
+              "seat_footprint": [
+                1.5117764830589295,
+                0.7958883607387544
+              ],
+              "declared_top": 0.4648272395133972,
+              "hip_minus_declared_top": 0.009297341108322144,
+              "foot_plane_gaps": [
+                5.960464477539063e-08,
+                5.960464477539063e-08
+              ]
+            }
+          ],
+          [
+            "sam",
+            {
+              "hip_z": 0.4601788818836212,
+              "calibrated_seat_center": [
+                3.600001096725464,
+                8.554780960083008,
+                -0.4247805178165436
+              ],
+              "seat_footprint": [
+                1.4849594593048097,
+                0.7824799382686616
+              ],
+              "declared_top": 0.4648272395133972,
+              "hip_minus_declared_top": -0.004648357629776001,
+              "foot_plane_gaps": [
+                0.0,
+                0.0
+              ]
+            }
+          ]
+        ]
+      }
+    },
+    {
+      "frame": 934,
+      "shot": "sh13",
+      "actor_qc": {
+        "narrator": {
+          "bounds": [
+            0.535283625125885,
+            0.5845984220504761,
+            0.503587543964386,
+            0.536560595035553,
+            26.434738159179688
+          ],
+          "safe": true,
+          "vertical_coverage": 0.03297305107116699,
+          "face_all": {
+            "samples": 9,
+            "blocked": 1,
+            "bounds": [
+              0.5486932992935181,
+              0.5602797865867615,
+              0.5240458846092224,
+              0.531855583190918,
+              26.434738159179688
+            ],
+            "safe": true,
+            "visible_fraction": 0.8888888888888888,
+            "blockers": [
+              "narrator / head knitted beanie folded brim"
+            ]
+          },
+          "face_external": {
+            "samples": 9,
+            "blocked": 0,
+            "bounds": [
+              0.5486932992935181,
+              0.5602797865867615,
+              0.5240458846092224,
+              0.531855583190918,
+              26.434738159179688
+            ],
+            "safe": true,
+            "visible_fraction": 1.0,
+            "blockers": []
+          },
+          "own_ray_difference": 1
+        },
+        "otis": {
+          "bounds": [
+            0.5084256529808044,
+            0.5571075677871704,
+            0.5070211291313171,
+            0.5382963418960571,
+            26.754226684570312
+          ],
+          "safe": true,
+          "vertical_coverage": 0.03127521276473999,
+          "face_all": {
+            "samples": 9,
+            "blocked": 2,
+            "bounds": [
+              0.5204304456710815,
+              0.5321788191795349,
+              0.5270624756813049,
+              0.5341336131095886,
+              26.975791931152344
+            ],
+            "safe": true,
+            "visible_fraction": 0.7777777777777778,
+            "blockers": [
+              "otis / body skinned",
+              "otis / round glasses"
+            ]
+          },
+          "face_external": {
+            "samples": 9,
+            "blocked": 0,
+            "bounds": [
+              0.5204304456710815,
+              0.5321788191795349,
+              0.5270624756813049,
+              0.5341336131095886,
+              26.975791931152344
+            ],
+            "safe": true,
+            "visible_fraction": 1.0,
+            "blockers": []
+          },
+          "own_ray_difference": 2
+        }
+      },
+      "geometry": {
+        "held_pose": true,
+        "static_seating": [
+          [
+            "narrator",
+            {
+              "hip_z": 0.4648272395133972,
+              "calibrated_seat_center": [
+                1.1473894119262695e-06,
+                8.55907154083252,
+                -0.42907118797302246
+              ],
+              "seat_footprint": [
+                1.4938984870910645,
+                0.7869494074583054
+              ],
+              "declared_top": 0.4648272395133972,
+              "hip_minus_declared_top": 0.0,
+              "foot_plane_gaps": [
+                0.0,
+                0.0
+              ]
+            }
+          ],
+          [
+            "otis",
+            {
+              "hip_z": 0.4648272395133972,
+              "calibrated_seat_center": [
+                -1.1999988555908203,
+                8.55907154083252,
+                -0.42907118797302246
+              ],
+              "seat_footprint": [
+                1.4938984870910645,
+                0.7869494074583054
+              ],
+              "declared_top": 0.4648272395133972,
+              "hip_minus_declared_top": 0.0,
+              "foot_plane_gaps": [
+                0.0,
+                0.0
+              ]
+            }
+          ],
+          [
+            "leo",
+            {
+              "hip_z": 0.4648272395133972,
+              "calibrated_seat_center": [
+                -3.599998712539673,
+                8.55907154083252,
+                -0.42907118797302246
+              ],
+              "seat_footprint": [
+                1.4938984870910645,
+                0.7869494074583054
+              ],
+              "declared_top": 0.4648272395133972,
+              "hip_minus_declared_top": 0.0,
+              "foot_plane_gaps": [
+                0.0,
+                0.0
+              ]
+            }
+          ],
+          [
+            "max",
+            {
+              "hip_z": 0.4694754183292389,
+              "calibrated_seat_center": [
+                -2.399998903274536,
+                8.563362121582031,
+                -0.4333620071411133
+              ],
+              "seat_footprint": [
+                1.5028374552726746,
+                0.7914187723398209
+              ],
+              "declared_top": 0.4648272395133972,
+              "hip_minus_declared_top": 0.004648178815841675,
+              "foot_plane_gaps": [
+                0.0,
+                0.0
+              ]
+            }
+          ],
+          [
+            "noah",
+            {
+              "hip_z": 0.45553067326545715,
+              "calibrated_seat_center": [
+                1.2000011205673218,
+                8.55048942565918,
+                -0.42048972845077515
+              ],
+              "seat_footprint": [
+                1.4760204911231996,
+                0.778010334968567
+              ],
+              "declared_top": 0.4648272395133972,
+              "hip_minus_declared_top": -0.009296566247940063,
+              "foot_plane_gaps": [
+                2.9802322387695312e-08,
+                2.9802322387695312e-08
+              ]
+            }
+          ],
+          [
+            "ryan",
+            {
+              "hip_z": 0.47412458062171936,
+              "calibrated_seat_center": [
+                2.400001287460327,
+                8.567652702331543,
+                -0.43765270709991455
+              ],
+              "seat_footprint": [
+                1.5117764830589295,
+                0.7958883607387544
+              ],
+              "declared_top": 0.4648272395133972,
+              "hip_minus_declared_top": 0.009297341108322144,
+              "foot_plane_gaps": [
+                5.960464477539063e-08,
+                5.960464477539063e-08
+              ]
+            }
+          ],
+          [
+            "sam",
+            {
+              "hip_z": 0.4601788818836212,
+              "calibrated_seat_center": [
+                3.600001096725464,
+                8.554780960083008,
+                -0.4247805178165436
+              ],
+              "seat_footprint": [
+                1.4849594593048097,
+                0.7824799382686616
+              ],
+              "declared_top": 0.4648272395133972,
+              "hip_minus_declared_top": -0.004648357629776001,
+              "foot_plane_gaps": [
+                0.0,
+                0.0
+              ]
+            }
+          ]
+        ]
+      }
+    },
+    {
+      "frame": 935,
+      "shot": "sh13",
+      "actor_qc": {
+        "narrator": {
+          "bounds": [
+            0.535283625125885,
+            0.5845984220504761,
+            0.503587543964386,
+            0.536560595035553,
+            26.434738159179688
+          ],
+          "safe": true,
+          "vertical_coverage": 0.03297305107116699,
+          "face_all": {
+            "samples": 9,
+            "blocked": 1,
+            "bounds": [
+              0.5486932992935181,
+              0.5602797865867615,
+              0.5240458846092224,
+              0.531855583190918,
+              26.434738159179688
+            ],
+            "safe": true,
+            "visible_fraction": 0.8888888888888888,
+            "blockers": [
+              "narrator / head knitted beanie folded brim"
+            ]
+          },
+          "face_external": {
+            "samples": 9,
+            "blocked": 0,
+            "bounds": [
+              0.5486932992935181,
+              0.5602797865867615,
+              0.5240458846092224,
+              0.531855583190918,
+              26.434738159179688
+            ],
+            "safe": true,
+            "visible_fraction": 1.0,
+            "blockers": []
+          },
+          "own_ray_difference": 1
+        },
+        "otis": {
+          "bounds": [
+            0.5084176063537598,
+            0.5571075677871704,
+            0.5070211291313171,
+            0.5382963418960571,
+            26.758636474609375
+          ],
+          "safe": true,
+          "vertical_coverage": 0.03127521276473999,
+          "face_all": {
+            "samples": 9,
+            "blocked": 2,
+            "bounds": [
+              0.5204440951347351,
+              0.5321776270866394,
+              0.5270627737045288,
+              0.5341417789459229,
+              26.975894927978516
+            ],
+            "safe": true,
+            "visible_fraction": 0.7777777777777778,
+            "blockers": [
+              "otis / body skinned",
+              "otis / round glasses"
+            ]
+          },
+          "face_external": {
+            "samples": 9,
+            "blocked": 0,
+            "bounds": [
+              0.5204440951347351,
+              0.5321776270866394,
+              0.5270627737045288,
+              0.5341417789459229,
+              26.975894927978516
+            ],
+            "safe": true,
+            "visible_fraction": 1.0,
+            "blockers": []
+          },
+          "own_ray_difference": 2
+        }
+      },
+      "geometry": {
+        "held_pose": true,
+        "static_seating": [
+          [
+            "narrator",
+            {
+              "hip_z": 0.4648272395133972,
+              "calibrated_seat_center": [
+                1.1473894119262695e-06,
+                8.55907154083252,
+                -0.42907118797302246
+              ],
+              "seat_footprint": [
+                1.4938984870910645,
+                0.7869494074583054
+              ],
+              "declared_top": 0.4648272395133972,
+              "hip_minus_declared_top": 0.0,
+              "foot_plane_gaps": [
+                0.0,
+                0.0
+              ]
+            }
+          ],
+          [
+            "otis",
+            {
+              "hip_z": 0.4648272395133972,
+              "calibrated_seat_center": [
+                -1.1999988555908203,
+                8.55907154083252,
+                -0.42907118797302246
+              ],
+              "seat_footprint": [
+                1.4938984870910645,
+                0.7869494074583054
+              ],
+              "declared_top": 0.4648272395133972,
+              "hip_minus_declared_top": 0.0,
+              "foot_plane_gaps": [
+                0.0,
+                0.0
+              ]
+            }
+          ],
+          [
+            "leo",
+            {
+              "hip_z": 0.4648272395133972,
+              "calibrated_seat_center": [
+                -3.599998712539673,
+                8.55907154083252,
+                -0.42907118797302246
+              ],
+              "seat_footprint": [
+                1.4938984870910645,
+                0.7869494074583054
+              ],
+              "declared_top": 0.4648272395133972,
+              "hip_minus_declared_top": 0.0,
+              "foot_plane_gaps": [
+                0.0,
+                0.0
+              ]
+            }
+          ],
+          [
+            "max",
+            {
+              "hip_z": 0.4694754183292389,
+              "calibrated_seat_center": [
+                -2.399998903274536,
+                8.563362121582031,
+                -0.4333620071411133
+              ],
+              "seat_footprint": [
+                1.5028374552726746,
+                0.7914187723398209
+              ],
+              "declared_top": 0.4648272395133972,
+              "hip_minus_declared_top": 0.004648178815841675,
+              "foot_plane_gaps": [
+                0.0,
+                0.0
+              ]
+            }
+          ],
+          [
+            "noah",
+            {
+              "hip_z": 0.45553067326545715,
+              "calibrated_seat_center": [
+                1.2000011205673218,
+                8.55048942565918,
+                -0.42048972845077515
+              ],
+              "seat_footprint": [
+                1.4760204911231996,
+                0.778010334968567
+              ],
+              "declared_top": 0.4648272395133972,
+              "hip_minus_declared_top": -0.009296566247940063,
+              "foot_plane_gaps": [
+                2.9802322387695312e-08,
+                2.9802322387695312e-08
+              ]
+            }
+          ],
+          [
+            "ryan",
+            {
+              "hip_z": 0.47412458062171936,
+              "calibrated_seat_center": [
+                2.400001287460327,
+                8.567652702331543,
+                -0.43765270709991455
+              ],
+              "seat_footprint": [
+                1.5117764830589295,
+                0.7958883607387544
+              ],
+              "declared_top": 0.4648272395133972,
+              "hip_minus_declared_top": 0.009297341108322144,
+              "foot_plane_gaps": [
+                5.960464477539063e-08,
+                5.960464477539063e-08
+              ]
+            }
+          ],
+          [
+            "sam",
+            {
+              "hip_z": 0.4601788818836212,
+              "calibrated_seat_center": [
+                3.600001096725464,
+                8.554780960083008,
+                -0.4247805178165436
+              ],
+              "seat_footprint": [
+                1.4849594593048097,
+                0.7824799382686616
+              ],
+              "declared_top": 0.4648272395133972,
+              "hip_minus_declared_top": -0.004648357629776001,
+              "foot_plane_gaps": [
+                0.0,
+                0.0
+              ]
+            }
+          ]
+        ]
+      }
+    },
+    {
+      "frame": 936,
+      "shot": "sh13",
+      "actor_qc": {
+        "narrator": {
+          "bounds": [
+            0.535283625125885,
+            0.5845984220504761,
+            0.503587543964386,
+            0.536560595035553,
+            26.434738159179688
+          ],
+          "safe": true,
+          "vertical_coverage": 0.03297305107116699,
+          "face_all": {
+            "samples": 9,
+            "blocked": 1,
+            "bounds": [
+              0.5486932992935181,
+              0.5602797865867615,
+              0.5240458846092224,
+              0.531855583190918,
+              26.434738159179688
+            ],
+            "safe": true,
+            "visible_fraction": 0.8888888888888888,
+            "blockers": [
+              "narrator / head knitted beanie folded brim"
+            ]
+          },
+          "face_external": {
+            "samples": 9,
+            "blocked": 0,
+            "bounds": [
+              0.5486932992935181,
+              0.5602797865867615,
+              0.5240458846092224,
+              0.531855583190918,
+              26.434738159179688
+            ],
+            "safe": true,
+            "visible_fraction": 1.0,
+            "blockers": []
+          },
+          "own_ray_difference": 1
+        },
+        "otis": {
+          "bounds": [
+            0.5084089040756226,
+            0.5571075677871704,
+            0.5070211291313171,
+            0.5382963418960571,
+            26.763681411743164
+          ],
+          "safe": true,
+          "vertical_coverage": 0.03127521276473999,
+          "face_all": {
+            "samples": 9,
+            "blocked": 2,
+            "bounds": [
+              0.5204586982727051,
+              0.5321764349937439,
+              0.5270630717277527,
+              0.5341504216194153,
+              26.97600555419922
+            ],
+            "safe": true,
+            "visible_fraction": 0.7777777777777778,
+            "blockers": [
+              "otis / body skinned",
+              "otis / round glasses"
+            ]
+          },
+          "face_external": {
+            "samples": 9,
+            "blocked": 0,
+            "bounds": [
+              0.5204586982727051,
+              0.5321764349937439,
+              0.5270630717277527,
+              0.5341504216194153,
+              26.97600555419922
+            ],
+            "safe": true,
+            "visible_fraction": 1.0,
+            "blockers": []
+          },
+          "own_ray_difference": 2
+        }
+      },
+      "geometry": {
+        "held_pose": true,
+        "static_seating": [
+          [
+            "narrator",
+            {
+              "hip_z": 0.4648272395133972,
+              "calibrated_seat_center": [
+                1.1473894119262695e-06,
+                8.55907154083252,
+                -0.42907118797302246
+              ],
+              "seat_footprint": [
+                1.4938984870910645,
+                0.7869494074583054
+              ],
+              "declared_top": 0.4648272395133972,
+              "hip_minus_declared_top": 0.0,
+              "foot_plane_gaps": [
+                0.0,
+                0.0
+              ]
+            }
+          ],
+          [
+            "otis",
+            {
+              "hip_z": 0.4648272395133972,
+              "calibrated_seat_center": [
+                -1.1999988555908203,
+                8.55907154083252,
+                -0.42907118797302246
+              ],
+              "seat_footprint": [
+                1.4938984870910645,
+                0.7869494074583054
+              ],
+              "declared_top": 0.4648272395133972,
+              "hip_minus_declared_top": 0.0,
+              "foot_plane_gaps": [
+                0.0,
+                0.0
+              ]
+            }
+          ],
+          [
+            "leo",
+            {
+              "hip_z": 0.4648272395133972,
+              "calibrated_seat_center": [
+                -3.599998712539673,
+                8.55907154083252,
+                -0.42907118797302246
+              ],
+              "seat_footprint": [
+                1.4938984870910645,
+                0.7869494074583054
+              ],
+              "declared_top": 0.4648272395133972,
+              "hip_minus_declared_top": 0.0,
+              "foot_plane_gaps": [
+                0.0,
+                0.0
+              ]
+            }
+          ],
+          [
+            "max",
+            {
+              "hip_z": 0.4694754183292389,
+              "calibrated_seat_center": [
+                -2.399998903274536,
+                8.563362121582031,
+                -0.4333620071411133
+              ],
+              "seat_footprint": [
+                1.5028374552726746,
+                0.7914187723398209
+              ],
+              "declared_top": 0.4648272395133972,
+              "hip_minus_declared_top": 0.004648178815841675,
+              "foot_plane_gaps": [
+                0.0,
+                0.0
+              ]
+            }
+          ],
+          [
+            "noah",
+            {
+              "hip_z": 0.45553067326545715,
+              "calibrated_seat_center": [
+                1.2000011205673218,
+                8.55048942565918,
+                -0.42048972845077515
+              ],
+              "seat_footprint": [
+                1.4760204911231996,
+                0.778010334968567
+              ],
+              "declared_top": 0.4648272395133972,
+              "hip_minus_declared_top": -0.009296566247940063,
+              "foot_plane_gaps": [
+                2.9802322387695312e-08,
+                2.9802322387695312e-08
+              ]
+            }
+          ],
+          [
+            "ryan",
+            {
+              "hip_z": 0.47412458062171936,
+              "calibrated_seat_center": [
+                2.400001287460327,
+                8.567652702331543,
+                -0.43765270709991455
+              ],
+              "seat_footprint": [
+                1.5117764830589295,
+                0.7958883607387544
+              ],
+              "declared_top": 0.4648272395133972,
+              "hip_minus_declared_top": 0.009297341108322144,
+              "foot_plane_gaps": [
+                5.960464477539063e-08,
+                5.960464477539063e-08
+              ]
+            }
+          ],
+          [
+            "sam",
+            {
+              "hip_z": 0.4601788818836212,
+              "calibrated_seat_center": [
+                3.600001096725464,
+                8.554780960083008,
+                -0.4247805178165436
+              ],
+              "seat_footprint": [
+                1.4849594593048097,
+                0.7824799382686616
+              ],
+              "declared_top": 0.4648272395133972,
+              "hip_minus_declared_top": -0.004648357629776001,
+              "foot_plane_gaps": [
+                0.0,
+                0.0
+              ]
+            }
+          ]
+        ]
+      }
+    },
+    {
+      "frame": 937,
+      "shot": "sh13",
+      "actor_qc": {
+        "narrator": {
+          "bounds": [
+            0.535283625125885,
+            0.5845984220504761,
+            0.503587543964386,
+            0.536560595035553,
+            26.434738159179688
+          ],
+          "safe": true,
+          "vertical_coverage": 0.03297305107116699,
+          "face_all": {
+            "samples": 9,
+            "blocked": 1,
+            "bounds": [
+              0.5486932992935181,
+              0.5602797865867615,
+              0.5240458846092224,
+              0.531855583190918,
+              26.434738159179688
+            ],
+            "safe": true,
+            "visible_fraction": 0.8888888888888888,
+            "blockers": [
+              "narrator / head knitted beanie folded brim"
+            ]
+          },
+          "face_external": {
+            "samples": 9,
+            "blocked": 0,
+            "bounds": [
+              0.5486932992935181,
+              0.5602797865867615,
+              0.5240458846092224,
+              0.531855583190918,
+              26.434738159179688
+            ],
+            "safe": true,
+            "visible_fraction": 1.0,
+            "blockers": []
+          },
+          "own_ray_difference": 1
+        },
+        "otis": {
+          "bounds": [
+            0.5083994269371033,
+            0.5571075677871704,
+            0.5070211291313171,
+            0.5382963418960571,
+            26.769439697265625
+          ],
+          "safe": true,
+          "vertical_coverage": 0.03127521276473999,
+          "face_all": {
+            "samples": 10,
+            "blocked": 2,
+            "bounds": [
+              0.5204742550849915,
+              0.5321750640869141,
+              0.5270633697509766,
+              0.5341595411300659,
+              26.97612190246582
+            ],
+            "safe": true,
+            "visible_fraction": 0.8,
+            "blockers": [
+              "otis / body skinned",
+              "otis / round glasses"
+            ]
+          },
+          "face_external": {
+            "samples": 10,
+            "blocked": 0,
+            "bounds": [
+              0.5204742550849915,
+              0.5321750640869141,
+              0.5270633697509766,
+              0.5341595411300659,
+              26.97612190246582
+            ],
+            "safe": true,
+            "visible_fraction": 1.0,
+            "blockers": []
+          },
+          "own_ray_difference": 2
+        }
+      },
+      "geometry": {
+        "held_pose": true,
+        "static_seating": [
+          [
+            "narrator",
+            {
+              "hip_z": 0.4648272395133972,
+              "calibrated_seat_center": [
+                1.1473894119262695e-06,
+                8.55907154083252,
+                -0.42907118797302246
+              ],
+              "seat_footprint": [
+                1.4938984870910645,
+                0.7869494074583054
+              ],
+              "declared_top": 0.4648272395133972,
+              "hip_minus_declared_top": 0.0,
+              "foot_plane_gaps": [
+                0.0,
+                0.0
+              ]
+            }
+          ],
+          [
+            "otis",
+            {
+              "hip_z": 0.4648272395133972,
+              "calibrated_seat_center": [
+                -1.1999988555908203,
+                8.55907154083252,
+                -0.42907118797302246
+              ],
+              "seat_footprint": [
+                1.4938984870910645,
+                0.7869494074583054
+              ],
+              "declared_top": 0.4648272395133972,
+              "hip_minus_declared_top": 0.0,
+              "foot_plane_gaps": [
+                0.0,
+                0.0
+              ]
+            }
+          ],
+          [
+            "leo",
+            {
+              "hip_z": 0.4648272395133972,
+              "calibrated_seat_center": [
+                -3.599998712539673,
+                8.55907154083252,
+                -0.42907118797302246
+              ],
+              "seat_footprint": [
+                1.4938984870910645,
+                0.7869494074583054
+              ],
+              "declared_top": 0.4648272395133972,
+              "hip_minus_declared_top": 0.0,
+              "foot_plane_gaps": [
+                0.0,
+                0.0
+              ]
+            }
+          ],
+          [
+            "max",
+            {
+              "hip_z": 0.4694754183292389,
+              "calibrated_seat_center": [
+                -2.399998903274536,
+                8.563362121582031,
+                -0.4333620071411133
+              ],
+              "seat_footprint": [
+                1.5028374552726746,
+                0.7914187723398209
+              ],
+              "declared_top": 0.4648272395133972,
+              "hip_minus_declared_top": 0.004648178815841675,
+              "foot_plane_gaps": [
+                0.0,
+                0.0
+              ]
+            }
+          ],
+          [
+            "noah",
+            {
+              "hip_z": 0.45553067326545715,
+              "calibrated_seat_center": [
+                1.2000011205673218,
+                8.55048942565918,
+                -0.42048972845077515
+              ],
+              "seat_footprint": [
+                1.4760204911231996,
+                0.778010334968567
+              ],
+              "declared_top": 0.4648272395133972,
+              "hip_minus_declared_top": -0.009296566247940063,
+              "foot_plane_gaps": [
+                2.9802322387695312e-08,
+                2.9802322387695312e-08
+              ]
+            }
+          ],
+          [
+            "ryan",
+            {
+              "hip_z": 0.47412458062171936,
+              "calibrated_seat_center": [
+                2.400001287460327,
+                8.567652702331543,
+                -0.43765270709991455
+              ],
+              "seat_footprint": [
+                1.5117764830589295,
+                0.7958883607387544
+              ],
+              "declared_top": 0.4648272395133972,
+              "hip_minus_declared_top": 0.009297341108322144,
+              "foot_plane_gaps": [
+                5.960464477539063e-08,
+                5.960464477539063e-08
+              ]
+            }
+          ],
+          [
+            "sam",
+            {
+              "hip_z": 0.4601788818836212,
+              "calibrated_seat_center": [
+                3.600001096725464,
+                8.554780960083008,
+                -0.4247805178165436
+              ],
+              "seat_footprint": [
+                1.4849594593048097,
+                0.7824799382686616
+              ],
+              "declared_top": 0.4648272395133972,
+              "hip_minus_declared_top": -0.004648357629776001,
+              "foot_plane_gaps": [
+                0.0,
+                0.0
+              ]
+            }
+          ]
+        ]
+      }
+    },
+    {
+      "frame": 938,
+      "shot": "sh13",
+      "actor_qc": {
+        "narrator": {
+          "bounds": [
+            0.535283625125885,
+            0.5845984220504761,
+            0.503587543964386,
+            0.536560595035553,
+            26.434738159179688
+          ],
+          "safe": true,
+          "vertical_coverage": 0.03297305107116699,
+          "face_all": {
+            "samples": 9,
+            "blocked": 1,
+            "bounds": [
+              0.5486932992935181,
+              0.5602797865867615,
+              0.5240458846092224,
+              0.531855583190918,
+              26.434738159179688
+            ],
+            "safe": true,
+            "visible_fraction": 0.8888888888888888,
+            "blockers": [
+              "narrator / head knitted beanie folded brim"
+            ]
+          },
+          "face_external": {
+            "samples": 9,
+            "blocked": 0,
+            "bounds": [
+              0.5486932992935181,
+              0.5602797865867615,
+              0.5240458846092224,
+              0.531855583190918,
+              26.434738159179688
+            ],
+            "safe": true,
+            "visible_fraction": 1.0,
+            "blockers": []
+          },
+          "own_ray_difference": 1
+        },
+        "otis": {
+          "bounds": [
+            0.5083892345428467,
+            0.5571075677871704,
+            0.5070211291313171,
+            0.5382962822914124,
+            26.775999069213867
+          ],
+          "safe": true,
+          "vertical_coverage": 0.031275153160095215,
+          "face_all": {
+            "samples": 9,
+            "blocked": 2,
+            "bounds": [
+              0.5204907059669495,
+              0.5321736931800842,
+              0.5270637273788452,
+              0.5341692566871643,
+              26.976245880126953
+            ],
+            "safe": true,
+            "visible_fraction": 0.7777777777777778,
+            "blockers": [
+              "otis / body skinned",
+              "otis / round glasses"
+            ]
+          },
+          "face_external": {
+            "samples": 9,
+            "blocked": 0,
+            "bounds": [
+              0.5204907059669495,
+              0.5321736931800842,
+              0.5270637273788452,
+              0.5341692566871643,
+              26.976245880126953
+            ],
+            "safe": true,
+            "visible_fraction": 1.0,
+            "blockers": []
+          },
+          "own_ray_difference": 2
+        }
+      },
+      "geometry": {
+        "held_pose": true,
+        "static_seating": [
+          [
+            "narrator",
+            {
+              "hip_z": 0.4648272395133972,
+              "calibrated_seat_center": [
+                1.1473894119262695e-06,
+                8.55907154083252,
+                -0.42907118797302246
+              ],
+              "seat_footprint": [
+                1.4938984870910645,
+                0.7869494074583054
+              ],
+              "declared_top": 0.4648272395133972,
+              "hip_minus_declared_top": 0.0,
+              "foot_plane_gaps": [
+                0.0,
+                0.0
+              ]
+            }
+          ],
+          [
+            "otis",
+            {
+              "hip_z": 0.4648272395133972,
+              "calibrated_seat_center": [
+                -1.1999988555908203,
+                8.55907154083252,
+                -0.42907118797302246
+              ],
+              "seat_footprint": [
+                1.4938984870910645,
+                0.7869494074583054
+              ],
+              "declared_top": 0.4648272395133972,
+              "hip_minus_declared_top": 0.0,
+              "foot_plane_gaps": [
+                0.0,
+                0.0
+              ]
+            }
+          ],
+          [
+            "leo",
+            {
+              "hip_z": 0.4648272395133972,
+              "calibrated_seat_center": [
+                -3.599998712539673,
+                8.55907154083252,
+                -0.42907118797302246
+              ],
+              "seat_footprint": [
+                1.4938984870910645,
+                0.7869494074583054
+              ],
+              "declared_top": 0.4648272395133972,
+              "hip_minus_declared_top": 0.0,
+              "foot_plane_gaps": [
+                0.0,
+                0.0
+              ]
+            }
+          ],
+          [
+            "max",
+            {
+              "hip_z": 0.4694754183292389,
+              "calibrated_seat_center": [
+                -2.399998903274536,
+                8.563362121582031,
+                -0.4333620071411133
+              ],
+              "seat_footprint": [
+                1.5028374552726746,
+                0.7914187723398209
+              ],
+              "declared_top": 0.4648272395133972,
+              "hip_minus_declared_top": 0.004648178815841675,
+              "foot_plane_gaps": [
+                0.0,
+                0.0
+              ]
+            }
+          ],
+          [
+            "noah",
+            {
+              "hip_z": 0.45553067326545715,
+              "calibrated_seat_center": [
+                1.2000011205673218,
+                8.55048942565918,
+                -0.42048972845077515
+              ],
+              "seat_footprint": [
+                1.4760204911231996,
+                0.778010334968567
+              ],
+              "declared_top": 0.4648272395133972,
+              "hip_minus_declared_top": -0.009296566247940063,
+              "foot_plane_gaps": [
+                2.9802322387695312e-08,
+                2.9802322387695312e-08
+              ]
+            }
+          ],
+          [
+            "ryan",
+            {
+              "hip_z": 0.47412458062171936,
+              "calibrated_seat_center": [
+                2.400001287460327,
+                8.567652702331543,
+                -0.43765270709991455
+              ],
+              "seat_footprint": [
+                1.5117764830589295,
+                0.7958883607387544
+              ],
+              "declared_top": 0.4648272395133972,
+              "hip_minus_declared_top": 0.009297341108322144,
+              "foot_plane_gaps": [
+                5.960464477539063e-08,
+                5.960464477539063e-08
+              ]
+            }
+          ],
+          [
+            "sam",
+            {
+              "hip_z": 0.4601788818836212,
+              "calibrated_seat_center": [
+                3.600001096725464,
+                8.554780960083008,
+                -0.4247805178165436
+              ],
+              "seat_footprint": [
+                1.4849594593048097,
+                0.7824799382686616
+              ],
+              "declared_top": 0.4648272395133972,
+              "hip_minus_declared_top": -0.004648357629776001,
+              "foot_plane_gaps": [
+                0.0,
+                0.0
+              ]
+            }
+          ]
+        ]
+      }
+    }
+  ]
+}

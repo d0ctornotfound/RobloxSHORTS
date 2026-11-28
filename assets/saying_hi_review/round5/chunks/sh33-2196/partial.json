@@ -1,0 +1,5436 @@
+{
+  "rendered": [
+    {
+      "frame": 2196,
+      "render_seconds": 36.85485632999999,
+      "near_black_percent": 0.08314043209876543
+    },
+    {
+      "frame": 2197,
+      "render_seconds": 13.693541580999977,
+      "near_black_percent": 0.08275462962962962
+    },
+    {
+      "frame": 2198,
+      "render_seconds": 13.713509997000017,
+      "near_black_percent": 0.08391203703703703
+    },
+    {
+      "frame": 2199,
+      "render_seconds": 13.680640385000004,
+      "near_black_percent": 0.08391203703703703
+    },
+    {
+      "frame": 2200,
+      "render_seconds": 13.714532252000026,
+      "near_black_percent": 0.08294753086419754
+    }
+  ],
+  "rows": [
+    {
+      "frame": 2196,
+      "shot": "sh33",
+      "actor_qc": {
+        "narrator": {
+          "bounds": [
+            0.04781227186322212,
+            0.7485421895980835,
+            0.21542423963546753,
+            0.7433799505233765,
+            0.6844737529754639
+          ],
+          "safe": true,
+          "vertical_coverage": 0.5279557108879089,
+          "face_all": {
+            "samples": 10,
+            "blocked": 0,
+            "bounds": [
+              0.42993736267089844,
+              0.5572178959846497,
+              0.6021407842636108,
+              0.6515294909477234,
+              1.3755089044570923
+            ],
+            "safe": true,
+            "visible_fraction": 1.0,
+            "blockers": []
+          },
+          "face_external": {
+            "samples": 10,
+            "blocked": 0,
+            "bounds": [
+              0.42993736267089844,
+              0.5572178959846497,
+              0.6021407842636108,
+              0.6515294909477234,
+              1.3755089044570923
+            ],
+            "safe": true,
+            "visible_fraction": 1.0,
+            "blockers": []
+          },
+          "own_ray_difference": 0
+        }
+      },
+      "geometry": {
+        "pencil_shake_phase": 0.8939966636005579,
+        "socket_alignment": {
+          "chart": {
+            "socket_to_target_error": 0.0
+          },
+          "pencil": {
+            "exposed_shaft_grip_anchor_error": 0.0
+          }
+        },
+        "chart_contact": {
+          "sampled_min_arm_surface_gap": 0.008308556862175465,
+          "arm_prop_overlap_pairs": 38,
+          "scope": "whole rigid arm surface; not signed distal-hand penetration"
+        },
+        "pencil_contact": {
+          "sampled_min_arm_surface_gap": 0.011787415482103825,
+          "arm_prop_overlap_pairs": 14,
+          "scope": "whole rigid arm surface; not signed distal-hand penetration"
+        },
+        "reverse_camera": {
+          "location": [
+            5.5,
+            2.5,
+            0.5499999523162842
+          ],
+          "target": [
+            5.050000190734863,
+            3.6500000953674316,
+            1.159999966621399
+          ],
+          "lens": 13.299861965906153,
+          "mark_yaw_deg": 20.0,
+          "camera_shift": [
+            -0.3000001907348633,
+            0.0,
+            -0.3500000238418579
+          ],
+          "candidate_score": [
+            false,
+            1,
+            0.19109287977218625,
+            0,
+            0,
+            0,
+            true,
+            0,
+            0
+          ],
+          "world_x_side": "positive",
+          "inherited_face_failures": [
+            {
+              "global_frame": 2088,
+              "local_frame": 0,
+              "blocked": 1,
+              "objects": [
+                "narrator / head knitted beanie folded brim"
+              ]
+            },
+            {
+              "global_frame": 2089,
+              "local_frame": 1,
+              "blocked": 1,
+              "objects": [
+                "narrator / head knitted beanie folded brim"
+              ]
+            },
+            {
+              "global_frame": 2090,
+              "local_frame": 2,
+              "blocked": 2,
+              "objects": [
+                "narrator / head knitted beanie folded brim"
+              ]
+            },
+            {
+              "global_frame": 2091,
+              "local_frame": 3,
+              "blocked": 2,
+              "objects": [
+                "narrator / head knitted beanie folded brim"
+              ]
+            },
+            {
+              "global_frame": 2092,
+              "local_frame": 4,
+              "blocked": 2,
+              "objects": [
+                "narrator / head knitted beanie folded brim"
+              ]
+            },
+            {
+              "global_frame": 2093,
+              "local_frame": 5,
+              "blocked": 2,
+              "objects": [
+                "narrator / head knitted beanie folded brim"
+              ]
+            },
+            {
+              "global_frame": 2094,
+              "local_frame": 6,
+              "blocked": 2,
+              "objects": [
+                "narrator / head knitted beanie folded brim"
+              ]
+            },
+            {
+              "global_frame": 2095,
+              "local_frame": 7,
+              "blocked": 2,
+              "objects": [
+                "narrator / head knitted beanie folded brim"
+              ]
+            },
+            {
+              "global_frame": 2096,
+              "local_frame": 8,
+              "blocked": 2,
+              "objects": [
+                "narrator / head knitted beanie folded brim"
+              ]
+            },
+            {
+              "global_frame": 2097,
+              "local_frame": 9,
+              "blocked": 2,
+              "objects": [
+                "narrator / head knitted beanie folded brim"
+              ]
+            },
+            {
+              "global_frame": 2098,
+              "local_frame": 10,
+              "blocked": 1,
+              "objects": [
+                "narrator / head knitted beanie folded brim"
+              ]
+            },
+            {
+              "global_frame": 2099,
+              "local_frame": 11,
+              "blocked": 1,
+              "objects": [
+                "narrator / head knitted beanie folded brim"
+              ]
+            },
+            {
+              "global_frame": 2100,
+              "local_frame": 12,
+              "blocked": 1,
+              "objects": [
+                "narrator / head knitted beanie folded brim"
+              ]
+            },
+            {
+              "global_frame": 2101,
+              "local_frame": 13,
+              "blocked": 1,
+              "objects": [
+                "narrator / head knitted beanie folded brim"
+              ]
+            },
+            {
+              "global_frame": 2102,
+              "local_frame": 14,
+              "blocked": 1,
+              "objects": [
+                "narrator / head knitted beanie folded brim"
+              ]
+            },
+            {
+              "global_frame": 2103,
+              "local_frame": 15,
+              "blocked": 1,
+              "objects": [
+                "narrator / head knitted beanie folded brim"
+              ]
+            },
+            {
+              "global_frame": 2104,
+              "local_frame": 16,
+              "blocked": 1,
+              "objects": [
+                "narrator / head knitted beanie folded brim"
+              ]
+            },
+            {
+              "global_frame": 2105,
+              "local_frame": 17,
+              "blocked": 1,
+              "objects": [
+                "narrator / head knitted beanie folded brim"
+              ]
+            },
+            {
+              "global_frame": 2106,
+              "local_frame": 18,
+              "blocked": 1,
+              "objects": [
+                "narrator / head knitted beanie folded brim"
+              ]
+            },
+            {
+              "global_frame": 2107,
+              "local_frame": 19,
+              "blocked": 1,
+              "objects": [
+                "narrator / head knitted beanie folded brim"
+              ]
+            },
+            {
+              "global_frame": 2108,
+              "local_frame": 20,
+              "blocked": 1,
+              "objects": [
+                "narrator / head knitted beanie folded brim"
+              ]
+            },
+            {
+              "global_frame": 2109,
+              "local_frame": 21,
+              "blocked": 1,
+              "objects": [
+                "narrator / head knitted beanie folded brim"
+              ]
+            },
+            {
+              "global_frame": 2110,
+              "local_frame": 22,
+              "blocked": 1,
+              "objects": [
+                "narrator / head knitted beanie folded brim"
+              ]
+            },
+            {
+              "global_frame": 2111,
+              "local_frame": 23,
+              "blocked": 1,
+              "objects": [
+                "narrator / head knitted beanie folded brim"
+              ]
+            },
+            {
+              "global_frame": 2112,
+              "local_frame": 24,
+              "blocked": 1,
+              "objects": [
+                "narrator / head knitted beanie folded brim"
+              ]
+            },
+            {
+              "global_frame": 2113,
+              "local_frame": 25,
+              "blocked": 1,
+              "objects": [
+                "narrator / head knitted beanie folded brim"
+              ]
+            },
+            {
+              "global_frame": 2114,
+              "local_frame": 26,
+              "blocked": 1,
+              "objects": [
+                "narrator / head knitted beanie folded brim"
+              ]
+            },
+            {
+              "global_frame": 2115,
+              "local_frame": 27,
+              "blocked": 1,
+              "objects": [
+                "narrator / head knitted beanie folded brim"
+              ]
+            },
+            {
+              "global_frame": 2116,
+              "local_frame": 28,
+              "blocked": 1,
+              "objects": [
+                "narrator / head knitted beanie folded brim"
+              ]
+            },
+            {
+              "global_frame": 2117,
+              "local_frame": 29,
+              "blocked": 2,
+              "objects": [
+                "narrator / head knitted beanie folded brim"
+              ]
+            },
+            {
+              "global_frame": 2118,
+              "local_frame": 30,
+              "blocked": 2,
+              "objects": [
+                "narrator / head knitted beanie folded brim"
+              ]
+            },
+            {
+              "global_frame": 2119,
+              "local_frame": 31,
+              "blocked": 2,
+              "objects": [
+                "narrator / head knitted beanie folded brim"
+              ]
+            },
+            {
+              "global_frame": 2120,
+              "local_frame": 32,
+              "blocked": 2,
+              "objects": [
+                "narrator / head knitted beanie folded brim"
+              ]
+            },
+            {
+              "global_frame": 2121,
+              "local_frame": 33,
+              "blocked": 2,
+              "objects": [
+                "narrator / head knitted beanie folded brim"
+              ]
+            },
+            {
+              "global_frame": 2122,
+              "local_frame": 34,
+              "blocked": 2,
+              "objects": [
+                "narrator / head knitted beanie folded brim"
+              ]
+            },
+            {
+              "global_frame": 2123,
+              "local_frame": 35,
+              "blocked": 2,
+              "objects": [
+                "narrator / head knitted beanie folded brim"
+              ]
+            },
+            {
+              "global_frame": 2124,
+              "local_frame": 36,
+              "blocked": 2,
+              "objects": [
+                "narrator / head knitted beanie folded brim"
+              ]
+            },
+            {
+              "global_frame": 2125,
+              "local_frame": 37,
+              "blocked": 3,
+              "objects": [
+                "narrator / head knitted beanie folded brim"
+              ]
+            },
+            {
+              "global_frame": 2126,
+              "local_frame": 38,
+              "blocked": 3,
+              "objects": [
+                "narrator / head knitted beanie folded brim"
+              ]
+            },
+            {
+              "global_frame": 2127,
+              "local_frame": 39,
+              "blocked": 3,
+              "objects": [
+                "narrator / head knitted beanie folded brim"
+              ]
+            },
+            {
+              "global_frame": 2128,
+              "local_frame": 40,
+              "blocked": 3,
+              "objects": [
+                "narrator / head knitted beanie folded brim"
+              ]
+            },
+            {
+              "global_frame": 2129,
+              "local_frame": 41,
+              "blocked": 3,
+              "objects": [
+                "narrator / head knitted beanie folded brim"
+              ]
+            },
+            {
+              "global_frame": 2130,
+              "local_frame": 42,
+              "blocked": 3,
+              "objects": [
+                "narrator / head knitted beanie folded brim"
+              ]
+            },
+            {
+              "global_frame": 2131,
+              "local_frame": 43,
+              "blocked": 3,
+              "objects": [
+                "narrator / head knitted beanie folded brim"
+              ]
+            },
+            {
+              "global_frame": 2132,
+              "local_frame": 44,
+              "blocked": 3,
+              "objects": [
+                "narrator / head knitted beanie folded brim"
+              ]
+            },
+            {
+              "global_frame": 2133,
+              "local_frame": 45,
+              "blocked": 3,
+              "objects": [
+                "narrator / head knitted beanie folded brim"
+              ]
+            },
+            {
+              "global_frame": 2134,
+              "local_frame": 46,
+              "blocked": 2,
+              "objects": [
+                "narrator / head knitted beanie folded brim"
+              ]
+            },
+            {
+              "global_frame": 2135,
+              "local_frame": 47,
+              "blocked": 2,
+              "objects": [
+                "narrator / head knitted beanie folded brim"
+              ]
+            },
+            {
+              "global_frame": 2136,
+              "local_frame": 48,
+              "blocked": 2,
+              "objects": [
+                "narrator / head knitted beanie folded brim"
+              ]
+            },
+            {
+              "global_frame": 2137,
+              "local_frame": 49,
+              "blocked": 2,
+              "objects": [
+                "narrator / head knitted beanie folded brim"
+              ]
+            },
+            {
+              "global_frame": 2138,
+              "local_frame": 50,
+              "blocked": 3,
+              "objects": [
+                "narrator / head knitted beanie folded brim"
+              ]
+            },
+            {
+              "global_frame": 2139,
+              "local_frame": 51,
+              "blocked": 2,
+              "objects": [
+                "narrator / head knitted beanie folded brim"
+              ]
+            },
+            {
+              "global_frame": 2140,
+              "local_frame": 52,
+              "blocked": 2,
+              "objects": [
+                "narrator / head knitted beanie folded brim"
+              ]
+            },
+            {
+              "global_frame": 2141,
+              "local_frame": 53,
+              "blocked": 2,
+              "objects": [
+                "narrator / head knitted beanie folded brim"
+              ]
+            },
+            {
+              "global_frame": 2142,
+              "local_frame": 54,
+              "blocked": 2,
+              "objects": [
+                "narrator / head knitted beanie folded brim"
+              ]
+            },
+            {
+              "global_frame": 2143,
+              "local_frame": 55,
+              "blocked": 2,
+              "objects": [
+                "narrator / head knitted beanie folded brim"
+              ]
+            },
+            {
+              "global_frame": 2144,
+              "local_frame": 56,
+              "blocked": 2,
+              "objects": [
+                "narrator / head knitted beanie folded brim"
+              ]
+            },
+            {
+              "global_frame": 2145,
+              "local_frame": 57,
+              "blocked": 2,
+              "objects": [
+                "narrator / head knitted beanie folded brim"
+              ]
+            },
+            {
+              "global_frame": 2146,
+              "local_frame": 58,
+              "blocked": 2,
+              "objects": [
+                "narrator / head knitted beanie folded brim"
+              ]
+            },
+            {
+              "global_frame": 2147,
+              "local_frame": 59,
+              "blocked": 2,
+              "objects": [
+                "narrator / head knitted beanie folded brim"
+              ]
+            },
+            {
+              "global_frame": 2148,
+              "local_frame": 60,
+              "blocked": 2,
+              "objects": [
+                "narrator / head knitted beanie folded brim"
+              ]
+            },
+            {
+              "global_frame": 2149,
+              "local_frame": 61,
+              "blocked": 2,
+              "objects": [
+                "narrator / head knitted beanie folded brim"
+              ]
+            },
+            {
+              "global_frame": 2150,
+              "local_frame": 62,
+              "blocked": 2,
+              "objects": [
+                "narrator / head knitted beanie folded brim"
+              ]
+            },
+            {
+              "global_frame": 2151,
+              "local_frame": 63,
+              "blocked": 2,
+              "objects": [
+                "narrator / head knitted beanie folded brim"
+              ]
+            },
+            {
+              "global_frame": 2152,
+              "local_frame": 64,
+              "blocked": 2,
+              "objects": [
+                "narrator / head knitted beanie folded brim"
+              ]
+            },
+            {
+              "global_frame": 2153,
+              "local_frame": 65,
+              "blocked": 2,
+              "objects": [
+                "narrator / head knitted beanie folded brim"
+              ]
+            },
+            {
+              "global_frame": 2154,
+              "local_frame": 66,
+              "blocked": 2,
+              "objects": [
+                "narrator / head knitted beanie folded brim"
+              ]
+            },
+            {
+              "global_frame": 2155,
+              "local_frame": 67,
+              "blocked": 2,
+              "objects": [
+                "narrator / head knitted beanie folded brim"
+              ]
+            },
+            {
+              "global_frame": 2156,
+              "local_frame": 68,
+              "blocked": 1,
+              "objects": [
+                "narrator / head knitted beanie folded brim"
+              ]
+            },
+            {
+              "global_frame": 2157,
+              "local_frame": 69,
+              "blocked": 1,
+              "objects": [
+                "narrator / head knitted beanie folded brim"
+              ]
+            },
+            {
+              "global_frame": 2158,
+              "local_frame": 70,
+              "blocked": 1,
+              "objects": [
+                "narrator / head knitted beanie folded brim"
+              ]
+            },
+            {
+              "global_frame": 2159,
+              "local_frame": 71,
+              "blocked": 1,
+              "objects": [
+                "narrator / head knitted beanie folded brim"
+              ]
+            },
+            {
+              "global_frame": 2160,
+              "local_frame": 72,
+              "blocked": 1,
+              "objects": [
+                "narrator / head knitted beanie folded brim"
+              ]
+            },
+            {
+              "global_frame": 2161,
+              "local_frame": 73,
+              "blocked": 1,
+              "objects": [
+                "narrator / head knitted beanie folded brim"
+              ]
+            },
+            {
+              "global_frame": 2162,
+              "local_frame": 74,
+              "blocked": 2,
+              "objects": [
+                "narrator / head knitted beanie folded brim"
+              ]
+            },
+            {
+              "global_frame": 2163,
+              "local_frame": 75,
+              "blocked": 2,
+              "objects": [
+                "narrator / head knitted beanie folded brim"
+              ]
+            },
+            {
+              "global_frame": 2164,
+              "local_frame": 76,
+              "blocked": 2,
+              "objects": [
+                "narrator / head knitted beanie folded brim"
+              ]
+            },
+            {
+              "global_frame": 2165,
+              "local_frame": 77,
+              "blocked": 2,
+              "objects": [
+                "narrator / head knitted beanie folded brim"
+              ]
+            },
+            {
+              "global_frame": 2166,
+              "local_frame": 78,
+              "blocked": 2,
+              "objects": [
+                "narrator / head knitted beanie folded brim"
+              ]
+            },
+            {
+              "global_frame": 2167,
+              "local_frame": 79,
+              "blocked": 2,
+              "objects": [
+                "narrator / head knitted beanie folded brim"
+              ]
+            },
+            {
+              "global_frame": 2168,
+              "local_frame": 80,
+              "blocked": 2,
+              "objects": [
+                "narrator / head knitted beanie folded brim"
+              ]
+            },
+            {
+              "global_frame": 2169,
+              "local_frame": 81,
+              "blocked": 2,
+              "objects": [
+                "narrator / head knitted beanie folded brim"
+              ]
+            },
+            {
+              "global_frame": 2170,
+              "local_frame": 82,
+              "blocked": 2,
+              "objects": [
+                "narrator / head knitted beanie folded brim"
+              ]
+            },
+            {
+              "global_frame": 2171,
+              "local_frame": 83,
+              "blocked": 2,
+              "objects": [
+                "narrator / head knitted beanie folded brim"
+              ]
+            },
+            {
+              "global_frame": 2172,
+              "local_frame": 84,
+              "blocked": 2,
+              "objects": [
+                "narrator / head knitted beanie folded brim"
+              ]
+            },
+            {
+              "global_frame": 2173,
+              "local_frame": 85,
+              "blocked": 2,
+              "objects": [
+                "narrator / head knitted beanie folded brim"
+              ]
+            },
+            {
+              "global_frame": 2174,
+              "local_frame": 86,
+              "blocked": 2,
+              "objects": [
+                "narrator / head knitted beanie folded brim"
+              ]
+            },
+            {
+              "global_frame": 2175,
+              "local_frame": 87,
+              "blocked": 2,
+              "objects": [
+                "narrator / head knitted beanie folded brim"
+              ]
+            },
+            {
+              "global_frame": 2176,
+              "local_frame": 88,
+              "blocked": 2,
+              "objects": [
+                "narrator / head knitted beanie folded brim"
+              ]
+            },
+            {
+              "global_frame": 2177,
+              "local_frame": 89,
+              "blocked": 2,
+              "objects": [
+                "narrator / head knitted beanie folded brim"
+              ]
+            },
+            {
+              "global_frame": 2178,
+              "local_frame": 90,
+              "blocked": 2,
+              "objects": [
+                "narrator / head knitted beanie folded brim"
+              ]
+            },
+            {
+              "global_frame": 2179,
+              "local_frame": 91,
+              "blocked": 2,
+              "objects": [
+                "narrator / head knitted beanie folded brim"
+              ]
+            },
+            {
+              "global_frame": 2180,
+              "local_frame": 92,
+              "blocked": 1,
+              "objects": [
+                "narrator / head knitted beanie folded brim"
+              ]
+            },
+            {
+              "global_frame": 2181,
+              "local_frame": 93,
+              "blocked": 1,
+              "objects": [
+                "narrator / head knitted beanie folded brim"
+              ]
+            },
+            {
+              "global_frame": 2182,
+              "local_frame": 94,
+              "blocked": 1,
+              "objects": [
+                "narrator / head knitted beanie folded brim"
+              ]
+            },
+            {
+              "global_frame": 2183,
+              "local_frame": 95,
+              "blocked": 1,
+              "objects": [
+                "narrator / head knitted beanie folded brim"
+              ]
+            },
+            {
+              "global_frame": 2184,
+              "local_frame": 96,
+              "blocked": 1,
+              "objects": [
+                "narrator / head knitted beanie folded brim"
+              ]
+            },
+            {
+              "global_frame": 2185,
+              "local_frame": 97,
+              "blocked": 2,
+              "objects": [
+                "narrator / head knitted beanie folded brim"
+              ]
+            },
+            {
+              "global_frame": 2186,
+              "local_frame": 98,
+              "blocked": 2,
+              "objects": [
+                "narrator / head knitted beanie folded brim"
+              ]
+            },
+            {
+              "global_frame": 2187,
+              "local_frame": 99,
+              "blocked": 2,
+              "objects": [
+                "narrator / head knitted beanie folded brim"
+              ]
+            },
+            {
+              "global_frame": 2188,
+              "local_frame": 100,
+              "blocked": 2,
+              "objects": [
+                "narrator / head knitted beanie folded brim"
+              ]
+            },
+            {
+              "global_frame": 2189,
+              "local_frame": 101,
+              "blocked": 2,
+              "objects": [
+                "narrator / head knitted beanie folded brim"
+              ]
+            },
+            {
+              "global_frame": 2190,
+              "local_frame": 102,
+              "blocked": 2,
+              "objects": [
+                "narrator / head knitted beanie folded brim"
+              ]
+            },
+            {
+              "global_frame": 2191,
+              "local_frame": 103,
+              "blocked": 2,
+              "objects": [
+                "narrator / head knitted beanie folded brim"
+              ]
+            },
+            {
+              "global_frame": 2192,
+              "local_frame": 104,
+              "blocked": 2,
+              "objects": [
+                "narrator / head knitted beanie folded brim"
+              ]
+            },
+            {
+              "global_frame": 2193,
+              "local_frame": 105,
+              "blocked": 2,
+              "objects": [
+                "narrator / head knitted beanie folded brim"
+              ]
+            },
+            {
+              "global_frame": 2194,
+              "local_frame": 106,
+              "blocked": 2,
+              "objects": [
+                "narrator / head knitted beanie folded brim"
+              ]
+            },
+            {
+              "global_frame": 2195,
+              "local_frame": 107,
+              "blocked": 2,
+              "objects": [
+                "narrator / head knitted beanie folded brim"
+              ]
+            },
+            {
+              "global_frame": 2196,
+              "local_frame": 108,
+              "blocked": 2,
+              "objects": [
+                "narrator / head knitted beanie folded brim"
+              ]
+            },
+            {
+              "global_frame": 2197,
+              "local_frame": 109,
+              "blocked": 2,
+              "objects": [
+                "narrator / head knitted beanie folded brim"
+              ]
+            },
+            {
+              "global_frame": 2198,
+              "local_frame": 110,
+              "blocked": 2,
+              "objects": [
+                "narrator / head knitted beanie folded brim"
+              ]
+            },
+            {
+              "global_frame": 2199,
+              "local_frame": 111,
+              "blocked": 2,
+              "objects": [
+                "narrator / head knitted beanie folded brim"
+              ]
+            },
+            {
+              "global_frame": 2200,
+              "local_frame": 112,
+              "blocked": 2,
+              "objects": [
+                "narrator / head knitted beanie folded brim"
+              ]
+            }
+          ]
+        },
+        "face_projection": [
+          0.42993736267089844,
+          0.5572178959846497,
+          0.6021407842636108,
+          0.6515294909477234,
+          1.3755089044570923
+        ],
+        "pencil_projection": [
+          -0.017007045447826385,
+          0.1410689800977707,
+          0.6908848285675049,
+          0.7825254797935486,
+          0.7307767868041992
+        ],
+        "standing_seat_intersections": 0,
+        "seat_overlap_detail": [],
+        "speaker_visibility": {
+          "samples": 26,
+          "blocked": 0,
+          "bounds": [
+            0.42993736267089844,
+            0.5572178959846497,
+            0.6021407842636108,
+            0.6515294909477234,
+            1.3755089044570923
+          ],
+          "safe": true,
+          "visible_fraction": 1.0,
+          "blockers": []
+        },
+        "speaker_front_dot": 0.5301293283700943,
+        "foreground_intrusion": {
+          "blocked": 0,
+          "objects": []
+        },
+        "speaker_body_visibility": {
+          "samples": 16,
+          "blocked": 0,
+          "bounds": [
+            0.04781227186322212,
+            0.7485421895980835,
+            0.21542423963546753,
+            0.7433799505233765,
+            0.6844737529754639
+          ],
+          "safe": true,
+          "visible_fraction": 1.0,
+          "blockers": []
+        },
+        "pencil_visibility": {
+          "samples": 7,
+          "blocked": 0,
+          "bounds": [
+            -0.017007045447826385,
+            0.1410689800977707,
+            0.6908848285675049,
+            0.7825254797935486,
+            0.7307767868041992
+          ],
+          "safe": false,
+          "visible_fraction": 1.0,
+          "blockers": []
+        },
+        "pencil_external_visibility": {
+          "samples": 7,
+          "blocked": 0,
+          "bounds": [
+            -0.017007045447826385,
+            0.1410689800977707,
+            0.6908848285675049,
+            0.7825254797935486,
+            0.7307767868041992
+          ],
+          "safe": false,
+          "visible_fraction": 1.0,
+          "blockers": []
+        }
+      }
+    },
+    {
+      "frame": 2197,
+      "shot": "sh33",
+      "actor_qc": {
+        "narrator": {
+          "bounds": [
+            0.049902040511369705,
+            0.7504639625549316,
+            0.21346482634544373,
+            0.7402327656745911,
+            0.6779946088790894
+          ],
+          "safe": true,
+          "vertical_coverage": 0.5267679393291473,
+          "face_all": {
+            "samples": 9,
+            "blocked": 0,
+            "bounds": [
+              0.42971014976501465,
+              0.5569936037063599,
+              0.6021497845649719,
+              0.6513829231262207,
+              1.3755226135253906
+            ],
+            "safe": true,
+            "visible_fraction": 1.0,
+            "blockers": []
+          },
+          "face_external": {
+            "samples": 9,
+            "blocked": 0,
+            "bounds": [
+              0.42971014976501465,
+              0.5569936037063599,
+              0.6021497845649719,
+              0.6513829231262207,
+              1.3755226135253906
+            ],
+            "safe": true,
+            "visible_fraction": 1.0,
+            "blockers": []
+          },
+          "own_ray_difference": 0
+        }
+      },
+      "geometry": {
+        "pencil_shake_phase": 0.269480583587763,
+        "socket_alignment": {
+          "chart": {
+            "socket_to_target_error": 0.0
+          },
+          "pencil": {
+            "exposed_shaft_grip_anchor_error": 2.384185791015625e-07
+          }
+        },
+        "chart_contact": {
+          "sampled_min_arm_surface_gap": 0.008305324241518974,
+          "arm_prop_overlap_pairs": 38,
+          "scope": "whole rigid arm surface; not signed distal-hand penetration"
+        },
+        "pencil_contact": {
+          "sampled_min_arm_surface_gap": 0.011676463298499584,
+          "arm_prop_overlap_pairs": 14,
+          "scope": "whole rigid arm surface; not signed distal-hand penetration"
+        },
+        "reverse_camera": {
+          "location": [
+            5.5,
+            2.5,
+            0.5499999523162842
+          ],
+          "target": [
+            5.050000190734863,
+            3.6500000953674316,
+            1.159999966621399
+          ],
+          "lens": 13.299861965906153,
+          "mark_yaw_deg": 20.0,
+          "camera_shift": [
+            -0.3000001907348633,
+            0.0,
+            -0.3500000238418579
+          ],
+          "candidate_score": [
+            false,
+            1,
+            0.19109287977218625,
+            0,
+            0,
+            0,
+            true,
+            0,
+            0
+          ],
+          "world_x_side": "positive",
+          "inherited_face_failures": [
+            {
+              "global_frame": 2088,
+              "local_frame": 0,
+              "blocked": 1,
+              "objects": [
+                "narrator / head knitted beanie folded brim"
+              ]
+            },
+            {
+              "global_frame": 2089,
+              "local_frame": 1,
+              "blocked": 1,
+              "objects": [
+                "narrator / head knitted beanie folded brim"
+              ]
+            },
+            {
+              "global_frame": 2090,
+              "local_frame": 2,
+              "blocked": 2,
+              "objects": [
+                "narrator / head knitted beanie folded brim"
+              ]
+            },
+            {
+              "global_frame": 2091,
+              "local_frame": 3,
+              "blocked": 2,
+              "objects": [
+                "narrator / head knitted beanie folded brim"
+              ]
+            },
+            {
+              "global_frame": 2092,
+              "local_frame": 4,
+              "blocked": 2,
+              "objects": [
+                "narrator / head knitted beanie folded brim"
+              ]
+            },
+            {
+              "global_frame": 2093,
+              "local_frame": 5,
+              "blocked": 2,
+              "objects": [
+                "narrator / head knitted beanie folded brim"
+              ]
+            },
+            {
+              "global_frame": 2094,
+              "local_frame": 6,
+              "blocked": 2,
+              "objects": [
+                "narrator / head knitted beanie folded brim"
+              ]
+            },
+            {
+              "global_frame": 2095,
+              "local_frame": 7,
+              "blocked": 2,
+              "objects": [
+                "narrator / head knitted beanie folded brim"
+              ]
+            },
+            {
+              "global_frame": 2096,
+              "local_frame": 8,
+              "blocked": 2,
+              "objects": [
+                "narrator / head knitted beanie folded brim"
+              ]
+            },
+            {
+              "global_frame": 2097,
+              "local_frame": 9,
+              "blocked": 2,
+              "objects": [
+                "narrator / head knitted beanie folded brim"
+              ]
+            },
+            {
+              "global_frame": 2098,
+              "local_frame": 10,
+              "blocked": 1,
+              "objects": [
+                "narrator / head knitted beanie folded brim"
+              ]
+            },
+            {
+              "global_frame": 2099,
+              "local_frame": 11,
+              "blocked": 1,
+              "objects": [
+                "narrator / head knitted beanie folded brim"
+              ]
+            },
+            {
+              "global_frame": 2100,
+              "local_frame": 12,
+              "blocked": 1,
+              "objects": [
+                "narrator / head knitted beanie folded brim"
+              ]
+            },
+            {
+              "global_frame": 2101,
+              "local_frame": 13,
+              "blocked": 1,
+              "objects": [
+                "narrator / head knitted beanie folded brim"
+              ]
+            },
+            {
+              "global_frame": 2102,
+              "local_frame": 14,
+              "blocked": 1,
+              "objects": [
+                "narrator / head knitted beanie folded brim"
+              ]
+            },
+            {
+              "global_frame": 2103,
+              "local_frame": 15,
+              "blocked": 1,
+              "objects": [
+                "narrator / head knitted beanie folded brim"
+              ]
+            },
+            {
+              "global_frame": 2104,
+              "local_frame": 16,
+              "blocked": 1,
+              "objects": [
+                "narrator / head knitted beanie folded brim"
+              ]
+            },
+            {
+              "global_frame": 2105,
+              "local_frame": 17,
+              "blocked": 1,
+              "objects": [
+                "narrator / head knitted beanie folded brim"
+              ]
+            },
+            {
+              "global_frame": 2106,
+              "local_frame": 18,
+              "blocked": 1,
+              "objects": [
+                "narrator / head knitted beanie folded brim"
+              ]
+            },
+            {
+              "global_frame": 2107,
+              "local_frame": 19,
+              "blocked": 1,
+              "objects": [
+                "narrator / head knitted beanie folded brim"
+              ]
+            },
+            {
+              "global_frame": 2108,
+              "local_frame": 20,
+              "blocked": 1,
+              "objects": [
+                "narrator / head knitted beanie folded brim"
+              ]
+            },
+            {
+              "global_frame": 2109,
+              "local_frame": 21,
+              "blocked": 1,
+              "objects": [
+                "narrator / head knitted beanie folded brim"
+              ]
+            },
+            {
+              "global_frame": 2110,
+              "local_frame": 22,
+              "blocked": 1,
+              "objects": [
+                "narrator / head knitted beanie folded brim"
+              ]
+            },
+            {
+              "global_frame": 2111,
+              "local_frame": 23,
+              "blocked": 1,
+              "objects": [
+                "narrator / head knitted beanie folded brim"
+              ]
+            },
+            {
+              "global_frame": 2112,
+              "local_frame": 24,
+              "blocked": 1,
+              "objects": [
+                "narrator / head knitted beanie folded brim"
+              ]
+            },
+            {
+              "global_frame": 2113,
+              "local_frame": 25,
+              "blocked": 1,
+              "objects": [
+                "narrator / head knitted beanie folded brim"
+              ]
+            },
+            {
+              "global_frame": 2114,
+              "local_frame": 26,
+              "blocked": 1,
+              "objects": [
+                "narrator / head knitted beanie folded brim"
+              ]
+            },
+            {
+              "global_frame": 2115,
+              "local_frame": 27,
+              "blocked": 1,
+              "objects": [
+                "narrator / head knitted beanie folded brim"
+              ]
+            },
+            {
+              "global_frame": 2116,
+              "local_frame": 28,
+              "blocked": 1,
+              "objects": [
+                "narrator / head knitted beanie folded brim"
+              ]
+            },
+            {
+              "global_frame": 2117,
+              "local_frame": 29,
+              "blocked": 2,
+              "objects": [
+                "narrator / head knitted beanie folded brim"
+              ]
+            },
+            {
+              "global_frame": 2118,
+              "local_frame": 30,
+              "blocked": 2,
+              "objects": [
+                "narrator / head knitted beanie folded brim"
+              ]
+            },
+            {
+              "global_frame": 2119,
+              "local_frame": 31,
+              "blocked": 2,
+              "objects": [
+                "narrator / head knitted beanie folded brim"
+              ]
+            },
+            {
+              "global_frame": 2120,
+              "local_frame": 32,
+              "blocked": 2,
+              "objects": [
+                "narrator / head knitted beanie folded brim"
+              ]
+            },
+            {
+              "global_frame": 2121,
+              "local_frame": 33,
+              "blocked": 2,
+              "objects": [
+                "narrator / head knitted beanie folded brim"
+              ]
+            },
+            {
+              "global_frame": 2122,
+              "local_frame": 34,
+              "blocked": 2,
+              "objects": [
+                "narrator / head knitted beanie folded brim"
+              ]
+            },
+            {
+              "global_frame": 2123,
+              "local_frame": 35,
+              "blocked": 2,
+              "objects": [
+                "narrator / head knitted beanie folded brim"
+              ]
+            },
+            {
+              "global_frame": 2124,
+              "local_frame": 36,
+              "blocked": 2,
+              "objects": [
+                "narrator / head knitted beanie folded brim"
+              ]
+            },
+            {
+              "global_frame": 2125,
+              "local_frame": 37,
+              "blocked": 3,
+              "objects": [
+                "narrator / head knitted beanie folded brim"
+              ]
+            },
+            {
+              "global_frame": 2126,
+              "local_frame": 38,
+              "blocked": 3,
+              "objects": [
+                "narrator / head knitted beanie folded brim"
+              ]
+            },
+            {
+              "global_frame": 2127,
+              "local_frame": 39,
+              "blocked": 3,
+              "objects": [
+                "narrator / head knitted beanie folded brim"
+              ]
+            },
+            {
+              "global_frame": 2128,
+              "local_frame": 40,
+              "blocked": 3,
+              "objects": [
+                "narrator / head knitted beanie folded brim"
+              ]
+            },
+            {
+              "global_frame": 2129,
+              "local_frame": 41,
+              "blocked": 3,
+              "objects": [
+                "narrator / head knitted beanie folded brim"
+              ]
+            },
+            {
+              "global_frame": 2130,
+              "local_frame": 42,
+              "blocked": 3,
+              "objects": [
+                "narrator / head knitted beanie folded brim"
+              ]
+            },
+            {
+              "global_frame": 2131,
+              "local_frame": 43,
+              "blocked": 3,
+              "objects": [
+                "narrator / head knitted beanie folded brim"
+              ]
+            },
+            {
+              "global_frame": 2132,
+              "local_frame": 44,
+              "blocked": 3,
+              "objects": [
+                "narrator / head knitted beanie folded brim"
+              ]
+            },
+            {
+              "global_frame": 2133,
+              "local_frame": 45,
+              "blocked": 3,
+              "objects": [
+                "narrator / head knitted beanie folded brim"
+              ]
+            },
+            {
+              "global_frame": 2134,
+              "local_frame": 46,
+              "blocked": 2,
+              "objects": [
+                "narrator / head knitted beanie folded brim"
+              ]
+            },
+            {
+              "global_frame": 2135,
+              "local_frame": 47,
+              "blocked": 2,
+              "objects": [
+                "narrator / head knitted beanie folded brim"
+              ]
+            },
+            {
+              "global_frame": 2136,
+              "local_frame": 48,
+              "blocked": 2,
+              "objects": [
+                "narrator / head knitted beanie folded brim"
+              ]
+            },
+            {
+              "global_frame": 2137,
+              "local_frame": 49,
+              "blocked": 2,
+              "objects": [
+                "narrator / head knitted beanie folded brim"
+              ]
+            },
+            {
+              "global_frame": 2138,
+              "local_frame": 50,
+              "blocked": 3,
+              "objects": [
+                "narrator / head knitted beanie folded brim"
+              ]
+            },
+            {
+              "global_frame": 2139,
+              "local_frame": 51,
+              "blocked": 2,
+              "objects": [
+                "narrator / head knitted beanie folded brim"
+              ]
+            },
+            {
+              "global_frame": 2140,
+              "local_frame": 52,
+              "blocked": 2,
+              "objects": [
+                "narrator / head knitted beanie folded brim"
+              ]
+            },
+            {
+              "global_frame": 2141,
+              "local_frame": 53,
+              "blocked": 2,
+              "objects": [
+                "narrator / head knitted beanie folded brim"
+              ]
+            },
+            {
+              "global_frame": 2142,
+              "local_frame": 54,
+              "blocked": 2,
+              "objects": [
+                "narrator / head knitted beanie folded brim"
+              ]
+            },
+            {
+              "global_frame": 2143,
+              "local_frame": 55,
+              "blocked": 2,
+              "objects": [
+                "narrator / head knitted beanie folded brim"
+              ]
+            },
+            {
+              "global_frame": 2144,
+              "local_frame": 56,
+              "blocked": 2,
+              "objects": [
+                "narrator / head knitted beanie folded brim"
+              ]
+            },
+            {
+              "global_frame": 2145,
+              "local_frame": 57,
+              "blocked": 2,
+              "objects": [
+                "narrator / head knitted beanie folded brim"
+              ]
+            },
+            {
+              "global_frame": 2146,
+              "local_frame": 58,
+              "blocked": 2,
+              "objects": [
+                "narrator / head knitted beanie folded brim"
+              ]
+            },
+            {
+              "global_frame": 2147,
+              "local_frame": 59,
+              "blocked": 2,
+              "objects": [
+                "narrator / head knitted beanie folded brim"
+              ]
+            },
+            {
+              "global_frame": 2148,
+              "local_frame": 60,
+              "blocked": 2,
+              "objects": [
+                "narrator / head knitted beanie folded brim"
+              ]
+            },
+            {
+              "global_frame": 2149,
+              "local_frame": 61,
+              "blocked": 2,
+              "objects": [
+                "narrator / head knitted beanie folded brim"
+              ]
+            },
+            {
+              "global_frame": 2150,
+              "local_frame": 62,
+              "blocked": 2,
+              "objects": [
+                "narrator / head knitted beanie folded brim"
+              ]
+            },
+            {
+              "global_frame": 2151,
+              "local_frame": 63,
+              "blocked": 2,
+              "objects": [
+                "narrator / head knitted beanie folded brim"
+              ]
+            },
+            {
+              "global_frame": 2152,
+              "local_frame": 64,
+              "blocked": 2,
+              "objects": [
+                "narrator / head knitted beanie folded brim"
+              ]
+            },
+            {
+              "global_frame": 2153,
+              "local_frame": 65,
+              "blocked": 2,
+              "objects": [
+                "narrator / head knitted beanie folded brim"
+              ]
+            },
+            {
+              "global_frame": 2154,
+              "local_frame": 66,
+              "blocked": 2,
+              "objects": [
+                "narrator / head knitted beanie folded brim"
+              ]
+            },
+            {
+              "global_frame": 2155,
+              "local_frame": 67,
+              "blocked": 2,
+              "objects": [
+                "narrator / head knitted beanie folded brim"
+              ]
+            },
+            {
+              "global_frame": 2156,
+              "local_frame": 68,
+              "blocked": 1,
+              "objects": [
+                "narrator / head knitted beanie folded brim"
+              ]
+            },
+            {
+              "global_frame": 2157,
+              "local_frame": 69,
+              "blocked": 1,
+              "objects": [
+                "narrator / head knitted beanie folded brim"
+              ]
+            },
+            {
+              "global_frame": 2158,
+              "local_frame": 70,
+              "blocked": 1,
+              "objects": [
+                "narrator / head knitted beanie folded brim"
+              ]
+            },
+            {
+              "global_frame": 2159,
+              "local_frame": 71,
+              "blocked": 1,
+              "objects": [
+                "narrator / head knitted beanie folded brim"
+              ]
+            },
+            {
+              "global_frame": 2160,
+              "local_frame": 72,
+              "blocked": 1,
+              "objects": [
+                "narrator / head knitted beanie folded brim"
+              ]
+            },
+            {
+              "global_frame": 2161,
+              "local_frame": 73,
+              "blocked": 1,
+              "objects": [
+                "narrator / head knitted beanie folded brim"
+              ]
+            },
+            {
+              "global_frame": 2162,
+              "local_frame": 74,
+              "blocked": 2,
+              "objects": [
+                "narrator / head knitted beanie folded brim"
+              ]
+            },
+            {
+              "global_frame": 2163,
+              "local_frame": 75,
+              "blocked": 2,
+              "objects": [
+                "narrator / head knitted beanie folded brim"
+              ]
+            },
+            {
+              "global_frame": 2164,
+              "local_frame": 76,
+              "blocked": 2,
+              "objects": [
+                "narrator / head knitted beanie folded brim"
+              ]
+            },
+            {
+              "global_frame": 2165,
+              "local_frame": 77,
+              "blocked": 2,
+              "objects": [
+                "narrator / head knitted beanie folded brim"
+              ]
+            },
+            {
+              "global_frame": 2166,
+              "local_frame": 78,
+              "blocked": 2,
+              "objects": [
+                "narrator / head knitted beanie folded brim"
+              ]
+            },
+            {
+              "global_frame": 2167,
+              "local_frame": 79,
+              "blocked": 2,
+              "objects": [
+                "narrator / head knitted beanie folded brim"
+              ]
+            },
+            {
+              "global_frame": 2168,
+              "local_frame": 80,
+              "blocked": 2,
+              "objects": [
+                "narrator / head knitted beanie folded brim"
+              ]
+            },
+            {
+              "global_frame": 2169,
+              "local_frame": 81,
+              "blocked": 2,
+              "objects": [
+                "narrator / head knitted beanie folded brim"
+              ]
+            },
+            {
+              "global_frame": 2170,
+              "local_frame": 82,
+              "blocked": 2,
+              "objects": [
+                "narrator / head knitted beanie folded brim"
+              ]
+            },
+            {
+              "global_frame": 2171,
+              "local_frame": 83,
+              "blocked": 2,
+              "objects": [
+                "narrator / head knitted beanie folded brim"
+              ]
+            },
+            {
+              "global_frame": 2172,
+              "local_frame": 84,
+              "blocked": 2,
+              "objects": [
+                "narrator / head knitted beanie folded brim"
+              ]
+            },
+            {
+              "global_frame": 2173,
+              "local_frame": 85,
+              "blocked": 2,
+              "objects": [
+                "narrator / head knitted beanie folded brim"
+              ]
+            },
+            {
+              "global_frame": 2174,
+              "local_frame": 86,
+              "blocked": 2,
+              "objects": [
+                "narrator / head knitted beanie folded brim"
+              ]
+            },
+            {
+              "global_frame": 2175,
+              "local_frame": 87,
+              "blocked": 2,
+              "objects": [
+                "narrator / head knitted beanie folded brim"
+              ]
+            },
+            {
+              "global_frame": 2176,
+              "local_frame": 88,
+              "blocked": 2,
+              "objects": [
+                "narrator / head knitted beanie folded brim"
+              ]
+            },
+            {
+              "global_frame": 2177,
+              "local_frame": 89,
+              "blocked": 2,
+              "objects": [
+                "narrator / head knitted beanie folded brim"
+              ]
+            },
+            {
+              "global_frame": 2178,
+              "local_frame": 90,
+              "blocked": 2,
+              "objects": [
+                "narrator / head knitted beanie folded brim"
+              ]
+            },
+            {
+              "global_frame": 2179,
+              "local_frame": 91,
+              "blocked": 2,
+              "objects": [
+                "narrator / head knitted beanie folded brim"
+              ]
+            },
+            {
+              "global_frame": 2180,
+              "local_frame": 92,
+              "blocked": 1,
+              "objects": [
+                "narrator / head knitted beanie folded brim"
+              ]
+            },
+            {
+              "global_frame": 2181,
+              "local_frame": 93,
+              "blocked": 1,
+              "objects": [
+                "narrator / head knitted beanie folded brim"
+              ]
+            },
+            {
+              "global_frame": 2182,
+              "local_frame": 94,
+              "blocked": 1,
+              "objects": [
+                "narrator / head knitted beanie folded brim"
+              ]
+            },
+            {
+              "global_frame": 2183,
+              "local_frame": 95,
+              "blocked": 1,
+              "objects": [
+                "narrator / head knitted beanie folded brim"
+              ]
+            },
+            {
+              "global_frame": 2184,
+              "local_frame": 96,
+              "blocked": 1,
+              "objects": [
+                "narrator / head knitted beanie folded brim"
+              ]
+            },
+            {
+              "global_frame": 2185,
+              "local_frame": 97,
+              "blocked": 2,
+              "objects": [
+                "narrator / head knitted beanie folded brim"
+              ]
+            },
+            {
+              "global_frame": 2186,
+              "local_frame": 98,
+              "blocked": 2,
+              "objects": [
+                "narrator / head knitted beanie folded brim"
+              ]
+            },
+            {
+              "global_frame": 2187,
+              "local_frame": 99,
+              "blocked": 2,
+              "objects": [
+                "narrator / head knitted beanie folded brim"
+              ]
+            },
+            {
+              "global_frame": 2188,
+              "local_frame": 100,
+              "blocked": 2,
+              "objects": [
+                "narrator / head knitted beanie folded brim"
+              ]
+            },
+            {
+              "global_frame": 2189,
+              "local_frame": 101,
+              "blocked": 2,
+              "objects": [
+                "narrator / head knitted beanie folded brim"
+              ]
+            },
+            {
+              "global_frame": 2190,
+              "local_frame": 102,
+              "blocked": 2,
+              "objects": [
+                "narrator / head knitted beanie folded brim"
+              ]
+            },
+            {
+              "global_frame": 2191,
+              "local_frame": 103,
+              "blocked": 2,
+              "objects": [
+                "narrator / head knitted beanie folded brim"
+              ]
+            },
+            {
+              "global_frame": 2192,
+              "local_frame": 104,
+              "blocked": 2,
+              "objects": [
+                "narrator / head knitted beanie folded brim"
+              ]
+            },
+            {
+              "global_frame": 2193,
+              "local_frame": 105,
+              "blocked": 2,
+              "objects": [
+                "narrator / head knitted beanie folded brim"
+              ]
+            },
+            {
+              "global_frame": 2194,
+              "local_frame": 106,
+              "blocked": 2,
+              "objects": [
+                "narrator / head knitted beanie folded brim"
+              ]
+            },
+            {
+              "global_frame": 2195,
+              "local_frame": 107,
+              "blocked": 2,
+              "objects": [
+                "narrator / head knitted beanie folded brim"
+              ]
+            },
+            {
+              "global_frame": 2196,
+              "local_frame": 108,
+              "blocked": 2,
+              "objects": [
+                "narrator / head knitted beanie folded brim"
+              ]
+            },
+            {
+              "global_frame": 2197,
+              "local_frame": 109,
+              "blocked": 2,
+              "objects": [
+                "narrator / head knitted beanie folded brim"
+              ]
+            },
+            {
+              "global_frame": 2198,
+              "local_frame": 110,
+              "blocked": 2,
+              "objects": [
+                "narrator / head knitted beanie folded brim"
+              ]
+            },
+            {
+              "global_frame": 2199,
+              "local_frame": 111,
+              "blocked": 2,
+              "objects": [
+                "narrator / head knitted beanie folded brim"
+              ]
+            },
+            {
+              "global_frame": 2200,
+              "local_frame": 112,
+              "blocked": 2,
+              "objects": [
+                "narrator / head knitted beanie folded brim"
+              ]
+            }
+          ]
+        },
+        "face_projection": [
+          0.42971014976501465,
+          0.5569936037063599,
+          0.6021497845649719,
+          0.6513829231262207,
+          1.3755226135253906
+        ],
+        "pencil_projection": [
+          -0.018940772861242294,
+          0.1369519978761673,
+          0.687971293926239,
+          0.7762585282325745,
+          0.7468268871307373
+        ],
+        "standing_seat_intersections": 0,
+        "seat_overlap_detail": [],
+        "speaker_visibility": {
+          "samples": 25,
+          "blocked": 0,
+          "bounds": [
+            0.42971014976501465,
+            0.5569936037063599,
+            0.6021497845649719,
+            0.6513829231262207,
+            1.3755226135253906
+          ],
+          "safe": true,
+          "visible_fraction": 1.0,
+          "blockers": []
+        },
+        "speaker_front_dot": 0.5302984565496445,
+        "foreground_intrusion": {
+          "blocked": 0,
+          "objects": []
+        },
+        "speaker_body_visibility": {
+          "samples": 16,
+          "blocked": 0,
+          "bounds": [
+            0.049902040511369705,
+            0.7504639625549316,
+            0.21346482634544373,
+            0.7402327656745911,
+            0.6779946088790894
+          ],
+          "safe": true,
+          "visible_fraction": 1.0,
+          "blockers": []
+        },
+        "pencil_visibility": {
+          "samples": 7,
+          "blocked": 0,
+          "bounds": [
+            -0.018940772861242294,
+            0.1369519978761673,
+            0.687971293926239,
+            0.7762585282325745,
+            0.7468268871307373
+          ],
+          "safe": false,
+          "visible_fraction": 1.0,
+          "blockers": []
+        },
+        "pencil_external_visibility": {
+          "samples": 7,
+          "blocked": 0,
+          "bounds": [
+            -0.018940772861242294,
+            0.1369519978761673,
+            0.687971293926239,
+            0.7762585282325745,
+            0.7468268871307373
+          ],
+          "safe": false,
+          "visible_fraction": 1.0,
+          "blockers": []
+        }
+      }
+    },
+    {
+      "frame": 2198,
+      "shot": "sh33",
+      "actor_qc": {
+        "narrator": {
+          "bounds": [
+            0.046647604554891586,
+            0.7519930005073547,
+            0.21212416887283325,
+            0.7338783740997314,
+            0.670160710811615
+          ],
+          "safe": true,
+          "vertical_coverage": 0.5217542052268982,
+          "face_all": {
+            "samples": 10,
+            "blocked": 0,
+            "bounds": [
+              0.4295327067375183,
+              0.5567716360092163,
+              0.6022858023643494,
+              0.6512786149978638,
+              1.3760857582092285
+            ],
+            "safe": true,
+            "visible_fraction": 1.0,
+            "blockers": []
+          },
+          "face_external": {
+            "samples": 10,
+            "blocked": 0,
+            "bounds": [
+              0.4295327067375183,
+              0.5567716360092163,
+              0.6022858023643494,
+              0.6512786149978638,
+              1.3760857582092285
+            ],
+            "safe": true,
+            "visible_fraction": 1.0,
+            "blockers": []
+          },
+          "own_ray_difference": 0
+        }
+      },
+      "geometry": {
+        "pencil_shake_phase": -0.5315925757064371,
+        "socket_alignment": {
+          "chart": {
+            "socket_to_target_error": 0.0
+          },
+          "pencil": {
+            "exposed_shaft_grip_anchor_error": 0.0
+          }
+        },
+        "chart_contact": {
+          "sampled_min_arm_surface_gap": 0.008302726782858372,
+          "arm_prop_overlap_pairs": 38,
+          "scope": "whole rigid arm surface; not signed distal-hand penetration"
+        },
+        "pencil_contact": {
+          "sampled_min_arm_surface_gap": 0.011486942879855633,
+          "arm_prop_overlap_pairs": 14,
+          "scope": "whole rigid arm surface; not signed distal-hand penetration"
+        },
+        "reverse_camera": {
+          "location": [
+            5.5,
+            2.5,
+            0.5499999523162842
+          ],
+          "target": [
+            5.050000190734863,
+            3.6500000953674316,
+            1.159999966621399
+          ],
+          "lens": 13.299861965906153,
+          "mark_yaw_deg": 20.0,
+          "camera_shift": [
+            -0.3000001907348633,
+            0.0,
+            -0.3500000238418579
+          ],
+          "candidate_score": [
+            false,
+            1,
+            0.19109287977218625,
+            0,
+            0,
+            0,
+            true,
+            0,
+            0
+          ],
+          "world_x_side": "positive",
+          "inherited_face_failures": [
+            {
+              "global_frame": 2088,
+              "local_frame": 0,
+              "blocked": 1,
+              "objects": [
+                "narrator / head knitted beanie folded brim"
+              ]
+            },
+            {
+              "global_frame": 2089,
+              "local_frame": 1,
+              "blocked": 1,
+              "objects": [
+                "narrator / head knitted beanie folded brim"
+              ]
+            },
+            {
+              "global_frame": 2090,
+              "local_frame": 2,
+              "blocked": 2,
+              "objects": [
+                "narrator / head knitted beanie folded brim"
+              ]
+            },
+            {
+              "global_frame": 2091,
+              "local_frame": 3,
+              "blocked": 2,
+              "objects": [
+                "narrator / head knitted beanie folded brim"
+              ]
+            },
+            {
+              "global_frame": 2092,
+              "local_frame": 4,
+              "blocked": 2,
+              "objects": [
+                "narrator / head knitted beanie folded brim"
+              ]
+            },
+            {
+              "global_frame": 2093,
+              "local_frame": 5,
+              "blocked": 2,
+              "objects": [
+                "narrator / head knitted beanie folded brim"
+              ]
+            },
+            {
+              "global_frame": 2094,
+              "local_frame": 6,
+              "blocked": 2,
+              "objects": [
+                "narrator / head knitted beanie folded brim"
+              ]
+            },
+            {
+              "global_frame": 2095,
+              "local_frame": 7,
+              "blocked": 2,
+              "objects": [
+                "narrator / head knitted beanie folded brim"
+              ]
+            },
+            {
+              "global_frame": 2096,
+              "local_frame": 8,
+              "blocked": 2,
+              "objects": [
+                "narrator / head knitted beanie folded brim"
+              ]
+            },
+            {
+              "global_frame": 2097,
+              "local_frame": 9,
+              "blocked": 2,
+              "objects": [
+                "narrator / head knitted beanie folded brim"
+              ]
+            },
+            {
+              "global_frame": 2098,
+              "local_frame": 10,
+              "blocked": 1,
+              "objects": [
+                "narrator / head knitted beanie folded brim"
+              ]
+            },
+            {
+              "global_frame": 2099,
+              "local_frame": 11,
+              "blocked": 1,
+              "objects": [
+                "narrator / head knitted beanie folded brim"
+              ]
+            },
+            {
+              "global_frame": 2100,
+              "local_frame": 12,
+              "blocked": 1,
+              "objects": [
+                "narrator / head knitted beanie folded brim"
+              ]
+            },
+            {
+              "global_frame": 2101,
+              "local_frame": 13,
+              "blocked": 1,
+              "objects": [
+                "narrator / head knitted beanie folded brim"
+              ]
+            },
+            {
+              "global_frame": 2102,
+              "local_frame": 14,
+              "blocked": 1,
+              "objects": [
+                "narrator / head knitted beanie folded brim"
+              ]
+            },
+            {
+              "global_frame": 2103,
+              "local_frame": 15,
+              "blocked": 1,
+              "objects": [
+                "narrator / head knitted beanie folded brim"
+              ]
+            },
+            {
+              "global_frame": 2104,
+              "local_frame": 16,
+              "blocked": 1,
+              "objects": [
+                "narrator / head knitted beanie folded brim"
+              ]
+            },
+            {
+              "global_frame": 2105,
+              "local_frame": 17,
+              "blocked": 1,
+              "objects": [
+                "narrator / head knitted beanie folded brim"
+              ]
+            },
+            {
+              "global_frame": 2106,
+              "local_frame": 18,
+              "blocked": 1,
+              "objects": [
+                "narrator / head knitted beanie folded brim"
+              ]
+            },
+            {
+              "global_frame": 2107,
+              "local_frame": 19,
+              "blocked": 1,
+              "objects": [
+                "narrator / head knitted beanie folded brim"
+              ]
+            },
+            {
+              "global_frame": 2108,
+              "local_frame": 20,
+              "blocked": 1,
+              "objects": [
+                "narrator / head knitted beanie folded brim"
+              ]
+            },
+            {
+              "global_frame": 2109,
+              "local_frame": 21,
+              "blocked": 1,
+              "objects": [
+                "narrator / head knitted beanie folded brim"
+              ]
+            },
+            {
+              "global_frame": 2110,
+              "local_frame": 22,
+              "blocked": 1,
+              "objects": [
+                "narrator / head knitted beanie folded brim"
+              ]
+            },
+            {
+              "global_frame": 2111,
+              "local_frame": 23,
+              "blocked": 1,
+              "objects": [
+                "narrator / head knitted beanie folded brim"
+              ]
+            },
+            {
+              "global_frame": 2112,
+              "local_frame": 24,
+              "blocked": 1,
+              "objects": [
+                "narrator / head knitted beanie folded brim"
+              ]
+            },
+            {
+              "global_frame": 2113,
+              "local_frame": 25,
+              "blocked": 1,
+              "objects": [
+                "narrator / head knitted beanie folded brim"
+              ]
+            },
+            {
+              "global_frame": 2114,
+              "local_frame": 26,
+              "blocked": 1,
+              "objects": [
+                "narrator / head knitted beanie folded brim"
+              ]
+            },
+            {
+              "global_frame": 2115,
+              "local_frame": 27,
+              "blocked": 1,
+              "objects": [
+                "narrator / head knitted beanie folded brim"
+              ]
+            },
+            {
+              "global_frame": 2116,
+              "local_frame": 28,
+              "blocked": 1,
+              "objects": [
+                "narrator / head knitted beanie folded brim"
+              ]
+            },
+            {
+              "global_frame": 2117,
+              "local_frame": 29,
+              "blocked": 2,
+              "objects": [
+                "narrator / head knitted beanie folded brim"
+              ]
+            },
+            {
+              "global_frame": 2118,
+              "local_frame": 30,
+              "blocked": 2,
+              "objects": [
+                "narrator / head knitted beanie folded brim"
+              ]
+            },
+            {
+              "global_frame": 2119,
+              "local_frame": 31,
+              "blocked": 2,
+              "objects": [
+                "narrator / head knitted beanie folded brim"
+              ]
+            },
+            {
+              "global_frame": 2120,
+              "local_frame": 32,
+              "blocked": 2,
+              "objects": [
+                "narrator / head knitted beanie folded brim"
+              ]
+            },
+            {
+              "global_frame": 2121,
+              "local_frame": 33,
+              "blocked": 2,
+              "objects": [
+                "narrator / head knitted beanie folded brim"
+              ]
+            },
+            {
+              "global_frame": 2122,
+              "local_frame": 34,
+              "blocked": 2,
+              "objects": [
+                "narrator / head knitted beanie folded brim"
+              ]
+            },
+            {
+              "global_frame": 2123,
+              "local_frame": 35,
+              "blocked": 2,
+              "objects": [
+                "narrator / head knitted beanie folded brim"
+              ]
+            },
+            {
+              "global_frame": 2124,
+              "local_frame": 36,
+              "blocked": 2,
+              "objects": [
+                "narrator / head knitted beanie folded brim"
+              ]
+            },
+            {
+              "global_frame": 2125,
+              "local_frame": 37,
+              "blocked": 3,
+              "objects": [
+                "narrator / head knitted beanie folded brim"
+              ]
+            },
+            {
+              "global_frame": 2126,
+              "local_frame": 38,
+              "blocked": 3,
+              "objects": [
+                "narrator / head knitted beanie folded brim"
+              ]
+            },
+            {
+              "global_frame": 2127,
+              "local_frame": 39,
+              "blocked": 3,
+              "objects": [
+                "narrator / head knitted beanie folded brim"
+              ]
+            },
+            {
+              "global_frame": 2128,
+              "local_frame": 40,
+              "blocked": 3,
+              "objects": [
+                "narrator / head knitted beanie folded brim"
+              ]
+            },
+            {
+              "global_frame": 2129,
+              "local_frame": 41,
+              "blocked": 3,
+              "objects": [
+                "narrator / head knitted beanie folded brim"
+              ]
+            },
+            {
+              "global_frame": 2130,
+              "local_frame": 42,
+              "blocked": 3,
+              "objects": [
+                "narrator / head knitted beanie folded brim"
+              ]
+            },
+            {
+              "global_frame": 2131,
+              "local_frame": 43,
+              "blocked": 3,
+              "objects": [
+                "narrator / head knitted beanie folded brim"
+              ]
+            },
+            {
+              "global_frame": 2132,
+              "local_frame": 44,
+              "blocked": 3,
+              "objects": [
+                "narrator / head knitted beanie folded brim"
+              ]
+            },
+            {
+              "global_frame": 2133,
+              "local_frame": 45,
+              "blocked": 3,
+              "objects": [
+                "narrator / head knitted beanie folded brim"
+              ]
+            },
+            {
+              "global_frame": 2134,
+              "local_frame": 46,
+              "blocked": 2,
+              "objects": [
+                "narrator / head knitted beanie folded brim"
+              ]
+            },
+            {
+              "global_frame": 2135,
+              "local_frame": 47,
+              "blocked": 2,
+              "objects": [
+                "narrator / head knitted beanie folded brim"
+              ]
+            },
+            {
+              "global_frame": 2136,
+              "local_frame": 48,
+              "blocked": 2,
+              "objects": [
+                "narrator / head knitted beanie folded brim"
+              ]
+            },
+            {
+              "global_frame": 2137,
+              "local_frame": 49,
+              "blocked": 2,
+              "objects": [
+                "narrator / head knitted beanie folded brim"
+              ]
+            },
+            {
+              "global_frame": 2138,
+              "local_frame": 50,
+              "blocked": 3,
+              "objects": [
+                "narrator / head knitted beanie folded brim"
+              ]
+            },
+            {
+              "global_frame": 2139,
+              "local_frame": 51,
+              "blocked": 2,
+              "objects": [
+                "narrator / head knitted beanie folded brim"
+              ]
+            },
+            {
+              "global_frame": 2140,
+              "local_frame": 52,
+              "blocked": 2,
+              "objects": [
+                "narrator / head knitted beanie folded brim"
+              ]
+            },
+            {
+              "global_frame": 2141,
+              "local_frame": 53,
+              "blocked": 2,
+              "objects": [
+                "narrator / head knitted beanie folded brim"
+              ]
+            },
+            {
+              "global_frame": 2142,
+              "local_frame": 54,
+              "blocked": 2,
+              "objects": [
+                "narrator / head knitted beanie folded brim"
+              ]
+            },
+            {
+              "global_frame": 2143,
+              "local_frame": 55,
+              "blocked": 2,
+              "objects": [
+                "narrator / head knitted beanie folded brim"
+              ]
+            },
+            {
+              "global_frame": 2144,
+              "local_frame": 56,
+              "blocked": 2,
+              "objects": [
+                "narrator / head knitted beanie folded brim"
+              ]
+            },
+            {
+              "global_frame": 2145,
+              "local_frame": 57,
+              "blocked": 2,
+              "objects": [
+                "narrator / head knitted beanie folded brim"
+              ]
+            },
+            {
+              "global_frame": 2146,
+              "local_frame": 58,
+              "blocked": 2,
+              "objects": [
+                "narrator / head knitted beanie folded brim"
+              ]
+            },
+            {
+              "global_frame": 2147,
+              "local_frame": 59,
+              "blocked": 2,
+              "objects": [
+                "narrator / head knitted beanie folded brim"
+              ]
+            },
+            {
+              "global_frame": 2148,
+              "local_frame": 60,
+              "blocked": 2,
+              "objects": [
+                "narrator / head knitted beanie folded brim"
+              ]
+            },
+            {
+              "global_frame": 2149,
+              "local_frame": 61,
+              "blocked": 2,
+              "objects": [
+                "narrator / head knitted beanie folded brim"
+              ]
+            },
+            {
+              "global_frame": 2150,
+              "local_frame": 62,
+              "blocked": 2,
+              "objects": [
+                "narrator / head knitted beanie folded brim"
+              ]
+            },
+            {
+              "global_frame": 2151,
+              "local_frame": 63,
+              "blocked": 2,
+              "objects": [
+                "narrator / head knitted beanie folded brim"
+              ]
+            },
+            {
+              "global_frame": 2152,
+              "local_frame": 64,
+              "blocked": 2,
+              "objects": [
+                "narrator / head knitted beanie folded brim"
+              ]
+            },
+            {
+              "global_frame": 2153,
+              "local_frame": 65,
+              "blocked": 2,
+              "objects": [
+                "narrator / head knitted beanie folded brim"
+              ]
+            },
+            {
+              "global_frame": 2154,
+              "local_frame": 66,
+              "blocked": 2,
+              "objects": [
+                "narrator / head knitted beanie folded brim"
+              ]
+            },
+            {
+              "global_frame": 2155,
+              "local_frame": 67,
+              "blocked": 2,
+              "objects": [
+                "narrator / head knitted beanie folded brim"
+              ]
+            },
+            {
+              "global_frame": 2156,
+              "local_frame": 68,
+              "blocked": 1,
+              "objects": [
+                "narrator / head knitted beanie folded brim"
+              ]
+            },
+            {
+              "global_frame": 2157,
+              "local_frame": 69,
+              "blocked": 1,
+              "objects": [
+                "narrator / head knitted beanie folded brim"
+              ]
+            },
+            {
+              "global_frame": 2158,
+              "local_frame": 70,
+              "blocked": 1,
+              "objects": [
+                "narrator / head knitted beanie folded brim"
+              ]
+            },
+            {
+              "global_frame": 2159,
+              "local_frame": 71,
+              "blocked": 1,
+              "objects": [
+                "narrator / head knitted beanie folded brim"
+              ]
+            },
+            {
+              "global_frame": 2160,
+              "local_frame": 72,
+              "blocked": 1,
+              "objects": [
+                "narrator / head knitted beanie folded brim"
+              ]
+            },
+            {
+              "global_frame": 2161,
+              "local_frame": 73,
+              "blocked": 1,
+              "objects": [
+                "narrator / head knitted beanie folded brim"
+              ]
+            },
+            {
+              "global_frame": 2162,
+              "local_frame": 74,
+              "blocked": 2,
+              "objects": [
+                "narrator / head knitted beanie folded brim"
+              ]
+            },
+            {
+              "global_frame": 2163,
+              "local_frame": 75,
+              "blocked": 2,
+              "objects": [
+                "narrator / head knitted beanie folded brim"
+              ]
+            },
+            {
+              "global_frame": 2164,
+              "local_frame": 76,
+              "blocked": 2,
+              "objects": [
+                "narrator / head knitted beanie folded brim"
+              ]
+            },
+            {
+              "global_frame": 2165,
+              "local_frame": 77,
+              "blocked": 2,
+              "objects": [
+                "narrator / head knitted beanie folded brim"
+              ]
+            },
+            {
+              "global_frame": 2166,
+              "local_frame": 78,
+              "blocked": 2,
+              "objects": [
+                "narrator / head knitted beanie folded brim"
+              ]
+            },
+            {
+              "global_frame": 2167,
+              "local_frame": 79,
+              "blocked": 2,
+              "objects": [
+                "narrator / head knitted beanie folded brim"
+              ]
+            },
+            {
+              "global_frame": 2168,
+              "local_frame": 80,
+              "blocked": 2,
+              "objects": [
+                "narrator / head knitted beanie folded brim"
+              ]
+            },
+            {
+              "global_frame": 2169,
+              "local_frame": 81,
+              "blocked": 2,
+              "objects": [
+                "narrator / head knitted beanie folded brim"
+              ]
+            },
+            {
+              "global_frame": 2170,
+              "local_frame": 82,
+              "blocked": 2,
+              "objects": [
+                "narrator / head knitted beanie folded brim"
+              ]
+            },
+            {
+              "global_frame": 2171,
+              "local_frame": 83,
+              "blocked": 2,
+              "objects": [
+                "narrator / head knitted beanie folded brim"
+              ]
+            },
+            {
+              "global_frame": 2172,
+              "local_frame": 84,
+              "blocked": 2,
+              "objects": [
+                "narrator / head knitted beanie folded brim"
+              ]
+            },
+            {
+              "global_frame": 2173,
+              "local_frame": 85,
+              "blocked": 2,
+              "objects": [
+                "narrator / head knitted beanie folded brim"
+              ]
+            },
+            {
+              "global_frame": 2174,
+              "local_frame": 86,
+              "blocked": 2,
+              "objects": [
+                "narrator / head knitted beanie folded brim"
+              ]
+            },
+            {
+              "global_frame": 2175,
+              "local_frame": 87,
+              "blocked": 2,
+              "objects": [
+                "narrator / head knitted beanie folded brim"
+              ]
+            },
+            {
+              "global_frame": 2176,
+              "local_frame": 88,
+              "blocked": 2,
+              "objects": [
+                "narrator / head knitted beanie folded brim"
+              ]
+            },
+            {
+              "global_frame": 2177,
+              "local_frame": 89,
+              "blocked": 2,
+              "objects": [
+                "narrator / head knitted beanie folded brim"
+              ]
+            },
+            {
+              "global_frame": 2178,
+              "local_frame": 90,
+              "blocked": 2,
+              "objects": [
+                "narrator / head knitted beanie folded brim"
+              ]
+            },
+            {
+              "global_frame": 2179,
+              "local_frame": 91,
+              "blocked": 2,
+              "objects": [
+                "narrator / head knitted beanie folded brim"
+              ]
+            },
+            {
+              "global_frame": 2180,
+              "local_frame": 92,
+              "blocked": 1,
+              "objects": [
+                "narrator / head knitted beanie folded brim"
+              ]
+            },
+            {
+              "global_frame": 2181,
+              "local_frame": 93,
+              "blocked": 1,
+              "objects": [
+                "narrator / head knitted beanie folded brim"
+              ]
+            },
+            {
+              "global_frame": 2182,
+              "local_frame": 94,
+              "blocked": 1,
+              "objects": [
+                "narrator / head knitted beanie folded brim"
+              ]
+            },
+            {
+              "global_frame": 2183,
+              "local_frame": 95,
+              "blocked": 1,
+              "objects": [
+                "narrator / head knitted beanie folded brim"
+              ]
+            },
+            {
+              "global_frame": 2184,
+              "local_frame": 96,
+              "blocked": 1,
+              "objects": [
+                "narrator / head knitted beanie folded brim"
+              ]
+            },
+            {
+              "global_frame": 2185,
+              "local_frame": 97,
+              "blocked": 2,
+              "objects": [
+                "narrator / head knitted beanie folded brim"
+              ]
+            },
+            {
+              "global_frame": 2186,
+              "local_frame": 98,
+              "blocked": 2,
+              "objects": [
+                "narrator / head knitted beanie folded brim"
+              ]
+            },
+            {
+              "global_frame": 2187,
+              "local_frame": 99,
+              "blocked": 2,
+              "objects": [
+                "narrator / head knitted beanie folded brim"
+              ]
+            },
+            {
+              "global_frame": 2188,
+              "local_frame": 100,
+              "blocked": 2,
+              "objects": [
+                "narrator / head knitted beanie folded brim"
+              ]
+            },
+            {
+              "global_frame": 2189,
+              "local_frame": 101,
+              "blocked": 2,
+              "objects": [
+                "narrator / head knitted beanie folded brim"
+              ]
+            },
+            {
+              "global_frame": 2190,
+              "local_frame": 102,
+              "blocked": 2,
+              "objects": [
+                "narrator / head knitted beanie folded brim"
+              ]
+            },
+            {
+              "global_frame": 2191,
+              "local_frame": 103,
+              "blocked": 2,
+              "objects": [
+                "narrator / head knitted beanie folded brim"
+              ]
+            },
+            {
+              "global_frame": 2192,
+              "local_frame": 104,
+              "blocked": 2,
+              "objects": [
+                "narrator / head knitted beanie folded brim"
+              ]
+            },
+            {
+              "global_frame": 2193,
+              "local_frame": 105,
+              "blocked": 2,
+              "objects": [
+                "narrator / head knitted beanie folded brim"
+              ]
+            },
+            {
+              "global_frame": 2194,
+              "local_frame": 106,
+              "blocked": 2,
+              "objects": [
+                "narrator / head knitted beanie folded brim"
+              ]
+            },
+            {
+              "global_frame": 2195,
+              "local_frame": 107,
+              "blocked": 2,
+              "objects": [
+                "narrator / head knitted beanie folded brim"
+              ]
+            },
+            {
+              "global_frame": 2196,
+              "local_frame": 108,
+              "blocked": 2,
+              "objects": [
+                "narrator / head knitted beanie folded brim"
+              ]
+            },
+            {
+              "global_frame": 2197,
+              "local_frame": 109,
+              "blocked": 2,
+              "objects": [
+                "narrator / head knitted beanie folded brim"
+              ]
+            },
+            {
+              "global_frame": 2198,
+              "local_frame": 110,
+              "blocked": 2,
+              "objects": [
+                "narrator / head knitted beanie folded brim"
+              ]
+            },
+            {
+              "global_frame": 2199,
+              "local_frame": 111,
+              "blocked": 2,
+              "objects": [
+                "narrator / head knitted beanie folded brim"
+              ]
+            },
+            {
+              "global_frame": 2200,
+              "local_frame": 112,
+              "blocked": 2,
+              "objects": [
+                "narrator / head knitted beanie folded brim"
+              ]
+            }
+          ]
+        },
+        "face_projection": [
+          0.4295327067375183,
+          0.5567716360092163,
+          0.6022858023643494,
+          0.6512786149978638,
+          1.3760857582092285
+        ],
+        "pencil_projection": [
+          -0.03551420569419861,
+          0.12699398398399353,
+          0.6779127717018127,
+          0.7625771164894104,
+          0.7450270056724548
+        ],
+        "standing_seat_intersections": 0,
+        "seat_overlap_detail": [],
+        "speaker_visibility": {
+          "samples": 26,
+          "blocked": 0,
+          "bounds": [
+            0.4295327067375183,
+            0.5567716360092163,
+            0.6022858023643494,
+            0.6512786149978638,
+            1.3760857582092285
+          ],
+          "safe": true,
+          "visible_fraction": 1.0,
+          "blockers": []
+        },
+        "speaker_front_dot": 0.5302154794335365,
+        "foreground_intrusion": {
+          "blocked": 0,
+          "objects": []
+        },
+        "speaker_body_visibility": {
+          "samples": 16,
+          "blocked": 0,
+          "bounds": [
+            0.046647604554891586,
+            0.7519930005073547,
+            0.21212416887283325,
+            0.7338783740997314,
+            0.670160710811615
+          ],
+          "safe": true,
+          "visible_fraction": 1.0,
+          "blockers": []
+        },
+        "pencil_visibility": {
+          "samples": 7,
+          "blocked": 0,
+          "bounds": [
+            -0.03551420569419861,
+            0.12699398398399353,
+            0.6779127717018127,
+            0.7625771164894104,
+            0.7450270056724548
+          ],
+          "safe": false,
+          "visible_fraction": 1.0,
+          "blockers": []
+        },
+        "pencil_external_visibility": {
+          "samples": 7,
+          "blocked": 0,
+          "bounds": [
+            -0.03551420569419861,
+            0.12699398398399353,
+            0.6779127717018127,
+            0.7625771164894104,
+            0.7450270056724548
+          ],
+          "safe": false,
+          "visible_fraction": 1.0,
+          "blockers": []
+        }
+      }
+    },
+    {
+      "frame": 2199,
+      "shot": "sh33",
+      "actor_qc": {
+        "narrator": {
+          "bounds": [
+            0.04142492264509201,
+            0.7531940937042236,
+            0.21107283234596252,
+            0.7272021770477295,
+            0.6634350419044495
+          ],
+          "safe": true,
+          "vertical_coverage": 0.516129344701767,
+          "face_all": {
+            "samples": 10,
+            "blocked": 0,
+            "bounds": [
+              0.4293866753578186,
+              0.5565672516822815,
+              0.602462887763977,
+              0.6511550545692444,
+              1.3768314123153687
+            ],
+            "safe": true,
+            "visible_fraction": 1.0,
+            "blockers": []
+          },
+          "face_external": {
+            "samples": 10,
+            "blocked": 0,
+            "bounds": [
+              0.4293866753578186,
+              0.5565672516822815,
+              0.602462887763977,
+              0.6511550545692444,
+              1.3768314123153687
+            ],
+            "safe": true,
+            "visible_fraction": 1.0,
+            "blockers": []
+          },
+          "own_ray_difference": 0
+        }
+      },
+      "geometry": {
+        "pencil_shake_phase": -0.9843792971250844,
+        "socket_alignment": {
+          "chart": {
+            "socket_to_target_error": 0.0
+          },
+          "pencil": {
+            "exposed_shaft_grip_anchor_error": 0.0
+          }
+        },
+        "chart_contact": {
+          "sampled_min_arm_surface_gap": 0.008299974724650383,
+          "arm_prop_overlap_pairs": 38,
+          "scope": "whole rigid arm surface; not signed distal-hand penetration"
+        },
+        "pencil_contact": {
+          "sampled_min_arm_surface_gap": 0.011360530741512775,
+          "arm_prop_overlap_pairs": 14,
+          "scope": "whole rigid arm surface; not signed distal-hand penetration"
+        },
+        "reverse_camera": {
+          "location": [
+            5.5,
+            2.5,
+            0.5499999523162842
+          ],
+          "target": [
+            5.050000190734863,
+            3.6500000953674316,
+            1.159999966621399
+          ],
+          "lens": 13.299861965906153,
+          "mark_yaw_deg": 20.0,
+          "camera_shift": [
+            -0.3000001907348633,
+            0.0,
+            -0.3500000238418579
+          ],
+          "candidate_score": [
+            false,
+            1,
+            0.19109287977218625,
+            0,
+            0,
+            0,
+            true,
+            0,
+            0
+          ],
+          "world_x_side": "positive",
+          "inherited_face_failures": [
+            {
+              "global_frame": 2088,
+              "local_frame": 0,
+              "blocked": 1,
+              "objects": [
+                "narrator / head knitted beanie folded brim"
+              ]
+            },
+            {
+              "global_frame": 2089,
+              "local_frame": 1,
+              "blocked": 1,
+              "objects": [
+                "narrator / head knitted beanie folded brim"
+              ]
+            },
+            {
+              "global_frame": 2090,
+              "local_frame": 2,
+              "blocked": 2,
+              "objects": [
+                "narrator / head knitted beanie folded brim"
+              ]
+            },
+            {
+              "global_frame": 2091,
+              "local_frame": 3,
+              "blocked": 2,
+              "objects": [
+                "narrator / head knitted beanie folded brim"
+              ]
+            },
+            {
+              "global_frame": 2092,
+              "local_frame": 4,
+              "blocked": 2,
+              "objects": [
+                "narrator / head knitted beanie folded brim"
+              ]
+            },
+            {
+              "global_frame": 2093,
+              "local_frame": 5,
+              "blocked": 2,
+              "objects": [
+                "narrator / head knitted beanie folded brim"
+              ]
+            },
+            {
+              "global_frame": 2094,
+              "local_frame": 6,
+              "blocked": 2,
+              "objects": [
+                "narrator / head knitted beanie folded brim"
+              ]
+            },
+            {
+              "global_frame": 2095,
+              "local_frame": 7,
+              "blocked": 2,
+              "objects": [
+                "narrator / head knitted beanie folded brim"
+              ]
+            },
+            {
+              "global_frame": 2096,
+              "local_frame": 8,
+              "blocked": 2,
+              "objects": [
+                "narrator / head knitted beanie folded brim"
+              ]
+            },
+            {
+              "global_frame": 2097,
+              "local_frame": 9,
+              "blocked": 2,
+              "objects": [
+                "narrator / head knitted beanie folded brim"
+              ]
+            },
+            {
+              "global_frame": 2098,
+              "local_frame": 10,
+              "blocked": 1,
+              "objects": [
+                "narrator / head knitted beanie folded brim"
+              ]
+            },
+            {
+              "global_frame": 2099,
+              "local_frame": 11,
+              "blocked": 1,
+              "objects": [
+                "narrator / head knitted beanie folded brim"
+              ]
+            },
+            {
+              "global_frame": 2100,
+              "local_frame": 12,
+              "blocked": 1,
+              "objects": [
+                "narrator / head knitted beanie folded brim"
+              ]
+            },
+            {
+              "global_frame": 2101,
+              "local_frame": 13,
+              "blocked": 1,
+              "objects": [
+                "narrator / head knitted beanie folded brim"
+              ]
+            },
+            {
+              "global_frame": 2102,
+              "local_frame": 14,
+              "blocked": 1,
+              "objects": [
+                "narrator / head knitted beanie folded brim"
+              ]
+            },
+            {
+              "global_frame": 2103,
+              "local_frame": 15,
+              "blocked": 1,
+              "objects": [
+                "narrator / head knitted beanie folded brim"
+              ]
+            },
+            {
+              "global_frame": 2104,
+              "local_frame": 16,
+              "blocked": 1,
+              "objects": [
+                "narrator / head knitted beanie folded brim"
+              ]
+            },
+            {
+              "global_frame": 2105,
+              "local_frame": 17,
+              "blocked": 1,
+              "objects": [
+                "narrator / head knitted beanie folded brim"
+              ]
+            },
+            {
+              "global_frame": 2106,
+              "local_frame": 18,
+              "blocked": 1,
+              "objects": [
+                "narrator / head knitted beanie folded brim"
+              ]
+            },
+            {
+              "global_frame": 2107,
+              "local_frame": 19,
+              "blocked": 1,
+              "objects": [
+                "narrator / head knitted beanie folded brim"
+              ]
+            },
+            {
+              "global_frame": 2108,
+              "local_frame": 20,
+              "blocked": 1,
+              "objects": [
+                "narrator / head knitted beanie folded brim"
+              ]
+            },
+            {
+              "global_frame": 2109,
+              "local_frame": 21,
+              "blocked": 1,
+              "objects": [
+                "narrator / head knitted beanie folded brim"
+              ]
+            },
+            {
+              "global_frame": 2110,
+              "local_frame": 22,
+              "blocked": 1,
+              "objects": [
+                "narrator / head knitted beanie folded brim"
+              ]
+            },
+            {
+              "global_frame": 2111,
+              "local_frame": 23,
+              "blocked": 1,
+              "objects": [
+                "narrator / head knitted beanie folded brim"
+              ]
+            },
+            {
+              "global_frame": 2112,
+              "local_frame": 24,
+              "blocked": 1,
+              "objects": [
+                "narrator / head knitted beanie folded brim"
+              ]
+            },
+            {
+              "global_frame": 2113,
+              "local_frame": 25,
+              "blocked": 1,
+              "objects": [
+                "narrator / head knitted beanie folded brim"
+              ]
+            },
+            {
+              "global_frame": 2114,
+              "local_frame": 26,
+              "blocked": 1,
+              "objects": [
+                "narrator / head knitted beanie folded brim"
+              ]
+            },
+            {
+              "global_frame": 2115,
+              "local_frame": 27,
+              "blocked": 1,
+              "objects": [
+                "narrator / head knitted beanie folded brim"
+              ]
+            },
+            {
+              "global_frame": 2116,
+              "local_frame": 28,
+              "blocked": 1,
+              "objects": [
+                "narrator / head knitted beanie folded brim"
+              ]
+            },
+            {
+              "global_frame": 2117,
+              "local_frame": 29,
+              "blocked": 2,
+              "objects": [
+                "narrator / head knitted beanie folded brim"
+              ]
+            },
+            {
+              "global_frame": 2118,
+              "local_frame": 30,
+              "blocked": 2,
+              "objects": [
+                "narrator / head knitted beanie folded brim"
+              ]
+            },
+            {
+              "global_frame": 2119,
+              "local_frame": 31,
+              "blocked": 2,
+              "objects": [
+                "narrator / head knitted beanie folded brim"
+              ]
+            },
+            {
+              "global_frame": 2120,
+              "local_frame": 32,
+              "blocked": 2,
+              "objects": [
+                "narrator / head knitted beanie folded brim"
+              ]
+            },
+            {
+              "global_frame": 2121,
+              "local_frame": 33,
+              "blocked": 2,
+              "objects": [
+                "narrator / head knitted beanie folded brim"
+              ]
+            },
+            {
+              "global_frame": 2122,
+              "local_frame": 34,
+              "blocked": 2,
+              "objects": [
+                "narrator / head knitted beanie folded brim"
+              ]
+            },
+            {
+              "global_frame": 2123,
+              "local_frame": 35,
+              "blocked": 2,
+              "objects": [
+                "narrator / head knitted beanie folded brim"
+              ]
+            },
+            {
+              "global_frame": 2124,
+              "local_frame": 36,
+              "blocked": 2,
+              "objects": [
+                "narrator / head knitted beanie folded brim"
+              ]
+            },
+            {
+              "global_frame": 2125,
+              "local_frame": 37,
+              "blocked": 3,
+              "objects": [
+                "narrator / head knitted beanie folded brim"
+              ]
+            },
+            {
+              "global_frame": 2126,
+              "local_frame": 38,
+              "blocked": 3,
+              "objects": [
+                "narrator / head knitted beanie folded brim"
+              ]
+            },
+            {
+              "global_frame": 2127,
+              "local_frame": 39,
+              "blocked": 3,
+              "objects": [
+                "narrator / head knitted beanie folded brim"
+              ]
+            },
+            {
+              "global_frame": 2128,
+              "local_frame": 40,
+              "blocked": 3,
+              "objects": [
+                "narrator / head knitted beanie folded brim"
+              ]
+            },
+            {
+              "global_frame": 2129,
+              "local_frame": 41,
+              "blocked": 3,
+              "objects": [
+                "narrator / head knitted beanie folded brim"
+              ]
+            },
+            {
+              "global_frame": 2130,
+              "local_frame": 42,
+              "blocked": 3,
+              "objects": [
+                "narrator / head knitted beanie folded brim"
+              ]
+            },
+            {
+              "global_frame": 2131,
+              "local_frame": 43,
+              "blocked": 3,
+              "objects": [
+                "narrator / head knitted beanie folded brim"
+              ]
+            },
+            {
+              "global_frame": 2132,
+              "local_frame": 44,
+              "blocked": 3,
+              "objects": [
+                "narrator / head knitted beanie folded brim"
+              ]
+            },
+            {
+              "global_frame": 2133,
+              "local_frame": 45,
+              "blocked": 3,
+              "objects": [
+                "narrator / head knitted beanie folded brim"
+              ]
+            },
+            {
+              "global_frame": 2134,
+              "local_frame": 46,
+              "blocked": 2,
+              "objects": [
+                "narrator / head knitted beanie folded brim"
+              ]
+            },
+            {
+              "global_frame": 2135,
+              "local_frame": 47,
+              "blocked": 2,
+              "objects": [
+                "narrator / head knitted beanie folded brim"
+              ]
+            },
+            {
+              "global_frame": 2136,
+              "local_frame": 48,
+              "blocked": 2,
+              "objects": [
+                "narrator / head knitted beanie folded brim"
+              ]
+            },
+            {
+              "global_frame": 2137,
+              "local_frame": 49,
+              "blocked": 2,
+              "objects": [
+                "narrator / head knitted beanie folded brim"
+              ]
+            },
+            {
+              "global_frame": 2138,
+              "local_frame": 50,
+              "blocked": 3,
+              "objects": [
+                "narrator / head knitted beanie folded brim"
+              ]
+            },
+            {
+              "global_frame": 2139,
+              "local_frame": 51,
+              "blocked": 2,
+              "objects": [
+                "narrator / head knitted beanie folded brim"
+              ]
+            },
+            {
+              "global_frame": 2140,
+              "local_frame": 52,
+              "blocked": 2,
+              "objects": [
+                "narrator / head knitted beanie folded brim"
+              ]
+            },
+            {
+              "global_frame": 2141,
+              "local_frame": 53,
+              "blocked": 2,
+              "objects": [
+                "narrator / head knitted beanie folded brim"
+              ]
+            },
+            {
+              "global_frame": 2142,
+              "local_frame": 54,
+              "blocked": 2,
+              "objects": [
+                "narrator / head knitted beanie folded brim"
+              ]
+            },
+            {
+              "global_frame": 2143,
+              "local_frame": 55,
+              "blocked": 2,
+              "objects": [
+                "narrator / head knitted beanie folded brim"
+              ]
+            },
+            {
+              "global_frame": 2144,
+              "local_frame": 56,
+              "blocked": 2,
+              "objects": [
+                "narrator / head knitted beanie folded brim"
+              ]
+            },
+            {
+              "global_frame": 2145,
+              "local_frame": 57,
+              "blocked": 2,
+              "objects": [
+                "narrator / head knitted beanie folded brim"
+              ]
+            },
+            {
+              "global_frame": 2146,
+              "local_frame": 58,
+              "blocked": 2,
+              "objects": [
+                "narrator / head knitted beanie folded brim"
+              ]
+            },
+            {
+              "global_frame": 2147,
+              "local_frame": 59,
+              "blocked": 2,
+              "objects": [
+                "narrator / head knitted beanie folded brim"
+              ]
+            },
+            {
+              "global_frame": 2148,
+              "local_frame": 60,
+              "blocked": 2,
+              "objects": [
+                "narrator / head knitted beanie folded brim"
+              ]
+            },
+            {
+              "global_frame": 2149,
+              "local_frame": 61,
+              "blocked": 2,
+              "objects": [
+                "narrator / head knitted beanie folded brim"
+              ]
+            },
+            {
+              "global_frame": 2150,
+              "local_frame": 62,
+              "blocked": 2,
+              "objects": [
+                "narrator / head knitted beanie folded brim"
+              ]
+            },
+            {
+              "global_frame": 2151,
+              "local_frame": 63,
+              "blocked": 2,
+              "objects": [
+                "narrator / head knitted beanie folded brim"
+              ]
+            },
+            {
+              "global_frame": 2152,
+              "local_frame": 64,
+              "blocked": 2,
+              "objects": [
+                "narrator / head knitted beanie folded brim"
+              ]
+            },
+            {
+              "global_frame": 2153,
+              "local_frame": 65,
+              "blocked": 2,
+              "objects": [
+                "narrator / head knitted beanie folded brim"
+              ]
+            },
+            {
+              "global_frame": 2154,
+              "local_frame": 66,
+              "blocked": 2,
+              "objects": [
+                "narrator / head knitted beanie folded brim"
+              ]
+            },
+            {
+              "global_frame": 2155,
+              "local_frame": 67,
+              "blocked": 2,
+              "objects": [
+                "narrator / head knitted beanie folded brim"
+              ]
+            },
+            {
+              "global_frame": 2156,
+              "local_frame": 68,
+              "blocked": 1,
+              "objects": [
+                "narrator / head knitted beanie folded brim"
+              ]
+            },
+            {
+              "global_frame": 2157,
+              "local_frame": 69,
+              "blocked": 1,
+              "objects": [
+                "narrator / head knitted beanie folded brim"
+              ]
+            },
+            {
+              "global_frame": 2158,
+              "local_frame": 70,
+              "blocked": 1,
+              "objects": [
+                "narrator / head knitted beanie folded brim"
+              ]
+            },
+            {
+              "global_frame": 2159,
+              "local_frame": 71,
+              "blocked": 1,
+              "objects": [
+                "narrator / head knitted beanie folded brim"
+              ]
+            },
+            {
+              "global_frame": 2160,
+              "local_frame": 72,
+              "blocked": 1,
+              "objects": [
+                "narrator / head knitted beanie folded brim"
+              ]
+            },
+            {
+              "global_frame": 2161,
+              "local_frame": 73,
+              "blocked": 1,
+              "objects": [
+                "narrator / head knitted beanie folded brim"
+              ]
+            },
+            {
+              "global_frame": 2162,
+              "local_frame": 74,
+              "blocked": 2,
+              "objects": [
+                "narrator / head knitted beanie folded brim"
+              ]
+            },
+            {
+              "global_frame": 2163,
+              "local_frame": 75,
+              "blocked": 2,
+              "objects": [
+                "narrator / head knitted beanie folded brim"
+              ]
+            },
+            {
+              "global_frame": 2164,
+              "local_frame": 76,
+              "blocked": 2,
+              "objects": [
+                "narrator / head knitted beanie folded brim"
+              ]
+            },
+            {
+              "global_frame": 2165,
+              "local_frame": 77,
+              "blocked": 2,
+              "objects": [
+                "narrator / head knitted beanie folded brim"
+              ]
+            },
+            {
+              "global_frame": 2166,
+              "local_frame": 78,
+              "blocked": 2,
+              "objects": [
+                "narrator / head knitted beanie folded brim"
+              ]
+            },
+            {
+              "global_frame": 2167,
+              "local_frame": 79,
+              "blocked": 2,
+              "objects": [
+                "narrator / head knitted beanie folded brim"
+              ]
+            },
+            {
+              "global_frame": 2168,
+              "local_frame": 80,
+              "blocked": 2,
+              "objects": [
+                "narrator / head knitted beanie folded brim"
+              ]
+            },
+            {
+              "global_frame": 2169,
+              "local_frame": 81,
+              "blocked": 2,
+              "objects": [
+                "narrator / head knitted beanie folded brim"
+              ]
+            },
+            {
+              "global_frame": 2170,
+              "local_frame": 82,
+              "blocked": 2,
+              "objects": [
+                "narrator / head knitted beanie folded brim"
+              ]
+            },
+            {
+              "global_frame": 2171,
+              "local_frame": 83,
+              "blocked": 2,
+              "objects": [
+                "narrator / head knitted beanie folded brim"
+              ]
+            },
+            {
+              "global_frame": 2172,
+              "local_frame": 84,
+              "blocked": 2,
+              "objects": [
+                "narrator / head knitted beanie folded brim"
+              ]
+            },
+            {
+              "global_frame": 2173,
+              "local_frame": 85,
+              "blocked": 2,
+              "objects": [
+                "narrator / head knitted beanie folded brim"
+              ]
+            },
+            {
+              "global_frame": 2174,
+              "local_frame": 86,
+              "blocked": 2,
+              "objects": [
+                "narrator / head knitted beanie folded brim"
+              ]
+            },
+            {
+              "global_frame": 2175,
+              "local_frame": 87,
+              "blocked": 2,
+              "objects": [
+                "narrator / head knitted beanie folded brim"
+              ]
+            },
+            {
+              "global_frame": 2176,
+              "local_frame": 88,
+              "blocked": 2,
+              "objects": [
+                "narrator / head knitted beanie folded brim"
+              ]
+            },
+            {
+              "global_frame": 2177,
+              "local_frame": 89,
+              "blocked": 2,
+              "objects": [
+                "narrator / head knitted beanie folded brim"
+              ]
+            },
+            {
+              "global_frame": 2178,
+              "local_frame": 90,
+              "blocked": 2,
+              "objects": [
+                "narrator / head knitted beanie folded brim"
+              ]
+            },
+            {
+              "global_frame": 2179,
+              "local_frame": 91,
+              "blocked": 2,
+              "objects": [
+                "narrator / head knitted beanie folded brim"
+              ]
+            },
+            {
+              "global_frame": 2180,
+              "local_frame": 92,
+              "blocked": 1,
+              "objects": [
+                "narrator / head knitted beanie folded brim"
+              ]
+            },
+            {
+              "global_frame": 2181,
+              "local_frame": 93,
+              "blocked": 1,
+              "objects": [
+                "narrator / head knitted beanie folded brim"
+              ]
+            },
+            {
+              "global_frame": 2182,
+              "local_frame": 94,
+              "blocked": 1,
+              "objects": [
+                "narrator / head knitted beanie folded brim"
+              ]
+            },
+            {
+              "global_frame": 2183,
+              "local_frame": 95,
+              "blocked": 1,
+              "objects": [
+                "narrator / head knitted beanie folded brim"
+              ]
+            },
+            {
+              "global_frame": 2184,
+              "local_frame": 96,
+              "blocked": 1,
+              "objects": [
+                "narrator / head knitted beanie folded brim"
+              ]
+            },
+            {
+              "global_frame": 2185,
+              "local_frame": 97,
+              "blocked": 2,
+              "objects": [
+                "narrator / head knitted beanie folded brim"
+              ]
+            },
+            {
+              "global_frame": 2186,
+              "local_frame": 98,
+              "blocked": 2,
+              "objects": [
+                "narrator / head knitted beanie folded brim"
+              ]
+            },
+            {
+              "global_frame": 2187,
+              "local_frame": 99,
+              "blocked": 2,
+              "objects": [
+                "narrator / head knitted beanie folded brim"
+              ]
+            },
+            {
+              "global_frame": 2188,
+              "local_frame": 100,
+              "blocked": 2,
+              "objects": [
+                "narrator / head knitted beanie folded brim"
+              ]
+            },
+            {
+              "global_frame": 2189,
+              "local_frame": 101,
+              "blocked": 2,
+              "objects": [
+                "narrator / head knitted beanie folded brim"
+              ]
+            },
+            {
+              "global_frame": 2190,
+              "local_frame": 102,
+              "blocked": 2,
+              "objects": [
+                "narrator / head knitted beanie folded brim"
+              ]
+            },
+            {
+              "global_frame": 2191,
+              "local_frame": 103,
+              "blocked": 2,
+              "objects": [
+                "narrator / head knitted beanie folded brim"
+              ]
+            },
+            {
+              "global_frame": 2192,
+              "local_frame": 104,
+              "blocked": 2,
+              "objects": [
+                "narrator / head knitted beanie folded brim"
+              ]
+            },
+            {
+              "global_frame": 2193,
+              "local_frame": 105,
+              "blocked": 2,
+              "objects": [
+                "narrator / head knitted beanie folded brim"
+              ]
+            },
+            {
+              "global_frame": 2194,
+              "local_frame": 106,
+              "blocked": 2,
+              "objects": [
+                "narrator / head knitted beanie folded brim"
+              ]
+            },
+            {
+              "global_frame": 2195,
+              "local_frame": 107,
+              "blocked": 2,
+              "objects": [
+                "narrator / head knitted beanie folded brim"
+              ]
+            },
+            {
+              "global_frame": 2196,
+              "local_frame": 108,
+              "blocked": 2,
+              "objects": [
+                "narrator / head knitted beanie folded brim"
+              ]
+            },
+            {
+              "global_frame": 2197,
+              "local_frame": 109,
+              "blocked": 2,
+              "objects": [
+                "narrator / head knitted beanie folded brim"
+              ]
+            },
+            {
+              "global_frame": 2198,
+              "local_frame": 110,
+              "blocked": 2,
+              "objects": [
+                "narrator / head knitted beanie folded brim"
+              ]
+            },
+            {
+              "global_frame": 2199,
+              "local_frame": 111,
+              "blocked": 2,
+              "objects": [
+                "narrator / head knitted beanie folded brim"
+              ]
+            },
+            {
+              "global_frame": 2200,
+              "local_frame": 112,
+              "blocked": 2,
+              "objects": [
+                "narrator / head knitted beanie folded brim"
+              ]
+            }
+          ]
+        },
+        "face_projection": [
+          0.4293866753578186,
+          0.5565672516822815,
+          0.602462887763977,
+          0.6511550545692444,
+          1.3768314123153687
+        ],
+        "pencil_projection": [
+          -0.05464114248752594,
+          0.11854881793260574,
+          0.6660482883453369,
+          0.7479352951049805,
+          0.7283250689506531
+        ],
+        "standing_seat_intersections": 0,
+        "seat_overlap_detail": [],
+        "speaker_visibility": {
+          "samples": 26,
+          "blocked": 0,
+          "bounds": [
+            0.4293866753578186,
+            0.5565672516822815,
+            0.602462887763977,
+            0.6511550545692444,
+            1.3768314123153687
+          ],
+          "safe": true,
+          "visible_fraction": 1.0,
+          "blockers": []
+        },
+        "speaker_front_dot": 0.5300960913300514,
+        "foreground_intrusion": {
+          "blocked": 0,
+          "objects": []
+        },
+        "speaker_body_visibility": {
+          "samples": 16,
+          "blocked": 0,
+          "bounds": [
+            0.04142492264509201,
+            0.7531940937042236,
+            0.21107283234596252,
+            0.7272021770477295,
+            0.6634350419044495
+          ],
+          "safe": true,
+          "visible_fraction": 1.0,
+          "blockers": []
+        },
+        "pencil_visibility": {
+          "samples": 7,
+          "blocked": 0,
+          "bounds": [
+            -0.05464114248752594,
+            0.11854881793260574,
+            0.6660482883453369,
+            0.7479352951049805,
+            0.7283250689506531
+          ],
+          "safe": false,
+          "visible_fraction": 1.0,
+          "blockers": []
+        },
+        "pencil_external_visibility": {
+          "samples": 7,
+          "blocked": 0,
+          "bounds": [
+            -0.05464114248752594,
+            0.11854881793260574,
+            0.6660482883453369,
+            0.7479352951049805,
+            0.7283250689506531
+          ],
+          "safe": false,
+          "visible_fraction": 1.0,
+          "blockers": []
+        }
+      }
+    },
+    {
+      "frame": 2200,
+      "shot": "sh33",
+      "actor_qc": {
+        "narrator": {
+          "bounds": [
+            0.03699477016925812,
+            0.75404292345047,
+            0.2102491408586502,
+            0.7239546775817871,
+            0.6578960418701172
+          ],
+          "safe": true,
+          "vertical_coverage": 0.5137055367231369,
+          "face_all": {
+            "samples": 10,
+            "blocked": 0,
+            "bounds": [
+              0.42926812171936035,
+              0.5563846826553345,
+              0.6026586294174194,
+              0.6509999632835388,
+              1.3776702880859375
+            ],
+            "safe": true,
+            "visible_fraction": 1.0,
+            "blockers": []
+          },
+          "face_external": {
+            "samples": 10,
+            "blocked": 0,
+            "bounds": [
+              0.42926812171936035,
+              0.5563846826553345,
+              0.6026586294174194,
+              0.6509999632835388,
+              1.3776702880859375
+            ],
+            "safe": true,
+            "visible_fraction": 1.0,
+            "blockers": []
+          },
+          "own_ray_difference": 0
+        }
+      },
+      "geometry": {
+        "pencil_shake_phase": -0.7922248087111178,
+        "socket_alignment": {
+          "chart": {
+            "socket_to_target_error": 0.0
+          },
+          "pencil": {
+            "exposed_shaft_grip_anchor_error": 0.0
+          }
+        },
+        "chart_contact": {
+          "sampled_min_arm_surface_gap": 0.00829815212637186,
+          "arm_prop_overlap_pairs": 38,
+          "scope": "whole rigid arm surface; not signed distal-hand penetration"
+        },
+        "pencil_contact": {
+          "sampled_min_arm_surface_gap": 0.011371609754860401,
+          "arm_prop_overlap_pairs": 14,
+          "scope": "whole rigid arm surface; not signed distal-hand penetration"
+        },
+        "reverse_camera": {
+          "location": [
+            5.5,
+            2.5,
+            0.5499999523162842
+          ],
+          "target": [
+            5.050000190734863,
+            3.6500000953674316,
+            1.159999966621399
+          ],
+          "lens": 13.299861965906153,
+          "mark_yaw_deg": 20.0,
+          "camera_shift": [
+            -0.3000001907348633,
+            0.0,
+            -0.3500000238418579
+          ],
+          "candidate_score": [
+            false,
+            1,
+            0.19109287977218625,
+            0,
+            0,
+            0,
+            true,
+            0,
+            0
+          ],
+          "world_x_side": "positive",
+          "inherited_face_failures": [
+            {
+              "global_frame": 2088,
+              "local_frame": 0,
+              "blocked": 1,
+              "objects": [
+                "narrator / head knitted beanie folded brim"
+              ]
+            },
+            {
+              "global_frame": 2089,
+              "local_frame": 1,
+              "blocked": 1,
+              "objects": [
+                "narrator / head knitted beanie folded brim"
+              ]
+            },
+            {
+              "global_frame": 2090,
+              "local_frame": 2,
+              "blocked": 2,
+              "objects": [
+                "narrator / head knitted beanie folded brim"
+              ]
+            },
+            {
+              "global_frame": 2091,
+              "local_frame": 3,
+              "blocked": 2,
+              "objects": [
+                "narrator / head knitted beanie folded brim"
+              ]
+            },
+            {
+              "global_frame": 2092,
+              "local_frame": 4,
+              "blocked": 2,
+              "objects": [
+                "narrator / head knitted beanie folded brim"
+              ]
+            },
+            {
+              "global_frame": 2093,
+              "local_frame": 5,
+              "blocked": 2,
+              "objects": [
+                "narrator / head knitted beanie folded brim"
+              ]
+            },
+            {
+              "global_frame": 2094,
+              "local_frame": 6,
+              "blocked": 2,
+              "objects": [
+                "narrator / head knitted beanie folded brim"
+              ]
+            },
+            {
+              "global_frame": 2095,
+              "local_frame": 7,
+              "blocked": 2,
+              "objects": [
+                "narrator / head knitted beanie folded brim"
+              ]
+            },
+            {
+              "global_frame": 2096,
+              "local_frame": 8,
+              "blocked": 2,
+              "objects": [
+                "narrator / head knitted beanie folded brim"
+              ]
+            },
+            {
+              "global_frame": 2097,
+              "local_frame": 9,
+              "blocked": 2,
+              "objects": [
+                "narrator / head knitted beanie folded brim"
+              ]
+            },
+            {
+              "global_frame": 2098,
+              "local_frame": 10,
+              "blocked": 1,
+              "objects": [
+                "narrator / head knitted beanie folded brim"
+              ]
+            },
+            {
+              "global_frame": 2099,
+              "local_frame": 11,
+              "blocked": 1,
+              "objects": [
+                "narrator / head knitted beanie folded brim"
+              ]
+            },
+            {
+              "global_frame": 2100,
+              "local_frame": 12,
+              "blocked": 1,
+              "objects": [
+                "narrator / head knitted beanie folded brim"
+              ]
+            },
+            {
+              "global_frame": 2101,
+              "local_frame": 13,
+              "blocked": 1,
+              "objects": [
+                "narrator / head knitted beanie folded brim"
+              ]
+            },
+            {
+              "global_frame": 2102,
+              "local_frame": 14,
+              "blocked": 1,
+              "objects": [
+                "narrator / head knitted beanie folded brim"
+              ]
+            },
+            {
+              "global_frame": 2103,
+              "local_frame": 15,
+              "blocked": 1,
+              "objects": [
+                "narrator / head knitted beanie folded brim"
+              ]
+            },
+            {
+              "global_frame": 2104,
+              "local_frame": 16,
+              "blocked": 1,
+              "objects": [
+                "narrator / head knitted beanie folded brim"
+              ]
+            },
+            {
+              "global_frame": 2105,
+              "local_frame": 17,
+              "blocked": 1,
+              "objects": [
+                "narrator / head knitted beanie folded brim"
+              ]
+            },
+            {
+              "global_frame": 2106,
+              "local_frame": 18,
+              "blocked": 1,
+              "objects": [
+                "narrator / head knitted beanie folded brim"
+              ]
+            },
+            {
+              "global_frame": 2107,
+              "local_frame": 19,
+              "blocked": 1,
+              "objects": [
+                "narrator / head knitted beanie folded brim"
+              ]
+            },
+            {
+              "global_frame": 2108,
+              "local_frame": 20,
+              "blocked": 1,
+              "objects": [
+                "narrator / head knitted beanie folded brim"
+              ]
+            },
+            {
+              "global_frame": 2109,
+              "local_frame": 21,
+              "blocked": 1,
+              "objects": [
+                "narrator / head knitted beanie folded brim"
+              ]
+            },
+            {
+              "global_frame": 2110,
+              "local_frame": 22,
+              "blocked": 1,
+              "objects": [
+                "narrator / head knitted beanie folded brim"
+              ]
+            },
+            {
+              "global_frame": 2111,
+              "local_frame": 23,
+              "blocked": 1,
+              "objects": [
+                "narrator / head knitted beanie folded brim"
+              ]
+            },
+            {
+              "global_frame": 2112,
+              "local_frame": 24,
+              "blocked": 1,
+              "objects": [
+                "narrator / head knitted beanie folded brim"
+              ]
+            },
+            {
+              "global_frame": 2113,
+              "local_frame": 25,
+              "blocked": 1,
+              "objects": [
+                "narrator / head knitted beanie folded brim"
+              ]
+            },
+            {
+              "global_frame": 2114,
+              "local_frame": 26,
+              "blocked": 1,
+              "objects": [
+                "narrator / head knitted beanie folded brim"
+              ]
+            },
+            {
+              "global_frame": 2115,
+              "local_frame": 27,
+              "blocked": 1,
+              "objects": [
+                "narrator / head knitted beanie folded brim"
+              ]
+            },
+            {
+              "global_frame": 2116,
+              "local_frame": 28,
+              "blocked": 1,
+              "objects": [
+                "narrator / head knitted beanie folded brim"
+              ]
+            },
+            {
+              "global_frame": 2117,
+              "local_frame": 29,
+              "blocked": 2,
+              "objects": [
+                "narrator / head knitted beanie folded brim"
+              ]
+            },
+            {
+              "global_frame": 2118,
+              "local_frame": 30,
+              "blocked": 2,
+              "objects": [
+                "narrator / head knitted beanie folded brim"
+              ]
+            },
+            {
+              "global_frame": 2119,
+              "local_frame": 31,
+              "blocked": 2,
+              "objects": [
+                "narrator / head knitted beanie folded brim"
+              ]
+            },
+            {
+              "global_frame": 2120,
+              "local_frame": 32,
+              "blocked": 2,
+              "objects": [
+                "narrator / head knitted beanie folded brim"
+              ]
+            },
+            {
+              "global_frame": 2121,
+              "local_frame": 33,
+              "blocked": 2,
+              "objects": [
+                "narrator / head knitted beanie folded brim"
+              ]
+            },
+            {
+              "global_frame": 2122,
+              "local_frame": 34,
+              "blocked": 2,
+              "objects": [
+                "narrator / head knitted beanie folded brim"
+              ]
+            },
+            {
+              "global_frame": 2123,
+              "local_frame": 35,
+              "blocked": 2,
+              "objects": [
+                "narrator / head knitted beanie folded brim"
+              ]
+            },
+            {
+              "global_frame": 2124,
+              "local_frame": 36,
+              "blocked": 2,
+              "objects": [
+                "narrator / head knitted beanie folded brim"
+              ]
+            },
+            {
+              "global_frame": 2125,
+              "local_frame": 37,
+              "blocked": 3,
+              "objects": [
+                "narrator / head knitted beanie folded brim"
+              ]
+            },
+            {
+              "global_frame": 2126,
+              "local_frame": 38,
+              "blocked": 3,
+              "objects": [
+                "narrator / head knitted beanie folded brim"
+              ]
+            },
+            {
+              "global_frame": 2127,
+              "local_frame": 39,
+              "blocked": 3,
+              "objects": [
+                "narrator / head knitted beanie folded brim"
+              ]
+            },
+            {
+              "global_frame": 2128,
+              "local_frame": 40,
+              "blocked": 3,
+              "objects": [
+                "narrator / head knitted beanie folded brim"
+              ]
+            },
+            {
+              "global_frame": 2129,
+              "local_frame": 41,
+              "blocked": 3,
+              "objects": [
+                "narrator / head knitted beanie folded brim"
+              ]
+            },
+            {
+              "global_frame": 2130,
+              "local_frame": 42,
+              "blocked": 3,
+              "objects": [
+                "narrator / head knitted beanie folded brim"
+              ]
+            },
+            {
+              "global_frame": 2131,
+              "local_frame": 43,
+              "blocked": 3,
+              "objects": [
+                "narrator / head knitted beanie folded brim"
+              ]
+            },
+            {
+              "global_frame": 2132,
+              "local_frame": 44,
+              "blocked": 3,
+              "objects": [
+                "narrator / head knitted beanie folded brim"
+              ]
+            },
+            {
+              "global_frame": 2133,
+              "local_frame": 45,
+              "blocked": 3,
+              "objects": [
+                "narrator / head knitted beanie folded brim"
+              ]
+            },
+            {
+              "global_frame": 2134,
+              "local_frame": 46,
+              "blocked": 2,
+              "objects": [
+                "narrator / head knitted beanie folded brim"
+              ]
+            },
+            {
+              "global_frame": 2135,
+              "local_frame": 47,
+              "blocked": 2,
+              "objects": [
+                "narrator / head knitted beanie folded brim"
+              ]
+            },
+            {
+              "global_frame": 2136,
+              "local_frame": 48,
+              "blocked": 2,
+              "objects": [
+                "narrator / head knitted beanie folded brim"
+              ]
+            },
+            {
+              "global_frame": 2137,
+              "local_frame": 49,
+              "blocked": 2,
+              "objects": [
+                "narrator / head knitted beanie folded brim"
+              ]
+            },
+            {
+              "global_frame": 2138,
+              "local_frame": 50,
+              "blocked": 3,
+              "objects": [
+                "narrator / head knitted beanie folded brim"
+              ]
+            },
+            {
+              "global_frame": 2139,
+              "local_frame": 51,
+              "blocked": 2,
+              "objects": [
+                "narrator / head knitted beanie folded brim"
+              ]
+            },
+            {
+              "global_frame": 2140,
+              "local_frame": 52,
+              "blocked": 2,
+              "objects": [
+                "narrator / head knitted beanie folded brim"
+              ]
+            },
+            {
+              "global_frame": 2141,
+              "local_frame": 53,
+              "blocked": 2,
+              "objects": [
+                "narrator / head knitted beanie folded brim"
+              ]
+            },
+            {
+              "global_frame": 2142,
+              "local_frame": 54,
+              "blocked": 2,
+              "objects": [
+                "narrator / head knitted beanie folded brim"
+              ]
+            },
+            {
+              "global_frame": 2143,
+              "local_frame": 55,
+              "blocked": 2,
+              "objects": [
+                "narrator / head knitted beanie folded brim"
+              ]
+            },
+            {
+              "global_frame": 2144,
+              "local_frame": 56,
+              "blocked": 2,
+              "objects": [
+                "narrator / head knitted beanie folded brim"
+              ]
+            },
+            {
+              "global_frame": 2145,
+              "local_frame": 57,
+              "blocked": 2,
+              "objects": [
+                "narrator / head knitted beanie folded brim"
+              ]
+            },
+            {
+              "global_frame": 2146,
+              "local_frame": 58,
+              "blocked": 2,
+              "objects": [
+                "narrator / head knitted beanie folded brim"
+              ]
+            },
+            {
+              "global_frame": 2147,
+              "local_frame": 59,
+              "blocked": 2,
+              "objects": [
+                "narrator / head knitted beanie folded brim"
+              ]
+            },
+            {
+              "global_frame": 2148,
+              "local_frame": 60,
+              "blocked": 2,
+              "objects": [
+                "narrator / head knitted beanie folded brim"
+              ]
+            },
+            {
+              "global_frame": 2149,
+              "local_frame": 61,
+              "blocked": 2,
+              "objects": [
+                "narrator / head knitted beanie folded brim"
+              ]
+            },
+            {
+              "global_frame": 2150,
+              "local_frame": 62,
+              "blocked": 2,
+              "objects": [
+                "narrator / head knitted beanie folded brim"
+              ]
+            },
+            {
+              "global_frame": 2151,
+              "local_frame": 63,
+              "blocked": 2,
+              "objects": [
+                "narrator / head knitted beanie folded brim"
+              ]
+            },
+            {
+              "global_frame": 2152,
+              "local_frame": 64,
+              "blocked": 2,
+              "objects": [
+                "narrator / head knitted beanie folded brim"
+              ]
+            },
+            {
+              "global_frame": 2153,
+              "local_frame": 65,
+              "blocked": 2,
+              "objects": [
+                "narrator / head knitted beanie folded brim"
+              ]
+            },
+            {
+              "global_frame": 2154,
+              "local_frame": 66,
+              "blocked": 2,
+              "objects": [
+                "narrator / head knitted beanie folded brim"
+              ]
+            },
+            {
+              "global_frame": 2155,
+              "local_frame": 67,
+              "blocked": 2,
+              "objects": [
+                "narrator / head knitted beanie folded brim"
+              ]
+            },
+            {
+              "global_frame": 2156,
+              "local_frame": 68,
+              "blocked": 1,
+              "objects": [
+                "narrator / head knitted beanie folded brim"
+              ]
+            },
+            {
+              "global_frame": 2157,
+              "local_frame": 69,
+              "blocked": 1,
+              "objects": [
+                "narrator / head knitted beanie folded brim"
+              ]
+            },
+            {
+              "global_frame": 2158,
+              "local_frame": 70,
+              "blocked": 1,
+              "objects": [
+                "narrator / head knitted beanie folded brim"
+              ]
+            },
+            {
+              "global_frame": 2159,
+              "local_frame": 71,
+              "blocked": 1,
+              "objects": [
+                "narrator / head knitted beanie folded brim"
+              ]
+            },
+            {
+              "global_frame": 2160,
+              "local_frame": 72,
+              "blocked": 1,
+              "objects": [
+                "narrator / head knitted beanie folded brim"
+              ]
+            },
+            {
+              "global_frame": 2161,
+              "local_frame": 73,
+              "blocked": 1,
+              "objects": [
+                "narrator / head knitted beanie folded brim"
+              ]
+            },
+            {
+              "global_frame": 2162,
+              "local_frame": 74,
+              "blocked": 2,
+              "objects": [
+                "narrator / head knitted beanie folded brim"
+              ]
+            },
+            {
+              "global_frame": 2163,
+              "local_frame": 75,
+              "blocked": 2,
+              "objects": [
+                "narrator / head knitted beanie folded brim"
+              ]
+            },
+            {
+              "global_frame": 2164,
+              "local_frame": 76,
+              "blocked": 2,
+              "objects": [
+                "narrator / head knitted beanie folded brim"
+              ]
+            },
+            {
+              "global_frame": 2165,
+              "local_frame": 77,
+              "blocked": 2,
+              "objects": [
+                "narrator / head knitted beanie folded brim"
+              ]
+            },
+            {
+              "global_frame": 2166,
+              "local_frame": 78,
+              "blocked": 2,
+              "objects": [
+                "narrator / head knitted beanie folded brim"
+              ]
+            },
+            {
+              "global_frame": 2167,
+              "local_frame": 79,
+              "blocked": 2,
+              "objects": [
+                "narrator / head knitted beanie folded brim"
+              ]
+            },
+            {
+              "global_frame": 2168,
+              "local_frame": 80,
+              "blocked": 2,
+              "objects": [
+                "narrator / head knitted beanie folded brim"
+              ]
+            },
+            {
+              "global_frame": 2169,
+              "local_frame": 81,
+              "blocked": 2,
+              "objects": [
+                "narrator / head knitted beanie folded brim"
+              ]
+            },
+            {
+              "global_frame": 2170,
+              "local_frame": 82,
+              "blocked": 2,
+              "objects": [
+                "narrator / head knitted beanie folded brim"
+              ]
+            },
+            {
+              "global_frame": 2171,
+              "local_frame": 83,
+              "blocked": 2,
+              "objects": [
+                "narrator / head knitted beanie folded brim"
+              ]
+            },
+            {
+              "global_frame": 2172,
+              "local_frame": 84,
+              "blocked": 2,
+              "objects": [
+                "narrator / head knitted beanie folded brim"
+              ]
+            },
+            {
+              "global_frame": 2173,
+              "local_frame": 85,
+              "blocked": 2,
+              "objects": [
+                "narrator / head knitted beanie folded brim"
+              ]
+            },
+            {
+              "global_frame": 2174,
+              "local_frame": 86,
+              "blocked": 2,
+              "objects": [
+                "narrator / head knitted beanie folded brim"
+              ]
+            },
+            {
+              "global_frame": 2175,
+              "local_frame": 87,
+              "blocked": 2,
+              "objects": [
+                "narrator / head knitted beanie folded brim"
+              ]
+            },
+            {
+              "global_frame": 2176,
+              "local_frame": 88,
+              "blocked": 2,
+              "objects": [
+                "narrator / head knitted beanie folded brim"
+              ]
+            },
+            {
+              "global_frame": 2177,
+              "local_frame": 89,
+              "blocked": 2,
+              "objects": [
+                "narrator / head knitted beanie folded brim"
+              ]
+            },
+            {
+              "global_frame": 2178,
+              "local_frame": 90,
+              "blocked": 2,
+              "objects": [
+                "narrator / head knitted beanie folded brim"
+              ]
+            },
+            {
+              "global_frame": 2179,
+              "local_frame": 91,
+              "blocked": 2,
+              "objects": [
+                "narrator / head knitted beanie folded brim"
+              ]
+            },
+            {
+              "global_frame": 2180,
+              "local_frame": 92,
+              "blocked": 1,
+              "objects": [
+                "narrator / head knitted beanie folded brim"
+              ]
+            },
+            {
+              "global_frame": 2181,
+              "local_frame": 93,
+              "blocked": 1,
+              "objects": [
+                "narrator / head knitted beanie folded brim"
+              ]
+            },
+            {
+              "global_frame": 2182,
+              "local_frame": 94,
+              "blocked": 1,
+              "objects": [
+                "narrator / head knitted beanie folded brim"
+              ]
+            },
+            {
+              "global_frame": 2183,
+              "local_frame": 95,
+              "blocked": 1,
+              "objects": [
+                "narrator / head knitted beanie folded brim"
+              ]
+            },
+            {
+              "global_frame": 2184,
+              "local_frame": 96,
+              "blocked": 1,
+              "objects": [
+                "narrator / head knitted beanie folded brim"
+              ]
+            },
+            {
+              "global_frame": 2185,
+              "local_frame": 97,
+              "blocked": 2,
+              "objects": [
+                "narrator / head knitted beanie folded brim"
+              ]
+            },
+            {
+              "global_frame": 2186,
+              "local_frame": 98,
+              "blocked": 2,
+              "objects": [
+                "narrator / head knitted beanie folded brim"
+              ]
+            },
+            {
+              "global_frame": 2187,
+              "local_frame": 99,
+              "blocked": 2,
+              "objects": [
+                "narrator / head knitted beanie folded brim"
+              ]
+            },
+            {
+              "global_frame": 2188,
+              "local_frame": 100,
+              "blocked": 2,
+              "objects": [
+                "narrator / head knitted beanie folded brim"
+              ]
+            },
+            {
+              "global_frame": 2189,
+              "local_frame": 101,
+              "blocked": 2,
+              "objects": [
+                "narrator / head knitted beanie folded brim"
+              ]
+            },
+            {
+              "global_frame": 2190,
+              "local_frame": 102,
+              "blocked": 2,
+              "objects": [
+                "narrator / head knitted beanie folded brim"
+              ]
+            },
+            {
+              "global_frame": 2191,
+              "local_frame": 103,
+              "blocked": 2,
+              "objects": [
+                "narrator / head knitted beanie folded brim"
+              ]
+            },
+            {
+              "global_frame": 2192,
+              "local_frame": 104,
+              "blocked": 2,
+              "objects": [
+                "narrator / head knitted beanie folded brim"
+              ]
+            },
+            {
+              "global_frame": 2193,
+              "local_frame": 105,
+              "blocked": 2,
+              "objects": [
+                "narrator / head knitted beanie folded brim"
+              ]
+            },
+            {
+              "global_frame": 2194,
+              "local_frame": 106,
+              "blocked": 2,
+              "objects": [
+                "narrator / head knitted beanie folded brim"
+              ]
+            },
+            {
+              "global_frame": 2195,
+              "local_frame": 107,
+              "blocked": 2,
+              "objects": [
+                "narrator / head knitted beanie folded brim"
+              ]
+            },
+            {
+              "global_frame": 2196,
+              "local_frame": 108,
+              "blocked": 2,
+              "objects": [
+                "narrator / head knitted beanie folded brim"
+              ]
+            },
+            {
+              "global_frame": 2197,
+              "local_frame": 109,
+              "blocked": 2,
+              "objects": [
+                "narrator / head knitted beanie folded brim"
+              ]
+            },
+            {
+              "global_frame": 2198,
+              "local_frame": 110,
+              "blocked": 2,
+              "objects": [
+                "narrator / head knitted beanie folded brim"
+              ]
+            },
+            {
+              "global_frame": 2199,
+              "local_frame": 111,
+              "blocked": 2,
+              "objects": [
+                "narrator / head knitted beanie folded brim"
+              ]
+            },
+            {
+              "global_frame": 2200,
+              "local_frame": 112,
+              "blocked": 2,
+              "objects": [
+                "narrator / head knitted beanie folded brim"
+              ]
+            }
+          ]
+        },
+        "face_projection": [
+          0.42926812171936035,
+          0.5563846826553345,
+          0.6026586294174194,
+          0.6509999632835388,
+          1.3776702880859375
+        ],
+        "pencil_projection": [
+          -0.0664021298289299,
+          0.11605369299650192,
+          0.6586297750473022,
+          0.7401469945907593,
+          0.7051915526390076
+        ],
+        "standing_seat_intersections": 0,
+        "seat_overlap_detail": [],
+        "speaker_visibility": {
+          "samples": 26,
+          "blocked": 0,
+          "bounds": [
+            0.42926812171936035,
+            0.5563846826553345,
+            0.6026586294174194,
+            0.6509999632835388,
+            1.3776702880859375
+          ],
+          "safe": true,
+          "visible_fraction": 1.0,
+          "blockers": []
+        },
+        "speaker_front_dot": 0.5299917981028557,
+        "foreground_intrusion": {
+          "blocked": 0,
+          "objects": []
+        },
+        "speaker_body_visibility": {
+          "samples": 16,
+          "blocked": 0,
+          "bounds": [
+            0.03699477016925812,
+            0.75404292345047,
+            0.2102491408586502,
+            0.7239546775817871,
+            0.6578960418701172
+          ],
+          "safe": true,
+          "visible_fraction": 1.0,
+          "blockers": []
+        },
+        "pencil_visibility": {
+          "samples": 7,
+          "blocked": 0,
+          "bounds": [
+            -0.0664021298289299,
+            0.11605369299650192,
+            0.6586297750473022,
+            0.7401469945907593,
+            0.7051915526390076
+          ],
+          "safe": false,
+          "visible_fraction": 1.0,
+          "blockers": []
+        },
+        "pencil_external_visibility": {
+          "samples": 7,
+          "blocked": 0,
+          "bounds": [
+            -0.0664021298289299,
+            0.11605369299650192,
+            0.6586297750473022,
+            0.7401469945907593,
+            0.7051915526390076
+          ],
+          "safe": false,
+          "visible_fraction": 1.0,
+          "blockers": []
+        }
+      }
+    }
+  ]
+}

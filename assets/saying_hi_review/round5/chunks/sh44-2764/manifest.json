@@ -1,0 +1,3366 @@
+{
+  "task": {
+    "key": "sh44-2764",
+    "shot": "sh44",
+    "start": 2764,
+    "end": 2788,
+    "unit_start": 2764,
+    "unit_end": 2819,
+    "sentence_ids": [
+      44
+    ],
+    "stage": {
+      "unit": "still_44",
+      "variant": null,
+      "actors": {
+        "leo": {
+          "head": [
+            0.06,
+            0,
+            -0.08
+          ]
+        },
+        "max": {
+          "head": [
+            0.06,
+            0,
+            0.08
+          ]
+        },
+        "narrator": {
+          "head": [
+            0.06,
+            0,
+            -0.08
+          ]
+        }
+      },
+      "qc_actors": [
+        "leo",
+        "max"
+      ]
+    }
+  },
+  "engine": "EEVEE",
+  "denoising": false,
+  "spatial_samples": 32,
+  "render_sampling_hz": 30,
+  "rendered": [
+    {
+      "frame": 2764,
+      "render_seconds": 29.57907940999999,
+      "near_black_percent": 0.11631944444444443
+    },
+    {
+      "frame": 2765,
+      "render_seconds": 10.458625396999992,
+      "near_black_percent": 0.11631944444444443
+    },
+    {
+      "frame": 2766,
+      "render_seconds": 10.417724927999984,
+      "near_black_percent": 0.11631944444444443
+    },
+    {
+      "frame": 2767,
+      "render_seconds": 10.311890376999997,
+      "near_black_percent": 0.11631944444444443
+    },
+    {
+      "frame": 2768,
+      "render_seconds": 10.416740441000002,
+      "near_black_percent": 0.11631944444444443
+    },
+    {
+      "frame": 2769,
+      "render_seconds": 10.566861308,
+      "near_black_percent": 0.11631944444444443
+    },
+    {
+      "frame": 2770,
+      "render_seconds": 10.383508691000003,
+      "near_black_percent": 0.11651234567901234
+    },
+    {
+      "frame": 2771,
+      "render_seconds": 10.398977164999991,
+      "near_black_percent": 0.11670524691358025
+    },
+    {
+      "frame": 2772,
+      "render_seconds": 10.511805181,
+      "near_black_percent": 0.11651234567901234
+    },
+    {
+      "frame": 2773,
+      "render_seconds": 10.45572433000001,
+      "near_black_percent": 0.11651234567901234
+    },
+    {
+      "frame": 2774,
+      "render_seconds": 10.507192612999972,
+      "near_black_percent": 0.11651234567901234
+    },
+    {
+      "frame": 2775,
+      "render_seconds": 10.417982696000024,
+      "near_black_percent": 0.11631944444444443
+    },
+    {
+      "frame": 2776,
+      "render_seconds": 10.521178068999973,
+      "near_black_percent": 0.11612654320987655
+    },
+    {
+      "frame": 2777,
+      "render_seconds": 10.577632651999977,
+      "near_black_percent": 0.11631944444444443
+    },
+    {
+      "frame": 2778,
+      "render_seconds": 10.664688118000015,
+      "near_black_percent": 0.11612654320987655
+    },
+    {
+      "frame": 2779,
+      "render_seconds": 10.544332709000003,
+      "near_black_percent": 0.11631944444444443
+    },
+    {
+      "frame": 2780,
+      "render_seconds": 10.533789717000047,
+      "near_black_percent": 0.11631944444444443
+    },
+    {
+      "frame": 2781,
+      "render_seconds": 10.461674098000003,
+      "near_black_percent": 0.11651234567901234
+    },
+    {
+      "frame": 2782,
+      "render_seconds": 10.651231859000006,
+      "near_black_percent": 0.11651234567901234
+    },
+    {
+      "frame": 2783,
+      "render_seconds": 10.741982221,
+      "near_black_percent": 0.11651234567901234
+    },
+    {
+      "frame": 2784,
+      "render_seconds": 10.873690987000032,
+      "near_black_percent": 0.11631944444444443
+    },
+    {
+      "frame": 2785,
+      "render_seconds": 10.669258447999994,
+      "near_black_percent": 0.11612654320987655
+    },
+    {
+      "frame": 2786,
+      "render_seconds": 10.863106188000017,
+      "near_black_percent": 0.11612654320987655
+    },
+    {
+      "frame": 2787,
+      "render_seconds": 11.035445900000013,
+      "near_black_percent": 0.11612654320987655
+    }
+  ],
+  "rows": [
+    {
+      "frame": 2764,
+      "shot": "sh44",
+      "actor_qc": {
+        "leo": {
+          "bounds": [
+            0.45320361852645874,
+            0.5048260688781738,
+            0.4837634861469269,
+            0.5226884484291077,
+            23.000858306884766
+          ],
+          "safe": true,
+          "vertical_coverage": 0.038924962282180786,
+          "face_all": {
+            "samples": 10,
+            "blocked": 0,
+            "bounds": [
+              0.46795424818992615,
+              0.48183518648147583,
+              0.5103856325149536,
+              0.518653929233551,
+              23.001514434814453
+            ],
+            "safe": true,
+            "visible_fraction": 1.0,
+            "blockers": []
+          },
+          "face_external": {
+            "samples": 10,
+            "blocked": 0,
+            "bounds": [
+              0.46795424818992615,
+              0.48183518648147583,
+              0.5103856325149536,
+              0.518653929233551,
+              23.001514434814453
+            ],
+            "safe": true,
+            "visible_fraction": 1.0,
+            "blockers": []
+          },
+          "own_ray_difference": 0
+        },
+        "max": {
+          "bounds": [
+            0.4880523085594177,
+            0.5422197580337524,
+            0.4784814715385437,
+            0.5188335180282593,
+            22.345056533813477
+          ],
+          "safe": true,
+          "vertical_coverage": 0.040352046489715576,
+          "face_all": {
+            "samples": 10,
+            "blocked": 0,
+            "bounds": [
+              0.5041993260383606,
+              0.5186221599578857,
+              0.5059834718704224,
+              0.5145757794380188,
+              22.3471622467041
+            ],
+            "safe": true,
+            "visible_fraction": 1.0,
+            "blockers": []
+          },
+          "face_external": {
+            "samples": 10,
+            "blocked": 0,
+            "bounds": [
+              0.5041993260383606,
+              0.5186221599578857,
+              0.5059834718704224,
+              0.5145757794380188,
+              22.3471622467041
+            ],
+            "safe": true,
+            "visible_fraction": 1.0,
+            "blockers": []
+          },
+          "own_ray_difference": 0
+        }
+      },
+      "geometry": {
+        "held_pose": true,
+        "static_seating": [
+          [
+            "narrator",
+            {
+              "hip_z": 0.4648272395133972,
+              "calibrated_seat_center": [
+                1.1473894119262695e-06,
+                8.55907154083252,
+                -0.42907118797302246
+              ],
+              "seat_footprint": [
+                1.4938984870910645,
+                0.7869494074583054
+              ],
+              "declared_top": 0.4648272395133972,
+              "hip_minus_declared_top": 0.0,
+              "foot_plane_gaps": [
+                0.0,
+                0.0
+              ]
+            }
+          ],
+          [
+            "june",
+            {
+              "hip_z": 0.46482768654823303,
+              "calibrated_seat_center": [
+                3.7676188945770264,
+                -0.8353062868118286,
+                -0.42907118797302246
+              ],
+              "seat_footprint": [
+                1.4938984572887422,
+                0.7869493180513383
+              ],
+              "declared_top": 0.46482768654823303,
+              "hip_minus_declared_top": 0.0,
+              "foot_plane_gaps": [
+                0.0,
+                0.0
+              ]
+            }
+          ]
+        ]
+      }
+    },
+    {
+      "frame": 2765,
+      "shot": "sh44",
+      "actor_qc": {
+        "leo": {
+          "bounds": [
+            0.45320361852645874,
+            0.5048260688781738,
+            0.4837634861469269,
+            0.5226988196372986,
+            22.999217987060547
+          ],
+          "safe": true,
+          "vertical_coverage": 0.038935333490371704,
+          "face_all": {
+            "samples": 10,
+            "blocked": 0,
+            "bounds": [
+              0.46798941493034363,
+              0.4818383455276489,
+              0.5103542804718018,
+              0.5186433792114258,
+              23.000158309936523
+            ],
+            "safe": true,
+            "visible_fraction": 1.0,
+            "blockers": []
+          },
+          "face_external": {
+            "samples": 10,
+            "blocked": 0,
+            "bounds": [
+              0.46798941493034363,
+              0.4818383455276489,
+              0.5103542804718018,
+              0.5186433792114258,
+              23.000158309936523
+            ],
+            "safe": true,
+            "visible_fraction": 1.0,
+            "blockers": []
+          },
+          "own_ray_difference": 0
+        },
+        "max": {
+          "bounds": [
+            0.4880523085594177,
+            0.5422197580337524,
+            0.4784814715385437,
+            0.5188273787498474,
+            22.34432029724121
+          ],
+          "safe": true,
+          "vertical_coverage": 0.04034590721130371,
+          "face_all": {
+            "samples": 9,
+            "blocked": 0,
+            "bounds": [
+              0.5041220188140869,
+              0.5186247229576111,
+              0.5059863924980164,
+              0.5145359039306641,
+              22.34663200378418
+            ],
+            "safe": true,
+            "visible_fraction": 1.0,
+            "blockers": []
+          },
+          "face_external": {
+            "samples": 9,
+            "blocked": 0,
+            "bounds": [
+              0.5041220188140869,
+              0.5186247229576111,
+              0.5059863924980164,
+              0.5145359039306641,
+              22.34663200378418
+            ],
+            "safe": true,
+            "visible_fraction": 1.0,
+            "blockers": []
+          },
+          "own_ray_difference": 0
+        }
+      },
+      "geometry": {
+        "held_pose": true,
+        "static_seating": [
+          [
+            "narrator",
+            {
+              "hip_z": 0.4648272395133972,
+              "calibrated_seat_center": [
+                1.1473894119262695e-06,
+                8.55907154083252,
+                -0.42907118797302246
+              ],
+              "seat_footprint": [
+                1.4938984870910645,
+                0.7869494074583054
+              ],
+              "declared_top": 0.4648272395133972,
+              "hip_minus_declared_top": 0.0,
+              "foot_plane_gaps": [
+                0.0,
+                0.0
+              ]
+            }
+          ],
+          [
+            "june",
+            {
+              "hip_z": 0.46482768654823303,
+              "calibrated_seat_center": [
+                3.7676188945770264,
+                -0.8353062868118286,
+                -0.42907118797302246
+              ],
+              "seat_footprint": [
+                1.4938984572887422,
+                0.7869493180513383
+              ],
+              "declared_top": 0.46482768654823303,
+              "hip_minus_declared_top": 0.0,
+              "foot_plane_gaps": [
+                0.0,
+                0.0
+              ]
+            }
+          ]
+        ]
+      }
+    },
+    {
+      "frame": 2766,
+      "shot": "sh44",
+      "actor_qc": {
+        "leo": {
+          "bounds": [
+            0.45320361852645874,
+            0.5048260688781738,
+            0.4837634861469269,
+            0.5227088928222656,
+            22.99759864807129
+          ],
+          "safe": true,
+          "vertical_coverage": 0.038945406675338745,
+          "face_all": {
+            "samples": 9,
+            "blocked": 0,
+            "bounds": [
+              0.4680244028568268,
+              0.48184114694595337,
+              0.5103231072425842,
+              0.518632709980011,
+              22.99881935119629
+            ],
+            "safe": true,
+            "visible_fraction": 1.0,
+            "blockers": []
+          },
+          "face_external": {
+            "samples": 9,
+            "blocked": 0,
+            "bounds": [
+              0.4680244028568268,
+              0.48184114694595337,
+              0.5103231072425842,
+              0.518632709980011,
+              22.99881935119629
+            ],
+            "safe": true,
+            "visible_fraction": 1.0,
+            "blockers": []
+          },
+          "own_ray_difference": 0
+        },
+        "max": {
+          "bounds": [
+            0.4880523085594177,
+            0.5422197580337524,
+            0.4784814715385437,
+            0.5188209414482117,
+            22.343597412109375
+          ],
+          "safe": true,
+          "vertical_coverage": 0.04033946990966797,
+          "face_all": {
+            "samples": 9,
+            "blocked": 0,
+            "bounds": [
+              0.5040454268455505,
+              0.518627405166626,
+              0.5059893131256104,
+              0.5144959092140198,
+              22.346111297607422
+            ],
+            "safe": true,
+            "visible_fraction": 1.0,
+            "blockers": []
+          },
+          "face_external": {
+            "samples": 9,
+            "blocked": 0,
+            "bounds": [
+              0.5040454268455505,
+              0.518627405166626,
+              0.5059893131256104,
+              0.5144959092140198,
+              22.346111297607422
+            ],
+            "safe": true,
+            "visible_fraction": 1.0,
+            "blockers": []
+          },
+          "own_ray_difference": 0
+        }
+      },
+      "geometry": {
+        "held_pose": true,
+        "static_seating": [
+          [
+            "narrator",
+            {
+              "hip_z": 0.4648272395133972,
+              "calibrated_seat_center": [
+                1.1473894119262695e-06,
+                8.55907154083252,
+                -0.42907118797302246
+              ],
+              "seat_footprint": [
+                1.4938984870910645,
+                0.7869494074583054
+              ],
+              "declared_top": 0.4648272395133972,
+              "hip_minus_declared_top": 0.0,
+              "foot_plane_gaps": [
+                0.0,
+                0.0
+              ]
+            }
+          ],
+          [
+            "june",
+            {
+              "hip_z": 0.46482768654823303,
+              "calibrated_seat_center": [
+                3.7676188945770264,
+                -0.8353062868118286,
+                -0.42907118797302246
+              ],
+              "seat_footprint": [
+                1.4938984572887422,
+                0.7869493180513383
+              ],
+              "declared_top": 0.46482768654823303,
+              "hip_minus_declared_top": 0.0,
+              "foot_plane_gaps": [
+                0.0,
+                0.0
+              ]
+            }
+          ]
+        ]
+      }
+    },
+    {
+      "frame": 2767,
+      "shot": "sh44",
+      "actor_qc": {
+        "leo": {
+          "bounds": [
+            0.45320361852645874,
+            0.5048260688781738,
+            0.4837634861469269,
+            0.5227184891700745,
+            22.996004104614258
+          ],
+          "safe": true,
+          "vertical_coverage": 0.03895500302314758,
+          "face_all": {
+            "samples": 9,
+            "blocked": 0,
+            "bounds": [
+              0.4680591821670532,
+              0.48184362053871155,
+              0.5102921724319458,
+              0.5186218619346619,
+              22.99750518798828
+            ],
+            "safe": true,
+            "visible_fraction": 1.0,
+            "blockers": []
+          },
+          "face_external": {
+            "samples": 9,
+            "blocked": 0,
+            "bounds": [
+              0.4680591821670532,
+              0.48184362053871155,
+              0.5102921724319458,
+              0.5186218619346619,
+              22.99750518798828
+            ],
+            "safe": true,
+            "visible_fraction": 1.0,
+            "blockers": []
+          },
+          "own_ray_difference": 0
+        },
+        "max": {
+          "bounds": [
+            0.4880523085594177,
+            0.5422197580337524,
+            0.4784814715385437,
+            0.5188142657279968,
+            22.34288787841797
+          ],
+          "safe": true,
+          "vertical_coverage": 0.040332794189453125,
+          "face_all": {
+            "samples": 10,
+            "blocked": 0,
+            "bounds": [
+              0.5039697885513306,
+              0.5186302065849304,
+              0.5059922933578491,
+              0.5144559144973755,
+              22.345600128173828
+            ],
+            "safe": true,
+            "visible_fraction": 1.0,
+            "blockers": []
+          },
+          "face_external": {
+            "samples": 10,
+            "blocked": 0,
+            "bounds": [
+              0.5039697885513306,
+              0.5186302065849304,
+              0.5059922933578491,
+              0.5144559144973755,
+              22.345600128173828
+            ],
+            "safe": true,
+            "visible_fraction": 1.0,
+            "blockers": []
+          },
+          "own_ray_difference": 0
+        }
+      },
+      "geometry": {
+        "held_pose": true,
+        "static_seating": [
+          [
+            "narrator",
+            {
+              "hip_z": 0.4648272395133972,
+              "calibrated_seat_center": [
+                1.1473894119262695e-06,
+                8.55907154083252,
+                -0.42907118797302246
+              ],
+              "seat_footprint": [
+                1.4938984870910645,
+                0.7869494074583054
+              ],
+              "declared_top": 0.4648272395133972,
+              "hip_minus_declared_top": 0.0,
+              "foot_plane_gaps": [
+                0.0,
+                0.0
+              ]
+            }
+          ],
+          [
+            "june",
+            {
+              "hip_z": 0.46482768654823303,
+              "calibrated_seat_center": [
+                3.7676188945770264,
+                -0.8353062868118286,
+                -0.42907118797302246
+              ],
+              "seat_footprint": [
+                1.4938984572887422,
+                0.7869493180513383
+              ],
+              "declared_top": 0.46482768654823303,
+              "hip_minus_declared_top": 0.0,
+              "foot_plane_gaps": [
+                0.0,
+                0.0
+              ]
+            }
+          ]
+        ]
+      }
+    },
+    {
+      "frame": 2768,
+      "shot": "sh44",
+      "actor_qc": {
+        "leo": {
+          "bounds": [
+            0.45320361852645874,
+            0.5048260688781738,
+            0.4837634861469269,
+            0.5227277874946594,
+            22.99444007873535
+          ],
+          "safe": true,
+          "vertical_coverage": 0.038964301347732544,
+          "face_all": {
+            "samples": 9,
+            "blocked": 0,
+            "bounds": [
+              0.4680935740470886,
+              0.48184576630592346,
+              0.510261595249176,
+              0.5186108946800232,
+              22.996219635009766
+            ],
+            "safe": true,
+            "visible_fraction": 1.0,
+            "blockers": []
+          },
+          "face_external": {
+            "samples": 9,
+            "blocked": 0,
+            "bounds": [
+              0.4680935740470886,
+              0.48184576630592346,
+              0.510261595249176,
+              0.5186108946800232,
+              22.996219635009766
+            ],
+            "safe": true,
+            "visible_fraction": 1.0,
+            "blockers": []
+          },
+          "own_ray_difference": 0
+        },
+        "max": {
+          "bounds": [
+            0.4880523085594177,
+            0.5422197580337524,
+            0.4784814715385437,
+            0.5188073515892029,
+            22.342195510864258
+          ],
+          "safe": true,
+          "vertical_coverage": 0.04032588005065918,
+          "face_all": {
+            "samples": 11,
+            "blocked": 0,
+            "bounds": [
+              0.5038954019546509,
+              0.5186330676078796,
+              0.5059952139854431,
+              0.5144160985946655,
+              22.345102310180664
+            ],
+            "safe": true,
+            "visible_fraction": 1.0,
+            "blockers": []
+          },
+          "face_external": {
+            "samples": 11,
+            "blocked": 0,
+            "bounds": [
+              0.5038954019546509,
+              0.5186330676078796,
+              0.5059952139854431,
+              0.5144160985946655,
+              22.345102310180664
+            ],
+            "safe": true,
+            "visible_fraction": 1.0,
+            "blockers": []
+          },
+          "own_ray_difference": 0
+        }
+      },
+      "geometry": {
+        "held_pose": true,
+        "static_seating": [
+          [
+            "narrator",
+            {
+              "hip_z": 0.4648272395133972,
+              "calibrated_seat_center": [
+                1.1473894119262695e-06,
+                8.55907154083252,
+                -0.42907118797302246
+              ],
+              "seat_footprint": [
+                1.4938984870910645,
+                0.7869494074583054
+              ],
+              "declared_top": 0.4648272395133972,
+              "hip_minus_declared_top": 0.0,
+              "foot_plane_gaps": [
+                0.0,
+                0.0
+              ]
+            }
+          ],
+          [
+            "june",
+            {
+              "hip_z": 0.46482768654823303,
+              "calibrated_seat_center": [
+                3.7676188945770264,
+                -0.8353062868118286,
+                -0.42907118797302246
+              ],
+              "seat_footprint": [
+                1.4938984572887422,
+                0.7869493180513383
+              ],
+              "declared_top": 0.46482768654823303,
+              "hip_minus_declared_top": 0.0,
+              "foot_plane_gaps": [
+                0.0,
+                0.0
+              ]
+            }
+          ]
+        ]
+      }
+    },
+    {
+      "frame": 2769,
+      "shot": "sh44",
+      "actor_qc": {
+        "leo": {
+          "bounds": [
+            0.45320361852645874,
+            0.5048260688781738,
+            0.4837634861469269,
+            0.522737443447113,
+            22.992910385131836
+          ],
+          "safe": true,
+          "vertical_coverage": 0.03897395730018616,
+          "face_all": {
+            "samples": 9,
+            "blocked": 0,
+            "bounds": [
+              0.4681274890899658,
+              0.4818475544452667,
+              0.5102314949035645,
+              0.5185998678207397,
+              22.994964599609375
+            ],
+            "safe": true,
+            "visible_fraction": 1.0,
+            "blockers": []
+          },
+          "face_external": {
+            "samples": 9,
+            "blocked": 0,
+            "bounds": [
+              0.4681274890899658,
+              0.4818475544452667,
+              0.5102314949035645,
+              0.5185998678207397,
+              22.994964599609375
+            ],
+            "safe": true,
+            "visible_fraction": 1.0,
+            "blockers": []
+          },
+          "own_ray_difference": 0
+        },
+        "max": {
+          "bounds": [
+            0.4880523085594177,
+            0.5422197580337524,
+            0.4784814715385437,
+            0.5188001990318298,
+            22.341520309448242
+          ],
+          "safe": true,
+          "vertical_coverage": 0.04031872749328613,
+          "face_all": {
+            "samples": 9,
+            "blocked": 0,
+            "bounds": [
+              0.5038225054740906,
+              0.5186361074447632,
+              0.5059981346130371,
+              0.5143765807151794,
+              22.34461784362793
+            ],
+            "safe": true,
+            "visible_fraction": 1.0,
+            "blockers": []
+          },
+          "face_external": {
+            "samples": 9,
+            "blocked": 0,
+            "bounds": [
+              0.5038225054740906,
+              0.5186361074447632,
+              0.5059981346130371,
+              0.5143765807151794,
+              22.34461784362793
+            ],
+            "safe": true,
+            "visible_fraction": 1.0,
+            "blockers": []
+          },
+          "own_ray_difference": 0
+        }
+      },
+      "geometry": {
+        "held_pose": true,
+        "static_seating": [
+          [
+            "narrator",
+            {
+              "hip_z": 0.4648272395133972,
+              "calibrated_seat_center": [
+                1.1473894119262695e-06,
+                8.55907154083252,
+                -0.42907118797302246
+              ],
+              "seat_footprint": [
+                1.4938984870910645,
+                0.7869494074583054
+              ],
+              "declared_top": 0.4648272395133972,
+              "hip_minus_declared_top": 0.0,
+              "foot_plane_gaps": [
+                0.0,
+                0.0
+              ]
+            }
+          ],
+          [
+            "june",
+            {
+              "hip_z": 0.46482768654823303,
+              "calibrated_seat_center": [
+                3.7676188945770264,
+                -0.8353062868118286,
+                -0.42907118797302246
+              ],
+              "seat_footprint": [
+                1.4938984572887422,
+                0.7869493180513383
+              ],
+              "declared_top": 0.46482768654823303,
+              "hip_minus_declared_top": 0.0,
+              "foot_plane_gaps": [
+                0.0,
+                0.0
+              ]
+            }
+          ]
+        ]
+      }
+    },
+    {
+      "frame": 2770,
+      "shot": "sh44",
+      "actor_qc": {
+        "leo": {
+          "bounds": [
+            0.45320361852645874,
+            0.5048260688781738,
+            0.4837634861469269,
+            0.5227466225624084,
+            22.991422653198242
+          ],
+          "safe": true,
+          "vertical_coverage": 0.03898313641548157,
+          "face_all": {
+            "samples": 9,
+            "blocked": 0,
+            "bounds": [
+              0.4681607782840729,
+              0.48184898495674133,
+              0.5102019906044006,
+              0.5185888409614563,
+              22.993743896484375
+            ],
+            "safe": true,
+            "visible_fraction": 1.0,
+            "blockers": []
+          },
+          "face_external": {
+            "samples": 9,
+            "blocked": 0,
+            "bounds": [
+              0.4681607782840729,
+              0.48184898495674133,
+              0.5102019906044006,
+              0.5185888409614563,
+              22.993743896484375
+            ],
+            "safe": true,
+            "visible_fraction": 1.0,
+            "blockers": []
+          },
+          "own_ray_difference": 0
+        },
+        "max": {
+          "bounds": [
+            0.4880523085594177,
+            0.5422197580337524,
+            0.4784814715385437,
+            0.5187929272651672,
+            22.340866088867188
+          ],
+          "safe": true,
+          "vertical_coverage": 0.040311455726623535,
+          "face_all": {
+            "samples": 11,
+            "blocked": 0,
+            "bounds": [
+              0.5037513375282288,
+              0.5186391472816467,
+              0.5060010552406311,
+              0.5143375396728516,
+              22.344148635864258
+            ],
+            "safe": true,
+            "visible_fraction": 1.0,
+            "blockers": []
+          },
+          "face_external": {
+            "samples": 11,
+            "blocked": 0,
+            "bounds": [
+              0.5037513375282288,
+              0.5186391472816467,
+              0.5060010552406311,
+              0.5143375396728516,
+              22.344148635864258
+            ],
+            "safe": true,
+            "visible_fraction": 1.0,
+            "blockers": []
+          },
+          "own_ray_difference": 0
+        }
+      },
+      "geometry": {
+        "held_pose": true,
+        "static_seating": [
+          [
+            "narrator",
+            {
+              "hip_z": 0.4648272395133972,
+              "calibrated_seat_center": [
+                1.1473894119262695e-06,
+                8.55907154083252,
+                -0.42907118797302246
+              ],
+              "seat_footprint": [
+                1.4938984870910645,
+                0.7869494074583054
+              ],
+              "declared_top": 0.4648272395133972,
+              "hip_minus_declared_top": 0.0,
+              "foot_plane_gaps": [
+                0.0,
+                0.0
+              ]
+            }
+          ],
+          [
+            "june",
+            {
+              "hip_z": 0.46482768654823303,
+              "calibrated_seat_center": [
+                3.7676188945770264,
+                -0.8353062868118286,
+                -0.42907118797302246
+              ],
+              "seat_footprint": [
+                1.4938984572887422,
+                0.7869493180513383
+              ],
+              "declared_top": 0.46482768654823303,
+              "hip_minus_declared_top": 0.0,
+              "foot_plane_gaps": [
+                0.0,
+                0.0
+              ]
+            }
+          ]
+        ]
+      }
+    },
+    {
+      "frame": 2771,
+      "shot": "sh44",
+      "actor_qc": {
+        "leo": {
+          "bounds": [
+            0.45320361852645874,
+            0.5048260688781738,
+            0.4837634861469269,
+            0.5227553248405457,
+            22.98997688293457
+          ],
+          "safe": true,
+          "vertical_coverage": 0.038991838693618774,
+          "face_all": {
+            "samples": 9,
+            "blocked": 0,
+            "bounds": [
+              0.468193382024765,
+              0.48185011744499207,
+              0.5101731419563293,
+              0.5185778737068176,
+              22.992563247680664
+            ],
+            "safe": true,
+            "visible_fraction": 1.0,
+            "blockers": []
+          },
+          "face_external": {
+            "samples": 9,
+            "blocked": 0,
+            "bounds": [
+              0.468193382024765,
+              0.48185011744499207,
+              0.5101731419563293,
+              0.5185778737068176,
+              22.992563247680664
+            ],
+            "safe": true,
+            "visible_fraction": 1.0,
+            "blockers": []
+          },
+          "own_ray_difference": 0
+        },
+        "max": {
+          "bounds": [
+            0.4880523085594177,
+            0.5422197580337524,
+            0.4784814715385437,
+            0.5187854766845703,
+            22.340232849121094
+          ],
+          "safe": true,
+          "vertical_coverage": 0.04030400514602661,
+          "face_all": {
+            "samples": 9,
+            "blocked": 0,
+            "bounds": [
+              0.5036820769309998,
+              0.5186423063278198,
+              0.5060039162635803,
+              0.5142990946769714,
+              22.34369659423828
+            ],
+            "safe": true,
+            "visible_fraction": 1.0,
+            "blockers": []
+          },
+          "face_external": {
+            "samples": 9,
+            "blocked": 0,
+            "bounds": [
+              0.5036820769309998,
+              0.5186423063278198,
+              0.5060039162635803,
+              0.5142990946769714,
+              22.34369659423828
+            ],
+            "safe": true,
+            "visible_fraction": 1.0,
+            "blockers": []
+          },
+          "own_ray_difference": 0
+        }
+      },
+      "geometry": {
+        "held_pose": true,
+        "static_seating": [
+          [
+            "narrator",
+            {
+              "hip_z": 0.4648272395133972,
+              "calibrated_seat_center": [
+                1.1473894119262695e-06,
+                8.55907154083252,
+                -0.42907118797302246
+              ],
+              "seat_footprint": [
+                1.4938984870910645,
+                0.7869494074583054
+              ],
+              "declared_top": 0.4648272395133972,
+              "hip_minus_declared_top": 0.0,
+              "foot_plane_gaps": [
+                0.0,
+                0.0
+              ]
+            }
+          ],
+          [
+            "june",
+            {
+              "hip_z": 0.46482768654823303,
+              "calibrated_seat_center": [
+                3.7676188945770264,
+                -0.8353062868118286,
+                -0.42907118797302246
+              ],
+              "seat_footprint": [
+                1.4938984572887422,
+                0.7869493180513383
+              ],
+              "declared_top": 0.46482768654823303,
+              "hip_minus_declared_top": 0.0,
+              "foot_plane_gaps": [
+                0.0,
+                0.0
+              ]
+            }
+          ]
+        ]
+      }
+    },
+    {
+      "frame": 2772,
+      "shot": "sh44",
+      "actor_qc": {
+        "leo": {
+          "bounds": [
+            0.45320361852645874,
+            0.5048260688781738,
+            0.4837634861469269,
+            0.5227636098861694,
+            22.98858070373535
+          ],
+          "safe": true,
+          "vertical_coverage": 0.039000123739242554,
+          "face_all": {
+            "samples": 9,
+            "blocked": 0,
+            "bounds": [
+              0.4682251214981079,
+              0.4818509519100189,
+              0.5101451277732849,
+              0.5185670256614685,
+              22.991422653198242
+            ],
+            "safe": true,
+            "visible_fraction": 1.0,
+            "blockers": []
+          },
+          "face_external": {
+            "samples": 9,
+            "blocked": 0,
+            "bounds": [
+              0.4682251214981079,
+              0.4818509519100189,
+              0.5101451277732849,
+              0.5185670256614685,
+              22.991422653198242
+            ],
+            "safe": true,
+            "visible_fraction": 1.0,
+            "blockers": []
+          },
+          "own_ray_difference": 0
+        },
+        "max": {
+          "bounds": [
+            0.4880523085594177,
+            0.5422197580337524,
+            0.4784814715385437,
+            0.5187779664993286,
+            22.339622497558594
+          ],
+          "safe": true,
+          "vertical_coverage": 0.04029649496078491,
+          "face_all": {
+            "samples": 9,
+            "blocked": 0,
+            "bounds": [
+              0.5036149024963379,
+              0.5186454653739929,
+              0.5060067176818848,
+              0.5142613649368286,
+              22.34326171875
+            ],
+            "safe": true,
+            "visible_fraction": 1.0,
+            "blockers": []
+          },
+          "face_external": {
+            "samples": 9,
+            "blocked": 0,
+            "bounds": [
+              0.5036149024963379,
+              0.5186454653739929,
+              0.5060067176818848,
+              0.5142613649368286,
+              22.34326171875
+            ],
+            "safe": true,
+            "visible_fraction": 1.0,
+            "blockers": []
+          },
+          "own_ray_difference": 0
+        }
+      },
+      "geometry": {
+        "held_pose": true,
+        "static_seating": [
+          [
+            "narrator",
+            {
+              "hip_z": 0.4648272395133972,
+              "calibrated_seat_center": [
+                1.1473894119262695e-06,
+                8.55907154083252,
+                -0.42907118797302246
+              ],
+              "seat_footprint": [
+                1.4938984870910645,
+                0.7869494074583054
+              ],
+              "declared_top": 0.4648272395133972,
+              "hip_minus_declared_top": 0.0,
+              "foot_plane_gaps": [
+                0.0,
+                0.0
+              ]
+            }
+          ],
+          [
+            "june",
+            {
+              "hip_z": 0.46482768654823303,
+              "calibrated_seat_center": [
+                3.7676188945770264,
+                -0.8353062868118286,
+                -0.42907118797302246
+              ],
+              "seat_footprint": [
+                1.4938984572887422,
+                0.7869493180513383
+              ],
+              "declared_top": 0.46482768654823303,
+              "hip_minus_declared_top": 0.0,
+              "foot_plane_gaps": [
+                0.0,
+                0.0
+              ]
+            }
+          ]
+        ]
+      }
+    },
+    {
+      "frame": 2773,
+      "shot": "sh44",
+      "actor_qc": {
+        "leo": {
+          "bounds": [
+            0.45320361852645874,
+            0.5048260688781738,
+            0.4837634861469269,
+            0.5227713584899902,
+            22.98723602294922
+          ],
+          "safe": true,
+          "vertical_coverage": 0.039007872343063354,
+          "face_all": {
+            "samples": 9,
+            "blocked": 0,
+            "bounds": [
+              0.4682559370994568,
+              0.4818514883518219,
+              0.5101178884506226,
+              0.5185562372207642,
+              22.990327835083008
+            ],
+            "safe": true,
+            "visible_fraction": 1.0,
+            "blockers": []
+          },
+          "face_external": {
+            "samples": 9,
+            "blocked": 0,
+            "bounds": [
+              0.4682559370994568,
+              0.4818514883518219,
+              0.5101178884506226,
+              0.5185562372207642,
+              22.990327835083008
+            ],
+            "safe": true,
+            "visible_fraction": 1.0,
+            "blockers": []
+          },
+          "own_ray_difference": 0
+        },
+        "max": {
+          "bounds": [
+            0.4880523085594177,
+            0.5422197580337524,
+            0.4784814715385437,
+            0.5187704563140869,
+            22.33903694152832
+          ],
+          "safe": true,
+          "vertical_coverage": 0.04028898477554321,
+          "face_all": {
+            "samples": 9,
+            "blocked": 0,
+            "bounds": [
+              0.5035500526428223,
+              0.5186486840248108,
+              0.5060095191001892,
+              0.5142245888710022,
+              22.342844009399414
+            ],
+            "safe": true,
+            "visible_fraction": 1.0,
+            "blockers": []
+          },
+          "face_external": {
+            "samples": 9,
+            "blocked": 0,
+            "bounds": [
+              0.5035500526428223,
+              0.5186486840248108,
+              0.5060095191001892,
+              0.5142245888710022,
+              22.342844009399414
+            ],
+            "safe": true,
+            "visible_fraction": 1.0,
+            "blockers": []
+          },
+          "own_ray_difference": 0
+        }
+      },
+      "geometry": {
+        "held_pose": true,
+        "static_seating": [
+          [
+            "narrator",
+            {
+              "hip_z": 0.4648272395133972,
+              "calibrated_seat_center": [
+                1.1473894119262695e-06,
+                8.55907154083252,
+                -0.42907118797302246
+              ],
+              "seat_footprint": [
+                1.4938984870910645,
+                0.7869494074583054
+              ],
+              "declared_top": 0.4648272395133972,
+              "hip_minus_declared_top": 0.0,
+              "foot_plane_gaps": [
+                0.0,
+                0.0
+              ]
+            }
+          ],
+          [
+            "june",
+            {
+              "hip_z": 0.46482768654823303,
+              "calibrated_seat_center": [
+                3.7676188945770264,
+                -0.8353062868118286,
+                -0.42907118797302246
+              ],
+              "seat_footprint": [
+                1.4938984572887422,
+                0.7869493180513383
+              ],
+              "declared_top": 0.46482768654823303,
+              "hip_minus_declared_top": 0.0,
+              "foot_plane_gaps": [
+                0.0,
+                0.0
+              ]
+            }
+          ]
+        ]
+      }
+    },
+    {
+      "frame": 2774,
+      "shot": "sh44",
+      "actor_qc": {
+        "leo": {
+          "bounds": [
+            0.45320361852645874,
+            0.5048260688781738,
+            0.4837634861469269,
+            0.5227785706520081,
+            22.98594856262207
+          ],
+          "safe": true,
+          "vertical_coverage": 0.03901508450508118,
+          "face_all": {
+            "samples": 9,
+            "blocked": 0,
+            "bounds": [
+              0.4682857096195221,
+              0.4818517565727234,
+              0.5100916624069214,
+              0.5185456871986389,
+              22.98927879333496
+            ],
+            "safe": true,
+            "visible_fraction": 1.0,
+            "blockers": []
+          },
+          "face_external": {
+            "samples": 9,
+            "blocked": 0,
+            "bounds": [
+              0.4682857096195221,
+              0.4818517565727234,
+              0.5100916624069214,
+              0.5185456871986389,
+              22.98927879333496
+            ],
+            "safe": true,
+            "visible_fraction": 1.0,
+            "blockers": []
+          },
+          "own_ray_difference": 0
+        },
+        "max": {
+          "bounds": [
+            0.4880523085594177,
+            0.5422197580337524,
+            0.4784814715385437,
+            0.5187629461288452,
+            22.338476181030273
+          ],
+          "safe": true,
+          "vertical_coverage": 0.040281474590301514,
+          "face_all": {
+            "samples": 10,
+            "blocked": 0,
+            "bounds": [
+              0.503487765789032,
+              0.5186518430709839,
+              0.5060122013092041,
+              0.5141887664794922,
+              22.342445373535156
+            ],
+            "safe": true,
+            "visible_fraction": 1.0,
+            "blockers": []
+          },
+          "face_external": {
+            "samples": 10,
+            "blocked": 0,
+            "bounds": [
+              0.503487765789032,
+              0.5186518430709839,
+              0.5060122013092041,
+              0.5141887664794922,
+              22.342445373535156
+            ],
+            "safe": true,
+            "visible_fraction": 1.0,
+            "blockers": []
+          },
+          "own_ray_difference": 0
+        }
+      },
+      "geometry": {
+        "held_pose": true,
+        "static_seating": [
+          [
+            "narrator",
+            {
+              "hip_z": 0.4648272395133972,
+              "calibrated_seat_center": [
+                1.1473894119262695e-06,
+                8.55907154083252,
+                -0.42907118797302246
+              ],
+              "seat_footprint": [
+                1.4938984870910645,
+                0.7869494074583054
+              ],
+              "declared_top": 0.4648272395133972,
+              "hip_minus_declared_top": 0.0,
+              "foot_plane_gaps": [
+                0.0,
+                0.0
+              ]
+            }
+          ],
+          [
+            "june",
+            {
+              "hip_z": 0.46482768654823303,
+              "calibrated_seat_center": [
+                3.7676188945770264,
+                -0.8353062868118286,
+                -0.42907118797302246
+              ],
+              "seat_footprint": [
+                1.4938984572887422,
+                0.7869493180513383
+              ],
+              "declared_top": 0.46482768654823303,
+              "hip_minus_declared_top": 0.0,
+              "foot_plane_gaps": [
+                0.0,
+                0.0
+              ]
+            }
+          ]
+        ]
+      }
+    },
+    {
+      "frame": 2775,
+      "shot": "sh44",
+      "actor_qc": {
+        "leo": {
+          "bounds": [
+            0.45320361852645874,
+            0.5048260688781738,
+            0.4837634861469269,
+            0.5227853655815125,
+            22.984718322753906
+          ],
+          "safe": true,
+          "vertical_coverage": 0.03902187943458557,
+          "face_all": {
+            "samples": 9,
+            "blocked": 0,
+            "bounds": [
+              0.46831434965133667,
+              0.4818517863750458,
+              0.5100664496421814,
+              0.5185354351997375,
+              22.988279342651367
+            ],
+            "safe": true,
+            "visible_fraction": 1.0,
+            "blockers": []
+          },
+          "face_external": {
+            "samples": 9,
+            "blocked": 0,
+            "bounds": [
+              0.46831434965133667,
+              0.4818517863750458,
+              0.5100664496421814,
+              0.5185354351997375,
+              22.988279342651367
+            ],
+            "safe": true,
+            "visible_fraction": 1.0,
+            "blockers": []
+          },
+          "own_ray_difference": 0
+        },
+        "max": {
+          "bounds": [
+            0.4880523085594177,
+            0.5422197580337524,
+            0.4784814715385437,
+            0.5187554955482483,
+            22.33794403076172
+          ],
+          "safe": true,
+          "vertical_coverage": 0.04027402400970459,
+          "face_all": {
+            "samples": 9,
+            "blocked": 0,
+            "bounds": [
+              0.5034281015396118,
+              0.518655002117157,
+              0.5060148239135742,
+              0.5141541957855225,
+              22.34206771850586
+            ],
+            "safe": true,
+            "visible_fraction": 1.0,
+            "blockers": []
+          },
+          "face_external": {
+            "samples": 9,
+            "blocked": 0,
+            "bounds": [
+              0.5034281015396118,
+              0.518655002117157,
+              0.5060148239135742,
+              0.5141541957855225,
+              22.34206771850586
+            ],
+            "safe": true,
+            "visible_fraction": 1.0,
+            "blockers": []
+          },
+          "own_ray_difference": 0
+        }
+      },
+      "geometry": {
+        "held_pose": true,
+        "static_seating": [
+          [
+            "narrator",
+            {
+              "hip_z": 0.4648272395133972,
+              "calibrated_seat_center": [
+                1.1473894119262695e-06,
+                8.55907154083252,
+                -0.42907118797302246
+              ],
+              "seat_footprint": [
+                1.4938984870910645,
+                0.7869494074583054
+              ],
+              "declared_top": 0.4648272395133972,
+              "hip_minus_declared_top": 0.0,
+              "foot_plane_gaps": [
+                0.0,
+                0.0
+              ]
+            }
+          ],
+          [
+            "june",
+            {
+              "hip_z": 0.46482768654823303,
+              "calibrated_seat_center": [
+                3.7676188945770264,
+                -0.8353062868118286,
+                -0.42907118797302246
+              ],
+              "seat_footprint": [
+                1.4938984572887422,
+                0.7869493180513383
+              ],
+              "declared_top": 0.46482768654823303,
+              "hip_minus_declared_top": 0.0,
+              "foot_plane_gaps": [
+                0.0,
+                0.0
+              ]
+            }
+          ]
+        ]
+      }
+    },
+    {
+      "frame": 2776,
+      "shot": "sh44",
+      "actor_qc": {
+        "leo": {
+          "bounds": [
+            0.45320361852645874,
+            0.5048260688781738,
+            0.4837634861469269,
+            0.5227916240692139,
+            22.983549118041992
+          ],
+          "safe": true,
+          "vertical_coverage": 0.03902813792228699,
+          "face_all": {
+            "samples": 10,
+            "blocked": 0,
+            "bounds": [
+              0.46834173798561096,
+              0.48185163736343384,
+              0.5100423097610474,
+              0.5185254216194153,
+              22.987333297729492
+            ],
+            "safe": true,
+            "visible_fraction": 1.0,
+            "blockers": []
+          },
+          "face_external": {
+            "samples": 10,
+            "blocked": 0,
+            "bounds": [
+              0.46834173798561096,
+              0.48185163736343384,
+              0.5100423097610474,
+              0.5185254216194153,
+              22.987333297729492
+            ],
+            "safe": true,
+            "visible_fraction": 1.0,
+            "blockers": []
+          },
+          "own_ray_difference": 0
+        },
+        "max": {
+          "bounds": [
+            0.4880523085594177,
+            0.5422197580337524,
+            0.4784814715385437,
+            0.5187481641769409,
+            22.337440490722656
+          ],
+          "safe": true,
+          "vertical_coverage": 0.04026669263839722,
+          "face_all": {
+            "samples": 9,
+            "blocked": 0,
+            "bounds": [
+              0.5033713579177856,
+              0.5186581611633301,
+              0.5060173273086548,
+              0.5141209363937378,
+              22.34170913696289
+            ],
+            "safe": true,
+            "visible_fraction": 1.0,
+            "blockers": []
+          },
+          "face_external": {
+            "samples": 9,
+            "blocked": 0,
+            "bounds": [
+              0.5033713579177856,
+              0.5186581611633301,
+              0.5060173273086548,
+              0.5141209363937378,
+              22.34170913696289
+            ],
+            "safe": true,
+            "visible_fraction": 1.0,
+            "blockers": []
+          },
+          "own_ray_difference": 0
+        }
+      },
+      "geometry": {
+        "held_pose": true,
+        "static_seating": [
+          [
+            "narrator",
+            {
+              "hip_z": 0.4648272395133972,
+              "calibrated_seat_center": [
+                1.1473894119262695e-06,
+                8.55907154083252,
+                -0.42907118797302246
+              ],
+              "seat_footprint": [
+                1.4938984870910645,
+                0.7869494074583054
+              ],
+              "declared_top": 0.4648272395133972,
+              "hip_minus_declared_top": 0.0,
+              "foot_plane_gaps": [
+                0.0,
+                0.0
+              ]
+            }
+          ],
+          [
+            "june",
+            {
+              "hip_z": 0.46482768654823303,
+              "calibrated_seat_center": [
+                3.7676188945770264,
+                -0.8353062868118286,
+                -0.42907118797302246
+              ],
+              "seat_footprint": [
+                1.4938984572887422,
+                0.7869493180513383
+              ],
+              "declared_top": 0.46482768654823303,
+              "hip_minus_declared_top": 0.0,
+              "foot_plane_gaps": [
+                0.0,
+                0.0
+              ]
+            }
+          ]
+        ]
+      }
+    },
+    {
+      "frame": 2777,
+      "shot": "sh44",
+      "actor_qc": {
+        "leo": {
+          "bounds": [
+            0.45320361852645874,
+            0.5048260688781738,
+            0.4837634861469269,
+            0.5227974057197571,
+            22.982446670532227
+          ],
+          "safe": true,
+          "vertical_coverage": 0.0390339195728302,
+          "face_all": {
+            "samples": 9,
+            "blocked": 0,
+            "bounds": [
+              0.4683677852153778,
+              0.4818512797355652,
+              0.5100194215774536,
+              0.5185158252716064,
+              22.986438751220703
+            ],
+            "safe": true,
+            "visible_fraction": 1.0,
+            "blockers": []
+          },
+          "face_external": {
+            "samples": 9,
+            "blocked": 0,
+            "bounds": [
+              0.4683677852153778,
+              0.4818512797355652,
+              0.5100194215774536,
+              0.5185158252716064,
+              22.986438751220703
+            ],
+            "safe": true,
+            "visible_fraction": 1.0,
+            "blockers": []
+          },
+          "own_ray_difference": 0
+        },
+        "max": {
+          "bounds": [
+            0.4880523085594177,
+            0.5422197580337524,
+            0.4784814715385437,
+            0.5187410116195679,
+            22.336963653564453
+          ],
+          "safe": true,
+          "vertical_coverage": 0.04025954008102417,
+          "face_all": {
+            "samples": 9,
+            "blocked": 0,
+            "bounds": [
+              0.5033175349235535,
+              0.5186612010002136,
+              0.5060197710990906,
+              0.5140891075134277,
+              22.341371536254883
+            ],
+            "safe": true,
+            "visible_fraction": 1.0,
+            "blockers": []
+          },
+          "face_external": {
+            "samples": 9,
+            "blocked": 0,
+            "bounds": [
+              0.5033175349235535,
+              0.5186612010002136,
+              0.5060197710990906,
+              0.5140891075134277,
+              22.341371536254883
+            ],
+            "safe": true,
+            "visible_fraction": 1.0,
+            "blockers": []
+          },
+          "own_ray_difference": 0
+        }
+      },
+      "geometry": {
+        "held_pose": true,
+        "static_seating": [
+          [
+            "narrator",
+            {
+              "hip_z": 0.4648272395133972,
+              "calibrated_seat_center": [
+                1.1473894119262695e-06,
+                8.55907154083252,
+                -0.42907118797302246
+              ],
+              "seat_footprint": [
+                1.4938984870910645,
+                0.7869494074583054
+              ],
+              "declared_top": 0.4648272395133972,
+              "hip_minus_declared_top": 0.0,
+              "foot_plane_gaps": [
+                0.0,
+                0.0
+              ]
+            }
+          ],
+          [
+            "june",
+            {
+              "hip_z": 0.46482768654823303,
+              "calibrated_seat_center": [
+                3.7676188945770264,
+                -0.8353062868118286,
+                -0.42907118797302246
+              ],
+              "seat_footprint": [
+                1.4938984572887422,
+                0.7869493180513383
+              ],
+              "declared_top": 0.46482768654823303,
+              "hip_minus_declared_top": 0.0,
+              "foot_plane_gaps": [
+                0.0,
+                0.0
+              ]
+            }
+          ]
+        ]
+      }
+    },
+    {
+      "frame": 2778,
+      "shot": "sh44",
+      "actor_qc": {
+        "leo": {
+          "bounds": [
+            0.45320361852645874,
+            0.5048260688781738,
+            0.4837634861469269,
+            0.5228027105331421,
+            22.981409072875977
+          ],
+          "safe": true,
+          "vertical_coverage": 0.03903922438621521,
+          "face_all": {
+            "samples": 9,
+            "blocked": 0,
+            "bounds": [
+              0.46839243173599243,
+              0.4818507730960846,
+              0.5099977850914001,
+              0.5185065865516663,
+              22.9856014251709
+            ],
+            "safe": true,
+            "visible_fraction": 1.0,
+            "blockers": []
+          },
+          "face_external": {
+            "samples": 9,
+            "blocked": 0,
+            "bounds": [
+              0.46839243173599243,
+              0.4818507730960846,
+              0.5099977850914001,
+              0.5185065865516663,
+              22.9856014251709
+            ],
+            "safe": true,
+            "visible_fraction": 1.0,
+            "blockers": []
+          },
+          "own_ray_difference": 0
+        },
+        "max": {
+          "bounds": [
+            0.4880523085594177,
+            0.5422197580337524,
+            0.4784814715385437,
+            0.5187340378761292,
+            22.336519241333008
+          ],
+          "safe": true,
+          "vertical_coverage": 0.04025256633758545,
+          "face_all": {
+            "samples": 9,
+            "blocked": 0,
+            "bounds": [
+              0.5032668709754944,
+              0.5186641812324524,
+              0.506022036075592,
+              0.5140588283538818,
+              22.34105682373047
+            ],
+            "safe": true,
+            "visible_fraction": 1.0,
+            "blockers": []
+          },
+          "face_external": {
+            "samples": 9,
+            "blocked": 0,
+            "bounds": [
+              0.5032668709754944,
+              0.5186641812324524,
+              0.506022036075592,
+              0.5140588283538818,
+              22.34105682373047
+            ],
+            "safe": true,
+            "visible_fraction": 1.0,
+            "blockers": []
+          },
+          "own_ray_difference": 0
+        }
+      },
+      "geometry": {
+        "held_pose": true,
+        "static_seating": [
+          [
+            "narrator",
+            {
+              "hip_z": 0.4648272395133972,
+              "calibrated_seat_center": [
+                1.1473894119262695e-06,
+                8.55907154083252,
+                -0.42907118797302246
+              ],
+              "seat_footprint": [
+                1.4938984870910645,
+                0.7869494074583054
+              ],
+              "declared_top": 0.4648272395133972,
+              "hip_minus_declared_top": 0.0,
+              "foot_plane_gaps": [
+                0.0,
+                0.0
+              ]
+            }
+          ],
+          [
+            "june",
+            {
+              "hip_z": 0.46482768654823303,
+              "calibrated_seat_center": [
+                3.7676188945770264,
+                -0.8353062868118286,
+                -0.42907118797302246
+              ],
+              "seat_footprint": [
+                1.4938984572887422,
+                0.7869493180513383
+              ],
+              "declared_top": 0.46482768654823303,
+              "hip_minus_declared_top": 0.0,
+              "foot_plane_gaps": [
+                0.0,
+                0.0
+              ]
+            }
+          ]
+        ]
+      }
+    },
+    {
+      "frame": 2779,
+      "shot": "sh44",
+      "actor_qc": {
+        "leo": {
+          "bounds": [
+            0.45320361852645874,
+            0.5048260688781738,
+            0.4837634861469269,
+            0.5228075385093689,
+            22.980440139770508
+          ],
+          "safe": true,
+          "vertical_coverage": 0.03904405236244202,
+          "face_all": {
+            "samples": 9,
+            "blocked": 0,
+            "bounds": [
+              0.46841558814048767,
+              0.48185011744499207,
+              0.509977400302887,
+              0.5184978246688843,
+              22.984819412231445
+            ],
+            "safe": true,
+            "visible_fraction": 1.0,
+            "blockers": []
+          },
+          "face_external": {
+            "samples": 9,
+            "blocked": 0,
+            "bounds": [
+              0.46841558814048767,
+              0.48185011744499207,
+              0.509977400302887,
+              0.5184978246688843,
+              22.984819412231445
+            ],
+            "safe": true,
+            "visible_fraction": 1.0,
+            "blockers": []
+          },
+          "own_ray_difference": 0
+        },
+        "max": {
+          "bounds": [
+            0.4880523085594177,
+            0.5422197580337524,
+            0.4784814715385437,
+            0.5187273621559143,
+            22.336103439331055
+          ],
+          "safe": true,
+          "vertical_coverage": 0.040245890617370605,
+          "face_all": {
+            "samples": 9,
+            "blocked": 0,
+            "bounds": [
+              0.503219485282898,
+              0.5186669826507568,
+              0.5060242414474487,
+              0.5140302777290344,
+              22.34076499938965
+            ],
+            "safe": true,
+            "visible_fraction": 1.0,
+            "blockers": []
+          },
+          "face_external": {
+            "samples": 9,
+            "blocked": 0,
+            "bounds": [
+              0.503219485282898,
+              0.5186669826507568,
+              0.5060242414474487,
+              0.5140302777290344,
+              22.34076499938965
+            ],
+            "safe": true,
+            "visible_fraction": 1.0,
+            "blockers": []
+          },
+          "own_ray_difference": 0
+        }
+      },
+      "geometry": {
+        "held_pose": true,
+        "static_seating": [
+          [
+            "narrator",
+            {
+              "hip_z": 0.4648272395133972,
+              "calibrated_seat_center": [
+                1.1473894119262695e-06,
+                8.55907154083252,
+                -0.42907118797302246
+              ],
+              "seat_footprint": [
+                1.4938984870910645,
+                0.7869494074583054
+              ],
+              "declared_top": 0.4648272395133972,
+              "hip_minus_declared_top": 0.0,
+              "foot_plane_gaps": [
+                0.0,
+                0.0
+              ]
+            }
+          ],
+          [
+            "june",
+            {
+              "hip_z": 0.46482768654823303,
+              "calibrated_seat_center": [
+                3.7676188945770264,
+                -0.8353062868118286,
+                -0.42907118797302246
+              ],
+              "seat_footprint": [
+                1.4938984572887422,
+                0.7869493180513383
+              ],
+              "declared_top": 0.46482768654823303,
+              "hip_minus_declared_top": 0.0,
+              "foot_plane_gaps": [
+                0.0,
+                0.0
+              ]
+            }
+          ]
+        ]
+      }
+    },
+    {
+      "frame": 2780,
+      "shot": "sh44",
+      "actor_qc": {
+        "leo": {
+          "bounds": [
+            0.45320361852645874,
+            0.5048260688781738,
+            0.4837634861469269,
+            0.5228119492530823,
+            22.979543685913086
+          ],
+          "safe": true,
+          "vertical_coverage": 0.039048463106155396,
+          "face_all": {
+            "samples": 9,
+            "blocked": 0,
+            "bounds": [
+              0.46843716502189636,
+              0.48184943199157715,
+              0.5099585056304932,
+              0.5184895396232605,
+              22.98409652709961
+            ],
+            "safe": true,
+            "visible_fraction": 1.0,
+            "blockers": []
+          },
+          "face_external": {
+            "samples": 9,
+            "blocked": 0,
+            "bounds": [
+              0.46843716502189636,
+              0.48184943199157715,
+              0.5099585056304932,
+              0.5184895396232605,
+              22.98409652709961
+            ],
+            "safe": true,
+            "visible_fraction": 1.0,
+            "blockers": []
+          },
+          "own_ray_difference": 0
+        },
+        "max": {
+          "bounds": [
+            0.4880523085594177,
+            0.5422197580337524,
+            0.4784814715385437,
+            0.5187209844589233,
+            22.33572006225586
+          ],
+          "safe": true,
+          "vertical_coverage": 0.04023951292037964,
+          "face_all": {
+            "samples": 9,
+            "blocked": 0,
+            "bounds": [
+              0.5031754970550537,
+              0.5186697244644165,
+              0.5060262680053711,
+              0.514003574848175,
+              22.34049415588379
+            ],
+            "safe": true,
+            "visible_fraction": 1.0,
+            "blockers": []
+          },
+          "face_external": {
+            "samples": 9,
+            "blocked": 0,
+            "bounds": [
+              0.5031754970550537,
+              0.5186697244644165,
+              0.5060262680053711,
+              0.514003574848175,
+              22.34049415588379
+            ],
+            "safe": true,
+            "visible_fraction": 1.0,
+            "blockers": []
+          },
+          "own_ray_difference": 0
+        }
+      },
+      "geometry": {
+        "held_pose": true,
+        "static_seating": [
+          [
+            "narrator",
+            {
+              "hip_z": 0.4648272395133972,
+              "calibrated_seat_center": [
+                1.1473894119262695e-06,
+                8.55907154083252,
+                -0.42907118797302246
+              ],
+              "seat_footprint": [
+                1.4938984870910645,
+                0.7869494074583054
+              ],
+              "declared_top": 0.4648272395133972,
+              "hip_minus_declared_top": 0.0,
+              "foot_plane_gaps": [
+                0.0,
+                0.0
+              ]
+            }
+          ],
+          [
+            "june",
+            {
+              "hip_z": 0.46482768654823303,
+              "calibrated_seat_center": [
+                3.7676188945770264,
+                -0.8353062868118286,
+                -0.42907118797302246
+              ],
+              "seat_footprint": [
+                1.4938984572887422,
+                0.7869493180513383
+              ],
+              "declared_top": 0.46482768654823303,
+              "hip_minus_declared_top": 0.0,
+              "foot_plane_gaps": [
+                0.0,
+                0.0
+              ]
+            }
+          ]
+        ]
+      }
+    },
+    {
+      "frame": 2781,
+      "shot": "sh44",
+      "actor_qc": {
+        "leo": {
+          "bounds": [
+            0.45320361852645874,
+            0.5048260688781738,
+            0.4837634861469269,
+            0.5228158831596375,
+            22.97871971130371
+          ],
+          "safe": true,
+          "vertical_coverage": 0.03905239701271057,
+          "face_all": {
+            "samples": 9,
+            "blocked": 0,
+            "bounds": [
+              0.46845710277557373,
+              0.4818486273288727,
+              0.509941041469574,
+              0.5184818506240845,
+              22.983434677124023
+            ],
+            "safe": true,
+            "visible_fraction": 1.0,
+            "blockers": []
+          },
+          "face_external": {
+            "samples": 9,
+            "blocked": 0,
+            "bounds": [
+              0.46845710277557373,
+              0.4818486273288727,
+              0.509941041469574,
+              0.5184818506240845,
+              22.983434677124023
+            ],
+            "safe": true,
+            "visible_fraction": 1.0,
+            "blockers": []
+          },
+          "own_ray_difference": 0
+        },
+        "max": {
+          "bounds": [
+            0.4880523085594177,
+            0.5422197580337524,
+            0.4784814715385437,
+            0.5187150239944458,
+            22.335369110107422
+          ],
+          "safe": true,
+          "vertical_coverage": 0.0402335524559021,
+          "face_all": {
+            "samples": 9,
+            "blocked": 0,
+            "bounds": [
+              0.5031349658966064,
+              0.5186722874641418,
+              0.5060281753540039,
+              0.5139787793159485,
+              22.340246200561523
+            ],
+            "safe": true,
+            "visible_fraction": 1.0,
+            "blockers": []
+          },
+          "face_external": {
+            "samples": 9,
+            "blocked": 0,
+            "bounds": [
+              0.5031349658966064,
+              0.5186722874641418,
+              0.5060281753540039,
+              0.5139787793159485,
+              22.340246200561523
+            ],
+            "safe": true,
+            "visible_fraction": 1.0,
+            "blockers": []
+          },
+          "own_ray_difference": 0
+        }
+      },
+      "geometry": {
+        "held_pose": true,
+        "static_seating": [
+          [
+            "narrator",
+            {
+              "hip_z": 0.4648272395133972,
+              "calibrated_seat_center": [
+                1.1473894119262695e-06,
+                8.55907154083252,
+                -0.42907118797302246
+              ],
+              "seat_footprint": [
+                1.4938984870910645,
+                0.7869494074583054
+              ],
+              "declared_top": 0.4648272395133972,
+              "hip_minus_declared_top": 0.0,
+              "foot_plane_gaps": [
+                0.0,
+                0.0
+              ]
+            }
+          ],
+          [
+            "june",
+            {
+              "hip_z": 0.46482768654823303,
+              "calibrated_seat_center": [
+                3.7676188945770264,
+                -0.8353062868118286,
+                -0.42907118797302246
+              ],
+              "seat_footprint": [
+                1.4938984572887422,
+                0.7869493180513383
+              ],
+              "declared_top": 0.46482768654823303,
+              "hip_minus_declared_top": 0.0,
+              "foot_plane_gaps": [
+                0.0,
+                0.0
+              ]
+            }
+          ]
+        ]
+      }
+    },
+    {
+      "frame": 2782,
+      "shot": "sh44",
+      "actor_qc": {
+        "leo": {
+          "bounds": [
+            0.45320361852645874,
+            0.5048260688781738,
+            0.4837634861469269,
+            0.5228193998336792,
+            22.977968215942383
+          ],
+          "safe": true,
+          "vertical_coverage": 0.03905591368675232,
+          "face_all": {
+            "samples": 9,
+            "blocked": 0,
+            "bounds": [
+              0.468475341796875,
+              0.4818478226661682,
+              0.5099250674247742,
+              0.5184747576713562,
+              22.982831954956055
+            ],
+            "safe": true,
+            "visible_fraction": 1.0,
+            "blockers": []
+          },
+          "face_external": {
+            "samples": 9,
+            "blocked": 0,
+            "bounds": [
+              0.468475341796875,
+              0.4818478226661682,
+              0.5099250674247742,
+              0.5184747576713562,
+              22.982831954956055
+            ],
+            "safe": true,
+            "visible_fraction": 1.0,
+            "blockers": []
+          },
+          "own_ray_difference": 0
+        },
+        "max": {
+          "bounds": [
+            0.4880523085594177,
+            0.5422197580337524,
+            0.4784814715385437,
+            0.5187094211578369,
+            22.33504867553711
+          ],
+          "safe": true,
+          "vertical_coverage": 0.04022794961929321,
+          "face_all": {
+            "samples": 10,
+            "blocked": 0,
+            "bounds": [
+              0.5030980110168457,
+              0.5186746120452881,
+              0.5060299634933472,
+              0.5139560103416443,
+              22.34001922607422
+            ],
+            "safe": true,
+            "visible_fraction": 1.0,
+            "blockers": []
+          },
+          "face_external": {
+            "samples": 10,
+            "blocked": 0,
+            "bounds": [
+              0.5030980110168457,
+              0.5186746120452881,
+              0.5060299634933472,
+              0.5139560103416443,
+              22.34001922607422
+            ],
+            "safe": true,
+            "visible_fraction": 1.0,
+            "blockers": []
+          },
+          "own_ray_difference": 0
+        }
+      },
+      "geometry": {
+        "held_pose": true,
+        "static_seating": [
+          [
+            "narrator",
+            {
+              "hip_z": 0.4648272395133972,
+              "calibrated_seat_center": [
+                1.1473894119262695e-06,
+                8.55907154083252,
+                -0.42907118797302246
+              ],
+              "seat_footprint": [
+                1.4938984870910645,
+                0.7869494074583054
+              ],
+              "declared_top": 0.4648272395133972,
+              "hip_minus_declared_top": 0.0,
+              "foot_plane_gaps": [
+                0.0,
+                0.0
+              ]
+            }
+          ],
+          [
+            "june",
+            {
+              "hip_z": 0.46482768654823303,
+              "calibrated_seat_center": [
+                3.7676188945770264,
+                -0.8353062868118286,
+                -0.42907118797302246
+              ],
+              "seat_footprint": [
+                1.4938984572887422,
+                0.7869493180513383
+              ],
+              "declared_top": 0.46482768654823303,
+              "hip_minus_declared_top": 0.0,
+              "foot_plane_gaps": [
+                0.0,
+                0.0
+              ]
+            }
+          ]
+        ]
+      }
+    },
+    {
+      "frame": 2783,
+      "shot": "sh44",
+      "actor_qc": {
+        "leo": {
+          "bounds": [
+            0.45320361852645874,
+            0.5048260688781738,
+            0.4837634861469269,
+            0.5228224992752075,
+            22.977293014526367
+          ],
+          "safe": true,
+          "vertical_coverage": 0.03905901312828064,
+          "face_all": {
+            "samples": 9,
+            "blocked": 0,
+            "bounds": [
+              0.4684918224811554,
+              0.48184701800346375,
+              0.5099105834960938,
+              0.5184682607650757,
+              22.982290267944336
+            ],
+            "safe": true,
+            "visible_fraction": 1.0,
+            "blockers": []
+          },
+          "face_external": {
+            "samples": 9,
+            "blocked": 0,
+            "bounds": [
+              0.4684918224811554,
+              0.48184701800346375,
+              0.5099105834960938,
+              0.5184682607650757,
+              22.982290267944336
+            ],
+            "safe": true,
+            "visible_fraction": 1.0,
+            "blockers": []
+          },
+          "own_ray_difference": 0
+        },
+        "max": {
+          "bounds": [
+            0.4880523085594177,
+            0.5422197580337524,
+            0.4784814715385437,
+            0.5187042951583862,
+            22.334762573242188
+          ],
+          "safe": true,
+          "vertical_coverage": 0.04022282361984253,
+          "face_all": {
+            "samples": 9,
+            "blocked": 0,
+            "bounds": [
+              0.503064751625061,
+              0.5186768174171448,
+              0.5060315728187561,
+              0.513935387134552,
+              22.339818954467773
+            ],
+            "safe": true,
+            "visible_fraction": 1.0,
+            "blockers": []
+          },
+          "face_external": {
+            "samples": 9,
+            "blocked": 0,
+            "bounds": [
+              0.503064751625061,
+              0.5186768174171448,
+              0.5060315728187561,
+              0.513935387134552,
+              22.339818954467773
+            ],
+            "safe": true,
+            "visible_fraction": 1.0,
+            "blockers": []
+          },
+          "own_ray_difference": 0
+        }
+      },
+      "geometry": {
+        "held_pose": true,
+        "static_seating": [
+          [
+            "narrator",
+            {
+              "hip_z": 0.4648272395133972,
+              "calibrated_seat_center": [
+                1.1473894119262695e-06,
+                8.55907154083252,
+                -0.42907118797302246
+              ],
+              "seat_footprint": [
+                1.4938984870910645,
+                0.7869494074583054
+              ],
+              "declared_top": 0.4648272395133972,
+              "hip_minus_declared_top": 0.0,
+              "foot_plane_gaps": [
+                0.0,
+                0.0
+              ]
+            }
+          ],
+          [
+            "june",
+            {
+              "hip_z": 0.46482768654823303,
+              "calibrated_seat_center": [
+                3.7676188945770264,
+                -0.8353062868118286,
+                -0.42907118797302246
+              ],
+              "seat_footprint": [
+                1.4938984572887422,
+                0.7869493180513383
+              ],
+              "declared_top": 0.46482768654823303,
+              "hip_minus_declared_top": 0.0,
+              "foot_plane_gaps": [
+                0.0,
+                0.0
+              ]
+            }
+          ]
+        ]
+      }
+    },
+    {
+      "frame": 2784,
+      "shot": "sh44",
+      "actor_qc": {
+        "leo": {
+          "bounds": [
+            0.45320361852645874,
+            0.5048260688781738,
+            0.4837634861469269,
+            0.5228251814842224,
+            22.976696014404297
+          ],
+          "safe": true,
+          "vertical_coverage": 0.03906169533729553,
+          "face_all": {
+            "samples": 10,
+            "blocked": 0,
+            "bounds": [
+              0.46850645542144775,
+              0.48184624314308167,
+              0.509897768497467,
+              0.5184624195098877,
+              22.981809616088867
+            ],
+            "safe": true,
+            "visible_fraction": 1.0,
+            "blockers": []
+          },
+          "face_external": {
+            "samples": 10,
+            "blocked": 0,
+            "bounds": [
+              0.46850645542144775,
+              0.48184624314308167,
+              0.509897768497467,
+              0.5184624195098877,
+              22.981809616088867
+            ],
+            "safe": true,
+            "visible_fraction": 1.0,
+            "blockers": []
+          },
+          "own_ray_difference": 0
+        },
+        "max": {
+          "bounds": [
+            0.4880523085594177,
+            0.5422197580337524,
+            0.4784814715385437,
+            0.5186997056007385,
+            22.334508895874023
+          ],
+          "safe": true,
+          "vertical_coverage": 0.040218234062194824,
+          "face_all": {
+            "samples": 9,
+            "blocked": 0,
+            "bounds": [
+              0.5030352473258972,
+              0.5186787843704224,
+              0.5060330033302307,
+              0.5139169692993164,
+              22.33963966369629
+            ],
+            "safe": true,
+            "visible_fraction": 1.0,
+            "blockers": []
+          },
+          "face_external": {
+            "samples": 9,
+            "blocked": 0,
+            "bounds": [
+              0.5030352473258972,
+              0.5186787843704224,
+              0.5060330033302307,
+              0.5139169692993164,
+              22.33963966369629
+            ],
+            "safe": true,
+            "visible_fraction": 1.0,
+            "blockers": []
+          },
+          "own_ray_difference": 0
+        }
+      },
+      "geometry": {
+        "held_pose": true,
+        "static_seating": [
+          [
+            "narrator",
+            {
+              "hip_z": 0.4648272395133972,
+              "calibrated_seat_center": [
+                1.1473894119262695e-06,
+                8.55907154083252,
+                -0.42907118797302246
+              ],
+              "seat_footprint": [
+                1.4938984870910645,
+                0.7869494074583054
+              ],
+              "declared_top": 0.4648272395133972,
+              "hip_minus_declared_top": 0.0,
+              "foot_plane_gaps": [
+                0.0,
+                0.0
+              ]
+            }
+          ],
+          [
+            "june",
+            {
+              "hip_z": 0.46482768654823303,
+              "calibrated_seat_center": [
+                3.7676188945770264,
+                -0.8353062868118286,
+                -0.42907118797302246
+              ],
+              "seat_footprint": [
+                1.4938984572887422,
+                0.7869493180513383
+              ],
+              "declared_top": 0.46482768654823303,
+              "hip_minus_declared_top": 0.0,
+              "foot_plane_gaps": [
+                0.0,
+                0.0
+              ]
+            }
+          ]
+        ]
+      }
+    },
+    {
+      "frame": 2785,
+      "shot": "sh44",
+      "actor_qc": {
+        "leo": {
+          "bounds": [
+            0.45320361852645874,
+            0.5048260688781738,
+            0.4837634861469269,
+            0.5228275060653687,
+            22.97617530822754
+          ],
+          "safe": true,
+          "vertical_coverage": 0.03906401991844177,
+          "face_all": {
+            "samples": 9,
+            "blocked": 0,
+            "bounds": [
+              0.46851927042007446,
+              0.481845498085022,
+              0.5098865628242493,
+              0.5184573531150818,
+              22.981393814086914
+            ],
+            "safe": true,
+            "visible_fraction": 1.0,
+            "blockers": []
+          },
+          "face_external": {
+            "samples": 9,
+            "blocked": 0,
+            "bounds": [
+              0.46851927042007446,
+              0.481845498085022,
+              0.5098865628242493,
+              0.5184573531150818,
+              22.981393814086914
+            ],
+            "safe": true,
+            "visible_fraction": 1.0,
+            "blockers": []
+          },
+          "own_ray_difference": 0
+        },
+        "max": {
+          "bounds": [
+            0.4880523085594177,
+            0.5422197580337524,
+            0.4784814715385437,
+            0.518695592880249,
+            22.334287643432617
+          ],
+          "safe": true,
+          "vertical_coverage": 0.04021412134170532,
+          "face_all": {
+            "samples": 9,
+            "blocked": 0,
+            "bounds": [
+              0.5030094981193542,
+              0.5186805129051208,
+              0.506034255027771,
+              0.513900876045227,
+              22.33948516845703
+            ],
+            "safe": true,
+            "visible_fraction": 1.0,
+            "blockers": []
+          },
+          "face_external": {
+            "samples": 9,
+            "blocked": 0,
+            "bounds": [
+              0.5030094981193542,
+              0.5186805129051208,
+              0.506034255027771,
+              0.513900876045227,
+              22.33948516845703
+            ],
+            "safe": true,
+            "visible_fraction": 1.0,
+            "blockers": []
+          },
+          "own_ray_difference": 0
+        }
+      },
+      "geometry": {
+        "held_pose": true,
+        "static_seating": [
+          [
+            "narrator",
+            {
+              "hip_z": 0.4648272395133972,
+              "calibrated_seat_center": [
+                1.1473894119262695e-06,
+                8.55907154083252,
+                -0.42907118797302246
+              ],
+              "seat_footprint": [
+                1.4938984870910645,
+                0.7869494074583054
+              ],
+              "declared_top": 0.4648272395133972,
+              "hip_minus_declared_top": 0.0,
+              "foot_plane_gaps": [
+                0.0,
+                0.0
+              ]
+            }
+          ],
+          [
+            "june",
+            {
+              "hip_z": 0.46482768654823303,
+              "calibrated_seat_center": [
+                3.7676188945770264,
+                -0.8353062868118286,
+                -0.42907118797302246
+              ],
+              "seat_footprint": [
+                1.4938984572887422,
+                0.7869493180513383
+              ],
+              "declared_top": 0.46482768654823303,
+              "hip_minus_declared_top": 0.0,
+              "foot_plane_gaps": [
+                0.0,
+                0.0
+              ]
+            }
+          ]
+        ]
+      }
+    },
+    {
+      "frame": 2786,
+      "shot": "sh44",
+      "actor_qc": {
+        "leo": {
+          "bounds": [
+            0.45320361852645874,
+            0.5048260688781738,
+            0.4837634861469269,
+            0.5228294730186462,
+            22.97573471069336
+          ],
+          "safe": true,
+          "vertical_coverage": 0.03906598687171936,
+          "face_all": {
+            "samples": 9,
+            "blocked": 0,
+            "bounds": [
+              0.46853014826774597,
+              0.48184484243392944,
+              0.5098770260810852,
+              0.5184529423713684,
+              22.981040954589844
+            ],
+            "safe": true,
+            "visible_fraction": 1.0,
+            "blockers": []
+          },
+          "face_external": {
+            "samples": 9,
+            "blocked": 0,
+            "bounds": [
+              0.46853014826774597,
+              0.48184484243392944,
+              0.5098770260810852,
+              0.5184529423713684,
+              22.981040954589844
+            ],
+            "safe": true,
+            "visible_fraction": 1.0,
+            "blockers": []
+          },
+          "own_ray_difference": 0
+        },
+        "max": {
+          "bounds": [
+            0.4880523085594177,
+            0.5422197580337524,
+            0.4784814715385437,
+            0.5186920762062073,
+            22.3341007232666
+          ],
+          "safe": true,
+          "vertical_coverage": 0.040210604667663574,
+          "face_all": {
+            "samples": 10,
+            "blocked": 0,
+            "bounds": [
+              0.5029876828193665,
+              0.5186820030212402,
+              0.506035327911377,
+              0.5138871073722839,
+              22.339353561401367
+            ],
+            "safe": true,
+            "visible_fraction": 1.0,
+            "blockers": []
+          },
+          "face_external": {
+            "samples": 10,
+            "blocked": 0,
+            "bounds": [
+              0.5029876828193665,
+              0.5186820030212402,
+              0.506035327911377,
+              0.5138871073722839,
+              22.339353561401367
+            ],
+            "safe": true,
+            "visible_fraction": 1.0,
+            "blockers": []
+          },
+          "own_ray_difference": 0
+        }
+      },
+      "geometry": {
+        "held_pose": true,
+        "static_seating": [
+          [
+            "narrator",
+            {
+              "hip_z": 0.4648272395133972,
+              "calibrated_seat_center": [
+                1.1473894119262695e-06,
+                8.55907154083252,
+                -0.42907118797302246
+              ],
+              "seat_footprint": [
+                1.4938984870910645,
+                0.7869494074583054
+              ],
+              "declared_top": 0.4648272395133972,
+              "hip_minus_declared_top": 0.0,
+              "foot_plane_gaps": [
+                0.0,
+                0.0
+              ]
+            }
+          ],
+          [
+            "june",
+            {
+              "hip_z": 0.46482768654823303,
+              "calibrated_seat_center": [
+                3.7676188945770264,
+                -0.8353062868118286,
+                -0.42907118797302246
+              ],
+              "seat_footprint": [
+                1.4938984572887422,
+                0.7869493180513383
+              ],
+              "declared_top": 0.46482768654823303,
+              "hip_minus_declared_top": 0.0,
+              "foot_plane_gaps": [
+                0.0,
+                0.0
+              ]
+            }
+          ]
+        ]
+      }
+    },
+    {
+      "frame": 2787,
+      "shot": "sh44",
+      "actor_qc": {
+        "leo": {
+          "bounds": [
+            0.45320361852645874,
+            0.5048260688781738,
+            0.4837634861469269,
+            0.5228310227394104,
+            22.975372314453125
+          ],
+          "safe": true,
+          "vertical_coverage": 0.03906753659248352,
+          "face_all": {
+            "samples": 9,
+            "blocked": 0,
+            "bounds": [
+              0.46853911876678467,
+              0.4818442761898041,
+              0.5098692178726196,
+              0.5184493660926819,
+              22.980751037597656
+            ],
+            "safe": true,
+            "visible_fraction": 1.0,
+            "blockers": []
+          },
+          "face_external": {
+            "samples": 9,
+            "blocked": 0,
+            "bounds": [
+              0.46853911876678467,
+              0.4818442761898041,
+              0.5098692178726196,
+              0.5184493660926819,
+              22.980751037597656
+            ],
+            "safe": true,
+            "visible_fraction": 1.0,
+            "blockers": []
+          },
+          "own_ray_difference": 0
+        },
+        "max": {
+          "bounds": [
+            0.4880523085594177,
+            0.5422197580337524,
+            0.4784814715385437,
+            0.5186891555786133,
+            22.333948135375977
+          ],
+          "safe": true,
+          "vertical_coverage": 0.04020768404006958,
+          "face_all": {
+            "samples": 9,
+            "blocked": 0,
+            "bounds": [
+              0.5029697418212891,
+              0.5186832547187805,
+              0.5060362219810486,
+              0.5138757824897766,
+              22.33924674987793
+            ],
+            "safe": true,
+            "visible_fraction": 1.0,
+            "blockers": []
+          },
+          "face_external": {
+            "samples": 9,
+            "blocked": 0,
+            "bounds": [
+              0.5029697418212891,
+              0.5186832547187805,
+              0.5060362219810486,
+              0.5138757824897766,
+              22.33924674987793
+            ],
+            "safe": true,
+            "visible_fraction": 1.0,
+            "blockers": []
+          },
+          "own_ray_difference": 0
+        }
+      },
+      "geometry": {
+        "held_pose": true,
+        "static_seating": [
+          [
+            "narrator",
+            {
+              "hip_z": 0.4648272395133972,
+              "calibrated_seat_center": [
+                1.1473894119262695e-06,
+                8.55907154083252,
+                -0.42907118797302246
+              ],
+              "seat_footprint": [
+                1.4938984870910645,
+                0.7869494074583054
+              ],
+              "declared_top": 0.4648272395133972,
+              "hip_minus_declared_top": 0.0,
+              "foot_plane_gaps": [
+                0.0,
+                0.0
+              ]
+            }
+          ],
+          [
+            "june",
+            {
+              "hip_z": 0.46482768654823303,
+              "calibrated_seat_center": [
+                3.7676188945770264,
+                -0.8353062868118286,
+                -0.42907118797302246
+              ],
+              "seat_footprint": [
+                1.4938984572887422,
+                0.7869493180513383
+              ],
+              "declared_top": 0.46482768654823303,
+              "hip_minus_declared_top": 0.0,
+              "foot_plane_gaps": [
+                0.0,
+                0.0
+              ]
+            }
+          ]
+        ]
+      }
+    }
+  ],
+  "extra": {},
+  "missing_props": []
+}

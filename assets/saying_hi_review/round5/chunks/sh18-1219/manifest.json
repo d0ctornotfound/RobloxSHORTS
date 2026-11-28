@@ -1,0 +1,2646 @@
+{
+  "task": {
+    "key": "sh18-1219",
+    "shot": "sh18",
+    "start": 1219,
+    "end": 1243,
+    "unit_start": 1195,
+    "unit_end": 1309,
+    "sentence_ids": [
+      18
+    ],
+    "stage": {
+      "unit": "still_18",
+      "variant": null,
+      "actors": {
+        "otis": {
+          "head": [
+            0.06,
+            0,
+            -0.08
+          ]
+        },
+        "narrator": {
+          "head": [
+            0.06,
+            0,
+            0.08
+          ]
+        },
+        "june": {
+          "head": [
+            0.06,
+            0,
+            -0.08
+          ]
+        }
+      },
+      "qc_actors": [
+        "otis",
+        "narrator"
+      ]
+    }
+  },
+  "engine": "EEVEE",
+  "denoising": false,
+  "spatial_samples": 32,
+  "render_sampling_hz": 30,
+  "rendered": [
+    {
+      "frame": 1219,
+      "render_seconds": 13.805498488000012,
+      "near_black_percent": 0.005208333333333334
+    },
+    {
+      "frame": 1220,
+      "render_seconds": 1.795983738000018,
+      "near_black_percent": 0.006944444444444444
+    },
+    {
+      "frame": 1221,
+      "render_seconds": 1.7857810330000348,
+      "near_black_percent": 0.00945216049382716
+    },
+    {
+      "frame": 1222,
+      "render_seconds": 1.8028185719999783,
+      "near_black_percent": 0.01253858024691358
+    },
+    {
+      "frame": 1223,
+      "render_seconds": 1.7928793709999695,
+      "near_black_percent": 0.010223765432098766
+    },
+    {
+      "frame": 1224,
+      "render_seconds": 1.8039652869999827,
+      "near_black_percent": 0.008294753086419753
+    },
+    {
+      "frame": 1225,
+      "render_seconds": 1.797778376999986,
+      "near_black_percent": 0.007523148148148149
+    },
+    {
+      "frame": 1226,
+      "render_seconds": 1.8041502240000113,
+      "near_black_percent": 0.004436728395061728
+    },
+    {
+      "frame": 1227,
+      "render_seconds": 1.7995581669999865,
+      "near_black_percent": 0.002507716049382716
+    },
+    {
+      "frame": 1228,
+      "render_seconds": 1.8004129970000236,
+      "near_black_percent": 0.0011574074074074073
+    },
+    {
+      "frame": 1229,
+      "render_seconds": 1.801250519000007,
+      "near_black_percent": 0.0011574074074074073
+    },
+    {
+      "frame": 1230,
+      "render_seconds": 2.5618138400000134,
+      "near_black_percent": 0.0011574074074074073
+    },
+    {
+      "frame": 1231,
+      "render_seconds": 1.8026305999999863,
+      "near_black_percent": 0.0011574074074074073
+    },
+    {
+      "frame": 1232,
+      "render_seconds": 1.8151791660000072,
+      "near_black_percent": 0.0011574074074074073
+    },
+    {
+      "frame": 1233,
+      "render_seconds": 1.8084083179999766,
+      "near_black_percent": 0.0011574074074074073
+    },
+    {
+      "frame": 1234,
+      "render_seconds": 1.8169013090000021,
+      "near_black_percent": 0.0011574074074074073
+    },
+    {
+      "frame": 1235,
+      "render_seconds": 1.8039156699999808,
+      "near_black_percent": 0.0011574074074074073
+    },
+    {
+      "frame": 1236,
+      "render_seconds": 1.8052451329999712,
+      "near_black_percent": 0.0011574074074074073
+    },
+    {
+      "frame": 1237,
+      "render_seconds": 1.8115990109999984,
+      "near_black_percent": 0.0011574074074074073
+    },
+    {
+      "frame": 1238,
+      "render_seconds": 1.830761525000014,
+      "near_black_percent": 0.0011574074074074073
+    },
+    {
+      "frame": 1239,
+      "render_seconds": 1.8117668479999907,
+      "near_black_percent": 0.0011574074074074073
+    },
+    {
+      "frame": 1240,
+      "render_seconds": 1.8060617630000024,
+      "near_black_percent": 0.0011574074074074073
+    },
+    {
+      "frame": 1241,
+      "render_seconds": 1.802960641000027,
+      "near_black_percent": 0.0011574074074074073
+    },
+    {
+      "frame": 1242,
+      "render_seconds": 1.8099887399999943,
+      "near_black_percent": 0.0011574074074074073
+    }
+  ],
+  "rows": [
+    {
+      "frame": 1219,
+      "shot": "sh18",
+      "actor_qc": {
+        "otis": {
+          "bounds": [
+            -0.3739374279975891,
+            0.2008979767560959,
+            0.36654749512672424,
+            0.8155733346939087,
+            4.1554484367370605
+          ],
+          "safe": false,
+          "vertical_coverage": 0.44902583956718445,
+          "face_all": {
+            "samples": 0,
+            "blocked": 0,
+            "bounds": [
+              -0.1104554757475853,
+              -0.09744077175855637,
+              0.516146719455719,
+              0.6451498866081238,
+              4.316015243530273
+            ],
+            "safe": false,
+            "visible_fraction": 0,
+            "blockers": []
+          },
+          "face_external": {
+            "samples": 0,
+            "blocked": 0,
+            "bounds": [
+              -0.1104554757475853,
+              -0.09744077175855637,
+              0.516146719455719,
+              0.6451498866081238,
+              4.316015243530273
+            ],
+            "safe": false,
+            "visible_fraction": 0,
+            "blockers": []
+          },
+          "own_ray_difference": 0
+        }
+      },
+      "geometry": {
+        "chart": {
+          "arrows": 10,
+          "links": [
+            {
+              "from": "ava",
+              "to": "brody"
+            },
+            {
+              "from": "bella",
+              "to": "chase"
+            },
+            {
+              "from": "cleo",
+              "to": "kai"
+            },
+            {
+              "from": "daisy",
+              "to": "brody"
+            },
+            {
+              "from": "ella",
+              "to": "chase"
+            },
+            {
+              "from": "faye",
+              "to": "kai"
+            },
+            {
+              "from": "gia",
+              "to": "brody"
+            },
+            {
+              "from": "hana",
+              "to": "chase"
+            },
+            {
+              "from": "ivy",
+              "to": "kai"
+            },
+            {
+              "from": "june",
+              "to": "kai"
+            }
+          ],
+          "mode": "arrows",
+          "progress": 1,
+          "portrait_source": "actual smoke lineup row PNG crops"
+        },
+        "pencil_aim_residual": 0.12190668106192354,
+        "pencil_to_arm": {
+          "sampled_min_arm_surface_gap": 0.03475950285792351,
+          "arm_prop_overlap_pairs": 14,
+          "scope": "whole rigid arm surface; not signed distal-hand penetration"
+        },
+        "note": "Artwork is animated on a physical paper surface; pencil gesture is not guaranteed to track every individual arrow."
+      }
+    },
+    {
+      "frame": 1220,
+      "shot": "sh18",
+      "actor_qc": {
+        "otis": {
+          "bounds": [
+            -0.3757409453392029,
+            0.20054681599140167,
+            0.36430832743644714,
+            0.8150662779808044,
+            4.156164169311523
+          ],
+          "safe": false,
+          "vertical_coverage": 0.4507579505443573,
+          "face_all": {
+            "samples": 0,
+            "blocked": 0,
+            "bounds": [
+              -0.11132343113422394,
+              -0.10035884380340576,
+              0.5156859159469604,
+              0.6444867849349976,
+              4.316643238067627
+            ],
+            "safe": false,
+            "visible_fraction": 0,
+            "blockers": []
+          },
+          "face_external": {
+            "samples": 0,
+            "blocked": 0,
+            "bounds": [
+              -0.11132343113422394,
+              -0.10035884380340576,
+              0.5156859159469604,
+              0.6444867849349976,
+              4.316643238067627
+            ],
+            "safe": false,
+            "visible_fraction": 0,
+            "blockers": []
+          },
+          "own_ray_difference": 0
+        }
+      },
+      "geometry": {
+        "chart": {
+          "arrows": 10,
+          "links": [
+            {
+              "from": "ava",
+              "to": "brody"
+            },
+            {
+              "from": "bella",
+              "to": "chase"
+            },
+            {
+              "from": "cleo",
+              "to": "kai"
+            },
+            {
+              "from": "daisy",
+              "to": "brody"
+            },
+            {
+              "from": "ella",
+              "to": "chase"
+            },
+            {
+              "from": "faye",
+              "to": "kai"
+            },
+            {
+              "from": "gia",
+              "to": "brody"
+            },
+            {
+              "from": "hana",
+              "to": "chase"
+            },
+            {
+              "from": "ivy",
+              "to": "kai"
+            },
+            {
+              "from": "june",
+              "to": "kai"
+            }
+          ],
+          "mode": "arrows",
+          "progress": 1,
+          "portrait_source": "actual smoke lineup row PNG crops"
+        },
+        "pencil_aim_residual": 0.1252873812683572,
+        "pencil_to_arm": {
+          "sampled_min_arm_surface_gap": 0.037092506885528564,
+          "arm_prop_overlap_pairs": 14,
+          "scope": "whole rigid arm surface; not signed distal-hand penetration"
+        },
+        "note": "Artwork is animated on a physical paper surface; pencil gesture is not guaranteed to track every individual arrow."
+      }
+    },
+    {
+      "frame": 1221,
+      "shot": "sh18",
+      "actor_qc": {
+        "otis": {
+          "bounds": [
+            -0.37624990940093994,
+            0.1998831331729889,
+            0.36258500814437866,
+            0.8145101070404053,
+            4.157018661499023
+          ],
+          "safe": false,
+          "vertical_coverage": 0.4519250988960266,
+          "face_all": {
+            "samples": 0,
+            "blocked": 0,
+            "bounds": [
+              -0.1108843982219696,
+              -0.10248445719480515,
+              0.5152543187141418,
+              0.6438305377960205,
+              4.317685604095459
+            ],
+            "safe": false,
+            "visible_fraction": 0,
+            "blockers": []
+          },
+          "face_external": {
+            "samples": 0,
+            "blocked": 0,
+            "bounds": [
+              -0.1108843982219696,
+              -0.10248445719480515,
+              0.5152543187141418,
+              0.6438305377960205,
+              4.317685604095459
+            ],
+            "safe": false,
+            "visible_fraction": 0,
+            "blockers": []
+          },
+          "own_ray_difference": 0
+        }
+      },
+      "geometry": {
+        "chart": {
+          "arrows": 10,
+          "links": [
+            {
+              "from": "ava",
+              "to": "brody"
+            },
+            {
+              "from": "bella",
+              "to": "chase"
+            },
+            {
+              "from": "cleo",
+              "to": "kai"
+            },
+            {
+              "from": "daisy",
+              "to": "brody"
+            },
+            {
+              "from": "ella",
+              "to": "chase"
+            },
+            {
+              "from": "faye",
+              "to": "kai"
+            },
+            {
+              "from": "gia",
+              "to": "brody"
+            },
+            {
+              "from": "hana",
+              "to": "chase"
+            },
+            {
+              "from": "ivy",
+              "to": "kai"
+            },
+            {
+              "from": "june",
+              "to": "kai"
+            }
+          ],
+          "mode": "arrows",
+          "progress": 1,
+          "portrait_source": "actual smoke lineup row PNG crops"
+        },
+        "pencil_aim_residual": 0.1271705224081476,
+        "pencil_to_arm": {
+          "sampled_min_arm_surface_gap": 0.03895758464932442,
+          "arm_prop_overlap_pairs": 14,
+          "scope": "whole rigid arm surface; not signed distal-hand penetration"
+        },
+        "note": "Artwork is animated on a physical paper surface; pencil gesture is not guaranteed to track every individual arrow."
+      }
+    },
+    {
+      "frame": 1222,
+      "shot": "sh18",
+      "actor_qc": {
+        "otis": {
+          "bounds": [
+            -0.37582534551620483,
+            0.1990634649991989,
+            0.3613659143447876,
+            0.813892126083374,
+            4.158000946044922
+          ],
+          "safe": false,
+          "vertical_coverage": 0.4525262117385864,
+          "face_all": {
+            "samples": 0,
+            "blocked": 0,
+            "bounds": [
+              -0.10920672863721848,
+              -0.10368387401103973,
+              0.5148365497589111,
+              0.64317387342453,
+              4.31913948059082
+            ],
+            "safe": false,
+            "visible_fraction": 0,
+            "blockers": []
+          },
+          "face_external": {
+            "samples": 0,
+            "blocked": 0,
+            "bounds": [
+              -0.10920672863721848,
+              -0.10368387401103973,
+              0.5148365497589111,
+              0.64317387342453,
+              4.31913948059082
+            ],
+            "safe": false,
+            "visible_fraction": 0,
+            "blockers": []
+          },
+          "own_ray_difference": 0
+        }
+      },
+      "geometry": {
+        "chart": {
+          "arrows": 10,
+          "links": [
+            {
+              "from": "ava",
+              "to": "brody"
+            },
+            {
+              "from": "bella",
+              "to": "chase"
+            },
+            {
+              "from": "cleo",
+              "to": "kai"
+            },
+            {
+              "from": "daisy",
+              "to": "brody"
+            },
+            {
+              "from": "ella",
+              "to": "chase"
+            },
+            {
+              "from": "faye",
+              "to": "kai"
+            },
+            {
+              "from": "gia",
+              "to": "brody"
+            },
+            {
+              "from": "hana",
+              "to": "chase"
+            },
+            {
+              "from": "ivy",
+              "to": "kai"
+            },
+            {
+              "from": "june",
+              "to": "kai"
+            }
+          ],
+          "mode": "arrows",
+          "progress": 1,
+          "portrait_source": "actual smoke lineup row PNG crops"
+        },
+        "pencil_aim_residual": 0.12784464481011937,
+        "pencil_to_arm": {
+          "sampled_min_arm_surface_gap": 0.04031802713871002,
+          "arm_prop_overlap_pairs": 14,
+          "scope": "whole rigid arm surface; not signed distal-hand penetration"
+        },
+        "note": "Artwork is animated on a physical paper surface; pencil gesture is not guaranteed to track every individual arrow."
+      }
+    },
+    {
+      "frame": 1223,
+      "shot": "sh18",
+      "actor_qc": {
+        "otis": {
+          "bounds": [
+            -0.3741125464439392,
+            0.19817326962947845,
+            0.36062899231910706,
+            0.8132014274597168,
+            4.158371925354004
+          ],
+          "safe": false,
+          "vertical_coverage": 0.45257243514060974,
+          "face_all": {
+            "samples": 0,
+            "blocked": 0,
+            "bounds": [
+              -0.10874044895172119,
+              -0.10151392221450806,
+              0.5144152641296387,
+              0.6425089836120605,
+              4.320260047912598
+            ],
+            "safe": false,
+            "visible_fraction": 0,
+            "blockers": []
+          },
+          "face_external": {
+            "samples": 0,
+            "blocked": 0,
+            "bounds": [
+              -0.10874044895172119,
+              -0.10151392221450806,
+              0.5144152641296387,
+              0.6425089836120605,
+              4.320260047912598
+            ],
+            "safe": false,
+            "visible_fraction": 0,
+            "blockers": []
+          },
+          "own_ray_difference": 0
+        }
+      },
+      "geometry": {
+        "chart": {
+          "arrows": 10,
+          "links": [
+            {
+              "from": "ava",
+              "to": "brody"
+            },
+            {
+              "from": "bella",
+              "to": "chase"
+            },
+            {
+              "from": "cleo",
+              "to": "kai"
+            },
+            {
+              "from": "daisy",
+              "to": "brody"
+            },
+            {
+              "from": "ella",
+              "to": "chase"
+            },
+            {
+              "from": "faye",
+              "to": "kai"
+            },
+            {
+              "from": "gia",
+              "to": "brody"
+            },
+            {
+              "from": "hana",
+              "to": "chase"
+            },
+            {
+              "from": "ivy",
+              "to": "kai"
+            },
+            {
+              "from": "june",
+              "to": "kai"
+            }
+          ],
+          "mode": "arrows",
+          "progress": 1,
+          "portrait_source": "actual smoke lineup row PNG crops"
+        },
+        "pencil_aim_residual": 0.12712949734062637,
+        "pencil_to_arm": {
+          "sampled_min_arm_surface_gap": 0.04111086204648018,
+          "arm_prop_overlap_pairs": 14,
+          "scope": "whole rigid arm surface; not signed distal-hand penetration"
+        },
+        "note": "Artwork is animated on a physical paper surface; pencil gesture is not guaranteed to track every individual arrow."
+      }
+    },
+    {
+      "frame": 1224,
+      "shot": "sh18",
+      "actor_qc": {
+        "otis": {
+          "bounds": [
+            -0.37146127223968506,
+            0.19713309407234192,
+            0.36036792397499084,
+            0.8135807514190674,
+            4.158426761627197
+          ],
+          "safe": false,
+          "vertical_coverage": 0.45321282744407654,
+          "face_all": {
+            "samples": 0,
+            "blocked": 0,
+            "bounds": [
+              -0.10698273777961731,
+              -0.09855605661869049,
+              0.513973593711853,
+              0.6418287754058838,
+              4.3213300704956055
+            ],
+            "safe": false,
+            "visible_fraction": 0,
+            "blockers": []
+          },
+          "face_external": {
+            "samples": 0,
+            "blocked": 0,
+            "bounds": [
+              -0.10698273777961731,
+              -0.09855605661869049,
+              0.513973593711853,
+              0.6418287754058838,
+              4.3213300704956055
+            ],
+            "safe": false,
+            "visible_fraction": 0,
+            "blockers": []
+          },
+          "own_ray_difference": 0
+        }
+      },
+      "geometry": {
+        "chart": {
+          "arrows": 10,
+          "links": [
+            {
+              "from": "ava",
+              "to": "brody"
+            },
+            {
+              "from": "bella",
+              "to": "chase"
+            },
+            {
+              "from": "cleo",
+              "to": "kai"
+            },
+            {
+              "from": "daisy",
+              "to": "brody"
+            },
+            {
+              "from": "ella",
+              "to": "chase"
+            },
+            {
+              "from": "faye",
+              "to": "kai"
+            },
+            {
+              "from": "gia",
+              "to": "brody"
+            },
+            {
+              "from": "hana",
+              "to": "chase"
+            },
+            {
+              "from": "ivy",
+              "to": "kai"
+            },
+            {
+              "from": "june",
+              "to": "kai"
+            }
+          ],
+          "mode": "arrows",
+          "progress": 1,
+          "portrait_source": "actual smoke lineup row PNG crops"
+        },
+        "pencil_aim_residual": 0.1252741080677438,
+        "pencil_to_arm": {
+          "sampled_min_arm_surface_gap": 0.041349008679389954,
+          "arm_prop_overlap_pairs": 14,
+          "scope": "whole rigid arm surface; not signed distal-hand penetration"
+        },
+        "note": "Artwork is animated on a physical paper surface; pencil gesture is not guaranteed to track every individual arrow."
+      }
+    },
+    {
+      "frame": 1225,
+      "shot": "sh18",
+      "actor_qc": {
+        "otis": {
+          "bounds": [
+            -0.36758652329444885,
+            0.19603735208511353,
+            0.36058923602104187,
+            0.8140689134597778,
+            4.158679962158203
+          ],
+          "safe": false,
+          "vertical_coverage": 0.45347967743873596,
+          "face_all": {
+            "samples": 0,
+            "blocked": 0,
+            "bounds": [
+              -0.10400630533695221,
+              -0.09488492459058762,
+              0.5134971737861633,
+              0.6411285400390625,
+              4.3228373527526855
+            ],
+            "safe": false,
+            "visible_fraction": 0,
+            "blockers": []
+          },
+          "face_external": {
+            "samples": 0,
+            "blocked": 0,
+            "bounds": [
+              -0.10400630533695221,
+              -0.09488492459058762,
+              0.5134971737861633,
+              0.6411285400390625,
+              4.3228373527526855
+            ],
+            "safe": false,
+            "visible_fraction": 0,
+            "blockers": []
+          },
+          "own_ray_difference": 0
+        }
+      },
+      "geometry": {
+        "chart": {
+          "arrows": 10,
+          "links": [
+            {
+              "from": "ava",
+              "to": "brody"
+            },
+            {
+              "from": "bella",
+              "to": "chase"
+            },
+            {
+              "from": "cleo",
+              "to": "kai"
+            },
+            {
+              "from": "daisy",
+              "to": "brody"
+            },
+            {
+              "from": "ella",
+              "to": "chase"
+            },
+            {
+              "from": "faye",
+              "to": "kai"
+            },
+            {
+              "from": "gia",
+              "to": "brody"
+            },
+            {
+              "from": "hana",
+              "to": "chase"
+            },
+            {
+              "from": "ivy",
+              "to": "kai"
+            },
+            {
+              "from": "june",
+              "to": "kai"
+            }
+          ],
+          "mode": "arrows",
+          "progress": 1,
+          "portrait_source": "actual smoke lineup row PNG crops"
+        },
+        "pencil_aim_residual": 0.1225009199288553,
+        "pencil_to_arm": {
+          "sampled_min_arm_surface_gap": 0.04107121005654335,
+          "arm_prop_overlap_pairs": 14,
+          "scope": "whole rigid arm surface; not signed distal-hand penetration"
+        },
+        "note": "Artwork is animated on a physical paper surface; pencil gesture is not guaranteed to track every individual arrow."
+      }
+    },
+    {
+      "frame": 1226,
+      "shot": "sh18",
+      "actor_qc": {
+        "otis": {
+          "bounds": [
+            -0.3626057207584381,
+            0.19499611854553223,
+            0.36130690574645996,
+            0.8144678473472595,
+            4.159178733825684
+          ],
+          "safe": false,
+          "vertical_coverage": 0.45316094160079956,
+          "face_all": {
+            "samples": 0,
+            "blocked": 0,
+            "bounds": [
+              -0.10064323991537094,
+              -0.08987972140312195,
+              0.5129019021987915,
+              0.6404815316200256,
+              4.324451446533203
+            ],
+            "safe": false,
+            "visible_fraction": 0,
+            "blockers": []
+          },
+          "face_external": {
+            "samples": 0,
+            "blocked": 0,
+            "bounds": [
+              -0.10064323991537094,
+              -0.08987972140312195,
+              0.5129019021987915,
+              0.6404815316200256,
+              4.324451446533203
+            ],
+            "safe": false,
+            "visible_fraction": 0,
+            "blockers": []
+          },
+          "own_ray_difference": 0
+        }
+      },
+      "geometry": {
+        "chart": {
+          "arrows": 10,
+          "links": [
+            {
+              "from": "ava",
+              "to": "brody"
+            },
+            {
+              "from": "bella",
+              "to": "chase"
+            },
+            {
+              "from": "cleo",
+              "to": "kai"
+            },
+            {
+              "from": "daisy",
+              "to": "brody"
+            },
+            {
+              "from": "ella",
+              "to": "chase"
+            },
+            {
+              "from": "faye",
+              "to": "kai"
+            },
+            {
+              "from": "gia",
+              "to": "brody"
+            },
+            {
+              "from": "hana",
+              "to": "chase"
+            },
+            {
+              "from": "ivy",
+              "to": "kai"
+            },
+            {
+              "from": "june",
+              "to": "kai"
+            }
+          ],
+          "mode": "arrows",
+          "progress": 1,
+          "portrait_source": "actual smoke lineup row PNG crops"
+        },
+        "pencil_aim_residual": 0.11864580471952446,
+        "pencil_to_arm": {
+          "sampled_min_arm_surface_gap": 0.0402987003326416,
+          "arm_prop_overlap_pairs": 14,
+          "scope": "whole rigid arm surface; not signed distal-hand penetration"
+        },
+        "note": "Artwork is animated on a physical paper surface; pencil gesture is not guaranteed to track every individual arrow."
+      }
+    },
+    {
+      "frame": 1227,
+      "shot": "sh18",
+      "actor_qc": {
+        "otis": {
+          "bounds": [
+            -0.35667183995246887,
+            0.1937902271747589,
+            0.3625415563583374,
+            0.8147649168968201,
+            4.159966945648193
+          ],
+          "safe": false,
+          "vertical_coverage": 0.45222336053848267,
+          "face_all": {
+            "samples": 0,
+            "blocked": 0,
+            "bounds": [
+              -0.09805049747228622,
+              -0.08265041559934616,
+              0.5122228264808655,
+              0.6398525834083557,
+              4.32615852355957
+            ],
+            "safe": false,
+            "visible_fraction": 0,
+            "blockers": []
+          },
+          "face_external": {
+            "samples": 0,
+            "blocked": 0,
+            "bounds": [
+              -0.09805049747228622,
+              -0.08265041559934616,
+              0.5122228264808655,
+              0.6398525834083557,
+              4.32615852355957
+            ],
+            "safe": false,
+            "visible_fraction": 0,
+            "blockers": []
+          },
+          "own_ray_difference": 0
+        }
+      },
+      "geometry": {
+        "chart": {
+          "arrows": 10,
+          "links": [
+            {
+              "from": "ava",
+              "to": "brody"
+            },
+            {
+              "from": "bella",
+              "to": "chase"
+            },
+            {
+              "from": "cleo",
+              "to": "kai"
+            },
+            {
+              "from": "daisy",
+              "to": "brody"
+            },
+            {
+              "from": "ella",
+              "to": "chase"
+            },
+            {
+              "from": "faye",
+              "to": "kai"
+            },
+            {
+              "from": "gia",
+              "to": "brody"
+            },
+            {
+              "from": "hana",
+              "to": "chase"
+            },
+            {
+              "from": "ivy",
+              "to": "kai"
+            },
+            {
+              "from": "june",
+              "to": "kai"
+            }
+          ],
+          "mode": "arrows",
+          "progress": 1,
+          "portrait_source": "actual smoke lineup row PNG crops"
+        },
+        "pencil_aim_residual": 0.11343801581545275,
+        "pencil_to_arm": {
+          "sampled_min_arm_surface_gap": 0.039064910262823105,
+          "arm_prop_overlap_pairs": 14,
+          "scope": "whole rigid arm surface; not signed distal-hand penetration"
+        },
+        "note": "Artwork is animated on a physical paper surface; pencil gesture is not guaranteed to track every individual arrow."
+      }
+    },
+    {
+      "frame": 1228,
+      "shot": "sh18",
+      "actor_qc": {
+        "otis": {
+          "bounds": [
+            -0.3499685227870941,
+            0.19226296246051788,
+            0.3643096387386322,
+            0.8149554133415222,
+            4.160146236419678
+          ],
+          "safe": false,
+          "vertical_coverage": 0.45064577460289,
+          "face_all": {
+            "samples": 0,
+            "blocked": 0,
+            "bounds": [
+              -0.0949188694357872,
+              -0.07481876015663147,
+              0.511539101600647,
+              0.6391744017601013,
+              4.328325271606445
+            ],
+            "safe": false,
+            "visible_fraction": 0,
+            "blockers": []
+          },
+          "face_external": {
+            "samples": 0,
+            "blocked": 0,
+            "bounds": [
+              -0.0949188694357872,
+              -0.07481876015663147,
+              0.511539101600647,
+              0.6391744017601013,
+              4.328325271606445
+            ],
+            "safe": false,
+            "visible_fraction": 0,
+            "blockers": []
+          },
+          "own_ray_difference": 0
+        }
+      },
+      "geometry": {
+        "chart": {
+          "arrows": 10,
+          "links": [
+            {
+              "from": "ava",
+              "to": "brody"
+            },
+            {
+              "from": "bella",
+              "to": "chase"
+            },
+            {
+              "from": "cleo",
+              "to": "kai"
+            },
+            {
+              "from": "daisy",
+              "to": "brody"
+            },
+            {
+              "from": "ella",
+              "to": "chase"
+            },
+            {
+              "from": "faye",
+              "to": "kai"
+            },
+            {
+              "from": "gia",
+              "to": "brody"
+            },
+            {
+              "from": "hana",
+              "to": "chase"
+            },
+            {
+              "from": "ivy",
+              "to": "kai"
+            },
+            {
+              "from": "june",
+              "to": "kai"
+            }
+          ],
+          "mode": "arrows",
+          "progress": 1,
+          "portrait_source": "actual smoke lineup row PNG crops"
+        },
+        "pencil_aim_residual": 0.10655078889834398,
+        "pencil_to_arm": {
+          "sampled_min_arm_surface_gap": 0.03741832077503204,
+          "arm_prop_overlap_pairs": 14,
+          "scope": "whole rigid arm surface; not signed distal-hand penetration"
+        },
+        "note": "Artwork is animated on a physical paper surface; pencil gesture is not guaranteed to track every individual arrow."
+      }
+    },
+    {
+      "frame": 1229,
+      "shot": "sh18",
+      "actor_qc": {
+        "otis": {
+          "bounds": [
+            -0.34284093976020813,
+            0.19026394188404083,
+            0.36661025881767273,
+            0.8150427937507629,
+            4.159722328186035
+          ],
+          "safe": false,
+          "vertical_coverage": 0.4484325349330902,
+          "face_all": {
+            "samples": 0,
+            "blocked": 0,
+            "bounds": [
+              -0.0913713127374649,
+              -0.06660904735326767,
+              0.510859489440918,
+              0.6384621262550354,
+              4.330915451049805
+            ],
+            "safe": false,
+            "visible_fraction": 0,
+            "blockers": []
+          },
+          "face_external": {
+            "samples": 0,
+            "blocked": 0,
+            "bounds": [
+              -0.0913713127374649,
+              -0.06660904735326767,
+              0.510859489440918,
+              0.6384621262550354,
+              4.330915451049805
+            ],
+            "safe": false,
+            "visible_fraction": 0,
+            "blockers": []
+          },
+          "own_ray_difference": 0
+        }
+      },
+      "geometry": {
+        "chart": {
+          "arrows": 10,
+          "links": [
+            {
+              "from": "ava",
+              "to": "brody"
+            },
+            {
+              "from": "bella",
+              "to": "chase"
+            },
+            {
+              "from": "cleo",
+              "to": "kai"
+            },
+            {
+              "from": "daisy",
+              "to": "brody"
+            },
+            {
+              "from": "ella",
+              "to": "chase"
+            },
+            {
+              "from": "faye",
+              "to": "kai"
+            },
+            {
+              "from": "gia",
+              "to": "brody"
+            },
+            {
+              "from": "hana",
+              "to": "chase"
+            },
+            {
+              "from": "ivy",
+              "to": "kai"
+            },
+            {
+              "from": "june",
+              "to": "kai"
+            }
+          ],
+          "mode": "arrows",
+          "progress": 1,
+          "portrait_source": "actual smoke lineup row PNG crops"
+        },
+        "pencil_aim_residual": 0.09766751045633229,
+        "pencil_to_arm": {
+          "sampled_min_arm_surface_gap": 0.03542323037981987,
+          "arm_prop_overlap_pairs": 14,
+          "scope": "whole rigid arm surface; not signed distal-hand penetration"
+        },
+        "note": "Artwork is animated on a physical paper surface; pencil gesture is not guaranteed to track every individual arrow."
+      }
+    },
+    {
+      "frame": 1230,
+      "shot": "sh18",
+      "actor_qc": {
+        "otis": {
+          "bounds": [
+            -0.34217506647109985,
+            0.18768469989299774,
+            0.3694121837615967,
+            0.8150375485420227,
+            4.159571647644043
+          ],
+          "safe": false,
+          "vertical_coverage": 0.445625364780426,
+          "face_all": {
+            "samples": 0,
+            "blocked": 0,
+            "bounds": [
+              -0.08754066377878189,
+              -0.05825718492269516,
+              0.5101972222328186,
+              0.6377381086349487,
+              4.333868026733398
+            ],
+            "safe": false,
+            "visible_fraction": 0,
+            "blockers": []
+          },
+          "face_external": {
+            "samples": 0,
+            "blocked": 0,
+            "bounds": [
+              -0.08754066377878189,
+              -0.05825718492269516,
+              0.5101972222328186,
+              0.6377381086349487,
+              4.333868026733398
+            ],
+            "safe": false,
+            "visible_fraction": 0,
+            "blockers": []
+          },
+          "own_ray_difference": 0
+        }
+      },
+      "geometry": {
+        "chart": {
+          "arrows": 10,
+          "links": [
+            {
+              "from": "ava",
+              "to": "brody"
+            },
+            {
+              "from": "bella",
+              "to": "chase"
+            },
+            {
+              "from": "cleo",
+              "to": "kai"
+            },
+            {
+              "from": "daisy",
+              "to": "brody"
+            },
+            {
+              "from": "ella",
+              "to": "chase"
+            },
+            {
+              "from": "faye",
+              "to": "kai"
+            },
+            {
+              "from": "gia",
+              "to": "brody"
+            },
+            {
+              "from": "hana",
+              "to": "chase"
+            },
+            {
+              "from": "ivy",
+              "to": "kai"
+            },
+            {
+              "from": "june",
+              "to": "kai"
+            }
+          ],
+          "mode": "arrows",
+          "progress": 1,
+          "portrait_source": "actual smoke lineup row PNG crops"
+        },
+        "pencil_aim_residual": 0.08655433200092101,
+        "pencil_to_arm": {
+          "sampled_min_arm_surface_gap": 0.03316035866737366,
+          "arm_prop_overlap_pairs": 14,
+          "scope": "whole rigid arm surface; not signed distal-hand penetration"
+        },
+        "note": "Artwork is animated on a physical paper surface; pencil gesture is not guaranteed to track every individual arrow."
+      }
+    },
+    {
+      "frame": 1231,
+      "shot": "sh18",
+      "actor_qc": {
+        "otis": {
+          "bounds": [
+            -0.34322819113731384,
+            0.18448568880558014,
+            0.3722914457321167,
+            0.814956545829773,
+            4.159704685211182
+          ],
+          "safe": false,
+          "vertical_coverage": 0.44266510009765625,
+          "face_all": {
+            "samples": 0,
+            "blocked": 0,
+            "bounds": [
+              -0.08356526494026184,
+              -0.05000369995832443,
+              0.5095688104629517,
+              0.6370304226875305,
+              4.337093353271484
+            ],
+            "safe": false,
+            "visible_fraction": 0,
+            "blockers": []
+          },
+          "face_external": {
+            "samples": 0,
+            "blocked": 0,
+            "bounds": [
+              -0.08356526494026184,
+              -0.05000369995832443,
+              0.5095688104629517,
+              0.6370304226875305,
+              4.337093353271484
+            ],
+            "safe": false,
+            "visible_fraction": 0,
+            "blockers": []
+          },
+          "own_ray_difference": 0
+        }
+      },
+      "geometry": {
+        "chart": {
+          "arrows": 10,
+          "links": [
+            {
+              "from": "ava",
+              "to": "brody"
+            },
+            {
+              "from": "bella",
+              "to": "chase"
+            },
+            {
+              "from": "cleo",
+              "to": "kai"
+            },
+            {
+              "from": "daisy",
+              "to": "brody"
+            },
+            {
+              "from": "ella",
+              "to": "chase"
+            },
+            {
+              "from": "faye",
+              "to": "kai"
+            },
+            {
+              "from": "gia",
+              "to": "brody"
+            },
+            {
+              "from": "hana",
+              "to": "chase"
+            },
+            {
+              "from": "ivy",
+              "to": "kai"
+            },
+            {
+              "from": "june",
+              "to": "kai"
+            }
+          ],
+          "mode": "arrows",
+          "progress": 1,
+          "portrait_source": "actual smoke lineup row PNG crops"
+        },
+        "pencil_aim_residual": 0.07312487425956349,
+        "pencil_to_arm": {
+          "sampled_min_arm_surface_gap": 0.030722666531801224,
+          "arm_prop_overlap_pairs": 14,
+          "scope": "whole rigid arm surface; not signed distal-hand penetration"
+        },
+        "note": "Artwork is animated on a physical paper surface; pencil gesture is not guaranteed to track every individual arrow."
+      }
+    },
+    {
+      "frame": 1232,
+      "shot": "sh18",
+      "actor_qc": {
+        "otis": {
+          "bounds": [
+            -0.34420010447502136,
+            0.18071240186691284,
+            0.3753474950790405,
+            0.8148239254951477,
+            4.15936803817749
+          ],
+          "safe": false,
+          "vertical_coverage": 0.4394764304161072,
+          "face_all": {
+            "samples": 0,
+            "blocked": 0,
+            "bounds": [
+              -0.07958333194255829,
+              -0.04208553582429886,
+              0.5089932084083557,
+              0.636370837688446,
+              4.340477466583252
+            ],
+            "safe": false,
+            "visible_fraction": 0,
+            "blockers": []
+          },
+          "face_external": {
+            "samples": 0,
+            "blocked": 0,
+            "bounds": [
+              -0.07958333194255829,
+              -0.04208553582429886,
+              0.5089932084083557,
+              0.636370837688446,
+              4.340477466583252
+            ],
+            "safe": false,
+            "visible_fraction": 0,
+            "blockers": []
+          },
+          "own_ray_difference": 0
+        }
+      },
+      "geometry": {
+        "chart": {
+          "arrows": 10,
+          "links": [
+            {
+              "from": "ava",
+              "to": "brody"
+            },
+            {
+              "from": "bella",
+              "to": "chase"
+            },
+            {
+              "from": "cleo",
+              "to": "kai"
+            },
+            {
+              "from": "daisy",
+              "to": "brody"
+            },
+            {
+              "from": "ella",
+              "to": "chase"
+            },
+            {
+              "from": "faye",
+              "to": "kai"
+            },
+            {
+              "from": "gia",
+              "to": "brody"
+            },
+            {
+              "from": "hana",
+              "to": "chase"
+            },
+            {
+              "from": "ivy",
+              "to": "kai"
+            },
+            {
+              "from": "june",
+              "to": "kai"
+            }
+          ],
+          "mode": "arrows",
+          "progress": 1,
+          "portrait_source": "actual smoke lineup row PNG crops"
+        },
+        "pencil_aim_residual": 0.05748689495507477,
+        "pencil_to_arm": {
+          "sampled_min_arm_surface_gap": 0.028208164498209953,
+          "arm_prop_overlap_pairs": 14,
+          "scope": "whole rigid arm surface; not signed distal-hand penetration"
+        },
+        "note": "Artwork is animated on a physical paper surface; pencil gesture is not guaranteed to track every individual arrow."
+      }
+    },
+    {
+      "frame": 1233,
+      "shot": "sh18",
+      "actor_qc": {
+        "otis": {
+          "bounds": [
+            -0.3449973165988922,
+            0.17649047076702118,
+            0.3785979449748993,
+            0.8146605491638184,
+            4.157377243041992
+          ],
+          "safe": false,
+          "vertical_coverage": 0.43606260418891907,
+          "face_all": {
+            "samples": 0,
+            "blocked": 0,
+            "bounds": [
+              -0.07572895288467407,
+              -0.03472879156470299,
+              0.5084906220436096,
+              0.6357929706573486,
+              4.3438825607299805
+            ],
+            "safe": false,
+            "visible_fraction": 0,
+            "blockers": []
+          },
+          "face_external": {
+            "samples": 0,
+            "blocked": 0,
+            "bounds": [
+              -0.07572895288467407,
+              -0.03472879156470299,
+              0.5084906220436096,
+              0.6357929706573486,
+              4.3438825607299805
+            ],
+            "safe": false,
+            "visible_fraction": 0,
+            "blockers": []
+          },
+          "own_ray_difference": 0
+        }
+      },
+      "geometry": {
+        "chart": {
+          "arrows": 10,
+          "links": [
+            {
+              "from": "ava",
+              "to": "brody"
+            },
+            {
+              "from": "bella",
+              "to": "chase"
+            },
+            {
+              "from": "cleo",
+              "to": "kai"
+            },
+            {
+              "from": "daisy",
+              "to": "brody"
+            },
+            {
+              "from": "ella",
+              "to": "chase"
+            },
+            {
+              "from": "faye",
+              "to": "kai"
+            },
+            {
+              "from": "gia",
+              "to": "brody"
+            },
+            {
+              "from": "hana",
+              "to": "chase"
+            },
+            {
+              "from": "ivy",
+              "to": "kai"
+            },
+            {
+              "from": "june",
+              "to": "kai"
+            }
+          ],
+          "mode": "arrows",
+          "progress": 1,
+          "portrait_source": "actual smoke lineup row PNG crops"
+        },
+        "pencil_aim_residual": 0.0399613272751866,
+        "pencil_to_arm": {
+          "sampled_min_arm_surface_gap": 0.025712380185723305,
+          "arm_prop_overlap_pairs": 14,
+          "scope": "whole rigid arm surface; not signed distal-hand penetration"
+        },
+        "note": "Artwork is animated on a physical paper surface; pencil gesture is not guaranteed to track every individual arrow."
+      }
+    },
+    {
+      "frame": 1234,
+      "shot": "sh18",
+      "actor_qc": {
+        "otis": {
+          "bounds": [
+            -0.3456554710865021,
+            0.17200763523578644,
+            0.3819054067134857,
+            0.8144899606704712,
+            4.1557769775390625
+          ],
+          "safe": false,
+          "vertical_coverage": 0.4325845539569855,
+          "face_all": {
+            "samples": 0,
+            "blocked": 0,
+            "bounds": [
+              -0.07212809473276138,
+              -0.02814270369708538,
+              0.5080807209014893,
+              0.6353294253349304,
+              4.347159385681152
+            ],
+            "safe": false,
+            "visible_fraction": 0,
+            "blockers": []
+          },
+          "face_external": {
+            "samples": 0,
+            "blocked": 0,
+            "bounds": [
+              -0.07212809473276138,
+              -0.02814270369708538,
+              0.5080807209014893,
+              0.6353294253349304,
+              4.347159385681152
+            ],
+            "safe": false,
+            "visible_fraction": 0,
+            "blockers": []
+          },
+          "own_ray_difference": 0
+        }
+      },
+      "geometry": {
+        "chart": {
+          "arrows": 10,
+          "links": [
+            {
+              "from": "ava",
+              "to": "brody"
+            },
+            {
+              "from": "bella",
+              "to": "chase"
+            },
+            {
+              "from": "cleo",
+              "to": "kai"
+            },
+            {
+              "from": "daisy",
+              "to": "brody"
+            },
+            {
+              "from": "ella",
+              "to": "chase"
+            },
+            {
+              "from": "faye",
+              "to": "kai"
+            },
+            {
+              "from": "gia",
+              "to": "brody"
+            },
+            {
+              "from": "hana",
+              "to": "chase"
+            },
+            {
+              "from": "ivy",
+              "to": "kai"
+            },
+            {
+              "from": "june",
+              "to": "kai"
+            }
+          ],
+          "mode": "arrows",
+          "progress": 1,
+          "portrait_source": "actual smoke lineup row PNG crops"
+        },
+        "pencil_aim_residual": 0.021072653562289764,
+        "pencil_to_arm": {
+          "sampled_min_arm_surface_gap": 0.023269647732377052,
+          "arm_prop_overlap_pairs": 14,
+          "scope": "whole rigid arm surface; not signed distal-hand penetration"
+        },
+        "note": "Artwork is animated on a physical paper surface; pencil gesture is not guaranteed to track every individual arrow."
+      }
+    },
+    {
+      "frame": 1235,
+      "shot": "sh18",
+      "actor_qc": {
+        "otis": {
+          "bounds": [
+            -0.34621524810791016,
+            0.16748486459255219,
+            0.38513028621673584,
+            0.8143342733383179,
+            4.1545515060424805
+          ],
+          "safe": false,
+          "vertical_coverage": 0.42920398712158203,
+          "face_all": {
+            "samples": 0,
+            "blocked": 0,
+            "bounds": [
+              -0.06889474391937256,
+              -0.022513754665851593,
+              0.507781445980072,
+              0.6350097060203552,
+              4.350153923034668
+            ],
+            "safe": false,
+            "visible_fraction": 0,
+            "blockers": []
+          },
+          "face_external": {
+            "samples": 0,
+            "blocked": 0,
+            "bounds": [
+              -0.06889474391937256,
+              -0.022513754665851593,
+              0.507781445980072,
+              0.6350097060203552,
+              4.350153923034668
+            ],
+            "safe": false,
+            "visible_fraction": 0,
+            "blockers": []
+          },
+          "own_ray_difference": 0
+        }
+      },
+      "geometry": {
+        "chart": {
+          "arrows": 10,
+          "links": [
+            {
+              "from": "ava",
+              "to": "brody"
+            },
+            {
+              "from": "bella",
+              "to": "chase"
+            },
+            {
+              "from": "cleo",
+              "to": "kai"
+            },
+            {
+              "from": "daisy",
+              "to": "brody"
+            },
+            {
+              "from": "ella",
+              "to": "chase"
+            },
+            {
+              "from": "faye",
+              "to": "kai"
+            },
+            {
+              "from": "gia",
+              "to": "brody"
+            },
+            {
+              "from": "hana",
+              "to": "chase"
+            },
+            {
+              "from": "ivy",
+              "to": "kai"
+            },
+            {
+              "from": "june",
+              "to": "kai"
+            }
+          ],
+          "mode": "arrows",
+          "progress": 1,
+          "portrait_source": "actual smoke lineup row PNG crops"
+        },
+        "pencil_aim_residual": 0.0015101505823804993,
+        "pencil_to_arm": {
+          "sampled_min_arm_surface_gap": 0.02099253609776497,
+          "arm_prop_overlap_pairs": 14,
+          "scope": "whole rigid arm surface; not signed distal-hand penetration"
+        },
+        "note": "Artwork is animated on a physical paper surface; pencil gesture is not guaranteed to track every individual arrow."
+      }
+    },
+    {
+      "frame": 1236,
+      "shot": "sh18",
+      "actor_qc": {
+        "otis": {
+          "bounds": [
+            -0.3463522791862488,
+            0.16314715147018433,
+            0.38814443349838257,
+            0.8142115473747253,
+            4.153674125671387
+          ],
+          "safe": false,
+          "vertical_coverage": 0.4260671138763428,
+          "face_all": {
+            "samples": 0,
+            "blocked": 0,
+            "bounds": [
+              -0.06612846255302429,
+              -0.018001114949584007,
+              0.5076075792312622,
+              0.6348577737808228,
+              4.352717399597168
+            ],
+            "safe": false,
+            "visible_fraction": 0,
+            "blockers": []
+          },
+          "face_external": {
+            "samples": 0,
+            "blocked": 0,
+            "bounds": [
+              -0.06612846255302429,
+              -0.018001114949584007,
+              0.5076075792312622,
+              0.6348577737808228,
+              4.352717399597168
+            ],
+            "safe": false,
+            "visible_fraction": 0,
+            "blockers": []
+          },
+          "own_ray_difference": 0
+        }
+      },
+      "geometry": {
+        "chart": {
+          "arrows": 10,
+          "links": [
+            {
+              "from": "ava",
+              "to": "brody"
+            },
+            {
+              "from": "bella",
+              "to": "chase"
+            },
+            {
+              "from": "cleo",
+              "to": "kai"
+            },
+            {
+              "from": "daisy",
+              "to": "brody"
+            },
+            {
+              "from": "ella",
+              "to": "chase"
+            },
+            {
+              "from": "faye",
+              "to": "kai"
+            },
+            {
+              "from": "gia",
+              "to": "brody"
+            },
+            {
+              "from": "hana",
+              "to": "chase"
+            },
+            {
+              "from": "ivy",
+              "to": "kai"
+            },
+            {
+              "from": "june",
+              "to": "kai"
+            }
+          ],
+          "mode": "arrows",
+          "progress": 1,
+          "portrait_source": "actual smoke lineup row PNG crops"
+        },
+        "pencil_aim_residual": 0.017926058007750614,
+        "pencil_to_arm": {
+          "sampled_min_arm_surface_gap": 0.01894395612180233,
+          "arm_prop_overlap_pairs": 14,
+          "scope": "whole rigid arm surface; not signed distal-hand penetration"
+        },
+        "note": "Artwork is animated on a physical paper surface; pencil gesture is not guaranteed to track every individual arrow."
+      }
+    },
+    {
+      "frame": 1237,
+      "shot": "sh18",
+      "actor_qc": {
+        "otis": {
+          "bounds": [
+            -0.34606561064720154,
+            0.15920452773571014,
+            0.39084067940711975,
+            0.8141345381736755,
+            4.1531081199646
+          ],
+          "safe": false,
+          "vertical_coverage": 0.4232938587665558,
+          "face_all": {
+            "samples": 0,
+            "blocked": 0,
+            "bounds": [
+              -0.06391195952892303,
+              -0.014732849784195423,
+              0.5075696110725403,
+              0.6348904967308044,
+              4.354718208312988
+            ],
+            "safe": false,
+            "visible_fraction": 0,
+            "blockers": []
+          },
+          "face_external": {
+            "samples": 0,
+            "blocked": 0,
+            "bounds": [
+              -0.06391195952892303,
+              -0.014732849784195423,
+              0.5075696110725403,
+              0.6348904967308044,
+              4.354718208312988
+            ],
+            "safe": false,
+            "visible_fraction": 0,
+            "blockers": []
+          },
+          "own_ray_difference": 0
+        }
+      },
+      "geometry": {
+        "chart": {
+          "arrows": 10,
+          "links": [
+            {
+              "from": "ava",
+              "to": "brody"
+            },
+            {
+              "from": "bella",
+              "to": "chase"
+            },
+            {
+              "from": "cleo",
+              "to": "kai"
+            },
+            {
+              "from": "daisy",
+              "to": "brody"
+            },
+            {
+              "from": "ella",
+              "to": "chase"
+            },
+            {
+              "from": "faye",
+              "to": "kai"
+            },
+            {
+              "from": "gia",
+              "to": "brody"
+            },
+            {
+              "from": "hana",
+              "to": "chase"
+            },
+            {
+              "from": "ivy",
+              "to": "kai"
+            },
+            {
+              "from": "june",
+              "to": "kai"
+            }
+          ],
+          "mode": "arrows",
+          "progress": 1,
+          "portrait_source": "actual smoke lineup row PNG crops"
+        },
+        "pencil_aim_residual": 0.03638737324470545,
+        "pencil_to_arm": {
+          "sampled_min_arm_surface_gap": 0.017157718539237976,
+          "arm_prop_overlap_pairs": 14,
+          "scope": "whole rigid arm surface; not signed distal-hand penetration"
+        },
+        "note": "Artwork is animated on a physical paper surface; pencil gesture is not guaranteed to track every individual arrow."
+      }
+    },
+    {
+      "frame": 1238,
+      "shot": "sh18",
+      "actor_qc": {
+        "otis": {
+          "bounds": [
+            -0.34542208909988403,
+            0.15582391619682312,
+            0.3931364417076111,
+            0.8141091465950012,
+            4.152822494506836
+          ],
+          "safe": false,
+          "vertical_coverage": 0.42097270488739014,
+          "face_all": {
+            "samples": 0,
+            "blocked": 0,
+            "bounds": [
+              -0.06230950728058815,
+              -0.012803418561816216,
+              0.5076729655265808,
+              0.6351160407066345,
+              4.356053352355957
+            ],
+            "safe": false,
+            "visible_fraction": 0,
+            "blockers": []
+          },
+          "face_external": {
+            "samples": 0,
+            "blocked": 0,
+            "bounds": [
+              -0.06230950728058815,
+              -0.012803418561816216,
+              0.5076729655265808,
+              0.6351160407066345,
+              4.356053352355957
+            ],
+            "safe": false,
+            "visible_fraction": 0,
+            "blockers": []
+          },
+          "own_ray_difference": 0
+        }
+      },
+      "geometry": {
+        "chart": {
+          "arrows": 10,
+          "links": [
+            {
+              "from": "ava",
+              "to": "brody"
+            },
+            {
+              "from": "bella",
+              "to": "chase"
+            },
+            {
+              "from": "cleo",
+              "to": "kai"
+            },
+            {
+              "from": "daisy",
+              "to": "brody"
+            },
+            {
+              "from": "ella",
+              "to": "chase"
+            },
+            {
+              "from": "faye",
+              "to": "kai"
+            },
+            {
+              "from": "gia",
+              "to": "brody"
+            },
+            {
+              "from": "hana",
+              "to": "chase"
+            },
+            {
+              "from": "ivy",
+              "to": "kai"
+            },
+            {
+              "from": "june",
+              "to": "kai"
+            }
+          ],
+          "mode": "arrows",
+          "progress": 1,
+          "portrait_source": "actual smoke lineup row PNG crops"
+        },
+        "pencil_aim_residual": 0.05304220871142398,
+        "pencil_to_arm": {
+          "sampled_min_arm_surface_gap": 0.015654515475034714,
+          "arm_prop_overlap_pairs": 14,
+          "scope": "whole rigid arm surface; not signed distal-hand penetration"
+        },
+        "note": "Artwork is animated on a physical paper surface; pencil gesture is not guaranteed to track every individual arrow."
+      }
+    },
+    {
+      "frame": 1239,
+      "shot": "sh18",
+      "actor_qc": {
+        "otis": {
+          "bounds": [
+            -0.3447895050048828,
+            0.1531340479850769,
+            0.3949732184410095,
+            0.8141342401504517,
+            4.152790546417236
+          ],
+          "safe": false,
+          "vertical_coverage": 0.41916102170944214,
+          "face_all": {
+            "samples": 0,
+            "blocked": 0,
+            "bounds": [
+              -0.06136536970734596,
+              -0.012271064333617687,
+              0.5079174637794495,
+              0.6355336308479309,
+              4.356655120849609
+            ],
+            "safe": false,
+            "visible_fraction": 0,
+            "blockers": []
+          },
+          "face_external": {
+            "samples": 0,
+            "blocked": 0,
+            "bounds": [
+              -0.06136536970734596,
+              -0.012271064333617687,
+              0.5079174637794495,
+              0.6355336308479309,
+              4.356655120849609
+            ],
+            "safe": false,
+            "visible_fraction": 0,
+            "blockers": []
+          },
+          "own_ray_difference": 0
+        }
+      },
+      "geometry": {
+        "chart": {
+          "arrows": 10,
+          "links": [
+            {
+              "from": "ava",
+              "to": "brody"
+            },
+            {
+              "from": "bella",
+              "to": "chase"
+            },
+            {
+              "from": "cleo",
+              "to": "kai"
+            },
+            {
+              "from": "daisy",
+              "to": "brody"
+            },
+            {
+              "from": "ella",
+              "to": "chase"
+            },
+            {
+              "from": "faye",
+              "to": "kai"
+            },
+            {
+              "from": "gia",
+              "to": "brody"
+            },
+            {
+              "from": "hana",
+              "to": "chase"
+            },
+            {
+              "from": "ivy",
+              "to": "kai"
+            },
+            {
+              "from": "june",
+              "to": "kai"
+            }
+          ],
+          "mode": "arrows",
+          "progress": 1,
+          "portrait_source": "actual smoke lineup row PNG crops"
+        },
+        "pencil_aim_residual": 0.06712978954513756,
+        "pencil_to_arm": {
+          "sampled_min_arm_surface_gap": 0.014444534666836262,
+          "arm_prop_overlap_pairs": 14,
+          "scope": "whole rigid arm surface; not signed distal-hand penetration"
+        },
+        "note": "Artwork is animated on a physical paper surface; pencil gesture is not guaranteed to track every individual arrow."
+      }
+    },
+    {
+      "frame": 1240,
+      "shot": "sh18",
+      "actor_qc": {
+        "otis": {
+          "bounds": [
+            -0.34392744302749634,
+            0.15122294425964355,
+            0.3963136672973633,
+            0.8142015933990479,
+            4.153002738952637
+          ],
+          "safe": false,
+          "vertical_coverage": 0.41788792610168457,
+          "face_all": {
+            "samples": 0,
+            "blocked": 0,
+            "bounds": [
+              -0.06110282614827156,
+              -0.01315673254430294,
+              0.5082972645759583,
+              0.6361330151557922,
+              4.3564958572387695
+            ],
+            "safe": false,
+            "visible_fraction": 0,
+            "blockers": []
+          },
+          "face_external": {
+            "samples": 0,
+            "blocked": 0,
+            "bounds": [
+              -0.06110282614827156,
+              -0.01315673254430294,
+              0.5082972645759583,
+              0.6361330151557922,
+              4.3564958572387695
+            ],
+            "safe": false,
+            "visible_fraction": 0,
+            "blockers": []
+          },
+          "own_ray_difference": 0
+        }
+      },
+      "geometry": {
+        "chart": {
+          "arrows": 10,
+          "links": [
+            {
+              "from": "ava",
+              "to": "brody"
+            },
+            {
+              "from": "bella",
+              "to": "chase"
+            },
+            {
+              "from": "cleo",
+              "to": "kai"
+            },
+            {
+              "from": "daisy",
+              "to": "brody"
+            },
+            {
+              "from": "ella",
+              "to": "chase"
+            },
+            {
+              "from": "faye",
+              "to": "kai"
+            },
+            {
+              "from": "gia",
+              "to": "brody"
+            },
+            {
+              "from": "hana",
+              "to": "chase"
+            },
+            {
+              "from": "ivy",
+              "to": "kai"
+            },
+            {
+              "from": "june",
+              "to": "kai"
+            }
+          ],
+          "mode": "arrows",
+          "progress": 1,
+          "portrait_source": "actual smoke lineup row PNG crops"
+        },
+        "pencil_aim_residual": 0.07800786505713146,
+        "pencil_to_arm": {
+          "sampled_min_arm_surface_gap": 0.013531753793358803,
+          "arm_prop_overlap_pairs": 14,
+          "scope": "whole rigid arm surface; not signed distal-hand penetration"
+        },
+        "note": "Artwork is animated on a physical paper surface; pencil gesture is not guaranteed to track every individual arrow."
+      }
+    },
+    {
+      "frame": 1241,
+      "shot": "sh18",
+      "actor_qc": {
+        "otis": {
+          "bounds": [
+            -0.3429472744464874,
+            0.15014132857322693,
+            0.39713746309280396,
+            0.8142964243888855,
+            4.153460502624512
+          ],
+          "safe": false,
+          "vertical_coverage": 0.41715896129608154,
+          "face_all": {
+            "samples": 0,
+            "blocked": 0,
+            "bounds": [
+              -0.06152408570051193,
+              -0.015443507581949234,
+              0.508801281452179,
+              0.6368953585624695,
+              4.355589866638184
+            ],
+            "safe": false,
+            "visible_fraction": 0,
+            "blockers": []
+          },
+          "face_external": {
+            "samples": 0,
+            "blocked": 0,
+            "bounds": [
+              -0.06152408570051193,
+              -0.015443507581949234,
+              0.508801281452179,
+              0.6368953585624695,
+              4.355589866638184
+            ],
+            "safe": false,
+            "visible_fraction": 0,
+            "blockers": []
+          },
+          "own_ray_difference": 0
+        }
+      },
+      "geometry": {
+        "chart": {
+          "arrows": 10,
+          "links": [
+            {
+              "from": "ava",
+              "to": "brody"
+            },
+            {
+              "from": "bella",
+              "to": "chase"
+            },
+            {
+              "from": "cleo",
+              "to": "kai"
+            },
+            {
+              "from": "daisy",
+              "to": "brody"
+            },
+            {
+              "from": "ella",
+              "to": "chase"
+            },
+            {
+              "from": "faye",
+              "to": "kai"
+            },
+            {
+              "from": "gia",
+              "to": "brody"
+            },
+            {
+              "from": "hana",
+              "to": "chase"
+            },
+            {
+              "from": "ivy",
+              "to": "kai"
+            },
+            {
+              "from": "june",
+              "to": "kai"
+            }
+          ],
+          "mode": "arrows",
+          "progress": 1,
+          "portrait_source": "actual smoke lineup row PNG crops"
+        },
+        "pencil_aim_residual": 0.08518632228751609,
+        "pencil_to_arm": {
+          "sampled_min_arm_surface_gap": 0.012918253429234028,
+          "arm_prop_overlap_pairs": 14,
+          "scope": "whole rigid arm surface; not signed distal-hand penetration"
+        },
+        "note": "Artwork is animated on a physical paper surface; pencil gesture is not guaranteed to track every individual arrow."
+      }
+    },
+    {
+      "frame": 1242,
+      "shot": "sh18",
+      "actor_qc": {
+        "otis": {
+          "bounds": [
+            -0.341846227645874,
+            0.14990805089473724,
+            0.3974384367465973,
+            0.8144018650054932,
+            4.154180526733398
+          ],
+          "safe": false,
+          "vertical_coverage": 0.4169634282588959,
+          "face_all": {
+            "samples": 0,
+            "blocked": 0,
+            "bounds": [
+              -0.06260929256677628,
+              -0.01907598413527012,
+              0.5094135403633118,
+              0.6377941966056824,
+              4.353995323181152
+            ],
+            "safe": false,
+            "visible_fraction": 0,
+            "blockers": []
+          },
+          "face_external": {
+            "samples": 0,
+            "blocked": 0,
+            "bounds": [
+              -0.06260929256677628,
+              -0.01907598413527012,
+              0.5094135403633118,
+              0.6377941966056824,
+              4.353995323181152
+            ],
+            "safe": false,
+            "visible_fraction": 0,
+            "blockers": []
+          },
+          "own_ray_difference": 0
+        }
+      },
+      "geometry": {
+        "chart": {
+          "arrows": 10,
+          "links": [
+            {
+              "from": "ava",
+              "to": "brody"
+            },
+            {
+              "from": "bella",
+              "to": "chase"
+            },
+            {
+              "from": "cleo",
+              "to": "kai"
+            },
+            {
+              "from": "daisy",
+              "to": "brody"
+            },
+            {
+              "from": "ella",
+              "to": "chase"
+            },
+            {
+              "from": "faye",
+              "to": "kai"
+            },
+            {
+              "from": "gia",
+              "to": "brody"
+            },
+            {
+              "from": "hana",
+              "to": "chase"
+            },
+            {
+              "from": "ivy",
+              "to": "kai"
+            },
+            {
+              "from": "june",
+              "to": "kai"
+            }
+          ],
+          "mode": "arrows",
+          "progress": 1,
+          "portrait_source": "actual smoke lineup row PNG crops"
+        },
+        "pencil_aim_residual": 0.0883498506309763,
+        "pencil_to_arm": {
+          "sampled_min_arm_surface_gap": 0.01260404009371996,
+          "arm_prop_overlap_pairs": 14,
+          "scope": "whole rigid arm surface; not signed distal-hand penetration"
+        },
+        "note": "Artwork is animated on a physical paper surface; pencil gesture is not guaranteed to track every individual arrow."
+      }
+    }
+  ],
+  "extra": {},
+  "missing_props": []
+}

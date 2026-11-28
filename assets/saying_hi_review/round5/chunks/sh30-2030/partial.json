@@ -1,0 +1,180 @@
+{
+  "rendered": [
+    {
+      "frame": 2030,
+      "render_seconds": 32.94629587700001,
+      "near_black_percent": 1.0451388888888888
+    },
+    {
+      "frame": 2031,
+      "render_seconds": 10.571480602999998,
+      "near_black_percent": 1.0443672839506173
+    },
+    {
+      "frame": 2032,
+      "render_seconds": 10.500127005000024,
+      "near_black_percent": 1.0435956790123455
+    }
+  ],
+  "rows": [
+    {
+      "frame": 2030,
+      "shot": "sh30",
+      "actor_qc": {
+        "gia": {
+          "bounds": [
+            -0.37555408477783203,
+            0.5928301811218262,
+            0.21441583335399628,
+            0.7367161512374878,
+            2.1763734817504883
+          ],
+          "safe": false,
+          "vertical_coverage": 0.5223003178834915,
+          "face_all": {
+            "samples": 10,
+            "blocked": 10,
+            "bounds": [
+              0.04556123912334442,
+              0.27066314220428467,
+              0.5523425340652466,
+              0.6783718466758728,
+              2.735049247741699
+            ],
+            "safe": true,
+            "visible_fraction": 0.0,
+            "blockers": [
+              "gia / garment shell / shirt and sleeves",
+              "gia / head skinned"
+            ]
+          },
+          "face_external": {
+            "samples": 10,
+            "blocked": 0,
+            "bounds": [
+              0.04556123912334442,
+              0.27066314220428467,
+              0.5523425340652466,
+              0.6783718466758728,
+              2.735049247741699
+            ],
+            "safe": true,
+            "visible_fraction": 1.0,
+            "blockers": []
+          },
+          "own_ray_difference": 10
+        }
+      },
+      "geometry": {
+        "held_pose": true,
+        "static_seating": []
+      }
+    },
+    {
+      "frame": 2031,
+      "shot": "sh30",
+      "actor_qc": {
+        "gia": {
+          "bounds": [
+            -0.37555408477783203,
+            0.5928301811218262,
+            0.21441583335399628,
+            0.7367180585861206,
+            2.1764235496520996
+          ],
+          "safe": false,
+          "vertical_coverage": 0.5223022252321243,
+          "face_all": {
+            "samples": 10,
+            "blocked": 10,
+            "bounds": [
+              0.045570168644189835,
+              0.2706631124019623,
+              0.5523346066474915,
+              0.678361177444458,
+              2.7351033687591553
+            ],
+            "safe": true,
+            "visible_fraction": 0.0,
+            "blockers": [
+              "gia / garment shell / shirt and sleeves",
+              "gia / head skinned"
+            ]
+          },
+          "face_external": {
+            "samples": 10,
+            "blocked": 0,
+            "bounds": [
+              0.045570168644189835,
+              0.2706631124019623,
+              0.5523346066474915,
+              0.678361177444458,
+              2.7351033687591553
+            ],
+            "safe": true,
+            "visible_fraction": 1.0,
+            "blockers": []
+          },
+          "own_ray_difference": 10
+        }
+      },
+      "geometry": {
+        "held_pose": true,
+        "static_seating": []
+      }
+    },
+    {
+      "frame": 2032,
+      "shot": "sh30",
+      "actor_qc": {
+        "gia": {
+          "bounds": [
+            -0.37555408477783203,
+            0.5928301811218262,
+            0.21441583335399628,
+            0.7367180585861206,
+            2.1764235496520996
+          ],
+          "safe": false,
+          "vertical_coverage": 0.5223022252321243,
+          "face_all": {
+            "samples": 10,
+            "blocked": 10,
+            "bounds": [
+              0.045570168644189835,
+              0.2706631124019623,
+              0.5523346066474915,
+              0.678361177444458,
+              2.7351033687591553
+            ],
+            "safe": true,
+            "visible_fraction": 0.0,
+            "blockers": [
+              "gia / garment shell / shirt and sleeves",
+              "gia / head skinned"
+            ]
+          },
+          "face_external": {
+            "samples": 10,
+            "blocked": 0,
+            "bounds": [
+              0.045570168644189835,
+              0.2706631124019623,
+              0.5523346066474915,
+              0.678361177444458,
+              2.7351033687591553
+            ],
+            "safe": true,
+            "visible_fraction": 1.0,
+            "blockers": []
+          },
+          "own_ray_difference": 10
+        }
+      },
+      "geometry": {
+        "held_pose": true,
+        "static_seating": []
+      }
+    }
+  ]
+}

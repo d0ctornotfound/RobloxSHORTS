@@ -1,0 +1,894 @@
+{
+  "rendered": [
+    {
+      "frame": 2761,
+      "render_seconds": 34.21667733199999,
+      "near_black_percent": 0.33603395061728397
+    },
+    {
+      "frame": 2762,
+      "render_seconds": 10.933602038000004,
+      "near_black_percent": 0.339891975308642
+    },
+    {
+      "frame": 2763,
+      "render_seconds": 10.912990309999998,
+      "near_black_percent": 0.3412422839506173
+    }
+  ],
+  "rows": [
+    {
+      "frame": 2761,
+      "shot": "sh43",
+      "actor_qc": {
+        "june": {
+          "bounds": [
+            0.20785512030124664,
+            0.5660684704780579,
+            0.36816954612731934,
+            0.6232448220252991,
+            4.299847602844238
+          ],
+          "safe": true,
+          "vertical_coverage": 0.25507527589797974,
+          "face_all": {
+            "samples": 9,
+            "blocked": 0,
+            "bounds": [
+              0.28574299812316895,
+              0.3823436498641968,
+              0.5346824526786804,
+              0.5974403619766235,
+              4.634620666503906
+            ],
+            "safe": true,
+            "visible_fraction": 1.0,
+            "blockers": []
+          },
+          "face_external": {
+            "samples": 9,
+            "blocked": 0,
+            "bounds": [
+              0.28574299812316895,
+              0.3823436498641968,
+              0.5346824526786804,
+              0.5974403619766235,
+              4.634620666503906
+            ],
+            "safe": true,
+            "visible_fraction": 1.0,
+            "blockers": []
+          },
+          "own_ray_difference": 0
+        },
+        "narrator": {
+          "bounds": [
+            0.5299389958381653,
+            0.9601930975914001,
+            0.33811452984809875,
+            0.6271747350692749,
+            3.6482675075531006
+          ],
+          "safe": true,
+          "vertical_coverage": 0.28906020522117615,
+          "face_all": {
+            "samples": 9,
+            "blocked": 0,
+            "bounds": [
+              0.6660120487213135,
+              0.797189474105835,
+              0.533984899520874,
+              0.6050187349319458,
+              3.949582815170288
+            ],
+            "safe": true,
+            "visible_fraction": 1.0,
+            "blockers": []
+          },
+          "face_external": {
+            "samples": 9,
+            "blocked": 0,
+            "bounds": [
+              0.6660120487213135,
+              0.797189474105835,
+              0.533984899520874,
+              0.6050187349319458,
+              3.949582815170288
+            ],
+            "safe": true,
+            "visible_fraction": 1.0,
+            "blockers": []
+          },
+          "own_ray_difference": 0
+        }
+      },
+      "geometry": {
+        "seat_top": 0.46482717990875244,
+        "seat_contacts": {
+          "june": {
+            "phase": "seated",
+            "seated_fraction_command": 1,
+            "signed_rear_hip_gap": 5.960464477539063e-08,
+            "signed_foot_gaps": [
+              0.0,
+              0.0
+            ],
+            "foot_step_drift": [
+              0.0,
+              0.0
+            ],
+            "moving_feet": [
+              false,
+              false
+            ],
+            "lateral_hip_drift": 0.0,
+            "limbs": {
+              "max_segment_length_change": 1.214094718093861e-07,
+              "max_joint_gap": 2.4027400458748785e-07
+            },
+            "hip_world": [
+              2.5709285736083984,
+              -0.9199988842010498,
+              0.4648272395133972
+            ]
+          },
+          "narrator": {
+            "phase": "seated",
+            "seated_fraction_command": 1,
+            "signed_rear_hip_gap": 5.960464477539063e-08,
+            "signed_foot_gaps": [
+              0.0,
+              0.0
+            ],
+            "foot_step_drift": [
+              0.0,
+              0.0
+            ],
+            "moving_feet": [
+              false,
+              false
+            ],
+            "lateral_hip_drift": 0.0,
+            "limbs": {
+              "max_segment_length_change": 1.214094718093861e-07,
+              "max_joint_gap": 2.682209014892578e-07
+            },
+            "hip_world": [
+              2.5709285736083984,
+              0.9200011491775513,
+              0.4648272395133972
+            ]
+          }
+        },
+        "waffle": {
+          "evaluated_min_z": -6.28642737865448e-09
+        },
+        "dog_visible": true,
+        "dog_visibility": {
+          "samples": 79,
+          "blocked": 0,
+          "bounds": [
+            0.2833912968635559,
+            0.4914324879646301,
+            0.3153764009475708,
+            0.3968997001647949,
+            2.8253867626190186
+          ],
+          "safe": true,
+          "visible_fraction": 1.0,
+          "blockers": []
+        },
+        "actor_bounds": {
+          "june": [
+            0.20785512030124664,
+            0.5660684704780579,
+            0.36816954612731934,
+            0.6232448220252991,
+            4.299847602844238
+          ],
+          "narrator": [
+            0.5299389958381653,
+            0.9601930975914001,
+            0.33811452984809875,
+            0.6271747350692749,
+            3.6482675075531006
+          ]
+        },
+        "note": "Separate rise, planted lateral steps, sit; no lateral root translation during sit.",
+        "readability_faces": {
+          "june": {
+            "visibility": {
+              "samples": 25,
+              "blocked": 2,
+              "bounds": [
+                0.28574299812316895,
+                0.3823436498641968,
+                0.5346824526786804,
+                0.5974403619766235,
+                4.634620666503906
+              ],
+              "safe": true,
+              "visible_fraction": 0.92,
+              "blockers": [
+                "june / head ch4 hair cap"
+              ]
+            },
+            "facing_dot": 0.8609199149285001
+          },
+          "narrator": {
+            "visibility": {
+              "samples": 25,
+              "blocked": 3,
+              "bounds": [
+                0.6660120487213135,
+                0.797189474105835,
+                0.533984899520874,
+                0.6050187349319458,
+                3.949582815170288
+              ],
+              "safe": true,
+              "visible_fraction": 0.88,
+              "blockers": [
+                "narrator / head knitted beanie folded brim"
+              ]
+            },
+            "facing_dot": 0.9897761998502737
+          }
+        },
+        "seat_readability": {
+          "name": "Round4 fountain-side raised bench",
+          "kind": "raised_bench",
+          "surface": {
+            "samples": 31,
+            "blocked": 22,
+            "bounds": [
+              0.21291831135749817,
+              0.9108595252037048,
+              0.3946988582611084,
+              0.4551694393157959,
+              3.8666980266571045
+            ],
+            "safe": true,
+            "visible_fraction": 0.29032258064516125,
+            "blockers": [
+              "june / Left Leg_04 continuous cloth / articulated garment shell",
+              "june / Right Leg_05 continuous cloth / articulated garment shel",
+              "narrator / Left Leg_04 continuous cloth / articulated garment s",
+              "narrator / Right Leg_05 continuous cloth",
+              "narrator / Right Leg_05 continuous cloth / articulated garment "
+            ]
+          },
+          "supports": [
+            {
+              "samples": 23,
+              "blocked": 23,
+              "bounds": [
+                0.25509119033813477,
+                0.35950443148612976,
+                0.39174947142601013,
+                0.43947866559028625,
+                4.996302604675293
+              ],
+              "safe": true,
+              "visible_fraction": 0.0,
+              "blockers": [
+                "june / Left Leg_04 continuous cloth / articulated garment shell",
+                "june / Left Leg_04 lower",
+                "june / Left Leg_04 lower / articulated garment shell",
+                "june / Right Leg_05 continuous cloth / articulated garment shel",
+                "june / Right Leg_05 lower / articulated garment shell"
+              ]
+            },
+            {
+              "samples": 25,
+              "blocked": 19,
+              "bounds": [
+                0.7893906235694885,
+                0.8619543313980103,
+                0.35724934935569763,
+                0.41927269101142883,
+                4.040180206298828
+              ],
+              "safe": true,
+              "visible_fraction": 0.24,
+              "blockers": [
+                "Round4 fountain-side raised bench",
+                "narrator / Left Leg_04 continuous cloth / articulated garment s",
+                "narrator / Left Leg_04 lower / articulated garment shell"
+              ]
+            }
+          ],
+          "hips_over_surface": {
+            "june": true,
+            "narrator": true
+          },
+          "raised_height": 0.46482717990875244,
+          "support_reaches_ground": true,
+          "surface_horizontal": true
+        }
+      }
+    },
+    {
+      "frame": 2762,
+      "shot": "sh43",
+      "actor_qc": {
+        "june": {
+          "bounds": [
+            0.20785512030124664,
+            0.5660684704780579,
+            0.36816954612731934,
+            0.6233022809028625,
+            4.299847602844238
+          ],
+          "safe": true,
+          "vertical_coverage": 0.2551327347755432,
+          "face_all": {
+            "samples": 9,
+            "blocked": 0,
+            "bounds": [
+              0.28553318977355957,
+              0.38238126039505005,
+              0.5345430374145508,
+              0.5973179936408997,
+              4.63268518447876
+            ],
+            "safe": true,
+            "visible_fraction": 1.0,
+            "blockers": []
+          },
+          "face_external": {
+            "samples": 9,
+            "blocked": 0,
+            "bounds": [
+              0.28553318977355957,
+              0.38238126039505005,
+              0.5345430374145508,
+              0.5973179936408997,
+              4.63268518447876
+            ],
+            "safe": true,
+            "visible_fraction": 1.0,
+            "blockers": []
+          },
+          "own_ray_difference": 0
+        },
+        "narrator": {
+          "bounds": [
+            0.5299389958381653,
+            0.9601930975914001,
+            0.33811452984809875,
+            0.6271747350692749,
+            3.6482675075531006
+          ],
+          "safe": true,
+          "vertical_coverage": 0.28906020522117615,
+          "face_all": {
+            "samples": 9,
+            "blocked": 0,
+            "bounds": [
+              0.6660120487213135,
+              0.797189474105835,
+              0.533984899520874,
+              0.6050187349319458,
+              3.949582815170288
+            ],
+            "safe": true,
+            "visible_fraction": 1.0,
+            "blockers": []
+          },
+          "face_external": {
+            "samples": 9,
+            "blocked": 0,
+            "bounds": [
+              0.6660120487213135,
+              0.797189474105835,
+              0.533984899520874,
+              0.6050187349319458,
+              3.949582815170288
+            ],
+            "safe": true,
+            "visible_fraction": 1.0,
+            "blockers": []
+          },
+          "own_ray_difference": 0
+        }
+      },
+      "geometry": {
+        "seat_top": 0.46482717990875244,
+        "seat_contacts": {
+          "june": {
+            "phase": "seated",
+            "seated_fraction_command": 1,
+            "signed_rear_hip_gap": 5.960464477539063e-08,
+            "signed_foot_gaps": [
+              0.0,
+              0.0
+            ],
+            "foot_step_drift": [
+              0.0,
+              0.0
+            ],
+            "moving_feet": [
+              false,
+              false
+            ],
+            "lateral_hip_drift": 0.0,
+            "limbs": {
+              "max_segment_length_change": 1.214094718093861e-07,
+              "max_joint_gap": 2.4027400458748785e-07
+            },
+            "hip_world": [
+              2.5709285736083984,
+              -0.9199988842010498,
+              0.4648272395133972
+            ]
+          },
+          "narrator": {
+            "phase": "seated",
+            "seated_fraction_command": 1,
+            "signed_rear_hip_gap": 5.960464477539063e-08,
+            "signed_foot_gaps": [
+              0.0,
+              0.0
+            ],
+            "foot_step_drift": [
+              0.0,
+              0.0
+            ],
+            "moving_feet": [
+              false,
+              false
+            ],
+            "lateral_hip_drift": 0.0,
+            "limbs": {
+              "max_segment_length_change": 1.214094718093861e-07,
+              "max_joint_gap": 2.682209014892578e-07
+            },
+            "hip_world": [
+              2.5709285736083984,
+              0.9200011491775513,
+              0.4648272395133972
+            ]
+          }
+        },
+        "waffle": {
+          "evaluated_min_z": -5.966285243630409e-09
+        },
+        "dog_visible": true,
+        "dog_visibility": {
+          "samples": 79,
+          "blocked": 0,
+          "bounds": [
+            0.28419604897499084,
+            0.4908086061477661,
+            0.31428781151771545,
+            0.3964192569255829,
+            2.824681520462036
+          ],
+          "safe": true,
+          "visible_fraction": 1.0,
+          "blockers": []
+        },
+        "actor_bounds": {
+          "june": [
+            0.20785512030124664,
+            0.5660684704780579,
+            0.36816954612731934,
+            0.6233022809028625,
+            4.299847602844238
+          ],
+          "narrator": [
+            0.5299389958381653,
+            0.9601930975914001,
+            0.33811452984809875,
+            0.6271747350692749,
+            3.6482675075531006
+          ]
+        },
+        "note": "Separate rise, planted lateral steps, sit; no lateral root translation during sit.",
+        "readability_faces": {
+          "june": {
+            "visibility": {
+              "samples": 25,
+              "blocked": 2,
+              "bounds": [
+                0.28553318977355957,
+                0.38238126039505005,
+                0.5345430374145508,
+                0.5973179936408997,
+                4.63268518447876
+              ],
+              "safe": true,
+              "visible_fraction": 0.92,
+              "blockers": [
+                "june / head ch4 hair cap"
+              ]
+            },
+            "facing_dot": 0.8608892781443593
+          },
+          "narrator": {
+            "visibility": {
+              "samples": 25,
+              "blocked": 3,
+              "bounds": [
+                0.6660120487213135,
+                0.797189474105835,
+                0.533984899520874,
+                0.6050187349319458,
+                3.949582815170288
+              ],
+              "safe": true,
+              "visible_fraction": 0.88,
+              "blockers": [
+                "narrator / head knitted beanie folded brim"
+              ]
+            },
+            "facing_dot": 0.9897761998502737
+          }
+        },
+        "seat_readability": {
+          "name": "Round4 fountain-side raised bench",
+          "kind": "raised_bench",
+          "surface": {
+            "samples": 31,
+            "blocked": 22,
+            "bounds": [
+              0.21291831135749817,
+              0.9108595252037048,
+              0.3946988582611084,
+              0.4551694393157959,
+              3.8666980266571045
+            ],
+            "safe": true,
+            "visible_fraction": 0.29032258064516125,
+            "blockers": [
+              "june / Left Leg_04 continuous cloth / articulated garment shell",
+              "june / Right Leg_05 continuous cloth / articulated garment shel",
+              "narrator / Left Leg_04 continuous cloth / articulated garment s",
+              "narrator / Right Leg_05 continuous cloth",
+              "narrator / Right Leg_05 continuous cloth / articulated garment "
+            ]
+          },
+          "supports": [
+            {
+              "samples": 23,
+              "blocked": 23,
+              "bounds": [
+                0.25509119033813477,
+                0.35950443148612976,
+                0.39174947142601013,
+                0.43947866559028625,
+                4.996302604675293
+              ],
+              "safe": true,
+              "visible_fraction": 0.0,
+              "blockers": [
+                "june / Left Leg_04 continuous cloth / articulated garment shell",
+                "june / Left Leg_04 lower",
+                "june / Left Leg_04 lower / articulated garment shell",
+                "june / Right Leg_05 continuous cloth / articulated garment shel",
+                "june / Right Leg_05 lower / articulated garment shell"
+              ]
+            },
+            {
+              "samples": 25,
+              "blocked": 19,
+              "bounds": [
+                0.7893906235694885,
+                0.8619543313980103,
+                0.35724934935569763,
+                0.41927269101142883,
+                4.040180206298828
+              ],
+              "safe": true,
+              "visible_fraction": 0.24,
+              "blockers": [
+                "Round4 fountain-side raised bench",
+                "narrator / Left Leg_04 continuous cloth / articulated garment s",
+                "narrator / Left Leg_04 lower / articulated garment shell"
+              ]
+            }
+          ],
+          "hips_over_surface": {
+            "june": true,
+            "narrator": true
+          },
+          "raised_height": 0.46482717990875244,
+          "support_reaches_ground": true,
+          "surface_horizontal": true
+        }
+      }
+    },
+    {
+      "frame": 2763,
+      "shot": "sh43",
+      "actor_qc": {
+        "june": {
+          "bounds": [
+            0.20785512030124664,
+            0.5660684704780579,
+            0.36816954612731934,
+            0.6233562231063843,
+            4.299847602844238
+          ],
+          "safe": true,
+          "vertical_coverage": 0.25518667697906494,
+          "face_all": {
+            "samples": 9,
+            "blocked": 0,
+            "bounds": [
+              0.28533101081848145,
+              0.38241809606552124,
+              0.5344082713127136,
+              0.597198486328125,
+              4.630819797515869
+            ],
+            "safe": true,
+            "visible_fraction": 1.0,
+            "blockers": []
+          },
+          "face_external": {
+            "samples": 9,
+            "blocked": 0,
+            "bounds": [
+              0.28533101081848145,
+              0.38241809606552124,
+              0.5344082713127136,
+              0.597198486328125,
+              4.630819797515869
+            ],
+            "safe": true,
+            "visible_fraction": 1.0,
+            "blockers": []
+          },
+          "own_ray_difference": 0
+        },
+        "narrator": {
+          "bounds": [
+            0.5299389958381653,
+            0.9601930975914001,
+            0.33811452984809875,
+            0.6271747350692749,
+            3.6482675075531006
+          ],
+          "safe": true,
+          "vertical_coverage": 0.28906020522117615,
+          "face_all": {
+            "samples": 9,
+            "blocked": 0,
+            "bounds": [
+              0.6660120487213135,
+              0.797189474105835,
+              0.533984899520874,
+              0.6050187349319458,
+              3.949582815170288
+            ],
+            "safe": true,
+            "visible_fraction": 1.0,
+            "blockers": []
+          },
+          "face_external": {
+            "samples": 9,
+            "blocked": 0,
+            "bounds": [
+              0.6660120487213135,
+              0.797189474105835,
+              0.533984899520874,
+              0.6050187349319458,
+              3.949582815170288
+            ],
+            "safe": true,
+            "visible_fraction": 1.0,
+            "blockers": []
+          },
+          "own_ray_difference": 0
+        }
+      },
+      "geometry": {
+        "seat_top": 0.46482717990875244,
+        "seat_contacts": {
+          "june": {
+            "phase": "seated",
+            "seated_fraction_command": 1,
+            "signed_rear_hip_gap": 5.960464477539063e-08,
+            "signed_foot_gaps": [
+              0.0,
+              0.0
+            ],
+            "foot_step_drift": [
+              0.0,
+              0.0
+            ],
+            "moving_feet": [
+              false,
+              false
+            ],
+            "lateral_hip_drift": 0.0,
+            "limbs": {
+              "max_segment_length_change": 1.214094718093861e-07,
+              "max_joint_gap": 2.4027400458748785e-07
+            },
+            "hip_world": [
+              2.5709285736083984,
+              -0.9199988842010498,
+              0.4648272395133972
+            ]
+          },
+          "narrator": {
+            "phase": "seated",
+            "seated_fraction_command": 1,
+            "signed_rear_hip_gap": 5.960464477539063e-08,
+            "signed_foot_gaps": [
+              0.0,
+              0.0
+            ],
+            "foot_step_drift": [
+              0.0,
+              0.0
+            ],
+            "moving_feet": [
+              false,
+              false
+            ],
+            "lateral_hip_drift": 0.0,
+            "limbs": {
+              "max_segment_length_change": 1.214094718093861e-07,
+              "max_joint_gap": 2.682209014892578e-07
+            },
+            "hip_world": [
+              2.5709285736083984,
+              0.9200011491775513,
+              0.4648272395133972
+            ]
+          }
+        },
+        "waffle": {
+          "evaluated_min_z": -9.116778443285511e-10
+        },
+        "dog_visible": true,
+        "dog_visibility": {
+          "samples": 79,
+          "blocked": 0,
+          "bounds": [
+            0.2844732701778412,
+            0.4905920922756195,
+            0.31391826272010803,
+            0.3962533175945282,
+            2.824446201324463
+          ],
+          "safe": true,
+          "visible_fraction": 1.0,
+          "blockers": []
+        },
+        "actor_bounds": {
+          "june": [
+            0.20785512030124664,
+            0.5660684704780579,
+            0.36816954612731934,
+            0.6233562231063843,
+            4.299847602844238
+          ],
+          "narrator": [
+            0.5299389958381653,
+            0.9601930975914001,
+            0.33811452984809875,
+            0.6271747350692749,
+            3.6482675075531006
+          ]
+        },
+        "note": "Separate rise, planted lateral steps, sit; no lateral root translation during sit.",
+        "readability_faces": {
+          "june": {
+            "visibility": {
+              "samples": 25,
+              "blocked": 2,
+              "bounds": [
+                0.28533101081848145,
+                0.38241809606552124,
+                0.5344082713127136,
+                0.597198486328125,
+                4.630819797515869
+              ],
+              "safe": true,
+              "visible_fraction": 0.92,
+              "blockers": [
+                "june / head ch4 hair cap"
+              ]
+            },
+            "facing_dot": 0.8608598930576328
+          },
+          "narrator": {
+            "visibility": {
+              "samples": 25,
+              "blocked": 3,
+              "bounds": [
+                0.6660120487213135,
+                0.797189474105835,
+                0.533984899520874,
+                0.6050187349319458,
+                3.949582815170288
+              ],
+              "safe": true,
+              "visible_fraction": 0.88,
+              "blockers": [
+                "narrator / head knitted beanie folded brim"
+              ]
+            },
+            "facing_dot": 0.9897761998502737
+          }
+        },
+        "seat_readability": {
+          "name": "Round4 fountain-side raised bench",
+          "kind": "raised_bench",
+          "surface": {
+            "samples": 31,
+            "blocked": 22,
+            "bounds": [
+              0.21291831135749817,
+              0.9108595252037048,
+              0.3946988582611084,
+              0.4551694393157959,
+              3.8666980266571045
+            ],
+            "safe": true,
+            "visible_fraction": 0.29032258064516125,
+            "blockers": [
+              "june / Left Leg_04 continuous cloth / articulated garment shell",
+              "june / Right Leg_05 continuous cloth / articulated garment shel",
+              "narrator / Left Leg_04 continuous cloth / articulated garment s",
+              "narrator / Right Leg_05 continuous cloth",
+              "narrator / Right Leg_05 continuous cloth / articulated garment "
+            ]
+          },
+          "supports": [
+            {
+              "samples": 23,
+              "blocked": 23,
+              "bounds": [
+                0.25509119033813477,
+                0.35950443148612976,
+                0.39174947142601013,
+                0.43947866559028625,
+                4.996302604675293
+              ],
+              "safe": true,
+              "visible_fraction": 0.0,
+              "blockers": [
+                "june / Left Leg_04 continuous cloth / articulated garment shell",
+                "june / Left Leg_04 lower",
+                "june / Left Leg_04 lower / articulated garment shell",
+                "june / Right Leg_05 continuous cloth / articulated garment shel",
+                "june / Right Leg_05 lower / articulated garment shell"
+              ]
+            },
+            {
+              "samples": 25,
+              "blocked": 19,
+              "bounds": [
+                0.7893906235694885,
+                0.8619543313980103,
+                0.35724934935569763,
+                0.41927269101142883,
+                4.040180206298828
+              ],
+              "safe": true,
+              "visible_fraction": 0.24,
+              "blockers": [
+                "Round4 fountain-side raised bench",
+                "narrator / Left Leg_04 continuous cloth / articulated garment s",
+                "narrator / Left Leg_04 lower / articulated garment shell"
+              ]
+            }
+          ],
+          "hips_over_surface": {
+            "june": true,
+            "narrator": true
+          },
+          "raised_height": 0.46482717990875244,
+          "support_reaches_ground": true,
+          "surface_horizontal": true
+        }
+      }
+    }
+  ]
+}
