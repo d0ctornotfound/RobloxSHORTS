@@ -382,8 +382,10 @@ class CorrectedUnit(SceneUnit):
         self.prev_hip={};self.prev_phase={}
         # Common camera/mark for all three payoff units. Evaluate actual
         # standing, seated, and roll poses before selecting a composition.
-        cameras=[((2.55,-.85,2.45),20),((2.8,-1.45,2.25),22),((3.15,-1.0,2.2),17),((2.65,-2.4,2.4),24),((3.3,-3.4,2.4),28),((3.55,-4.5,2.65),34),((3.1,2.6,2.5),28),((2.6,.1,2.35),20)]
-        marks=[(4.05,-.92,0),(4.10,-1.28,0),(4.15,-1.52,0),(3.86,-1.45,0),(4.15,-.45,0),(3.86,-.25,0)]
+        # Keep the previously measured clear dog line; fit wider lenses
+        # at the same camera positions, with all full-body margins intact.
+        cameras=[((2.8,-1.45,2.25),l) for l in (12,14,16,18,20)]+[((2.65,-2.4,2.4),l) for l in (14,17,20)]+[((3.1,2.6,2.5),l) for l in (16,20)]
+        marks=[(4.10,-1.28,0),(4.05,-.92,0)]
         choices=[];target=V((4.60,-.87,1.00))
         for loc,lens in cameras:
             frame(self.scene,self.cam,loc,target,lens)
