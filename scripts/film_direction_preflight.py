@@ -40,9 +40,9 @@ def main():
     if a.audit and Path(a.audit).is_file():copy2(a.audit,out/"first_pilot_independent_audit.json")
     write(out/"preflight_qc.json",report)
     with Path(c["review_path"]).open("a") as f:
-        f.write("\n## Round 6 retry 1 direction preflight run "+str(report["run_id"])+"\n")
+        f.write("\n## Direction preflight "+out.name+" run "+str(report["run_id"])+"\n")
         f.write("Geometry/flow preflight numerical pass: "+str(report["numerical_pass"])+". Three native still samples per shot, not full clips; visual review and native pilot still mandatory. Evidence: "+str(out/"preflight_qc.json")+"\n")
     paths=[p for p in sorted(out.rglob("*")) if p.is_file() and p.name!="SHA256SUMS"]
     (out/"SHA256SUMS").write_text("".join(sha(p)+"  "+str(p)+"\n" for p in paths))
-    with Path(c["inventory_path"]).open("a") as f:f.write("\nRound 6 retry 1 preflight evidence:\n"+"\n".join(str(p) for p in paths+[out/"SHA256SUMS"])+"\n")
+    with Path(c["inventory_path"]).open("a") as f:f.write("\nDirection preflight "+out.name+" evidence:\n"+"\n".join(str(p) for p in paths+[out/"SHA256SUMS"])+"\n")
 if __name__=="__main__":main()
