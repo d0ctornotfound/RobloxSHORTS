@@ -20,6 +20,11 @@ def validate(config):
     qc=read(qc_path);review=read(review_path)
     if qc.get("numerical_pass") is not True:raise ValueError("native pilot numerical gate not passed")
     if review.get("pilot_qc_sha256")!=sha(qc_path) or review.get("visual_pass") is not True:raise ValueError("visual review not passed or not tied to this exact QC")
+    audit_path=Path(release["independent_audit"])
+    if not audit_path.is_file() or sha(audit_path)!=release["independent_audit_sha256"]:raise ValueError("missing or mismatched committed pilot audit")
+    audit=read(audit_path)
+    if audit["qc_sha256"]!=sha(qc_path) or audit["evidence_commit"]!=release["pilot_publication_commit"]:raise ValueError("independent audit not linked to exact pilot")
+    if set(audit["clips"])!=set(qc["groups"]) or not all(v["full_decode"]=="pass" for v in audit["clips"].values()):raise ValueError("pilot independent decode not verified")
     required={"scale_correct","faces_readable","motion_coverage","no_long_holds","grade_warm_vs_baseline","continuity_and_contacts"}
     shot_ids=set()
     for group in qc["groups"].values():
