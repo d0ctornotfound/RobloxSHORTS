@@ -174,7 +174,7 @@ def hero_names(n,kind,actors):
     # Singles deliberately focus on the acting character; another character can
     # remain physically present outside the portrait composition.
     if kind=="insert":return []
-    if n==18:return list(actors)
+    if n==18:return ["Milo"]  # focal single; next shot establishes both bags
     # Opening narration is about Milo walking to school. Dad is established in shot 03.
     if n==1:return ["Milo"]
     if n in (3,6,8,15,16,21,43,46):return ["Dad"] if "Dad" in actors else []
@@ -245,9 +245,9 @@ def main():
         actors["Milo"]=Actor("Milo","lead",mode,pos,yaw,.40 if n==2 else .6)
     if show_d:
         mode="walk" if n in (41,43,44) else "sit_down" if n==45 else "sit" if dad_seated else "idle"
-        pos=(2.9,-.68,0) if n==41 else (3.1,-.75,0) if mode=="walk" else (.83,0,0)
+        pos=(3.5,-.35,0) if n==41 else (3.1,-.75,0) if mode=="walk" else (.83,0,0)
         actors["Dad"]=Actor("Dad","dad",mode,pos,-math.pi/2 if mode=="walk" else -.12,.33 if mode=="walk" else .6)
-    if n==41:area_light("Returning actor shadow key",(5,-2.8,3.0),280,1.1,(.82,.88,1))
+    if n==41:area_light("Returning actor shadow key",(6,-.95,3.15),1200,.30,(.82,.88,1))
     # Global timeline means per-shot processes retain the same blink schedule.
     for name,a in actors.items():enable_blinking(scene,a.a,seed=23 if name=="Milo" else 71)
     num=round((shot["end"]-shot["start"])*FPS);first=round(shot["start"]*FPS)+1
@@ -272,7 +272,7 @@ def main():
         for i,(bird,head) in enumerate(birds):
             bird.location=(-1.8+i*.56,-1.20-.34*(i%3),0)
             # Keep pigeons out of the walking corridor in the corrected shots.
-            if n in (1,9,25):bird.location=(.10+i*.47,-.55-.11*(i%3),0)
+            if n in (1,9,25,43,44):bird.location=(.10+i*.47,-.55-.11*(i%3),0)
             bird.rotation_euler.z=.5*math.sin(i*2)+.15*math.sin(t+i)
             head.rotation_euler.x=.22+.66*max(0,math.sin(t*5+i))
         for i,c in enumerate(crumbs):
@@ -337,7 +337,7 @@ def main():
             lo,hi=bounds(mesh_points(d.a.head));center=(lo+hi)/2
             mount=V((center.x,center.y,hi.z-.045));offset=V((-.25,0,.035))
             if cap_mount is None:cap_mount=d.hand(0)-offset
-            alpha=ease(u/.76);desired=cap_mount.lerp(mount,alpha)+V((0,-.18*math.sin(math.pi*alpha),0))
+            alpha=ease(u/.76);desired=cap_mount.lerp(mount,alpha)+V((-.46*math.sin(math.pi*alpha),-.10*math.sin(math.pi*alpha),.21*math.sin(math.pi*alpha)))
             if u<.82:
                 err=d.aim(0,desired+offset);cap.location=d.hand(0)-offset
                 contacts.append({"event":"cap_don","target_error":float(err),"mount_gap":(cap.location-mount).length,"released":False})
@@ -379,8 +379,9 @@ def main():
                 a=(u+i*.04)%1;c.location=(-.7+(i%5)*.035,-1.1-(i//5)*.055,.015+1.1*(1-a*a))
         if n in (41,43,44) and d:
             hide(stick,False)
-            d.aim(0,d.hand(0)+V((-.12,-.08,.10)))
-            hand=d.hand(0);stick.location=hand
+            index=1  # near-camera arm on the leftward walk
+            d.aim(index,d.hand(index)+V((-.20,-.18,.08)))
+            hand=d.hand(index);stick.location=hand
             if cane_length is None:cane_length=max(1.025,hand.z+.10)
             stick.scale=(1,1,cane_length/1.0225)
             tip_z=max(0,hand.z-cane_length)
@@ -442,7 +443,7 @@ def main():
         # Portrait-specific hero/prop camera overrides, never changing the locked rigs.
         if n==1 and m:
             lo,hi=bounds(v for ob in m.meshes() for v in mesh_points(ob));target=(lo+hi)/2;dist=3.65;lens=48;angle=.60
-        if n in (3,6) and d:dist=3.28;lens=48
+        if n in (3,6,21) and d:dist=3.28;lens=48
         if n in (4,10):
             obj=bags[0] if n==4 else bags[1];target=obj.location+V((0,-.02,-.17));dist=1.35;lens=45;angle=.10 if n==4 else -.12
         if n==19:
@@ -466,16 +467,27 @@ def main():
         if n==32 and m:target=cap.location+V((0,0,.10));dist=1.65;lens=45;angle=-.13
         if n==35 and m:
             lo,hi=bounds(v for ob in m.meshes() for v in mesh_points(ob));target=(lo+hi)/2;target.z=1.02;dist=3.45;lens=49;angle=.10
+        if n==18 and m:
+            lo,hi=bounds(v for ob in m.meshes() for v in mesh_points(ob));target=(lo+hi)/2;dist=3.55;lens=49;angle=-.28
+        if n==41:
+            target=V((.50,cy,top+.09));dist=1.6;lens=47;angle=-.30
+        if n==43 and d:
+            lo,hi=bounds(v for ob in d.meshes() for v in mesh_points(ob));target=(lo+hi)/2+V((-.12,-.12,0));dist=3.75;lens=48;angle=-.65
+        if n==44:
+            tip=stick.matrix_world@V((0,0,-1.0225));target=stick.location.lerp(tip,.5);dist=2.85;lens=45;angle=-.55
+        if n==46 and d:
+            lo,hi=bounds(mesh_points(d.a.head));target=(lo+hi)/2+V((-.12,0,-.05));dist=2.40;lens=48;angle=-.20
+        if n==47:
+            target=(bags[0].location+bags[1].location)/2+V((0,0,-.15));dist=3.3;lens=42;angle=.03
         if n in (45,48) and m:
-            lo,hi=bounds(v for ob in m.meshes() for v in mesh_points(ob));target=(lo+hi)/2;target.x+=.10;dist=3.35;lens=49;angle=-.15
+            # Center exact hero bounds plus the transfer prop, then use a modestly wider lens.
+            prop=cap if n==45 else bags[1]
+            pts=[v for ob in m.meshes() for v in mesh_points(ob)]+[v for ob in prop.children_recursive if ob.type=="MESH" for v in mesh_points(ob)]
+            lo,hi=bounds(pts);target=(lo+hi)/2;dist=3.55;lens=48;angle=-.15
         location=target+V((math.sin(angle)*dist,-math.cos(angle)*dist,.32 if kind!="insert" else .65))
-        if n==18 and m and d:
-            if pair_setup is None:
-                pair_setup=pair_camera(scene,camera,actors);print("PAIR_CAMERA_PROPOSAL",pair_setup[0],list(pair_setup[1]),list(pair_setup[2]),pair_setup[3],flush=True)
-            _,location,target,lens=pair_setup
         camera.location=location;camera.data.lens=lens;point_at(camera,target);bpy.context.view_layer.update()
         geo=geometry(scene,camera,actors,heroes,kind)
-        prop_roots={4:[bags[0]],5:[birds[0][0]],10:[bags[1]],19:bags,23:[birds[0][0]],24:[birds[0][0]],28:[birds[0][0]],29:[cap],31:[cap],32:[cap],36:[cap],37:[birds[0][0]],44:[stick],47:bags}.get(n,[])
+        prop_roots={4:[bags[0]],5:[birds[0][0]],10:[bags[1]],19:bags,23:[birds[0][0]],24:[birds[0][0]],28:[birds[0][0]],29:[cap],31:[cap],32:[cap],36:[cap],37:[birds[0][0]],43:[stick],44:[stick],45:[cap],46:[cap],47:bags,48:[bags[1]]}.get(n,[])
         props={ob.name:prop_geometry(scene,camera,ob) for ob in prop_roots if any(not x.hide_render for x in ob.children_recursive if x.type=="MESH")}
         geometry_records.append({"frame":global_frame,"heroes":geo,"props":props,"contacts":contacts,"pass":all(x["pass"] for x in list(geo.values())+list(props.values()))})
         if f not in selected:continue
