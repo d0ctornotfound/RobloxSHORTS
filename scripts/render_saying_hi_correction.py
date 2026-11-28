@@ -110,8 +110,10 @@ def main():
     out=Path(a.output).resolve();out.mkdir(parents=True,exist_ok=True)
     c,stage=load();plan=json.loads((ROOT/"stories/saying_hi_plan.json").read_text());ids=UNITS[a.unit];shots=[plan["shots"][i-1] for i in ids]
     start=round(shots[0]["edit_in"]*FPS);end=round(shots[-1]["edit_out"]*FPS);count=end-start
-    scene=setup(540,960);scene.frame_end=round(plan["audio_duration"]*FPS);cam=create(scene);driver=CorrectedUnit(scene,cam,c,stage,a.unit,ids,a.map,a.lineup)
     cache=json.loads(Path(a.cache).read_text()) if a.cache else {}
+    if a.mode=="motion" and cache:assert cache["pass"] and all(x["pass"] for x in cache["checks"].values()),"Native replay requires passed cached geometry"
+    reviewed_camera=cache.get("camera") if a.unit in ("june_question","june_answer","seating") and a.mode=="motion" else None
+    scene=setup(540,960);scene.frame_end=round(plan["audio_duration"]*FPS);cam=create(scene);driver=CorrectedUnit(scene,cam,c,stage,a.unit,ids,a.map,a.lineup,reviewed_camera=reviewed_camera)
     if a.unit=="crossing":
         driver.cached_walk=cache.get("walk_solution");driver.prepare_stride(count)
     elif a.unit=="otis_eyes" and cache:driver.eye_solution=cache["eye_solution"]
