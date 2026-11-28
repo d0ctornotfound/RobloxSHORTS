@@ -1,0 +1,111 @@
+{
+  "kind": "lineup",
+  "engine": "EEVEE",
+  "denoising": false,
+  "eevee_spatial_samples": 32,
+  "temporal_samples": 1,
+  "status": "candidate smoke",
+  "cast": {
+    "ava": {
+      "height_with_hair": 2.5483942180871964,
+      "scale": 1
+    },
+    "bella": {
+      "height_with_hair": 2.3725479976274073,
+      "scale": 0.98
+    },
+    "cleo": {
+      "height_with_hair": 2.46308995783329,
+      "scale": 1
+    },
+    "daisy": {
+      "height_with_hair": 2.469386773183942,
+      "scale": 1.02
+    },
+    "ella": {
+      "height_with_hair": 2.4209678322076797,
+      "scale": 1
+    },
+    "faye": {
+      "height_with_hair": 2.3967580343596637,
+      "scale": 0.99
+    },
+    "gia": {
+      "height_with_hair": 2.4197416454553604,
+      "scale": 1
+    },
+    "hana": {
+      "height_with_hair": 2.451888100244105,
+      "scale": 1.01
+    },
+    "ivy": {
+      "height_with_hair": 2.3725479976274073,
+      "scale": 0.98
+    },
+    "june": {
+      "height_with_hair": 2.5833885818719864,
+      "scale": 1
+    },
+    "brody": {
+      "height_with_hair": 2.032582762883976,
+      "scale": 0.84
+    },
+    "chase": {
+      "height_with_hair": 2.5462362337857485,
+      "scale": 1.02
+    },
+    "kai": {
+      "height_with_hair": 2.4197416454553604,
+      "scale": 1
+    },
+    "otis": {
+      "height_with_hair": 2.46308995783329,
+      "scale": 1
+    },
+    "leo": {
+      "height_with_hair": 2.4209678322076797,
+      "scale": 1
+    },
+    "max": {
+      "height_with_hair": 2.4701128164306283,
+      "scale": 1.01
+    },
+    "noah": {
+      "height_with_hair": 2.37134642759338,
+      "scale": 0.98
+    },
+    "ryan": {
+      "height_with_hair": 2.469386773183942,
+      "scale": 1.02
+    },
+    "sam": {
+      "height_with_hair": 2.4713472868315876,
+      "scale": 0.99
+    },
+    "narrator": {
+      "height_with_hair": 2.500755563378334,
+      "scale": 1
+    }
+  },
+  "images": [
+    {
+      "file": "lineup_girls.png",
+      "render_seconds": 33.08503112100004,
+      "resolution": [
+        2800,
+        650
+      ],
+      "near_black_percent": 0.40818681318681316
+    },
+    {
+      "file": "lineup_boys.png",
+      "render_seconds": 14.770558747999985,
+      "resolution": [
+        2800,
+        650
+      ],
+      "near_black_percent": 0.3442857142857143
+    }
+  ],
+  "board": "cast_lineup.png"
+}

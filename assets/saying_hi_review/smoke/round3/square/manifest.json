@@ -1,0 +1,689 @@
+{
+  "kind": "square",
+  "engine": "EEVEE",
+  "denoising": false,
+  "eevee_spatial_samples": 32,
+  "temporal_samples": 1,
+  "status": "candidate smoke",
+  "cast": {
+    "narrator": {
+      "scale": 1,
+      "mark": {
+        "xyz": [
+          0,
+          8,
+          0
+        ],
+        "yaw_deg": 0,
+        "seat_height": 0.4648272395133972
+      },
+      "contact": {
+        "hip_z": 0.4648272395133972,
+        "calibrated_seat_center": [
+          1.1473894119262695e-06,
+          8.55907154083252,
+          -0.42907118797302246
+        ],
+        "seat_footprint": [
+          1.4938984870910645,
+          0.7869494074583054
+        ],
+        "declared_top": 0.4648272395133972,
+        "hip_minus_declared_top": 0.0,
+        "foot_plane_gaps": [
+          0.0,
+          0.0
+        ]
+      },
+      "bounds": null
+    },
+    "otis": {
+      "scale": 1,
+      "mark": {
+        "xyz": [
+          -1.2,
+          8,
+          0
+        ],
+        "yaw_deg": 0,
+        "seat_height": 0.4648272395133972
+      },
+      "contact": {
+        "hip_z": 0.4648272395133972,
+        "calibrated_seat_center": [
+          -1.1999988555908203,
+          8.55907154083252,
+          -0.42907118797302246
+        ],
+        "seat_footprint": [
+          1.4938984870910645,
+          0.7869494074583054
+        ],
+        "declared_top": 0.4648272395133972,
+        "hip_minus_declared_top": 0.0,
+        "foot_plane_gaps": [
+          0.0,
+          0.0
+        ]
+      },
+      "bounds": null
+    },
+    "june": {
+      "scale": 1,
+      "mark": {
+        "xyz": [
+          3.2218,
+          -0.7143,
+          0
+        ],
+        "yaw_deg": 257.5,
+        "seat_height": 0.46482768654823303,
+        "eyeline": "well"
+      },
+      "contact": {
+        "hip_z": 0.46482768654823303,
+        "calibrated_seat_center": [
+          3.7676188945770264,
+          -0.8353062868118286,
+          -0.42907118797302246
+        ],
+        "seat_footprint": [
+          1.4938984572887422,
+          0.7869493180513383
+        ],
+        "declared_top": 0.46482768654823303,
+        "hip_minus_declared_top": 0.0,
+        "foot_plane_gaps": [
+          0.0,
+          0.0
+        ]
+      },
+      "bounds": null
+    },
+    "brody": {
+      "scale": 0.84,
+      "mark": {
+        "xyz": [
+          3.211,
+          0.761,
+          0
+        ],
+        "yaw_deg": 283.333,
+        "seat_height": 0.39045512676239014,
+        "eyeline": "well"
+      },
+      "contact": {
+        "hip_z": 0.39045512676239014,
+        "calibrated_seat_center": [
+          3.688201427459717,
+          0.8740947246551514,
+          -0.360419899225235
+        ],
+        "seat_footprint": [
+          1.3508746385574342,
+          0.7154374980926514
+        ],
+        "declared_top": 0.39045512676239014,
+        "hip_minus_declared_top": 0.0,
+        "foot_plane_gaps": [
+          0.0,
+          0.0
+        ]
+      },
+      "bounds": null
+    },
+    "chase": {
+      "scale": 1.02,
+      "mark": {
+        "xyz": [
+          2.5585,
+          2.0842,
+          0
+        ],
+        "yaw_deg": 309.167,
+        "seat_height": 0.4741237163543701,
+        "eyeline": "well"
+      },
+      "contact": {
+        "hip_z": 0.4741237163543701,
+        "calibrated_seat_center": [
+          2.9986069202423096,
+          2.442718744277954,
+          -0.43765270709991455
+        ],
+        "seat_footprint": [
+          1.511776512861252,
+          0.7958884352445603
+        ],
+        "declared_top": 0.4741237163543701,
+        "hip_minus_declared_top": 0.0,
+        "foot_plane_gaps": [
+          5.960464477539063e-08,
+          5.960464477539063e-08
+        ]
+      },
+      "bounds": null
+    },
+    "kai": {
+      "scale": 1,
+      "mark": {
+        "xyz": [
+          1.3946,
+          2.9908,
+          0
+        ],
+        "yaw_deg": 335,
+        "seat_height": 0.4648267924785614,
+        "eyeline": "well"
+      },
+      "contact": {
+        "hip_z": 0.4648267924785614,
+        "calibrated_seat_center": [
+          1.6308751106262207,
+          3.4974899291992188,
+          -0.42907118797302246
+        ],
+        "seat_footprint": [
+          1.4938984274864198,
+          0.7869493329524995
+        ],
+        "declared_top": 0.4648267924785614,
+        "hip_minus_declared_top": 0.0,
+        "foot_plane_gaps": [
+          0.0,
+          0.0
+        ]
+      },
+      "bounds": null
+    },
+    "ava": {
+      "scale": 1,
+      "mark": {
+        "xyz": [
+          -1.3946,
+          2.9908,
+          0
+        ],
+        "yaw_deg": 25,
+        "seat_height": 0.46482762694358826,
+        "eyeline": "well"
+      },
+      "contact": {
+        "hip_z": 0.46482762694358826,
+        "calibrated_seat_center": [
+          -1.6308727264404297,
+          3.4974911212921143,
+          -0.42907118797302246
+        ],
+        "seat_footprint": [
+          1.4938984870910645,
+          0.786949377655983
+        ],
+        "declared_top": 0.46482762694358826,
+        "hip_minus_declared_top": 0.0,
+        "foot_plane_gaps": [
+          0.0,
+          0.0
+        ]
+      },
+      "bounds": null
+    },
+    "bella": {
+      "scale": 0.98,
+      "mark": {
+        "xyz": [
+          -2.5585,
+          2.0842,
+          0
+        ],
+        "yaw_deg": 50.833,
+        "seat_height": 0.4555308222770691,
+        "eyeline": "well"
+      },
+      "contact": {
+        "hip_z": 0.4555308222770691,
+        "calibrated_seat_center": [
+          -2.9852988719940186,
+          2.4318807125091553,
+          -0.42048972845077515
+        ],
+        "seat_footprint": [
+          1.476020520925522,
+          0.7780103647708894
+        ],
+        "declared_top": 0.4555308222770691,
+        "hip_minus_declared_top": 0.0,
+        "foot_plane_gaps": [
+          2.9802322387695312e-08,
+          2.9802322387695312e-08
+        ]
+      },
+      "bounds": null
+    },
+    "cleo": {
+      "scale": 1,
+      "mark": {
+        "xyz": [
+          -3.211,
+          0.761,
+          0
+        ],
+        "yaw_deg": 76.667,
+        "seat_height": 0.46482768654823303,
+        "eyeline": "well"
+      },
+      "contact": {
+        "hip_z": 0.46482768654823303,
+        "calibrated_seat_center": [
+          -3.755002021789551,
+          0.8899286389350891,
+          -0.42907118797302246
+        ],
+        "seat_footprint": [
+          1.4938984572887422,
+          0.7869493329524995
+        ],
+        "declared_top": 0.46482768654823303,
+        "hip_minus_declared_top": 0.0,
+        "foot_plane_gaps": [
+          0.0,
+          0.0
+        ]
+      },
+      "bounds": null
+    },
+    "daisy": {
+      "scale": 1.02,
+      "mark": {
+        "xyz": [
+          -3.2218,
+          -0.7143,
+          0
+        ],
+        "yaw_deg": 102.5,
+        "seat_height": 0.47412365674972534,
+        "eyeline": "well"
+      },
+      "contact": {
+        "hip_z": 0.47412365674972534,
+        "calibrated_seat_center": [
+          -3.7759976387023926,
+          -0.8371614217758179,
+          -0.43765270709991455
+        ],
+        "seat_footprint": [
+          1.5117763936519624,
+          0.7958884054422379
+        ],
+        "declared_top": 0.47412365674972534,
+        "hip_minus_declared_top": 0.0,
+        "foot_plane_gaps": [
+          5.960464477539063e-08,
+          5.960464477539063e-08
+        ]
+      },
+      "bounds": null
+    },
+    "ella": {
+      "scale": 1,
+      "mark": {
+        "xyz": [
+          -2.5886,
+          -2.0468,
+          0
+        ],
+        "yaw_deg": 128.333,
+        "seat_height": 0.4648272693157196,
+        "eyeline": "well"
+      },
+      "contact": {
+        "hip_z": 0.4648272693157196,
+        "calibrated_seat_center": [
+          -3.027147054672241,
+          -2.393552303314209,
+          -0.42907118797302246
+        ],
+        "seat_footprint": [
+          1.4938984572887422,
+          0.7869493478536607
+        ],
+        "declared_top": 0.4648272693157196,
+        "hip_minus_declared_top": 0.0,
+        "foot_plane_gaps": [
+          0.0,
+          0.0
+        ]
+      },
+      "bounds": null
+    },
+    "faye": {
+      "scale": 0.99,
+      "mark": {
+        "xyz": [
+          -1.438,
+          -2.9702,
+          0
+        ],
+        "yaw_deg": 154.167,
+        "seat_height": 0.46017929911613464,
+        "eyeline": "well"
+      },
+      "contact": {
+        "hip_z": 0.46017929911613464,
+        "calibrated_seat_center": [
+          -1.679746389389038,
+          -3.4695398807525635,
+          -0.4247805178165436
+        ],
+        "seat_footprint": [
+          1.4849595189094544,
+          0.782479893565178
+        ],
+        "declared_top": 0.46017929911613464,
+        "hip_minus_declared_top": 0.0,
+        "foot_plane_gaps": [
+          0.0,
+          0.0
+        ]
+      },
+      "bounds": null
+    },
+    "gia": {
+      "scale": 1,
+      "mark": {
+        "xyz": [
+          0,
+          -3.3,
+          0
+        ],
+        "yaw_deg": 180,
+        "seat_height": 0.46482720971107483,
+        "eyeline": "well"
+      },
+      "contact": {
+        "hip_z": 0.46482720971107483,
+        "calibrated_seat_center": [
+          -1.165826802207448e-06,
+          -3.8590712547302246,
+          -0.42907118797302246
+        ],
+        "seat_footprint": [
+          1.493898516893387,
+          0.7869493627548219
+        ],
+        "declared_top": 0.46482720971107483,
+        "hip_minus_declared_top": 0.0,
+        "foot_plane_gaps": [
+          0.0,
+          0.0
+        ]
+      },
+      "bounds": null
+    },
+    "hana": {
+      "scale": 1.01,
+      "mark": {
+        "xyz": [
+          1.438,
+          -2.9702,
+          0
+        ],
+        "yaw_deg": 205.833,
+        "seat_height": 0.4694758355617523,
+        "eyeline": "well"
+      },
+      "contact": {
+        "hip_z": 0.4694758355617523,
+        "calibrated_seat_center": [
+          1.6834837198257446,
+          -3.477264642715454,
+          -0.4333620071411133
+        ],
+        "seat_footprint": [
+          1.5028374552726746,
+          0.7914188468456269
+        ],
+        "declared_top": 0.4694758355617523,
+        "hip_minus_declared_top": 0.0,
+        "foot_plane_gaps": [
+          0.0,
+          0.0
+        ]
+      },
+      "bounds": null
+    },
+    "ivy": {
+      "scale": 0.98,
+      "mark": {
+        "xyz": [
+          2.5886,
+          -2.0468,
+          0
+        ],
+        "yaw_deg": 231.667,
+        "seat_height": 0.45553073287010193,
+        "eyeline": "well"
+      },
+      "contact": {
+        "hip_z": 0.45553073287010193,
+        "calibrated_seat_center": [
+          3.020414113998413,
+          -2.3882315158843994,
+          -0.42048972845077515
+        ],
+        "seat_footprint": [
+          1.4760204911231996,
+          0.7780104690790177
+        ],
+        "declared_top": 0.45553073287010193,
+        "hip_minus_declared_top": 0.0,
+        "foot_plane_gaps": [
+          2.9802322387695312e-08,
+          2.9802322387695312e-08
+        ]
+      },
+      "bounds": null
+    },
+    "leo": {
+      "scale": 1,
+      "mark": {
+        "xyz": [
+          -3.5999999999999996,
+          8,
+          0
+        ],
+        "yaw_deg": 0,
+        "seat_height": 0.4648272395133972
+      },
+      "contact": {
+        "hip_z": 0.4648272395133972,
+        "calibrated_seat_center": [
+          -3.599998712539673,
+          8.55907154083252,
+          -0.42907118797302246
+        ],
+        "seat_footprint": [
+          1.4938984870910645,
+          0.7869494074583054
+        ],
+        "declared_top": 0.4648272395133972,
+        "hip_minus_declared_top": 0.0,
+        "foot_plane_gaps": [
+          0.0,
+          0.0
+        ]
+      },
+      "bounds": null
+    },
+    "max": {
+      "scale": 1.01,
+      "mark": {
+        "xyz": [
+          -2.4,
+          8,
+          0
+        ],
+        "yaw_deg": 0,
+        "seat_height": 0.4648272395133972
+      },
+      "contact": {
+        "hip_z": 0.4694754183292389,
+        "calibrated_seat_center": [
+          -2.399998903274536,
+          8.563362121582031,
+          -0.4333620071411133
+        ],
+        "seat_footprint": [
+          1.5028374552726746,
+          0.7914187723398209
+        ],
+        "declared_top": 0.4648272395133972,
+        "hip_minus_declared_top": 0.004648178815841675,
+        "foot_plane_gaps": [
+          0.0,
+          0.0
+        ]
+      },
+      "bounds": null
+    },
+    "noah": {
+      "scale": 0.98,
+      "mark": {
+        "xyz": [
+          1.2,
+          8,
+          0
+        ],
+        "yaw_deg": 0,
+        "seat_height": 0.4648272395133972
+      },
+      "contact": {
+        "hip_z": 0.45553067326545715,
+        "calibrated_seat_center": [
+          1.2000011205673218,
+          8.55048942565918,
+          -0.42048972845077515
+        ],
+        "seat_footprint": [
+          1.4760204911231996,
+          0.778010334968567
+        ],
+        "declared_top": 0.4648272395133972,
+        "hip_minus_declared_top": -0.009296566247940063,
+        "foot_plane_gaps": [
+          2.9802322387695312e-08,
+          2.9802322387695312e-08
+        ]
+      },
+      "bounds": null
+    },
+    "ryan": {
+      "scale": 1.02,
+      "mark": {
+        "xyz": [
+          2.4,
+          8,
+          0
+        ],
+        "yaw_deg": 0,
+        "seat_height": 0.4648272395133972
+      },
+      "contact": {
+        "hip_z": 0.47412458062171936,
+        "calibrated_seat_center": [
+          2.400001287460327,
+          8.567652702331543,
+          -0.43765270709991455
+        ],
+        "seat_footprint": [
+          1.5117764830589295,
+          0.7958883607387544
+        ],
+        "declared_top": 0.4648272395133972,
+        "hip_minus_declared_top": 0.009297341108322144,
+        "foot_plane_gaps": [
+          5.960464477539063e-08,
+          5.960464477539063e-08
+        ]
+      },
+      "bounds": null
+    },
+    "sam": {
+      "scale": 0.99,
+      "mark": {
+        "xyz": [
+          3.5999999999999996,
+          8,
+          0
+        ],
+        "yaw_deg": 0,
+        "seat_height": 0.4648272395133972
+      },
+      "contact": {
+        "hip_z": 0.4601788818836212,
+        "calibrated_seat_center": [
+          3.600001096725464,
+          8.554780960083008,
+          -0.4247805178165436
+        ],
+        "seat_footprint": [
+          1.4849594593048097,
+          0.7824799382686616
+        ],
+        "declared_top": 0.4648272395133972,
+        "hip_minus_declared_top": -0.004648357629776001,
+        "foot_plane_gaps": [
+          0.0,
+          0.0
+        ]
+      },
+      "bounds": null
+    }
+  },
+  "scenery": {
+    "repository": "AdityapalW/Roblox-skill",
+    "commit": "54b34ba1be2e3013a9de59e40db288d8f2ebda53",
+    "file": "Itlay/Itlay.gltf",
+    "git_blob": "20108af3a19fae6b5beaa5fac2e3305b56112a41",
+    "mesh_objects": 196,
+    "objects": 207,
+    "transform": "native Blender glTF axis conversion; root identity",
+    "texture_provenance": "Repository README: procedural geometry/textures with selected CC0 Poly Haven photo textures; individual texture attribution not supplied by source manifest.",
+    "native_well_adaptation": {
+      "source_group": "Piazza fountain",
+      "mesh_children": 6,
+      "original_world_min": [
+        -3.9600000381469727,
+        -7.960000038146973,
+        2.98023217215615e-10
+      ],
+      "original_world_max": [
+        3.9600000381469727,
+        -0.039999961853027344,
+        3.8241324424743652
+      ],
+      "uniform_scale": 0.35984848138203784,
+      "adapted_world_min": [
+        -1.4249999523162842,
+        -1.4250000715255737,
+        0.0
+      ],
+      "adapted_world_max": [
+        1.4249999523162842,
+        1.4249999523162842,
+        1.376108169555664
+      ],
+      "note": "Native source stone water feature is the story well; no duplicate added well, material assignments unchanged."
+    },
+    "adaptation": "Actual source fountain recentered/scaled as the sole central water feature; source cobbles and facades preserved. Story-local wall and seats calibrated from measured seated pose data. No duplicate fountain or replacement paving."
+  },
+  "image": {
+    "file": "square_group_smoke.png",
+    "render_seconds": 50.48379518600001,
+    "resolution": [
+      1440,
+      1080
+    ],
+    "near_black_percent": 0.21977880658436214
+  }
+}
