@@ -1,0 +1,115 @@
+name: Saying Hi — crossing stride and locked-camera correction
+on:
+  push:
+    branches: ['production/saying-hi']
+    paths: ['.github/workflows/saying-hi-crossing-retry.yml']
+  workflow_dispatch:
+permissions:
+  contents: write
+  actions: read
+concurrency:
+  group: saying-hi-crossing-retry
+  cancel-in-progress: false
+jobs:
+  prerequisite:
+    if: github.ref == 'refs/heads/production/saying-hi'
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    env:
+      GH_TOKEN: ${{ github.token }}
+    steps:
+      - uses: actions/checkout@v4
+      - name: Require successful cast and actual imported-square smoke
+        run: |
+          gh run watch 46102889281 --repo "$GITHUB_REPOSITORY" --exit-status --interval 10
+          mkdir -p /tmp/lineup /tmp/square
+          gh run download 46102889281 --repo "$GITHUB_REPOSITORY" --name saying-hi-smoke-lineup --dir /tmp/lineup
+          gh run download 46102889281 --repo "$GITHUB_REPOSITORY" --name saying-hi-smoke-square --dir /tmp/square
+          test -s /tmp/lineup/cast_lineup.png
+          test -s /tmp/square/square_group_smoke.png
+          python3 - <<'PY'
+          import json
+          from pathlib import Path
+          l=json.loads(Path('/tmp/lineup/manifest.json').read_text())
+          s=json.loads(Path('/tmp/square/manifest.json').read_text())
+          assert len(l['cast'])==len(s['cast'])==20
+          assert s['scenery']['file']=='Itlay/Itlay.gltf' and s['scenery']['mesh_objects']>0
+          assert max(i['near_black_percent'] for i in l['images'])<=10
+          assert s['image']['near_black_percent']<=10
+          PY
+          python3 scripts/validate_shot_plan.py stories/saying_hi_plan.json
+  preflight:
+    needs: prerequisite
+    runs-on: ubuntu-24.04
+    timeout-minutes: 38
+    strategy:
+      fail-fast: false
+      max-parallel: 1
+      matrix:
+        unit: [crossing]
+    env:
+      GH_TOKEN: ${{ github.token }}
+      LIBGL_ALWAYS_SOFTWARE: '1'
+      R6_KNEE_BLEND: '1'
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install proven EEVEE dependencies and identity textures
+        run: |
+          for f in /etc/apt/sources.list.d/*; do
+            if [ -f "$f" ] && grep -q "packages.microsoft.com" "$f"; then sudo mv "$f" "$f.disabled"; fi
+          done
+          sudo apt-get update -o Acquire::Retries=3
+          sudo apt-get install -y --no-install-recommends blender python3-pil python3-numpy fonts-dejavu-core libegl1 libegl-mesa0 libgl1 libgl1-mesa-dri libgbm1
+          /usr/bin/python3 scripts/r6_faces.py --output assets/r6_faces
+          /usr/bin/python3 scripts/library_character_assets.py
+          python3 -m py_compile scripts/render_saying_hi_shot.py scripts/saying_hi_chart_render.py scripts/encode_saying_hi_proof.py scripts/saying_hi_cast.py scripts/saying_hi_square.py scripts/export_shot_animatic.py
+      - name: Retrieve actual cast portraits and pinned plaza
+        run: |
+          mkdir -p /tmp/lineup /tmp/saying_hi_map
+          gh run download 46102889281 --repo "$GITHUB_REPOSITORY" --name saying-hi-smoke-lineup --dir /tmp/lineup
+          curl --fail --location --retry 3 --max-time 180 'https://raw.githubusercontent.com/AdityapalW/Roblox-skill/54b34ba1be2e3013a9de59e40db288d8f2ebda53/Itlay/Itlay.gltf' -o /tmp/saying_hi_map/Itlay.gltf
+          test "$(git hash-object /tmp/saying_hi_map/Itlay.gltf)" = '20108af3a19fae6b5beaa5fac2e3305b56112a41'
+      - name: Evaluate sequence and render one real smoke frame only
+        run: |
+          set -o pipefail
+          mkdir -p "review/${{ matrix.unit }}"
+          timeout --kill-after=20s 29m blender -b --python-exit-code 1 --python scripts/render_saying_hi_shot.py -- --unit "${{ matrix.unit }}" --mode smoke --map /tmp/saying_hi_map/Itlay.gltf --lineup /tmp/lineup --output "review/${{ matrix.unit }}" 2>&1 | tee "review/${{ matrix.unit }}/render.log"
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: saying-hi-preflight-${{ matrix.unit }}
+          path: review/${{ matrix.unit }}/
+          if-no-files-found: warn
+  publish:
+    if: always() && needs.prerequisite.result == 'success'
+    needs: [prerequisite, preflight]
+    runs-on: ubuntu-24.04
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: production/saying-hi
+      - uses: actions/download-artifact@v4
+        with:
+          pattern: saying-hi-preflight-*
+          path: /tmp/saying-hi-preflight
+      - name: Publish actual proof smoke images, logs and numerical data
+        run: |
+          set -euo pipefail
+          OUT=assets/saying_hi_review
+          mkdir -p "$OUT/preflight/crossing_retry"
+          for src in /tmp/saying-hi-preflight/saying-hi-preflight-*; do
+            test -d "$src" || continue
+            unit=${src##*saying-hi-preflight-}
+            mkdir -p "$OUT/preflight/crossing_retry/$unit"
+            cp -a "$src"/. "$OUT/preflight/crossing_retry/$unit/"
+          done
+          printf 'workflow_run_id=%s\nsource_commit=%s\npreflight_result=%s\n' "$GITHUB_RUN_ID" "$GITHUB_SHA" "${{ needs.preflight.result }}" > "$OUT/preflight/crossing_retry/workflow_provenance.txt"
+          find "$OUT" -type f ! -name SHA256SUMS -print0 | sort -z | xargs -0 sha256sum > "$OUT/SHA256SUMS"
+          sha256sum stories/saying_hi_script.txt stories/saying_hi_plan.json >> "$OUT/SHA256SUMS"
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add "$OUT"
+          git commit -m "Publish actual per-proof smoke frames and measured data; no full motion"
+          git pull --rebase origin production/saying-hi
+          git push origin HEAD:refs/heads/production/saying-hi
