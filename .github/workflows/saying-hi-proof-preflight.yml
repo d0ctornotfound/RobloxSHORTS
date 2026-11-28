@@ -21,10 +21,10 @@ jobs:
       - uses: actions/checkout@v4
       - name: Require successful cast and actual imported-square smoke
         run: |
-          gh run watch 46102274273 --repo "$GITHUB_REPOSITORY" --exit-status --interval 10
+          gh run watch 46102889281 --repo "$GITHUB_REPOSITORY" --exit-status --interval 10
           mkdir -p /tmp/lineup /tmp/square
-          gh run download 46102274273 --repo "$GITHUB_REPOSITORY" --name saying-hi-smoke-lineup --dir /tmp/lineup
-          gh run download 46102274273 --repo "$GITHUB_REPOSITORY" --name saying-hi-smoke-square --dir /tmp/square
+          gh run download 46102889281 --repo "$GITHUB_REPOSITORY" --name saying-hi-smoke-lineup --dir /tmp/lineup
+          gh run download 46102889281 --repo "$GITHUB_REPOSITORY" --name saying-hi-smoke-square --dir /tmp/square
           test -s /tmp/lineup/cast_lineup.png
           test -s /tmp/square/square_group_smoke.png
           python3 - <<'PY'
@@ -66,7 +66,7 @@ jobs:
       - name: Retrieve actual cast portraits and pinned plaza
         run: |
           mkdir -p /tmp/lineup /tmp/saying_hi_map
-          gh run download 46102274273 --repo "$GITHUB_REPOSITORY" --name saying-hi-smoke-lineup --dir /tmp/lineup
+          gh run download 46102889281 --repo "$GITHUB_REPOSITORY" --name saying-hi-smoke-lineup --dir /tmp/lineup
           curl --fail --location --retry 3 --max-time 180 'https://raw.githubusercontent.com/AdityapalW/Roblox-skill/54b34ba1be2e3013a9de59e40db288d8f2ebda53/Itlay/Itlay.gltf' -o /tmp/saying_hi_map/Itlay.gltf
           test "$(git hash-object /tmp/saying_hi_map/Itlay.gltf)" = '20108af3a19fae6b5beaa5fac2e3305b56112a41'
       - name: Evaluate sequence and render one real smoke frame only
@@ -97,14 +97,14 @@ jobs:
         run: |
           set -euo pipefail
           OUT=assets/saying_hi_review
-          mkdir -p "$OUT/preflight"
+          mkdir -p "$OUT/preflight/round3"
           for src in /tmp/saying-hi-preflight/saying-hi-preflight-*; do
             test -d "$src" || continue
             unit=${src##*saying-hi-preflight-}
-            mkdir -p "$OUT/preflight/$unit"
-            cp -a "$src"/. "$OUT/preflight/$unit/"
+            mkdir -p "$OUT/preflight/round3/$unit"
+            cp -a "$src"/. "$OUT/preflight/round3/$unit/"
           done
-          printf 'workflow_run_id=%s\nsource_commit=%s\npreflight_result=%s\n' "$GITHUB_RUN_ID" "$GITHUB_SHA" "${{ needs.preflight.result }}" > "$OUT/preflight/workflow_provenance.txt"
+          printf 'workflow_run_id=%s\nsource_commit=%s\npreflight_result=%s\n' "$GITHUB_RUN_ID" "$GITHUB_SHA" "${{ needs.preflight.result }}" > "$OUT/preflight/round3/workflow_provenance.txt"
           find "$OUT" -type f ! -name SHA256SUMS -print0 | sort -z | xargs -0 sha256sum > "$OUT/SHA256SUMS"
           sha256sum stories/saying_hi_script.txt stories/saying_hi_plan.json >> "$OUT/SHA256SUMS"
           git config user.name "github-actions[bot]"
