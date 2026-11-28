@@ -1,6 +1,6 @@
 {
   "status": "partial_verified_not_release_ready",
-  "verified_shots": 32,
+  "verified_shots": 35,
   "shots": [
     {
       "shot": 2,
@@ -28,6 +28,20 @@
       "sha256": "4db9b092e38f5a9a1691ebc57b4b82853bb4690fe831cb3dd434c1a97ab3c660",
       "passed": true,
       "independent_checks": "SHA-256, independently decoded darkness and frame count, profile, raw PNG indices, exact geometry",
+      "visual_status": "sampled production frames inspected; continuous playback pending"
+    },
+    {
+      "shot": 4,
+      "artifact_id": 15241105678,
+      "production_run": 46088851627,
+      "preflight_run": 46088254113,
+      "source_commit": "10e18274a9277d59e918b3670764a297a5c91cdf",
+      "frames": 60,
+      "duration": 2.5,
+      "encoded_max_near_black_percent": 1.6251929012345678,
+      "sha256": "002b413c6cb25c500f5aa7f922d604d4fe179be793247697da088686d8a22fd3",
+      "passed": true,
+      "independent_checks": "MP4 SHA256, independently decoded 60 frames and darkness, geometry and raw PNG indices",
       "visual_status": "sampled production frames inspected; continuous playback pending"
     },
     {
@@ -141,6 +155,20 @@
       "passed": true,
       "independent_checks": "SHA-256, decoded frame count, dimensions, raw frame sequence, geometry records",
       "visual_status": "first and last production frames inspected; final continuous playback pending"
+    },
+    {
+      "shot": 13,
+      "artifact_id": 15240739762,
+      "production_run": 46088390454,
+      "preflight_run": 46087958140,
+      "source_commit": "749057616ff364a80a14f5f3ca8ccd3677bfb2c5",
+      "frames": 60,
+      "duration": 2.5,
+      "encoded_max_near_black_percent": 1.095679012345679,
+      "sha256": "dab8e87ae83287ea2b9a9b07e57a1b7c16a771b5b06737153bca41d2528fb7e3",
+      "passed": true,
+      "independent_checks": "MP4 SHA256, independently decoded 60 frames and darkness, geometry and raw PNG indices",
+      "visual_status": "sampled production frames inspected; continuous playback pending"
     },
     {
       "shot": 14,
@@ -364,6 +392,20 @@
       "sha256": "ef18747df78524e29cbff74adaf0ac7928157e4842d5939975b168592eb9d24d",
       "passed": true,
       "independent_checks": "MP4 SHA256, independently decoded darkness and count, geometry and raw PNG indices",
+      "visual_status": "sampled production frames inspected; continuous playback pending"
+    },
+    {
+      "shot": 35,
+      "artifact_id": 15240779010,
+      "production_run": 46088571771,
+      "preflight_run": 46087958140,
+      "source_commit": "749057616ff364a80a14f5f3ca8ccd3677bfb2c5",
+      "frames": 60,
+      "duration": 2.5,
+      "encoded_max_near_black_percent": 0.3717206790123457,
+      "sha256": "beafc88025c609b56951fa12278f5bb254631d42cf1cc3c4a67012ec78b2459d",
+      "passed": true,
+      "independent_checks": "MP4 SHA256, independently decoded 60 frames and darkness, geometry and raw PNG indices",
       "visual_status": "sampled production frames inspected; continuous playback pending"
     },
     {
