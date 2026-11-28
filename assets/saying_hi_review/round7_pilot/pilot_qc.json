@@ -1,0 +1,680 @@
+{
+  "run_id": "46152208501",
+  "source_commit": "684b404cfbac6424cfa2c8ebd2d24baf5e0e9108",
+  "baseline": "assets/saying_hi_review/round6/saying_hi.mp4",
+  "groups": {
+    "sh09_group": {
+      "missing_chunks": [],
+      "shots": {
+        "sh09": {
+          "start": 629,
+          "end": 712,
+          "direction": {
+            "status": "numeric_pass",
+            "beat_type": "action",
+            "principal": "narrator",
+            "actors": {
+              "leo": {
+                "action_coverage": null,
+                "action_coverage_whole_shot": 0.0,
+                "longest_action_freeze_s": null,
+                "action_transitions": 0,
+                "total_transitions": 82,
+                "state_frames": {
+                  "idle": 83
+                },
+                "idle_profile": "calm_film_v1",
+                "max_applied_idle_rad": {
+                  "head": [
+                    0.014995183561843933,
+                    0.013999864589245905,
+                    0.00034206611937517465
+                  ],
+                  "torso": [
+                    0,
+                    0,
+                    0
+                  ]
+                },
+                "motion_coverage": null,
+                "held_pose_max_s": null,
+                "start_in_motion": false,
+                "end_in_motion": false
+              },
+              "max": {
+                "action_coverage": null,
+                "action_coverage_whole_shot": 0.0,
+                "longest_action_freeze_s": null,
+                "action_transitions": 0,
+                "total_transitions": 82,
+                "state_frames": {
+                  "idle": 83
+                },
+                "idle_profile": "calm_film_v1",
+                "max_applied_idle_rad": {
+                  "head": [
+                    0.03296076220986961,
+                    0.013780810634413776,
+                    0.05194340301081146
+                  ],
+                  "torso": [
+                    0,
+                    0,
+                    0
+                  ]
+                },
+                "motion_coverage": null,
+                "held_pose_max_s": null,
+                "start_in_motion": false,
+                "end_in_motion": false
+              },
+              "narrator": {
+                "action_coverage": 1.0,
+                "action_coverage_whole_shot": 1.0,
+                "longest_action_freeze_s": 0.03333333333333333,
+                "action_transitions": 82,
+                "total_transitions": 82,
+                "state_frames": {
+                  "action": 83
+                },
+                "idle_profile": "calm_film_v1",
+                "max_applied_idle_rad": {
+                  "head": [
+                    0,
+                    0,
+                    0
+                  ],
+                  "torso": [
+                    0,
+                    0,
+                    0
+                  ]
+                },
+                "motion_coverage": 1.0,
+                "held_pose_max_s": 0.03333333333333333,
+                "start_in_motion": true,
+                "end_in_motion": true
+              },
+              "noah": {
+                "action_coverage": null,
+                "action_coverage_whole_shot": 0.0,
+                "longest_action_freeze_s": null,
+                "action_transitions": 0,
+                "total_transitions": 82,
+                "state_frames": {
+                  "idle": 83
+                },
+                "idle_profile": "calm_film_v1",
+                "max_applied_idle_rad": {
+                  "head": [
+                    0.04226449444033746,
+                    0.013998894618853426,
+                    0.051910269652184746
+                  ],
+                  "torso": [
+                    0,
+                    0,
+                    0
+                  ]
+                },
+                "motion_coverage": null,
+                "held_pose_max_s": null,
+                "start_in_motion": false,
+                "end_in_motion": false
+              },
+              "otis": {
+                "action_coverage": 1.0,
+                "action_coverage_whole_shot": 1.0,
+                "longest_action_freeze_s": 0.03333333333333333,
+                "action_transitions": 82,
+                "total_transitions": 82,
+                "state_frames": {
+                  "action": 83
+                },
+                "idle_profile": "calm_film_v1",
+                "max_applied_idle_rad": {
+                  "head": [
+                    0,
+                    0,
+                    0
+                  ],
+                  "torso": [
+                    0,
+                    0,
+                    0
+                  ]
+                },
+                "motion_coverage": 1.0,
+                "held_pose_max_s": 0.03333333333333333,
+                "start_in_motion": true,
+                "end_in_motion": true
+              },
+              "ryan": {
+                "action_coverage": null,
+                "action_coverage_whole_shot": 0.0,
+                "longest_action_freeze_s": null,
+                "action_transitions": 0,
+                "total_transitions": 82,
+                "state_frames": {
+                  "idle": 83
+                },
+                "idle_profile": "calm_film_v1",
+                "max_applied_idle_rad": {
+                  "head": [
+                    0.029108013010337344,
+                    0.01399960205943576,
+                    0.026269543821189307
+                  ],
+                  "torso": [
+                    0,
+                    0,
+                    0
+                  ]
+                },
+                "motion_coverage": null,
+                "held_pose_max_s": null,
+                "start_in_motion": false,
+                "end_in_motion": false
+              },
+              "sam": {
+                "action_coverage": null,
+                "action_coverage_whole_shot": 0.0,
+                "longest_action_freeze_s": null,
+                "action_transitions": 0,
+                "total_transitions": 82,
+                "state_frames": {
+                  "idle": 83
+                },
+                "idle_profile": "calm_film_v1",
+                "max_applied_idle_rad": {
+                  "head": [
+                    0.0149993038692874,
+                    0.013999104639032601,
+                    0.020269509702931596
+                  ],
+                  "torso": [
+                    0,
+                    0,
+                    0
+                  ]
+                },
+                "motion_coverage": null,
+                "held_pose_max_s": null,
+                "start_in_motion": false,
+                "end_in_motion": false
+              }
+            },
+            "faces": {
+              "narrator": {
+                "min_height": 0.07806277275085449,
+                "safe_all": true
+              }
+            },
+            "checks": {
+              "principal_action_coverage": true,
+              "principal_action_freeze": true,
+              "grade_declared": true,
+              "action_body_scale": true
+            },
+            "grade": {
+              "preset": "warm_saturated_v1",
+              "look": "AgX - Medium High Contrast",
+              "exposure": -0.12,
+              "saturation": 1.18
+            },
+            "threshold_scene_units": 0.0015,
+            "motion_schema": "action_only_v1",
+            "idle_profile": {
+              "name": "calm_film_v1",
+              "torso_breath_rad": 0.013,
+              "torso_sway_rad": 0.02,
+              "head_breath_rad": 0.015,
+              "head_sway_rad": 0.014,
+              "head_glance_rad": 0.06,
+              "breath_hz": 0.25,
+              "sway_hz": 0.15,
+              "background_pitch_rad": 0.028,
+              "background_yaw_rad": 0.052,
+              "glance_interval_s": [
+                3,
+                6
+              ],
+              "glance_duration_s": 1.2,
+              "continuous_background_oscillation": false
+            },
+            "visual_review_required": true
+          },
+          "external_face_ray_blocks_max": {
+            "narrator": 0
+          },
+          "native_near_black_max_percent": 0.5202546296296297,
+          "walk_evidence": [],
+          "gait_gate": null,
+          "geometry_measurements": []
+        }
+      },
+      "clip": "assets/saying_hi_review/round7_pilot/sh09_group.mp4",
+      "frames": 83,
+      "sha256": "cf1e329b17f889a76ab5e2bacf7c751c4e245ce673a1b6d07ec02fbe90a66291"
+    },
+    "sh27_interview": {
+      "missing_chunks": [],
+      "shots": {
+        "sh27": {
+          "start": 1807,
+          "end": 1883,
+          "direction": {
+            "status": "numeric_pass",
+            "beat_type": "interview",
+            "principal": "kai",
+            "actors": {
+              "cleo": {
+                "action_coverage": 1.0,
+                "action_coverage_whole_shot": 1.0,
+                "longest_action_freeze_s": 0.03333333333333333,
+                "action_transitions": 75,
+                "total_transitions": 75,
+                "state_frames": {
+                  "action": 76
+                },
+                "idle_profile": "calm_film_v1",
+                "max_applied_idle_rad": {
+                  "head": [
+                    0,
+                    0,
+                    0
+                  ],
+                  "torso": [
+                    0,
+                    0,
+                    0
+                  ]
+                },
+                "motion_coverage": 1.0,
+                "held_pose_max_s": 0.03333333333333333,
+                "start_in_motion": true,
+                "end_in_motion": true
+              },
+              "kai": {
+                "action_coverage": 1.0,
+                "action_coverage_whole_shot": 1.0,
+                "longest_action_freeze_s": 0.03333333333333333,
+                "action_transitions": 75,
+                "total_transitions": 75,
+                "state_frames": {
+                  "action": 76
+                },
+                "idle_profile": "calm_film_v1",
+                "max_applied_idle_rad": {
+                  "head": [
+                    0,
+                    0,
+                    0
+                  ],
+                  "torso": [
+                    0,
+                    0,
+                    0
+                  ]
+                },
+                "motion_coverage": 1.0,
+                "held_pose_max_s": 0.03333333333333333,
+                "start_in_motion": true,
+                "end_in_motion": true
+              }
+            },
+            "faces": {
+              "kai": {
+                "min_height": 0.12220746278762817,
+                "safe_all": true,
+                "min_facing_dot": 0.9159031575545669,
+                "min_ray_visibility": 0.9166666666666666,
+                "max_external_blocks": 0,
+                "min_ray_samples": 24
+              },
+              "cleo": {
+                "min_height": 0.12198328971862793,
+                "safe_all": true,
+                "min_facing_dot": 0.9096015114337206,
+                "min_ray_visibility": 0.92,
+                "max_external_blocks": 0,
+                "min_ray_samples": 25
+              }
+            },
+            "checks": {
+              "principal_action_coverage": true,
+              "principal_action_freeze": true,
+              "grade_declared": true,
+              "readable_faces": true,
+              "two_face_bounds": true,
+              "landmarks_visible": true
+            },
+            "grade": {
+              "preset": "warm_saturated_v1",
+              "look": "AgX - Medium High Contrast",
+              "exposure": -0.12,
+              "saturation": 1.18,
+              "directed_bounce": {
+                "energy": 680.0,
+                "color": [
+                  1.0,
+                  0.8799999952316284,
+                  0.75
+                ],
+                "size": 4.0,
+                "exposure": 0.019999999552965164,
+                "position": [
+                  -0.166285902261734,
+                  5.383187294006348,
+                  3.0188183784484863
+                ]
+              }
+            },
+            "threshold_scene_units": 0.0015,
+            "motion_schema": "action_only_v1",
+            "idle_profile": {
+              "name": "calm_film_v1",
+              "torso_breath_rad": 0.013,
+              "torso_sway_rad": 0.02,
+              "head_breath_rad": 0.015,
+              "head_sway_rad": 0.014,
+              "head_glance_rad": 0.06,
+              "breath_hz": 0.25,
+              "sway_hz": 0.15,
+              "background_pitch_rad": 0.028,
+              "background_yaw_rad": 0.052,
+              "glance_interval_s": [
+                3,
+                6
+              ],
+              "glance_duration_s": 1.2,
+              "continuous_background_oscillation": false
+            },
+            "visual_review_required": true
+          },
+          "external_face_ray_blocks_max": {
+            "cleo": 0,
+            "kai": 0
+          },
+          "native_near_black_max_percent": 0.3350694444444444,
+          "walk_evidence": [],
+          "gait_gate": null,
+          "geometry_measurements": []
+        }
+      },
+      "clip": "assets/saying_hi_review/round7_pilot/sh27_interview.mp4",
+      "frames": 76,
+      "sha256": "7a816c6cbdd508be5e319cdb0c88ada060ff200de19151efaadcb05c4fa2dadf"
+    },
+    "sh43_seating": {
+      "missing_chunks": [],
+      "shots": {
+        "sh43": {
+          "start": 2713,
+          "end": 2764,
+          "direction": {
+            "status": "flag",
+            "beat_type": "action",
+            "principal": "narrator",
+            "actors": {
+              "june": {
+                "action_coverage": 0.9347826086956522,
+                "action_coverage_whole_shot": 0.86,
+                "longest_action_freeze_s": 0.1,
+                "action_transitions": 46,
+                "total_transitions": 50,
+                "state_frames": {
+                  "action": 47,
+                  "intentional_stillness": 4
+                },
+                "idle_profile": "calm_film_v1",
+                "max_applied_idle_rad": {
+                  "head": [
+                    0.014998694270281838,
+                    0.003302438386212448,
+                    0
+                  ],
+                  "torso": [
+                    0,
+                    0,
+                    0
+                  ]
+                },
+                "motion_coverage": 0.9347826086956522,
+                "held_pose_max_s": 0.1,
+                "start_in_motion": false,
+                "end_in_motion": false
+              },
+              "narrator": {
+                "action_coverage": 0.6944444444444444,
+                "action_coverage_whole_shot": 0.5,
+                "longest_action_freeze_s": 0.3333333333333333,
+                "action_transitions": 36,
+                "total_transitions": 50,
+                "state_frames": {
+                  "action": 37,
+                  "intentional_stillness": 14
+                },
+                "idle_profile": "calm_film_v1",
+                "max_applied_idle_rad": {
+                  "head": [
+                    0.031348851977152904,
+                    0.013771409936432529,
+                    0.0310509789638975
+                  ],
+                  "torso": [
+                    0,
+                    0,
+                    0
+                  ]
+                },
+                "motion_coverage": 0.6944444444444444,
+                "held_pose_max_s": 0.3333333333333333,
+                "start_in_motion": false,
+                "end_in_motion": false
+              }
+            },
+            "faces": {
+              "narrator": {
+                "min_height": 0.07091379165649414,
+                "safe_all": true
+              },
+              "june": {
+                "min_height": 0.06266772747039795,
+                "safe_all": true
+              }
+            },
+            "checks": {
+              "principal_action_coverage": false,
+              "principal_action_freeze": true,
+              "grade_declared": true,
+              "action_body_scale": true
+            },
+            "grade": {
+              "preset": "warm_saturated_v1",
+              "look": "AgX - Medium High Contrast",
+              "exposure": -0.12,
+              "saturation": 1.18
+            },
+            "threshold_scene_units": 0.0015,
+            "motion_schema": "action_only_v1",
+            "idle_profile": {
+              "name": "calm_film_v1",
+              "torso_breath_rad": 0.013,
+              "torso_sway_rad": 0.02,
+              "head_breath_rad": 0.015,
+              "head_sway_rad": 0.014,
+              "head_glance_rad": 0.06,
+              "breath_hz": 0.25,
+              "sway_hz": 0.15,
+              "background_pitch_rad": 0.028,
+              "background_yaw_rad": 0.052,
+              "glance_interval_s": [
+                3,
+                6
+              ],
+              "glance_duration_s": 1.2,
+              "continuous_background_oscillation": false
+            },
+            "visual_review_required": true
+          },
+          "external_face_ray_blocks_max": {
+            "june": 0,
+            "narrator": 0
+          },
+          "native_near_black_max_percent": 0.8643904320987654,
+          "walk_evidence": [],
+          "gait_gate": null,
+          "geometry_measurements": [
+            {
+              "name": "dog occlusion",
+              "selector": "geometry.dog_visibility.blocked",
+              "value": 0,
+              "limit": 0,
+              "operator": "eq",
+              "samples": 51,
+              "matched_frames": 51,
+              "status": "pass"
+            },
+            {
+              "name": "dog safe frame",
+              "selector": "geometry.dog_visibility.safe",
+              "value": true,
+              "limit": true,
+              "operator": "eq",
+              "samples": 51,
+              "matched_frames": 51,
+              "status": "pass"
+            },
+            {
+              "name": "dog width",
+              "selector": "geometry.dog_visibility.bounds",
+              "value": 0.18016934394836426,
+              "limit": 0.12,
+              "operator": "min",
+              "samples": 51,
+              "matched_frames": 51,
+              "status": "pass"
+            },
+            {
+              "name": "dog height",
+              "selector": "geometry.dog_visibility.bounds",
+              "value": 0.0791131854057312,
+              "limit": 0.055,
+              "operator": "min",
+              "samples": 51,
+              "matched_frames": 51,
+              "status": "pass"
+            },
+            {
+              "name": "dog floor gap",
+              "selector": "geometry.waffle.evaluated_min_z",
+              "value": 1.5832483768463135e-08,
+              "limit": 0.002,
+              "operator": "max",
+              "samples": 51,
+              "matched_frames": 51,
+              "status": "pass"
+            },
+            {
+              "name": "seated hip gap",
+              "selector": "geometry.seat_contacts.*.signed_rear_hip_gap",
+              "value": 5.960464477539063e-08,
+              "limit": 0.015,
+              "operator": "max",
+              "samples": 6,
+              "matched_frames": 3,
+              "status": "pass"
+            },
+            {
+              "name": "settled facing",
+              "selector": "geometry.readability_faces.*.facing_dot",
+              "value": 0.8609473330621551,
+              "limit": 0.5,
+              "operator": "min",
+              "samples": 6,
+              "matched_frames": 3,
+              "status": "pass"
+            },
+            {
+              "name": "settled all-face ray blocks (incl own)",
+              "selector": "geometry.readability_faces.*.visibility.blocked",
+              "value": 3,
+              "limit": 0,
+              "operator": "eq",
+              "samples": 6,
+              "matched_frames": 3,
+              "status": "flag"
+            },
+            {
+              "name": "named seat surface safe",
+              "selector": "geometry.seat_readability.surface.safe",
+              "value": true,
+              "limit": true,
+              "operator": "eq",
+              "samples": 3,
+              "matched_frames": 3,
+              "status": "pass"
+            },
+            {
+              "name": "named seat surface visibility",
+              "selector": "geometry.seat_readability.surface.visible_fraction",
+              "value": 0.29032258064516125,
+              "limit": 0.0001,
+              "operator": "min",
+              "samples": 3,
+              "matched_frames": 3,
+              "status": "pass"
+            },
+            {
+              "name": "hips over seat surface",
+              "selector": "geometry.seat_readability.hips_over_surface.*",
+              "value": true,
+              "limit": true,
+              "operator": "eq",
+              "samples": 6,
+              "matched_frames": 3,
+              "status": "pass"
+            },
+            {
+              "name": "raised support height",
+              "selector": "geometry.seat_readability.raised_height",
+              "value": 0.46482717990875244,
+              "limit": 0.14,
+              "operator": "min",
+              "samples": 3,
+              "matched_frames": 3,
+              "status": "pass"
+            },
+            {
+              "name": "seat supports reach ground",
+              "selector": "geometry.seat_readability.support_reaches_ground",
+              "value": true,
+              "limit": true,
+              "operator": "eq",
+              "samples": 3,
+              "matched_frames": 3,
+              "status": "pass"
+            },
+            {
+              "name": "move-over displacement",
+              "selector": "geometry.seat_contacts.june.hip_world.1",
+              "value": 0.24000000953674316,
+              "limit": 0.2,
+              "operator": "min",
+              "samples": 51,
+              "matched_frames": 51,
+              "status": "pass"
+            }
+          ]
+        }
+      },
+      "clip": "assets/saying_hi_review/round7_pilot/sh43_seating.mp4",
+      "frames": 51,
+      "sha256": "7e9d94a7cd78f7e0454b6e992805fe6b1786019b1af446c247b8f0363e8952a6"
+    }
+  },
+  "visual_review_required": true,
+  "full_render_authorized": false,
+  "numerical_pass": false
+}
