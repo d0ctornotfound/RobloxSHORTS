@@ -1,0 +1,182 @@
+name: Saying Hi — motion proofs and held-pose animatic only
+on:
+  workflow_dispatch:
+  push:
+    branches: ['production/saying-hi']
+    paths: ['production/saying_hi_proof_release.json']
+permissions:
+  contents: write
+  actions: read
+concurrency:
+  group: saying-hi-proof-release
+  cancel-in-progress: false
+jobs:
+  gate:
+    if: github.ref == 'refs/heads/production/saying-hi'
+    runs-on: ubuntu-24.04
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - name: Require reviewed real preflight evidence and locked source
+        run: |
+          python3 scripts/validate_shot_plan.py stories/saying_hi_plan.json
+          python3 - <<'PY'
+          import json,hashlib
+          from pathlib import Path
+          marker=json.loads(Path('production/saying_hi_proof_release.json').read_text())
+          assert marker['authorized_tier']=='motion_proof_and_animatic_only'
+          assert marker['preflight_run_id']==46102453329
+          assert marker['actual_frame_reviewed'] is True
+          assert marker['source_sha256']==hashlib.sha256(Path('scripts/render_saying_hi_shot.py').read_bytes()).hexdigest()
+          root=Path('assets/saying_hi_review/preflight')
+          units=json.loads(Path('stories/saying_hi_plan.json').read_text())['proof_units']
+          for unit in units:
+              p=root/unit
+              m=json.loads((p/'manifest.json').read_text())
+              assert m['mode']=='smoke' and m['actual_rendered_frames']==1
+              assert (p/'held_pose.png').stat().st_size>0
+              assert m['rendered'][0]['near_black_percent']<=10
+          PY
+  motion:
+    needs: gate
+    runs-on: ubuntu-24.04
+    timeout-minutes: 55
+    strategy:
+      fail-fast: false
+      max-parallel: 5
+      matrix:
+        unit: [chart_initial, crossing, otis_eyes, june_question, june_answer, dog_name, seating, empty_wall, chart_final, closing]
+    env:
+      LIBGL_ALWAYS_SOFTWARE: '1'
+      R6_KNEE_BLEND: '1'
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install Blender, native encoding and approved assets
+        run: |
+          for f in /etc/apt/sources.list.d/*; do
+            if [ -f "$f" ] && grep -q "packages.microsoft.com" "$f"; then sudo mv "$f" "$f.disabled"; fi
+          done
+          sudo apt-get update -o Acquire::Retries=3
+          sudo apt-get install -y --no-install-recommends blender ffmpeg python3-pil python3-numpy fonts-dejavu-core libegl1 libegl-mesa0 libgl1 libgl1-mesa-dri libgbm1
+          /usr/bin/python3 scripts/r6_faces.py --output assets/r6_faces
+          /usr/bin/python3 scripts/library_character_assets.py
+          mkdir -p /tmp/saying_hi_map
+          curl --fail --location --retry 3 --max-time 180 'https://raw.githubusercontent.com/AdityapalW/Roblox-skill/54b34ba1be2e3013a9de59e40db288d8f2ebda53/Itlay/Itlay.gltf' -o /tmp/saying_hi_map/Itlay.gltf
+          test "$(git hash-object /tmp/saying_hi_map/Itlay.gltf)" = '20108af3a19fae6b5beaa5fac2e3305b56112a41'
+      - name: Render each distinct time sample and verify 30 fps encoding
+        run: |
+          set -o pipefail
+          mkdir -p "review/${{ matrix.unit }}"
+          timeout --kill-after=20s 43m blender -b --python-exit-code 1 --python scripts/render_saying_hi_shot.py -- --unit "${{ matrix.unit }}" --mode motion --map /tmp/saying_hi_map/Itlay.gltf --lineup assets/saying_hi_review/smoke/round2/lineup --output "review/${{ matrix.unit }}" 2>&1 | tee "review/${{ matrix.unit }}/render.log"
+          python3 scripts/encode_saying_hi_proof.py "review/${{ matrix.unit }}"
+      - name: Preserve representative real source frames (including partial output)
+        if: always()
+        run: |
+          python3 - <<'PY'
+          import os,shutil
+          from pathlib import Path
+          p=Path('review')/'${{ matrix.unit }}'
+          p.mkdir(parents=True,exist_ok=True)
+          frames=sorted(p.glob('frame_*.png'))
+          if frames:
+              for i in sorted(set([0,len(frames)//2,len(frames)-1])):
+                  shutil.copyfile(frames[i],p/('sample_'+frames[i].name))
+          PY
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: saying-hi-proof-${{ matrix.unit }}
+          path: |
+            review/${{ matrix.unit }}/*.mp4
+            review/${{ matrix.unit }}/*.json
+            review/${{ matrix.unit }}/*.log
+            review/${{ matrix.unit }}/sample_*.png
+          if-no-files-found: warn
+  stills:
+    needs: gate
+    runs-on: ubuntu-24.04
+    timeout-minutes: 50
+    strategy:
+      fail-fast: false
+      max-parallel: 5
+      matrix:
+        group: [0,1,2,3,4,5,6,7]
+    env:
+      LIBGL_ALWAYS_SOFTWARE: '1'
+      R6_KNEE_BLEND: '1'
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install EEVEE and pinned plaza
+        run: |
+          for f in /etc/apt/sources.list.d/*; do
+            if [ -f "$f" ] && grep -q "packages.microsoft.com" "$f"; then sudo mv "$f" "$f.disabled"; fi
+          done
+          sudo apt-get update -o Acquire::Retries=3
+          sudo apt-get install -y --no-install-recommends blender python3-pil python3-numpy fonts-dejavu-core libegl1 libegl-mesa0 libgl1 libgl1-mesa-dri libgbm1
+          /usr/bin/python3 scripts/r6_faces.py --output assets/r6_faces
+          /usr/bin/python3 scripts/library_character_assets.py
+          mkdir -p /tmp/saying_hi_map
+          curl --fail --location --retry 3 --max-time 180 'https://raw.githubusercontent.com/AdityapalW/Roblox-skill/54b34ba1be2e3013a9de59e40db288d8f2ebda53/Itlay/Itlay.gltf' -o /tmp/saying_hi_map/Itlay.gltf
+          test "$(git hash-object /tmp/saying_hi_map/Itlay.gltf)" = '20108af3a19fae6b5beaa5fac2e3305b56112a41'
+      - name: Render held poses in independent bounded Blender processes
+        run: |
+          python3 scripts/render_saying_hi_animatic_stills.py --group "${{ matrix.group }}" --groups 8 --map /tmp/saying_hi_map/Itlay.gltf --lineup assets/saying_hi_review/smoke/round2/lineup --output "review/stills"
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: saying-hi-stills-${{ matrix.group }}
+          path: review/stills/
+          if-no-files-found: warn
+  publish:
+    if: always() && needs.gate.result == 'success'
+    needs: [gate,motion,stills]
+    runs-on: ubuntu-24.04
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: production/saying-hi
+      - uses: actions/download-artifact@v4
+        with:
+          pattern: saying-hi-proof-*
+          path: /tmp/saying-hi-proof
+      - uses: actions/download-artifact@v4
+        with:
+          pattern: saying-hi-stills-*
+          path: /tmp/saying-hi-stills
+      - name: Stage permanent proof and held-pose evidence
+        run: |
+          set -euo pipefail
+          OUT=assets/saying_hi_review
+          mkdir -p "$OUT/proofs" "$OUT/stills"
+          for src in /tmp/saying-hi-proof/saying-hi-proof-*; do
+            test -d "$src" || continue
+            unit=${src##*saying-hi-proof-}
+            mkdir -p "$OUT/proofs/$unit"
+            cp -a "$src"/. "$OUT/proofs/$unit/"
+          done
+          for src in /tmp/saying-hi-stills/saying-hi-stills-*; do
+            test -d "$src" || continue
+            cp -a "$src"/. "$OUT/stills/"
+          done
+          python3 scripts/saying_hi_review_report.py
+          printf 'workflow_run_id=%s\nsource_commit=%s\nmotion_result=%s\nstills_result=%s\n' "$GITHUB_RUN_ID" "$GITHUB_SHA" "${{ needs.motion.result }}" "${{ needs.stills.result }}" > "$OUT/proofs/workflow_provenance.txt"
+      - name: Assemble labeled animatic from exact measured narration
+        if: needs.motion.result == 'success' && needs.stills.result == 'success'
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y --no-install-recommends ffmpeg fonts-dejavu-core
+          python3 scripts/export_shot_animatic.py stories/saying_hi_plan.json --output assets/saying_hi_review/animatic.mp4
+      - name: Commit all actual completed or partial review media
+        if: always()
+        run: |
+          set -euo pipefail
+          OUT=assets/saying_hi_review
+          find "$OUT" -type f ! -name SHA256SUMS -print0 | sort -z | xargs -0 sha256sum > "$OUT/SHA256SUMS"
+          sha256sum stories/saying_hi_script.txt stories/saying_hi_plan.json >> "$OUT/SHA256SUMS"
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add "$OUT"
+          git commit -m "Publish actual Saying Hi proof clips, stills, animatic and measurements (partial if failed)"
+          git pull --rebase origin production/saying-hi
+          git push origin HEAD:refs/heads/production/saying-hi
