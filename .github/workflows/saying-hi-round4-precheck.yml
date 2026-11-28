@@ -1,0 +1,85 @@
+name: Saying Hi — Round 4 planted stride, clean singles and seating readability
+on:
+  push:
+    branches: ['production/saying-hi']
+    paths: ['.github/workflows/saying-hi-round4-precheck.yml']
+  workflow_dispatch:
+permissions:
+  contents: write
+  actions: read
+concurrency:
+  group: saying-hi-round4-precheck
+  cancel-in-progress: false
+jobs:
+  geometry:
+    if: github.ref == 'refs/heads/production/saying-hi'
+    runs-on: ubuntu-24.04
+    timeout-minutes: 45
+    strategy:
+      fail-fast: false
+      max-parallel: 8
+      matrix:
+        unit: [crossing, june_question, june_answer, seating]
+    env:
+      LIBGL_ALWAYS_SOFTWARE: '1'
+      R6_KNEE_BLEND: '1'
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install EEVEE and prepare exact imported source
+        run: |
+          for f in /etc/apt/sources.list.d/*; do
+            if [ -f "$f" ] && grep -q "packages.microsoft.com" "$f"; then sudo mv "$f" "$f.disabled"; fi
+          done
+          sudo apt-get update -o Acquire::Retries=3
+          sudo apt-get install -y --no-install-recommends blender python3-pil python3-numpy fonts-dejavu-core libegl1 libegl-mesa0 libgl1 libgl1-mesa-dri libgbm1
+          /usr/bin/python3 scripts/r6_faces.py --output assets/r6_faces
+          /usr/bin/python3 scripts/library_character_assets.py
+          python3 -m py_compile scripts/saying_hi_correction.py scripts/render_saying_hi_round4.py
+          python3 scripts/validate_shot_plan.py stories/saying_hi_plan.json
+          mkdir -p /tmp/saying_hi_map
+          curl --fail --location --retry 3 --max-time 180 'https://raw.githubusercontent.com/AdityapalW/Roblox-skill/54b34ba1be2e3013a9de59e40db288d8f2ebda53/Itlay/Itlay.gltf' -o /tmp/saying_hi_map/Itlay.gltf
+          test "$(git hash-object /tmp/saying_hi_map/Itlay.gltf)" = '20108af3a19fae6b5beaa5fac2e3305b56112a41'
+      - name: Evaluate every sample; render check frames ONLY after numeric pass
+        run: |
+          set -o pipefail
+          mkdir -p "review/${{ matrix.unit }}"
+          timeout --kill-after=20s 38m blender -b --python-exit-code 1 --python scripts/render_saying_hi_round4.py -- --unit "${{ matrix.unit }}" --mode check --map /tmp/saying_hi_map/Itlay.gltf --lineup assets/saying_hi_review/smoke/round3/lineup --output "review/${{ matrix.unit }}" 2>&1 | tee "review/${{ matrix.unit }}/render.log"
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: saying-hi-round4-check-${{ matrix.unit }}
+          path: review/${{ matrix.unit }}/
+          if-no-files-found: warn
+  publish:
+    if: always() && github.ref == 'refs/heads/production/saying-hi'
+    needs: geometry
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: production/saying-hi
+      - uses: actions/download-artifact@v4
+        with:
+          pattern: saying-hi-round4-check-*
+          path: /tmp/supervisor-check
+      - name: Preserve passed and rejected all-frame geometry evidence
+        run: |
+          set -euo pipefail
+          OUT=assets/saying_hi_review
+          mkdir -p "$OUT/corrections/round4_precheck"
+          for dir in /tmp/supervisor-check/saying-hi-round4-check-*; do
+            test -d "$dir" || continue
+            unit=${dir##*saying-hi-round4-check-}
+            mkdir -p "$OUT/corrections/round4_precheck/$unit"
+            cp -a "$dir"/. "$OUT/corrections/round4_precheck/$unit/"
+          done
+          printf 'workflow_run_id=%s\nsource_commit=%s\ngeometry_result=%s\n' "$GITHUB_RUN_ID" "$GITHUB_SHA" "${{ needs.geometry.result }}" > "$OUT/corrections/round4_precheck/workflow_provenance.txt"
+          find "$OUT" -type f ! -name SHA256SUMS -print0 | sort -z | xargs -0 sha256sum > "$OUT/SHA256SUMS"
+          sha256sum stories/saying_hi_script.txt stories/saying_hi_plan.json >> "$OUT/SHA256SUMS"
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add "$OUT"
+          git commit -m "Publish Round 4 all-frame geometry and actual passed smoke frames"
+          git pull --rebase origin production/saying-hi
+          git push origin HEAD:refs/heads/production/saying-hi
