@@ -500,3 +500,38 @@ Corrected story run 46083574009: at check-in 3/4 render jobs succeeded (notice, 
 ### The Bench — final edit readiness checkpoint (2026-11-27)
 - 47/48 raw production numerical passes, including shadow 41 (0% darkness) and cap donning 46 (0.693%). 46/48 clips eligible (115 seconds) because 44 is now held: actual original captioned isolated encode max 2.117% on frames 2621–2622 despite uncaptioned pass 1.996%. A shot-local side light and exact-frame preflight were committed at 2a1e17e6ae3d54b27fb2a7a13837c46f4f904c61; run 46092157008. Corrected shot 43 full-frame render 46091910855 remains outstanding.
 - Independent caption-inclusive test of previous near-limit shots 08/15/16 using existing black stroke and CRF18 found max 2.210/2.244/2.285%. Uniform white text with charcoal (#404040) 3px outline, CRF16 was tested on all three, producing 1.852/1.968/1.941% respectively; retain 44px font, location, text and timing. This is an editor-only typography/compression decision, not a threshold waiver; final complete encoded film still must pass <=2% including captions. Shot 44 remains held even with the revised treatment (2.016%). Assembly refuses held entries; exact full-film decode, playback and human approval remain mandatory. No narration audio supplied. Exam OPEN; no final master yet. Chapter 1/2/3 locks unchanged.
+
+
+## Chapter 4 — Hair Library (OPEN, candidates awaiting review)
+
+Use `scripts/chapter4_wardrobe.py::build_character(name, role, hair="default", outfit="default")` at actor construction. `hair="default"` preserves each role's established hairstyle identity; the Chapter 4 opt-in defaults refine its strand geometry, not the locked Chapter 1–3 builders. Friend's default is the original knitted beanie. Select explicit style IDs below; do not switch an already animated actor in place. Existing `clothed_character` and historical shorts are unchanged. All new hair is attached to Head_01, with role-specific seeded irregular strand placement, length, width, direction, taper and tone, fitted cap and varied hairline. Teacher glasses and Dad stubble remain separate. No external assets.
+
+| Role | Default identity | Additional hair IDs |
+|---|---|---|
+| lead | spiky dark hair (`spikes`) | `messy_fringe`, `side_part` |
+| friend | ochre knitted `beanie` | `curly_crop`, `quiff` |
+| teacher | `swept_bun` | `low_ponytail`, `rounded_bob` |
+| dad | `classic_sweep` | `short_crew`, `side_part` |
+| librarian | `soft_sweep` | `low_bun`, `rounded_bob` |
+| patron_green (Student Green) | `short_crop` | `messy_fringe` |
+| patron_blue (Student Blue) | `short_crop` | `curly_crop` |
+
+Audit: original Lead/Dad/Teacher/Librarian use a fitted cap and tapered locks, but the three regular crown rows, uniform widths/depths and similarly routed side/fringe locks create repetitive flow; Teacher's swept locks and separate rounded bun particularly show this risk. Friend has a real ribbed knit beanie, not exposed hair. Students have simple block caps. This is a source audit; visual approval requires the new front/side renders.
+
+## Chapter 4 — Wardrobe (OPEN, candidates awaiting review)
+
+Use the same construction-time builder with an explicit outfit ID or `outfit="default"` for the unchanged Chapter 3 clothing identity. Recipes in `scripts/chapter4_wardrobe.py` use private four-panel textile atlases, UV weave/knit bump and bare-skin bump mask, two separately weighted garment shells with physical thickness, shoulder cap coverage, cuffs and style-specific raised collar/placket/hem/buttons/pockets; jeans have raised back pockets. No locked source is modified. Preserve each role's original sleeve cutoff for compatibility with approved articulated sit replay; Friend and students have short-sleeve alternatives, other roles long sleeves. Lead's alternative outfits omit the signature star to avoid overlap with new trim, while default retains it.
+
+| Role | Additional full outfit IDs |
+|---|---|
+| lead | `forest_bomber` (green jacket / dark jeans), `navy_sleepwear` (blue patterned pajamas) |
+| friend | `rugby_polo` (teal polo / tan chinos), `track_kit` (red athletic top / charcoal joggers) |
+| teacher | `navy_formal` (navy formal jacket / trousers), `oat_knit` (oat knit / blue jeans) |
+| dad | `charcoal_suit` (formal matching set), `weekend_flannel` (red flannel / jeans) |
+| librarian | `teal_cardigan` (teal knit / brown chinos), `plum_blazer` (plum formal top / trousers) |
+| patron_green | `school_polo` (cream polo / navy chinos) |
+| patron_blue | `sports_kit` (purple athletic top / charcoal joggers) |
+
+Example: `build_character("Milo school", "lead", hair="side_part", outfit="forest_bomber")`. Unsupported combinations of role/item raise errors. The wardrobe is construction-time only; do not claim arbitrary mid-shot changing or universal collision-free clothing.
+
+Review workflow: [Chapter 4 review](.github/workflows/chapter4-review.yml), run [46092756252](https://github.com/d0ctornotfound/RobloxSHORTS/actions/runs/46092756252). 19 independent hair items (12 new + seven defaults, two views each), 12 outfit jobs (front/side/back/detail), four clearance jobs (Lead forest_bomber and Friend rugby_polo, walk and sit). EEVEE, denoising OFF, per-view logs, 23-minute process timeout, 35-minute job timeout, always-upload partial artifacts. Clearance reuses the locked Chapter 3 replay with only an injected Chapter 4 actor factory; all 60 poses per motion, seven front/side samples; shell-source gap <= .035, articulated trim error <= .001; retain existing adapter measurements. Known seated speckling accepted, no correction rounds for that limitation. Numerical tracking is not zero-intersection proof. Require inspection of actual images and all four measured manifests before approval. No visual or numerical pass claimed yet; Chapters 1–3 remain CLOSED.
