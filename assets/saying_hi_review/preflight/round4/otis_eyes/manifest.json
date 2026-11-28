@@ -1,0 +1,607 @@
+{
+  "unit": "otis_eyes",
+  "sentence_ids": [
+    22
+  ],
+  "mode": "smoke",
+  "variant": null,
+  "engine": "EEVEE",
+  "denoising": false,
+  "eevee_spatial_samples": 32,
+  "rendered_temporal_samples_per_second": null,
+  "encoded_fps_target": null,
+  "actual_rendered_frames": 1,
+  "expected_rendered_frames": 1,
+  "frame_window": [
+    1579,
+    1609
+  ],
+  "scenery": {
+    "repository": "AdityapalW/Roblox-skill",
+    "commit": "54b34ba1be2e3013a9de59e40db288d8f2ebda53",
+    "file": "Itlay/Itlay.gltf",
+    "git_blob": "20108af3a19fae6b5beaa5fac2e3305b56112a41",
+    "mesh_objects": 196,
+    "objects": 207,
+    "transform": "native Blender glTF axis conversion; root identity",
+    "texture_provenance": "Repository README: procedural geometry/textures with selected CC0 Poly Haven photo textures; individual texture attribution not supplied by source manifest.",
+    "native_well_adaptation": {
+      "source_group": "Piazza fountain",
+      "mesh_children": 6,
+      "original_world_min": [
+        -3.9600000381469727,
+        -7.960000038146973,
+        2.98023217215615e-10
+      ],
+      "original_world_max": [
+        3.9600000381469727,
+        -0.039999961853027344,
+        3.8241324424743652
+      ],
+      "uniform_scale": 0.35984848138203784,
+      "adapted_world_min": [
+        -1.4249999523162842,
+        -1.4250000715255737,
+        0.0
+      ],
+      "adapted_world_max": [
+        1.4249999523162842,
+        1.4249999523162842,
+        1.376108169555664
+      ],
+      "note": "Native source stone water feature is the story well; no duplicate added well, material assignments unchanged."
+    },
+    "adaptation": "Actual source fountain recentered/scaled as the sole central water feature; source cobbles and facades preserved. Story-local wall and seats calibrated from measured seated pose data. No duplicate fountain or replacement paving."
+  },
+  "metrics": [
+    {
+      "global_frame": 1579,
+      "sentence": 22,
+      "metrics": {
+        "eyes": [
+          {
+            "hand_target_gap": 0.0005001196262442196,
+            "head_arm_overlap_pairs": 0
+          },
+          {
+            "hand_target_gap": 0.0005001196262442196,
+            "head_arm_overlap_pairs": 0
+          }
+        ],
+        "coverage_progress": 0,
+        "limitation": "story long sleeves use locked adapter's original role cutoff; visual fit requires review"
+      }
+    },
+    {
+      "global_frame": 1580,
+      "sentence": 22,
+      "metrics": {
+        "eyes": [
+          {
+            "hand_target_gap": 0.0,
+            "head_arm_overlap_pairs": 0
+          },
+          {
+            "hand_target_gap": 5.960464477539063e-08,
+            "head_arm_overlap_pairs": 0
+          }
+        ],
+        "coverage_progress": 0.01639197999097954,
+        "limitation": "story long sleeves use locked adapter's original role cutoff; visual fit requires review"
+      }
+    },
+    {
+      "global_frame": 1581,
+      "sentence": 22,
+      "metrics": {
+        "eyes": [
+          {
+            "hand_target_gap": 0.0,
+            "head_arm_overlap_pairs": 0
+          },
+          {
+            "hand_target_gap": 5.960464477539063e-08,
+            "head_arm_overlap_pairs": 0
+          }
+        ],
+        "coverage_progress": 0.062075197835089586,
+        "limitation": "story long sleeves use locked adapter's original role cutoff; visual fit requires review"
+      }
+    },
+    {
+      "global_frame": 1582,
+      "sentence": 22,
+      "metrics": {
+        "eyes": [
+          {
+            "hand_target_gap": 0.0,
+            "head_arm_overlap_pairs": 0
+          },
+          {
+            "hand_target_gap": 1.1920928955078125e-07,
+            "head_arm_overlap_pairs": 0
+          }
+        ],
+        "coverage_progress": 0.1318105703390873,
+        "limitation": "story long sleeves use locked adapter's original role cutoff; visual fit requires review"
+      }
+    },
+    {
+      "global_frame": 1583,
+      "sentence": 22,
+      "metrics": {
+        "eyes": [
+          {
+            "hand_target_gap": 0.0,
+            "head_arm_overlap_pairs": 0
+          },
+          {
+            "hand_target_gap": 0.0,
+            "head_arm_overlap_pairs": 0
+          }
+        ],
+        "coverage_progress": 0.22035901430972982,
+        "limitation": "story long sleeves use locked adapter's original role cutoff; visual fit requires review"
+      }
+    },
+    {
+      "global_frame": 1584,
+      "sentence": 22,
+      "metrics": {
+        "eyes": [
+          {
+            "hand_target_gap": 0.0,
+            "head_arm_overlap_pairs": 0
+          },
+          {
+            "hand_target_gap": 0.0,
+            "head_arm_overlap_pairs": 0
+          }
+        ],
+        "coverage_progress": 0.3224814465537743,
+        "limitation": "story long sleeves use locked adapter's original role cutoff; visual fit requires review"
+      }
+    },
+    {
+      "global_frame": 1585,
+      "sentence": 22,
+      "metrics": {
+        "eyes": [
+          {
+            "hand_target_gap": 0.0,
+            "head_arm_overlap_pairs": 0
+          },
+          {
+            "hand_target_gap": 0.0,
+            "head_arm_overlap_pairs": 0
+          }
+        ],
+        "coverage_progress": 0.4329387838779778,
+        "limitation": "story long sleeves use locked adapter's original role cutoff; visual fit requires review"
+      }
+    },
+    {
+      "global_frame": 1586,
+      "sentence": 22,
+      "metrics": {
+        "eyes": [
+          {
+            "hand_target_gap": 0.0,
+            "head_arm_overlap_pairs": 0
+          },
+          {
+            "hand_target_gap": 0.0,
+            "head_arm_overlap_pairs": 0
+          }
+        ],
+        "coverage_progress": 0.5464919430890975,
+        "limitation": "story long sleeves use locked adapter's original role cutoff; visual fit requires review"
+      }
+    },
+    {
+      "global_frame": 1587,
+      "sentence": 22,
+      "metrics": {
+        "eyes": [
+          {
+            "hand_target_gap": 0.0,
+            "head_arm_overlap_pairs": 0
+          },
+          {
+            "hand_target_gap": 0.0,
+            "head_arm_overlap_pairs": 0
+          }
+        ],
+        "coverage_progress": 0.6579018409938907,
+        "limitation": "story long sleeves use locked adapter's original role cutoff; visual fit requires review"
+      }
+    },
+    {
+      "global_frame": 1588,
+      "sentence": 22,
+      "metrics": {
+        "eyes": [
+          {
+            "hand_target_gap": 0.0,
+            "head_arm_overlap_pairs": 0
+          },
+          {
+            "hand_target_gap": 0.0,
+            "head_arm_overlap_pairs": 36
+          }
+        ],
+        "coverage_progress": 0.7619293943991144,
+        "limitation": "story long sleeves use locked adapter's original role cutoff; visual fit requires review"
+      }
+    },
+    {
+      "global_frame": 1589,
+      "sentence": 22,
+      "metrics": {
+        "eyes": [
+          {
+            "hand_target_gap": 0.0,
+            "head_arm_overlap_pairs": 24
+          },
+          {
+            "hand_target_gap": 0.0,
+            "head_arm_overlap_pairs": 46
+          }
+        ],
+        "coverage_progress": 0.8533355201115258,
+        "limitation": "story long sleeves use locked adapter's original role cutoff; visual fit requires review"
+      }
+    },
+    {
+      "global_frame": 1590,
+      "sentence": 22,
+      "metrics": {
+        "eyes": [
+          {
+            "hand_target_gap": 0.0,
+            "head_arm_overlap_pairs": 27
+          },
+          {
+            "hand_target_gap": 0.0,
+            "head_arm_overlap_pairs": 51
+          }
+        ],
+        "coverage_progress": 0.9268811349378819,
+        "limitation": "story long sleeves use locked adapter's original role cutoff; visual fit requires review"
+      }
+    },
+    {
+      "global_frame": 1591,
+      "sentence": 22,
+      "metrics": {
+        "eyes": [
+          {
+            "hand_target_gap": 0.0,
+            "head_arm_overlap_pairs": 29
+          },
+          {
+            "hand_target_gap": 0.0,
+            "head_arm_overlap_pairs": 66
+          }
+        ],
+        "coverage_progress": 0.9773271556849399,
+        "limitation": "story long sleeves use locked adapter's original role cutoff; visual fit requires review"
+      }
+    },
+    {
+      "global_frame": 1592,
+      "sentence": 22,
+      "metrics": {
+        "eyes": [
+          {
+            "hand_target_gap": 0.0,
+            "head_arm_overlap_pairs": 30
+          },
+          {
+            "hand_target_gap": 0.0225247420828325,
+            "head_arm_overlap_pairs": 65
+          }
+        ],
+        "coverage_progress": 0.9994344991594571,
+        "limitation": "story long sleeves use locked adapter's original role cutoff; visual fit requires review"
+      }
+    },
+    {
+      "global_frame": 1593,
+      "sentence": 22,
+      "metrics": {
+        "eyes": [
+          {
+            "hand_target_gap": 0.0,
+            "head_arm_overlap_pairs": 30
+          },
+          {
+            "hand_target_gap": 0.023929995018556287,
+            "head_arm_overlap_pairs": 65
+          }
+        ],
+        "coverage_progress": 1,
+        "limitation": "story long sleeves use locked adapter's original role cutoff; visual fit requires review"
+      }
+    },
+    {
+      "global_frame": 1594,
+      "sentence": 22,
+      "metrics": {
+        "eyes": [
+          {
+            "hand_target_gap": 0.0,
+            "head_arm_overlap_pairs": 30
+          },
+          {
+            "hand_target_gap": 0.0245852028648743,
+            "head_arm_overlap_pairs": 65
+          }
+        ],
+        "coverage_progress": 1,
+        "limitation": "story long sleeves use locked adapter's original role cutoff; visual fit requires review"
+      }
+    },
+    {
+      "global_frame": 1595,
+      "sentence": 22,
+      "metrics": {
+        "eyes": [
+          {
+            "hand_target_gap": 0.0,
+            "head_arm_overlap_pairs": 34
+          },
+          {
+            "hand_target_gap": 0.025062111483276927,
+            "head_arm_overlap_pairs": 65
+          }
+        ],
+        "coverage_progress": 1,
+        "limitation": "story long sleeves use locked adapter's original role cutoff; visual fit requires review"
+      }
+    },
+    {
+      "global_frame": 1596,
+      "sentence": 22,
+      "metrics": {
+        "eyes": [
+          {
+            "hand_target_gap": 0.0,
+            "head_arm_overlap_pairs": 36
+          },
+          {
+            "hand_target_gap": 0.02533612526034056,
+            "head_arm_overlap_pairs": 65
+          }
+        ],
+        "coverage_progress": 1,
+        "limitation": "story long sleeves use locked adapter's original role cutoff; visual fit requires review"
+      }
+    },
+    {
+      "global_frame": 1597,
+      "sentence": 22,
+      "metrics": {
+        "eyes": [
+          {
+            "hand_target_gap": 1.1920928955078125e-07,
+            "head_arm_overlap_pairs": 32
+          },
+          {
+            "hand_target_gap": 0.025382674845534015,
+            "head_arm_overlap_pairs": 67
+          }
+        ],
+        "coverage_progress": 1,
+        "limitation": "story long sleeves use locked adapter's original role cutoff; visual fit requires review"
+      }
+    },
+    {
+      "global_frame": 1598,
+      "sentence": 22,
+      "metrics": {
+        "eyes": [
+          {
+            "hand_target_gap": 1.1920928955078125e-07,
+            "head_arm_overlap_pairs": 32
+          },
+          {
+            "hand_target_gap": 0.025178048516687302,
+            "head_arm_overlap_pairs": 67
+          }
+        ],
+        "coverage_progress": 1,
+        "limitation": "story long sleeves use locked adapter's original role cutoff; visual fit requires review"
+      }
+    },
+    {
+      "global_frame": 1599,
+      "sentence": 22,
+      "metrics": {
+        "eyes": [
+          {
+            "hand_target_gap": 0.0,
+            "head_arm_overlap_pairs": 34
+          },
+          {
+            "hand_target_gap": 0.024698644466079597,
+            "head_arm_overlap_pairs": 68
+          }
+        ],
+        "coverage_progress": 1,
+        "limitation": "story long sleeves use locked adapter's original role cutoff; visual fit requires review"
+      }
+    },
+    {
+      "global_frame": 1600,
+      "sentence": 22,
+      "metrics": {
+        "eyes": [
+          {
+            "hand_target_gap": 0.0,
+            "head_arm_overlap_pairs": 34
+          },
+          {
+            "hand_target_gap": 0.023922964308547734,
+            "head_arm_overlap_pairs": 68
+          }
+        ],
+        "coverage_progress": 1,
+        "limitation": "story long sleeves use locked adapter's original role cutoff; visual fit requires review"
+      }
+    },
+    {
+      "global_frame": 1601,
+      "sentence": 22,
+      "metrics": {
+        "eyes": [
+          {
+            "hand_target_gap": 0.0,
+            "head_arm_overlap_pairs": 34
+          },
+          {
+            "hand_target_gap": 0.022832819417829945,
+            "head_arm_overlap_pairs": 68
+          }
+        ],
+        "coverage_progress": 1,
+        "limitation": "story long sleeves use locked adapter's original role cutoff; visual fit requires review"
+      }
+    },
+    {
+      "global_frame": 1602,
+      "sentence": 22,
+      "metrics": {
+        "eyes": [
+          {
+            "hand_target_gap": 0.0,
+            "head_arm_overlap_pairs": 39
+          },
+          {
+            "hand_target_gap": 0.021412450483167932,
+            "head_arm_overlap_pairs": 66
+          }
+        ],
+        "coverage_progress": 1,
+        "limitation": "story long sleeves use locked adapter's original role cutoff; visual fit requires review"
+      }
+    },
+    {
+      "global_frame": 1603,
+      "sentence": 22,
+      "metrics": {
+        "eyes": [
+          {
+            "hand_target_gap": 0.0,
+            "head_arm_overlap_pairs": 41
+          },
+          {
+            "hand_target_gap": 0.019650329486665365,
+            "head_arm_overlap_pairs": 66
+          }
+        ],
+        "coverage_progress": 1,
+        "limitation": "story long sleeves use locked adapter's original role cutoff; visual fit requires review"
+      }
+    },
+    {
+      "global_frame": 1604,
+      "sentence": 22,
+      "metrics": {
+        "eyes": [
+          {
+            "hand_target_gap": 0.0,
+            "head_arm_overlap_pairs": 43
+          },
+          {
+            "hand_target_gap": 0.017541248164373333,
+            "head_arm_overlap_pairs": 64
+          }
+        ],
+        "coverage_progress": 1,
+        "limitation": "story long sleeves use locked adapter's original role cutoff; visual fit requires review"
+      }
+    },
+    {
+      "global_frame": 1605,
+      "sentence": 22,
+      "metrics": {
+        "eyes": [
+          {
+            "hand_target_gap": 0.0,
+            "head_arm_overlap_pairs": 45
+          },
+          {
+            "hand_target_gap": 0.015086891736718651,
+            "head_arm_overlap_pairs": 65
+          }
+        ],
+        "coverage_progress": 1,
+        "limitation": "story long sleeves use locked adapter's original role cutoff; visual fit requires review"
+      }
+    },
+    {
+      "global_frame": 1606,
+      "sentence": 22,
+      "metrics": {
+        "eyes": [
+          {
+            "hand_target_gap": 0.0,
+            "head_arm_overlap_pairs": 51
+          },
+          {
+            "hand_target_gap": 0.012296057774736923,
+            "head_arm_overlap_pairs": 65
+          }
+        ],
+        "coverage_progress": 1,
+        "limitation": "story long sleeves use locked adapter's original role cutoff; visual fit requires review"
+      }
+    },
+    {
+      "global_frame": 1607,
+      "sentence": 22,
+      "metrics": {
+        "eyes": [
+          {
+            "hand_target_gap": 0.0,
+            "head_arm_overlap_pairs": 51
+          },
+          {
+            "hand_target_gap": 0.009188014237460258,
+            "head_arm_overlap_pairs": 65
+          }
+        ],
+        "coverage_progress": 1,
+        "limitation": "story long sleeves use locked adapter's original role cutoff; visual fit requires review"
+      }
+    },
+    {
+      "global_frame": 1608,
+      "sentence": 22,
+      "metrics": {
+        "eyes": [
+          {
+            "hand_target_gap": 1.1920928955078125e-07,
+            "head_arm_overlap_pairs": 50
+          },
+          {
+            "hand_target_gap": 0.006124991802604876,
+            "head_arm_overlap_pairs": 67
+          }
+        ],
+        "coverage_progress": 1,
+        "limitation": "story long sleeves use locked adapter's original role cutoff; visual fit requires review"
+      }
+    }
+  ],
+  "rendered": [
+    {
+      "frame": 1593,
+      "file": "frame_01593.png",
+      "render_seconds": 33.026213473,
+      "near_black_percent": 0.1375385802469136
+    }
+  ],
+  "review": "candidate, visual and metric approval pending"
+}
