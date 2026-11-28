@@ -1,0 +1,162 @@
+name: Saying Hi — Round 4 conditional native proofs and audit
+on:
+  push:
+    branches: ['production/saying-hi']
+    paths: ['.github/workflows/saying-hi-round4-native.yml']
+  workflow_dispatch:
+permissions:
+  contents: write
+  actions: read
+concurrency:
+  group: saying-hi-round4-native
+  cancel-in-progress: false
+jobs:
+  selection:
+    if: github.ref == 'refs/heads/production/saying-hi'
+    runs-on: ubuntu-24.04
+    timeout-minutes: 48
+    outputs:
+      matrix: ${{ steps.select.outputs.matrix }}
+      units: ${{ steps.select.outputs.units }}
+      source: ${{ steps.select.outputs.source }}
+    env:
+      GH_TOKEN: ${{ github.token }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: production/saying-hi
+      - name: Wait bounded time for exact precheck publication
+        run: |
+          set -euo pipefail
+          for i in $(seq 1 90); do
+            status=$(gh api "repos/$GITHUB_REPOSITORY/actions/runs/46123443558" --jq .status)
+            if test "$status" = completed; then break; fi
+            sleep 30
+          done
+          test "$status" = completed
+          git pull --ff-only origin production/saying-hi
+          grep -Fx 'workflow_run_id=46123443558' assets/saying_hi_review/corrections/round4_precheck/workflow_provenance.txt
+      - id: select
+        name: Select only full geometry plus real smoke passes
+        run: |
+          python3 - <<'PY'
+          import json,os,subprocess
+          from pathlib import Path
+          plan=json.loads(Path('stories/saying_hi_plan.json').read_text())
+          units=[];jobs=[]
+          for unit in ('crossing','june_question','june_answer','seating'):
+              p=Path('assets/saying_hi_review/corrections/round4_precheck')/unit
+              if not (p/'gate.json').is_file() or not (p/'manifest.json').is_file():continue
+              g=json.loads((p/'gate.json').read_text());m=json.loads((p/'manifest.json').read_text())
+              ids=plan['proof_units'][unit];start=round(plan['shots'][ids[0]-1]['edit_in']*30);end=round(plan['shots'][ids[-1]-1]['edit_out']*30)
+              if not(g['pass'] is True and all(x['pass'] for x in g['checks'].values()) and g['samples']==end-start and g['sampling_hz']==30 and m['mode']=='smoke' and m['actual_rendered_frames']>0 and (p/'held_pose.png').is_file()):continue
+              units.append(unit)
+              for s in range(start,end,11):jobs.append({'unit':unit,'start':s,'end':min(s+11,end),'gate':str(p/'gate.json')})
+          with open(os.environ['GITHUB_OUTPUT'],'a') as f:
+              f.write('matrix='+json.dumps({'include':jobs or [{'unit':'none','start':0,'end':0,'gate':''}]},separators=(',',':'))+'\n')
+              f.write('units='+' '.join(units)+'\n')
+              f.write('source='+subprocess.check_output(['git','rev-parse','HEAD'],text=True).strip()+'\n')
+          PY
+  render:
+    needs: selection
+    if: needs.selection.outputs.units != ''
+    runs-on: ubuntu-24.04
+    timeout-minutes: 39
+    strategy:
+      fail-fast: false
+      max-parallel: 8
+      matrix: ${{ fromJSON(needs.selection.outputs.matrix) }}
+    env:
+      LIBGL_ALWAYS_SOFTWARE: '1'
+      R6_KNEE_BLEND: '1'
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ needs.selection.outputs.source }}
+      - name: Install EEVEE and pinned Itlay
+        run: |
+          for f in /etc/apt/sources.list.d/*; do
+            if [ -f "$f" ] && grep -q "packages.microsoft.com" "$f"; then sudo mv "$f" "$f.disabled"; fi
+          done
+          sudo apt-get update -o Acquire::Retries=3
+          sudo apt-get install -y --no-install-recommends blender python3-pil python3-numpy fonts-dejavu-core libegl1 libegl-mesa0 libgl1 libgl1-mesa-dri libgbm1
+          /usr/bin/python3 scripts/r6_faces.py --output assets/r6_faces
+          /usr/bin/python3 scripts/library_character_assets.py
+          mkdir -p /tmp/saying_hi_map
+          curl --fail --location --retry 3 --max-time 180 'https://raw.githubusercontent.com/AdityapalW/Roblox-skill/54b34ba1be2e3013a9de59e40db288d8f2ebda53/Itlay/Itlay.gltf' -o /tmp/saying_hi_map/Itlay.gltf
+          test "$(git hash-object /tmp/saying_hi_map/Itlay.gltf)" = '20108af3a19fae6b5beaa5fac2e3305b56112a41'
+      - name: Re-verify all geometry before independently rendered native samples
+        run: |
+          set -o pipefail
+          mkdir -p review/chunk
+          timeout --kill-after=20s 32m blender -b --python-exit-code 1 --python scripts/render_saying_hi_round4.py -- --unit "${{ matrix.unit }}" --mode motion --map /tmp/saying_hi_map/Itlay.gltf --lineup assets/saying_hi_review/smoke/round3/lineup --cache "${{ matrix.gate }}" --frame-window ${{ matrix.start }} ${{ matrix.end }} --output review/chunk 2>&1 | tee review/chunk/render.log
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: round4-native-${{ matrix.unit }}-${{ matrix.start }}
+          path: review/chunk/
+          if-no-files-found: warn
+  publish:
+    needs: [selection, render]
+    if: always() && needs.selection.result == 'success'
+    runs-on: ubuntu-24.04
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: production/saying-hi
+      - uses: actions/download-artifact@v4
+        if: needs.selection.outputs.units != ''
+        with:
+          pattern: round4-native-*
+          path: /tmp/round4-chunks
+      - name: Preserve native evidence and encode only contiguous full-rate frames
+        env:
+          SELECTED: ${{ needs.selection.outputs.units }}
+        run: |
+          set -u
+          sudo apt-get update
+          sudo apt-get install -y --no-install-recommends ffmpeg fonts-dejavu-core
+          OUT=assets/saying_hi_review/corrections/round4_native
+          mkdir -p "$OUT"
+          failed=0
+          for unit in $SELECTED; do
+            target="$OUT/$unit";mkdir -p "$target" "/tmp/merged/$unit"
+            for dir in /tmp/round4-chunks/round4-native-"$unit"-*; do
+              test -d "$dir" || continue
+              for file in render.log manifest.json gate.json partial.json; do
+                if test -f "$dir/$file"; then cp "$dir/$file" "$target/${dir##*/}-$file"; fi
+              done
+            done
+            if python3 scripts/merge_saying_hi_chart_chunks.py --root /tmp/round4-chunks --unit "$unit" --out "/tmp/merged/$unit" && python3 scripts/encode_saying_hi_proof.py "/tmp/merged/$unit"; then
+              cp /tmp/merged/"$unit"/*.json /tmp/merged/"$unit"/*.mp4 "$target/"
+              python3 - "$unit" <<'PY'
+          import sys,shutil
+          from pathlib import Path
+          unit=sys.argv[1];source=Path('/tmp/merged')/unit;target=Path('assets/saying_hi_review/corrections/round4_native')/unit
+          frames=sorted(source.glob('frame_*.png'))
+          for i in sorted(set([0,len(frames)//4,len(frames)//2,3*len(frames)//4,len(frames)-1])):
+              shutil.copyfile(frames[i],target/('sample_'+frames[i].name))
+          PY
+            else failed=1; fi
+          done
+          printf 'workflow_run_id=%s\nsource_commit=%s\nselected=%s\nmerge_failure=%s\n' "$GITHUB_RUN_ID" "$GITHUB_SHA" "$SELECTED" "$failed" > "$OUT/workflow_provenance.txt"
+          exit "$failed"
+      - name: Run release audit and make animatic only if every real proof exists
+        if: always()
+        run: |
+          set -euo pipefail
+          python3 scripts/report_saying_hi_round4.py
+      - name: Commit evidence, review and inventory even on failure
+        if: always()
+        run: |
+          set -euo pipefail
+          OUT=assets/saying_hi_review
+          find "$OUT" -type f ! -name SHA256SUMS -print0 | sort -z | xargs -0 sha256sum > "$OUT/SHA256SUMS"
+          sha256sum stories/saying_hi_script.txt stories/saying_hi_plan.json >> "$OUT/SHA256SUMS"
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add "$OUT" docs/saying_hi_review.md docs/saying_hi_deliverable_paths.txt docs/saying_hi_round4_release_review.json
+          git commit -m "Publish Round 4 terminal proof and strict release evidence"
+          git pull --rebase origin production/saying-hi
+          git push origin HEAD:refs/heads/production/saying-hi
