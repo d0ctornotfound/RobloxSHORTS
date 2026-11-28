@@ -1,4 +1,4 @@
-name: Chapter 4 — Hair and wardrobe candidate review
+name: Chapter 4 — Round 2 focused review
 on:
   push:
     branches: [main]
@@ -19,65 +19,13 @@ jobs:
       fail-fast: false
       matrix:
         include:
-          - actor: lead
-            kind: hair
-            item: default
-            motion: none
-          - actor: lead
-            kind: hair
-            item: messy_fringe
-            motion: none
-          - actor: lead
-            kind: hair
-            item: side_part
-            motion: none
-          - actor: lead
-            kind: outfit
-            item: forest_bomber
-            motion: none
-          - actor: lead
-            kind: outfit
-            item: navy_sleepwear
-            motion: none
-          - actor: friend
-            kind: hair
-            item: default
-            motion: none
-          - actor: friend
-            kind: hair
-            item: curly_crop
-            motion: none
-          - actor: friend
-            kind: hair
-            item: quiff
-            motion: none
-          - actor: friend
-            kind: outfit
-            item: rugby_polo
-            motion: none
-          - actor: friend
-            kind: outfit
-            item: track_kit
-            motion: none
           - actor: teacher
             kind: hair
             item: default
-            motion: none
-          - actor: teacher
-            kind: hair
-            item: low_ponytail
             motion: none
           - actor: teacher
             kind: hair
             item: rounded_bob
-            motion: none
-          - actor: teacher
-            kind: outfit
-            item: navy_formal
-            motion: none
-          - actor: teacher
-            kind: outfit
-            item: oat_knit
             motion: none
           - actor: dad
             kind: hair
@@ -91,53 +39,45 @@ jobs:
             kind: hair
             item: side_part
             motion: none
-          - actor: dad
-            kind: outfit
-            item: charcoal_suit
-            motion: none
-          - actor: dad
-            kind: outfit
-            item: weekend_flannel
-            motion: none
           - actor: librarian
             kind: hair
             item: default
-            motion: none
-          - actor: librarian
-            kind: hair
-            item: low_bun
             motion: none
           - actor: librarian
             kind: hair
             item: rounded_bob
             motion: none
-          - actor: librarian
+          - actor: patron_green
+            kind: hair
+            item: messy_fringe
+            motion: none
+          - actor: patron_blue
+            kind: hair
+            item: curly_crop
+            motion: none
+          - actor: lead
             kind: outfit
-            item: teal_cardigan
+            item: forest_bomber
+            motion: none
+          - actor: dad
+            kind: outfit
+            item: charcoal_suit
+            motion: none
+          - actor: teacher
+            kind: outfit
+            item: navy_formal
             motion: none
           - actor: librarian
             kind: outfit
             item: plum_blazer
             motion: none
-          - actor: patron_green
-            kind: hair
-            item: default
-            motion: none
-          - actor: patron_green
-            kind: hair
-            item: messy_fringe
+          - actor: librarian
+            kind: outfit
+            item: teal_cardigan
             motion: none
           - actor: patron_green
             kind: outfit
             item: school_polo
-            motion: none
-          - actor: patron_blue
-            kind: hair
-            item: default
-            motion: none
-          - actor: patron_blue
-            kind: hair
-            item: curly_crop
             motion: none
           - actor: patron_blue
             kind: outfit
