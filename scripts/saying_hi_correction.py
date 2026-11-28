@@ -159,6 +159,7 @@ def search_walk(actor,start,end,nframes,pickup):
 
 class CorrectedUnit(SceneUnit):
     def __init__(self,*args,**kwargs):
+        self.reviewed_camera=kwargs.pop("reviewed_camera",None)
         super().__init__(*args,**kwargs)
         if not self.chart_mode:
             self.tallies=add_tallies()
@@ -303,6 +304,9 @@ class CorrectedUnit(SceneUnit):
         pos=self.np if hero==a else self.jp;yaw=self.nyaw if hero==a else self.jyaw
         forward=V((math.sin(yaw),-math.cos(yaw),0));side=V((math.cos(yaw),math.sin(yaw),0))
         target=pos+V((0,0,1.20));self.reverse_camera={}
+        if self.reviewed_camera:
+            q=self.reviewed_camera;frame(self.scene,self.cam,q["location"],q["target"],q["lens"]);self.reverse_camera=q
+            return
         frame(self.scene,self.cam,pos+forward*3.3+side*1.5+V((0,0,2)),target,40)
         self.pose_june(32 if self.unit=="june_question" else 34,.5,.45)
         # Lower reverse camera avoids the hero's own hat/hair silhouette.
@@ -402,6 +406,9 @@ class CorrectedUnit(SceneUnit):
     def setup_seating(self):
         super().setup_seating()
         self.prev_hip={};self.prev_phase={}
+        if self.reviewed_camera:
+            q=self.reviewed_camera;self.dog[0].location=q["dog_mark"];frame(self.scene,self.cam,q["position"],q["target"],q["lens"]);self.payoff_camera=q
+            return
         # Common camera/mark for all three payoff units. Evaluate actual
         # standing, seated, and roll poses before selecting a composition.
         # Keep the previously measured clear dog line; fit wider lenses
