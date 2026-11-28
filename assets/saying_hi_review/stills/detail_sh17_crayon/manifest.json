@@ -1,0 +1,707 @@
+{
+  "unit": "still_17",
+  "sentence_ids": [
+    17
+  ],
+  "mode": "still",
+  "variant": "crayon",
+  "engine": "EEVEE",
+  "denoising": false,
+  "eevee_spatial_samples": 32,
+  "rendered_temporal_samples_per_second": null,
+  "encoded_fps_target": null,
+  "actual_rendered_frames": 1,
+  "expected_rendered_frames": 1,
+  "frame_window": [
+    1115,
+    1195
+  ],
+  "scenery": {
+    "repository": "AdityapalW/Roblox-skill",
+    "commit": "54b34ba1be2e3013a9de59e40db288d8f2ebda53",
+    "file": "Itlay/Itlay.gltf",
+    "git_blob": "20108af3a19fae6b5beaa5fac2e3305b56112a41",
+    "mesh_objects": 196,
+    "objects": 207,
+    "transform": "native Blender glTF axis conversion; root identity",
+    "texture_provenance": "Repository README: procedural geometry/textures with selected CC0 Poly Haven photo textures; individual texture attribution not supplied by source manifest.",
+    "native_well_adaptation": {
+      "source_group": "Piazza fountain",
+      "mesh_children": 6,
+      "original_world_min": [
+        -3.9600000381469727,
+        -7.960000038146973,
+        2.98023217215615e-10
+      ],
+      "original_world_max": [
+        3.9600000381469727,
+        -0.039999961853027344,
+        3.8241324424743652
+      ],
+      "uniform_scale": 0.35984848138203784,
+      "adapted_world_min": [
+        -1.4249999523162842,
+        -1.4250000715255737,
+        0.0
+      ],
+      "adapted_world_max": [
+        1.4249999523162842,
+        1.4249999523162842,
+        1.376108169555664
+      ],
+      "note": "Native source stone water feature is the story well; no duplicate added well, material assignments unchanged."
+    },
+    "adaptation": "Actual source fountain recentered/scaled as the sole central water feature; source cobbles and facades preserved. Story-local wall and seats calibrated from measured seated pose data. No duplicate fountain or replacement paving."
+  },
+  "metrics": [
+    {
+      "global_frame": 1115,
+      "sentence": 17,
+      "metrics": {
+        "held_pose": true,
+        "static_seating": []
+      }
+    },
+    {
+      "global_frame": 1116,
+      "sentence": 17,
+      "metrics": {
+        "held_pose": true,
+        "static_seating": []
+      }
+    },
+    {
+      "global_frame": 1117,
+      "sentence": 17,
+      "metrics": {
+        "held_pose": true,
+        "static_seating": []
+      }
+    },
+    {
+      "global_frame": 1118,
+      "sentence": 17,
+      "metrics": {
+        "held_pose": true,
+        "static_seating": []
+      }
+    },
+    {
+      "global_frame": 1119,
+      "sentence": 17,
+      "metrics": {
+        "held_pose": true,
+        "static_seating": []
+      }
+    },
+    {
+      "global_frame": 1120,
+      "sentence": 17,
+      "metrics": {
+        "held_pose": true,
+        "static_seating": []
+      }
+    },
+    {
+      "global_frame": 1121,
+      "sentence": 17,
+      "metrics": {
+        "held_pose": true,
+        "static_seating": []
+      }
+    },
+    {
+      "global_frame": 1122,
+      "sentence": 17,
+      "metrics": {
+        "held_pose": true,
+        "static_seating": []
+      }
+    },
+    {
+      "global_frame": 1123,
+      "sentence": 17,
+      "metrics": {
+        "held_pose": true,
+        "static_seating": []
+      }
+    },
+    {
+      "global_frame": 1124,
+      "sentence": 17,
+      "metrics": {
+        "held_pose": true,
+        "static_seating": []
+      }
+    },
+    {
+      "global_frame": 1125,
+      "sentence": 17,
+      "metrics": {
+        "held_pose": true,
+        "static_seating": []
+      }
+    },
+    {
+      "global_frame": 1126,
+      "sentence": 17,
+      "metrics": {
+        "held_pose": true,
+        "static_seating": []
+      }
+    },
+    {
+      "global_frame": 1127,
+      "sentence": 17,
+      "metrics": {
+        "held_pose": true,
+        "static_seating": []
+      }
+    },
+    {
+      "global_frame": 1128,
+      "sentence": 17,
+      "metrics": {
+        "held_pose": true,
+        "static_seating": []
+      }
+    },
+    {
+      "global_frame": 1129,
+      "sentence": 17,
+      "metrics": {
+        "held_pose": true,
+        "static_seating": []
+      }
+    },
+    {
+      "global_frame": 1130,
+      "sentence": 17,
+      "metrics": {
+        "held_pose": true,
+        "static_seating": []
+      }
+    },
+    {
+      "global_frame": 1131,
+      "sentence": 17,
+      "metrics": {
+        "held_pose": true,
+        "static_seating": []
+      }
+    },
+    {
+      "global_frame": 1132,
+      "sentence": 17,
+      "metrics": {
+        "held_pose": true,
+        "static_seating": []
+      }
+    },
+    {
+      "global_frame": 1133,
+      "sentence": 17,
+      "metrics": {
+        "held_pose": true,
+        "static_seating": []
+      }
+    },
+    {
+      "global_frame": 1134,
+      "sentence": 17,
+      "metrics": {
+        "held_pose": true,
+        "static_seating": []
+      }
+    },
+    {
+      "global_frame": 1135,
+      "sentence": 17,
+      "metrics": {
+        "held_pose": true,
+        "static_seating": []
+      }
+    },
+    {
+      "global_frame": 1136,
+      "sentence": 17,
+      "metrics": {
+        "held_pose": true,
+        "static_seating": []
+      }
+    },
+    {
+      "global_frame": 1137,
+      "sentence": 17,
+      "metrics": {
+        "held_pose": true,
+        "static_seating": []
+      }
+    },
+    {
+      "global_frame": 1138,
+      "sentence": 17,
+      "metrics": {
+        "held_pose": true,
+        "static_seating": []
+      }
+    },
+    {
+      "global_frame": 1139,
+      "sentence": 17,
+      "metrics": {
+        "held_pose": true,
+        "static_seating": []
+      }
+    },
+    {
+      "global_frame": 1140,
+      "sentence": 17,
+      "metrics": {
+        "held_pose": true,
+        "static_seating": []
+      }
+    },
+    {
+      "global_frame": 1141,
+      "sentence": 17,
+      "metrics": {
+        "held_pose": true,
+        "static_seating": []
+      }
+    },
+    {
+      "global_frame": 1142,
+      "sentence": 17,
+      "metrics": {
+        "held_pose": true,
+        "static_seating": []
+      }
+    },
+    {
+      "global_frame": 1143,
+      "sentence": 17,
+      "metrics": {
+        "held_pose": true,
+        "static_seating": []
+      }
+    },
+    {
+      "global_frame": 1144,
+      "sentence": 17,
+      "metrics": {
+        "held_pose": true,
+        "static_seating": []
+      }
+    },
+    {
+      "global_frame": 1145,
+      "sentence": 17,
+      "metrics": {
+        "held_pose": true,
+        "static_seating": []
+      }
+    },
+    {
+      "global_frame": 1146,
+      "sentence": 17,
+      "metrics": {
+        "held_pose": true,
+        "static_seating": []
+      }
+    },
+    {
+      "global_frame": 1147,
+      "sentence": 17,
+      "metrics": {
+        "held_pose": true,
+        "static_seating": []
+      }
+    },
+    {
+      "global_frame": 1148,
+      "sentence": 17,
+      "metrics": {
+        "held_pose": true,
+        "static_seating": []
+      }
+    },
+    {
+      "global_frame": 1149,
+      "sentence": 17,
+      "metrics": {
+        "held_pose": true,
+        "static_seating": []
+      }
+    },
+    {
+      "global_frame": 1150,
+      "sentence": 17,
+      "metrics": {
+        "held_pose": true,
+        "static_seating": []
+      }
+    },
+    {
+      "global_frame": 1151,
+      "sentence": 17,
+      "metrics": {
+        "held_pose": true,
+        "static_seating": []
+      }
+    },
+    {
+      "global_frame": 1152,
+      "sentence": 17,
+      "metrics": {
+        "held_pose": true,
+        "static_seating": []
+      }
+    },
+    {
+      "global_frame": 1153,
+      "sentence": 17,
+      "metrics": {
+        "held_pose": true,
+        "static_seating": []
+      }
+    },
+    {
+      "global_frame": 1154,
+      "sentence": 17,
+      "metrics": {
+        "held_pose": true,
+        "static_seating": []
+      }
+    },
+    {
+      "global_frame": 1155,
+      "sentence": 17,
+      "metrics": {
+        "held_pose": true,
+        "static_seating": []
+      }
+    },
+    {
+      "global_frame": 1156,
+      "sentence": 17,
+      "metrics": {
+        "held_pose": true,
+        "static_seating": []
+      }
+    },
+    {
+      "global_frame": 1157,
+      "sentence": 17,
+      "metrics": {
+        "held_pose": true,
+        "static_seating": []
+      }
+    },
+    {
+      "global_frame": 1158,
+      "sentence": 17,
+      "metrics": {
+        "held_pose": true,
+        "static_seating": []
+      }
+    },
+    {
+      "global_frame": 1159,
+      "sentence": 17,
+      "metrics": {
+        "held_pose": true,
+        "static_seating": []
+      }
+    },
+    {
+      "global_frame": 1160,
+      "sentence": 17,
+      "metrics": {
+        "held_pose": true,
+        "static_seating": []
+      }
+    },
+    {
+      "global_frame": 1161,
+      "sentence": 17,
+      "metrics": {
+        "held_pose": true,
+        "static_seating": []
+      }
+    },
+    {
+      "global_frame": 1162,
+      "sentence": 17,
+      "metrics": {
+        "held_pose": true,
+        "static_seating": []
+      }
+    },
+    {
+      "global_frame": 1163,
+      "sentence": 17,
+      "metrics": {
+        "held_pose": true,
+        "static_seating": []
+      }
+    },
+    {
+      "global_frame": 1164,
+      "sentence": 17,
+      "metrics": {
+        "held_pose": true,
+        "static_seating": []
+      }
+    },
+    {
+      "global_frame": 1165,
+      "sentence": 17,
+      "metrics": {
+        "held_pose": true,
+        "static_seating": []
+      }
+    },
+    {
+      "global_frame": 1166,
+      "sentence": 17,
+      "metrics": {
+        "held_pose": true,
+        "static_seating": []
+      }
+    },
+    {
+      "global_frame": 1167,
+      "sentence": 17,
+      "metrics": {
+        "held_pose": true,
+        "static_seating": []
+      }
+    },
+    {
+      "global_frame": 1168,
+      "sentence": 17,
+      "metrics": {
+        "held_pose": true,
+        "static_seating": []
+      }
+    },
+    {
+      "global_frame": 1169,
+      "sentence": 17,
+      "metrics": {
+        "held_pose": true,
+        "static_seating": []
+      }
+    },
+    {
+      "global_frame": 1170,
+      "sentence": 17,
+      "metrics": {
+        "held_pose": true,
+        "static_seating": []
+      }
+    },
+    {
+      "global_frame": 1171,
+      "sentence": 17,
+      "metrics": {
+        "held_pose": true,
+        "static_seating": []
+      }
+    },
+    {
+      "global_frame": 1172,
+      "sentence": 17,
+      "metrics": {
+        "held_pose": true,
+        "static_seating": []
+      }
+    },
+    {
+      "global_frame": 1173,
+      "sentence": 17,
+      "metrics": {
+        "held_pose": true,
+        "static_seating": []
+      }
+    },
+    {
+      "global_frame": 1174,
+      "sentence": 17,
+      "metrics": {
+        "held_pose": true,
+        "static_seating": []
+      }
+    },
+    {
+      "global_frame": 1175,
+      "sentence": 17,
+      "metrics": {
+        "held_pose": true,
+        "static_seating": []
+      }
+    },
+    {
+      "global_frame": 1176,
+      "sentence": 17,
+      "metrics": {
+        "held_pose": true,
+        "static_seating": []
+      }
+    },
+    {
+      "global_frame": 1177,
+      "sentence": 17,
+      "metrics": {
+        "held_pose": true,
+        "static_seating": []
+      }
+    },
+    {
+      "global_frame": 1178,
+      "sentence": 17,
+      "metrics": {
+        "held_pose": true,
+        "static_seating": []
+      }
+    },
+    {
+      "global_frame": 1179,
+      "sentence": 17,
+      "metrics": {
+        "held_pose": true,
+        "static_seating": []
+      }
+    },
+    {
+      "global_frame": 1180,
+      "sentence": 17,
+      "metrics": {
+        "held_pose": true,
+        "static_seating": []
+      }
+    },
+    {
+      "global_frame": 1181,
+      "sentence": 17,
+      "metrics": {
+        "held_pose": true,
+        "static_seating": []
+      }
+    },
+    {
+      "global_frame": 1182,
+      "sentence": 17,
+      "metrics": {
+        "held_pose": true,
+        "static_seating": []
+      }
+    },
+    {
+      "global_frame": 1183,
+      "sentence": 17,
+      "metrics": {
+        "held_pose": true,
+        "static_seating": []
+      }
+    },
+    {
+      "global_frame": 1184,
+      "sentence": 17,
+      "metrics": {
+        "held_pose": true,
+        "static_seating": []
+      }
+    },
+    {
+      "global_frame": 1185,
+      "sentence": 17,
+      "metrics": {
+        "held_pose": true,
+        "static_seating": []
+      }
+    },
+    {
+      "global_frame": 1186,
+      "sentence": 17,
+      "metrics": {
+        "held_pose": true,
+        "static_seating": []
+      }
+    },
+    {
+      "global_frame": 1187,
+      "sentence": 17,
+      "metrics": {
+        "held_pose": true,
+        "static_seating": []
+      }
+    },
+    {
+      "global_frame": 1188,
+      "sentence": 17,
+      "metrics": {
+        "held_pose": true,
+        "static_seating": []
+      }
+    },
+    {
+      "global_frame": 1189,
+      "sentence": 17,
+      "metrics": {
+        "held_pose": true,
+        "static_seating": []
+      }
+    },
+    {
+      "global_frame": 1190,
+      "sentence": 17,
+      "metrics": {
+        "held_pose": true,
+        "static_seating": []
+      }
+    },
+    {
+      "global_frame": 1191,
+      "sentence": 17,
+      "metrics": {
+        "held_pose": true,
+        "static_seating": []
+      }
+    },
+    {
+      "global_frame": 1192,
+      "sentence": 17,
+      "metrics": {
+        "held_pose": true,
+        "static_seating": []
+      }
+    },
+    {
+      "global_frame": 1193,
+      "sentence": 17,
+      "metrics": {
+        "held_pose": true,
+        "static_seating": []
+      }
+    },
+    {
+      "global_frame": 1194,
+      "sentence": 17,
+      "metrics": {
+        "held_pose": true,
+        "static_seating": []
+      }
+    }
+  ],
+  "rendered": [
+    {
+      "frame": 1154,
+      "file": "frame_01154.png",
+      "render_seconds": 14.430841913999984,
+      "near_black_percent": 0.0775462962962963
+    }
+  ],
+  "review": "candidate, visual and metric approval pending"
+}
