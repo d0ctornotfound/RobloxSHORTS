@@ -10,7 +10,7 @@ from mathutils import Vector
 from PIL import Image
 import numpy as np
 from film_walk_to_mark import construct
-from film_direction import apply_grade, direct_camera, performance, sample as direction_sample
+from film_direction import apply_grade, direct_camera, performance, directed_bounce, sample as direction_sample
 from library_locomotion import StrideLock
 from r6_imported_cycles import Retarget
 from character_motion_correction import apply_corrected,rear_hip
@@ -136,6 +136,9 @@ def main():
         if action_tracks:m["declared_socket_contacts"]=action_tracks.after_performance(gf-unit_start)
         if spec.get("direction"):
             direct_camera(scene,cam,d.actors,spec["direction"],su if spec.get("segment_performance") else u,frame,camera_state)
+        frame_grade=grade
+        if spec.get("direction",{}).get("grade_fill"):
+            frame_grade={**grade,"directed_bounce":directed_bounce(scene,cam,spec["direction"],d.actors)}
         if gf<first:continue
         # Generic external vs own-character visibility; the full original ray
         # result is retained, never reclassified as a geometry pass.
@@ -146,7 +149,7 @@ def main():
             face=vis(scene,cam,[actor.face],7)
             external=vis(scene,cam,[actor.face],7,meshes(actor.root))
             quality[cid]={"bounds":list(b),"safe":safe(b),"vertical_coverage":b[3]-b[2],"face_all":face,"face_external":external,"own_ray_difference":max(0,face["blocked"]-external["blocked"])}
-        row={"frame":gf,"shot":shot["id"],"unit_window":[unit_start,unit_end],"actor_qc":quality,"geometry":m,**({"direction":direction_sample(scene,cam,d.actors,spec["direction"],grade,vis,meshes)} if spec.get("direction") else {})}
+        row={"frame":gf,"shot":shot["id"],"unit_window":[unit_start,unit_end],"actor_qc":quality,"geometry":m,**({"direction":direction_sample(scene,cam,d.actors,spec["direction"],frame_grade,vis,meshes)} if spec.get("direction") else {})}
         rows.append(row)
         if not a.preflight or gf in (first,(first+end)//2,end-1):
             path=out/f"frame_{gf:05d}.png";scene.render.filepath=str(path)
