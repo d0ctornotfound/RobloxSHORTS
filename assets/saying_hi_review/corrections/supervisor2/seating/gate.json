@@ -1,0 +1,55 @@
+{
+  "unit": "seating",
+  "samples": 51,
+  "sampling_hz": 30,
+  "checks": {
+    "dog_occlusion_samples": {
+      "value": 3,
+      "limit": 0,
+      "pass": false
+    },
+    "dog_fully_in_frame": {
+      "value": true,
+      "limit": true,
+      "pass": true
+    },
+    "dog_floor_error": {
+      "value": 1.5832483768463135e-08,
+      "limit": 0.002,
+      "pass": true
+    },
+    "june_lateral_hip_drift_outside_step": {
+      "value": 1.1920928955078125e-07,
+      "limit": 0.005,
+      "pass": true
+    },
+    "settled_hip_plane_error": {
+      "value": 5.364418029785156e-07,
+      "limit": 0.015,
+      "pass": true
+    },
+    "planted_floor_error": {
+      "value": 0.0,
+      "limit": 0.002,
+      "pass": true
+    },
+    "continuing_planted_foot_drift": {
+      "value": 0,
+      "limit": 0.005,
+      "pass": true
+    },
+    "actual_move_over_displacement": {
+      "value": 0.2399998903274536,
+      "limit": 0.2,
+      "pass": true
+    }
+  },
+  "pass": false,
+  "dog_visible_frames": 51,
+  "minimum_dog_samples": 46,
+  "camera": [
+    3.549999952316284,
+    -4.5,
+    2.6500000953674316
+  ]
+}
