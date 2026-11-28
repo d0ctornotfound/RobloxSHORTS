@@ -7592,13 +7592,19 @@
               "brody",
               "chase",
               "kai"
-            ]
+            ],
+            "phase_strategy": "fixed",
+            "fixed_timing": {
+              "phase": 0.49166666666666664,
+              "rate": 0.28247058686088117
+            },
+            "end_mode": "moving_cut"
           },
           "direction": {
             "beat_type": "action",
             "principal": "narrator",
             "camera_move": "track",
-            "motivation": "Front tracking on approach centreline, between rather than behind the seated spectators; maintain forward route and carried props",
+            "motivation": "Track clear crossing corridor, cut during ongoing planted gait into wall reaction; no artificial stop",
             "camera_offset": [
               0.1,
               -1,
@@ -7724,6 +7730,18 @@
                   ]
                 ]
               }
+            },
+            "grade_fill": {
+              "energy": 450,
+              "distance": 2.8,
+              "size": 4,
+              "height": 0.7,
+              "color": [
+                1,
+                0.88,
+                0.75
+              ],
+              "exposure": 0.02
             }
           }
         }
@@ -9267,7 +9285,19 @@
               }
             },
             "drift_distance": 0.035,
-            "interview_face_span": 0.72
+            "interview_face_span": 0.72,
+            "grade_fill": {
+              "energy": 1100,
+              "distance": 2.7,
+              "size": 3.5,
+              "height": 0.6,
+              "color": [
+                1,
+                0.87,
+                0.72
+              ],
+              "exposure": 0.05
+            }
           }
         }
       }
@@ -11264,9 +11294,9 @@
             "beat_type": "emotion",
             "principal": "narrator",
             "camera_move": "push",
-            "motivation": "Camera inside the space between the two speakers, off the June obstruction axis and slightly below face centre",
+            "motivation": "Committed all-frame-selected isolated hesitation close-up, 92% minimum own-face visibility; pencil framing remains flagged separately.",
             "camera_offset": [
-              0.72,
+              1.15,
               -1,
               0
             ],
@@ -11324,11 +11354,11 @@
                 ]
               }
             },
-            "camera_elevation": -0.07,
+            "camera_elevation": -0.46,
             "target_offset": [
               0,
               0,
-              -0.075
+              -0.1
             ],
             "push_distance": 0.02,
             "adapter_vector_marks": {
@@ -11347,7 +11377,7 @@
               "nyaw": 57,
               "jyaw": -123
             },
-            "emotion_face_target": 0.425
+            "emotion_face_target": 0.445
           }
         }
       }
@@ -15521,7 +15551,7 @@
   },
   "grade_preset": "warm_saturated_v1",
   "actor_factory": "saying_hi_cast:build_cast_actor",
-  "status": "DRAFT: frame structure checked; new native setups still unverified; release gate not authorized",
+  "status": "DRAFT: exact pilot preflight staging pinned; complete native pilot and visual release still required",
   "direction_board": "stories/saying_hi_direction_board.json",
   "round5_qc": "assets/saying_hi_review/round5/qc.json",
   "comparison_baseline": "assets/saying_hi_review/round5/saying_hi.mp4",
