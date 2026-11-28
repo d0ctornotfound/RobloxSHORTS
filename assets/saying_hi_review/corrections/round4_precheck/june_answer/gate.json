@@ -1,0 +1,1400 @@
+{
+  "unit": "june_answer",
+  "samples": 57,
+  "sampling_hz": 30,
+  "checks": {
+    "standing_seat_intersections": {
+      "value": 0,
+      "limit": 0,
+      "pass": true
+    },
+    "speaker_occlusion_samples": {
+      "value": 2,
+      "limit": 0,
+      "pass": false
+    },
+    "speaker_in_frame": {
+      "value": true,
+      "limit": true,
+      "pass": true
+    },
+    "speaker_front_dot": {
+      "value": 0.728014248222518,
+      "limit": 0.72,
+      "pass": true
+    },
+    "speaker_body_visible_fraction": {
+      "value": 1.0,
+      "limit": 0.9,
+      "pass": true
+    },
+    "speaker_body_in_frame": {
+      "value": true,
+      "limit": true,
+      "pass": true
+    },
+    "unrelated_foreground_obstruction_samples": {
+      "value": 0,
+      "limit": 0,
+      "pass": true
+    }
+  },
+  "pass": false,
+  "camera": {
+    "location": [
+      5.800000190734863,
+      3.049999952316284,
+      1.2999999523162842
+    ],
+    "target": [
+      5.050000190734863,
+      1.649999976158142,
+      1.159999966621399
+    ],
+    "lens": 22.608173100474804,
+    "mark_yaw_deg": 180.0,
+    "camera_shift": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "candidate_score": [
+      false,
+      1,
+      0,
+      0,
+      0,
+      0
+    ],
+    "world_x_side": "positive",
+    "inherited_face_failures": [
+      {
+        "global_frame": 2201,
+        "local_frame": 0,
+        "blocked": 1,
+        "objects": [
+          "june / head ch4 hair cap"
+        ]
+      },
+      {
+        "global_frame": 2202,
+        "local_frame": 1,
+        "blocked": 1,
+        "objects": [
+          "june / head ch4 hair cap"
+        ]
+      },
+      {
+        "global_frame": 2203,
+        "local_frame": 2,
+        "blocked": 1,
+        "objects": [
+          "june / head ch4 hair cap"
+        ]
+      },
+      {
+        "global_frame": 2204,
+        "local_frame": 3,
+        "blocked": 1,
+        "objects": [
+          "june / head ch4 hair cap"
+        ]
+      },
+      {
+        "global_frame": 2205,
+        "local_frame": 4,
+        "blocked": 1,
+        "objects": [
+          "june / head ch4 hair cap"
+        ]
+      },
+      {
+        "global_frame": 2206,
+        "local_frame": 5,
+        "blocked": 1,
+        "objects": [
+          "june / head ch4 hair cap"
+        ]
+      },
+      {
+        "global_frame": 2207,
+        "local_frame": 6,
+        "blocked": 1,
+        "objects": [
+          "june / head ch4 hair cap"
+        ]
+      },
+      {
+        "global_frame": 2208,
+        "local_frame": 7,
+        "blocked": 1,
+        "objects": [
+          "june / head ch4 hair cap"
+        ]
+      },
+      {
+        "global_frame": 2209,
+        "local_frame": 8,
+        "blocked": 1,
+        "objects": [
+          "june / head ch4 hair cap"
+        ]
+      },
+      {
+        "global_frame": 2210,
+        "local_frame": 9,
+        "blocked": 1,
+        "objects": [
+          "june / head ch4 hair cap"
+        ]
+      },
+      {
+        "global_frame": 2211,
+        "local_frame": 10,
+        "blocked": 1,
+        "objects": [
+          "june / head ch4 hair cap"
+        ]
+      },
+      {
+        "global_frame": 2212,
+        "local_frame": 11,
+        "blocked": 1,
+        "objects": [
+          "june / head ch4 hair cap"
+        ]
+      },
+      {
+        "global_frame": 2213,
+        "local_frame": 12,
+        "blocked": 1,
+        "objects": [
+          "june / head ch4 hair cap"
+        ]
+      },
+      {
+        "global_frame": 2214,
+        "local_frame": 13,
+        "blocked": 1,
+        "objects": [
+          "june / head ch4 hair cap"
+        ]
+      },
+      {
+        "global_frame": 2215,
+        "local_frame": 14,
+        "blocked": 1,
+        "objects": [
+          "june / head ch4 hair cap"
+        ]
+      },
+      {
+        "global_frame": 2216,
+        "local_frame": 15,
+        "blocked": 1,
+        "objects": [
+          "june / head ch4 hair cap"
+        ]
+      },
+      {
+        "global_frame": 2217,
+        "local_frame": 16,
+        "blocked": 1,
+        "objects": [
+          "june / head ch4 hair cap"
+        ]
+      },
+      {
+        "global_frame": 2218,
+        "local_frame": 17,
+        "blocked": 1,
+        "objects": [
+          "june / head ch4 hair cap"
+        ]
+      },
+      {
+        "global_frame": 2219,
+        "local_frame": 18,
+        "blocked": 1,
+        "objects": [
+          "june / head ch4 hair cap"
+        ]
+      },
+      {
+        "global_frame": 2220,
+        "local_frame": 19,
+        "blocked": 1,
+        "objects": [
+          "june / head ch4 hair cap"
+        ]
+      },
+      {
+        "global_frame": 2221,
+        "local_frame": 20,
+        "blocked": 1,
+        "objects": [
+          "june / head ch4 hair cap"
+        ]
+      },
+      {
+        "global_frame": 2222,
+        "local_frame": 21,
+        "blocked": 1,
+        "objects": [
+          "june / head ch4 hair cap"
+        ]
+      },
+      {
+        "global_frame": 2223,
+        "local_frame": 22,
+        "blocked": 1,
+        "objects": [
+          "june / head ch4 hair cap"
+        ]
+      },
+      {
+        "global_frame": 2224,
+        "local_frame": 23,
+        "blocked": 1,
+        "objects": [
+          "june / head ch4 hair cap"
+        ]
+      },
+      {
+        "global_frame": 2225,
+        "local_frame": 24,
+        "blocked": 1,
+        "objects": [
+          "june / head ch4 hair cap"
+        ]
+      },
+      {
+        "global_frame": 2226,
+        "local_frame": 25,
+        "blocked": 1,
+        "objects": [
+          "june / head ch4 hair cap"
+        ]
+      },
+      {
+        "global_frame": 2227,
+        "local_frame": 26,
+        "blocked": 1,
+        "objects": [
+          "june / head ch4 hair cap"
+        ]
+      },
+      {
+        "global_frame": 2228,
+        "local_frame": 27,
+        "blocked": 1,
+        "objects": [
+          "june / head ch4 hair cap"
+        ]
+      },
+      {
+        "global_frame": 2229,
+        "local_frame": 28,
+        "blocked": 1,
+        "objects": [
+          "june / head ch4 hair cap"
+        ]
+      },
+      {
+        "global_frame": 2230,
+        "local_frame": 29,
+        "blocked": 1,
+        "objects": [
+          "june / head ch4 hair cap"
+        ]
+      },
+      {
+        "global_frame": 2231,
+        "local_frame": 30,
+        "blocked": 1,
+        "objects": [
+          "june / head ch4 hair cap"
+        ]
+      },
+      {
+        "global_frame": 2232,
+        "local_frame": 31,
+        "blocked": 1,
+        "objects": [
+          "june / head ch4 hair cap"
+        ]
+      },
+      {
+        "global_frame": 2233,
+        "local_frame": 32,
+        "blocked": 1,
+        "objects": [
+          "june / head ch4 hair cap"
+        ]
+      },
+      {
+        "global_frame": 2234,
+        "local_frame": 33,
+        "blocked": 1,
+        "objects": [
+          "june / head ch4 hair cap"
+        ]
+      },
+      {
+        "global_frame": 2235,
+        "local_frame": 34,
+        "blocked": 1,
+        "objects": [
+          "june / head ch4 hair cap"
+        ]
+      },
+      {
+        "global_frame": 2236,
+        "local_frame": 35,
+        "blocked": 1,
+        "objects": [
+          "june / head ch4 hair cap"
+        ]
+      },
+      {
+        "global_frame": 2237,
+        "local_frame": 36,
+        "blocked": 1,
+        "objects": [
+          "june / head ch4 hair cap"
+        ]
+      },
+      {
+        "global_frame": 2238,
+        "local_frame": 37,
+        "blocked": 1,
+        "objects": [
+          "june / head ch4 hair cap"
+        ]
+      },
+      {
+        "global_frame": 2239,
+        "local_frame": 38,
+        "blocked": 1,
+        "objects": [
+          "june / head ch4 hair cap"
+        ]
+      },
+      {
+        "global_frame": 2240,
+        "local_frame": 39,
+        "blocked": 1,
+        "objects": [
+          "june / head ch4 hair cap"
+        ]
+      },
+      {
+        "global_frame": 2241,
+        "local_frame": 40,
+        "blocked": 1,
+        "objects": [
+          "june / head ch4 hair cap"
+        ]
+      },
+      {
+        "global_frame": 2242,
+        "local_frame": 41,
+        "blocked": 1,
+        "objects": [
+          "june / head ch4 hair cap"
+        ]
+      },
+      {
+        "global_frame": 2243,
+        "local_frame": 42,
+        "blocked": 1,
+        "objects": [
+          "june / head ch4 hair cap"
+        ]
+      },
+      {
+        "global_frame": 2244,
+        "local_frame": 43,
+        "blocked": 1,
+        "objects": [
+          "june / head ch4 hair cap"
+        ]
+      },
+      {
+        "global_frame": 2245,
+        "local_frame": 44,
+        "blocked": 2,
+        "objects": [
+          "june / head ch4 hair cap"
+        ]
+      },
+      {
+        "global_frame": 2246,
+        "local_frame": 45,
+        "blocked": 1,
+        "objects": [
+          "june / head ch4 hair cap"
+        ]
+      },
+      {
+        "global_frame": 2247,
+        "local_frame": 46,
+        "blocked": 1,
+        "objects": [
+          "june / head ch4 hair cap"
+        ]
+      },
+      {
+        "global_frame": 2248,
+        "local_frame": 47,
+        "blocked": 1,
+        "objects": [
+          "june / head ch4 hair cap"
+        ]
+      },
+      {
+        "global_frame": 2249,
+        "local_frame": 48,
+        "blocked": 1,
+        "objects": [
+          "june / head ch4 hair cap"
+        ]
+      },
+      {
+        "global_frame": 2250,
+        "local_frame": 49,
+        "blocked": 1,
+        "objects": [
+          "june / head ch4 hair cap"
+        ]
+      },
+      {
+        "global_frame": 2251,
+        "local_frame": 50,
+        "blocked": 1,
+        "objects": [
+          "june / head ch4 hair cap"
+        ]
+      },
+      {
+        "global_frame": 2252,
+        "local_frame": 51,
+        "blocked": 1,
+        "objects": [
+          "june / head ch4 hair cap"
+        ]
+      },
+      {
+        "global_frame": 2253,
+        "local_frame": 52,
+        "blocked": 1,
+        "objects": [
+          "june / head ch4 hair cap"
+        ]
+      },
+      {
+        "global_frame": 2254,
+        "local_frame": 53,
+        "blocked": 1,
+        "objects": [
+          "june / head ch4 hair cap"
+        ]
+      },
+      {
+        "global_frame": 2255,
+        "local_frame": 54,
+        "blocked": 1,
+        "objects": [
+          "june / head ch4 hair cap"
+        ]
+      },
+      {
+        "global_frame": 2256,
+        "local_frame": 55,
+        "blocked": 1,
+        "objects": [
+          "june / head ch4 hair cap"
+        ]
+      },
+      {
+        "global_frame": 2257,
+        "local_frame": 56,
+        "blocked": 1,
+        "objects": [
+          "june / head ch4 hair cap"
+        ]
+      }
+    ]
+  },
+  "marks": {
+    "june": [
+      5.050000190734863,
+      1.649999976158142,
+      0.0
+    ],
+    "narrator": [
+      5.050000190734863,
+      3.6500000953674316,
+      0.0
+    ]
+  },
+  "inherited_face_failures": [
+    {
+      "global_frame": 2201,
+      "local_frame": 0,
+      "blocked": 1,
+      "objects": [
+        "june / head ch4 hair cap"
+      ]
+    },
+    {
+      "global_frame": 2202,
+      "local_frame": 1,
+      "blocked": 1,
+      "objects": [
+        "june / head ch4 hair cap"
+      ]
+    },
+    {
+      "global_frame": 2203,
+      "local_frame": 2,
+      "blocked": 1,
+      "objects": [
+        "june / head ch4 hair cap"
+      ]
+    },
+    {
+      "global_frame": 2204,
+      "local_frame": 3,
+      "blocked": 1,
+      "objects": [
+        "june / head ch4 hair cap"
+      ]
+    },
+    {
+      "global_frame": 2205,
+      "local_frame": 4,
+      "blocked": 1,
+      "objects": [
+        "june / head ch4 hair cap"
+      ]
+    },
+    {
+      "global_frame": 2206,
+      "local_frame": 5,
+      "blocked": 1,
+      "objects": [
+        "june / head ch4 hair cap"
+      ]
+    },
+    {
+      "global_frame": 2207,
+      "local_frame": 6,
+      "blocked": 1,
+      "objects": [
+        "june / head ch4 hair cap"
+      ]
+    },
+    {
+      "global_frame": 2208,
+      "local_frame": 7,
+      "blocked": 1,
+      "objects": [
+        "june / head ch4 hair cap"
+      ]
+    },
+    {
+      "global_frame": 2209,
+      "local_frame": 8,
+      "blocked": 1,
+      "objects": [
+        "june / head ch4 hair cap"
+      ]
+    },
+    {
+      "global_frame": 2210,
+      "local_frame": 9,
+      "blocked": 1,
+      "objects": [
+        "june / head ch4 hair cap"
+      ]
+    },
+    {
+      "global_frame": 2211,
+      "local_frame": 10,
+      "blocked": 1,
+      "objects": [
+        "june / head ch4 hair cap"
+      ]
+    },
+    {
+      "global_frame": 2212,
+      "local_frame": 11,
+      "blocked": 1,
+      "objects": [
+        "june / head ch4 hair cap"
+      ]
+    },
+    {
+      "global_frame": 2213,
+      "local_frame": 12,
+      "blocked": 1,
+      "objects": [
+        "june / head ch4 hair cap"
+      ]
+    },
+    {
+      "global_frame": 2214,
+      "local_frame": 13,
+      "blocked": 1,
+      "objects": [
+        "june / head ch4 hair cap"
+      ]
+    },
+    {
+      "global_frame": 2215,
+      "local_frame": 14,
+      "blocked": 1,
+      "objects": [
+        "june / head ch4 hair cap"
+      ]
+    },
+    {
+      "global_frame": 2216,
+      "local_frame": 15,
+      "blocked": 1,
+      "objects": [
+        "june / head ch4 hair cap"
+      ]
+    },
+    {
+      "global_frame": 2217,
+      "local_frame": 16,
+      "blocked": 1,
+      "objects": [
+        "june / head ch4 hair cap"
+      ]
+    },
+    {
+      "global_frame": 2218,
+      "local_frame": 17,
+      "blocked": 1,
+      "objects": [
+        "june / head ch4 hair cap"
+      ]
+    },
+    {
+      "global_frame": 2219,
+      "local_frame": 18,
+      "blocked": 1,
+      "objects": [
+        "june / head ch4 hair cap"
+      ]
+    },
+    {
+      "global_frame": 2220,
+      "local_frame": 19,
+      "blocked": 1,
+      "objects": [
+        "june / head ch4 hair cap"
+      ]
+    },
+    {
+      "global_frame": 2221,
+      "local_frame": 20,
+      "blocked": 1,
+      "objects": [
+        "june / head ch4 hair cap"
+      ]
+    },
+    {
+      "global_frame": 2222,
+      "local_frame": 21,
+      "blocked": 1,
+      "objects": [
+        "june / head ch4 hair cap"
+      ]
+    },
+    {
+      "global_frame": 2223,
+      "local_frame": 22,
+      "blocked": 1,
+      "objects": [
+        "june / head ch4 hair cap"
+      ]
+    },
+    {
+      "global_frame": 2224,
+      "local_frame": 23,
+      "blocked": 1,
+      "objects": [
+        "june / head ch4 hair cap"
+      ]
+    },
+    {
+      "global_frame": 2225,
+      "local_frame": 24,
+      "blocked": 1,
+      "objects": [
+        "june / head ch4 hair cap"
+      ]
+    },
+    {
+      "global_frame": 2226,
+      "local_frame": 25,
+      "blocked": 1,
+      "objects": [
+        "june / head ch4 hair cap"
+      ]
+    },
+    {
+      "global_frame": 2227,
+      "local_frame": 26,
+      "blocked": 1,
+      "objects": [
+        "june / head ch4 hair cap"
+      ]
+    },
+    {
+      "global_frame": 2228,
+      "local_frame": 27,
+      "blocked": 1,
+      "objects": [
+        "june / head ch4 hair cap"
+      ]
+    },
+    {
+      "global_frame": 2229,
+      "local_frame": 28,
+      "blocked": 1,
+      "objects": [
+        "june / head ch4 hair cap"
+      ]
+    },
+    {
+      "global_frame": 2230,
+      "local_frame": 29,
+      "blocked": 1,
+      "objects": [
+        "june / head ch4 hair cap"
+      ]
+    },
+    {
+      "global_frame": 2231,
+      "local_frame": 30,
+      "blocked": 1,
+      "objects": [
+        "june / head ch4 hair cap"
+      ]
+    },
+    {
+      "global_frame": 2232,
+      "local_frame": 31,
+      "blocked": 1,
+      "objects": [
+        "june / head ch4 hair cap"
+      ]
+    },
+    {
+      "global_frame": 2233,
+      "local_frame": 32,
+      "blocked": 1,
+      "objects": [
+        "june / head ch4 hair cap"
+      ]
+    },
+    {
+      "global_frame": 2234,
+      "local_frame": 33,
+      "blocked": 1,
+      "objects": [
+        "june / head ch4 hair cap"
+      ]
+    },
+    {
+      "global_frame": 2235,
+      "local_frame": 34,
+      "blocked": 1,
+      "objects": [
+        "june / head ch4 hair cap"
+      ]
+    },
+    {
+      "global_frame": 2236,
+      "local_frame": 35,
+      "blocked": 1,
+      "objects": [
+        "june / head ch4 hair cap"
+      ]
+    },
+    {
+      "global_frame": 2237,
+      "local_frame": 36,
+      "blocked": 1,
+      "objects": [
+        "june / head ch4 hair cap"
+      ]
+    },
+    {
+      "global_frame": 2238,
+      "local_frame": 37,
+      "blocked": 1,
+      "objects": [
+        "june / head ch4 hair cap"
+      ]
+    },
+    {
+      "global_frame": 2239,
+      "local_frame": 38,
+      "blocked": 1,
+      "objects": [
+        "june / head ch4 hair cap"
+      ]
+    },
+    {
+      "global_frame": 2240,
+      "local_frame": 39,
+      "blocked": 1,
+      "objects": [
+        "june / head ch4 hair cap"
+      ]
+    },
+    {
+      "global_frame": 2241,
+      "local_frame": 40,
+      "blocked": 1,
+      "objects": [
+        "june / head ch4 hair cap"
+      ]
+    },
+    {
+      "global_frame": 2242,
+      "local_frame": 41,
+      "blocked": 1,
+      "objects": [
+        "june / head ch4 hair cap"
+      ]
+    },
+    {
+      "global_frame": 2243,
+      "local_frame": 42,
+      "blocked": 1,
+      "objects": [
+        "june / head ch4 hair cap"
+      ]
+    },
+    {
+      "global_frame": 2244,
+      "local_frame": 43,
+      "blocked": 1,
+      "objects": [
+        "june / head ch4 hair cap"
+      ]
+    },
+    {
+      "global_frame": 2245,
+      "local_frame": 44,
+      "blocked": 2,
+      "objects": [
+        "june / head ch4 hair cap"
+      ]
+    },
+    {
+      "global_frame": 2246,
+      "local_frame": 45,
+      "blocked": 1,
+      "objects": [
+        "june / head ch4 hair cap"
+      ]
+    },
+    {
+      "global_frame": 2247,
+      "local_frame": 46,
+      "blocked": 1,
+      "objects": [
+        "june / head ch4 hair cap"
+      ]
+    },
+    {
+      "global_frame": 2248,
+      "local_frame": 47,
+      "blocked": 1,
+      "objects": [
+        "june / head ch4 hair cap"
+      ]
+    },
+    {
+      "global_frame": 2249,
+      "local_frame": 48,
+      "blocked": 1,
+      "objects": [
+        "june / head ch4 hair cap"
+      ]
+    },
+    {
+      "global_frame": 2250,
+      "local_frame": 49,
+      "blocked": 1,
+      "objects": [
+        "june / head ch4 hair cap"
+      ]
+    },
+    {
+      "global_frame": 2251,
+      "local_frame": 50,
+      "blocked": 1,
+      "objects": [
+        "june / head ch4 hair cap"
+      ]
+    },
+    {
+      "global_frame": 2252,
+      "local_frame": 51,
+      "blocked": 1,
+      "objects": [
+        "june / head ch4 hair cap"
+      ]
+    },
+    {
+      "global_frame": 2253,
+      "local_frame": 52,
+      "blocked": 1,
+      "objects": [
+        "june / head ch4 hair cap"
+      ]
+    },
+    {
+      "global_frame": 2254,
+      "local_frame": 53,
+      "blocked": 1,
+      "objects": [
+        "june / head ch4 hair cap"
+      ]
+    },
+    {
+      "global_frame": 2255,
+      "local_frame": 54,
+      "blocked": 1,
+      "objects": [
+        "june / head ch4 hair cap"
+      ]
+    },
+    {
+      "global_frame": 2256,
+      "local_frame": 55,
+      "blocked": 1,
+      "objects": [
+        "june / head ch4 hair cap"
+      ]
+    },
+    {
+      "global_frame": 2257,
+      "local_frame": 56,
+      "blocked": 1,
+      "objects": [
+        "june / head ch4 hair cap"
+      ]
+    }
+  ],
+  "remaining_face_failures": [
+    {
+      "global_frame": 2201,
+      "blocked": 1,
+      "objects": [
+        "june / head ch4 hair cap"
+      ]
+    },
+    {
+      "global_frame": 2202,
+      "blocked": 1,
+      "objects": [
+        "june / head ch4 hair cap"
+      ]
+    },
+    {
+      "global_frame": 2203,
+      "blocked": 1,
+      "objects": [
+        "june / head ch4 hair cap"
+      ]
+    },
+    {
+      "global_frame": 2204,
+      "blocked": 1,
+      "objects": [
+        "june / head ch4 hair cap"
+      ]
+    },
+    {
+      "global_frame": 2205,
+      "blocked": 1,
+      "objects": [
+        "june / head ch4 hair cap"
+      ]
+    },
+    {
+      "global_frame": 2206,
+      "blocked": 1,
+      "objects": [
+        "june / head ch4 hair cap"
+      ]
+    },
+    {
+      "global_frame": 2207,
+      "blocked": 1,
+      "objects": [
+        "june / head ch4 hair cap"
+      ]
+    },
+    {
+      "global_frame": 2208,
+      "blocked": 1,
+      "objects": [
+        "june / head ch4 hair cap"
+      ]
+    },
+    {
+      "global_frame": 2209,
+      "blocked": 1,
+      "objects": [
+        "june / head ch4 hair cap"
+      ]
+    },
+    {
+      "global_frame": 2210,
+      "blocked": 1,
+      "objects": [
+        "june / head ch4 hair cap"
+      ]
+    },
+    {
+      "global_frame": 2211,
+      "blocked": 1,
+      "objects": [
+        "june / head ch4 hair cap"
+      ]
+    },
+    {
+      "global_frame": 2212,
+      "blocked": 1,
+      "objects": [
+        "june / head ch4 hair cap"
+      ]
+    },
+    {
+      "global_frame": 2213,
+      "blocked": 1,
+      "objects": [
+        "june / head ch4 hair cap"
+      ]
+    },
+    {
+      "global_frame": 2214,
+      "blocked": 1,
+      "objects": [
+        "june / head ch4 hair cap"
+      ]
+    },
+    {
+      "global_frame": 2215,
+      "blocked": 1,
+      "objects": [
+        "june / head ch4 hair cap"
+      ]
+    },
+    {
+      "global_frame": 2216,
+      "blocked": 1,
+      "objects": [
+        "june / head ch4 hair cap"
+      ]
+    },
+    {
+      "global_frame": 2217,
+      "blocked": 1,
+      "objects": [
+        "june / head ch4 hair cap"
+      ]
+    },
+    {
+      "global_frame": 2218,
+      "blocked": 1,
+      "objects": [
+        "june / head ch4 hair cap"
+      ]
+    },
+    {
+      "global_frame": 2219,
+      "blocked": 1,
+      "objects": [
+        "june / head ch4 hair cap"
+      ]
+    },
+    {
+      "global_frame": 2220,
+      "blocked": 1,
+      "objects": [
+        "june / head ch4 hair cap"
+      ]
+    },
+    {
+      "global_frame": 2221,
+      "blocked": 1,
+      "objects": [
+        "june / head ch4 hair cap"
+      ]
+    },
+    {
+      "global_frame": 2222,
+      "blocked": 1,
+      "objects": [
+        "june / head ch4 hair cap"
+      ]
+    },
+    {
+      "global_frame": 2223,
+      "blocked": 1,
+      "objects": [
+        "june / head ch4 hair cap"
+      ]
+    },
+    {
+      "global_frame": 2224,
+      "blocked": 1,
+      "objects": [
+        "june / head ch4 hair cap"
+      ]
+    },
+    {
+      "global_frame": 2225,
+      "blocked": 1,
+      "objects": [
+        "june / head ch4 hair cap"
+      ]
+    },
+    {
+      "global_frame": 2226,
+      "blocked": 1,
+      "objects": [
+        "june / head ch4 hair cap"
+      ]
+    },
+    {
+      "global_frame": 2227,
+      "blocked": 1,
+      "objects": [
+        "june / head ch4 hair cap"
+      ]
+    },
+    {
+      "global_frame": 2228,
+      "blocked": 1,
+      "objects": [
+        "june / head ch4 hair cap"
+      ]
+    },
+    {
+      "global_frame": 2229,
+      "blocked": 1,
+      "objects": [
+        "june / head ch4 hair cap"
+      ]
+    },
+    {
+      "global_frame": 2230,
+      "blocked": 1,
+      "objects": [
+        "june / head ch4 hair cap"
+      ]
+    },
+    {
+      "global_frame": 2231,
+      "blocked": 1,
+      "objects": [
+        "june / head ch4 hair cap"
+      ]
+    },
+    {
+      "global_frame": 2232,
+      "blocked": 1,
+      "objects": [
+        "june / head ch4 hair cap"
+      ]
+    },
+    {
+      "global_frame": 2233,
+      "blocked": 1,
+      "objects": [
+        "june / head ch4 hair cap"
+      ]
+    },
+    {
+      "global_frame": 2234,
+      "blocked": 1,
+      "objects": [
+        "june / head ch4 hair cap"
+      ]
+    },
+    {
+      "global_frame": 2235,
+      "blocked": 1,
+      "objects": [
+        "june / head ch4 hair cap"
+      ]
+    },
+    {
+      "global_frame": 2236,
+      "blocked": 1,
+      "objects": [
+        "june / head ch4 hair cap"
+      ]
+    },
+    {
+      "global_frame": 2237,
+      "blocked": 1,
+      "objects": [
+        "june / head ch4 hair cap"
+      ]
+    },
+    {
+      "global_frame": 2238,
+      "blocked": 1,
+      "objects": [
+        "june / head ch4 hair cap"
+      ]
+    },
+    {
+      "global_frame": 2239,
+      "blocked": 1,
+      "objects": [
+        "june / head ch4 hair cap"
+      ]
+    },
+    {
+      "global_frame": 2240,
+      "blocked": 1,
+      "objects": [
+        "june / head ch4 hair cap"
+      ]
+    },
+    {
+      "global_frame": 2241,
+      "blocked": 1,
+      "objects": [
+        "june / head ch4 hair cap"
+      ]
+    },
+    {
+      "global_frame": 2242,
+      "blocked": 1,
+      "objects": [
+        "june / head ch4 hair cap"
+      ]
+    },
+    {
+      "global_frame": 2243,
+      "blocked": 1,
+      "objects": [
+        "june / head ch4 hair cap"
+      ]
+    },
+    {
+      "global_frame": 2244,
+      "blocked": 1,
+      "objects": [
+        "june / head ch4 hair cap"
+      ]
+    },
+    {
+      "global_frame": 2245,
+      "blocked": 2,
+      "objects": [
+        "june / head ch4 hair cap"
+      ]
+    },
+    {
+      "global_frame": 2246,
+      "blocked": 1,
+      "objects": [
+        "june / head ch4 hair cap"
+      ]
+    },
+    {
+      "global_frame": 2247,
+      "blocked": 1,
+      "objects": [
+        "june / head ch4 hair cap"
+      ]
+    },
+    {
+      "global_frame": 2248,
+      "blocked": 1,
+      "objects": [
+        "june / head ch4 hair cap"
+      ]
+    },
+    {
+      "global_frame": 2249,
+      "blocked": 1,
+      "objects": [
+        "june / head ch4 hair cap"
+      ]
+    },
+    {
+      "global_frame": 2250,
+      "blocked": 1,
+      "objects": [
+        "june / head ch4 hair cap"
+      ]
+    },
+    {
+      "global_frame": 2251,
+      "blocked": 1,
+      "objects": [
+        "june / head ch4 hair cap"
+      ]
+    },
+    {
+      "global_frame": 2252,
+      "blocked": 1,
+      "objects": [
+        "june / head ch4 hair cap"
+      ]
+    },
+    {
+      "global_frame": 2253,
+      "blocked": 1,
+      "objects": [
+        "june / head ch4 hair cap"
+      ]
+    },
+    {
+      "global_frame": 2254,
+      "blocked": 1,
+      "objects": [
+        "june / head ch4 hair cap"
+      ]
+    },
+    {
+      "global_frame": 2255,
+      "blocked": 1,
+      "objects": [
+        "june / head ch4 hair cap"
+      ]
+    },
+    {
+      "global_frame": 2256,
+      "blocked": 1,
+      "objects": [
+        "june / head ch4 hair cap"
+      ]
+    },
+    {
+      "global_frame": 2257,
+      "blocked": 1,
+      "objects": [
+        "june / head ch4 hair cap"
+      ]
+    }
+  ]
+}
