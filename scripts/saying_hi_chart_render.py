@@ -9,8 +9,8 @@ import math
 W,H=1080,1920
 def portrait_crop(path,index):
     im=Image.open(path).convert("RGB")
-    # Smoke lineup camera is orthographic, width 14.2 units; 1.30-unit spacing.
-    center=im.width*(.5+(index-4.5)*1.30/14.2)
+    # Smoke lineup camera is orthographic, width 19.0 units; 1.75-unit spacing.
+    center=im.width*(.5+(index-4.5)*1.75/19.0)
     # Common crop includes head/upper chest even for uniformly shorter Brody.
     r=(round(center-im.width*.043),round(im.height*.16),round(center+im.width*.043),round(im.height*.50))
     return im.crop(r).resize((100,112),Image.Resampling.LANCZOS)
