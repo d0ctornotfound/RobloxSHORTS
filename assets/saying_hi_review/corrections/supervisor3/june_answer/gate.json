@@ -1,0 +1,99 @@
+{
+  "unit": "june_answer",
+  "samples": 57,
+  "sampling_hz": 30,
+  "checks": {
+    "standing_seat_intersections": {
+      "value": 0,
+      "limit": 0,
+      "pass": true
+    },
+    "speaker_occlusion_samples": {
+      "value": 0,
+      "limit": 0,
+      "pass": true
+    },
+    "speaker_in_frame": {
+      "value": true,
+      "limit": true,
+      "pass": true
+    },
+    "speaker_front_dot": {
+      "value": 0.7383320936044022,
+      "limit": 0.72,
+      "pass": true
+    },
+    "speaker_body_visible_fraction": {
+      "value": 1.0,
+      "limit": 0.9,
+      "pass": true
+    },
+    "speaker_body_in_frame": {
+      "value": true,
+      "limit": true,
+      "pass": true
+    }
+  },
+  "pass": true,
+  "camera": {
+    "location": [
+      7.25,
+      4.349999904632568,
+      1.850000023841858
+    ],
+    "target": [
+      5.050000190734863,
+      1.649999976158142,
+      1.2000000476837158
+    ],
+    "lens": 48,
+    "setup_face": {
+      "samples": 26,
+      "blocked": 0,
+      "bounds": [
+        0.4876018464565277,
+        0.6454840898513794,
+        0.6271657347679138,
+        0.7493128776550293,
+        2.973863124847412
+      ],
+      "safe": true,
+      "visible_fraction": 1.0
+    },
+    "setup_body": {
+      "samples": 19,
+      "blocked": 0,
+      "bounds": [
+        0.15077127516269684,
+        0.7891529202461243,
+        0.22089509665966034,
+        0.8038226366043091,
+        2.7123658657073975
+      ],
+      "safe": true,
+      "visible_fraction": 1.0
+    },
+    "setup_front_dot": 0.7400234352082755,
+    "setup_pencil": {
+      "visible_fraction": 1,
+      "safe": true,
+      "samples": 1
+    },
+    "setup_external_pencil": {
+      "blocked": 0,
+      "samples": 1
+    }
+  },
+  "marks": {
+    "june": [
+      5.050000190734863,
+      1.649999976158142,
+      0.0
+    ],
+    "narrator": [
+      5.050000190734863,
+      3.6500000953674316,
+      0.0
+    ]
+  }
+}

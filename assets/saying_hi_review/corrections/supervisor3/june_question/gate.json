@@ -1,0 +1,131 @@
+{
+  "unit": "june_question",
+  "samples": 113,
+  "sampling_hz": 30,
+  "checks": {
+    "standing_seat_intersections": {
+      "value": 0,
+      "limit": 0,
+      "pass": true
+    },
+    "speaker_occlusion_samples": {
+      "value": 5,
+      "limit": 0,
+      "pass": false
+    },
+    "speaker_in_frame": {
+      "value": true,
+      "limit": true,
+      "pass": true
+    },
+    "speaker_front_dot": {
+      "value": 0.8520339727401733,
+      "limit": 0.72,
+      "pass": true
+    },
+    "speaker_body_visible_fraction": {
+      "value": 0.8333333333333334,
+      "limit": 0.9,
+      "pass": false
+    },
+    "speaker_body_in_frame": {
+      "value": true,
+      "limit": true,
+      "pass": true
+    },
+    "external_pencil_occlusion_samples": {
+      "value": 0,
+      "limit": 0,
+      "pass": true
+    },
+    "pencil_in_frame": {
+      "value": true,
+      "limit": true,
+      "pass": true
+    },
+    "visible_pencil_fraction": {
+      "value": 0.17391304347826086,
+      "limit": 0.45,
+      "pass": false
+    }
+  },
+  "pass": false,
+  "camera": {
+    "location": [
+      3.250000238418579,
+      0.35000014305114746,
+      1.850000023841858
+    ],
+    "target": [
+      5.050000190734863,
+      3.6500000953674316,
+      1.2000000476837158
+    ],
+    "lens": 48,
+    "setup_face": {
+      "samples": 25,
+      "blocked": 0,
+      "bounds": [
+        0.46635735034942627,
+        0.6310357451438904,
+        0.6102717518806458,
+        0.7222577929496765,
+        3.2093865871429443
+      ],
+      "safe": true,
+      "visible_fraction": 1.0
+    },
+    "setup_body": {
+      "samples": 19,
+      "blocked": 3,
+      "bounds": [
+        0.113448865711689,
+        0.8003049492835999,
+        0.24789445102214813,
+        0.770114541053772,
+        2.4726877212524414
+      ],
+      "safe": true,
+      "visible_fraction": 0.8421052631578947
+    },
+    "setup_front_dot": 0.8585537672042847,
+    "setup_pencil": {
+      "samples": 48,
+      "blocked": 39,
+      "bounds": [
+        0.2593996822834015,
+        0.286923348903656,
+        0.5383729934692383,
+        0.6119359731674194,
+        2.5530240535736084
+      ],
+      "safe": true,
+      "visible_fraction": 0.1875
+    },
+    "setup_external_pencil": {
+      "samples": 48,
+      "blocked": 0,
+      "bounds": [
+        0.2593996822834015,
+        0.286923348903656,
+        0.5383729934692383,
+        0.6119359731674194,
+        2.5530240535736084
+      ],
+      "safe": true,
+      "visible_fraction": 1.0
+    }
+  },
+  "marks": {
+    "june": [
+      5.050000190734863,
+      1.649999976158142,
+      0.0
+    ],
+    "narrator": [
+      5.050000190734863,
+      3.6500000953674316,
+      0.0
+    ]
+  }
+}
