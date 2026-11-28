@@ -41,6 +41,8 @@ jobs:
           missing=[]
           for e in a:
               n=e['shot']; jobs,arts=runs[e['production_run']]
+              if e.get('hold'):
+                  missing.append({'shot':n,'hold':e['hold']}); continue
               j=[x for x in jobs if x['name'].startswith(f'chunk ({n},') or x['name'].startswith(f'chunk ({n})')]
               art=[x for x in arts if x['name']==f'bench-production-shot-{n}' and not x['expired']]
               if len(j)!=1 or j[0]['conclusion']!='success' or len(art)!=1:

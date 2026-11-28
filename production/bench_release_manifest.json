@@ -1,6 +1,6 @@
 {
   "status": "ready_for_assembly",
-  "note": "Pinned candidate source selection, NOT a claim that all artifacts have passed. Gate requires each exact job success, available artifact, full frame and geometry validation. Human playback review still required.",
+  "note": "Pinned candidate selections; hold blocks release; final decoded darkness including captions <=2%; narration not supplied.",
   "shots": [
     {
       "shot": 1,
@@ -286,7 +286,8 @@
       "shot": 41,
       "production_run": 46091013538,
       "preflight_run": 46090683656,
-      "source_commit": "cf6cf3546bc52d672073a1c1d1ab107e0d9c50c6"
+      "source_commit": "cf6cf3546bc52d672073a1c1d1ab107e0d9c50c6",
+      "sha256": "96389eedaa4e1faf3c735fbc7537ea07a0d344d31679573a53e668978a21ab2d"
     },
     {
       "shot": 42,
@@ -306,7 +307,8 @@
       "production_run": 46090683630,
       "preflight_run": 46089668735,
       "source_commit": "9a8eb4c30ba4b8949a997264b9310c95d96a9928",
-      "sha256": "5617f7702af95f6cfb0d88b06e161465f941bfeb60747685d09341bf8bee5081"
+      "sha256": "5617f7702af95f6cfb0d88b06e161465f941bfeb60747685d09341bf8bee5081",
+      "hold": "Captioned encoding failed at 2.117%; even charcoal CRF16 trial reaches 2.016%. Lighting repair preflight 46092157008; replace before assembly."
     },
     {
       "shot": 45,
@@ -319,7 +321,8 @@
       "shot": 46,
       "production_run": 46090683630,
       "preflight_run": 46089843950,
-      "source_commit": "6c1660ec1c55785752cb5bcbb91de9527201fbcc"
+      "source_commit": "6c1660ec1c55785752cb5bcbb91de9527201fbcc",
+      "sha256": "4c42262d22fbb45dd176d2263a2786013110fd38e5f208110e7bed61f015952b"
     },
     {
       "shot": 47,

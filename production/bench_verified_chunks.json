@@ -1,6 +1,6 @@
 {
-  "status": "45 final-version numerical passes; assembly and visual review pending",
-  "verified_shots": 45,
+  "status": "47 uncaptioned production numerical passes, 46 eligible; shot 44 withheld for caption-inclusive lighting correction; shot 43 pending",
+  "verified_shots": 47,
   "shots": [
     {
       "shot": 1,
@@ -563,6 +563,20 @@
       "visual_status": "sampled production frames inspected; continuous playback pending"
     },
     {
+      "shot": 41,
+      "artifact_id": 15241621589,
+      "production_run": 46091013538,
+      "preflight_run": 46090683656,
+      "source_commit": "cf6cf3546bc52d672073a1c1d1ab107e0d9c50c6",
+      "encoded_max_near_black_percent": 0,
+      "sha256": "96389eedaa4e1faf3c735fbc7537ea07a0d344d31679573a53e668978a21ab2d",
+      "frames": 60,
+      "duration": 2.5,
+      "passed": true,
+      "independent_checks": "MP4 SHA256, independently decoded count and darkness, exact geometry and PNG indices",
+      "visual_status": "five production frames inspected; continuous playback pending"
+    },
+    {
       "shot": 42,
       "artifact_id": 15240903046,
       "production_run": 46088571771,
@@ -588,7 +602,7 @@
       "sha256": "5617f7702af95f6cfb0d88b06e161465f941bfeb60747685d09341bf8bee5081",
       "passed": true,
       "independent_checks": "MP4 SHA256, independently decoded darkness and 60 frames, profile, exact geometry and PNG indices",
-      "visual_status": "Five production frames inspected; continuous master review pending."
+      "visual_status": "HOLD: caption-inclusive independent encode exceeded 2%; supersede with corrected source"
     },
     {
       "shot": 45,
@@ -603,6 +617,20 @@
       "passed": true,
       "independent_checks": "MP4 SHA256, independently decoded darkness and 60 frames, profile, exact geometry and PNG indices",
       "visual_status": "Five production frames inspected; continuous master review pending."
+    },
+    {
+      "shot": 46,
+      "artifact_id": 15241576943,
+      "production_run": 46090683630,
+      "preflight_run": 46089843950,
+      "source_commit": "6c1660ec1c55785752cb5bcbb91de9527201fbcc",
+      "encoded_max_near_black_percent": 0.6929012345679012,
+      "sha256": "4c42262d22fbb45dd176d2263a2786013110fd38e5f208110e7bed61f015952b",
+      "frames": 60,
+      "duration": 2.5,
+      "passed": true,
+      "independent_checks": "MP4 SHA256, independently decoded count and darkness, exact geometry and PNG indices",
+      "visual_status": "five production frames inspected; continuous playback pending"
     },
     {
       "shot": 47,

@@ -11,6 +11,7 @@ def verify(root, entries, complete=True):
     evidence=[]
     for e in sorted(entries,key=lambda x:x["shot"]):
         n=e["shot"]; p=root/f"shot_{n:02d}"
+        assert not e.get("hold"), f"Shot {n} withheld: {e.get('hold')}"
         q=json.loads((p/"chunk_validation.json").read_text())
         m=json.loads((p/"manifest.json").read_text())
         g=json.loads((p/"geometry_all_frames.json").read_text())

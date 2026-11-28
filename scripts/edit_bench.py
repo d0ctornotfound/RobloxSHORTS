@@ -35,11 +35,11 @@ def main():
         for f in range(first,last+1):
             word=words[min(len(words)-1,(f-first)*len(words)//(last-first+1))]
             with Image.open(files[f]) as src:
-                im=src.convert("RGB");d=ImageDraw.Draw(im);d.text((270,766),word,font=capfont,anchor="mm",fill="white",stroke_width=3,stroke_fill="black");im.save(frames/("frame_%04d.png"%f))
+                im=src.convert("RGB");d=ImageDraw.Draw(im);d.text((270,766),word,font=capfont,anchor="mm",fill="white",stroke_width=3,stroke_fill="#404040");im.save(frames/("frame_%04d.png"%f))
     video=out/"the_bench.mp4"
     cmd=["ffmpeg","-y","-framerate","24","-i",str(frames/"frame_%04d.png")]
     if a.narration:cmd+=["-i",a.narration,"-map","0:v:0","-map","1:a:0","-af","apad","-c:a","aac","-b:a","160k"]
-    cmd+=["-t","120","-c:v","libx264","-crf","18","-pix_fmt","yuv420p","-movflags","+faststart",str(video)]
+    cmd+=["-t","120","-c:v","libx264","-crf","16","-pix_fmt","yuv420p","-movflags","+faststart",str(video)]
     subprocess.run(cmd,check=True)
     manifest={"resolution":[540,960],"frame_count":expected,"fps":24,"duration":120,"voice":"user-provided" if a.narration else "none; estimated caption timing","sha256":hashlib.sha256(video.read_bytes()).hexdigest(),"shots":[{"id":s["id"],"first":round(s["start"]*24)+1,"last":round(s["end"]*24)} for s in story["shots"]]}
     (out/"manifest.json").write_text(json.dumps(manifest,indent=2))
