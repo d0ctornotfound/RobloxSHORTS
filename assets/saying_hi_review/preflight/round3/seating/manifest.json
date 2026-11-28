@@ -1,0 +1,1999 @@
+{
+  "unit": "seating",
+  "sentence_ids": [
+    43
+  ],
+  "mode": "smoke",
+  "variant": null,
+  "engine": "EEVEE",
+  "denoising": false,
+  "eevee_spatial_samples": 32,
+  "rendered_temporal_samples_per_second": null,
+  "encoded_fps_target": null,
+  "actual_rendered_frames": 1,
+  "expected_rendered_frames": 1,
+  "frame_window": [
+    2713,
+    2764
+  ],
+  "scenery": {
+    "repository": "AdityapalW/Roblox-skill",
+    "commit": "54b34ba1be2e3013a9de59e40db288d8f2ebda53",
+    "file": "Itlay/Itlay.gltf",
+    "git_blob": "20108af3a19fae6b5beaa5fac2e3305b56112a41",
+    "mesh_objects": 196,
+    "objects": 207,
+    "transform": "native Blender glTF axis conversion; root identity",
+    "texture_provenance": "Repository README: procedural geometry/textures with selected CC0 Poly Haven photo textures; individual texture attribution not supplied by source manifest.",
+    "native_well_adaptation": {
+      "source_group": "Piazza fountain",
+      "mesh_children": 6,
+      "original_world_min": [
+        -3.9600000381469727,
+        -7.960000038146973,
+        2.98023217215615e-10
+      ],
+      "original_world_max": [
+        3.9600000381469727,
+        -0.039999961853027344,
+        3.8241324424743652
+      ],
+      "uniform_scale": 0.35984848138203784,
+      "adapted_world_min": [
+        -1.4249999523162842,
+        -1.4250000715255737,
+        0.0
+      ],
+      "adapted_world_max": [
+        1.4249999523162842,
+        1.4249999523162842,
+        1.376108169555664
+      ],
+      "note": "Native source stone water feature is the story well; no duplicate added well, material assignments unchanged."
+    },
+    "adaptation": "Actual source fountain recentered/scaled as the sole central water feature; source cobbles and facades preserved. Story-local wall and seats calibrated from measured seated pose data. No duplicate fountain or replacement paving."
+  },
+  "metrics": [
+    {
+      "global_frame": 2713,
+      "sentence": 43,
+      "metrics": {
+        "seat_top": 0.46482717990875244,
+        "seat_contacts": {
+          "june": {
+            "seated_fraction_command": 1,
+            "signed_rear_hip_gap": 5.960464477539063e-08,
+            "signed_foot_gaps": [
+              0.0,
+              0.0
+            ],
+            "foot_step_drift": null
+          },
+          "narrator": {
+            "seated_fraction_command": 0,
+            "signed_rear_hip_gap": 0.4290710687637329,
+            "signed_foot_gaps": [
+              0.0,
+              0.0
+            ],
+            "foot_step_drift": null
+          }
+        },
+        "waffle": {
+          "evaluated_min_z": -9.313225746154785e-10
+        },
+        "dog_visible": true,
+        "limitation": "June's lateral seated shift translates feet; measured drift, not an exact stepping solve."
+      }
+    },
+    {
+      "global_frame": 2714,
+      "sentence": 43,
+      "metrics": {
+        "seat_top": 0.46482717990875244,
+        "seat_contacts": {
+          "june": {
+            "seated_fraction_command": 1,
+            "signed_rear_hip_gap": 5.960464477539063e-08,
+            "signed_foot_gaps": [
+              0.0,
+              0.0
+            ],
+            "foot_step_drift": [
+              0.0030359625342410174,
+              0.00303593272650589
+            ]
+          },
+          "narrator": {
+            "seated_fraction_command": 0,
+            "signed_rear_hip_gap": 0.4290710687637329,
+            "signed_foot_gaps": [
+              0.0,
+              0.0
+            ],
+            "foot_step_drift": [
+              0.0,
+              0.0
+            ]
+          }
+        },
+        "waffle": {
+          "evaluated_min_z": -7.188646122813225e-09
+        },
+        "dog_visible": true,
+        "limitation": "June's lateral seated shift translates feet; measured drift, not an exact stepping solve."
+      }
+    },
+    {
+      "global_frame": 2715,
+      "sentence": 43,
+      "metrics": {
+        "seat_top": 0.46482717990875244,
+        "seat_contacts": {
+          "june": {
+            "seated_fraction_command": 1,
+            "signed_rear_hip_gap": 5.960464477539063e-08,
+            "signed_foot_gaps": [
+              0.0,
+              0.0
+            ],
+            "foot_step_drift": [
+              0.008654177369296873,
+              0.00865420679532695
+            ]
+          },
+          "narrator": {
+            "seated_fraction_command": 0,
+            "signed_rear_hip_gap": 0.4290710687637329,
+            "signed_foot_gaps": [
+              0.0,
+              0.0
+            ],
+            "foot_step_drift": [
+              0.0,
+              0.0
+            ]
+          }
+        },
+        "waffle": {
+          "evaluated_min_z": -6.05359673500061e-09
+        },
+        "dog_visible": true,
+        "limitation": "June's lateral seated shift translates feet; measured drift, not an exact stepping solve."
+      }
+    },
+    {
+      "global_frame": 2716,
+      "sentence": 43,
+      "metrics": {
+        "seat_top": 0.46482717990875244,
+        "seat_contacts": {
+          "june": {
+            "seated_fraction_command": 1,
+            "signed_rear_hip_gap": 5.960464477539063e-08,
+            "signed_foot_gaps": [
+              0.0,
+              0.0
+            ],
+            "foot_step_drift": [
+              0.013592362156608183,
+              0.013592302738454728
+            ]
+          },
+          "narrator": {
+            "seated_fraction_command": 0,
+            "signed_rear_hip_gap": 0.4290710687637329,
+            "signed_foot_gaps": [
+              0.0,
+              0.0
+            ],
+            "foot_step_drift": [
+              0.0,
+              0.0
+            ]
+          }
+        },
+        "waffle": {
+          "evaluated_min_z": -3.4924596548080444e-09
+        },
+        "dog_visible": true,
+        "limitation": "June's lateral seated shift translates feet; measured drift, not an exact stepping solve."
+      }
+    },
+    {
+      "global_frame": 2717,
+      "sentence": 43,
+      "metrics": {
+        "seat_top": 0.46482717990875244,
+        "seat_contacts": {
+          "june": {
+            "seated_fraction_command": 1,
+            "signed_rear_hip_gap": 5.960464477539063e-08,
+            "signed_foot_gaps": [
+              0.0,
+              0.0
+            ],
+            "foot_step_drift": [
+              0.017850041790314,
+              0.01785011597622065
+            ]
+          },
+          "narrator": {
+            "seated_fraction_command": 0,
+            "signed_rear_hip_gap": 0.4290710687637329,
+            "signed_foot_gaps": [
+              0.0,
+              0.0
+            ],
+            "foot_step_drift": [
+              0.0,
+              0.0
+            ]
+          }
+        },
+        "waffle": {
+          "evaluated_min_z": -9.313225746154785e-10
+        },
+        "dog_visible": true,
+        "limitation": "June's lateral seated shift translates feet; measured drift, not an exact stepping solve."
+      }
+    },
+    {
+      "global_frame": 2718,
+      "sentence": 43,
+      "metrics": {
+        "seat_top": 0.46482717990875244,
+        "seat_contacts": {
+          "june": {
+            "seated_fraction_command": 1,
+            "signed_rear_hip_gap": 5.960464477539063e-08,
+            "signed_foot_gaps": [
+              0.0,
+              0.0
+            ],
+            "foot_step_drift": [
+              0.021427750473061617,
+              0.02142769071082351
+            ]
+          },
+          "narrator": {
+            "seated_fraction_command": 0,
+            "signed_rear_hip_gap": 0.4290710687637329,
+            "signed_foot_gaps": [
+              0.0,
+              0.0
+            ],
+            "foot_step_drift": [
+              0.0,
+              0.0
+            ]
+          }
+        },
+        "waffle": {
+          "evaluated_min_z": -2.3283064365386963e-09
+        },
+        "dog_visible": true,
+        "limitation": "June's lateral seated shift translates feet; measured drift, not an exact stepping solve."
+      }
+    },
+    {
+      "global_frame": 2719,
+      "sentence": 43,
+      "metrics": {
+        "seat_top": 0.46482717990875244,
+        "seat_contacts": {
+          "june": {
+            "seated_fraction_command": 1,
+            "signed_rear_hip_gap": 5.960464477539063e-08,
+            "signed_foot_gaps": [
+              0.0,
+              0.0
+            ],
+            "foot_step_drift": [
+              0.024325012882330698,
+              0.024325072705104093
+            ]
+          },
+          "narrator": {
+            "seated_fraction_command": 0,
+            "signed_rear_hip_gap": 0.4290710687637329,
+            "signed_foot_gaps": [
+              0.0,
+              0.0
+            ],
+            "foot_step_drift": [
+              0.0,
+              0.0
+            ]
+          }
+        },
+        "waffle": {
+          "evaluated_min_z": -1.0244548320770264e-08
+        },
+        "dog_visible": true,
+        "limitation": "June's lateral seated shift translates feet; measured drift, not an exact stepping solve."
+      }
+    },
+    {
+      "global_frame": 2720,
+      "sentence": 43,
+      "metrics": {
+        "seat_top": 0.46482717990875244,
+        "seat_contacts": {
+          "june": {
+            "seated_fraction_command": 1,
+            "signed_rear_hip_gap": 5.960464477539063e-08,
+            "signed_foot_gaps": [
+              0.0,
+              0.0
+            ],
+            "foot_step_drift": [
+              0.026542186595713276,
+              0.0265420977780794
+            ]
+          },
+          "narrator": {
+            "seated_fraction_command": 0,
+            "signed_rear_hip_gap": 0.4290710687637329,
+            "signed_foot_gaps": [
+              0.0,
+              0.0
+            ],
+            "foot_step_drift": [
+              0.0,
+              0.0
+            ]
+          }
+        },
+        "waffle": {
+          "evaluated_min_z": -1.862645149230957e-09
+        },
+        "dog_visible": true,
+        "limitation": "June's lateral seated shift translates feet; measured drift, not an exact stepping solve."
+      }
+    },
+    {
+      "global_frame": 2721,
+      "sentence": 43,
+      "metrics": {
+        "seat_top": 0.46482717990875244,
+        "seat_contacts": {
+          "june": {
+            "seated_fraction_command": 1,
+            "signed_rear_hip_gap": 5.960464477539063e-08,
+            "signed_foot_gaps": [
+              0.0,
+              0.0
+            ],
+            "foot_step_drift": [
+              0.02807891355479512,
+              0.028078973671806277
+            ]
+          },
+          "narrator": {
+            "seated_fraction_command": 0,
+            "signed_rear_hip_gap": 0.4290710687637329,
+            "signed_foot_gaps": [
+              0.0,
+              0.0
+            ],
+            "foot_step_drift": [
+              0.0,
+              0.0
+            ]
+          }
+        },
+        "waffle": {
+          "evaluated_min_z": -6.51925802230835e-09
+        },
+        "dog_visible": true,
+        "limitation": "June's lateral seated shift translates feet; measured drift, not an exact stepping solve."
+      }
+    },
+    {
+      "global_frame": 2722,
+      "sentence": 43,
+      "metrics": {
+        "seat_top": 0.46482717990875244,
+        "seat_contacts": {
+          "june": {
+            "seated_fraction_command": 1,
+            "signed_rear_hip_gap": 5.960464477539063e-08,
+            "signed_foot_gaps": [
+              0.0,
+              0.0
+            ],
+            "foot_step_drift": [
+              0.028935670419494262,
+              0.02893561107655412
+            ]
+          },
+          "narrator": {
+            "seated_fraction_command": 0,
+            "signed_rear_hip_gap": 0.4290710687637329,
+            "signed_foot_gaps": [
+              0.0,
+              0.0
+            ],
+            "foot_step_drift": [
+              0.0,
+              0.0
+            ]
+          }
+        },
+        "waffle": {
+          "evaluated_min_z": 6.51925802230835e-09
+        },
+        "dog_visible": true,
+        "limitation": "June's lateral seated shift translates feet; measured drift, not an exact stepping solve."
+      }
+    },
+    {
+      "global_frame": 2723,
+      "sentence": 43,
+      "metrics": {
+        "seat_top": 0.46482717990875244,
+        "seat_contacts": {
+          "june": {
+            "seated_fraction_command": 1,
+            "signed_rear_hip_gap": 5.960464477539063e-08,
+            "signed_foot_gaps": [
+              0.0,
+              0.0
+            ],
+            "foot_step_drift": [
+              0.02911186212013443,
+              0.02911192210351925
+            ]
+          },
+          "narrator": {
+            "seated_fraction_command": 0,
+            "signed_rear_hip_gap": 0.4290710687637329,
+            "signed_foot_gaps": [
+              0.0,
+              0.0
+            ],
+            "foot_step_drift": [
+              0.0,
+              0.0
+            ]
+          }
+        },
+        "waffle": {
+          "evaluated_min_z": 6.51925802230835e-09
+        },
+        "dog_visible": true,
+        "limitation": "June's lateral seated shift translates feet; measured drift, not an exact stepping solve."
+      }
+    },
+    {
+      "global_frame": 2724,
+      "sentence": 43,
+      "metrics": {
+        "seat_top": 0.46482717990875244,
+        "seat_contacts": {
+          "june": {
+            "seated_fraction_command": 1,
+            "signed_rear_hip_gap": 5.960464477539063e-08,
+            "signed_foot_gaps": [
+              0.0,
+              0.0
+            ],
+            "foot_step_drift": [
+              0.028608084026001616,
+              0.028608024003533957
+            ]
+          },
+          "narrator": {
+            "seated_fraction_command": 0.0020954074074074056,
+            "signed_rear_hip_gap": 0.4290761947631836,
+            "signed_foot_gaps": [
+              0.0,
+              0.0
+            ],
+            "foot_step_drift": [
+              0.0,
+              0.0
+            ]
+          }
+        },
+        "waffle": {
+          "evaluated_min_z": -8.381903171539307e-09
+        },
+        "dog_visible": true,
+        "limitation": "June's lateral seated shift translates feet; measured drift, not an exact stepping solve."
+      }
+    },
+    {
+      "global_frame": 2725,
+      "sentence": 43,
+      "metrics": {
+        "seat_top": 0.46482717990875244,
+        "seat_contacts": {
+          "june": {
+            "seated_fraction_command": 1,
+            "signed_rear_hip_gap": 5.960464477539063e-08,
+            "signed_foot_gaps": [
+              0.0,
+              0.0
+            ],
+            "foot_step_drift": [
+              0.027423978299325483,
+              0.027423978299325483
+            ]
+          },
+          "narrator": {
+            "seated_fraction_command": 0.00822992592592592,
+            "signed_rear_hip_gap": 0.42914634943008423,
+            "signed_foot_gaps": [
+              0.0,
+              0.0
+            ],
+            "foot_step_drift": [
+              0.0,
+              0.0
+            ]
+          }
+        },
+        "waffle": {
+          "evaluated_min_z": 1.0710209608078003e-08
+        },
+        "dog_visible": true,
+        "limitation": "June's lateral seated shift translates feet; measured drift, not an exact stepping solve."
+      }
+    },
+    {
+      "global_frame": 2726,
+      "sentence": 43,
+      "metrics": {
+        "seat_top": 0.46482717990875244,
+        "seat_contacts": {
+          "june": {
+            "seated_fraction_command": 1,
+            "signed_rear_hip_gap": 5.960464477539063e-08,
+            "signed_foot_gaps": [
+              0.0,
+              0.0
+            ],
+            "foot_step_drift": [
+              0.02555954432727564,
+              0.02555954432727564
+            ]
+          },
+          "narrator": {
+            "seated_fraction_command": 0.018176,
+            "signed_rear_hip_gap": 0.4294339418411255,
+            "signed_foot_gaps": [
+              0.0,
+              0.0
+            ],
+            "foot_step_drift": [
+              0.0,
+              0.0
+            ]
+          }
+        },
+        "waffle": {
+          "evaluated_min_z": 1.4901161193847656e-08
+        },
+        "dog_visible": true,
+        "limitation": "June's lateral seated shift translates feet; measured drift, not an exact stepping solve."
+      }
+    },
+    {
+      "global_frame": 2727,
+      "sentence": 43,
+      "metrics": {
+        "seat_top": 0.46482717990875244,
+        "seat_contacts": {
+          "june": {
+            "seated_fraction_command": 1,
+            "signed_rear_hip_gap": 5.960464477539063e-08,
+            "signed_foot_gaps": [
+              0.0,
+              0.0
+            ],
+            "foot_step_drift": [
+              0.023014902915102886,
+              0.023014902915102886
+            ]
+          },
+          "narrator": {
+            "seated_fraction_command": 0.03170607407407409,
+            "signed_rear_hip_gap": 0.4301561117172241,
+            "signed_foot_gaps": [
+              0.0,
+              0.0
+            ],
+            "foot_step_drift": [
+              0.0,
+              0.0
+            ]
+          }
+        },
+        "waffle": {
+          "evaluated_min_z": 6.51925802230835e-09
+        },
+        "dog_visible": true,
+        "limitation": "June's lateral seated shift translates feet; measured drift, not an exact stepping solve."
+      }
+    },
+    {
+      "global_frame": 2728,
+      "sentence": 43,
+      "metrics": {
+        "seat_top": 0.46482717990875244,
+        "seat_contacts": {
+          "june": {
+            "seated_fraction_command": 1,
+            "signed_rear_hip_gap": 5.960464477539063e-08,
+            "signed_foot_gaps": [
+              0.0,
+              0.0
+            ],
+            "foot_step_drift": [
+              0.019790053082895758,
+              0.019790112643289805
+            ]
+          },
+          "narrator": {
+            "seated_fraction_command": 0.048592592592592576,
+            "signed_rear_hip_gap": 0.43155401945114136,
+            "signed_foot_gaps": [
+              0.0,
+              0.0
+            ],
+            "foot_step_drift": [
+              0.0,
+              0.0
+            ]
+          }
+        },
+        "waffle": {
+          "evaluated_min_z": 2.3283064365386963e-09
+        },
+        "dog_visible": true,
+        "limitation": "June's lateral seated shift translates feet; measured drift, not an exact stepping solve."
+      }
+    },
+    {
+      "global_frame": 2729,
+      "sentence": 43,
+      "metrics": {
+        "seat_top": 0.46482717990875244,
+        "seat_contacts": {
+          "june": {
+            "seated_fraction_command": 1,
+            "signed_rear_hip_gap": 5.960464477539063e-08,
+            "signed_foot_gaps": [
+              0.0,
+              0.0
+            ],
+            "foot_step_drift": [
+              0.015884995792857372,
+              0.015884936247593715
+            ]
+          },
+          "narrator": {
+            "seated_fraction_command": 0.068608,
+            "signed_rear_hip_gap": 0.4338377118110657,
+            "signed_foot_gaps": [
+              0.0,
+              0.0
+            ],
+            "foot_step_drift": [
+              0.0,
+              0.0
+            ]
+          }
+        },
+        "waffle": {
+          "evaluated_min_z": -4.190951585769653e-09
+        },
+        "dog_visible": true,
+        "limitation": "June's lateral seated shift translates feet; measured drift, not an exact stepping solve."
+      }
+    },
+    {
+      "global_frame": 2730,
+      "sentence": 43,
+      "metrics": {
+        "seat_top": 0.46482717990875244,
+        "seat_contacts": {
+          "june": {
+            "seated_fraction_command": 1,
+            "signed_rear_hip_gap": 5.960464477539063e-08,
+            "signed_foot_gaps": [
+              0.0,
+              0.0
+            ],
+            "foot_step_drift": [
+              0.011299610449834454,
+              0.011299610449834454
+            ]
+          },
+          "narrator": {
+            "seated_fraction_command": 0.09152474074074074,
+            "signed_rear_hip_gap": 0.4371175169944763,
+            "signed_foot_gaps": [
+              0.0,
+              0.0
+            ],
+            "foot_step_drift": [
+              0.0,
+              0.0
+            ]
+          }
+        },
+        "waffle": {
+          "evaluated_min_z": 1.1175870895385742e-08
+        },
+        "dog_visible": true,
+        "limitation": "June's lateral seated shift translates feet; measured drift, not an exact stepping solve."
+      }
+    },
+    {
+      "global_frame": 2731,
+      "sentence": 43,
+      "metrics": {
+        "seat_top": 0.46482717990875244,
+        "seat_contacts": {
+          "june": {
+            "seated_fraction_command": 1,
+            "signed_rear_hip_gap": 5.960464477539063e-08,
+            "signed_foot_gaps": [
+              0.0,
+              0.0
+            ],
+            "foot_step_drift": [
+              0.006034016702219275,
+              0.006034076088721965
+            ]
+          },
+          "narrator": {
+            "seated_fraction_command": 0.11711525925925921,
+            "signed_rear_hip_gap": 0.441325306892395,
+            "signed_foot_gaps": [
+              0.0,
+              0.0
+            ],
+            "foot_step_drift": [
+              0.0,
+              0.0
+            ]
+          }
+        },
+        "waffle": {
+          "evaluated_min_z": 1.1175870895385742e-08
+        },
+        "dog_visible": true,
+        "limitation": "June's lateral seated shift translates feet; measured drift, not an exact stepping solve."
+      }
+    },
+    {
+      "global_frame": 2732,
+      "sentence": 43,
+      "metrics": {
+        "seat_top": 0.46482717990875244,
+        "seat_contacts": {
+          "june": {
+            "seated_fraction_command": 1,
+            "signed_rear_hip_gap": 5.960464477539063e-08,
+            "signed_foot_gaps": [
+              0.0,
+              0.0
+            ],
+            "foot_step_drift": [
+              0.0008308887481689453,
+              0.0008308887481689453
+            ]
+          },
+          "narrator": {
+            "seated_fraction_command": 0.145152,
+            "signed_rear_hip_gap": 0.4461292028427124,
+            "signed_foot_gaps": [
+              0.0,
+              0.0
+            ],
+            "foot_step_drift": [
+              0.0,
+              0.0
+            ]
+          }
+        },
+        "waffle": {
+          "evaluated_min_z": -1.1175870895385742e-08
+        },
+        "dog_visible": true,
+        "limitation": "June's lateral seated shift translates feet; measured drift, not an exact stepping solve."
+      }
+    },
+    {
+      "global_frame": 2733,
+      "sentence": 43,
+      "metrics": {
+        "seat_top": 0.46482717990875244,
+        "seat_contacts": {
+          "june": {
+            "seated_fraction_command": 1,
+            "signed_rear_hip_gap": 5.960464477539063e-08,
+            "signed_foot_gaps": [
+              0.0,
+              0.0
+            ],
+            "foot_step_drift": [
+              0.0,
+              0.0
+            ]
+          },
+          "narrator": {
+            "seated_fraction_command": 0.17540740740740743,
+            "signed_rear_hip_gap": 0.45086032152175903,
+            "signed_foot_gaps": [
+              0.0,
+              0.0
+            ],
+            "foot_step_drift": [
+              0.0,
+              0.0
+            ]
+          }
+        },
+        "waffle": {
+          "evaluated_min_z": 7.450580596923828e-09
+        },
+        "dog_visible": true,
+        "limitation": "June's lateral seated shift translates feet; measured drift, not an exact stepping solve."
+      }
+    },
+    {
+      "global_frame": 2734,
+      "sentence": 43,
+      "metrics": {
+        "seat_top": 0.46482717990875244,
+        "seat_contacts": {
+          "june": {
+            "seated_fraction_command": 1,
+            "signed_rear_hip_gap": 5.960464477539063e-08,
+            "signed_foot_gaps": [
+              0.0,
+              0.0
+            ],
+            "foot_step_drift": [
+              0.0,
+              0.0
+            ]
+          },
+          "narrator": {
+            "seated_fraction_command": 0.20765392592592585,
+            "signed_rear_hip_gap": 0.4544668197631836,
+            "signed_foot_gaps": [
+              0.0,
+              0.0
+            ],
+            "foot_step_drift": [
+              0.0,
+              0.0
+            ]
+          }
+        },
+        "waffle": {
+          "evaluated_min_z": 7.450580596923828e-09
+        },
+        "dog_visible": true,
+        "limitation": "June's lateral seated shift translates feet; measured drift, not an exact stepping solve."
+      }
+    },
+    {
+      "global_frame": 2735,
+      "sentence": 43,
+      "metrics": {
+        "seat_top": 0.46482717990875244,
+        "seat_contacts": {
+          "june": {
+            "seated_fraction_command": 1,
+            "signed_rear_hip_gap": 5.960464477539063e-08,
+            "signed_foot_gaps": [
+              0.0,
+              0.0
+            ],
+            "foot_step_drift": [
+              0.0,
+              0.0
+            ]
+          },
+          "narrator": {
+            "seated_fraction_command": 0.241664,
+            "signed_rear_hip_gap": 0.45552873611450195,
+            "signed_foot_gaps": [
+              0.0,
+              0.0
+            ],
+            "foot_step_drift": [
+              0.0,
+              0.0
+            ]
+          }
+        },
+        "waffle": {
+          "evaluated_min_z": 1.30385160446167e-08
+        },
+        "dog_visible": true,
+        "limitation": "June's lateral seated shift translates feet; measured drift, not an exact stepping solve."
+      }
+    },
+    {
+      "global_frame": 2736,
+      "sentence": 43,
+      "metrics": {
+        "seat_top": 0.46482717990875244,
+        "seat_contacts": {
+          "june": {
+            "seated_fraction_command": 1,
+            "signed_rear_hip_gap": 5.960464477539063e-08,
+            "signed_foot_gaps": [
+              0.0,
+              0.0
+            ],
+            "foot_step_drift": [
+              0.0,
+              0.0
+            ]
+          },
+          "narrator": {
+            "seated_fraction_command": 0.2772100740740741,
+            "signed_rear_hip_gap": 0.45236921310424805,
+            "signed_foot_gaps": [
+              0.0,
+              0.0
+            ],
+            "foot_step_drift": [
+              0.0,
+              0.0
+            ]
+          }
+        },
+        "waffle": {
+          "evaluated_min_z": -1.1175870895385742e-08
+        },
+        "dog_visible": true,
+        "limitation": "June's lateral seated shift translates feet; measured drift, not an exact stepping solve."
+      }
+    },
+    {
+      "global_frame": 2737,
+      "sentence": 43,
+      "metrics": {
+        "seat_top": 0.46482717990875244,
+        "seat_contacts": {
+          "june": {
+            "seated_fraction_command": 1,
+            "signed_rear_hip_gap": 5.960464477539063e-08,
+            "signed_foot_gaps": [
+              0.0,
+              0.0
+            ],
+            "foot_step_drift": [
+              0.0,
+              0.0
+            ]
+          },
+          "narrator": {
+            "seated_fraction_command": 0.3140645925925925,
+            "signed_rear_hip_gap": 0.4432752728462219,
+            "signed_foot_gaps": [
+              0.0,
+              0.0
+            ],
+            "foot_step_drift": [
+              0.0,
+              0.0
+            ]
+          }
+        },
+        "waffle": {
+          "evaluated_min_z": 5.587935447692871e-09
+        },
+        "dog_visible": true,
+        "limitation": "June's lateral seated shift translates feet; measured drift, not an exact stepping solve."
+      }
+    },
+    {
+      "global_frame": 2738,
+      "sentence": 43,
+      "metrics": {
+        "seat_top": 0.46482717990875244,
+        "seat_contacts": {
+          "june": {
+            "seated_fraction_command": 1,
+            "signed_rear_hip_gap": 5.960464477539063e-08,
+            "signed_foot_gaps": [
+              0.0,
+              0.0
+            ],
+            "foot_step_drift": [
+              0.0,
+              0.0
+            ]
+          },
+          "narrator": {
+            "seated_fraction_command": 0.352,
+            "signed_rear_hip_gap": 0.2775920629501343,
+            "signed_foot_gaps": [
+              0.0,
+              0.0
+            ],
+            "foot_step_drift": [
+              0.0,
+              0.0
+            ]
+          }
+        },
+        "waffle": {
+          "evaluated_min_z": 2.2248576314609636e-09
+        },
+        "dog_visible": true,
+        "limitation": "June's lateral seated shift translates feet; measured drift, not an exact stepping solve."
+      }
+    },
+    {
+      "global_frame": 2739,
+      "sentence": 43,
+      "metrics": {
+        "seat_top": 0.46482717990875244,
+        "seat_contacts": {
+          "june": {
+            "seated_fraction_command": 1,
+            "signed_rear_hip_gap": 5.960464477539063e-08,
+            "signed_foot_gaps": [
+              0.0,
+              0.0
+            ],
+            "foot_step_drift": [
+              0.0,
+              0.0
+            ]
+          },
+          "narrator": {
+            "seated_fraction_command": 0.39078874074074077,
+            "signed_rear_hip_gap": 0.24492168426513672,
+            "signed_foot_gaps": [
+              0.0,
+              0.0
+            ],
+            "foot_step_drift": [
+              0.0,
+              0.0
+            ]
+          }
+        },
+        "waffle": {
+          "evaluated_min_z": -5.587935447692871e-09
+        },
+        "dog_visible": true,
+        "limitation": "June's lateral seated shift translates feet; measured drift, not an exact stepping solve."
+      }
+    },
+    {
+      "global_frame": 2740,
+      "sentence": 43,
+      "metrics": {
+        "seat_top": 0.46482717990875244,
+        "seat_contacts": {
+          "june": {
+            "seated_fraction_command": 1,
+            "signed_rear_hip_gap": 5.960464477539063e-08,
+            "signed_foot_gaps": [
+              0.0,
+              0.0
+            ],
+            "foot_step_drift": [
+              0.0,
+              0.0
+            ]
+          },
+          "narrator": {
+            "seated_fraction_command": 0.43020325925925934,
+            "signed_rear_hip_gap": 0.21103191375732422,
+            "signed_foot_gaps": [
+              0.0,
+              0.0
+            ],
+            "foot_step_drift": [
+              0.0,
+              0.0
+            ]
+          }
+        },
+        "waffle": {
+          "evaluated_min_z": -3.725290298461914e-09
+        },
+        "dog_visible": true,
+        "limitation": "June's lateral seated shift translates feet; measured drift, not an exact stepping solve."
+      }
+    },
+    {
+      "global_frame": 2741,
+      "sentence": 43,
+      "metrics": {
+        "seat_top": 0.46482717990875244,
+        "seat_contacts": {
+          "june": {
+            "seated_fraction_command": 1,
+            "signed_rear_hip_gap": 5.960464477539063e-08,
+            "signed_foot_gaps": [
+              0.0,
+              0.0
+            ],
+            "foot_step_drift": [
+              0.0,
+              0.0
+            ]
+          },
+          "narrator": {
+            "seated_fraction_command": 0.4700160000000001,
+            "signed_rear_hip_gap": 0.1771354079246521,
+            "signed_foot_gaps": [
+              0.0,
+              0.0
+            ],
+            "foot_step_drift": [
+              0.0,
+              0.0
+            ]
+          }
+        },
+        "waffle": {
+          "evaluated_min_z": 7.450580596923828e-09
+        },
+        "dog_visible": true,
+        "limitation": "June's lateral seated shift translates feet; measured drift, not an exact stepping solve."
+      }
+    },
+    {
+      "global_frame": 2742,
+      "sentence": 43,
+      "metrics": {
+        "seat_top": 0.46482717990875244,
+        "seat_contacts": {
+          "june": {
+            "seated_fraction_command": 1,
+            "signed_rear_hip_gap": 5.960464477539063e-08,
+            "signed_foot_gaps": [
+              0.0,
+              0.0
+            ],
+            "foot_step_drift": [
+              0.0,
+              0.0
+            ]
+          },
+          "narrator": {
+            "seated_fraction_command": 0.5099994074074073,
+            "signed_rear_hip_gap": 0.2822805643081665,
+            "signed_foot_gaps": [
+              0.0,
+              0.0
+            ],
+            "foot_step_drift": [
+              0.0,
+              0.0
+            ]
+          }
+        },
+        "waffle": {
+          "evaluated_min_z": 0.0
+        },
+        "dog_visible": true,
+        "limitation": "June's lateral seated shift translates feet; measured drift, not an exact stepping solve."
+      }
+    },
+    {
+      "global_frame": 2743,
+      "sentence": 43,
+      "metrics": {
+        "seat_top": 0.46482717990875244,
+        "seat_contacts": {
+          "june": {
+            "seated_fraction_command": 1,
+            "signed_rear_hip_gap": 5.960464477539063e-08,
+            "signed_foot_gaps": [
+              0.0,
+              0.0
+            ],
+            "foot_step_drift": [
+              0.0,
+              0.0
+            ]
+          },
+          "narrator": {
+            "seated_fraction_command": 0.5499259259259259,
+            "signed_rear_hip_gap": 0.23272669315338135,
+            "signed_foot_gaps": [
+              0.0,
+              0.0
+            ],
+            "foot_step_drift": [
+              0.0,
+              0.0
+            ]
+          }
+        },
+        "waffle": {
+          "evaluated_min_z": 0.0
+        },
+        "dog_visible": true,
+        "limitation": "June's lateral seated shift translates feet; measured drift, not an exact stepping solve."
+      }
+    },
+    {
+      "global_frame": 2744,
+      "sentence": 43,
+      "metrics": {
+        "seat_top": 0.46482717990875244,
+        "seat_contacts": {
+          "june": {
+            "seated_fraction_command": 1,
+            "signed_rear_hip_gap": 5.960464477539063e-08,
+            "signed_foot_gaps": [
+              0.0,
+              0.0
+            ],
+            "foot_step_drift": [
+              0.0,
+              0.0
+            ]
+          },
+          "narrator": {
+            "seated_fraction_command": 0.5895679999999999,
+            "signed_rear_hip_gap": 0.18272799253463745,
+            "signed_foot_gaps": [
+              0.0,
+              0.0
+            ],
+            "foot_step_drift": [
+              0.0,
+              0.0
+            ]
+          }
+        },
+        "waffle": {
+          "evaluated_min_z": 0.0
+        },
+        "dog_visible": true,
+        "limitation": "June's lateral seated shift translates feet; measured drift, not an exact stepping solve."
+      }
+    },
+    {
+      "global_frame": 2745,
+      "sentence": 43,
+      "metrics": {
+        "seat_top": 0.46482717990875244,
+        "seat_contacts": {
+          "june": {
+            "seated_fraction_command": 1,
+            "signed_rear_hip_gap": 5.960464477539063e-08,
+            "signed_foot_gaps": [
+              0.0,
+              0.0
+            ],
+            "foot_step_drift": [
+              0.0,
+              0.0
+            ]
+          },
+          "narrator": {
+            "seated_fraction_command": 0.6286980740740741,
+            "signed_rear_hip_gap": 0.13519293069839478,
+            "signed_foot_gaps": [
+              0.0,
+              0.0
+            ],
+            "foot_step_drift": [
+              0.0,
+              0.0
+            ]
+          }
+        },
+        "waffle": {
+          "evaluated_min_z": -1.1175870895385742e-08
+        },
+        "dog_visible": true,
+        "limitation": "June's lateral seated shift translates feet; measured drift, not an exact stepping solve."
+      }
+    },
+    {
+      "global_frame": 2746,
+      "sentence": 43,
+      "metrics": {
+        "seat_top": 0.46482717990875244,
+        "seat_contacts": {
+          "june": {
+            "seated_fraction_command": 1,
+            "signed_rear_hip_gap": 5.960464477539063e-08,
+            "signed_foot_gaps": [
+              0.0,
+              0.0
+            ],
+            "foot_step_drift": [
+              0.0,
+              0.0
+            ]
+          },
+          "narrator": {
+            "seated_fraction_command": 0.6670885925925927,
+            "signed_rear_hip_gap": 0.09269523620605469,
+            "signed_foot_gaps": [
+              0.0,
+              0.0
+            ],
+            "foot_step_drift": [
+              0.0,
+              0.0
+            ]
+          }
+        },
+        "waffle": {
+          "evaluated_min_z": 1.5832483768463135e-08
+        },
+        "dog_visible": true,
+        "limitation": "June's lateral seated shift translates feet; measured drift, not an exact stepping solve."
+      }
+    },
+    {
+      "global_frame": 2747,
+      "sentence": 43,
+      "metrics": {
+        "seat_top": 0.46482717990875244,
+        "seat_contacts": {
+          "june": {
+            "seated_fraction_command": 1,
+            "signed_rear_hip_gap": 5.960464477539063e-08,
+            "signed_foot_gaps": [
+              0.0,
+              0.0
+            ],
+            "foot_step_drift": [
+              0.0,
+              0.0
+            ]
+          },
+          "narrator": {
+            "seated_fraction_command": 0.704512,
+            "signed_rear_hip_gap": 0.057198286056518555,
+            "signed_foot_gaps": [
+              0.0,
+              0.0
+            ],
+            "foot_step_drift": [
+              0.0,
+              0.0
+            ]
+          }
+        },
+        "waffle": {
+          "evaluated_min_z": 5.587935447692871e-09
+        },
+        "dog_visible": true,
+        "limitation": "June's lateral seated shift translates feet; measured drift, not an exact stepping solve."
+      }
+    },
+    {
+      "global_frame": 2748,
+      "sentence": 43,
+      "metrics": {
+        "seat_top": 0.46482717990875244,
+        "seat_contacts": {
+          "june": {
+            "seated_fraction_command": 1,
+            "signed_rear_hip_gap": 5.960464477539063e-08,
+            "signed_foot_gaps": [
+              0.0,
+              0.0
+            ],
+            "foot_step_drift": [
+              0.0,
+              0.0
+            ]
+          },
+          "narrator": {
+            "seated_fraction_command": 0.7407407407407407,
+            "signed_rear_hip_gap": 0.02994433045387268,
+            "signed_foot_gaps": [
+              0.0,
+              0.0
+            ],
+            "foot_step_drift": [
+              0.0,
+              0.0
+            ]
+          }
+        },
+        "waffle": {
+          "evaluated_min_z": 2.561137080192566e-09
+        },
+        "dog_visible": true,
+        "limitation": "June's lateral seated shift translates feet; measured drift, not an exact stepping solve."
+      }
+    },
+    {
+      "global_frame": 2749,
+      "sentence": 43,
+      "metrics": {
+        "seat_top": 0.46482717990875244,
+        "seat_contacts": {
+          "june": {
+            "seated_fraction_command": 1,
+            "signed_rear_hip_gap": 5.960464477539063e-08,
+            "signed_foot_gaps": [
+              0.0,
+              0.0
+            ],
+            "foot_step_drift": [
+              0.0,
+              0.0
+            ]
+          },
+          "narrator": {
+            "seated_fraction_command": 0.7755472592592593,
+            "signed_rear_hip_gap": 0.01148843765258789,
+            "signed_foot_gaps": [
+              0.0,
+              0.0
+            ],
+            "foot_step_drift": [
+              0.0,
+              0.0
+            ]
+          }
+        },
+        "waffle": {
+          "evaluated_min_z": -2.7939677238464355e-09
+        },
+        "dog_visible": true,
+        "limitation": "June's lateral seated shift translates feet; measured drift, not an exact stepping solve."
+      }
+    },
+    {
+      "global_frame": 2750,
+      "sentence": 43,
+      "metrics": {
+        "seat_top": 0.46482717990875244,
+        "seat_contacts": {
+          "june": {
+            "seated_fraction_command": 1,
+            "signed_rear_hip_gap": 5.960464477539063e-08,
+            "signed_foot_gaps": [
+              0.0,
+              0.0
+            ],
+            "foot_step_drift": [
+              0.0,
+              0.0
+            ]
+          },
+          "narrator": {
+            "seated_fraction_command": 0.8087040000000001,
+            "signed_rear_hip_gap": 0.0018064677715301514,
+            "signed_foot_gaps": [
+              0.0,
+              0.0
+            ],
+            "foot_step_drift": [
+              0.0,
+              0.0
+            ]
+          }
+        },
+        "waffle": {
+          "evaluated_min_z": -5.587935447692871e-09
+        },
+        "dog_visible": true,
+        "limitation": "June's lateral seated shift translates feet; measured drift, not an exact stepping solve."
+      }
+    },
+    {
+      "global_frame": 2751,
+      "sentence": 43,
+      "metrics": {
+        "seat_top": 0.46482717990875244,
+        "seat_contacts": {
+          "june": {
+            "seated_fraction_command": 1,
+            "signed_rear_hip_gap": 5.960464477539063e-08,
+            "signed_foot_gaps": [
+              0.0,
+              0.0
+            ],
+            "foot_step_drift": [
+              0.0,
+              0.0
+            ]
+          },
+          "narrator": {
+            "seated_fraction_command": 0.8399834074074075,
+            "signed_rear_hip_gap": 5.960464477539063e-08,
+            "signed_foot_gaps": [
+              0.0,
+              0.0
+            ],
+            "foot_step_drift": [
+              0.0,
+              0.0
+            ]
+          }
+        },
+        "waffle": {
+          "evaluated_min_z": 1.3969838619232178e-09
+        },
+        "dog_visible": true,
+        "limitation": "June's lateral seated shift translates feet; measured drift, not an exact stepping solve."
+      }
+    },
+    {
+      "global_frame": 2752,
+      "sentence": 43,
+      "metrics": {
+        "seat_top": 0.46482717990875244,
+        "seat_contacts": {
+          "june": {
+            "seated_fraction_command": 1,
+            "signed_rear_hip_gap": 5.960464477539063e-08,
+            "signed_foot_gaps": [
+              0.0,
+              0.0
+            ],
+            "foot_step_drift": [
+              0.0,
+              0.0
+            ]
+          },
+          "narrator": {
+            "seated_fraction_command": 0.869157925925926,
+            "signed_rear_hip_gap": 5.960464477539063e-08,
+            "signed_foot_gaps": [
+              0.0,
+              0.0
+            ],
+            "foot_step_drift": [
+              0.0,
+              0.0
+            ]
+          }
+        },
+        "waffle": {
+          "evaluated_min_z": 0.0
+        },
+        "dog_visible": true,
+        "limitation": "June's lateral seated shift translates feet; measured drift, not an exact stepping solve."
+      }
+    },
+    {
+      "global_frame": 2753,
+      "sentence": 43,
+      "metrics": {
+        "seat_top": 0.46482717990875244,
+        "seat_contacts": {
+          "june": {
+            "seated_fraction_command": 1,
+            "signed_rear_hip_gap": 5.960464477539063e-08,
+            "signed_foot_gaps": [
+              0.0,
+              0.0
+            ],
+            "foot_step_drift": [
+              0.0,
+              0.0
+            ]
+          },
+          "narrator": {
+            "seated_fraction_command": 0.8960000000000001,
+            "signed_rear_hip_gap": 5.960464477539063e-08,
+            "signed_foot_gaps": [
+              0.0,
+              0.0
+            ],
+            "foot_step_drift": [
+              0.0,
+              0.0
+            ]
+          }
+        },
+        "waffle": {
+          "evaluated_min_z": 1.1175870895385742e-08
+        },
+        "dog_visible": true,
+        "limitation": "June's lateral seated shift translates feet; measured drift, not an exact stepping solve."
+      }
+    },
+    {
+      "global_frame": 2754,
+      "sentence": 43,
+      "metrics": {
+        "seat_top": 0.46482717990875244,
+        "seat_contacts": {
+          "june": {
+            "seated_fraction_command": 1,
+            "signed_rear_hip_gap": 5.960464477539063e-08,
+            "signed_foot_gaps": [
+              0.0,
+              0.0
+            ],
+            "foot_step_drift": [
+              0.0,
+              0.0
+            ]
+          },
+          "narrator": {
+            "seated_fraction_command": 0.920282074074074,
+            "signed_rear_hip_gap": 5.960464477539063e-08,
+            "signed_foot_gaps": [
+              0.0,
+              0.0
+            ],
+            "foot_step_drift": [
+              0.0,
+              0.0
+            ]
+          }
+        },
+        "waffle": {
+          "evaluated_min_z": -1.0244548320770264e-08
+        },
+        "dog_visible": true,
+        "limitation": "June's lateral seated shift translates feet; measured drift, not an exact stepping solve."
+      }
+    },
+    {
+      "global_frame": 2755,
+      "sentence": 43,
+      "metrics": {
+        "seat_top": 0.46482717990875244,
+        "seat_contacts": {
+          "june": {
+            "seated_fraction_command": 1,
+            "signed_rear_hip_gap": 5.960464477539063e-08,
+            "signed_foot_gaps": [
+              0.0,
+              0.0
+            ],
+            "foot_step_drift": [
+              0.0,
+              0.0
+            ]
+          },
+          "narrator": {
+            "seated_fraction_command": 0.9417765925925925,
+            "signed_rear_hip_gap": 5.960464477539063e-08,
+            "signed_foot_gaps": [
+              0.0,
+              0.0
+            ],
+            "foot_step_drift": [
+              0.0,
+              0.0
+            ]
+          }
+        },
+        "waffle": {
+          "evaluated_min_z": -2.7939677238464355e-09
+        },
+        "dog_visible": true,
+        "limitation": "June's lateral seated shift translates feet; measured drift, not an exact stepping solve."
+      }
+    },
+    {
+      "global_frame": 2756,
+      "sentence": 43,
+      "metrics": {
+        "seat_top": 0.46482717990875244,
+        "seat_contacts": {
+          "june": {
+            "seated_fraction_command": 1,
+            "signed_rear_hip_gap": 5.960464477539063e-08,
+            "signed_foot_gaps": [
+              0.0,
+              0.0
+            ],
+            "foot_step_drift": [
+              0.0,
+              0.0
+            ]
+          },
+          "narrator": {
+            "seated_fraction_command": 0.960256,
+            "signed_rear_hip_gap": 5.960464477539063e-08,
+            "signed_foot_gaps": [
+              0.0,
+              0.0
+            ],
+            "foot_step_drift": [
+              0.0,
+              0.0
+            ]
+          }
+        },
+        "waffle": {
+          "evaluated_min_z": -4.6566128730773926e-09
+        },
+        "dog_visible": true,
+        "limitation": "June's lateral seated shift translates feet; measured drift, not an exact stepping solve."
+      }
+    },
+    {
+      "global_frame": 2757,
+      "sentence": 43,
+      "metrics": {
+        "seat_top": 0.46482717990875244,
+        "seat_contacts": {
+          "june": {
+            "seated_fraction_command": 1,
+            "signed_rear_hip_gap": 5.960464477539063e-08,
+            "signed_foot_gaps": [
+              0.0,
+              0.0
+            ],
+            "foot_step_drift": [
+              0.0,
+              0.0
+            ]
+          },
+          "narrator": {
+            "seated_fraction_command": 0.9754927407407407,
+            "signed_rear_hip_gap": 5.960464477539063e-08,
+            "signed_foot_gaps": [
+              0.0,
+              0.0
+            ],
+            "foot_step_drift": [
+              0.0,
+              0.0
+            ]
+          }
+        },
+        "waffle": {
+          "evaluated_min_z": 9.313225746154785e-09
+        },
+        "dog_visible": true,
+        "limitation": "June's lateral seated shift translates feet; measured drift, not an exact stepping solve."
+      }
+    },
+    {
+      "global_frame": 2758,
+      "sentence": 43,
+      "metrics": {
+        "seat_top": 0.46482717990875244,
+        "seat_contacts": {
+          "june": {
+            "seated_fraction_command": 1,
+            "signed_rear_hip_gap": 5.960464477539063e-08,
+            "signed_foot_gaps": [
+              0.0,
+              0.0
+            ],
+            "foot_step_drift": [
+              0.0,
+              0.0
+            ]
+          },
+          "narrator": {
+            "seated_fraction_command": 0.9872592592592593,
+            "signed_rear_hip_gap": 5.960464477539063e-08,
+            "signed_foot_gaps": [
+              0.0,
+              0.0
+            ],
+            "foot_step_drift": [
+              0.0,
+              0.0
+            ]
+          }
+        },
+        "waffle": {
+          "evaluated_min_z": -2.3283064365386963e-09
+        },
+        "dog_visible": true,
+        "limitation": "June's lateral seated shift translates feet; measured drift, not an exact stepping solve."
+      }
+    },
+    {
+      "global_frame": 2759,
+      "sentence": 43,
+      "metrics": {
+        "seat_top": 0.46482717990875244,
+        "seat_contacts": {
+          "june": {
+            "seated_fraction_command": 1,
+            "signed_rear_hip_gap": 5.960464477539063e-08,
+            "signed_foot_gaps": [
+              0.0,
+              0.0
+            ],
+            "foot_step_drift": [
+              0.0,
+              0.0
+            ]
+          },
+          "narrator": {
+            "seated_fraction_command": 0.995328,
+            "signed_rear_hip_gap": 5.960464477539063e-08,
+            "signed_foot_gaps": [
+              0.0,
+              0.0
+            ],
+            "foot_step_drift": [
+              0.0,
+              0.0
+            ]
+          }
+        },
+        "waffle": {
+          "evaluated_min_z": 3.259629011154175e-09
+        },
+        "dog_visible": true,
+        "limitation": "June's lateral seated shift translates feet; measured drift, not an exact stepping solve."
+      }
+    },
+    {
+      "global_frame": 2760,
+      "sentence": 43,
+      "metrics": {
+        "seat_top": 0.46482717990875244,
+        "seat_contacts": {
+          "june": {
+            "seated_fraction_command": 1,
+            "signed_rear_hip_gap": 5.960464477539063e-08,
+            "signed_foot_gaps": [
+              0.0,
+              0.0
+            ],
+            "foot_step_drift": [
+              0.0,
+              0.0
+            ]
+          },
+          "narrator": {
+            "seated_fraction_command": 0.9994714074074075,
+            "signed_rear_hip_gap": 5.960464477539063e-08,
+            "signed_foot_gaps": [
+              0.0,
+              0.0
+            ],
+            "foot_step_drift": [
+              0.0,
+              0.0
+            ]
+          }
+        },
+        "waffle": {
+          "evaluated_min_z": -4.6566128730773926e-09
+        },
+        "dog_visible": true,
+        "limitation": "June's lateral seated shift translates feet; measured drift, not an exact stepping solve."
+      }
+    },
+    {
+      "global_frame": 2761,
+      "sentence": 43,
+      "metrics": {
+        "seat_top": 0.46482717990875244,
+        "seat_contacts": {
+          "june": {
+            "seated_fraction_command": 1,
+            "signed_rear_hip_gap": 5.960464477539063e-08,
+            "signed_foot_gaps": [
+              0.0,
+              0.0
+            ],
+            "foot_step_drift": [
+              0.0,
+              0.0
+            ]
+          },
+          "narrator": {
+            "seated_fraction_command": 1,
+            "signed_rear_hip_gap": 5.960464477539063e-08,
+            "signed_foot_gaps": [
+              0.0,
+              0.0
+            ],
+            "foot_step_drift": [
+              0.0,
+              0.0
+            ]
+          }
+        },
+        "waffle": {
+          "evaluated_min_z": -6.28642737865448e-09
+        },
+        "dog_visible": true,
+        "limitation": "June's lateral seated shift translates feet; measured drift, not an exact stepping solve."
+      }
+    },
+    {
+      "global_frame": 2762,
+      "sentence": 43,
+      "metrics": {
+        "seat_top": 0.46482717990875244,
+        "seat_contacts": {
+          "june": {
+            "seated_fraction_command": 1,
+            "signed_rear_hip_gap": 5.960464477539063e-08,
+            "signed_foot_gaps": [
+              0.0,
+              0.0
+            ],
+            "foot_step_drift": [
+              0.0,
+              0.0
+            ]
+          },
+          "narrator": {
+            "seated_fraction_command": 1,
+            "signed_rear_hip_gap": 5.960464477539063e-08,
+            "signed_foot_gaps": [
+              0.0,
+              0.0
+            ],
+            "foot_step_drift": [
+              0.0,
+              0.0
+            ]
+          }
+        },
+        "waffle": {
+          "evaluated_min_z": -5.966285243630409e-09
+        },
+        "dog_visible": true,
+        "limitation": "June's lateral seated shift translates feet; measured drift, not an exact stepping solve."
+      }
+    },
+    {
+      "global_frame": 2763,
+      "sentence": 43,
+      "metrics": {
+        "seat_top": 0.46482717990875244,
+        "seat_contacts": {
+          "june": {
+            "seated_fraction_command": 1,
+            "signed_rear_hip_gap": 5.960464477539063e-08,
+            "signed_foot_gaps": [
+              0.0,
+              0.0
+            ],
+            "foot_step_drift": [
+              0.0,
+              0.0
+            ]
+          },
+          "narrator": {
+            "seated_fraction_command": 1,
+            "signed_rear_hip_gap": 5.960464477539063e-08,
+            "signed_foot_gaps": [
+              0.0,
+              0.0
+            ],
+            "foot_step_drift": [
+              0.0,
+              0.0
+            ]
+          }
+        },
+        "waffle": {
+          "evaluated_min_z": -9.116778443285511e-10
+        },
+        "dog_visible": true,
+        "limitation": "June's lateral seated shift translates feet; measured drift, not an exact stepping solve."
+      }
+    }
+  ],
+  "rendered": [
+    {
+      "frame": 2738,
+      "file": "frame_02738.png",
+      "render_seconds": 27.13966953699999,
+      "near_black_percent": 0.19675925925925924
+    }
+  ],
+  "review": "candidate, visual and metric approval pending"
+}

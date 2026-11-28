@@ -1,0 +1,865 @@
+{
+  "unit": "june_answer",
+  "sentence_ids": [
+    34
+  ],
+  "mode": "smoke",
+  "variant": null,
+  "engine": "EEVEE",
+  "denoising": false,
+  "eevee_spatial_samples": 32,
+  "rendered_temporal_samples_per_second": null,
+  "encoded_fps_target": null,
+  "actual_rendered_frames": 1,
+  "expected_rendered_frames": 1,
+  "frame_window": [
+    2201,
+    2258
+  ],
+  "scenery": {
+    "repository": "AdityapalW/Roblox-skill",
+    "commit": "54b34ba1be2e3013a9de59e40db288d8f2ebda53",
+    "file": "Itlay/Itlay.gltf",
+    "git_blob": "20108af3a19fae6b5beaa5fac2e3305b56112a41",
+    "mesh_objects": 196,
+    "objects": 207,
+    "transform": "native Blender glTF axis conversion; root identity",
+    "texture_provenance": "Repository README: procedural geometry/textures with selected CC0 Poly Haven photo textures; individual texture attribution not supplied by source manifest.",
+    "native_well_adaptation": {
+      "source_group": "Piazza fountain",
+      "mesh_children": 6,
+      "original_world_min": [
+        -3.9600000381469727,
+        -7.960000038146973,
+        2.98023217215615e-10
+      ],
+      "original_world_max": [
+        3.9600000381469727,
+        -0.039999961853027344,
+        3.8241324424743652
+      ],
+      "uniform_scale": 0.35984848138203784,
+      "adapted_world_min": [
+        -1.4249999523162842,
+        -1.4250000715255737,
+        0.0
+      ],
+      "adapted_world_max": [
+        1.4249999523162842,
+        1.4249999523162842,
+        1.376108169555664
+      ],
+      "note": "Native source stone water feature is the story well; no duplicate added well, material assignments unchanged."
+    },
+    "adaptation": "Actual source fountain recentered/scaled as the sole central water feature; source cobbles and facades preserved. Story-local wall and seats calibrated from measured seated pose data. No duplicate fountain or replacement paving."
+  },
+  "metrics": [
+    {
+      "global_frame": 2201,
+      "sentence": 34,
+      "metrics": {
+        "june_face_projection": [
+          0.3600129187107086,
+          0.5791804194450378,
+          0.5924990773200989,
+          0.7266309857368469,
+          2.7852699756622314
+        ],
+        "head_reaction": true
+      }
+    },
+    {
+      "global_frame": 2202,
+      "sentence": 34,
+      "metrics": {
+        "june_face_projection": [
+          0.359165757894516,
+          0.5782764554023743,
+          0.5926263928413391,
+          0.7272545695304871,
+          2.785419225692749
+        ],
+        "head_reaction": true
+      }
+    },
+    {
+      "global_frame": 2203,
+      "sentence": 34,
+      "metrics": {
+        "june_face_projection": [
+          0.3583191931247711,
+          0.5780901908874512,
+          0.5927494764328003,
+          0.7278687953948975,
+          2.7855606079101562
+        ],
+        "head_reaction": true
+      }
+    },
+    {
+      "global_frame": 2204,
+      "sentence": 34,
+      "metrics": {
+        "june_face_projection": [
+          0.35747507214546204,
+          0.5779624581336975,
+          0.5928647518157959,
+          0.7284685373306274,
+          2.7856836318969727
+        ],
+        "head_reaction": true
+      }
+    },
+    {
+      "global_frame": 2205,
+      "sentence": 34,
+      "metrics": {
+        "june_face_projection": [
+          0.35663551092147827,
+          0.5778303146362305,
+          0.5929684042930603,
+          0.7290486097335815,
+          2.785776138305664
+        ],
+        "head_reaction": true
+      }
+    },
+    {
+      "global_frame": 2206,
+      "sentence": 34,
+      "metrics": {
+        "june_face_projection": [
+          0.3558028042316437,
+          0.577694833278656,
+          0.5930574536323547,
+          0.7296046018600464,
+          2.785827875137329
+        ],
+        "head_reaction": true
+      }
+    },
+    {
+      "global_frame": 2207,
+      "sentence": 34,
+      "metrics": {
+        "june_face_projection": [
+          0.35497912764549255,
+          0.5775571465492249,
+          0.5931282043457031,
+          0.7301317453384399,
+          2.785829544067383
+        ],
+        "head_reaction": true
+      }
+    },
+    {
+      "global_frame": 2208,
+      "sentence": 34,
+      "metrics": {
+        "june_face_projection": [
+          0.354166716337204,
+          0.5774185061454773,
+          0.5931782126426697,
+          0.7306264042854309,
+          2.7857706546783447
+        ],
+        "head_reaction": true
+      }
+    },
+    {
+      "global_frame": 2209,
+      "sentence": 34,
+      "metrics": {
+        "june_face_projection": [
+          0.35336780548095703,
+          0.5772802829742432,
+          0.59320467710495,
+          0.7310846447944641,
+          2.7856428623199463
+        ],
+        "head_reaction": true
+      }
+    },
+    {
+      "global_frame": 2210,
+      "sentence": 34,
+      "metrics": {
+        "june_face_projection": [
+          0.3525850772857666,
+          0.5771438479423523,
+          0.593205451965332,
+          0.7315034866333008,
+          2.785438060760498
+        ],
+        "head_reaction": true
+      }
+    },
+    {
+      "global_frame": 2211,
+      "sentence": 34,
+      "metrics": {
+        "june_face_projection": [
+          0.3518207371234894,
+          0.5770106911659241,
+          0.5931786894798279,
+          0.7318799495697021,
+          2.7851502895355225
+        ],
+        "head_reaction": true
+      }
+    },
+    {
+      "global_frame": 2212,
+      "sentence": 34,
+      "metrics": {
+        "june_face_projection": [
+          0.35107752680778503,
+          0.5768823027610779,
+          0.5931230187416077,
+          0.7322118282318115,
+          2.7847728729248047
+        ],
+        "head_reaction": true
+      }
+    },
+    {
+      "global_frame": 2213,
+      "sentence": 34,
+      "metrics": {
+        "june_face_projection": [
+          0.35035771131515503,
+          0.5767599940299988,
+          0.5930374264717102,
+          0.732496976852417,
+          2.7843029499053955
+        ],
+        "head_reaction": true
+      }
+    },
+    {
+      "global_frame": 2214,
+      "sentence": 34,
+      "metrics": {
+        "june_face_projection": [
+          0.34966418147087097,
+          0.5766453742980957,
+          0.592921257019043,
+          0.7327336072921753,
+          2.7837374210357666
+        ],
+        "head_reaction": true
+      }
+    },
+    {
+      "global_frame": 2215,
+      "sentence": 34,
+      "metrics": {
+        "june_face_projection": [
+          0.3489994406700134,
+          0.5765396952629089,
+          0.5927745699882507,
+          0.7329210638999939,
+          2.7830748558044434
+        ],
+        "head_reaction": true
+      }
+    },
+    {
+      "global_frame": 2216,
+      "sentence": 34,
+      "metrics": {
+        "june_face_projection": [
+          0.34836632013320923,
+          0.576444149017334,
+          0.5925973057746887,
+          0.7330579161643982,
+          2.7823164463043213
+        ],
+        "head_reaction": true
+      }
+    },
+    {
+      "global_frame": 2217,
+      "sentence": 34,
+      "metrics": {
+        "june_face_projection": [
+          0.347767174243927,
+          0.5763598084449768,
+          0.5923903584480286,
+          0.7331439256668091,
+          2.781463623046875
+        ],
+        "head_reaction": true
+      }
+    },
+    {
+      "global_frame": 2218,
+      "sentence": 34,
+      "metrics": {
+        "june_face_projection": [
+          0.34720513224601746,
+          0.5762877464294434,
+          0.5921550989151001,
+          0.7331792116165161,
+          2.780519962310791
+        ],
+        "head_reaction": true
+      }
+    },
+    {
+      "global_frame": 2219,
+      "sentence": 34,
+      "metrics": {
+        "june_face_projection": [
+          0.3466826379299164,
+          0.5762287378311157,
+          0.5918927192687988,
+          0.7331638336181641,
+          2.7794909477233887
+        ],
+        "head_reaction": true
+      }
+    },
+    {
+      "global_frame": 2220,
+      "sentence": 34,
+      "metrics": {
+        "june_face_projection": [
+          0.34620246291160583,
+          0.5761833190917969,
+          0.5916053652763367,
+          0.7330983877182007,
+          2.778383255004883
+        ],
+        "head_reaction": true
+      }
+    },
+    {
+      "global_frame": 2221,
+      "sentence": 34,
+      "metrics": {
+        "june_face_projection": [
+          0.3457673192024231,
+          0.5761520862579346,
+          0.5912954807281494,
+          0.7329841256141663,
+          2.777205467224121
+        ],
+        "head_reaction": true
+      }
+    },
+    {
+      "global_frame": 2222,
+      "sentence": 34,
+      "metrics": {
+        "june_face_projection": [
+          0.34537965059280396,
+          0.5761351585388184,
+          0.5909659266471863,
+          0.7328224778175354,
+          2.7759668827056885
+        ],
+        "head_reaction": true
+      }
+    },
+    {
+      "global_frame": 2223,
+      "sentence": 34,
+      "metrics": {
+        "june_face_projection": [
+          0.3450421690940857,
+          0.5761326551437378,
+          0.5906197428703308,
+          0.7326151728630066,
+          2.774678945541382
+        ],
+        "head_reaction": true
+      }
+    },
+    {
+      "global_frame": 2224,
+      "sentence": 34,
+      "metrics": {
+        "june_face_projection": [
+          0.34475719928741455,
+          0.5761444568634033,
+          0.5902605056762695,
+          0.7323645353317261,
+          2.773353338241577
+        ],
+        "head_reaction": true
+      }
+    },
+    {
+      "global_frame": 2225,
+      "sentence": 34,
+      "metrics": {
+        "june_face_projection": [
+          0.34452715516090393,
+          0.5761700868606567,
+          0.5898921489715576,
+          0.7320732474327087,
+          2.7720038890838623
+        ],
+        "head_reaction": true
+      }
+    },
+    {
+      "global_frame": 2226,
+      "sentence": 34,
+      "metrics": {
+        "june_face_projection": [
+          0.34435418248176575,
+          0.5762091279029846,
+          0.5895184874534607,
+          0.7317440509796143,
+          2.770644187927246
+        ],
+        "head_reaction": true
+      }
+    },
+    {
+      "global_frame": 2227,
+      "sentence": 34,
+      "metrics": {
+        "june_face_projection": [
+          0.3442402780056,
+          0.5762608051300049,
+          0.5891443490982056,
+          0.7313805818557739,
+          2.7692887783050537
+        ],
+        "head_reaction": true
+      }
+    },
+    {
+      "global_frame": 2228,
+      "sentence": 34,
+      "metrics": {
+        "june_face_projection": [
+          0.34418725967407227,
+          0.5763243436813354,
+          0.5887738466262817,
+          0.7309863567352295,
+          2.7679531574249268
+        ],
+        "head_reaction": true
+      }
+    },
+    {
+      "global_frame": 2229,
+      "sentence": 34,
+      "metrics": {
+        "june_face_projection": [
+          0.3441944718360901,
+          0.5763999223709106,
+          0.5886075496673584,
+          0.7307740449905396,
+          2.7666068077087402
+        ],
+        "head_reaction": true
+      }
+    },
+    {
+      "global_frame": 2230,
+      "sentence": 34,
+      "metrics": {
+        "june_face_projection": [
+          0.3442639112472534,
+          0.5764860510826111,
+          0.5885762572288513,
+          0.7306696772575378,
+          2.7652816772460938
+        ],
+        "head_reaction": true
+      }
+    },
+    {
+      "global_frame": 2231,
+      "sentence": 34,
+      "metrics": {
+        "june_face_projection": [
+          0.3443988263607025,
+          0.5765806436538696,
+          0.5885559320449829,
+          0.7305403351783752,
+          2.764026165008545
+        ],
+        "head_reaction": true
+      }
+    },
+    {
+      "global_frame": 2232,
+      "sentence": 34,
+      "metrics": {
+        "june_face_projection": [
+          0.3445999324321747,
+          0.5766825079917908,
+          0.588546872138977,
+          0.7303860187530518,
+          2.7628555297851562
+        ],
+        "head_reaction": true
+      }
+    },
+    {
+      "global_frame": 2233,
+      "sentence": 34,
+      "metrics": {
+        "june_face_projection": [
+          0.3448679745197296,
+          0.5767901539802551,
+          0.5885496139526367,
+          0.7302070260047913,
+          2.7617862224578857
+        ],
+        "head_reaction": true
+      }
+    },
+    {
+      "global_frame": 2234,
+      "sentence": 34,
+      "metrics": {
+        "june_face_projection": [
+          0.3452034592628479,
+          0.5769023299217224,
+          0.588564395904541,
+          0.7300038933753967,
+          2.760834217071533
+        ],
+        "head_reaction": true
+      }
+    },
+    {
+      "global_frame": 2235,
+      "sentence": 34,
+      "metrics": {
+        "june_face_projection": [
+          0.34560659527778625,
+          0.5770178437232971,
+          0.5885916948318481,
+          0.729777455329895,
+          2.7600138187408447
+        ],
+        "head_reaction": true
+      }
+    },
+    {
+      "global_frame": 2236,
+      "sentence": 34,
+      "metrics": {
+        "june_face_projection": [
+          0.3460770845413208,
+          0.5771355032920837,
+          0.5886321663856506,
+          0.7295289039611816,
+          2.7593390941619873
+        ],
+        "head_reaction": true
+      }
+    },
+    {
+      "global_frame": 2237,
+      "sentence": 34,
+      "metrics": {
+        "june_face_projection": [
+          0.3466143310070038,
+          0.5772538781166077,
+          0.5886862874031067,
+          0.7292597889900208,
+          2.758822202682495
+        ],
+        "head_reaction": true
+      }
+    },
+    {
+      "global_frame": 2238,
+      "sentence": 34,
+      "metrics": {
+        "june_face_projection": [
+          0.34721770882606506,
+          0.5773720145225525,
+          0.5887544751167297,
+          0.7289713621139526,
+          2.7584750652313232
+        ],
+        "head_reaction": true
+      }
+    },
+    {
+      "global_frame": 2239,
+      "sentence": 34,
+      "metrics": {
+        "june_face_projection": [
+          0.3478861451148987,
+          0.5774890184402466,
+          0.5888375639915466,
+          0.7286661267280579,
+          2.758307695388794
+        ],
+        "head_reaction": true
+      }
+    },
+    {
+      "global_frame": 2240,
+      "sentence": 34,
+      "metrics": {
+        "june_face_projection": [
+          0.34861811995506287,
+          0.5776039361953735,
+          0.5889360308647156,
+          0.7283457517623901,
+          2.758328676223755
+        ],
+        "head_reaction": true
+      }
+    },
+    {
+      "global_frame": 2241,
+      "sentence": 34,
+      "metrics": {
+        "june_face_projection": [
+          0.3494117856025696,
+          0.5777161717414856,
+          0.5890503525733948,
+          0.7280126810073853,
+          2.758544921875
+        ],
+        "head_reaction": true
+      }
+    },
+    {
+      "global_frame": 2242,
+      "sentence": 34,
+      "metrics": {
+        "june_face_projection": [
+          0.3502650856971741,
+          0.577825129032135,
+          0.5891809463500977,
+          0.7276691794395447,
+          2.7589619159698486
+        ],
+        "head_reaction": true
+      }
+    },
+    {
+      "global_frame": 2243,
+      "sentence": 34,
+      "metrics": {
+        "june_face_projection": [
+          0.35117560625076294,
+          0.5779304504394531,
+          0.589328408241272,
+          0.7273178100585938,
+          2.7595834732055664
+        ],
+        "head_reaction": true
+      }
+    },
+    {
+      "global_frame": 2244,
+      "sentence": 34,
+      "metrics": {
+        "june_face_projection": [
+          0.3521404564380646,
+          0.5780317187309265,
+          0.589492678642273,
+          0.7269606590270996,
+          2.7604119777679443
+        ],
+        "head_reaction": true
+      }
+    },
+    {
+      "global_frame": 2245,
+      "sentence": 34,
+      "metrics": {
+        "june_face_projection": [
+          0.35315653681755066,
+          0.5781291127204895,
+          0.5896743535995483,
+          0.7266005873680115,
+          2.761446952819824
+        ],
+        "head_reaction": true
+      }
+    },
+    {
+      "global_frame": 2246,
+      "sentence": 34,
+      "metrics": {
+        "june_face_projection": [
+          0.3542204797267914,
+          0.5782225131988525,
+          0.5898731350898743,
+          0.7262396812438965,
+          2.7626874446868896
+        ],
+        "head_reaction": true
+      }
+    },
+    {
+      "global_frame": 2247,
+      "sentence": 34,
+      "metrics": {
+        "june_face_projection": [
+          0.35532835125923157,
+          0.5783120393753052,
+          0.5900892615318298,
+          0.7258803844451904,
+          2.7641310691833496
+        ],
+        "head_reaction": true
+      }
+    },
+    {
+      "global_frame": 2248,
+      "sentence": 34,
+      "metrics": {
+        "june_face_projection": [
+          0.3564760684967041,
+          0.5783978700637817,
+          0.5903223156929016,
+          0.7255248427391052,
+          2.7657716274261475
+        ],
+        "head_reaction": true
+      }
+    },
+    {
+      "global_frame": 2249,
+      "sentence": 34,
+      "metrics": {
+        "june_face_projection": [
+          0.35765907168388367,
+          0.5784805417060852,
+          0.5905724167823792,
+          0.725175678730011,
+          2.7676031589508057
+        ],
+        "head_reaction": true
+      }
+    },
+    {
+      "global_frame": 2250,
+      "sentence": 34,
+      "metrics": {
+        "june_face_projection": [
+          0.35887250304222107,
+          0.579232394695282,
+          0.5908390283584595,
+          0.724834680557251,
+          2.7696175575256348
+        ],
+        "head_reaction": true
+      }
+    },
+    {
+      "global_frame": 2251,
+      "sentence": 34,
+      "metrics": {
+        "june_face_projection": [
+          0.3601113259792328,
+          0.5803463459014893,
+          0.5911216735839844,
+          0.7245040535926819,
+          2.771803617477417
+        ],
+        "head_reaction": true
+      }
+    },
+    {
+      "global_frame": 2252,
+      "sentence": 34,
+      "metrics": {
+        "june_face_projection": [
+          0.36136987805366516,
+          0.5814639925956726,
+          0.591259777545929,
+          0.7241860032081604,
+          2.7741506099700928
+        ],
+        "head_reaction": true
+      }
+    },
+    {
+      "global_frame": 2253,
+      "sentence": 34,
+      "metrics": {
+        "june_face_projection": [
+          0.36253342032432556,
+          0.5825805068016052,
+          0.5910890102386475,
+          0.7238820195198059,
+          2.7766451835632324
+        ],
+        "head_reaction": true
+      }
+    },
+    {
+      "global_frame": 2254,
+      "sentence": 34,
+      "metrics": {
+        "june_face_projection": [
+          0.36271488666534424,
+          0.5836911797523499,
+          0.5909445881843567,
+          0.7235941886901855,
+          2.7792716026306152
+        ],
+        "head_reaction": true
+      }
+    },
+    {
+      "global_frame": 2255,
+      "sentence": 34,
+      "metrics": {
+        "june_face_projection": [
+          0.3628951609134674,
+          0.5847910046577454,
+          0.5908278822898865,
+          0.7233244776725769,
+          2.7820143699645996
+        ],
+        "head_reaction": true
+      }
+    },
+    {
+      "global_frame": 2256,
+      "sentence": 34,
+      "metrics": {
+        "june_face_projection": [
+          0.3630722165107727,
+          0.5858761072158813,
+          0.5909029841423035,
+          0.723241925239563,
+          2.7848169803619385
+        ],
+        "head_reaction": true
+      }
+    },
+    {
+      "global_frame": 2257,
+      "sentence": 34,
+      "metrics": {
+        "june_face_projection": [
+          0.36324527859687805,
+          0.586941659450531,
+          0.5911770462989807,
+          0.7233543395996094,
+          2.7876598834991455
+        ],
+        "head_reaction": true
+      }
+    }
+  ],
+  "rendered": [
+    {
+      "frame": 2229,
+      "file": "frame_02229.png",
+      "render_seconds": 33.059894893999996,
+      "near_black_percent": 0.9052854938271605
+    }
+  ],
+  "review": "candidate, visual and metric approval pending"
+}

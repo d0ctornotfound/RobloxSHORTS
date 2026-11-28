@@ -1,0 +1,4476 @@
+{
+  "unit": "june_question",
+  "sentence_ids": [
+    31,
+    32,
+    33
+  ],
+  "mode": "smoke",
+  "variant": null,
+  "engine": "EEVEE",
+  "denoising": false,
+  "eevee_spatial_samples": 32,
+  "rendered_temporal_samples_per_second": null,
+  "encoded_fps_target": null,
+  "actual_rendered_frames": 1,
+  "expected_rendered_frames": 1,
+  "frame_window": [
+    2088,
+    2201
+  ],
+  "scenery": {
+    "repository": "AdityapalW/Roblox-skill",
+    "commit": "54b34ba1be2e3013a9de59e40db288d8f2ebda53",
+    "file": "Itlay/Itlay.gltf",
+    "git_blob": "20108af3a19fae6b5beaa5fac2e3305b56112a41",
+    "mesh_objects": 196,
+    "objects": 207,
+    "transform": "native Blender glTF axis conversion; root identity",
+    "texture_provenance": "Repository README: procedural geometry/textures with selected CC0 Poly Haven photo textures; individual texture attribution not supplied by source manifest.",
+    "native_well_adaptation": {
+      "source_group": "Piazza fountain",
+      "mesh_children": 6,
+      "original_world_min": [
+        -3.9600000381469727,
+        -7.960000038146973,
+        2.98023217215615e-10
+      ],
+      "original_world_max": [
+        3.9600000381469727,
+        -0.039999961853027344,
+        3.8241324424743652
+      ],
+      "uniform_scale": 0.35984848138203784,
+      "adapted_world_min": [
+        -1.4249999523162842,
+        -1.4250000715255737,
+        0.0
+      ],
+      "adapted_world_max": [
+        1.4249999523162842,
+        1.4249999523162842,
+        1.376108169555664
+      ],
+      "note": "Native source stone water feature is the story well; no duplicate added well, material assignments unchanged."
+    },
+    "adaptation": "Actual source fountain recentered/scaled as the sole central water feature; source cobbles and facades preserved. Story-local wall and seats calibrated from measured seated pose data. No duplicate fountain or replacement paving."
+  },
+  "metrics": [
+    {
+      "global_frame": 2088,
+      "sentence": 31,
+      "metrics": {
+        "pencil_shake_phase": 0.0,
+        "socket_alignment": {
+          "chart": {
+            "socket_to_target_error": 0.0
+          },
+          "pencil": {
+            "socket_to_target_error": 0.0
+          }
+        },
+        "chart_contact": {
+          "sampled_min_arm_surface_gap": 0.008372006937861443,
+          "arm_prop_overlap_pairs": 36,
+          "scope": "whole rigid arm surface; not signed distal-hand penetration"
+        },
+        "pencil_contact": {
+          "sampled_min_arm_surface_gap": 0.0011873175390064716,
+          "arm_prop_overlap_pairs": 17,
+          "scope": "whole rigid arm surface; not signed distal-hand penetration"
+        },
+        "face_projection": [
+          0.35210034251213074,
+          0.5753527879714966,
+          0.5903035402297974,
+          0.7266817688941956,
+          2.7402546405792236
+        ],
+        "pencil_projection": [
+          0.2422221451997757,
+          0.28085294365882874,
+          0.42776936292648315,
+          0.5065297484397888,
+          2.403477430343628
+        ]
+      }
+    },
+    {
+      "global_frame": 2089,
+      "sentence": 31,
+      "metrics": {
+        "pencil_shake_phase": 0.7401768531960371,
+        "socket_alignment": {
+          "chart": {
+            "socket_to_target_error": 0.0
+          },
+          "pencil": {
+            "socket_to_target_error": 0.0
+          }
+        },
+        "chart_contact": {
+          "sampled_min_arm_surface_gap": 0.008366634137928486,
+          "arm_prop_overlap_pairs": 36,
+          "scope": "whole rigid arm surface; not signed distal-hand penetration"
+        },
+        "pencil_contact": {
+          "sampled_min_arm_surface_gap": 0.0009487407514825463,
+          "arm_prop_overlap_pairs": 26,
+          "scope": "whole rigid arm surface; not signed distal-hand penetration"
+        },
+        "face_projection": [
+          0.3497796058654785,
+          0.5747068524360657,
+          0.589558482170105,
+          0.72670978307724,
+          2.7377538681030273
+        ],
+        "pencil_projection": [
+          0.2550306022167206,
+          0.29345813393592834,
+          0.4350683391094208,
+          0.5143921971321106,
+          2.3895020484924316
+        ]
+      }
+    },
+    {
+      "global_frame": 2090,
+      "sentence": 31,
+      "metrics": {
+        "pencil_shake_phase": 0.9954079577517649,
+        "socket_alignment": {
+          "chart": {
+            "socket_to_target_error": 0.0
+          },
+          "pencil": {
+            "socket_to_target_error": 0.0
+          }
+        },
+        "chart_contact": {
+          "sampled_min_arm_surface_gap": 0.00836152583360672,
+          "arm_prop_overlap_pairs": 36,
+          "scope": "whole rigid arm surface; not signed distal-hand penetration"
+        },
+        "pencil_contact": {
+          "sampled_min_arm_surface_gap": 0.00012680114014074206,
+          "arm_prop_overlap_pairs": 26,
+          "scope": "whole rigid arm surface; not signed distal-hand penetration"
+        },
+        "face_projection": [
+          0.3474937379360199,
+          0.5740727782249451,
+          0.588824450969696,
+          0.7267277836799622,
+          2.735322952270508
+        ],
+        "pencil_projection": [
+          0.25895705819129944,
+          0.2973407506942749,
+          0.43832117319107056,
+          0.5178744792938232,
+          2.3839991092681885
+        ]
+      }
+    },
+    {
+      "global_frame": 2091,
+      "sentence": 31,
+      "metrics": {
+        "pencil_shake_phase": 0.5984721441039565,
+        "socket_alignment": {
+          "chart": {
+            "socket_to_target_error": 0.0
+          },
+          "pencil": {
+            "socket_to_target_error": 0.0
+          }
+        },
+        "chart_contact": {
+          "sampled_min_arm_surface_gap": 0.008356361649930477,
+          "arm_prop_overlap_pairs": 36,
+          "scope": "whole rigid arm surface; not signed distal-hand penetration"
+        },
+        "pencil_contact": {
+          "sampled_min_arm_surface_gap": 0.0010227836901322007,
+          "arm_prop_overlap_pairs": 26,
+          "scope": "whole rigid arm surface; not signed distal-hand penetration"
+        },
+        "face_projection": [
+          0.34526434540748596,
+          0.5734522342681885,
+          0.5881118178367615,
+          0.7267395257949829,
+          2.7330126762390137
+        ],
+        "pencil_projection": [
+          0.2505677342414856,
+          0.2891431450843811,
+          0.4353053569793701,
+          0.5146353244781494,
+          2.3894238471984863
+        ]
+      }
+    },
+    {
+      "global_frame": 2092,
+      "sentence": 31,
+      "metrics": {
+        "pencil_shake_phase": -0.19056796287548539,
+        "socket_alignment": {
+          "chart": {
+            "socket_to_target_error": 0.0
+          },
+          "pencil": {
+            "socket_to_target_error": 0.0
+          }
+        },
+        "chart_contact": {
+          "sampled_min_arm_surface_gap": 0.008351203985512257,
+          "arm_prop_overlap_pairs": 36,
+          "scope": "whole rigid arm surface; not signed distal-hand penetration"
+        },
+        "pencil_contact": {
+          "sampled_min_arm_surface_gap": 0.001045901677571237,
+          "arm_prop_overlap_pairs": 17,
+          "scope": "whole rigid arm surface; not signed distal-hand penetration"
+        },
+        "face_projection": [
+          0.3431117832660675,
+          0.5728460550308228,
+          0.5874311923980713,
+          0.7267498970031738,
+          2.7308731079101562
+        ],
+        "pencil_projection": [
+          0.23524488508701324,
+          0.27409616112709045,
+          0.42808476090431213,
+          0.5068343281745911,
+          2.4039602279663086
+        ]
+      }
+    },
+    {
+      "global_frame": 2093,
+      "sentence": 31,
+      "metrics": {
+        "pencil_shake_phase": -0.8547526072388395,
+        "socket_alignment": {
+          "chart": {
+            "socket_to_target_error": 0.0
+          },
+          "pencil": {
+            "socket_to_target_error": 0.0
+          }
+        },
+        "chart_contact": {
+          "sampled_min_arm_surface_gap": 0.008345885202288628,
+          "arm_prop_overlap_pairs": 36,
+          "scope": "whole rigid arm surface; not signed distal-hand penetration"
+        },
+        "pencil_contact": {
+          "sampled_min_arm_surface_gap": 0.0030375111382454634,
+          "arm_prop_overlap_pairs": 17,
+          "scope": "whole rigid arm surface; not signed distal-hand penetration"
+        },
+        "face_projection": [
+          0.3410549759864807,
+          0.5722553133964539,
+          0.5867919325828552,
+          0.726763129234314,
+          2.728947401046753
+        ],
+        "pencil_projection": [
+          0.22304490208625793,
+          0.2620413601398468,
+          0.421140193939209,
+          0.499267041683197,
+          2.4201724529266357
+        ]
+      }
+    },
+    {
+      "global_frame": 2094,
+      "sentence": 31,
+      "metrics": {
+        "pencil_shake_phase": -0.9589242746631385,
+        "socket_alignment": {
+          "chart": {
+            "socket_to_target_error": 0.0
+          },
+          "pencil": {
+            "socket_to_target_error": 0.0
+          }
+        },
+        "chart_contact": {
+          "sampled_min_arm_surface_gap": 0.008340880274772644,
+          "arm_prop_overlap_pairs": 36,
+          "scope": "whole rigid arm surface; not signed distal-hand penetration"
+        },
+        "pencil_contact": {
+          "sampled_min_arm_surface_gap": 0.0013967888662591577,
+          "arm_prop_overlap_pairs": 17,
+          "scope": "whole rigid arm surface; not signed distal-hand penetration"
+        },
+        "face_projection": [
+          0.3391111493110657,
+          0.5716800689697266,
+          0.5862029790878296,
+          0.7267841696739197,
+          2.7272770404815674
+        ],
+        "pencil_projection": [
+          0.22121886909008026,
+          0.26015374064445496,
+          0.4180460274219513,
+          0.4958800673484802,
+          2.427967071533203
+        ]
+      }
+    },
+    {
+      "global_frame": 2095,
+      "sentence": 31,
+      "metrics": {
+        "pencil_shake_phase": -0.43483223962507717,
+        "socket_alignment": {
+          "chart": {
+            "socket_to_target_error": 0.0
+          },
+          "pencil": {
+            "socket_to_target_error": 0.0
+          }
+        },
+        "chart_contact": {
+          "sampled_min_arm_surface_gap": 0.00833619013428688,
+          "arm_prop_overlap_pairs": 36,
+          "scope": "whole rigid arm surface; not signed distal-hand penetration"
+        },
+        "pencil_contact": {
+          "sampled_min_arm_surface_gap": 0.0031219960656017065,
+          "arm_prop_overlap_pairs": 17,
+          "scope": "whole rigid arm surface; not signed distal-hand penetration"
+        },
+        "face_projection": [
+          0.3372959494590759,
+          0.5711205005645752,
+          0.5856723785400391,
+          0.7268176078796387,
+          2.725895881652832
+        ],
+        "pencil_projection": [
+          0.2301965057849884,
+          0.2689216434955597,
+          0.4201534688472748,
+          0.49818500876426697,
+          2.422712564468384
+        ]
+      }
+    },
+    {
+      "global_frame": 2096,
+      "sentence": 31,
+      "metrics": {
+        "pencil_shake_phase": 0.37415123057121996,
+        "socket_alignment": {
+          "chart": {
+            "socket_to_target_error": 0.0
+          },
+          "pencil": {
+            "socket_to_target_error": 0.0
+          }
+        },
+        "chart_contact": {
+          "sampled_min_arm_surface_gap": 0.008331652730703354,
+          "arm_prop_overlap_pairs": 38,
+          "scope": "whole rigid arm surface; not signed distal-hand penetration"
+        },
+        "pencil_contact": {
+          "sampled_min_arm_surface_gap": 0.00104386149905622,
+          "arm_prop_overlap_pairs": 17,
+          "scope": "whole rigid arm surface; not signed distal-hand penetration"
+        },
+        "face_projection": [
+          0.3356233835220337,
+          0.5705767869949341,
+          0.5852072834968567,
+          0.7268676161766052,
+          2.7248353958129883
+        ],
+        "pencil_projection": [
+          0.24402602016925812,
+          0.28251785039901733,
+          0.42653748393058777,
+          0.5051126480102539,
+          2.4086625576019287
+        ]
+      }
+    },
+    {
+      "global_frame": 2097,
+      "sentence": 31,
+      "metrics": {
+        "pencil_shake_phase": 0.9379999767747389,
+        "socket_alignment": {
+          "chart": {
+            "socket_to_target_error": 0.0
+          },
+          "pencil": {
+            "socket_to_target_error": 0.0
+          }
+        },
+        "chart_contact": {
+          "sampled_min_arm_surface_gap": 0.00832701101899147,
+          "arm_prop_overlap_pairs": 38,
+          "scope": "whole rigid arm surface; not signed distal-hand penetration"
+        },
+        "pencil_contact": {
+          "sampled_min_arm_surface_gap": 0.000946803716942668,
+          "arm_prop_overlap_pairs": 26,
+          "scope": "whole rigid arm surface; not signed distal-hand penetration"
+        },
+        "face_projection": [
+          0.33410534262657166,
+          0.5700486898422241,
+          0.5848137736320496,
+          0.7269380688667297,
+          2.7241179943084717
+        ],
+        "pencil_projection": [
+          0.2533729374408722,
+          0.29177847504615784,
+          0.43382179737091064,
+          0.5129659175872803,
+          2.394441843032837
+        ]
+      }
+    },
+    {
+      "global_frame": 2098,
+      "sentence": 31,
+      "metrics": {
+        "pencil_shake_phase": 0.8872941080946953,
+        "socket_alignment": {
+          "chart": {
+            "socket_to_target_error": 0.0
+          },
+          "pencil": {
+            "socket_to_target_error": 0.0
+          }
+        },
+        "chart_contact": {
+          "sampled_min_arm_surface_gap": 0.008322842419147491,
+          "arm_prop_overlap_pairs": 38,
+          "scope": "whole rigid arm surface; not signed distal-hand penetration"
+        },
+        "pencil_contact": {
+          "sampled_min_arm_surface_gap": 0.00018629079568199813,
+          "arm_prop_overlap_pairs": 26,
+          "scope": "whole rigid arm surface; not signed distal-hand penetration"
+        },
+        "face_projection": [
+          0.3327518701553345,
+          0.569536566734314,
+          0.584496796131134,
+          0.7270316481590271,
+          2.723762035369873
+        ],
+        "pencil_projection": [
+          0.251163512468338,
+          0.2897535562515259,
+          0.4375135600566864,
+          0.5169488191604614,
+          2.387225866317749
+        ]
+      }
+    },
+    {
+      "global_frame": 2099,
+      "sentence": 31,
+      "metrics": {
+        "pencil_shake_phase": 0.2552548679965177,
+        "socket_alignment": {
+          "chart": {
+            "socket_to_target_error": 0.0
+          },
+          "pencil": {
+            "socket_to_target_error": 0.0
+          }
+        },
+        "chart_contact": {
+          "sampled_min_arm_surface_gap": 0.008318827487528324,
+          "arm_prop_overlap_pairs": 38,
+          "scope": "whole rigid arm surface; not signed distal-hand penetration"
+        },
+        "pencil_contact": {
+          "sampled_min_arm_surface_gap": 0.000649043417070061,
+          "arm_prop_overlap_pairs": 26,
+          "scope": "whole rigid arm surface; not signed distal-hand penetration"
+        },
+        "face_projection": [
+          0.3315715789794922,
+          0.5690407752990723,
+          0.5842600464820862,
+          0.7271502614021301,
+          2.7237789630889893
+        ],
+        "pencil_projection": [
+          0.2380445897579193,
+          0.27700814604759216,
+          0.4351830780506134,
+          0.5144626498222351,
+          2.390911817550659
+        ]
+      }
+    },
+    {
+      "global_frame": 2100,
+      "sentence": 31,
+      "metrics": {
+        "pencil_shake_phase": -0.5440211108893698,
+        "socket_alignment": {
+          "chart": {
+            "socket_to_target_error": 0.0
+          },
+          "pencil": {
+            "socket_to_target_error": 0.0
+          }
+        },
+        "chart_contact": {
+          "sampled_min_arm_surface_gap": 0.008314862847328186,
+          "arm_prop_overlap_pairs": 38,
+          "scope": "whole rigid arm surface; not signed distal-hand penetration"
+        },
+        "pencil_contact": {
+          "sampled_min_arm_surface_gap": 0.0007508799317292869,
+          "arm_prop_overlap_pairs": 17,
+          "scope": "whole rigid arm surface; not signed distal-hand penetration"
+        },
+        "face_projection": [
+          0.3305710554122925,
+          0.5685620903968811,
+          0.584105908870697,
+          0.727294385433197,
+          2.7241759300231934
+        ],
+        "pencil_projection": [
+          0.2226666510105133,
+          0.2619180977344513,
+          0.4284217059612274,
+          0.5071542263031006,
+          2.404646873474121
+        ]
+      }
+    },
+    {
+      "global_frame": 2101,
+      "sentence": 31,
+      "metrics": {
+        "pencil_shake_phase": -0.9868677799998744,
+        "socket_alignment": {
+          "chart": {
+            "socket_to_target_error": 0.0
+          },
+          "pencil": {
+            "socket_to_target_error": 0.0
+          }
+        },
+        "chart_contact": {
+          "sampled_min_arm_surface_gap": 0.008311421610414982,
+          "arm_prop_overlap_pairs": 38,
+          "scope": "whole rigid arm surface; not signed distal-hand penetration"
+        },
+        "pencil_contact": {
+          "sampled_min_arm_surface_gap": 0.0035149322357028723,
+          "arm_prop_overlap_pairs": 17,
+          "scope": "whole rigid arm surface; not signed distal-hand penetration"
+        },
+        "face_projection": [
+          0.32975512742996216,
+          0.568101704120636,
+          0.5840355157852173,
+          0.7274633049964905,
+          2.724950075149536
+        ],
+        "pencil_projection": [
+          0.21521763503551483,
+          0.25445833802223206,
+          0.42136672139167786,
+          0.4994770586490631,
+          2.4207985401153564
+        ]
+      }
+    },
+    {
+      "global_frame": 2102,
+      "sentence": 31,
+      "metrics": {
+        "pencil_shake_phase": -0.78314284623659,
+        "socket_alignment": {
+          "chart": {
+            "socket_to_target_error": 0.0
+          },
+          "pencil": {
+            "socket_to_target_error": 0.0
+          }
+        },
+        "chart_contact": {
+          "sampled_min_arm_surface_gap": 0.008308087475597858,
+          "arm_prop_overlap_pairs": 38,
+          "scope": "whole rigid arm surface; not signed distal-hand penetration"
+        },
+        "pencil_contact": {
+          "sampled_min_arm_surface_gap": 0.001965917879715562,
+          "arm_prop_overlap_pairs": 17,
+          "scope": "whole rigid arm surface; not signed distal-hand penetration"
+        },
+        "face_projection": [
+          0.32912713289260864,
+          0.5676611661911011,
+          0.5840485692024231,
+          0.7276549339294434,
+          2.7260966300964355
+        ],
+        "pencil_projection": [
+          0.21987362205982208,
+          0.2588309347629547,
+          0.4176868796348572,
+          0.49547258019447327,
+          2.4293301105499268
+        ]
+      }
+    },
+    {
+      "global_frame": 2103,
+      "sentence": 31,
+      "metrics": {
+        "pencil_shake_phase": -0.06632189735120068,
+        "socket_alignment": {
+          "chart": {
+            "socket_to_target_error": 0.0
+          },
+          "pencil": {
+            "socket_to_target_error": 0.0
+          }
+        },
+        "chart_contact": {
+          "sampled_min_arm_surface_gap": 0.008305066265165806,
+          "arm_prop_overlap_pairs": 38,
+          "scope": "whole rigid arm surface; not signed distal-hand penetration"
+        },
+        "pencil_contact": {
+          "sampled_min_arm_surface_gap": 0.003539902390912175,
+          "arm_prop_overlap_pairs": 17,
+          "scope": "whole rigid arm surface; not signed distal-hand penetration"
+        },
+        "face_projection": [
+          0.3286886513233185,
+          0.5672428607940674,
+          0.5841438174247742,
+          0.727866530418396,
+          2.727599620819092
+        ],
+        "pencil_projection": [
+          0.2330644279718399,
+          0.271649569272995,
+          0.4190540611743927,
+          0.4969722330570221,
+          2.4257776737213135
+        ]
+      }
+    },
+    {
+      "global_frame": 2104,
+      "sentence": 31,
+      "metrics": {
+        "pencil_shake_phase": 0.6939515345770562,
+        "socket_alignment": {
+          "chart": {
+            "socket_to_target_error": 0.0
+          },
+          "pencil": {
+            "socket_to_target_error": 0.0
+          }
+        },
+        "chart_contact": {
+          "sampled_min_arm_surface_gap": 0.008302142843604088,
+          "arm_prop_overlap_pairs": 38,
+          "scope": "whole rigid arm surface; not signed distal-hand penetration"
+        },
+        "pencil_contact": {
+          "sampled_min_arm_surface_gap": 0.0010262448340654373,
+          "arm_prop_overlap_pairs": 17,
+          "scope": "whole rigid arm surface; not signed distal-hand penetration"
+        },
+        "face_projection": [
+          0.32843947410583496,
+          0.5668492317199707,
+          0.584318220615387,
+          0.7280935049057007,
+          2.729440689086914
+        ],
+        "pencil_projection": [
+          0.24633008241653442,
+          0.2846757769584656,
+          0.424760639667511,
+          0.503160834312439,
+          2.4132909774780273
+        ]
+      }
+    },
+    {
+      "global_frame": 2105,
+      "sentence": 31,
+      "metrics": {
+        "pencil_shake_phase": 0.9995649146508786,
+        "socket_alignment": {
+          "chart": {
+            "socket_to_target_error": 0.0
+          },
+          "pencil": {
+            "socket_to_target_error": 0.0
+          }
+        },
+        "chart_contact": {
+          "sampled_min_arm_surface_gap": 0.00829995609819889,
+          "arm_prop_overlap_pairs": 38,
+          "scope": "whole rigid arm surface; not signed distal-hand penetration"
+        },
+        "pencil_contact": {
+          "sampled_min_arm_surface_gap": 0.0006247025448828936,
+          "arm_prop_overlap_pairs": 26,
+          "scope": "whole rigid arm surface; not signed distal-hand penetration"
+        },
+        "face_projection": [
+          0.32837802171707153,
+          0.566483199596405,
+          0.5845679044723511,
+          0.728330671787262,
+          2.7315945625305176
+        ],
+        "pencil_projection": [
+          0.2508637011051178,
+          0.2892816662788391,
+          0.4317057430744171,
+          0.5106713771820068,
+          2.3989579677581787
+        ]
+      }
+    },
+    {
+      "global_frame": 2106,
+      "sentence": 31,
+      "metrics": {
+        "pencil_shake_phase": 0.6502878401571168,
+        "socket_alignment": {
+          "chart": {
+            "socket_to_target_error": 0.0
+          },
+          "pencil": {
+            "socket_to_target_error": 0.0
+          }
+        },
+        "chart_contact": {
+          "sampled_min_arm_surface_gap": 0.008297871798276901,
+          "arm_prop_overlap_pairs": 38,
+          "scope": "whole rigid arm surface; not signed distal-hand penetration"
+        },
+        "pencil_contact": {
+          "sampled_min_arm_surface_gap": 8.689746027812362e-05,
+          "arm_prop_overlap_pairs": 26,
+          "scope": "whole rigid arm surface; not signed distal-hand penetration"
+        },
+        "face_projection": [
+          0.32850074768066406,
+          0.5661482810974121,
+          0.5848876237869263,
+          0.728571891784668,
+          2.7340292930603027
+        ],
+        "pencil_projection": [
+          0.24284566938877106,
+          0.2816638946533203,
+          0.43573513627052307,
+          0.5150488615036011,
+          2.3901216983795166
+        ]
+      }
+    },
+    {
+      "global_frame": 2107,
+      "sentence": 31,
+      "metrics": {
+        "pencil_shake_phase": -0.12504190285093536,
+        "socket_alignment": {
+          "chart": {
+            "socket_to_target_error": 0.0
+          },
+          "pencil": {
+            "socket_to_target_error": 0.0
+          }
+        },
+        "chart_contact": {
+          "sampled_min_arm_surface_gap": 0.008295837789773941,
+          "arm_prop_overlap_pairs": 38,
+          "scope": "whole rigid arm surface; not signed distal-hand penetration"
+        },
+        "pencil_contact": {
+          "sampled_min_arm_surface_gap": 0.0003691682650242001,
+          "arm_prop_overlap_pairs": 26,
+          "scope": "whole rigid arm surface; not signed distal-hand penetration"
+        },
+        "face_projection": [
+          0.32880258560180664,
+          0.5658478736877441,
+          0.5852713584899902,
+          0.7288111448287964,
+          2.736706495285034
+        ],
+        "pencil_projection": [
+          0.2269311398267746,
+          0.2662421464920044,
+          0.43428346514701843,
+          0.513513445854187,
+          2.3920187950134277
+        ]
+      }
+    },
+    {
+      "global_frame": 2108,
+      "sentence": 31,
+      "metrics": {
+        "pencil_shake_phase": -0.8184472531579431,
+        "socket_alignment": {
+          "chart": {
+            "socket_to_target_error": 0.0
+          },
+          "pencil": {
+            "socket_to_target_error": 0.0
+          }
+        },
+        "chart_contact": {
+          "sampled_min_arm_surface_gap": 0.008294588886201382,
+          "arm_prop_overlap_pairs": 38,
+          "scope": "whole rigid arm surface; not signed distal-hand penetration"
+        },
+        "pencil_contact": {
+          "sampled_min_arm_surface_gap": 0.0004314813413657248,
+          "arm_prop_overlap_pairs": 17,
+          "scope": "whole rigid arm surface; not signed distal-hand penetration"
+        },
+        "face_projection": [
+          0.3292769193649292,
+          0.5655856728553772,
+          0.5857117772102356,
+          0.729041337966919,
+          2.739584445953369
+        ],
+        "pencil_projection": [
+          0.21393178403377533,
+          0.2534737288951874,
+          0.42826202511787415,
+          0.5070027709007263,
+          2.404315710067749
+        ]
+      }
+    },
+    {
+      "global_frame": 2109,
+      "sentence": 31,
+      "metrics": {
+        "pencil_shake_phase": -0.9756260054681576,
+        "socket_alignment": {
+          "chart": {
+            "socket_to_target_error": 0.0
+          },
+          "pencil": {
+            "socket_to_target_error": 0.0
+          }
+        },
+        "chart_contact": {
+          "sampled_min_arm_surface_gap": 0.00829348899424076,
+          "arm_prop_overlap_pairs": 38,
+          "scope": "whole rigid arm surface; not signed distal-hand penetration"
+        },
+        "pencil_contact": {
+          "sampled_min_arm_surface_gap": 0.003923996817320585,
+          "arm_prop_overlap_pairs": 17,
+          "scope": "whole rigid arm surface; not signed distal-hand penetration"
+        },
+        "face_projection": [
+          0.32991522550582886,
+          0.5653654336929321,
+          0.5862007737159729,
+          0.7292557954788208,
+          2.7426154613494873
+        ],
+        "pencil_projection": [
+          0.21259231865406036,
+          0.25193658471107483,
+          0.4212878346443176,
+          0.4994341731071472,
+          2.419628620147705
+        ]
+      }
+    },
+    {
+      "global_frame": 2110,
+      "sentence": 31,
+      "metrics": {
+        "pencil_shake_phase": -0.4935984902873213,
+        "socket_alignment": {
+          "chart": {
+            "socket_to_target_error": 0.0
+          },
+          "pencil": {
+            "socket_to_target_error": 0.0
+          }
+        },
+        "chart_contact": {
+          "sampled_min_arm_surface_gap": 0.008292971178889275,
+          "arm_prop_overlap_pairs": 38,
+          "scope": "whole rigid arm surface; not signed distal-hand penetration"
+        },
+        "pencil_contact": {
+          "sampled_min_arm_surface_gap": 0.0027255909517407417,
+          "arm_prop_overlap_pairs": 17,
+          "scope": "whole rigid arm surface; not signed distal-hand penetration"
+        },
+        "face_projection": [
+          0.33070746064186096,
+          0.565190315246582,
+          0.5867299437522888,
+          0.7294481992721558,
+          2.74574875831604
+        ],
+        "pencil_projection": [
+          0.22321774065494537,
+          0.2620750665664673,
+          0.4171183705329895,
+          0.49491217732429504,
+          2.428804874420166
+        ]
+      }
+    },
+    {
+      "global_frame": 2111,
+      "sentence": 31,
+      "metrics": {
+        "pencil_shake_phase": 0.3118226684079469,
+        "socket_alignment": {
+          "chart": {
+            "socket_to_target_error": 0.0
+          },
+          "pencil": {
+            "socket_to_target_error": 0.0
+          }
+        },
+        "chart_contact": {
+          "sampled_min_arm_surface_gap": 0.008292293176054955,
+          "arm_prop_overlap_pairs": 38,
+          "scope": "whole rigid arm surface; not signed distal-hand penetration"
+        },
+        "pencil_contact": {
+          "sampled_min_arm_surface_gap": 0.003962877672165632,
+          "arm_prop_overlap_pairs": 17,
+          "scope": "whole rigid arm surface; not signed distal-hand penetration"
+        },
+        "face_projection": [
+          0.33164212107658386,
+          0.5650636553764343,
+          0.5872898697853088,
+          0.7296125292778015,
+          2.748929977416992
+        ],
+        "pencil_projection": [
+          0.2386830598115921,
+          0.27706220746040344,
+          0.4177037179470062,
+          0.49555206298828125,
+          2.4273524284362793
+        ]
+      }
+    },
+    {
+      "global_frame": 2112,
+      "sentence": 31,
+      "metrics": {
+        "pencil_shake_phase": 0.9129452507276277,
+        "socket_alignment": {
+          "chart": {
+            "socket_to_target_error": 0.0
+          },
+          "pencil": {
+            "socket_to_target_error": 0.0
+          }
+        },
+        "chart_contact": {
+          "sampled_min_arm_surface_gap": 0.008292189799249172,
+          "arm_prop_overlap_pairs": 38,
+          "scope": "whole rigid arm surface; not signed distal-hand penetration"
+        },
+        "pencil_contact": {
+          "sampled_min_arm_surface_gap": 0.001232494367286563,
+          "arm_prop_overlap_pairs": 17,
+          "scope": "whole rigid arm surface; not signed distal-hand penetration"
+        },
+        "face_projection": [
+          0.33270615339279175,
+          0.5649880170822144,
+          0.5878710150718689,
+          0.7297439575195312,
+          2.752100944519043
+        ],
+        "pencil_projection": [
+          0.24939395487308502,
+          0.2875880002975464,
+          0.4225396513938904,
+          0.5007981061935425,
+          2.416694402694702
+        ]
+      }
+    },
+    {
+      "global_frame": 2113,
+      "sentence": 31,
+      "metrics": {
+        "pencil_shake_phase": 0.9159284611255192,
+        "socket_alignment": {
+          "chart": {
+            "socket_to_target_error": 0.0
+          },
+          "pencil": {
+            "socket_to_target_error": 0.0
+          }
+        },
+        "chart_contact": {
+          "sampled_min_arm_surface_gap": 0.008292707614600658,
+          "arm_prop_overlap_pairs": 38,
+          "scope": "whole rigid arm surface; not signed distal-hand penetration"
+        },
+        "pencil_contact": {
+          "sampled_min_arm_surface_gap": 5.5910048104124144e-05,
+          "arm_prop_overlap_pairs": 26,
+          "scope": "whole rigid arm surface; not signed distal-hand penetration"
+        },
+        "face_projection": [
+          0.33388540148735046,
+          0.5649656057357788,
+          0.5884634852409363,
+          0.7298377752304077,
+          2.7552034854888916
+        ],
+        "pencil_projection": [
+          0.24841199815273285,
+          0.2868568003177643,
+          0.4289804995059967,
+          0.5077932476997375,
+          2.402418851852417
+        ]
+      }
+    },
+    {
+      "global_frame": 2114,
+      "sentence": 31,
+      "metrics": {
+        "pencil_shake_phase": 0.31881777320227467,
+        "socket_alignment": {
+          "chart": {
+            "socket_to_target_error": 0.0
+          },
+          "pencil": {
+            "socket_to_target_error": 0.0
+          }
+        },
+        "chart_contact": {
+          "sampled_min_arm_surface_gap": 0.008293386548757553,
+          "arm_prop_overlap_pairs": 38,
+          "scope": "whole rigid arm surface; not signed distal-hand penetration"
+        },
+        "pencil_contact": {
+          "sampled_min_arm_surface_gap": 0.00028535898309201,
+          "arm_prop_overlap_pairs": 26,
+          "scope": "whole rigid arm surface; not signed distal-hand penetration"
+        },
+        "face_projection": [
+          0.3351645767688751,
+          0.5649978518486023,
+          0.5890577435493469,
+          0.7298908233642578,
+          2.7581799030303955
+        ],
+        "pencil_projection": [
+          0.23564796149730682,
+          0.27466991543769836,
+          0.4334021806716919,
+          0.5126127600669861,
+          2.3922040462493896
+        ]
+      }
+    },
+    {
+      "global_frame": 2115,
+      "sentence": 31,
+      "metrics": {
+        "pencil_shake_phase": -0.4871745124605095,
+        "socket_alignment": {
+          "chart": {
+            "socket_to_target_error": 0.0
+          },
+          "pencil": {
+            "socket_to_target_error": 0.0
+          }
+        },
+        "chart_contact": {
+          "sampled_min_arm_surface_gap": 0.00829453393816948,
+          "arm_prop_overlap_pairs": 38,
+          "scope": "whole rigid arm surface; not signed distal-hand penetration"
+        },
+        "pencil_contact": {
+          "sampled_min_arm_surface_gap": 0.00027633621357381344,
+          "arm_prop_overlap_pairs": 26,
+          "scope": "whole rigid arm surface; not signed distal-hand penetration"
+        },
+        "face_projection": [
+          0.33652713894844055,
+          0.5650853514671326,
+          0.5896437168121338,
+          0.729900598526001,
+          2.760972023010254
+        ],
+        "pencil_projection": [
+          0.21922431886196136,
+          0.2587857246398926,
+          0.43308815360069275,
+          0.5122946500778198,
+          2.392183303833008
+        ]
+      }
+    },
+    {
+      "global_frame": 2116,
+      "sentence": 31,
+      "metrics": {
+        "pencil_shake_phase": -0.9739819875695561,
+        "socket_alignment": {
+          "chart": {
+            "socket_to_target_error": 0.0
+          },
+          "pencil": {
+            "socket_to_target_error": 0.0
+          }
+        },
+        "chart_contact": {
+          "sampled_min_arm_surface_gap": 0.008295837789773941,
+          "arm_prop_overlap_pairs": 38,
+          "scope": "whole rigid arm surface; not signed distal-hand penetration"
+        },
+        "pencil_contact": {
+          "sampled_min_arm_surface_gap": 7.40705436328426e-05,
+          "arm_prop_overlap_pairs": 17,
+          "scope": "whole rigid arm surface; not signed distal-hand penetration"
+        },
+        "face_projection": [
+          0.33795395493507385,
+          0.5652294158935547,
+          0.5904086232185364,
+          0.7300748825073242,
+          2.7634758949279785
+        ],
+        "pencil_projection": [
+          0.21064099669456482,
+          0.25032269954681396,
+          0.42833560705184937,
+          0.5071429014205933,
+          2.4022905826568604
+        ]
+      }
+    },
+    {
+      "global_frame": 2117,
+      "sentence": 31,
+      "metrics": {
+        "pencil_shake_phase": -0.8226603154557323,
+        "socket_alignment": {
+          "chart": {
+            "socket_to_target_error": 0.0
+          },
+          "pencil": {
+            "socket_to_target_error": 0.0
+          }
+        },
+        "chart_contact": {
+          "sampled_min_arm_surface_gap": 0.008297608233988285,
+          "arm_prop_overlap_pairs": 38,
+          "scope": "whole rigid arm surface; not signed distal-hand penetration"
+        },
+        "pencil_contact": {
+          "sampled_min_arm_surface_gap": 0.0031099615152925253,
+          "arm_prop_overlap_pairs": 17,
+          "scope": "whole rigid arm surface; not signed distal-hand penetration"
+        },
+        "face_projection": [
+          0.3394288420677185,
+          0.5654286742210388,
+          0.5912695527076721,
+          0.7303341627120972,
+          2.765658378601074
+        ],
+        "pencil_projection": [
+          0.215825155377388,
+          0.255118727684021,
+          0.4220650792121887,
+          0.5003333687782288,
+          2.41616153717041
+        ]
+      }
+    },
+    {
+      "global_frame": 2118,
+      "sentence": 31,
+      "metrics": {
+        "pencil_shake_phase": -0.13235175009777303,
+        "socket_alignment": {
+          "chart": {
+            "socket_to_target_error": 0.0
+          },
+          "pencil": {
+            "socket_to_target_error": 0.0
+          }
+        },
+        "chart_contact": {
+          "sampled_min_arm_surface_gap": 0.00829959288239479,
+          "arm_prop_overlap_pairs": 38,
+          "scope": "whole rigid arm surface; not signed distal-hand penetration"
+        },
+        "pencil_contact": {
+          "sampled_min_arm_surface_gap": 0.003580969525501132,
+          "arm_prop_overlap_pairs": 17,
+          "scope": "whole rigid arm surface; not signed distal-hand penetration"
+        },
+        "face_projection": [
+          0.34093618392944336,
+          0.565680980682373,
+          0.5920895338058472,
+          0.7305415868759155,
+          2.767500877380371
+        ],
+        "pencil_projection": [
+          0.2309940606355667,
+          0.2696426212787628,
+          0.41792532801628113,
+          0.4958192706108093,
+          2.426013231277466
+        ]
+      }
+    },
+    {
+      "global_frame": 2119,
+      "sentence": 31,
+      "metrics": {
+        "pencil_shake_phase": 0.6446704408726077,
+        "socket_alignment": {
+          "chart": {
+            "socket_to_target_error": 0.0
+          },
+          "pencil": {
+            "socket_to_target_error": 0.0
+          }
+        },
+        "chart_contact": {
+          "sampled_min_arm_surface_gap": 0.008302043192088604,
+          "arm_prop_overlap_pairs": 38,
+          "scope": "whole rigid arm surface; not signed distal-hand penetration"
+        },
+        "pencil_contact": {
+          "sampled_min_arm_surface_gap": 0.003977849148213863,
+          "arm_prop_overlap_pairs": 17,
+          "scope": "whole rigid arm surface; not signed distal-hand penetration"
+        },
+        "face_projection": [
+          0.34245923161506653,
+          0.5659841299057007,
+          0.5928567051887512,
+          0.7306939363479614,
+          2.768963098526001
+        ],
+        "pencil_projection": [
+          0.2464507669210434,
+          0.28458619117736816,
+          0.41807126998901367,
+          0.4959411323070526,
+          2.4268429279327393
+        ]
+      }
+    },
+    {
+      "global_frame": 2120,
+      "sentence": 31,
+      "metrics": {
+        "pencil_shake_phase": 0.999320345780098,
+        "socket_alignment": {
+          "chart": {
+            "socket_to_target_error": 0.0
+          },
+          "pencil": {
+            "socket_to_target_error": 0.0
+          }
+        },
+        "chart_contact": {
+          "sampled_min_arm_surface_gap": 0.008304698392748833,
+          "arm_prop_overlap_pairs": 38,
+          "scope": "whole rigid arm surface; not signed distal-hand penetration"
+        },
+        "pencil_contact": {
+          "sampled_min_arm_surface_gap": 0.0017101041739806533,
+          "arm_prop_overlap_pairs": 17,
+          "scope": "whole rigid arm surface; not signed distal-hand penetration"
+        },
+        "face_projection": [
+          0.34398123621940613,
+          0.5663353204727173,
+          0.5935603976249695,
+          0.7307888865470886,
+          2.770009994506836
+        ],
+        "pencil_projection": [
+          0.2529744505882263,
+          0.29103100299835205,
+          0.422273725271225,
+          0.5004838705062866,
+          2.4180848598480225
+        ]
+      }
+    },
+    {
+      "global_frame": 2121,
+      "sentence": 31,
+      "metrics": {
+        "pencil_shake_phase": 0.6992400316550952,
+        "socket_alignment": {
+          "chart": {
+            "socket_to_target_error": 0.0
+          },
+          "pencil": {
+            "socket_to_target_error": 0.0
+          }
+        },
+        "chart_contact": {
+          "sampled_min_arm_surface_gap": 0.008307513780891895,
+          "arm_prop_overlap_pairs": 38,
+          "scope": "whole rigid arm surface; not signed distal-hand penetration"
+        },
+        "pencil_contact": {
+          "sampled_min_arm_surface_gap": 0.0002540109271649271,
+          "arm_prop_overlap_pairs": 24,
+          "scope": "whole rigid arm surface; not signed distal-hand penetration"
+        },
+        "face_projection": [
+          0.34548673033714294,
+          0.5667313933372498,
+          0.5941911339759827,
+          0.730824887752533,
+          2.7706141471862793
+        ],
+        "pencil_projection": [
+          0.24647819995880127,
+          0.2849602997303009,
+          0.42852073907852173,
+          0.5072723031044006,
+          2.404101848602295
+        ]
+      }
+    },
+    {
+      "global_frame": 2122,
+      "sentence": 31,
+      "metrics": {
+        "pencil_shake_phase": -0.05896522810427303,
+        "socket_alignment": {
+          "chart": {
+            "socket_to_target_error": 0.0
+          },
+          "pencil": {
+            "socket_to_target_error": 0.0
+          }
+        },
+        "chart_contact": {
+          "sampled_min_arm_surface_gap": 0.008311059325933456,
+          "arm_prop_overlap_pairs": 38,
+          "scope": "whole rigid arm surface; not signed distal-hand penetration"
+        },
+        "pencil_contact": {
+          "sampled_min_arm_surface_gap": 0.0005560641293413937,
+          "arm_prop_overlap_pairs": 26,
+          "scope": "whole rigid arm surface; not signed distal-hand penetration"
+        },
+        "face_projection": [
+          0.3469608426094055,
+          0.5671685934066772,
+          0.5947408080101013,
+          0.7308011054992676,
+          2.770756721496582
+        ],
+        "pencil_projection": [
+          0.23062211275100708,
+          0.2698003649711609,
+          0.43377774953842163,
+          0.5129759907722473,
+          2.3927559852600098
+        ]
+      }
+    },
+    {
+      "global_frame": 2123,
+      "sentence": 31,
+      "metrics": {
+        "pencil_shake_phase": -0.7785379143600272,
+        "socket_alignment": {
+          "chart": {
+            "socket_to_target_error": 0.0
+          },
+          "pencil": {
+            "socket_to_target_error": 0.0
+          }
+        },
+        "chart_contact": {
+          "sampled_min_arm_surface_gap": 0.008314448408782482,
+          "arm_prop_overlap_pairs": 38,
+          "scope": "whole rigid arm surface; not signed distal-hand penetration"
+        },
+        "pencil_contact": {
+          "sampled_min_arm_surface_gap": 0.00031797157134860754,
+          "arm_prop_overlap_pairs": 26,
+          "scope": "whole rigid arm surface; not signed distal-hand penetration"
+        },
+        "face_projection": [
+          0.34839004278182983,
+          0.5682486295700073,
+          0.5952027440071106,
+          0.7307170033454895,
+          2.7704262733459473
+        ],
+        "pencil_projection": [
+          0.21599537134170532,
+          0.2556893825531006,
+          0.4350985586643219,
+          0.5143896341323853,
+          2.3905210494995117
+        ]
+      }
+    },
+    {
+      "global_frame": 2124,
+      "sentence": 31,
+      "metrics": {
+        "pencil_shake_phase": -0.9880316240928618,
+        "socket_alignment": {
+          "chart": {
+            "socket_to_target_error": 0.0
+          },
+          "pencil": {
+            "socket_to_target_error": 0.0
+          }
+        },
+        "chart_contact": {
+          "sampled_min_arm_surface_gap": 0.008318308740854263,
+          "arm_prop_overlap_pairs": 38,
+          "scope": "whole rigid arm surface; not signed distal-hand penetration"
+        },
+        "pencil_contact": {
+          "sampled_min_arm_surface_gap": 2.6616860850481316e-05,
+          "arm_prop_overlap_pairs": 24,
+          "scope": "whole rigid arm surface; not signed distal-hand penetration"
+        },
+        "face_projection": [
+          0.3496268093585968,
+          0.5697644948959351,
+          0.5955716967582703,
+          0.7305731177330017,
+          2.7696218490600586
+        ],
+        "pencil_projection": [
+          0.21318243443965912,
+          0.2528509199619293,
+          0.43164414167404175,
+          0.5106433033943176,
+          2.397897243499756
+        ]
+      }
+    },
+    {
+      "global_frame": 2125,
+      "sentence": 31,
+      "metrics": {
+        "pencil_shake_phase": -0.5501912088025882,
+        "socket_alignment": {
+          "chart": {
+            "socket_to_target_error": 0.0
+          },
+          "pencil": {
+            "socket_to_target_error": 0.0
+          }
+        },
+        "chart_contact": {
+          "sampled_min_arm_surface_gap": 0.008322267793118954,
+          "arm_prop_overlap_pairs": 38,
+          "scope": "whole rigid arm surface; not signed distal-hand penetration"
+        },
+        "pencil_contact": {
+          "sampled_min_arm_surface_gap": 0.002179649192839861,
+          "arm_prop_overlap_pairs": 17,
+          "scope": "whole rigid arm surface; not signed distal-hand penetration"
+        },
+        "face_projection": [
+          0.35011354088783264,
+          0.5712420344352722,
+          0.5958445072174072,
+          0.730370283126831,
+          2.76835036277771
+        ],
+        "pencil_projection": [
+          0.22433345019817352,
+          0.2634424865245819,
+          0.4257787764072418,
+          0.5042912364006042,
+          2.410259246826172
+        ]
+      }
+    },
+    {
+      "global_frame": 2126,
+      "sentence": 31,
+      "metrics": {
+        "pencil_shake_phase": 0.248121013321421,
+        "socket_alignment": {
+          "chart": {
+            "socket_to_target_error": 0.0
+          },
+          "pencil": {
+            "socket_to_target_error": 0.0
+          }
+        },
+        "chart_contact": {
+          "sampled_min_arm_surface_gap": 0.008326543495059013,
+          "arm_prop_overlap_pairs": 38,
+          "scope": "whole rigid arm surface; not signed distal-hand penetration"
+        },
+        "pencil_contact": {
+          "sampled_min_arm_surface_gap": 0.003792602801695466,
+          "arm_prop_overlap_pairs": 17,
+          "scope": "whole rigid arm surface; not signed distal-hand penetration"
+        },
+        "face_projection": [
+          0.3506303131580353,
+          0.572670578956604,
+          0.5960190296173096,
+          0.7301095724105835,
+          2.7666287422180176
+        ],
+        "pencil_projection": [
+          0.2419421523809433,
+          0.2803114056587219,
+          0.42122742533683777,
+          0.4993269145488739,
+          2.4210758209228516
+        ]
+      }
+    },
+    {
+      "global_frame": 2127,
+      "sentence": 31,
+      "metrics": {
+        "pencil_shake_phase": 0.8838704235458307,
+        "socket_alignment": {
+          "chart": {
+            "socket_to_target_error": 0.0
+          },
+          "pencil": {
+            "socket_to_target_error": 0.0
+          }
+        },
+        "chart_contact": {
+          "sampled_min_arm_surface_gap": 0.008330870419740677,
+          "arm_prop_overlap_pairs": 38,
+          "scope": "whole rigid arm surface; not signed distal-hand penetration"
+        },
+        "pencil_contact": {
+          "sampled_min_arm_surface_gap": 0.00382990762591362,
+          "arm_prop_overlap_pairs": 17,
+          "scope": "whole rigid arm surface; not signed distal-hand penetration"
+        },
+        "face_projection": [
+          0.3511736989021301,
+          0.5740413069725037,
+          0.5960952043533325,
+          0.7297928333282471,
+          2.764481544494629
+        ],
+        "pencil_projection": [
+          0.2551235854625702,
+          0.2930152714252472,
+          0.42030999064445496,
+          0.4982910454273224,
+          2.4243810176849365
+        ]
+      }
+    },
+    {
+      "global_frame": 2128,
+      "sentence": 31,
+      "metrics": {
+        "pencil_shake_phase": 0.9405295766287658,
+        "socket_alignment": {
+          "chart": {
+            "socket_to_target_error": 0.0
+          },
+          "pencil": {
+            "socket_to_target_error": 0.0
+          }
+        },
+        "chart_contact": {
+          "sampled_min_arm_surface_gap": 0.008335663005709648,
+          "arm_prop_overlap_pairs": 36,
+          "scope": "whole rigid arm surface; not signed distal-hand penetration"
+        },
+        "pencil_contact": {
+          "sampled_min_arm_surface_gap": 0.002449816558510065,
+          "arm_prop_overlap_pairs": 17,
+          "scope": "whole rigid arm surface; not signed distal-hand penetration"
+        },
+        "face_projection": [
+          0.3517400920391083,
+          0.5753463506698608,
+          0.5960744619369507,
+          0.7294225692749023,
+          2.761941909790039
+        ],
+        "pencil_projection": [
+          0.25641557574272156,
+          0.29436489939689636,
+          0.4232289493083954,
+          0.5014629364013672,
+          2.417783260345459
+        ]
+      }
+    },
+    {
+      "global_frame": 2129,
+      "sentence": 31,
+      "metrics": {
+        "pencil_shake_phase": 0.3809767829490407,
+        "socket_alignment": {
+          "chart": {
+            "socket_to_target_error": 0.0
+          },
+          "pencil": {
+            "socket_to_target_error": 0.0
+          }
+        },
+        "chart_contact": {
+          "sampled_min_arm_surface_gap": 0.008340360596776009,
+          "arm_prop_overlap_pairs": 36,
+          "scope": "whole rigid arm surface; not signed distal-hand penetration"
+        },
+        "pencil_contact": {
+          "sampled_min_arm_surface_gap": 0.00035647046752274036,
+          "arm_prop_overlap_pairs": 17,
+          "scope": "whole rigid arm surface; not signed distal-hand penetration"
+        },
+        "face_projection": [
+          0.35232624411582947,
+          0.5765793323516846,
+          0.5955418348312378,
+          0.7290019392967224,
+          2.7590506076812744
+        ],
+        "pencil_projection": [
+          0.24513521790504456,
+          0.283652663230896,
+          0.42873185873031616,
+          0.5074688792228699,
+          2.404650926589966
+        ]
+      }
+    },
+    {
+      "global_frame": 2130,
+      "sentence": 31,
+      "metrics": {
+        "pencil_shake_phase": -0.428182669496151,
+        "socket_alignment": {
+          "chart": {
+            "socket_to_target_error": 0.0
+          },
+          "pencil": {
+            "socket_to_target_error": 0.0
+          }
+        },
+        "chart_contact": {
+          "sampled_min_arm_surface_gap": 0.008345154114067554,
+          "arm_prop_overlap_pairs": 36,
+          "scope": "whole rigid arm surface; not signed distal-hand penetration"
+        },
+        "pencil_contact": {
+          "sampled_min_arm_surface_gap": 1.04912642200361e-05,
+          "arm_prop_overlap_pairs": 26,
+          "scope": "whole rigid arm surface; not signed distal-hand penetration"
+        },
+        "face_projection": [
+          0.35292914509773254,
+          0.5777353048324585,
+          0.5948788523674011,
+          0.728534460067749,
+          2.7558534145355225
+        ],
+        "pencil_projection": [
+          0.22826135158538818,
+          0.26752009987831116,
+          0.43433019518852234,
+          0.5135430693626404,
+          2.3925657272338867
+        ]
+      }
+    },
+    {
+      "global_frame": 2131,
+      "sentence": 31,
+      "metrics": {
+        "pencil_shake_phase": -0.9568073222958006,
+        "socket_alignment": {
+          "chart": {
+            "socket_to_target_error": 0.0
+          },
+          "pencil": {
+            "socket_to_target_error": 0.0
+          }
+        },
+        "chart_contact": {
+          "sampled_min_arm_surface_gap": 0.008350522257387638,
+          "arm_prop_overlap_pairs": 36,
+          "scope": "whole rigid arm surface; not signed distal-hand penetration"
+        },
+        "pencil_contact": {
+          "sampled_min_arm_surface_gap": 9.747938020154834e-05,
+          "arm_prop_overlap_pairs": 26,
+          "scope": "whole rigid arm surface; not signed distal-hand penetration"
+        },
+        "face_projection": [
+          0.3535461723804474,
+          0.5788108110427856,
+          0.5941638946533203,
+          0.7280246019363403,
+          2.7524046897888184
+        ],
+        "pencil_projection": [
+          0.2174588441848755,
+          0.2571459114551544,
+          0.43681034445762634,
+          0.5162114500999451,
+          2.387946605682373
+        ]
+      }
+    },
+    {
+      "global_frame": 2132,
+      "sentence": 31,
+      "metrics": {
+        "pencil_shake_phase": -0.8585552479838888,
+        "socket_alignment": {
+          "chart": {
+            "socket_to_target_error": 0.0
+          },
+          "pencil": {
+            "socket_to_target_error": 0.0
+          }
+        },
+        "chart_contact": {
+          "sampled_min_arm_surface_gap": 0.008355531841516495,
+          "arm_prop_overlap_pairs": 36,
+          "scope": "whole rigid arm surface; not signed distal-hand penetration"
+        },
+        "pencil_contact": {
+          "sampled_min_arm_surface_gap": 0.00044453280861489475,
+          "arm_prop_overlap_pairs": 24,
+          "scope": "whole rigid arm surface; not signed distal-hand penetration"
+        },
+        "face_projection": [
+          0.35417449474334717,
+          0.5798036456108093,
+          0.5934075713157654,
+          0.7274781465530396,
+          2.7487595081329346
+        ],
+        "pencil_projection": [
+          0.220889613032341,
+          0.26039329171180725,
+          0.43448901176452637,
+          0.5137104392051697,
+          2.392373561859131
+        ]
+      }
+    },
+    {
+      "global_frame": 2133,
+      "sentence": 31,
+      "metrics": {
+        "pencil_shake_phase": -0.19779879963646227,
+        "socket_alignment": {
+          "chart": {
+            "socket_to_target_error": 0.0
+          },
+          "pencil": {
+            "socket_to_target_error": 0.0
+          }
+        },
+        "chart_contact": {
+          "sampled_min_arm_surface_gap": 0.0083608478307724,
+          "arm_prop_overlap_pairs": 36,
+          "scope": "whole rigid arm surface; not signed distal-hand penetration"
+        },
+        "pencil_contact": {
+          "sampled_min_arm_surface_gap": 0.001184186665341258,
+          "arm_prop_overlap_pairs": 17,
+          "scope": "whole rigid arm surface; not signed distal-hand penetration"
+        },
+        "face_projection": [
+          0.35481178760528564,
+          0.5807129740715027,
+          0.5926209092140198,
+          0.726901113986969,
+          2.7449779510498047
+        ],
+        "pencil_projection": [
+          0.23652289807796478,
+          0.27534133195877075,
+          0.4290446639060974,
+          0.5078271627426147,
+          2.4033849239349365
+        ]
+      }
+    },
+    {
+      "global_frame": 2134,
+      "sentence": 32,
+      "metrics": {
+        "pencil_shake_phase": 0.5925505785029125,
+        "socket_alignment": {
+          "chart": {
+            "socket_to_target_error": 0.0
+          },
+          "pencil": {
+            "socket_to_target_error": 0.0
+          }
+        },
+        "chart_contact": {
+          "sampled_min_arm_surface_gap": 0.008366059511899948,
+          "arm_prop_overlap_pairs": 36,
+          "scope": "whole rigid arm surface; not signed distal-hand penetration"
+        },
+        "pencil_contact": {
+          "sampled_min_arm_surface_gap": 0.003018701681867242,
+          "arm_prop_overlap_pairs": 17,
+          "scope": "whole rigid arm surface; not signed distal-hand penetration"
+        },
+        "face_projection": [
+          0.35545599460601807,
+          0.5815391540527344,
+          0.591815710067749,
+          0.7263006567955017,
+          2.741122245788574
+        ],
+        "pencil_projection": [
+          0.2540670931339264,
+          0.29213055968284607,
+          0.42396652698516846,
+          0.5022911429405212,
+          2.415288209915161
+        ]
+      }
+    },
+    {
+      "global_frame": 2135,
+      "sentence": 32,
+      "metrics": {
+        "pencil_shake_phase": 0.9946753280841731,
+        "socket_alignment": {
+          "chart": {
+            "socket_to_target_error": 0.0
+          },
+          "pencil": {
+            "socket_to_target_error": 0.0
+          }
+        },
+        "chart_contact": {
+          "sampled_min_arm_surface_gap": 0.00837143324315548,
+          "arm_prop_overlap_pairs": 36,
+          "scope": "whole rigid arm surface; not signed distal-hand penetration"
+        },
+        "pencil_contact": {
+          "sampled_min_arm_surface_gap": 0.0038435396272689104,
+          "arm_prop_overlap_pairs": 17,
+          "scope": "whole rigid arm surface; not signed distal-hand penetration"
+        },
+        "face_projection": [
+          0.3561045229434967,
+          0.5822837352752686,
+          0.5910043716430664,
+          0.7256854772567749,
+          2.7372539043426514
+        ],
+        "pencil_projection": [
+          0.26301947236061096,
+          0.3007054626941681,
+          0.42176297307014465,
+          0.4998719394207001,
+          2.4210293292999268
+        ]
+      }
+    },
+    {
+      "global_frame": 2136,
+      "sentence": 32,
+      "metrics": {
+        "pencil_shake_phase": 0.7451131604793488,
+        "socket_alignment": {
+          "chart": {
+            "socket_to_target_error": 0.0
+          },
+          "pencil": {
+            "socket_to_target_error": 0.0
+          }
+        },
+        "chart_contact": {
+          "sampled_min_arm_surface_gap": 0.008376696147024632,
+          "arm_prop_overlap_pairs": 36,
+          "scope": "whole rigid arm surface; not signed distal-hand penetration"
+        },
+        "pencil_contact": {
+          "sampled_min_arm_surface_gap": 0.003383631119504571,
+          "arm_prop_overlap_pairs": 17,
+          "scope": "whole rigid arm surface; not signed distal-hand penetration"
+        },
+        "face_projection": [
+          0.35675546526908875,
+          0.5829492211341858,
+          0.5901988744735718,
+          0.7250641584396362,
+          2.7334351539611816
+        ],
+        "pencil_projection": [
+          0.2587343454360962,
+          0.2966228723526001,
+          0.42325061559677124,
+          0.5015155076980591,
+          2.4168245792388916
+        ]
+      }
+    },
+    {
+      "global_frame": 2137,
+      "sentence": 32,
+      "metrics": {
+        "pencil_shake_phase": 0.0073710965832995716,
+        "socket_alignment": {
+          "chart": {
+            "socket_to_target_error": 0.0
+          },
+          "pencil": {
+            "socket_to_target_error": 0.0
+          }
+        },
+        "chart_contact": {
+          "sampled_min_arm_surface_gap": 0.008381753228604794,
+          "arm_prop_overlap_pairs": 36,
+          "scope": "whole rigid arm surface; not signed distal-hand penetration"
+        },
+        "pencil_contact": {
+          "sampled_min_arm_surface_gap": 0.001799250254407525,
+          "arm_prop_overlap_pairs": 17,
+          "scope": "whole rigid arm surface; not signed distal-hand penetration"
+        },
+        "face_projection": [
+          0.3574066460132599,
+          0.5835388898849487,
+          0.5894120931625366,
+          0.7244467735290527,
+          2.7297263145446777
+        ],
+        "pencil_projection": [
+          0.24403832852840424,
+          0.28258565068244934,
+          0.4279597997665405,
+          0.5066727995872498,
+          2.4050371646881104
+        ]
+      }
+    },
+    {
+      "global_frame": 2138,
+      "sentence": 32,
+      "metrics": {
+        "pencil_shake_phase": -0.73520032928949,
+        "socket_alignment": {
+          "chart": {
+            "socket_to_target_error": 0.0
+          },
+          "pencil": {
+            "socket_to_target_error": 0.0
+          }
+        },
+        "chart_contact": {
+          "sampled_min_arm_surface_gap": 0.008387177251279354,
+          "arm_prop_overlap_pairs": 36,
+          "scope": "whole rigid arm surface; not signed distal-hand penetration"
+        },
+        "pencil_contact": {
+          "sampled_min_arm_surface_gap": 2.231634789495729e-05,
+          "arm_prop_overlap_pairs": 24,
+          "scope": "whole rigid arm surface; not signed distal-hand penetration"
+        },
+        "face_projection": [
+          0.35805556178092957,
+          0.5840568542480469,
+          0.5886557102203369,
+          0.7238436937332153,
+          2.726184368133545
+        ],
+        "pencil_projection": [
+          0.22834134101867676,
+          0.2676004469394684,
+          0.4338269829750061,
+          0.5130385160446167,
+          2.392371892929077
+        ]
+      }
+    },
+    {
+      "global_frame": 2139,
+      "sentence": 32,
+      "metrics": {
+        "pencil_shake_phase": -0.996086503119594,
+        "socket_alignment": {
+          "chart": {
+            "socket_to_target_error": 0.0
+          },
+          "pencil": {
+            "socket_to_target_error": 0.0
+          }
+        },
+        "chart_contact": {
+          "sampled_min_arm_surface_gap": 0.008392549119889736,
+          "arm_prop_overlap_pairs": 36,
+          "scope": "whole rigid arm surface; not signed distal-hand penetration"
+        },
+        "pencil_contact": {
+          "sampled_min_arm_surface_gap": 0.00010746464249677956,
+          "arm_prop_overlap_pairs": 26,
+          "scope": "whole rigid arm surface; not signed distal-hand penetration"
+        },
+        "face_projection": [
+          0.3586997985839844,
+          0.5845075845718384,
+          0.5879417657852173,
+          0.7232656478881836,
+          2.7228615283966064
+        ],
+        "pencil_projection": [
+          0.2227817177772522,
+          0.26233798265457153,
+          0.437394380569458,
+          0.516895055770874,
+          2.3851752281188965
+        ]
+      }
+    },
+    {
+      "global_frame": 2140,
+      "sentence": 32,
+      "metrics": {
+        "pencil_shake_phase": -0.6043611924374931,
+        "socket_alignment": {
+          "chart": {
+            "socket_to_target_error": 0.0
+          },
+          "pencil": {
+            "socket_to_target_error": 0.0
+          }
+        },
+        "chart_contact": {
+          "sampled_min_arm_surface_gap": 0.00839739479124546,
+          "arm_prop_overlap_pairs": 32,
+          "scope": "whole rigid arm surface; not signed distal-hand penetration"
+        },
+        "pencil_contact": {
+          "sampled_min_arm_surface_gap": 1.1243180779274553e-05,
+          "arm_prop_overlap_pairs": 26,
+          "scope": "whole rigid arm surface; not signed distal-hand penetration"
+        },
+        "face_projection": [
+          0.359336793422699,
+          0.5848957896232605,
+          0.5872814059257507,
+          0.7227234244346619,
+          2.719809055328369
+        ],
+        "pencil_projection": [
+          0.23196746408939362,
+          0.2711964249610901,
+          0.4362582266330719,
+          0.5156902074813843,
+          2.3867456912994385
+        ]
+      }
+    },
+    {
+      "global_frame": 2141,
+      "sentence": 32,
+      "metrics": {
+        "pencil_shake_phase": 0.18332677183237558,
+        "socket_alignment": {
+          "chart": {
+            "socket_to_target_error": 0.0
+          },
+          "pencil": {
+            "socket_to_target_error": 0.0
+          }
+        },
+        "chart_contact": {
+          "sampled_min_arm_surface_gap": 0.008402404375374317,
+          "arm_prop_overlap_pairs": 32,
+          "scope": "whole rigid arm surface; not signed distal-hand penetration"
+        },
+        "pencil_contact": {
+          "sampled_min_arm_surface_gap": 0.0001659851986914873,
+          "arm_prop_overlap_pairs": 17,
+          "scope": "whole rigid arm surface; not signed distal-hand penetration"
+        },
+        "face_projection": [
+          0.35996389389038086,
+          0.5852264761924744,
+          0.586685061454773,
+          0.7222278118133545,
+          2.717071294784546
+        ],
+        "pencil_projection": [
+          0.2498924732208252,
+          0.2883778214454651,
+          0.4313255846500397,
+          0.510360062122345,
+          2.3966586589813232
+        ]
+      }
+    },
+    {
+      "global_frame": 2142,
+      "sentence": 32,
+      "metrics": {
+        "pencil_shake_phase": 0.8509035245341184,
+        "socket_alignment": {
+          "chart": {
+            "socket_to_target_error": 0.0
+          },
+          "pencil": {
+            "socket_to_target_error": 0.0
+          }
+        },
+        "chart_contact": {
+          "sampled_min_arm_surface_gap": 0.008407304994761944,
+          "arm_prop_overlap_pairs": 32,
+          "scope": "whole rigid arm surface; not signed distal-hand penetration"
+        },
+        "pencil_contact": {
+          "sampled_min_arm_surface_gap": 0.0023171803914010525,
+          "arm_prop_overlap_pairs": 17,
+          "scope": "whole rigid arm surface; not signed distal-hand penetration"
+        },
+        "face_projection": [
+          0.36057791113853455,
+          0.5855044722557068,
+          0.5861621499061584,
+          0.7217889428138733,
+          2.7146859169006348
+        ],
+        "pencil_projection": [
+          0.2648671865463257,
+          0.3026674687862396,
+          0.4257006347179413,
+          0.5042343139648438,
+          2.409562826156616
+        ]
+      }
+    },
+    {
+      "global_frame": 2143,
+      "sentence": 32,
+      "metrics": {
+        "pencil_shake_phase": 0.9609891250279611,
+        "socket_alignment": {
+          "chart": {
+            "socket_to_target_error": 0.0
+          },
+          "pencil": {
+            "socket_to_target_error": 0.0
+          }
+        },
+        "chart_contact": {
+          "sampled_min_arm_surface_gap": 0.008411785587668419,
+          "arm_prop_overlap_pairs": 32,
+          "scope": "whole rigid arm surface; not signed distal-hand penetration"
+        },
+        "pencil_contact": {
+          "sampled_min_arm_surface_gap": 0.00398964574560523,
+          "arm_prop_overlap_pairs": 17,
+          "scope": "whole rigid arm surface; not signed distal-hand penetration"
+        },
+        "face_projection": [
+          0.36069604754447937,
+          0.5857358574867249,
+          0.5858865976333618,
+          0.7215880155563354,
+          2.712649345397949
+        ],
+        "pencil_projection": [
+          0.26824408769607544,
+          0.3058167099952698,
+          0.4223521053791046,
+          0.500579833984375,
+          2.4175689220428467
+        ]
+      }
+    },
+    {
+      "global_frame": 2144,
+      "sentence": 32,
+      "metrics": {
+        "pencil_shake_phase": 0.4414581836648109,
+        "socket_alignment": {
+          "chart": {
+            "socket_to_target_error": 0.0
+          },
+          "pencil": {
+            "socket_to_target_error": 0.0
+          }
+        },
+        "chart_contact": {
+          "sampled_min_arm_surface_gap": 0.00841637421399355,
+          "arm_prop_overlap_pairs": 32,
+          "scope": "whole rigid arm surface; not signed distal-hand penetration"
+        },
+        "pencil_contact": {
+          "sampled_min_arm_surface_gap": 0.0038564845453947783,
+          "arm_prop_overlap_pairs": 17,
+          "scope": "whole rigid arm surface; not signed distal-hand penetration"
+        },
+        "face_projection": [
+          0.3607447147369385,
+          0.5859249234199524,
+          0.5858721733093262,
+          0.7216402888298035,
+          2.710986614227295
+        ],
+        "pencil_projection": [
+          0.2588139772415161,
+          0.29671335220336914,
+          0.42285487055778503,
+          0.5011422634124756,
+          2.4159321784973145
+        ]
+      }
+    },
+    {
+      "global_frame": 2145,
+      "sentence": 32,
+      "metrics": {
+        "pencil_shake_phase": -0.36730534913419133,
+        "socket_alignment": {
+          "chart": {
+            "socket_to_target_error": 0.0
+          },
+          "pencil": {
+            "socket_to_target_error": 0.0
+          }
+        },
+        "chart_contact": {
+          "sampled_min_arm_surface_gap": 0.008420757949352264,
+          "arm_prop_overlap_pairs": 32,
+          "scope": "whole rigid arm surface; not signed distal-hand penetration"
+        },
+        "pencil_contact": {
+          "sampled_min_arm_surface_gap": 0.0032085615675896406,
+          "arm_prop_overlap_pairs": 17,
+          "scope": "whole rigid arm surface; not signed distal-hand penetration"
+        },
+        "face_projection": [
+          0.3607894480228424,
+          0.5860746502876282,
+          0.5859450697898865,
+          0.7217658758163452,
+          2.7097599506378174
+        ],
+        "pencil_projection": [
+          0.24256721138954163,
+          0.28115132451057434,
+          0.4272399842739105,
+          0.5059188008308411,
+          2.4057648181915283
+        ]
+      }
+    },
+    {
+      "global_frame": 2146,
+      "sentence": 32,
+      "metrics": {
+        "pencil_shake_phase": -0.935419411814874,
+        "socket_alignment": {
+          "chart": {
+            "socket_to_target_error": 0.0
+          },
+          "pencil": {
+            "socket_to_target_error": 0.0
+          }
+        },
+        "chart_contact": {
+          "sampled_min_arm_surface_gap": 0.008424874395132065,
+          "arm_prop_overlap_pairs": 32,
+          "scope": "whole rigid arm surface; not signed distal-hand penetration"
+        },
+        "pencil_contact": {
+          "sampled_min_arm_surface_gap": 0.0008674240671098232,
+          "arm_prop_overlap_pairs": 17,
+          "scope": "whole rigid arm surface; not signed distal-hand penetration"
+        },
+        "face_projection": [
+          0.3608352243900299,
+          0.5861884951591492,
+          0.586105227470398,
+          0.7219650745391846,
+          2.708984613418579
+        ],
+        "pencil_projection": [
+          0.23005501925945282,
+          0.26925668120384216,
+          0.43373045325279236,
+          0.5129379630088806,
+          2.3924496173858643
+        ]
+      }
+    },
+    {
+      "global_frame": 2147,
+      "sentence": 32,
+      "metrics": {
+        "pencil_shake_phase": -0.8906695825803934,
+        "socket_alignment": {
+          "chart": {
+            "socket_to_target_error": 0.0
+          },
+          "pencil": {
+            "socket_to_target_error": 0.0
+          }
+        },
+        "chart_contact": {
+          "sampled_min_arm_surface_gap": 0.008428419940173626,
+          "arm_prop_overlap_pairs": 32,
+          "scope": "whole rigid arm surface; not signed distal-hand penetration"
+        },
+        "pencil_contact": {
+          "sampled_min_arm_surface_gap": 6.19028287474066e-05,
+          "arm_prop_overlap_pairs": 26,
+          "scope": "whole rigid arm surface; not signed distal-hand penetration"
+        },
+        "face_projection": [
+          0.36088618636131287,
+          0.5862695574760437,
+          0.5863508582115173,
+          0.7222357988357544,
+          2.708669900894165
+        ],
+        "pencil_projection": [
+          0.2303483933210373,
+          0.26969626545906067,
+          0.43871796131134033,
+          0.518322765827179,
+          2.3826143741607666
+        ]
+      }
+    },
+    {
+      "global_frame": 2148,
+      "sentence": 32,
+      "metrics": {
+        "pencil_shake_phase": -0.26237485370392877,
+        "socket_alignment": {
+          "chart": {
+            "socket_to_target_error": 0.0
+          },
+          "pencil": {
+            "socket_to_target_error": 0.0
+          }
+        },
+        "chart_contact": {
+          "sampled_min_arm_surface_gap": 0.008432017639279366,
+          "arm_prop_overlap_pairs": 32,
+          "scope": "whole rigid arm surface; not signed distal-hand penetration"
+        },
+        "pencil_contact": {
+          "sampled_min_arm_surface_gap": 4.0230090235127136e-05,
+          "arm_prop_overlap_pairs": 26,
+          "scope": "whole rigid arm surface; not signed distal-hand penetration"
+        },
+        "face_projection": [
+          0.3609454333782196,
+          0.5863205790519714,
+          0.5866789817810059,
+          0.7225751280784607,
+          2.708817958831787
+        ],
+        "pencil_projection": [
+          0.2439122200012207,
+          0.282828688621521,
+          0.439196914434433,
+          0.5188414454460144,
+          2.3816277980804443
+        ]
+      }
+    },
+    {
+      "global_frame": 2149,
+      "sentence": 32,
+      "metrics": {
+        "pencil_shake_phase": 0.5378214542403434,
+        "socket_alignment": {
+          "chart": {
+            "socket_to_target_error": 0.0
+          },
+          "pencil": {
+            "socket_to_target_error": 0.0
+          }
+        },
+        "chart_contact": {
+          "sampled_min_arm_surface_gap": 0.008435460738837719,
+          "arm_prop_overlap_pairs": 32,
+          "scope": "whole rigid arm surface; not signed distal-hand penetration"
+        },
+        "pencil_contact": {
+          "sampled_min_arm_surface_gap": 0.0003515532589517534,
+          "arm_prop_overlap_pairs": 24,
+          "scope": "whole rigid arm surface; not signed distal-hand penetration"
+        },
+        "face_projection": [
+          0.36101511120796204,
+          0.5863437652587891,
+          0.5870852470397949,
+          0.7229776978492737,
+          2.709425449371338
+        ],
+        "pencil_projection": [
+          0.2615772783756256,
+          0.2997737228870392,
+          0.43519484996795654,
+          0.5144867300987244,
+          2.3905413150787354
+        ]
+      }
+    },
+    {
+      "global_frame": 2150,
+      "sentence": 32,
+      "metrics": {
+        "pencil_shake_phase": 0.9856503156274595,
+        "socket_alignment": {
+          "chart": {
+            "socket_to_target_error": 0.0
+          },
+          "pencil": {
+            "socket_to_target_error": 0.0
+          }
+        },
+        "chart_contact": {
+          "sampled_min_arm_surface_gap": 0.008438639342784882,
+          "arm_prop_overlap_pairs": 32,
+          "scope": "whole rigid arm surface; not signed distal-hand penetration"
+        },
+        "pencil_contact": {
+          "sampled_min_arm_surface_gap": 0.001708818948827684,
+          "arm_prop_overlap_pairs": 17,
+          "scope": "whole rigid arm surface; not signed distal-hand penetration"
+        },
+        "face_projection": [
+          0.36109623312950134,
+          0.5863407254219055,
+          0.5875643491744995,
+          0.7234370112419128,
+          2.710481643676758
+        ],
+        "pencil_projection": [
+          0.2718721330165863,
+          0.3095322251319885,
+          0.42935052514076233,
+          0.5081142783164978,
+          2.40411114692688
+        ]
+      }
+    },
+    {
+      "global_frame": 2151,
+      "sentence": 32,
+      "metrics": {
+        "pencil_shake_phase": 0.7877052269841179,
+        "socket_alignment": {
+          "chart": {
+            "socket_to_target_error": 0.0
+          },
+          "pencil": {
+            "socket_to_target_error": 0.0
+          }
+        },
+        "chart_contact": {
+          "sampled_min_arm_surface_gap": 0.008441299200057983,
+          "arm_prop_overlap_pairs": 32,
+          "scope": "whole rigid arm surface; not signed distal-hand penetration"
+        },
+        "pencil_contact": {
+          "sampled_min_arm_surface_gap": 0.004067827947437763,
+          "arm_prop_overlap_pairs": 17,
+          "scope": "whole rigid arm surface; not signed distal-hand penetration"
+        },
+        "face_projection": [
+          0.3611888885498047,
+          0.5863129496574402,
+          0.5881091952323914,
+          0.7239450216293335,
+          2.711968421936035
+        ],
+        "pencil_projection": [
+          0.26915618777275085,
+          0.3067496716976166,
+          0.4248442053794861,
+          0.5032147765159607,
+          2.4142589569091797
+        ]
+      }
+    },
+    {
+      "global_frame": 2152,
+      "sentence": 32,
+      "metrics": {
+        "pencil_shake_phase": 0.07367496307722743,
+        "socket_alignment": {
+          "chart": {
+            "socket_to_target_error": 0.0
+          },
+          "pencil": {
+            "socket_to_target_error": 0.0
+          }
+        },
+        "chart_contact": {
+          "sampled_min_arm_surface_gap": 0.008443803526461124,
+          "arm_prop_overlap_pairs": 32,
+          "scope": "whole rigid arm surface; not signed distal-hand penetration"
+        },
+        "pencil_contact": {
+          "sampled_min_arm_surface_gap": 0.0028453266713768244,
+          "arm_prop_overlap_pairs": 17,
+          "scope": "whole rigid arm surface; not signed distal-hand penetration"
+        },
+        "face_projection": [
+          0.36129230260849,
+          0.5862613916397095,
+          0.5887120366096497,
+          0.7244926691055298,
+          2.7138636112213135
+        ],
+        "pencil_projection": [
+          0.25581273436546326,
+          0.29381629824638367,
+          0.4240328073501587,
+          0.5023517608642578,
+          2.415496349334717
+        ]
+      }
+    },
+    {
+      "global_frame": 2153,
+      "sentence": 32,
+      "metrics": {
+        "pencil_shake_phase": -0.6886253324731233,
+        "socket_alignment": {
+          "chart": {
+            "socket_to_target_error": 0.0
+          },
+          "pencil": {
+            "socket_to_target_error": 0.0
+          }
+        },
+        "chart_contact": {
+          "sampled_min_arm_surface_gap": 0.00844583846628666,
+          "arm_prop_overlap_pairs": 32,
+          "scope": "whole rigid arm surface; not signed distal-hand penetration"
+        },
+        "pencil_contact": {
+          "sampled_min_arm_surface_gap": 0.0037299925461411476,
+          "arm_prop_overlap_pairs": 17,
+          "scope": "whole rigid arm surface; not signed distal-hand penetration"
+        },
+        "face_projection": [
+          0.36140501499176025,
+          0.5861871838569641,
+          0.5893638730049133,
+          0.7250696420669556,
+          2.7161355018615723
+        ],
+        "pencil_projection": [
+          0.24018225073814392,
+          0.2788223326206207,
+          0.42767173051834106,
+          0.5063115358352661,
+          2.4071786403656006
+        ]
+      }
+    },
+    {
+      "global_frame": 2154,
+      "sentence": 32,
+      "metrics": {
+        "pencil_shake_phase": -0.9997551733586196,
+        "socket_alignment": {
+          "chart": {
+            "socket_to_target_error": 0.0
+          },
+          "pencil": {
+            "socket_to_target_error": 0.0
+          }
+        },
+        "chart_contact": {
+          "sampled_min_arm_surface_gap": 0.008447608910501003,
+          "arm_prop_overlap_pairs": 32,
+          "scope": "whole rigid arm surface; not signed distal-hand penetration"
+        },
+        "pencil_contact": {
+          "sampled_min_arm_surface_gap": 0.0016975430771708488,
+          "arm_prop_overlap_pairs": 17,
+          "scope": "whole rigid arm surface; not signed distal-hand penetration"
+        },
+        "face_projection": [
+          0.36152446269989014,
+          0.5860905647277832,
+          0.5899572372436523,
+          0.7256653308868408,
+          2.718749523162842
+        ],
+        "pencil_projection": [
+          0.23242653906345367,
+          0.2715369760990143,
+          0.43418556451797485,
+          0.5133722424507141,
+          2.3933005332946777
+        ]
+      }
+    },
+    {
+      "global_frame": 2155,
+      "sentence": 32,
+      "metrics": {
+        "pencil_shake_phase": -0.655869906830303,
+        "socket_alignment": {
+          "chart": {
+            "socket_to_target_error": 0.0
+          },
+          "pencil": {
+            "socket_to_target_error": 0.0
+          }
+        },
+        "chart_contact": {
+          "sampled_min_arm_surface_gap": 0.008448964916169643,
+          "arm_prop_overlap_pairs": 32,
+          "scope": "whole rigid arm surface; not signed distal-hand penetration"
+        },
+        "pencil_contact": {
+          "sampled_min_arm_surface_gap": 5.7358003687113523e-05,
+          "arm_prop_overlap_pairs": 26,
+          "scope": "whole rigid arm surface; not signed distal-hand penetration"
+        },
+        "face_projection": [
+          0.3616476356983185,
+          0.5859723091125488,
+          0.5902919173240662,
+          0.7262687683105469,
+          2.7216615676879883
+        ],
+        "pencil_projection": [
+          0.23833343386650085,
+          0.2774397134780884,
+          0.43996578454971313,
+          0.5196341872215271,
+          2.3812551498413086
+        ]
+      }
+    },
+    {
+      "global_frame": 2156,
+      "sentence": 32,
+      "metrics": {
+        "pencil_shake_phase": 0.11772526160199631,
+        "socket_alignment": {
+          "chart": {
+            "socket_to_target_error": 0.0
+          },
+          "pencil": {
+            "socket_to_target_error": 0.0
+          }
+        },
+        "chart_contact": {
+          "sampled_min_arm_surface_gap": 0.008450114168226719,
+          "arm_prop_overlap_pairs": 32,
+          "scope": "whole rigid arm surface; not signed distal-hand penetration"
+        },
+        "pencil_contact": {
+          "sampled_min_arm_surface_gap": 0.0007354743429459631,
+          "arm_prop_overlap_pairs": 26,
+          "scope": "whole rigid arm surface; not signed distal-hand penetration"
+        },
+        "face_projection": [
+          0.3617709279060364,
+          0.5858325958251953,
+          0.5906473398208618,
+          0.726868748664856,
+          2.7248246669769287
+        ],
+        "pencil_projection": [
+          0.25425687432289124,
+          0.29288411140441895,
+          0.44150736927986145,
+          0.5212961435317993,
+          2.3783118724823
+        ]
+      }
+    },
+    {
+      "global_frame": 2157,
+      "sentence": 32,
+      "metrics": {
+        "pencil_shake_phase": 0.8141897215084304,
+        "socket_alignment": {
+          "chart": {
+            "socket_to_target_error": 0.0
+          },
+          "pencil": {
+            "socket_to_target_error": 0.0
+          }
+        },
+        "chart_contact": {
+          "sampled_min_arm_surface_gap": 0.008450894616544247,
+          "arm_prop_overlap_pairs": 32,
+          "scope": "whole rigid arm surface; not signed distal-hand penetration"
+        },
+        "pencil_contact": {
+          "sampled_min_arm_surface_gap": 0.0002829974691849202,
+          "arm_prop_overlap_pairs": 26,
+          "scope": "whole rigid arm surface; not signed distal-hand penetration"
+        },
+        "face_projection": [
+          0.3618900775909424,
+          0.5858721137046814,
+          0.5910160541534424,
+          0.727454423904419,
+          2.7281863689422607
+        ],
+        "pencil_projection": [
+          0.2691846787929535,
+          0.307201623916626,
+          0.43791595101356506,
+          0.5173870921134949,
+          2.3863162994384766
+        ]
+      }
+    },
+    {
+      "global_frame": 2158,
+      "sentence": 32,
+      "metrics": {
+        "pencil_shake_phase": 0.9772170138956916,
+        "socket_alignment": {
+          "chart": {
+            "socket_to_target_error": 0.0
+          },
+          "pencil": {
+            "socket_to_target_error": 0.0
+          }
+        },
+        "chart_contact": {
+          "sampled_min_arm_surface_gap": 0.008451259694993496,
+          "arm_prop_overlap_pairs": 32,
+          "scope": "whole rigid arm surface; not signed distal-hand penetration"
+        },
+        "pencil_contact": {
+          "sampled_min_arm_surface_gap": 0.00118883210234344,
+          "arm_prop_overlap_pairs": 17,
+          "scope": "whole rigid arm surface; not signed distal-hand penetration"
+        },
+        "face_projection": [
+          0.3620004951953888,
+          0.5859376788139343,
+          0.5913901329040527,
+          0.728015661239624,
+          2.7316906452178955
+        ],
+        "pencil_projection": [
+          0.2734241783618927,
+          0.31109246611595154,
+          0.4313895106315613,
+          0.5103070139884949,
+          2.4002983570098877
+        ]
+      }
+    },
+    {
+      "global_frame": 2159,
+      "sentence": 32,
+      "metrics": {
+        "pencil_shake_phase": 0.4999956490310595,
+        "socket_alignment": {
+          "chart": {
+            "socket_to_target_error": 0.0
+          },
+          "pencil": {
+            "socket_to_target_error": 0.0
+          }
+        },
+        "chart_contact": {
+          "sampled_min_arm_surface_gap": 0.008451414294540882,
+          "arm_prop_overlap_pairs": 32,
+          "scope": "whole rigid arm surface; not signed distal-hand penetration"
+        },
+        "pencil_contact": {
+          "sampled_min_arm_surface_gap": 0.0038244144525378942,
+          "arm_prop_overlap_pairs": 17,
+          "scope": "whole rigid arm surface; not signed distal-hand penetration"
+        },
+        "face_projection": [
+          0.3620971441268921,
+          0.5859505534172058,
+          0.5917615294456482,
+          0.7285431623458862,
+          2.735275983810425
+        ],
+        "pencil_projection": [
+          0.2650323212146759,
+          0.30278250575065613,
+          0.4255700707435608,
+          0.5040068626403809,
+          2.4125280380249023
+        ]
+      }
+    },
+    {
+      "global_frame": 2160,
+      "sentence": 32,
+      "metrics": {
+        "pencil_shake_phase": -0.3048106211022167,
+        "socket_alignment": {
+          "chart": {
+            "socket_to_target_error": 0.0
+          },
+          "pencil": {
+            "socket_to_target_error": 0.0
+          }
+        },
+        "chart_contact": {
+          "sampled_min_arm_surface_gap": 0.008451155386865139,
+          "arm_prop_overlap_pairs": 32,
+          "scope": "whole rigid arm surface; not signed distal-hand penetration"
+        },
+        "pencil_contact": {
+          "sampled_min_arm_surface_gap": 0.0020022063981741667,
+          "arm_prop_overlap_pairs": 17,
+          "scope": "whole rigid arm surface; not signed distal-hand penetration"
+        },
+        "face_projection": [
+          0.3621751368045807,
+          0.5859111547470093,
+          0.5921223163604736,
+          0.7290285229682922,
+          2.738882064819336
+        ],
+        "pencil_projection": [
+          0.24967478215694427,
+          0.2878599166870117,
+          0.42352110147476196,
+          0.5017945170402527,
+          2.416682481765747
+        ]
+      }
+    },
+    {
+      "global_frame": 2161,
+      "sentence": 32,
+      "metrics": {
+        "pencil_shake_phase": -0.9099124365424391,
+        "socket_alignment": {
+          "chart": {
+            "socket_to_target_error": 0.0
+          },
+          "pencil": {
+            "socket_to_target_error": 0.0
+          }
+        },
+        "chart_contact": {
+          "sampled_min_arm_surface_gap": 0.008450532332062721,
+          "arm_prop_overlap_pairs": 32,
+          "scope": "whole rigid arm surface; not signed distal-hand penetration"
+        },
+        "pencil_contact": {
+          "sampled_min_arm_surface_gap": 0.0027863895520567894,
+          "arm_prop_overlap_pairs": 17,
+          "scope": "whole rigid arm surface; not signed distal-hand penetration"
+        },
+        "face_projection": [
+          0.36222875118255615,
+          0.5858204364776611,
+          0.5924643278121948,
+          0.7294648289680481,
+          2.7424442768096924
+        ],
+        "pencil_projection": [
+          0.23681505024433136,
+          0.275519460439682,
+          0.42635267972946167,
+          0.5048783421516418,
+          2.4101192951202393
+        ]
+      }
+    },
+    {
+      "global_frame": 2162,
+      "sentence": 32,
+      "metrics": {
+        "pencil_shake_phase": -0.9188619056469509,
+        "socket_alignment": {
+          "chart": {
+            "socket_to_target_error": 0.0
+          },
+          "pencil": {
+            "socket_to_target_error": 0.0
+          }
+        },
+        "chart_contact": {
+          "sampled_min_arm_surface_gap": 0.008449435234069824,
+          "arm_prop_overlap_pairs": 32,
+          "scope": "whole rigid arm surface; not signed distal-hand penetration"
+        },
+        "pencil_contact": {
+          "sampled_min_arm_surface_gap": 0.0022173880133777857,
+          "arm_prop_overlap_pairs": 17,
+          "scope": "whole rigid arm surface; not signed distal-hand penetration"
+        },
+        "face_projection": [
+          0.3622529208660126,
+          0.5856797099113464,
+          0.5927799344062805,
+          0.7298458814620972,
+          2.745899200439453
+        ],
+        "pencil_projection": [
+          0.23470766842365265,
+          0.2737042307853699,
+          0.4326889216899872,
+          0.5117722749710083,
+          2.3957855701446533
+        ]
+      }
+    },
+    {
+      "global_frame": 2163,
+      "sentence": 32,
+      "metrics": {
+        "pencil_shake_phase": -0.32579555541456173,
+        "socket_alignment": {
+          "chart": {
+            "socket_to_target_error": 0.0
+          },
+          "pencil": {
+            "socket_to_target_error": 0.0
+          }
+        },
+        "chart_contact": {
+          "sampled_min_arm_surface_gap": 0.008448286913335323,
+          "arm_prop_overlap_pairs": 32,
+          "scope": "whole rigid arm surface; not signed distal-hand penetration"
+        },
+        "pencil_contact": {
+          "sampled_min_arm_surface_gap": 9.648548439145088e-05,
+          "arm_prop_overlap_pairs": 26,
+          "scope": "whole rigid arm surface; not signed distal-hand penetration"
+        },
+        "face_projection": [
+          0.36224237084388733,
+          0.5854904651641846,
+          0.5930615663528442,
+          0.730167031288147,
+          2.7491865158081055
+        ],
+        "pencil_projection": [
+          0.24516049027442932,
+          0.28402817249298096,
+          0.4390559494495392,
+          0.5186824202537537,
+          2.3821120262145996
+        ]
+      }
+    },
+    {
+      "global_frame": 2164,
+      "sentence": 32,
+      "metrics": {
+        "pencil_shake_phase": 0.480724064589766,
+        "socket_alignment": {
+          "chart": {
+            "socket_to_target_error": 0.0
+          },
+          "pencil": {
+            "socket_to_target_error": 0.0
+          }
+        },
+        "chart_contact": {
+          "sampled_min_arm_surface_gap": 0.008446671068668365,
+          "arm_prop_overlap_pairs": 32,
+          "scope": "whole rigid arm surface; not signed distal-hand penetration"
+        },
+        "pencil_contact": {
+          "sampled_min_arm_surface_gap": 0.0005959672853350639,
+          "arm_prop_overlap_pairs": 26,
+          "scope": "whole rigid arm surface; not signed distal-hand penetration"
+        },
+        "face_projection": [
+          0.3621918559074402,
+          0.5852546691894531,
+          0.593302845954895,
+          0.7304252982139587,
+          2.752244710922241
+        ],
+        "pencil_projection": [
+          0.2610839307308197,
+          0.29949644207954407,
+          0.44151654839515686,
+          0.5213280320167542,
+          2.3776278495788574
+        ]
+      }
+    },
+    {
+      "global_frame": 2165,
+      "sentence": 32,
+      "metrics": {
+        "pencil_shake_phase": 0.9722850495256341,
+        "socket_alignment": {
+          "chart": {
+            "socket_to_target_error": 0.0
+          },
+          "pencil": {
+            "socket_to_target_error": 0.0
+          }
+        },
+        "chart_contact": {
+          "sampled_min_arm_surface_gap": 0.008444741368293762,
+          "arm_prop_overlap_pairs": 32,
+          "scope": "whole rigid arm surface; not signed distal-hand penetration"
+        },
+        "pencil_contact": {
+          "sampled_min_arm_surface_gap": 0.0005189402727410197,
+          "arm_prop_overlap_pairs": 26,
+          "scope": "whole rigid arm surface; not signed distal-hand penetration"
+        },
+        "face_projection": [
+          0.36209675669670105,
+          0.5849742889404297,
+          0.5934979319572449,
+          0.7306182384490967,
+          2.7550199031829834
+        ],
+        "pencil_projection": [
+          0.2712382972240448,
+          0.30921709537506104,
+          0.4383027255535126,
+          0.5178388357162476,
+          2.3845138549804688
+        ]
+      }
+    },
+    {
+      "global_frame": 2166,
+      "sentence": 32,
+      "metrics": {
+        "pencil_shake_phase": 0.8268286794901034,
+        "socket_alignment": {
+          "chart": {
+            "socket_to_target_error": 0.0
+          },
+          "pencil": {
+            "socket_to_target_error": 0.0
+          }
+        },
+        "chart_contact": {
+          "sampled_min_arm_surface_gap": 0.00844224076718092,
+          "arm_prop_overlap_pairs": 32,
+          "scope": "whole rigid arm surface; not signed distal-hand penetration"
+        },
+        "pencil_contact": {
+          "sampled_min_arm_surface_gap": 0.0007459587650373578,
+          "arm_prop_overlap_pairs": 17,
+          "scope": "whole rigid arm surface; not signed distal-hand penetration"
+        },
+        "face_projection": [
+          0.3619527518749237,
+          0.5846511721611023,
+          0.5936417579650879,
+          0.7307447791099548,
+          2.7574617862701416
+        ],
+        "pencil_projection": [
+          0.2689580023288727,
+          0.3067951798439026,
+          0.43123820424079895,
+          0.5102100372314453,
+          2.398548126220703
+        ]
+      }
+    },
+    {
+      "global_frame": 2167,
+      "sentence": 32,
+      "metrics": {
+        "pencil_shake_phase": 0.13965440617071348,
+        "socket_alignment": {
+          "chart": {
+            "socket_to_target_error": 0.0
+          },
+          "pencil": {
+            "socket_to_target_error": 0.0
+          }
+        },
+        "chart_contact": {
+          "sampled_min_arm_surface_gap": 0.008439579978585243,
+          "arm_prop_overlap_pairs": 32,
+          "scope": "whole rigid arm surface; not signed distal-hand penetration"
+        },
+        "pencil_contact": {
+          "sampled_min_arm_surface_gap": 0.003653127932921052,
+          "arm_prop_overlap_pairs": 17,
+          "scope": "whole rigid arm surface; not signed distal-hand penetration"
+        },
+        "face_projection": [
+          0.3617561161518097,
+          0.5842880010604858,
+          0.5937303304672241,
+          0.7308049201965332,
+          2.7595267295837402
+        ],
+        "pencil_projection": [
+          0.2562107443809509,
+          0.2942442297935486,
+          0.4243844449520111,
+          0.5027987957000732,
+          2.4126737117767334
+        ]
+      }
+    },
+    {
+      "global_frame": 2168,
+      "sentence": 32,
+      "metrics": {
+        "pencil_shake_phase": -0.6390180141914302,
+        "socket_alignment": {
+          "chart": {
+            "socket_to_target_error": 0.0
+          },
+          "pencil": {
+            "socket_to_target_error": 0.0
+          }
+        },
+        "chart_contact": {
+          "sampled_min_arm_surface_gap": 0.008436448872089386,
+          "arm_prop_overlap_pairs": 32,
+          "scope": "whole rigid arm surface; not signed distal-hand penetration"
+        },
+        "pencil_contact": {
+          "sampled_min_arm_surface_gap": 0.0014327425742521882,
+          "arm_prop_overlap_pairs": 17,
+          "scope": "whole rigid arm surface; not signed distal-hand penetration"
+        },
+        "face_projection": [
+          0.36150357127189636,
+          0.5838868021965027,
+          0.5937609076499939,
+          0.7307993173599243,
+          2.7611782550811768
+        ],
+        "pencil_projection": [
+          0.2411603331565857,
+          0.27957940101623535,
+          0.4213283360004425,
+          0.49948006868362427,
+          2.419478178024292
+        ]
+      }
+    },
+    {
+      "global_frame": 2169,
+      "sentence": 32,
+      "metrics": {
+        "pencil_shake_phase": -0.999021480034635,
+        "socket_alignment": {
+          "chart": {
+            "socket_to_target_error": 0.0
+          },
+          "pencil": {
+            "socket_to_target_error": 0.0
+          }
+        },
+        "chart_contact": {
+          "sampled_min_arm_surface_gap": 0.008433322422206402,
+          "arm_prop_overlap_pairs": 32,
+          "scope": "whole rigid arm surface; not signed distal-hand penetration"
+        },
+        "pencil_contact": {
+          "sampled_min_arm_surface_gap": 0.00222716573625803,
+          "arm_prop_overlap_pairs": 17,
+          "scope": "whole rigid arm surface; not signed distal-hand penetration"
+        },
+        "face_projection": [
+          0.3611927330493927,
+          0.5834499001502991,
+          0.5937315821647644,
+          0.7307292819023132,
+          2.762388229370117
+        ],
+        "pencil_projection": [
+          0.2328910529613495,
+          0.2716570198535919,
+          0.42340952157974243,
+          0.5017540454864502,
+          2.4144017696380615
+        ]
+      }
+    },
+    {
+      "global_frame": 2170,
+      "sentence": 32,
+      "metrics": {
+        "pencil_shake_phase": -0.7044905363630968,
+        "socket_alignment": {
+          "chart": {
+            "socket_to_target_error": 0.0
+          },
+          "pencil": {
+            "socket_to_target_error": 0.0
+          }
+        },
+        "chart_contact": {
+          "sampled_min_arm_surface_gap": 0.008430036716163158,
+          "arm_prop_overlap_pairs": 32,
+          "scope": "whole rigid arm surface; not signed distal-hand penetration"
+        },
+        "pencil_contact": {
+          "sampled_min_arm_surface_gap": 0.0024306373670697212,
+          "arm_prop_overlap_pairs": 17,
+          "scope": "whole rigid arm surface; not signed distal-hand penetration"
+        },
+        "face_projection": [
+          0.3608208894729614,
+          0.5829800367355347,
+          0.5937336683273315,
+          0.7306942939758301,
+          2.7631149291992188
+        ],
+        "pencil_projection": [
+          0.23652489483356476,
+          0.2753979563713074,
+          0.429613322019577,
+          0.5085176825523376,
+          2.3998770713806152
+        ]
+      }
+    },
+    {
+      "global_frame": 2171,
+      "sentence": 32,
+      "metrics": {
+        "pencil_shake_phase": 0.051605355052271824,
+        "socket_alignment": {
+          "chart": {
+            "socket_to_target_error": 0.0
+          },
+          "pencil": {
+            "socket_to_target_error": 0.0
+          }
+        },
+        "chart_contact": {
+          "sampled_min_arm_surface_gap": 0.008426179178059101,
+          "arm_prop_overlap_pairs": 32,
+          "scope": "whole rigid arm surface; not signed distal-hand penetration"
+        },
+        "pencil_contact": {
+          "sampled_min_arm_surface_gap": 0.0002683619095478207,
+          "arm_prop_overlap_pairs": 26,
+          "scope": "whole rigid arm surface; not signed distal-hand penetration"
+        },
+        "face_projection": [
+          0.360385924577713,
+          0.5824805498123169,
+          0.5939000248908997,
+          0.7308375239372253,
+          2.763317346572876
+        ],
+        "pencil_projection": [
+          0.24980904161930084,
+          0.288475900888443,
+          0.4368286728858948,
+          0.5163214206695557,
+          2.3851542472839355
+        ]
+      }
+    },
+    {
+      "global_frame": 2172,
+      "sentence": 33,
+      "metrics": {
+        "pencil_shake_phase": 0.7738906815578891,
+        "socket_alignment": {
+          "chart": {
+            "socket_to_target_error": 0.0
+          },
+          "pencil": {
+            "socket_to_target_error": 0.0
+          }
+        },
+        "chart_contact": {
+          "sampled_min_arm_surface_gap": 0.008422166109085083,
+          "arm_prop_overlap_pairs": 32,
+          "scope": "whole rigid arm surface; not signed distal-hand penetration"
+        },
+        "pencil_contact": {
+          "sampled_min_arm_surface_gap": 0.00029518399969674647,
+          "arm_prop_overlap_pairs": 26,
+          "scope": "whole rigid arm surface; not signed distal-hand penetration"
+        },
+        "face_projection": [
+          0.3598904013633728,
+          0.5819517374038696,
+          0.5940021276473999,
+          0.7309169769287109,
+          2.7630491256713867
+        ],
+        "pencil_projection": [
+          0.2634200155735016,
+          0.30173131823539734,
+          0.44049322605133057,
+          0.5202361941337585,
+          2.379234790802002
+        ]
+      }
+    },
+    {
+      "global_frame": 2173,
+      "sentence": 33,
+      "metrics": {
+        "pencil_shake_phase": 0.9891417846703444,
+        "socket_alignment": {
+          "chart": {
+            "socket_to_target_error": 0.0
+          },
+          "pencil": {
+            "socket_to_target_error": 0.0
+          }
+        },
+        "chart_contact": {
+          "sampled_min_arm_surface_gap": 0.008417834527790546,
+          "arm_prop_overlap_pairs": 32,
+          "scope": "whole rigid arm surface; not signed distal-hand penetration"
+        },
+        "pencil_contact": {
+          "sampled_min_arm_surface_gap": 0.00116521748714149,
+          "arm_prop_overlap_pairs": 26,
+          "scope": "whole rigid arm surface; not signed distal-hand penetration"
+        },
+        "face_projection": [
+          0.35933560132980347,
+          0.5813959836959839,
+          0.5940383076667786,
+          0.7309311628341675,
+          2.7623214721679688
+        ],
+        "pencil_projection": [
+          0.26749902963638306,
+          0.30559638142585754,
+          0.4381152391433716,
+          0.5176456570625305,
+          2.3845996856689453
+        ]
+      }
+    },
+    {
+      "global_frame": 2174,
+      "sentence": 33,
+      "metrics": {
+        "pencil_shake_phase": 0.5563314127351207,
+        "socket_alignment": {
+          "chart": {
+            "socket_to_target_error": 0.0
+          },
+          "pencil": {
+            "socket_to_target_error": 0.0
+          }
+        },
+        "chart_contact": {
+          "sampled_min_arm_surface_gap": 0.008413559757173061,
+          "arm_prop_overlap_pairs": 32,
+          "scope": "whole rigid arm surface; not signed distal-hand penetration"
+        },
+        "pencil_contact": {
+          "sampled_min_arm_surface_gap": 0.00036980031291022897,
+          "arm_prop_overlap_pairs": 17,
+          "scope": "whole rigid arm surface; not signed distal-hand penetration"
+        },
+        "face_projection": [
+          0.3587236702442169,
+          0.5808152556419373,
+          0.5940085649490356,
+          0.7308797836303711,
+          2.761152505874634
+        ],
+        "pencil_projection": [
+          0.2591996192932129,
+          0.297355055809021,
+          0.4311991333961487,
+          0.5101789236068726,
+          2.398284912109375
+        ]
+      }
+    },
+    {
+      "global_frame": 2175,
+      "sentence": 33,
+      "metrics": {
+        "pencil_shake_phase": -0.2409736772881011,
+        "socket_alignment": {
+          "chart": {
+            "socket_to_target_error": 0.0
+          },
+          "pencil": {
+            "socket_to_target_error": 0.0
+          }
+        },
+        "chart_contact": {
+          "sampled_min_arm_surface_gap": 0.008408868685364723,
+          "arm_prop_overlap_pairs": 32,
+          "scope": "whole rigid arm surface; not signed distal-hand penetration"
+        },
+        "pencil_contact": {
+          "sampled_min_arm_surface_gap": 0.003618481568992138,
+          "arm_prop_overlap_pairs": 17,
+          "scope": "whole rigid arm surface; not signed distal-hand penetration"
+        },
+        "face_projection": [
+          0.35805752873420715,
+          0.5802116394042969,
+          0.5939137935638428,
+          0.7307623028755188,
+          2.759570360183716
+        ],
+        "pencil_projection": [
+          0.2441401481628418,
+          0.28254812955856323,
+          0.4240609407424927,
+          0.5024319291114807,
+          2.4138786792755127
+        ]
+      }
+    },
+    {
+      "global_frame": 2176,
+      "sentence": 33,
+      "metrics": {
+        "pencil_shake_phase": -0.8803987149555991,
+        "socket_alignment": {
+          "chart": {
+            "socket_to_target_error": 0.0
+          },
+          "pencil": {
+            "socket_to_target_error": 0.0
+          }
+        },
+        "chart_contact": {
+          "sampled_min_arm_surface_gap": 0.008404070511460304,
+          "arm_prop_overlap_pairs": 32,
+          "scope": "whole rigid arm surface; not signed distal-hand penetration"
+        },
+        "pencil_contact": {
+          "sampled_min_arm_surface_gap": 0.001198361860588193,
+          "arm_prop_overlap_pairs": 17,
+          "scope": "whole rigid arm surface; not signed distal-hand penetration"
+        },
+        "face_projection": [
+          0.35734111070632935,
+          0.5795872211456299,
+          0.5937566757202148,
+          0.7305796146392822,
+          2.75761079788208
+        ],
+        "pencil_projection": [
+          0.23176781833171844,
+          0.2704421579837799,
+          0.4205922484397888,
+          0.4986305832862854,
+          2.4227042198181152
+        ]
+      }
+    },
+    {
+      "global_frame": 2177,
+      "sentence": 33,
+      "metrics": {
+        "pencil_shake_phase": -0.9430080739341677,
+        "socket_alignment": {
+          "chart": {
+            "socket_to_target_error": 0.0
+          },
+          "pencil": {
+            "socket_to_target_error": 0.0
+          }
+        },
+        "chart_contact": {
+          "sampled_min_arm_surface_gap": 0.008399274200201035,
+          "arm_prop_overlap_pairs": 32,
+          "scope": "whole rigid arm surface; not signed distal-hand penetration"
+        },
+        "pencil_contact": {
+          "sampled_min_arm_surface_gap": 0.002058192854747176,
+          "arm_prop_overlap_pairs": 17,
+          "scope": "whole rigid arm surface; not signed distal-hand penetration"
+        },
+        "face_projection": [
+          0.3565793037414551,
+          0.5789443254470825,
+          0.5935402512550354,
+          0.7303330302238464,
+          2.7553176879882812
+        ],
+        "pencil_projection": [
+          0.2292799949645996,
+          0.2680952847003937,
+          0.42233023047447205,
+          0.5005185008049011,
+          2.418799877166748
+        ]
+      }
+    },
+    {
+      "global_frame": 2178,
+      "sentence": 33,
+      "metrics": {
+        "pencil_shake_phase": -0.38778163540943045,
+        "socket_alignment": {
+          "chart": {
+            "socket_to_target_error": 0.0
+          },
+          "pencil": {
+            "socket_to_target_error": 0.0
+          }
+        },
+        "chart_contact": {
+          "sampled_min_arm_surface_gap": 0.008394268341362476,
+          "arm_prop_overlap_pairs": 36,
+          "scope": "whole rigid arm surface; not signed distal-hand penetration"
+        },
+        "pencil_contact": {
+          "sampled_min_arm_surface_gap": 0.0024010946508497,
+          "arm_prop_overlap_pairs": 17,
+          "scope": "whole rigid arm surface; not signed distal-hand penetration"
+        },
+        "face_projection": [
+          0.3557775318622589,
+          0.5782850980758667,
+          0.5932691693305969,
+          0.7300245761871338,
+          2.752739667892456
+        ],
+        "pencil_projection": [
+          0.23795007169246674,
+          0.27670368552207947,
+          0.42846450209617615,
+          0.5072005391120911,
+          2.404557228088379
+        ]
+      }
+    },
+    {
+      "global_frame": 2179,
+      "sentence": 33,
+      "metrics": {
+        "pencil_shake_phase": 0.4215098345744594,
+        "socket_alignment": {
+          "chart": {
+            "socket_to_target_error": 0.0
+          },
+          "pencil": {
+            "socket_to_target_error": 0.0
+          }
+        },
+        "chart_contact": {
+          "sampled_min_arm_surface_gap": 0.008389159105718136,
+          "arm_prop_overlap_pairs": 36,
+          "scope": "whole rigid arm surface; not signed distal-hand penetration"
+        },
+        "pencil_contact": {
+          "sampled_min_arm_surface_gap": 1.4155821190797724e-05,
+          "arm_prop_overlap_pairs": 26,
+          "scope": "whole rigid arm surface; not signed distal-hand penetration"
+        },
+        "face_projection": [
+          0.3549422025680542,
+          0.5776121020317078,
+          0.5929492115974426,
+          0.7296581864356995,
+          2.7499303817749023
+        ],
+        "pencil_projection": [
+          0.2520100474357605,
+          0.2905374765396118,
+          0.43592360615730286,
+          0.5152617692947388,
+          2.38946270942688
+        ]
+      }
+    },
+    {
+      "global_frame": 2180,
+      "sentence": 33,
+      "metrics": {
+        "pencil_shake_phase": 0.9546383829480181,
+        "socket_alignment": {
+          "chart": {
+            "socket_to_target_error": 0.0
+          },
+          "pencil": {
+            "socket_to_target_error": 0.0
+          }
+        },
+        "chart_contact": {
+          "sampled_min_arm_surface_gap": 0.008383839391171932,
+          "arm_prop_overlap_pairs": 36,
+          "scope": "whole rigid arm surface; not signed distal-hand penetration"
+        },
+        "pencil_contact": {
+          "sampled_min_arm_surface_gap": 5.920718831475824e-05,
+          "arm_prop_overlap_pairs": 26,
+          "scope": "whole rigid arm surface; not signed distal-hand penetration"
+        },
+        "face_projection": [
+          0.3540801405906677,
+          0.5769274830818176,
+          0.5925864577293396,
+          0.729237973690033,
+          2.7469499111175537
+        ],
+        "pencil_projection": [
+          0.2614160478115082,
+          0.29974666237831116,
+          0.44016972184181213,
+          0.5198101997375488,
+          2.3821983337402344
+        ]
+      }
+    },
+    {
+      "global_frame": 2181,
+      "sentence": 33,
+      "metrics": {
+        "pencil_shake_phase": 0.862311240157329,
+        "socket_alignment": {
+          "chart": {
+            "socket_to_target_error": 0.0
+          },
+          "pencil": {
+            "socket_to_target_error": 0.0
+          }
+        },
+        "chart_contact": {
+          "sampled_min_arm_surface_gap": 0.00837862677872181,
+          "arm_prop_overlap_pairs": 36,
+          "scope": "whole rigid arm surface; not signed distal-hand penetration"
+        },
+        "pencil_contact": {
+          "sampled_min_arm_surface_gap": 0.0007993503822945058,
+          "arm_prop_overlap_pairs": 26,
+          "scope": "whole rigid arm surface; not signed distal-hand penetration"
+        },
+        "face_projection": [
+          0.35319873690605164,
+          0.5762344002723694,
+          0.59218829870224,
+          0.7287700176239014,
+          2.743856191635132
+        ],
+        "pencil_projection": [
+          0.25901687145233154,
+          0.29736974835395813,
+          0.43823498487472534,
+          0.5177260041236877,
+          2.385857343673706
+        ]
+      }
+    },
+    {
+      "global_frame": 2182,
+      "sentence": 33,
+      "metrics": {
+        "pencil_shake_phase": 0.2050188892364544,
+        "socket_alignment": {
+          "chart": {
+            "socket_to_target_error": 0.0
+          },
+          "pencil": {
+            "socket_to_target_error": 0.0
+          }
+        },
+        "chart_contact": {
+          "sampled_min_arm_surface_gap": 0.008373518474400043,
+          "arm_prop_overlap_pairs": 36,
+          "scope": "whole rigid arm surface; not signed distal-hand penetration"
+        },
+        "pencil_contact": {
+          "sampled_min_arm_surface_gap": 5.2831102948402986e-05,
+          "arm_prop_overlap_pairs": 17,
+          "scope": "whole rigid arm surface; not signed distal-hand penetration"
+        },
+        "face_projection": [
+          0.3523057997226715,
+          0.575535237789154,
+          0.5917622447013855,
+          0.7282612919807434,
+          2.7407124042510986
+        ],
+        "pencil_projection": [
+          0.24609868228435516,
+          0.2846718430519104,
+          0.4313278794288635,
+          0.5102860927581787,
+          2.3990139961242676
+        ]
+      }
+    },
+    {
+      "global_frame": 2183,
+      "sentence": 33,
+      "metrics": {
+        "pencil_shake_phase": -0.5865968173755277,
+        "socket_alignment": {
+          "chart": {
+            "socket_to_target_error": 0.0
+          },
+          "pencil": {
+            "socket_to_target_error": 0.0
+          }
+        },
+        "chart_contact": {
+          "sampled_min_arm_surface_gap": 0.008368093520402908,
+          "arm_prop_overlap_pairs": 36,
+          "scope": "whole rigid arm surface; not signed distal-hand penetration"
+        },
+        "pencil_contact": {
+          "sampled_min_arm_surface_gap": 0.00376027449965477,
+          "arm_prop_overlap_pairs": 17,
+          "scope": "whole rigid arm surface; not signed distal-hand penetration"
+        },
+        "face_projection": [
+          0.3514092266559601,
+          0.5748330950737,
+          0.5913164019584656,
+          0.7277199029922485,
+          2.737578868865967
+        ],
+        "pencil_projection": [
+          0.23120442032814026,
+          0.27000659704208374,
+          0.4237741529941559,
+          0.5020857453346252,
+          2.415604829788208
+        ]
+      }
+    },
+    {
+      "global_frame": 2184,
+      "sentence": 33,
+      "metrics": {
+        "pencil_shake_phase": -0.9938886539233752,
+        "socket_alignment": {
+          "chart": {
+            "socket_to_target_error": 0.0
+          },
+          "pencil": {
+            "socket_to_target_error": 0.0
+          }
+        },
+        "chart_contact": {
+          "sampled_min_arm_surface_gap": 0.008362721651792526,
+          "arm_prop_overlap_pairs": 36,
+          "scope": "whole rigid arm surface; not signed distal-hand penetration"
+        },
+        "pencil_contact": {
+          "sampled_min_arm_surface_gap": 0.0013121779775246978,
+          "arm_prop_overlap_pairs": 17,
+          "scope": "whole rigid arm surface; not signed distal-hand penetration"
+        },
+        "face_projection": [
+          0.35051730275154114,
+          0.574131190776825,
+          0.5908592343330383,
+          0.7271549105644226,
+          2.7345173358917236
+        ],
+        "pencil_projection": [
+          0.22356407344341278,
+          0.26245570182800293,
+          0.41959017515182495,
+          0.49751409888267517,
+          2.425849437713623
+        ]
+      }
+    },
+    {
+      "global_frame": 2185,
+      "sentence": 33,
+      "metrics": {
+        "pencil_shake_phase": -0.7500089829310782,
+        "socket_alignment": {
+          "chart": {
+            "socket_to_target_error": 0.0
+          },
+          "pencil": {
+            "socket_to_target_error": 0.0
+          }
+        },
+        "chart_contact": {
+          "sampled_min_arm_surface_gap": 0.008357354439795017,
+          "arm_prop_overlap_pairs": 36,
+          "scope": "whole rigid arm surface; not signed distal-hand penetration"
+        },
+        "pencil_contact": {
+          "sampled_min_arm_surface_gap": 0.0022251924965530634,
+          "arm_prop_overlap_pairs": 17,
+          "scope": "whole rigid arm surface; not signed distal-hand penetration"
+        },
+        "face_projection": [
+          0.34963807463645935,
+          0.5734325647354126,
+          0.5903989672660828,
+          0.726576566696167,
+          2.731583595275879
+        ],
+        "pencil_projection": [
+          0.2272544950246811,
+          0.26606830954551697,
+          0.42054879665374756,
+          0.4985724985599518,
+          2.423147678375244
+        ]
+      }
+    },
+    {
+      "global_frame": 2186,
+      "sentence": 33,
+      "metrics": {
+        "pencil_shake_phase": -0.014741792666890371,
+        "socket_alignment": {
+          "chart": {
+            "socket_to_target_error": 0.0
+          },
+          "pencil": {
+            "socket_to_target_error": 0.0
+          }
+        },
+        "chart_contact": {
+          "sampled_min_arm_surface_gap": 0.00835229642689228,
+          "arm_prop_overlap_pairs": 36,
+          "scope": "whole rigid arm surface; not signed distal-hand penetration"
+        },
+        "pencil_contact": {
+          "sampled_min_arm_surface_gap": 0.0022384088952094316,
+          "arm_prop_overlap_pairs": 17,
+          "scope": "whole rigid arm surface; not signed distal-hand penetration"
+        },
+        "face_projection": [
+          0.34877949953079224,
+          0.5727405548095703,
+          0.5899438261985779,
+          0.7259951233863831,
+          2.728834629058838
+        ],
+        "pencil_projection": [
+          0.23957039415836334,
+          0.27818888425827026,
+          0.4261624217033386,
+          0.5046932101249695,
+          2.4098687171936035
+        ]
+      }
+    },
+    {
+      "global_frame": 2187,
+      "sentence": 33,
+      "metrics": {
+        "pencil_shake_phase": 0.7301838591531669,
+        "socket_alignment": {
+          "chart": {
+            "socket_to_target_error": 0.0
+          },
+          "pencil": {
+            "socket_to_target_error": 0.0
+          }
+        },
+        "chart_contact": {
+          "sampled_min_arm_surface_gap": 0.00834734458476305,
+          "arm_prop_overlap_pairs": 36,
+          "scope": "whole rigid arm surface; not signed distal-hand penetration"
+        },
+        "pencil_contact": {
+          "sampled_min_arm_surface_gap": 0.00011683538468787447,
+          "arm_prop_overlap_pairs": 26,
+          "scope": "whole rigid arm surface; not signed distal-hand penetration"
+        },
+        "face_projection": [
+          0.34794917702674866,
+          0.5720587372779846,
+          0.5895021557807922,
+          0.7254225015640259,
+          2.7263195514678955
+        ],
+        "pencil_projection": [
+          0.25229060649871826,
+          0.29072555899620056,
+          0.43353986740112305,
+          0.5126670598983765,
+          2.3948299884796143
+        ]
+      }
+    },
+    {
+      "global_frame": 2188,
+      "sentence": 33,
+      "metrics": {
+        "pencil_shake_phase": 0.9967109273197094,
+        "socket_alignment": {
+          "chart": {
+            "socket_to_target_error": 0.0
+          },
+          "pencil": {
+            "socket_to_target_error": 0.0
+          }
+        },
+        "chart_contact": {
+          "sampled_min_arm_surface_gap": 0.00834223534911871,
+          "arm_prop_overlap_pairs": 36,
+          "scope": "whole rigid arm surface; not signed distal-hand penetration"
+        },
+        "pencil_contact": {
+          "sampled_min_arm_surface_gap": 4.065233588335104e-05,
+          "arm_prop_overlap_pairs": 26,
+          "scope": "whole rigid arm surface; not signed distal-hand penetration"
+        },
+        "face_projection": [
+          0.347154438495636,
+          0.5713903903961182,
+          0.5890812277793884,
+          0.7248694896697998,
+          2.724083423614502
+        ],
+        "pencil_projection": [
+          0.25622472167015076,
+          0.2946649193763733,
+          0.4381221830844879,
+          0.5176018476486206,
+          2.386153221130371
+        ]
+      }
+    },
+    {
+      "global_frame": 2189,
+      "sentence": 33,
+      "metrics": {
+        "pencil_shake_phase": 0.6102174035291309,
+        "socket_alignment": {
+          "chart": {
+            "socket_to_target_error": 0.0
+          },
+          "pencil": {
+            "socket_to_target_error": 0.0
+          }
+        },
+        "chart_contact": {
+          "sampled_min_arm_surface_gap": 0.008337438106536865,
+          "arm_prop_overlap_pairs": 36,
+          "scope": "whole rigid arm surface; not signed distal-hand penetration"
+        },
+        "pencil_contact": {
+          "sampled_min_arm_surface_gap": 0.00035615277010947466,
+          "arm_prop_overlap_pairs": 26,
+          "scope": "whole rigid arm surface; not signed distal-hand penetration"
+        },
+        "face_projection": [
+          0.3464018702507019,
+          0.5707390904426575,
+          0.588688313961029,
+          0.7243473529815674,
+          2.7221662998199463
+        ],
+        "pencil_projection": [
+          0.24782347679138184,
+          0.28651174902915955,
+          0.436716765165329,
+          0.5161157846450806,
+          2.3879668712615967
+        ]
+      }
+    },
+    {
+      "global_frame": 2190,
+      "sentence": 33,
+      "metrics": {
+        "pencil_shake_phase": -0.1760756199485871,
+        "socket_alignment": {
+          "chart": {
+            "socket_to_target_error": 0.0
+          },
+          "pencil": {
+            "socket_to_target_error": 0.0
+          }
+        },
+        "chart_contact": {
+          "sampled_min_arm_surface_gap": 0.0083326930180192,
+          "arm_prop_overlap_pairs": 38,
+          "scope": "whole rigid arm surface; not signed distal-hand penetration"
+        },
+        "pencil_contact": {
+          "sampled_min_arm_surface_gap": 2.7247864636592567e-05,
+          "arm_prop_overlap_pairs": 22,
+          "scope": "whole rigid arm surface; not signed distal-hand penetration"
+        },
+        "face_projection": [
+          0.3456973731517792,
+          0.5701081156730652,
+          0.5883297324180603,
+          0.72386634349823,
+          2.72060227394104
+        ],
+        "pencil_projection": [
+          0.23234841227531433,
+          0.27135172486305237,
+          0.43016287684440613,
+          0.5090623497962952,
+          2.4002864360809326
+        ]
+      }
+    },
+    {
+      "global_frame": 2191,
+      "sentence": 33,
+      "metrics": {
+        "pencil_shake_phase": -0.8470082090050218,
+        "socket_alignment": {
+          "chart": {
+            "socket_to_target_error": 0.0
+          },
+          "pencil": {
+            "socket_to_target_error": 0.0
+          }
+        },
+        "chart_contact": {
+          "sampled_min_arm_surface_gap": 0.008328158408403397,
+          "arm_prop_overlap_pairs": 38,
+          "scope": "whole rigid arm surface; not signed distal-hand penetration"
+        },
+        "pencil_contact": {
+          "sampled_min_arm_surface_gap": 0.004037555307149887,
+          "arm_prop_overlap_pairs": 17,
+          "scope": "whole rigid arm surface; not signed distal-hand penetration"
+        },
+        "face_projection": [
+          0.3450462520122528,
+          0.5695008039474487,
+          0.5879917740821838,
+          0.7234363555908203,
+          2.7194206714630127
+        ],
+        "pencil_projection": [
+          0.22009719908237457,
+          0.25923725962638855,
+          0.422501802444458,
+          0.5007469058036804,
+          2.4170968532562256
+        ]
+      }
+    },
+    {
+      "global_frame": 2192,
+      "sentence": 33,
+      "metrics": {
+        "pencil_shake_phase": -0.9630017611990899,
+        "socket_alignment": {
+          "chart": {
+            "socket_to_target_error": 0.0
+          },
+          "pencil": {
+            "socket_to_target_error": 0.0
+          }
+        },
+        "chart_contact": {
+          "sampled_min_arm_surface_gap": 0.008323727175593376,
+          "arm_prop_overlap_pairs": 38,
+          "scope": "whole rigid arm surface; not signed distal-hand penetration"
+        },
+        "pencil_contact": {
+          "sampled_min_arm_surface_gap": 0.0017423724057152867,
+          "arm_prop_overlap_pairs": 17,
+          "scope": "whole rigid arm surface; not signed distal-hand penetration"
+        },
+        "face_projection": [
+          0.344452828168869,
+          0.5689204335212708,
+          0.5876083374023438,
+          0.7230661511421204,
+          2.718641996383667
+        ],
+        "pencil_projection": [
+          0.21854658424854279,
+          0.25756585597991943,
+          0.41775578260421753,
+          0.4955812990665436,
+          2.4280996322631836
+        ]
+      }
+    },
+    {
+      "global_frame": 2193,
+      "sentence": 33,
+      "metrics": {
+        "pencil_shake_phase": -0.44806014160260915,
+        "socket_alignment": {
+          "chart": {
+            "socket_to_target_error": 0.0
+          },
+          "pencil": {
+            "socket_to_target_error": 0.0
+          }
+        },
+        "chart_contact": {
+          "sampled_min_arm_surface_gap": 0.008319815620779991,
+          "arm_prop_overlap_pairs": 38,
+          "scope": "whole rigid arm surface; not signed distal-hand penetration"
+        },
+        "pencil_contact": {
+          "sampled_min_arm_surface_gap": 0.002630244940519333,
+          "arm_prop_overlap_pairs": 17,
+          "scope": "whole rigid arm surface; not signed distal-hand penetration"
+        },
+        "face_projection": [
+          0.3439202308654785,
+          0.5683698058128357,
+          0.5873052477836609,
+          0.7227627038955688,
+          2.718282699584961
+        ],
+        "pencil_projection": [
+          0.22791063785552979,
+          0.2666475772857666,
+          0.4179860055446625,
+          0.4958574175834656,
+          2.4267544746398926
+        ]
+      }
+    },
+    {
+      "global_frame": 2194,
+      "sentence": 33,
+      "metrics": {
+        "pencil_shake_phase": 0.36043951060072155,
+        "socket_alignment": {
+          "chart": {
+            "socket_to_target_error": 0.0
+          },
+          "pencil": {
+            "socket_to_target_error": 0.0
+          }
+        },
+        "chart_contact": {
+          "sampled_min_arm_surface_gap": 0.008315907791256905,
+          "arm_prop_overlap_pairs": 38,
+          "scope": "whole rigid arm surface; not signed distal-hand penetration"
+        },
+        "pencil_contact": {
+          "sampled_min_arm_surface_gap": 0.0020745177753269672,
+          "arm_prop_overlap_pairs": 17,
+          "scope": "whole rigid arm surface; not signed distal-hand penetration"
+        },
+        "face_projection": [
+          0.3434509038925171,
+          0.5678519010543823,
+          0.5870872139930725,
+          0.7225314974784851,
+          2.718350887298584
+        ],
+        "pencil_projection": [
+          0.24197550117969513,
+          0.280436635017395,
+          0.4229850172996521,
+          0.501304030418396,
+          2.4150028228759766
+        ]
+      }
+    },
+    {
+      "global_frame": 2195,
+      "sentence": 33,
+      "metrics": {
+        "pencil_shake_phase": 0.9327880219610766,
+        "socket_alignment": {
+          "chart": {
+            "socket_to_target_error": 0.0
+          },
+          "pencil": {
+            "socket_to_target_error": 0.0
+          }
+        },
+        "chart_contact": {
+          "sampled_min_arm_surface_gap": 0.008311999961733818,
+          "arm_prop_overlap_pairs": 38,
+          "scope": "whole rigid arm surface; not signed distal-hand penetration"
+        },
+        "pencil_contact": {
+          "sampled_min_arm_surface_gap": 1.0381651009083726e-05,
+          "arm_prop_overlap_pairs": 26,
+          "scope": "whole rigid arm surface; not signed distal-hand penetration"
+        },
+        "face_projection": [
+          0.34304583072662354,
+          0.5673691034317017,
+          0.5869577527046204,
+          0.7223769426345825,
+          2.7188479900360107
+        ],
+        "pencil_projection": [
+          0.2514810562133789,
+          0.28985899686813354,
+          0.43006381392478943,
+          0.5089630484580994,
+          2.400247573852539
+        ]
+      }
+    },
+    {
+      "global_frame": 2196,
+      "sentence": 33,
+      "metrics": {
+        "pencil_shake_phase": 0.8939966636005579,
+        "socket_alignment": {
+          "chart": {
+            "socket_to_target_error": 0.0
+          },
+          "pencil": {
+            "socket_to_target_error": 0.0
+          }
+        },
+        "chart_contact": {
+          "sampled_min_arm_surface_gap": 0.008308869786560535,
+          "arm_prop_overlap_pairs": 38,
+          "scope": "whole rigid arm surface; not signed distal-hand penetration"
+        },
+        "pencil_contact": {
+          "sampled_min_arm_surface_gap": 5.892424815101549e-05,
+          "arm_prop_overlap_pairs": 26,
+          "scope": "whole rigid arm surface; not signed distal-hand penetration"
+        },
+        "face_projection": [
+          0.34270545840263367,
+          0.5669236779212952,
+          0.5869184136390686,
+          0.722300112247467,
+          2.7197723388671875
+        ],
+        "pencil_projection": [
+          0.24943016469478607,
+          0.2880318760871887,
+          0.43490248918533325,
+          0.5142032504081726,
+          2.3901357650756836
+        ]
+      }
+    },
+    {
+      "global_frame": 2197,
+      "sentence": 33,
+      "metrics": {
+        "pencil_shake_phase": 0.269480583587763,
+        "socket_alignment": {
+          "chart": {
+            "socket_to_target_error": 0.0
+          },
+          "pencil": {
+            "socket_to_target_error": 0.0
+          }
+        },
+        "chart_contact": {
+          "sampled_min_arm_surface_gap": 0.008305639959871769,
+          "arm_prop_overlap_pairs": 38,
+          "scope": "whole rigid arm surface; not signed distal-hand penetration"
+        },
+        "pencil_contact": {
+          "sampled_min_arm_surface_gap": 8.172640082193539e-05,
+          "arm_prop_overlap_pairs": 26,
+          "scope": "whole rigid arm surface; not signed distal-hand penetration"
+        },
+        "face_projection": [
+          0.34242862462997437,
+          0.5665175318717957,
+          0.5869699120521545,
+          0.7223017811775208,
+          2.72111177444458
+        ],
+        "pencil_projection": [
+          0.23629195988178253,
+          0.27532628178596497,
+          0.43427637219429016,
+          0.5135696530342102,
+          2.390071392059326
+        ]
+      }
+    },
+    {
+      "global_frame": 2198,
+      "sentence": 33,
+      "metrics": {
+        "pencil_shake_phase": -0.5315925757064371,
+        "socket_alignment": {
+          "chart": {
+            "socket_to_target_error": 0.0
+          },
+          "pencil": {
+            "socket_to_target_error": 0.0
+          }
+        },
+        "chart_contact": {
+          "sampled_min_arm_surface_gap": 0.008302980102598667,
+          "arm_prop_overlap_pairs": 38,
+          "scope": "whole rigid arm surface; not signed distal-hand penetration"
+        },
+        "pencil_contact": {
+          "sampled_min_arm_surface_gap": 3.171532807755284e-05,
+          "arm_prop_overlap_pairs": 24,
+          "scope": "whole rigid arm surface; not signed distal-hand penetration"
+        },
+        "face_projection": [
+          0.34220990538597107,
+          0.5661537647247314,
+          0.5873873829841614,
+          0.7226667404174805,
+          2.7227861881256104
+        ],
+        "pencil_projection": [
+          0.2206680029630661,
+          0.2600415349006653,
+          0.428820937871933,
+          0.5076755881309509,
+          2.40104603767395
+        ]
+      }
+    },
+    {
+      "global_frame": 2199,
+      "sentence": 33,
+      "metrics": {
+        "pencil_shake_phase": -0.9843792971250844,
+        "socket_alignment": {
+          "chart": {
+            "socket_to_target_error": 0.0
+          },
+          "pencil": {
+            "socket_to_target_error": 0.0
+          }
+        },
+        "chart_contact": {
+          "sampled_min_arm_surface_gap": 0.008300475776195526,
+          "arm_prop_overlap_pairs": 38,
+          "scope": "whole rigid arm surface; not signed distal-hand penetration"
+        },
+        "pencil_contact": {
+          "sampled_min_arm_surface_gap": 0.0035119918175041676,
+          "arm_prop_overlap_pairs": 17,
+          "scope": "whole rigid arm surface; not signed distal-hand penetration"
+        },
+        "face_projection": [
+          0.34204918146133423,
+          0.5658325552940369,
+          0.5878674983978271,
+          0.7231535911560059,
+          2.7248244285583496
+        ],
+        "pencil_projection": [
+          0.21312315762043,
+          0.25248968601226807,
+          0.42177391052246094,
+          0.5000076293945312,
+          2.4171111583709717
+        ]
+      }
+    },
+    {
+      "global_frame": 2200,
+      "sentence": 33,
+      "metrics": {
+        "pencil_shake_phase": -0.7922248087111178,
+        "socket_alignment": {
+          "chart": {
+            "socket_to_target_error": 0.0
+          },
+          "pencil": {
+            "socket_to_target_error": 0.0
+          }
+        },
+        "chart_contact": {
+          "sampled_min_arm_surface_gap": 0.008298391476273537,
+          "arm_prop_overlap_pairs": 38,
+          "scope": "whole rigid arm surface; not signed distal-hand penetration"
+        },
+        "pencil_contact": {
+          "sampled_min_arm_surface_gap": 0.0024245649110525846,
+          "arm_prop_overlap_pairs": 17,
+          "scope": "whole rigid arm surface; not signed distal-hand penetration"
+        },
+        "face_projection": [
+          0.34194332361221313,
+          0.5655544996261597,
+          0.5883159637451172,
+          0.7237001061439514,
+          2.7272095680236816
+        ],
+        "pencil_projection": [
+          0.21809886395931244,
+          0.2571289837360382,
+          0.4170553982257843,
+          0.4948630928993225,
+          2.4283344745635986
+        ]
+      }
+    }
+  ],
+  "rendered": [
+    {
+      "frame": 2144,
+      "file": "frame_02144.png",
+      "render_seconds": 38.419415489000016,
+      "near_black_percent": 2.2939814814814814
+    }
+  ],
+  "review": "candidate, visual and metric approval pending"
+}
