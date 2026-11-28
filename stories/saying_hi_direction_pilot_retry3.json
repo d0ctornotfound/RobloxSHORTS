@@ -1,0 +1,2771 @@
+{
+  "plan": "stories/saying_hi_plan.json",
+  "film_name": "saying_hi.mp4",
+  "output_dir": "assets/saying_hi_review/round6/pilot_retry3",
+  "lineup": "assets/saying_hi_review/smoke/round3/lineup",
+  "default_driver": "render_saying_hi_shot:SceneUnit",
+  "setup_function": "render_saying_hi_smoke:setup",
+  "create_camera": "library_camera:create",
+  "camera_function": "render_saying_hi_smoke:frame",
+  "actor_points": "render_saying_hi_smoke:actor_points",
+  "visibility_function": "saying_hi_correction:object_visibility",
+  "meshes_function": "saying_hi_correction:meshes",
+  "animal_factory": "saying_hi_contacts:waffle",
+  "animal_pose": "saying_hi_contacts:waffle_pose",
+  "chunk_frames": 24,
+  "staged_shots": {
+    "sh01": [
+      {
+        "fraction_start": 0,
+        "fraction_end": 1,
+        "stage": {
+          "unit": "still_01",
+          "variant": null,
+          "actors": {
+            "narrator": {
+              "head": [
+                0.06,
+                0,
+                -0.08
+              ]
+            },
+            "otis": {
+              "head": [
+                0.06,
+                0,
+                0.08
+              ]
+            },
+            "leo": {
+              "head": [
+                0.06,
+                0,
+                -0.08
+              ]
+            }
+          },
+          "qc_actors": [
+            "narrator"
+          ]
+        }
+      }
+    ],
+    "sh02": [
+      {
+        "fraction_start": 0,
+        "fraction_end": 1,
+        "stage": {
+          "unit": "still_02",
+          "variant": null,
+          "actors": {
+            "otis": {
+              "arm": {
+                "end": [
+                  0.2,
+                  -0.8,
+                  -0.25
+                ],
+                "index": 0
+              },
+              "head": [
+                0.08,
+                0,
+                0.08
+              ]
+            }
+          },
+          "qc_actors": [
+            "otis",
+            "narrator"
+          ]
+        }
+      }
+    ],
+    "sh03": [
+      {
+        "fraction_start": 0,
+        "fraction_end": 1,
+        "stage": {
+          "unit": "still_03",
+          "variant": null,
+          "actors": {
+            "otis": {
+              "arm": {
+                "end": [
+                  0.1,
+                  -0.7,
+                  -0.65
+                ],
+                "index": 0
+              },
+              "head": [
+                0.08,
+                0,
+                0.08
+              ]
+            }
+          },
+          "qc_actors": [
+            "otis",
+            "narrator"
+          ]
+        }
+      }
+    ],
+    "sh04": [
+      {
+        "fraction_start": 0,
+        "fraction_end": 1,
+        "reuse": "assets/saying_hi_review/proofs/chart_initial/chart_initial.mp4",
+        "offset": 0,
+        "provenance": "assets/saying_hi_review/proofs/chart_initial/encode_validation.json"
+      }
+    ],
+    "sh05": [
+      {
+        "fraction_start": 0,
+        "fraction_end": 1,
+        "reuse": "assets/saying_hi_review/proofs/chart_initial/chart_initial.mp4",
+        "offset": 92,
+        "provenance": "assets/saying_hi_review/proofs/chart_initial/encode_validation.json"
+      }
+    ],
+    "sh06": [
+      {
+        "fraction_start": 0,
+        "fraction_end": 1,
+        "reuse": "assets/saying_hi_review/proofs/chart_initial/chart_initial.mp4",
+        "offset": 224,
+        "provenance": "assets/saying_hi_review/proofs/chart_initial/encode_validation.json"
+      }
+    ],
+    "sh07": [
+      {
+        "fraction_start": 0,
+        "fraction_end": 1,
+        "reuse": "assets/saying_hi_review/proofs/chart_initial/chart_initial.mp4",
+        "offset": 276,
+        "provenance": "assets/saying_hi_review/proofs/chart_initial/encode_validation.json"
+      }
+    ],
+    "sh08": [
+      {
+        "fraction_start": 0,
+        "fraction_end": 1,
+        "stage": {
+          "unit": "still_08",
+          "variant": null,
+          "actors": {
+            "ava": {
+              "head": [
+                0.06,
+                0,
+                -0.08
+              ]
+            },
+            "bella": {
+              "head": [
+                0.06,
+                0,
+                0.08
+              ]
+            },
+            "cleo": {
+              "head": [
+                0.06,
+                0,
+                -0.08
+              ]
+            }
+          },
+          "qc_actors": [
+            "ava"
+          ]
+        }
+      }
+    ],
+    "sh09": [
+      {
+        "fraction_start": 0,
+        "fraction_end": 1,
+        "stage": {
+          "unit": "still_09",
+          "variant": null,
+          "actors": {
+            "narrator": {
+              "head": [
+                0.06,
+                0,
+                -0.08
+              ]
+            },
+            "otis": {
+              "head": [
+                0.06,
+                0,
+                0.08
+              ]
+            },
+            "leo": {
+              "head": [
+                0.06,
+                0,
+                -0.08
+              ]
+            }
+          },
+          "qc_actors": [
+            "narrator",
+            "otis"
+          ]
+        }
+      }
+    ],
+    "sh10": [
+      {
+        "fraction_start": 0,
+        "fraction_end": 1,
+        "stage": {
+          "unit": "still_10",
+          "variant": null,
+          "actors": {
+            "brody": {
+              "arm": {
+                "end": [
+                  0.15,
+                  -0.85,
+                  -0.35
+                ],
+                "index": 0
+              },
+              "head": [
+                0.08,
+                0,
+                0.08
+              ]
+            }
+          },
+          "qc_actors": [
+            "brody",
+            "chase"
+          ],
+          "translate_props": {
+            "Valentine wheelbarrow": [
+              0,
+              -0.65,
+              0
+            ]
+          }
+        }
+      }
+    ],
+    "sh11": [
+      {
+        "fraction_start": 0,
+        "fraction_end": 1,
+        "stage": {
+          "unit": "still_11",
+          "variant": null,
+          "actors": {
+            "narrator": {
+              "arm": {
+                "end": [
+                  0.1,
+                  -0.7,
+                  -0.5
+                ],
+                "index": 0
+              },
+              "head": [
+                0.08,
+                0,
+                0.08
+              ]
+            }
+          },
+          "qc_actors": [
+            "narrator"
+          ]
+        }
+      }
+    ],
+    "sh12": [
+      {
+        "fraction_start": 0,
+        "fraction_end": 1,
+        "stage": {
+          "unit": "still_12",
+          "variant": null,
+          "actors": {
+            "otis": {
+              "arm": {
+                "end": [
+                  0.2,
+                  -0.8,
+                  -0.25
+                ],
+                "index": 0
+              },
+              "head": [
+                0.08,
+                0,
+                0.08
+              ]
+            }
+          },
+          "qc_actors": [
+            "otis",
+            "narrator"
+          ]
+        }
+      }
+    ],
+    "sh13": [
+      {
+        "fraction_start": 0,
+        "fraction_end": 1,
+        "stage": {
+          "unit": "still_13",
+          "variant": null,
+          "actors": {
+            "otis": {
+              "arm": {
+                "end": [
+                  0.5,
+                  -0.8,
+                  0.1
+                ],
+                "index": 0
+              },
+              "head": [
+                0.08,
+                0,
+                0.08
+              ]
+            }
+          },
+          "qc_actors": [
+            "narrator",
+            "otis"
+          ]
+        }
+      }
+    ],
+    "sh14": [
+      {
+        "fraction_start": 0,
+        "fraction_end": 1,
+        "stage": {
+          "unit": "still_14",
+          "variant": null,
+          "actors": {
+            "narrator": {
+              "head": [
+                0.1,
+                0,
+                0.35
+              ]
+            }
+          },
+          "qc_actors": [
+            "narrator"
+          ]
+        }
+      }
+    ],
+    "sh15": [
+      {
+        "fraction_start": 0,
+        "fraction_end": 1,
+        "stage": {
+          "unit": "still_15",
+          "variant": null,
+          "actors": {
+            "brody": {
+              "head": [
+                0.03,
+                0,
+                0.12
+              ]
+            },
+            "chase": {
+              "head": [
+                0.06,
+                0,
+                -0.15
+              ]
+            }
+          },
+          "qc_actors": [
+            "brody",
+            "chase"
+          ]
+        }
+      }
+    ],
+    "sh16": [
+      {
+        "fraction_start": 0,
+        "fraction_end": 1,
+        "stage": {
+          "unit": "still_16",
+          "variant": null,
+          "actors": {
+            "brody": {
+              "head": [
+                0.03,
+                0,
+                0.14
+              ]
+            }
+          },
+          "qc_actors": [
+            "brody",
+            "chase"
+          ]
+        }
+      }
+    ],
+    "sh17": [
+      {
+        "fraction_start": 0,
+        "fraction_end": 0.5,
+        "stage": {
+          "unit": "still_17",
+          "variant": "miss_ball",
+          "actors": {
+            "chase": {
+              "arm": {
+                "end": [
+                  0.5,
+                  -0.8,
+                  0.1
+                ],
+                "index": 0
+              },
+              "head": [
+                0.08,
+                0,
+                0.08
+              ]
+            },
+            "kai": {
+              "arm": {
+                "end": [
+                  0.15,
+                  -0.6,
+                  0.55
+                ],
+                "index": 0
+              },
+              "head": [
+                0.08,
+                0,
+                0.08
+              ]
+            }
+          },
+          "qc_actors": [
+            "chase",
+            "kai"
+          ],
+          "translate_props": {
+            "ball": [
+              -0.5,
+              -0.5,
+              -0.1
+            ]
+          }
+        }
+      },
+      {
+        "fraction_start": 0.5,
+        "fraction_end": 1,
+        "stage": {
+          "unit": "still_17",
+          "variant": "crayon",
+          "actors": {
+            "chase": {
+              "arm": {
+                "end": [
+                  0.5,
+                  -0.8,
+                  0.1
+                ],
+                "index": 0
+              },
+              "head": [
+                0.08,
+                0,
+                0.08
+              ]
+            },
+            "kai": {
+              "arm": {
+                "end": [
+                  0.15,
+                  -0.6,
+                  0.55
+                ],
+                "index": 0
+              },
+              "head": [
+                0.08,
+                0,
+                0.08
+              ]
+            }
+          },
+          "qc_actors": [
+            "chase",
+            "kai"
+          ]
+        }
+      }
+    ],
+    "sh18": [
+      {
+        "fraction_start": 0,
+        "fraction_end": 1,
+        "stage": {
+          "unit": "still_18",
+          "variant": null,
+          "actors": {
+            "otis": {
+              "head": [
+                0.06,
+                0,
+                -0.08
+              ]
+            },
+            "narrator": {
+              "head": [
+                0.06,
+                0,
+                0.08
+              ]
+            },
+            "june": {
+              "head": [
+                0.06,
+                0,
+                -0.08
+              ]
+            }
+          },
+          "qc_actors": [
+            "otis",
+            "narrator"
+          ]
+        }
+      }
+    ],
+    "sh19": [
+      {
+        "fraction_start": 0,
+        "fraction_end": 1,
+        "stage": {
+          "unit": "still_19",
+          "variant": null,
+          "actors": {
+            "narrator": {
+              "head": [
+                0.2,
+                0,
+                0.28
+              ]
+            }
+          },
+          "qc_actors": [
+            "narrator",
+            "june"
+          ]
+        }
+      }
+    ],
+    "sh20": [
+      {
+        "fraction_start": 0,
+        "fraction_end": 1,
+        "unit_frame_window": [
+          1422,
+          1528
+        ],
+        "sentence_ids": [
+          20
+        ],
+        "stage": {
+          "unit": "crossing",
+          "driver": "render_saying_hi_round4:Round4Unit",
+          "qc_actors": [
+            "narrator"
+          ],
+          "walk": {
+            "cycles": 1,
+            "wide": {
+              "position": [
+                0,
+                -7,
+                3
+              ],
+              "target": [
+                0,
+                4,
+                0.6499999761581421
+              ],
+              "lens": 58.992414082519616,
+              "candidate_found": true
+            },
+            "low": {
+              "position": [
+                -2,
+                1.3598802089691162,
+                0.6999999284744263
+              ],
+              "target": [
+                0,
+                3.359880208969116,
+                1.0499999523162842
+              ],
+              "lens": 28,
+              "candidate_found": true
+            },
+            "spectators": [
+              "otis",
+              "leo",
+              "max",
+              "noah",
+              "ryan",
+              "sam",
+              "ava",
+              "bella",
+              "cleo",
+              "daisy",
+              "ella",
+              "faye",
+              "gia",
+              "hana",
+              "ivy",
+              "june",
+              "brody",
+              "chase",
+              "kai"
+            ]
+          },
+          "direction": {
+            "beat_type": "action",
+            "principal": "narrator",
+            "camera_move": "track",
+            "motivation": "Front tracking on approach centreline, between rather than behind the seated spectators; maintain forward route and carried props",
+            "camera_offset": [
+              0.1,
+              -1,
+              0
+            ],
+            "camera_elevation": 0.18,
+            "distance": 2,
+            "lens": 26,
+            "action_target_drop": 0.6,
+            "background": [
+              "otis",
+              "leo",
+              "max",
+              "noah",
+              "ryan",
+              "sam",
+              "ava",
+              "bella",
+              "cleo",
+              "daisy",
+              "ella",
+              "faye",
+              "gia",
+              "hana",
+              "ivy",
+              "june",
+              "brody",
+              "chase",
+              "kai"
+            ]
+          }
+        }
+      }
+    ],
+    "sh21": [
+      {
+        "fraction_start": 0,
+        "fraction_end": 1,
+        "stage": {
+          "unit": "still_21",
+          "qc_actors": [
+            "otis"
+          ],
+          "direction": {
+            "beat_type": "action",
+            "principal": "otis",
+            "camera_move": "drift",
+            "motivation": "Reverse onto wall boys reacting to the crossing, preserving direction toward well",
+            "camera_offset": [
+              0,
+              -1,
+              0
+            ],
+            "camera_elevation": 0.12,
+            "distance": 3.5,
+            "lens": 36,
+            "action_target_drop": 0.38,
+            "background": [
+              "narrator",
+              "leo",
+              "max",
+              "noah",
+              "ryan",
+              "sam",
+              "ava",
+              "bella",
+              "cleo",
+              "daisy",
+              "ella",
+              "faye",
+              "gia",
+              "hana",
+              "ivy",
+              "june",
+              "brody",
+              "chase",
+              "kai"
+            ],
+            "performance": {
+              "otis": {
+                "head": [
+                  [
+                    0,
+                    [
+                      0.04,
+                      0,
+                      -0.2
+                    ]
+                  ],
+                  [
+                    0.33,
+                    [
+                      0.12,
+                      0,
+                      -0.05
+                    ]
+                  ],
+                  [
+                    0.66,
+                    [
+                      -0.08,
+                      0,
+                      0.18
+                    ]
+                  ],
+                  [
+                    1,
+                    [
+                      0.08,
+                      0,
+                      0.25
+                    ]
+                  ]
+                ],
+                "expressions": [
+                  [
+                    0,
+                    "neutral"
+                  ],
+                  [
+                    0.32,
+                    "shocked"
+                  ]
+                ]
+              }
+            }
+          }
+        }
+      }
+    ],
+    "sh22": [
+      {
+        "fraction_start": 0,
+        "fraction_end": 1,
+        "reuse": "assets/saying_hi_review/corrections/native/otis_eyes/otis_eyes.mp4",
+        "offset": 0,
+        "provenance": "assets/saying_hi_review/corrections/native/otis_eyes/encode_validation.json"
+      }
+    ],
+    "sh23": [
+      {
+        "fraction_start": 0,
+        "fraction_end": 1,
+        "stage": {
+          "unit": "still_23",
+          "variant": null,
+          "actors": {
+            "narrator": {
+              "arm": {
+                "end": [
+                  0.15,
+                  -0.7,
+                  -0.4
+                ],
+                "index": 0
+              },
+              "head": [
+                0.08,
+                0,
+                0.08
+              ]
+            }
+          },
+          "qc_actors": [
+            "narrator",
+            "ava"
+          ]
+        }
+      }
+    ],
+    "sh24": [
+      {
+        "fraction_start": 0,
+        "fraction_end": 1,
+        "stage": {
+          "unit": "still_24",
+          "variant": null,
+          "actors": {
+            "narrator": {
+              "arm": {
+                "end": [
+                  0.1,
+                  -0.6,
+                  -0.3
+                ],
+                "index": 0
+              },
+              "head": [
+                0.08,
+                0,
+                0.08
+              ]
+            }
+          },
+          "qc_actors": [
+            "narrator",
+            "ava"
+          ]
+        }
+      }
+    ],
+    "sh25": [
+      {
+        "fraction_start": 0,
+        "fraction_end": 1,
+        "stage": {
+          "unit": "still_25",
+          "variant": null,
+          "actors": {
+            "brody": {
+              "arm": {
+                "end": [
+                  0.3,
+                  -0.7,
+                  -0.2
+                ],
+                "index": 0
+              },
+              "head": [
+                0.08,
+                0,
+                0.08
+              ]
+            },
+            "ava": {
+              "head": [
+                0.12,
+                0,
+                0.1
+              ]
+            }
+          },
+          "qc_actors": [
+            "ava",
+            "brody"
+          ],
+          "animal": {
+            "name": "Interview dog",
+            "position": [
+              -2.2,
+              3.6,
+              0
+            ],
+            "yaw_deg": 0,
+            "motion": "roll_over"
+          }
+        }
+      }
+    ],
+    "sh26": [
+      {
+        "fraction_start": 0,
+        "fraction_end": 1,
+        "stage": {
+          "unit": "still_26",
+          "variant": null,
+          "actors": {
+            "chase": {
+              "arm": {
+                "end": [
+                  0.4,
+                  -0.7,
+                  -0.4
+                ],
+                "index": 0
+              },
+              "head": [
+                0.08,
+                0,
+                0.08
+              ]
+            },
+            "bella": {
+              "sit_at": {
+                "position": [
+                  -1.8585,
+                  2.0842,
+                  0
+                ],
+                "yaw_deg": 0
+              }
+            }
+          },
+          "qc_actors": [
+            "bella",
+            "chase"
+          ],
+          "translate_props": {
+            "Chase reserved school bag": [
+              0.45,
+              0.2,
+              -0.25
+            ]
+          }
+        }
+      }
+    ],
+    "sh27": [
+      {
+        "fraction_start": 0,
+        "fraction_end": 1,
+        "stage": {
+          "unit": "still_27",
+          "variant": null,
+          "qc_actors": [
+            "cleo",
+            "kai"
+          ],
+          "direction": {
+            "beat_type": "interview",
+            "principal": "kai",
+            "listeners": [
+              "cleo"
+            ],
+            "camera_move": "drift",
+            "motivation": "Keep both faces away from frame edges; tighter controlled two-shot and well-side eyeline",
+            "camera_offset": [
+              0,
+              1,
+              0
+            ],
+            "camera_elevation": 0.12,
+            "distance": 3.3,
+            "lens": 45,
+            "target_offset": [
+              0,
+              0,
+              -0.19
+            ],
+            "blocking": {
+              "cleo": {
+                "position": [
+                  -0.72,
+                  4.4,
+                  0
+                ],
+                "yaw_deg": 150,
+                "expression": "neutral"
+              },
+              "kai": {
+                "position": [
+                  0.72,
+                  4.4,
+                  0
+                ],
+                "yaw_deg": -150,
+                "expression": "neutral"
+              }
+            },
+            "performance": {
+              "kai": {
+                "head": [
+                  [
+                    0,
+                    [
+                      0.03,
+                      0,
+                      -0.12
+                    ]
+                  ],
+                  [
+                    0.3,
+                    [
+                      0.1,
+                      0,
+                      0.03
+                    ]
+                  ],
+                  [
+                    0.65,
+                    [
+                      -0.05,
+                      0,
+                      0.15
+                    ]
+                  ],
+                  [
+                    1,
+                    [
+                      0.05,
+                      0,
+                      -0.06
+                    ]
+                  ]
+                ],
+                "torso": [
+                  [
+                    0,
+                    [
+                      0.02,
+                      0,
+                      -0.04
+                    ]
+                  ],
+                  [
+                    0.5,
+                    [
+                      0.04,
+                      0,
+                      0.05
+                    ]
+                  ],
+                  [
+                    1,
+                    [
+                      0.02,
+                      0,
+                      -0.02
+                    ]
+                  ]
+                ],
+                "arms": {
+                  "0": [
+                    [
+                      0,
+                      [
+                        -0.78,
+                        -0.12,
+                        0.37
+                      ]
+                    ],
+                    [
+                      0.27,
+                      [
+                        -0.82,
+                        -0.17,
+                        0.6
+                      ]
+                    ],
+                    [
+                      0.53,
+                      [
+                        -0.82,
+                        0.1,
+                        0.42
+                      ]
+                    ],
+                    [
+                      0.77,
+                      [
+                        -0.75,
+                        -0.14,
+                        0.6
+                      ]
+                    ],
+                    [
+                      1,
+                      [
+                        -0.65,
+                        -0.18,
+                        0.12
+                      ]
+                    ]
+                  ]
+                },
+                "expressions": [
+                  [
+                    0,
+                    "neutral"
+                  ],
+                  [
+                    0.22,
+                    "happy"
+                  ]
+                ]
+              },
+              "cleo": {
+                "head": [
+                  [
+                    0,
+                    [
+                      0.02,
+                      0,
+                      0.13
+                    ]
+                  ],
+                  [
+                    0.35,
+                    [
+                      -0.04,
+                      0,
+                      0.02
+                    ]
+                  ],
+                  [
+                    0.7,
+                    [
+                      0.13,
+                      0,
+                      -0.1
+                    ]
+                  ],
+                  [
+                    1,
+                    [
+                      0.04,
+                      0,
+                      0.07
+                    ]
+                  ]
+                ],
+                "torso": [
+                  [
+                    0,
+                    [
+                      0.01,
+                      0,
+                      0.04
+                    ]
+                  ],
+                  [
+                    0.5,
+                    [
+                      0.04,
+                      0,
+                      -0.04
+                    ]
+                  ],
+                  [
+                    1,
+                    [
+                      0.02,
+                      0,
+                      0.04
+                    ]
+                  ]
+                ],
+                "arms": {
+                  "1": [
+                    [
+                      0,
+                      [
+                        0.1,
+                        -0.1,
+                        -1
+                      ]
+                    ],
+                    [
+                      0.45,
+                      [
+                        0.3,
+                        -0.4,
+                        -0.85
+                      ]
+                    ],
+                    [
+                      0.8,
+                      [
+                        0.48,
+                        -0.2,
+                        -0.55
+                      ]
+                    ],
+                    [
+                      1,
+                      [
+                        0.25,
+                        -0.18,
+                        -0.8
+                      ]
+                    ]
+                  ]
+                },
+                "expressions": [
+                  [
+                    0,
+                    "neutral"
+                  ],
+                  [
+                    0.42,
+                    "happy"
+                  ]
+                ]
+              }
+            },
+            "drift_distance": 0.035,
+            "interview_face_span": 0.72
+          }
+        }
+      }
+    ],
+    "sh28": [
+      {
+        "fraction_start": 0,
+        "fraction_end": 1,
+        "stage": {
+          "unit": "still_28",
+          "variant": null,
+          "actors": {
+            "brody": {
+              "arm": {
+                "end": [
+                  0.4,
+                  -0.5,
+                  0.8
+                ],
+                "index": 0
+              },
+              "head": [
+                0.08,
+                0,
+                0.08
+              ]
+            },
+            "daisy": {
+              "arm": {
+                "end": [
+                  -0.4,
+                  -0.5,
+                  0.8
+                ],
+                "index": 1
+              },
+              "head": [
+                0.08,
+                0,
+                0.08
+              ]
+            }
+          },
+          "qc_actors": [
+            "daisy",
+            "brody"
+          ]
+        }
+      }
+    ],
+    "sh29": [
+      {
+        "fraction_start": 0,
+        "fraction_end": 1,
+        "stage": {
+          "unit": "still_29",
+          "variant": null,
+          "actors": {
+            "chase": {
+              "arm": {
+                "end": [
+                  0.3,
+                  -0.7,
+                  -0.2
+                ],
+                "index": 0
+              },
+              "head": [
+                0.08,
+                0,
+                0.08
+              ]
+            },
+            "ella": {
+              "head": [
+                0.12,
+                0,
+                0.1
+              ]
+            }
+          },
+          "qc_actors": [
+            "ella",
+            "chase"
+          ],
+          "animal": {
+            "name": "Interview dog",
+            "position": [
+              -3.1,
+              -2.6,
+              0
+            ],
+            "yaw_deg": 0,
+            "motion": "roll_over"
+          }
+        }
+      }
+    ],
+    "sh30": [
+      {
+        "fraction_start": 0,
+        "fraction_end": 0.25,
+        "stage": {
+          "unit": "still_30",
+          "variant": "faye_hi",
+          "actors": {
+            "faye": {
+              "arm": {
+                "end": [
+                  -0.4,
+                  -0.5,
+                  0.8
+                ],
+                "index": 1
+              },
+              "head": [
+                0.08,
+                0,
+                0.08
+              ]
+            },
+            "brody": {
+              "arm": {
+                "end": [
+                  0.4,
+                  -0.5,
+                  0.8
+                ],
+                "index": 0
+              },
+              "head": [
+                0.08,
+                0,
+                0.08
+              ]
+            },
+            "chase": {
+              "arm": {
+                "end": [
+                  0.4,
+                  -0.7,
+                  -0.4
+                ],
+                "index": 0
+              },
+              "head": [
+                0.08,
+                0,
+                0.08
+              ]
+            },
+            "hana": {
+              "arm": {
+                "end": [
+                  -0.4,
+                  -0.5,
+                  0.8
+                ],
+                "index": 1
+              },
+              "head": [
+                0.08,
+                0,
+                0.08
+              ]
+            },
+            "ivy": {
+              "arm": {
+                "end": [
+                  -0.4,
+                  -0.5,
+                  0.8
+                ],
+                "index": 1
+              },
+              "head": [
+                0.08,
+                0,
+                0.08
+              ]
+            },
+            "kai": {
+              "arm": {
+                "end": [
+                  0.4,
+                  -0.5,
+                  0.8
+                ],
+                "index": 0
+              },
+              "head": [
+                0.08,
+                0,
+                0.08
+              ]
+            }
+          },
+          "qc_actors": [
+            "faye",
+            "gia"
+          ]
+        }
+      },
+      {
+        "fraction_start": 0.25,
+        "fraction_end": 0.5,
+        "stage": {
+          "unit": "still_30",
+          "variant": "gia_seat",
+          "actors": {
+            "faye": {
+              "arm": {
+                "end": [
+                  -0.4,
+                  -0.5,
+                  0.8
+                ],
+                "index": 1
+              },
+              "head": [
+                0.08,
+                0,
+                0.08
+              ]
+            },
+            "brody": {
+              "arm": {
+                "end": [
+                  0.4,
+                  -0.5,
+                  0.8
+                ],
+                "index": 0
+              },
+              "head": [
+                0.08,
+                0,
+                0.08
+              ]
+            },
+            "chase": {
+              "arm": {
+                "end": [
+                  0.4,
+                  -0.7,
+                  -0.4
+                ],
+                "index": 0
+              },
+              "head": [
+                0.08,
+                0,
+                0.08
+              ]
+            },
+            "hana": {
+              "arm": {
+                "end": [
+                  -0.4,
+                  -0.5,
+                  0.8
+                ],
+                "index": 1
+              },
+              "head": [
+                0.08,
+                0,
+                0.08
+              ]
+            },
+            "ivy": {
+              "arm": {
+                "end": [
+                  -0.4,
+                  -0.5,
+                  0.8
+                ],
+                "index": 1
+              },
+              "head": [
+                0.08,
+                0,
+                0.08
+              ]
+            },
+            "kai": {
+              "arm": {
+                "end": [
+                  0.4,
+                  -0.5,
+                  0.8
+                ],
+                "index": 0
+              },
+              "head": [
+                0.08,
+                0,
+                0.08
+              ]
+            },
+            "gia": {
+              "sit_at": {
+                "position": [
+                  0.7,
+                  -3.3,
+                  0
+                ],
+                "yaw_deg": 0
+              }
+            }
+          },
+          "qc_actors": [
+            "faye",
+            "gia"
+          ],
+          "translate_props": {
+            "Chase reserved school bag": [
+              0.45,
+              0.2,
+              -0.25
+            ]
+          }
+        }
+      },
+      {
+        "fraction_start": 0.5,
+        "fraction_end": 0.75,
+        "stage": {
+          "unit": "still_30",
+          "variant": "hana_hi",
+          "actors": {
+            "faye": {
+              "arm": {
+                "end": [
+                  -0.4,
+                  -0.5,
+                  0.8
+                ],
+                "index": 1
+              },
+              "head": [
+                0.08,
+                0,
+                0.08
+              ]
+            },
+            "brody": {
+              "arm": {
+                "end": [
+                  0.4,
+                  -0.5,
+                  0.8
+                ],
+                "index": 0
+              },
+              "head": [
+                0.08,
+                0,
+                0.08
+              ]
+            },
+            "chase": {
+              "arm": {
+                "end": [
+                  0.4,
+                  -0.7,
+                  -0.4
+                ],
+                "index": 0
+              },
+              "head": [
+                0.08,
+                0,
+                0.08
+              ]
+            },
+            "hana": {
+              "arm": {
+                "end": [
+                  -0.4,
+                  -0.5,
+                  0.8
+                ],
+                "index": 1
+              },
+              "head": [
+                0.08,
+                0,
+                0.08
+              ]
+            },
+            "ivy": {
+              "arm": {
+                "end": [
+                  -0.4,
+                  -0.5,
+                  0.8
+                ],
+                "index": 1
+              },
+              "head": [
+                0.08,
+                0,
+                0.08
+              ]
+            },
+            "kai": {
+              "arm": {
+                "end": [
+                  0.4,
+                  -0.5,
+                  0.8
+                ],
+                "index": 0
+              },
+              "head": [
+                0.08,
+                0,
+                0.08
+              ]
+            }
+          },
+          "qc_actors": [
+            "faye",
+            "gia"
+          ]
+        }
+      },
+      {
+        "fraction_start": 0.75,
+        "fraction_end": 1,
+        "stage": {
+          "unit": "still_30",
+          "variant": "ivy_hi",
+          "actors": {
+            "faye": {
+              "arm": {
+                "end": [
+                  -0.4,
+                  -0.5,
+                  0.8
+                ],
+                "index": 1
+              },
+              "head": [
+                0.08,
+                0,
+                0.08
+              ]
+            },
+            "brody": {
+              "arm": {
+                "end": [
+                  0.4,
+                  -0.5,
+                  0.8
+                ],
+                "index": 0
+              },
+              "head": [
+                0.08,
+                0,
+                0.08
+              ]
+            },
+            "chase": {
+              "arm": {
+                "end": [
+                  0.4,
+                  -0.7,
+                  -0.4
+                ],
+                "index": 0
+              },
+              "head": [
+                0.08,
+                0,
+                0.08
+              ]
+            },
+            "hana": {
+              "arm": {
+                "end": [
+                  -0.4,
+                  -0.5,
+                  0.8
+                ],
+                "index": 1
+              },
+              "head": [
+                0.08,
+                0,
+                0.08
+              ]
+            },
+            "ivy": {
+              "arm": {
+                "end": [
+                  -0.4,
+                  -0.5,
+                  0.8
+                ],
+                "index": 1
+              },
+              "head": [
+                0.08,
+                0,
+                0.08
+              ]
+            },
+            "kai": {
+              "arm": {
+                "end": [
+                  0.4,
+                  -0.5,
+                  0.8
+                ],
+                "index": 0
+              },
+              "head": [
+                0.08,
+                0,
+                0.08
+              ]
+            }
+          },
+          "qc_actors": [
+            "faye",
+            "gia"
+          ]
+        }
+      }
+    ],
+    "sh31": [
+      {
+        "fraction_start": 0,
+        "fraction_end": 1,
+        "unit_frame_window": [
+          2088,
+          2201
+        ],
+        "sentence_ids": [
+          31,
+          32,
+          33
+        ],
+        "stage": {
+          "unit": "june_question",
+          "driver": "render_saying_hi_round4:Round4Unit",
+          "qc_actors": [
+            "narrator"
+          ],
+          "camera_cache": "assets/saying_hi_review/corrections/round4_precheck/june_question/gate.json"
+        }
+      }
+    ],
+    "sh32": [
+      {
+        "fraction_start": 0,
+        "fraction_end": 1,
+        "unit_frame_window": [
+          2088,
+          2201
+        ],
+        "sentence_ids": [
+          31,
+          32,
+          33
+        ],
+        "stage": {
+          "unit": "june_question",
+          "driver": "render_saying_hi_round4:Round4Unit",
+          "qc_actors": [
+            "narrator"
+          ],
+          "camera_cache": "assets/saying_hi_review/corrections/round4_precheck/june_question/gate.json",
+          "direction": {
+            "beat_type": "emotion",
+            "principal": "narrator",
+            "camera_move": "push",
+            "motivation": "Camera inside the space between the two speakers, off the June obstruction axis and slightly below face centre",
+            "camera_offset": [
+              0.72,
+              -1,
+              0
+            ],
+            "distance": 1.05,
+            "lens": 32,
+            "performance": {
+              "narrator": {
+                "expressions": [
+                  [
+                    0,
+                    "neutral"
+                  ],
+                  [
+                    0.15,
+                    "worried"
+                  ]
+                ]
+              },
+              "june": {
+                "head": [
+                  [
+                    0,
+                    [
+                      0.02,
+                      0,
+                      0.12
+                    ]
+                  ],
+                  [
+                    0.45,
+                    [
+                      0.1,
+                      0,
+                      -0.06
+                    ]
+                  ],
+                  [
+                    1,
+                    [
+                      0.02,
+                      0,
+                      0.12
+                    ]
+                  ]
+                ],
+                "expressions": [
+                  [
+                    0,
+                    "neutral"
+                  ],
+                  [
+                    0.6,
+                    "worried"
+                  ]
+                ]
+              }
+            },
+            "camera_elevation": -0.07,
+            "target_offset": [
+              0,
+              0,
+              -0.075
+            ],
+            "push_distance": 0.02,
+            "adapter_vector_marks": {
+              "np": [
+                0.25,
+                4.8,
+                0
+              ],
+              "jp": [
+                1.65,
+                3.9,
+                0
+              ]
+            },
+            "adapter_yaw_marks": {
+              "nyaw": 57,
+              "jyaw": -123
+            },
+            "emotion_face_target": 0.425
+          }
+        }
+      }
+    ],
+    "sh33": [
+      {
+        "fraction_start": 0,
+        "fraction_end": 1,
+        "unit_frame_window": [
+          2088,
+          2201
+        ],
+        "sentence_ids": [
+          31,
+          32,
+          33
+        ],
+        "stage": {
+          "unit": "june_question",
+          "driver": "render_saying_hi_round4:Round4Unit",
+          "qc_actors": [
+            "narrator"
+          ],
+          "camera_cache": "assets/saying_hi_review/corrections/round4_precheck/june_question/gate.json"
+        }
+      }
+    ],
+    "sh34": [
+      {
+        "fraction_start": 0,
+        "fraction_end": 1,
+        "unit_frame_window": [
+          2201,
+          2258
+        ],
+        "sentence_ids": [
+          34
+        ],
+        "stage": {
+          "unit": "june_answer",
+          "driver": "render_saying_hi_round4:Round4Unit",
+          "qc_actors": [
+            "june"
+          ],
+          "camera_cache": "assets/saying_hi_review/corrections/round4_precheck/june_answer/gate.json"
+        }
+      }
+    ],
+    "sh35": [
+      {
+        "fraction_start": 0,
+        "fraction_end": 1,
+        "stage": {
+          "unit": "still_35",
+          "variant": null,
+          "actors": {
+            "narrator": {
+              "head": [
+                0.06,
+                0,
+                0.7
+              ]
+            }
+          },
+          "qc_actors": [
+            "narrator"
+          ]
+        }
+      }
+    ],
+    "sh36": [
+      {
+        "fraction_start": 0,
+        "fraction_end": 1,
+        "stage": {
+          "unit": "still_36",
+          "variant": null,
+          "actors": {
+            "otis": {
+              "head": [
+                0.06,
+                0,
+                -0.08
+              ]
+            },
+            "leo": {
+              "head": [
+                0.06,
+                0,
+                0.08
+              ]
+            },
+            "max": {
+              "head": [
+                0.06,
+                0,
+                -0.08
+              ]
+            }
+          },
+          "qc_actors": [
+            "otis",
+            "leo"
+          ]
+        }
+      }
+    ],
+    "sh37": [
+      {
+        "fraction_start": 0,
+        "fraction_end": 1,
+        "stage": {
+          "unit": "still_37",
+          "variant": null,
+          "actors": {
+            "narrator": {
+              "head": [
+                0.15,
+                0,
+                0.15
+              ],
+              "initial_expression": "worried",
+              "expression": "happy"
+            }
+          },
+          "qc_actors": [
+            "narrator"
+          ]
+        }
+      }
+    ],
+    "sh38": [
+      {
+        "fraction_start": 0,
+        "fraction_end": 1,
+        "stage": {
+          "unit": "still_38",
+          "variant": null,
+          "actors": {
+            "narrator": {
+              "head": [
+                0.06,
+                0,
+                -0.08
+              ]
+            },
+            "otis": {
+              "head": [
+                0.06,
+                0,
+                0.08
+              ]
+            },
+            "leo": {
+              "head": [
+                0.06,
+                0,
+                -0.08
+              ]
+            }
+          },
+          "qc_actors": [
+            "narrator"
+          ]
+        }
+      }
+    ],
+    "sh39": [
+      {
+        "fraction_start": 0,
+        "fraction_end": 1,
+        "stage": {
+          "unit": "still_39",
+          "variant": null,
+          "actors": {
+            "otis": {
+              "head": [
+                0.06,
+                0,
+                -0.08
+              ]
+            },
+            "narrator": {
+              "head": [
+                0.06,
+                0,
+                0.08
+              ]
+            }
+          },
+          "qc_actors": [
+            "otis",
+            "narrator"
+          ]
+        }
+      }
+    ],
+    "sh40": [
+      {
+        "fraction_start": 0,
+        "fraction_end": 1,
+        "stage": {
+          "unit": "still_40",
+          "variant": null,
+          "actors": {
+            "narrator": {
+              "head": [
+                0.03,
+                0,
+                -0.4
+              ]
+            }
+          },
+          "qc_actors": [
+            "narrator",
+            "june"
+          ]
+        }
+      }
+    ],
+    "sh41": [
+      {
+        "fraction_start": 0,
+        "fraction_end": 1,
+        "stage": {
+          "unit": "still_41",
+          "variant": null,
+          "actors": {
+            "narrator": {
+              "arm": {
+                "end": [
+                  0.4,
+                  -0.5,
+                  0.8
+                ],
+                "index": 0
+              },
+              "head": [
+                0.08,
+                0,
+                0.08
+              ]
+            },
+            "june": {
+              "head": [
+                0.07,
+                0,
+                0.1
+              ]
+            }
+          },
+          "qc_actors": [
+            "narrator",
+            "june"
+          ]
+        }
+      }
+    ],
+    "sh42": [
+      {
+        "fraction_start": 0,
+        "fraction_end": 1,
+        "reuse": "assets/saying_hi_review/corrections/native/dog_name/dog_name.mp4",
+        "offset": 0,
+        "provenance": "assets/saying_hi_review/corrections/native/dog_name/encode_validation.json"
+      }
+    ],
+    "sh43": [
+      {
+        "fraction_start": 0,
+        "fraction_end": 1,
+        "unit_frame_window": [
+          2713,
+          2764
+        ],
+        "sentence_ids": [
+          43
+        ],
+        "stage": {
+          "unit": "seating",
+          "driver": "render_saying_hi_round4:Round4Unit",
+          "qc_actors": [
+            "june",
+            "narrator"
+          ],
+          "camera_cache": "assets/saying_hi_review/corrections/round4_precheck/seating/gate.json"
+        }
+      }
+    ],
+    "sh44": [
+      {
+        "fraction_start": 0,
+        "fraction_end": 1,
+        "stage": {
+          "unit": "still_44",
+          "variant": null,
+          "actors": {
+            "leo": {
+              "head": [
+                0.06,
+                0,
+                -0.08
+              ]
+            },
+            "max": {
+              "head": [
+                0.06,
+                0,
+                0.08
+              ]
+            },
+            "narrator": {
+              "head": [
+                0.06,
+                0,
+                -0.08
+              ]
+            }
+          },
+          "qc_actors": [
+            "leo",
+            "max"
+          ]
+        }
+      }
+    ],
+    "sh45": [
+      {
+        "fraction_start": 0,
+        "fraction_end": 1,
+        "reuse": "assets/saying_hi_review/corrections/native/empty_wall/empty_wall.mp4",
+        "offset": 0,
+        "provenance": "assets/saying_hi_review/corrections/native/empty_wall/encode_validation.json"
+      }
+    ],
+    "sh46": [
+      {
+        "fraction_start": 0,
+        "fraction_end": 1,
+        "reuse": "assets/saying_hi_review/proofs/chart_final/chart_final.mp4",
+        "offset": 0,
+        "provenance": "assets/saying_hi_review/proofs/chart_final/encode_validation.json"
+      }
+    ],
+    "sh47": [
+      {
+        "fraction_start": 0,
+        "fraction_end": 1,
+        "stage": {
+          "unit": "still_47",
+          "variant": null,
+          "actors": {
+            "otis": {
+              "arm": {
+                "end": [
+                  0.8,
+                  -0.1,
+                  0.1
+                ],
+                "index": 0
+              },
+              "head": [
+                0.08,
+                0,
+                0.08
+              ]
+            }
+          },
+          "qc_actors": [
+            "otis",
+            "narrator"
+          ]
+        }
+      }
+    ],
+    "sh48": [
+      {
+        "fraction_start": 0,
+        "fraction_end": 1,
+        "reuse": "assets/saying_hi_review/corrections/native/closing/closing.mp4",
+        "offset": 0,
+        "provenance": "assets/saying_hi_review/corrections/native/closing/encode_validation.json"
+      }
+    ]
+  },
+  "known_weaknesses": {
+    "sh02": [
+      "book detail not implemented by legacy set adapter; use a readable actual book prop"
+    ],
+    "sh03": [
+      "chart-making staging is preliminary; add physical book-to-paper and drawing contact"
+    ],
+    "sh10": [
+      "wheelbarrow motion lacks verified hand/wheel contact"
+    ],
+    "sh11": [
+      "Mom-card opening is not yet articulated"
+    ],
+    "sh13": [
+      "group shot requires visible chart and directed explanation review"
+    ],
+    "sh17": [
+      "ball trajectory and crayon contact unverified"
+    ],
+    "sh18": [
+      "chart insert only; narrator's look toward June still needs a distinct cut"
+    ],
+    "sh19": [
+      "separate narrator and June geography not verified"
+    ],
+    "sh20": [
+      "new deterministic stride and split-camera stop require visual check"
+    ],
+    "sh21": [
+      "stop timing and root-vs-plant QC require check"
+    ],
+    "sh23": [
+      "interview approach uses legacy staging; actual continuous walk not implemented"
+    ],
+    "sh25": [
+      "dog behavior and photo composition require review"
+    ],
+    "sh26": [
+      "bag movement and seat placement are analytic; hand attachment and support not verified"
+    ],
+    "sh29": [
+      "dog behavior and photo composition require review"
+    ],
+    "sh30": [
+      "montage saved-seat action is analytic; physical contact not verified"
+    ],
+    "sh31": [
+      "legacy reverse framing, external and own-face rays separated in new QC"
+    ],
+    "sh32": [
+      "pencil motion and safe framing need playback review"
+    ],
+    "sh33": [
+      "narrator facing and pencil readability require playback review"
+    ],
+    "sh34": [
+      "June response needs playback review"
+    ],
+    "sh39": [
+      "chart insert is not a physical handheld close"
+    ],
+    "sh43": [
+      "named bench motion uses Round 4 candidate; full actor frame and own-face rays previously failed"
+    ],
+    "sh44": [
+      "Monday crossing not yet driven by deterministic walk tracks; staged arrival only"
+    ],
+    "sh47": [
+      "replacement-chart prop detail and shrug are approximate"
+    ]
+  },
+  "map": {
+    "url": "https://raw.githubusercontent.com/AdityapalW/Roblox-skill/54b34ba1be2e3013a9de59e40db288d8f2ebda53/Itlay/Itlay.gltf",
+    "git_blob": "20108af3a19fae6b5beaa5fac2e3305b56112a41"
+  },
+  "review_path": "docs/saying_hi_review.md",
+  "inventory_path": "docs/saying_hi_deliverable_paths.txt",
+  "qc_rules": {
+    "sh20": [
+      {
+        "name": "wide body height",
+        "selector": "geometry.actor_bounds",
+        "op": "min",
+        "limit": 0.25,
+        "reduce": "min",
+        "transform": "vertical_span"
+      },
+      {
+        "name": "wide support rays blocked",
+        "selector": "geometry.foot_visible",
+        "op": "eq",
+        "limit": 0,
+        "reduce": "count_false"
+      }
+    ],
+    "sh21": [
+      {
+        "name": "low body height",
+        "selector": "geometry.low_camera.actor_bounds",
+        "op": "min",
+        "limit": 0.25,
+        "reduce": "min",
+        "transform": "vertical_span"
+      },
+      {
+        "name": "low support rays blocked",
+        "selector": "geometry.low_camera.foot_visible",
+        "op": "eq",
+        "limit": 0,
+        "reduce": "count_false"
+      }
+    ],
+    "sh31": [
+      {
+        "name": "standing-seat intersections",
+        "selector": "geometry.standing_seat_intersections",
+        "op": "eq",
+        "limit": 0,
+        "reduce": "max"
+      },
+      {
+        "name": "speaker facing dot",
+        "selector": "geometry.speaker_front_dot",
+        "op": "min",
+        "limit": 0.72,
+        "reduce": "min"
+      },
+      {
+        "name": "speaker body visibility",
+        "selector": "geometry.speaker_body_visibility.visible_fraction",
+        "op": "min",
+        "limit": 0.9,
+        "reduce": "min"
+      },
+      {
+        "name": "speaker body safe",
+        "selector": "geometry.speaker_body_visibility.safe",
+        "op": "eq",
+        "limit": true,
+        "reduce": "all"
+      },
+      {
+        "name": "unrelated foreground ray blocks",
+        "selector": "geometry.foreground_intrusion.blocked",
+        "op": "eq",
+        "limit": 0,
+        "reduce": "max"
+      },
+      {
+        "name": "pencil external rays blocked",
+        "selector": "geometry.pencil_external_visibility.blocked",
+        "op": "eq",
+        "limit": 0,
+        "reduce": "max"
+      },
+      {
+        "name": "pencil visible fraction",
+        "selector": "geometry.pencil_visibility.visible_fraction",
+        "op": "min",
+        "limit": 0.8421052631578947,
+        "reduce": "min"
+      },
+      {
+        "name": "pencil safe frame",
+        "selector": "geometry.pencil_external_visibility.safe",
+        "op": "eq",
+        "limit": true,
+        "reduce": "all"
+      }
+    ],
+    "sh32": [
+      {
+        "name": "standing-seat intersections",
+        "selector": "geometry.standing_seat_intersections",
+        "op": "eq",
+        "limit": 0,
+        "reduce": "max"
+      },
+      {
+        "name": "speaker facing dot",
+        "selector": "geometry.speaker_front_dot",
+        "op": "min",
+        "limit": 0.72,
+        "reduce": "min"
+      },
+      {
+        "name": "speaker body visibility",
+        "selector": "geometry.speaker_body_visibility.visible_fraction",
+        "op": "min",
+        "limit": 0.9,
+        "reduce": "min"
+      },
+      {
+        "name": "speaker body safe",
+        "selector": "geometry.speaker_body_visibility.safe",
+        "op": "eq",
+        "limit": true,
+        "reduce": "all"
+      },
+      {
+        "name": "unrelated foreground ray blocks",
+        "selector": "geometry.foreground_intrusion.blocked",
+        "op": "eq",
+        "limit": 0,
+        "reduce": "max"
+      },
+      {
+        "name": "pencil external rays blocked",
+        "selector": "geometry.pencil_external_visibility.blocked",
+        "op": "eq",
+        "limit": 0,
+        "reduce": "max"
+      },
+      {
+        "name": "pencil visible fraction",
+        "selector": "geometry.pencil_visibility.visible_fraction",
+        "op": "min",
+        "limit": 0.8421052631578947,
+        "reduce": "min"
+      },
+      {
+        "name": "pencil safe frame",
+        "selector": "geometry.pencil_external_visibility.safe",
+        "op": "eq",
+        "limit": true,
+        "reduce": "all"
+      }
+    ],
+    "sh33": [
+      {
+        "name": "standing-seat intersections",
+        "selector": "geometry.standing_seat_intersections",
+        "op": "eq",
+        "limit": 0,
+        "reduce": "max"
+      },
+      {
+        "name": "speaker facing dot",
+        "selector": "geometry.speaker_front_dot",
+        "op": "min",
+        "limit": 0.72,
+        "reduce": "min"
+      },
+      {
+        "name": "speaker body visibility",
+        "selector": "geometry.speaker_body_visibility.visible_fraction",
+        "op": "min",
+        "limit": 0.9,
+        "reduce": "min"
+      },
+      {
+        "name": "speaker body safe",
+        "selector": "geometry.speaker_body_visibility.safe",
+        "op": "eq",
+        "limit": true,
+        "reduce": "all"
+      },
+      {
+        "name": "unrelated foreground ray blocks",
+        "selector": "geometry.foreground_intrusion.blocked",
+        "op": "eq",
+        "limit": 0,
+        "reduce": "max"
+      },
+      {
+        "name": "pencil external rays blocked",
+        "selector": "geometry.pencil_external_visibility.blocked",
+        "op": "eq",
+        "limit": 0,
+        "reduce": "max"
+      },
+      {
+        "name": "pencil visible fraction",
+        "selector": "geometry.pencil_visibility.visible_fraction",
+        "op": "min",
+        "limit": 0.8421052631578947,
+        "reduce": "min"
+      },
+      {
+        "name": "pencil safe frame",
+        "selector": "geometry.pencil_external_visibility.safe",
+        "op": "eq",
+        "limit": true,
+        "reduce": "all"
+      }
+    ],
+    "sh34": [
+      {
+        "name": "standing-seat intersections",
+        "selector": "geometry.standing_seat_intersections",
+        "op": "eq",
+        "limit": 0,
+        "reduce": "max"
+      },
+      {
+        "name": "speaker facing dot",
+        "selector": "geometry.speaker_front_dot",
+        "op": "min",
+        "limit": 0.72,
+        "reduce": "min"
+      },
+      {
+        "name": "speaker body visibility",
+        "selector": "geometry.speaker_body_visibility.visible_fraction",
+        "op": "min",
+        "limit": 0.9,
+        "reduce": "min"
+      },
+      {
+        "name": "speaker body safe",
+        "selector": "geometry.speaker_body_visibility.safe",
+        "op": "eq",
+        "limit": true,
+        "reduce": "all"
+      },
+      {
+        "name": "unrelated foreground ray blocks",
+        "selector": "geometry.foreground_intrusion.blocked",
+        "op": "eq",
+        "limit": 0,
+        "reduce": "max"
+      }
+    ],
+    "sh43": [
+      {
+        "name": "dog occlusion",
+        "selector": "geometry.dog_visibility.blocked",
+        "op": "eq",
+        "limit": 0,
+        "reduce": "max"
+      },
+      {
+        "name": "dog safe frame",
+        "selector": "geometry.dog_visibility.safe",
+        "op": "eq",
+        "limit": true,
+        "reduce": "all"
+      },
+      {
+        "name": "dog width",
+        "selector": "geometry.dog_visibility.bounds",
+        "op": "min",
+        "limit": 0.12,
+        "reduce": "min",
+        "transform": "horizontal_span"
+      },
+      {
+        "name": "dog height",
+        "selector": "geometry.dog_visibility.bounds",
+        "op": "min",
+        "limit": 0.055,
+        "reduce": "min",
+        "transform": "vertical_span"
+      },
+      {
+        "name": "dog floor gap",
+        "selector": "geometry.waffle.evaluated_min_z",
+        "op": "max",
+        "limit": 0.002,
+        "reduce": "max",
+        "transform": "abs"
+      },
+      {
+        "name": "seated hip gap",
+        "selector": "geometry.seat_contacts.*.signed_rear_hip_gap",
+        "op": "max",
+        "limit": 0.015,
+        "reduce": "max",
+        "transform": "abs",
+        "when": {
+          "selector": "geometry.seat_contacts.*.phase",
+          "equals": "seated"
+        }
+      },
+      {
+        "name": "settled facing",
+        "selector": "geometry.readability_faces.*.facing_dot",
+        "op": "min",
+        "limit": 0.5,
+        "reduce": "min",
+        "when": {
+          "selector": "geometry.seat_contacts.*.phase",
+          "equals": "seated"
+        }
+      },
+      {
+        "name": "settled all-face ray blocks (incl own)",
+        "selector": "geometry.readability_faces.*.visibility.blocked",
+        "op": "eq",
+        "limit": 0,
+        "reduce": "max",
+        "when": {
+          "selector": "geometry.seat_contacts.*.phase",
+          "equals": "seated"
+        }
+      },
+      {
+        "name": "named seat surface safe",
+        "selector": "geometry.seat_readability.surface.safe",
+        "op": "eq",
+        "limit": true,
+        "reduce": "all",
+        "when": {
+          "selector": "geometry.seat_contacts.*.phase",
+          "equals": "seated"
+        }
+      },
+      {
+        "name": "named seat surface visibility",
+        "selector": "geometry.seat_readability.surface.visible_fraction",
+        "op": "min",
+        "limit": 0.0001,
+        "reduce": "min",
+        "when": {
+          "selector": "geometry.seat_contacts.*.phase",
+          "equals": "seated"
+        }
+      },
+      {
+        "name": "hips over seat surface",
+        "selector": "geometry.seat_readability.hips_over_surface.*",
+        "op": "eq",
+        "limit": true,
+        "reduce": "all",
+        "when": {
+          "selector": "geometry.seat_contacts.*.phase",
+          "equals": "seated"
+        }
+      },
+      {
+        "name": "raised support height",
+        "selector": "geometry.seat_readability.raised_height",
+        "op": "min",
+        "limit": 0.14,
+        "reduce": "min",
+        "when": {
+          "selector": "geometry.seat_contacts.*.phase",
+          "equals": "seated"
+        }
+      },
+      {
+        "name": "seat supports reach ground",
+        "selector": "geometry.seat_readability.support_reaches_ground",
+        "op": "eq",
+        "limit": true,
+        "reduce": "all",
+        "when": {
+          "selector": "geometry.seat_contacts.*.phase",
+          "equals": "seated"
+        }
+      },
+      {
+        "name": "move-over displacement",
+        "selector": "geometry.seat_contacts.june.hip_world.1",
+        "op": "min",
+        "limit": 0.2,
+        "reduce": "delta"
+      }
+    ]
+  },
+  "grade_preset": "warm_saturated_v1",
+  "pilot_groups": [
+    {
+      "name": "crossing",
+      "shots": [
+        "sh20",
+        "sh21"
+      ]
+    },
+    {
+      "name": "interview",
+      "shots": [
+        "sh27"
+      ]
+    },
+    {
+      "name": "hesitation",
+      "shots": [
+        "sh32"
+      ]
+    }
+  ],
+  "pilot_baseline": "assets/saying_hi_review/round5/saying_hi.mp4",
+  "preflight_output_dir": "assets/saying_hi_review/round6/pilot_retry3_preflight",
+  "actor_factory": "saying_hi_cast:build_cast_actor"
+}
