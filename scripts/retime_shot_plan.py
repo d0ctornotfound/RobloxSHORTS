@@ -18,7 +18,7 @@ def paced_pcm(src,data,rate,target_samples):
         result=subprocess.run(["ffmpeg","-nostdin","-v","error","-i",str(src),"-af",",".join(filters),"-f","s16le","-ac","1","-ar",str(rate),"-"],check=True,stdout=subprocess.PIPE).stdout
         if len(result)//2<=target_samples:
             pad=target_samples-len(result)//2
-            return result+b"\\0\\0"*pad,{"original_seconds":original,"tempo_ratio":ratio,"processed_seconds":len(result)/2/rate,"padding_seconds":pad/rate}
+            return result+b"\0\0"*pad,{"original_seconds":original,"tempo_ratio":ratio,"processed_seconds":len(result)/2/rate,"padding_seconds":pad/rate}
         ratio*=1.08
     raise RuntimeError("Could not fit complete sentence in reference window")
 def main():
@@ -56,7 +56,7 @@ def main():
     p.update(status="retimed_actual_audio",narration_source="temporary",narration_audio=a.wav,audio_duration=n/rate,retime_note="Free eSpeak NG en-us, independently synthesized sentence WAVs at speed "+str(a.speed)+". Inter-sentence reference gaps preserved; sentence bounds measured from PCM chunk lengths (including natural TTS padding), not word-level alignment. Reference duration 101.20 s is not the actual audio duration. Replace with approved recording and retime before final rendering.")
     if a.match_reference:
         p["retime_note"]="Free eSpeak NG en-us at "+str(a.speed)+"; each complete sentence locally tempo-adjusted using FFmpeg atempo and padded at the end to its reference window, no speech truncation; actual PCM chunks measured. Proof timing only; re-align approved recording."
-        wav.with_name("temporary_pacing.json").write_text(json.dumps(pace,indent=2)+"\\n")
+        wav.with_name("temporary_pacing.json").write_text(json.dumps(pace,indent=2)+"\n")
     result=validate(p,root)
     path.write_text(json.dumps(p,indent=2)+"\n")
     print(json.dumps(result,indent=2))
