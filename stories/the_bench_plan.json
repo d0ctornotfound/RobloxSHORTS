@@ -1,0 +1,1075 @@
+{
+  "id": "the_bench",
+  "duration": 120,
+  "fps": 24,
+  "hook_end": 2.5,
+  "narration": "Every morning on my way to school, I passed the same park bench. An old man sat there, a brown paper bag in his lap. Pigeons crowded around his shoes, waiting for the crumbs he scattered. I always looked at him, but he never looked back. So one morning I brought a paper bag of my own. I stopped beside the bench and dropped crumbs onto the path. For a moment, nothing happened; I thought he hadn't noticed me. Then he lifted his head, looked at me, and nodded. After that, I came back every morning before school. Two brown bags, one wooden bench, not a single word between us. He showed me how to hold my hand still for a pigeon. When one finally landed and ate, I almost laughed, but stayed still. One morning I reached the park, and the bench was empty. There was no paper bag, no one feeding the birds. His flat cap was sitting right where he used to sit. I picked it up carefully, and kept it safe for him. Days went by, and every morning I found that empty seat. I started sitting there myself, his cap resting beside me. The pigeons still came for breakfast, so I brought crumbs for them. I kept looking down the path, hoping he'd appear around the corner. Then one grey morning, a shadow fell across the bench beside me. It was him, moving more slowly, his coat loose, leaning on a cane. He sat beside me; I handed him his cap, and he put it on. Then he pulled out two paper bags, and handed one to me again.",
+  "callbacks": [
+    {
+      "setup": 7.5,
+      "payoff": 117.5,
+      "detail": "brown paper bag becomes two bags and a renewed shared routine"
+    },
+    {
+      "setup": 70,
+      "payoff": 112.5,
+      "detail": "flat cap kept safe and returned"
+    }
+  ],
+  "sentences": [
+    {
+      "act": 1,
+      "start": 0,
+      "end": 5,
+      "text": "Every morning on my way to school, I passed the same park bench."
+    },
+    {
+      "act": 1,
+      "start": 5,
+      "end": 10,
+      "text": "An old man sat there, a brown paper bag in his lap."
+    },
+    {
+      "act": 1,
+      "start": 10,
+      "end": 15,
+      "text": "Pigeons crowded around his shoes, waiting for the crumbs he scattered."
+    },
+    {
+      "act": 1,
+      "start": 15,
+      "end": 20,
+      "text": "I always looked at him, but he never looked back."
+    },
+    {
+      "act": 2,
+      "start": 20,
+      "end": 25,
+      "text": "So one morning I brought a paper bag of my own."
+    },
+    {
+      "act": 2,
+      "start": 25,
+      "end": 30,
+      "text": "I stopped beside the bench and dropped crumbs onto the path."
+    },
+    {
+      "act": 2,
+      "start": 30,
+      "end": 35,
+      "text": "For a moment, nothing happened; I thought he hadn't noticed me."
+    },
+    {
+      "act": 2,
+      "start": 35,
+      "end": 40,
+      "text": "Then he lifted his head, looked at me, and nodded."
+    },
+    {
+      "act": 3,
+      "start": 40,
+      "end": 45,
+      "text": "After that, I came back every morning before school."
+    },
+    {
+      "act": 3,
+      "start": 45,
+      "end": 50,
+      "text": "Two brown bags, one wooden bench, not a single word between us."
+    },
+    {
+      "act": 3,
+      "start": 50,
+      "end": 55,
+      "text": "He showed me how to hold my hand still for a pigeon."
+    },
+    {
+      "act": 3,
+      "start": 55,
+      "end": 60,
+      "text": "When one finally landed and ate, I almost laughed, but stayed still."
+    },
+    {
+      "act": 4,
+      "start": 60,
+      "end": 65,
+      "text": "One morning I reached the park, and the bench was empty."
+    },
+    {
+      "act": 4,
+      "start": 65,
+      "end": 70,
+      "text": "There was no paper bag, no one feeding the birds."
+    },
+    {
+      "act": 4,
+      "start": 70,
+      "end": 75,
+      "text": "His flat cap was sitting right where he used to sit."
+    },
+    {
+      "act": 4,
+      "start": 75,
+      "end": 80,
+      "text": "I picked it up carefully, and kept it safe for him."
+    },
+    {
+      "act": 5,
+      "start": 80,
+      "end": 85,
+      "text": "Days went by, and every morning I found that empty seat."
+    },
+    {
+      "act": 5,
+      "start": 85,
+      "end": 90,
+      "text": "I started sitting there myself, his cap resting beside me."
+    },
+    {
+      "act": 5,
+      "start": 90,
+      "end": 95,
+      "text": "The pigeons still came for breakfast, so I brought crumbs for them."
+    },
+    {
+      "act": 5,
+      "start": 95,
+      "end": 100,
+      "text": "I kept looking down the path, hoping he'd appear around the corner."
+    },
+    {
+      "act": 6,
+      "start": 100,
+      "end": 105,
+      "text": "Then one grey morning, a shadow fell across the bench beside me."
+    },
+    {
+      "act": 6,
+      "start": 105,
+      "end": 110,
+      "text": "It was him, moving more slowly, his coat loose, leaning on a cane."
+    },
+    {
+      "act": 6,
+      "start": 110,
+      "end": 115,
+      "text": "He sat beside me; I handed him his cap, and he put it on."
+    },
+    {
+      "act": 6,
+      "start": 115,
+      "end": 120,
+      "text": "Then he pulled out two paper bags, and handed one to me again."
+    }
+  ],
+  "shots": [
+    {
+      "id": "01",
+      "act": 1,
+      "start": 0,
+      "end": 2.5,
+      "location": "park",
+      "camera": "wide",
+      "action": "Milo walks past park gate",
+      "narration_beat": "Every morning on my way to school,",
+      "characters": [
+        "Milo",
+        "Dad"
+      ],
+      "props": [
+        "bench"
+      ],
+      "atmosphere": "morning"
+    },
+    {
+      "id": "02",
+      "act": 1,
+      "start": 2.5,
+      "end": 5,
+      "location": "park",
+      "camera": "medium",
+      "action": "Milo passes bench",
+      "narration_beat": "I passed the same park bench.",
+      "characters": [
+        "Milo",
+        "Dad"
+      ],
+      "props": [
+        "bench"
+      ],
+      "atmosphere": "morning"
+    },
+    {
+      "id": "03",
+      "act": 1,
+      "start": 5,
+      "end": 7.5,
+      "location": "park",
+      "camera": "medium",
+      "action": "Dad seated looking down",
+      "narration_beat": "An old man sat there,",
+      "characters": [
+        "Milo",
+        "Dad"
+      ],
+      "props": [
+        "bench"
+      ],
+      "atmosphere": "morning"
+    },
+    {
+      "id": "04",
+      "act": 1,
+      "start": 7.5,
+      "end": 10,
+      "location": "park",
+      "camera": "insert",
+      "action": "brown bag in lap",
+      "narration_beat": "a brown paper bag in his lap.",
+      "characters": [
+        "Milo",
+        "Dad"
+      ],
+      "props": [
+        "bench",
+        "paper_bag",
+        "crumbs",
+        "pigeon"
+      ],
+      "atmosphere": "morning"
+    },
+    {
+      "id": "05",
+      "act": 1,
+      "start": 10,
+      "end": 12.5,
+      "location": "park",
+      "camera": "insert",
+      "action": "pigeons approach shoes",
+      "narration_beat": "Pigeons crowded around his shoes,",
+      "characters": [
+        "Milo",
+        "Dad"
+      ],
+      "props": [
+        "bench",
+        "paper_bag",
+        "crumbs",
+        "pigeon"
+      ],
+      "atmosphere": "morning"
+    },
+    {
+      "id": "06",
+      "act": 1,
+      "start": 12.5,
+      "end": 15,
+      "location": "park",
+      "camera": "medium",
+      "action": "Dad scatters crumbs",
+      "narration_beat": "waiting for the crumbs he scattered.",
+      "characters": [
+        "Milo",
+        "Dad"
+      ],
+      "props": [
+        "bench",
+        "paper_bag",
+        "crumbs",
+        "pigeon"
+      ],
+      "atmosphere": "morning"
+    },
+    {
+      "id": "07",
+      "act": 1,
+      "start": 15,
+      "end": 17.5,
+      "location": "park",
+      "camera": "close",
+      "action": "Milo glances at Dad",
+      "narration_beat": "I always looked at him,",
+      "characters": [
+        "Milo",
+        "Dad"
+      ],
+      "props": [
+        "bench"
+      ],
+      "atmosphere": "morning"
+    },
+    {
+      "id": "08",
+      "act": 1,
+      "start": 17.5,
+      "end": 20,
+      "location": "park",
+      "camera": "close",
+      "action": "Dad keeps gaze down",
+      "narration_beat": "but he never looked back.",
+      "characters": [
+        "Milo",
+        "Dad"
+      ],
+      "props": [
+        "bench"
+      ],
+      "atmosphere": "morning"
+    },
+    {
+      "id": "09",
+      "act": 2,
+      "start": 20,
+      "end": 22.5,
+      "location": "park",
+      "camera": "medium",
+      "action": "Milo approaches holding bag",
+      "narration_beat": "So one morning I brought",
+      "characters": [
+        "Milo",
+        "Dad"
+      ],
+      "props": [
+        "bench",
+        "paper_bag",
+        "crumbs",
+        "pigeon"
+      ],
+      "atmosphere": "morning"
+    },
+    {
+      "id": "10",
+      "act": 2,
+      "start": 22.5,
+      "end": 25,
+      "location": "park",
+      "camera": "insert",
+      "action": "second brown bag",
+      "narration_beat": "a paper bag of my own.",
+      "characters": [
+        "Milo",
+        "Dad"
+      ],
+      "props": [
+        "bench",
+        "paper_bag",
+        "crumbs",
+        "pigeon"
+      ],
+      "atmosphere": "morning"
+    },
+    {
+      "id": "11",
+      "act": 2,
+      "start": 25,
+      "end": 27.5,
+      "location": "park",
+      "camera": "medium",
+      "action": "Milo stops beside bench",
+      "narration_beat": "I stopped beside the bench",
+      "characters": [
+        "Milo",
+        "Dad"
+      ],
+      "props": [
+        "bench"
+      ],
+      "atmosphere": "morning"
+    },
+    {
+      "id": "12",
+      "act": 2,
+      "start": 27.5,
+      "end": 30,
+      "location": "park",
+      "camera": "insert",
+      "action": "crumbs fall and pigeons gather",
+      "narration_beat": "and dropped crumbs onto the path.",
+      "characters": [
+        "Milo",
+        "Dad"
+      ],
+      "props": [
+        "bench",
+        "paper_bag",
+        "crumbs",
+        "pigeon"
+      ],
+      "atmosphere": "morning"
+    },
+    {
+      "id": "13",
+      "act": 2,
+      "start": 30,
+      "end": 32.5,
+      "location": "park",
+      "camera": "medium",
+      "action": "Milo waits beside Dad",
+      "narration_beat": "For a moment, nothing happened;",
+      "characters": [
+        "Milo",
+        "Dad"
+      ],
+      "props": [
+        "bench"
+      ],
+      "atmosphere": "morning"
+    },
+    {
+      "id": "14",
+      "act": 2,
+      "start": 32.5,
+      "end": 35,
+      "location": "park",
+      "camera": "close",
+      "action": "Milo uncertain",
+      "narration_beat": "I thought he hadn't noticed me.",
+      "characters": [
+        "Milo",
+        "Dad"
+      ],
+      "props": [
+        "bench"
+      ],
+      "atmosphere": "morning"
+    },
+    {
+      "id": "15",
+      "act": 2,
+      "start": 35,
+      "end": 37.5,
+      "location": "park",
+      "camera": "close",
+      "action": "Dad lifts gaze",
+      "narration_beat": "Then he lifted his head,",
+      "characters": [
+        "Milo",
+        "Dad"
+      ],
+      "props": [
+        "bench"
+      ],
+      "atmosphere": "morning"
+    },
+    {
+      "id": "16",
+      "act": 2,
+      "start": 37.5,
+      "end": 40,
+      "location": "park",
+      "camera": "close",
+      "action": "Dad nods",
+      "narration_beat": "looked at me, and nodded.",
+      "characters": [
+        "Milo",
+        "Dad"
+      ],
+      "props": [
+        "bench"
+      ],
+      "atmosphere": "morning"
+    },
+    {
+      "id": "17",
+      "act": 3,
+      "start": 40,
+      "end": 42.5,
+      "location": "park",
+      "camera": "medium",
+      "action": "Milo returns along path",
+      "narration_beat": "After that, I came back",
+      "characters": [
+        "Milo",
+        "Dad"
+      ],
+      "props": [
+        "bench"
+      ],
+      "atmosphere": "morning"
+    },
+    {
+      "id": "18",
+      "act": 3,
+      "start": 42.5,
+      "end": 45,
+      "location": "park",
+      "camera": "wide",
+      "action": "repeated morning bench",
+      "narration_beat": "every morning before school.",
+      "characters": [
+        "Milo",
+        "Dad"
+      ],
+      "props": [
+        "bench"
+      ],
+      "atmosphere": "morning"
+    },
+    {
+      "id": "19",
+      "act": 3,
+      "start": 45,
+      "end": 47.5,
+      "location": "park",
+      "camera": "insert",
+      "action": "two bags",
+      "narration_beat": "Two brown bags, one wooden bench,",
+      "characters": [
+        "Milo",
+        "Dad"
+      ],
+      "props": [
+        "bench",
+        "paper_bag",
+        "crumbs",
+        "pigeon"
+      ],
+      "atmosphere": "morning"
+    },
+    {
+      "id": "20",
+      "act": 3,
+      "start": 47.5,
+      "end": 50,
+      "location": "park",
+      "camera": "medium",
+      "action": "silent shared bench",
+      "narration_beat": "not a single word between us.",
+      "characters": [
+        "Milo",
+        "Dad"
+      ],
+      "props": [
+        "bench"
+      ],
+      "atmosphere": "morning"
+    },
+    {
+      "id": "21",
+      "act": 3,
+      "start": 50,
+      "end": 52.5,
+      "location": "park",
+      "camera": "medium",
+      "action": "Dad demonstrates offered hand",
+      "narration_beat": "He showed me how to",
+      "characters": [
+        "Milo",
+        "Dad"
+      ],
+      "props": [
+        "bench"
+      ],
+      "atmosphere": "morning"
+    },
+    {
+      "id": "22",
+      "act": 3,
+      "start": 52.5,
+      "end": 55,
+      "location": "park",
+      "camera": "insert",
+      "action": "Milo holds out crumbs",
+      "narration_beat": "hold my hand still for a pigeon.",
+      "characters": [
+        "Milo",
+        "Dad"
+      ],
+      "props": [
+        "bench",
+        "paper_bag",
+        "crumbs",
+        "pigeon"
+      ],
+      "atmosphere": "morning"
+    },
+    {
+      "id": "23",
+      "act": 3,
+      "start": 55,
+      "end": 57.5,
+      "location": "park",
+      "camera": "insert",
+      "action": "pigeon lands and pecks from hand",
+      "narration_beat": "When one finally landed and ate,",
+      "characters": [
+        "Milo",
+        "Dad"
+      ],
+      "props": [
+        "bench",
+        "paper_bag",
+        "crumbs",
+        "pigeon"
+      ],
+      "atmosphere": "morning"
+    },
+    {
+      "id": "24",
+      "act": 3,
+      "start": 57.5,
+      "end": 60,
+      "location": "park",
+      "camera": "close",
+      "action": "Milo delighted holds still",
+      "narration_beat": "I almost laughed, but stayed still.",
+      "characters": [
+        "Milo",
+        "Dad"
+      ],
+      "props": [
+        "bench"
+      ],
+      "atmosphere": "morning"
+    },
+    {
+      "id": "25",
+      "act": 4,
+      "start": 60,
+      "end": 62.5,
+      "location": "park",
+      "camera": "medium",
+      "action": "Milo arrives",
+      "narration_beat": "One morning I reached the park,",
+      "characters": [
+        "Milo"
+      ],
+      "props": [
+        "bench"
+      ],
+      "atmosphere": "overcast"
+    },
+    {
+      "id": "26",
+      "act": 4,
+      "start": 62.5,
+      "end": 65,
+      "location": "park",
+      "camera": "wide",
+      "action": "empty bench",
+      "narration_beat": "and the bench was empty.",
+      "characters": [
+        "environment"
+      ],
+      "props": [
+        "bench"
+      ],
+      "atmosphere": "overcast"
+    },
+    {
+      "id": "27",
+      "act": 4,
+      "start": 65,
+      "end": 67.5,
+      "location": "park",
+      "camera": "insert",
+      "action": "empty spot on bench",
+      "narration_beat": "There was no paper bag,",
+      "characters": [
+        "environment"
+      ],
+      "props": [
+        "bench"
+      ],
+      "atmosphere": "overcast"
+    },
+    {
+      "id": "28",
+      "act": 4,
+      "start": 67.5,
+      "end": 70,
+      "location": "park",
+      "camera": "insert",
+      "action": "pigeons wait on ground",
+      "narration_beat": "no one feeding the birds.",
+      "characters": [
+        "environment"
+      ],
+      "props": [
+        "bench",
+        "paper_bag",
+        "crumbs",
+        "pigeon"
+      ],
+      "atmosphere": "overcast"
+    },
+    {
+      "id": "29",
+      "act": 4,
+      "start": 70,
+      "end": 72.5,
+      "location": "park",
+      "camera": "insert",
+      "action": "flat cap on bench",
+      "narration_beat": "His flat cap was sitting",
+      "characters": [
+        "Milo"
+      ],
+      "props": [
+        "bench",
+        "flat_cap"
+      ],
+      "atmosphere": "overcast"
+    },
+    {
+      "id": "30",
+      "act": 4,
+      "start": 72.5,
+      "end": 75,
+      "location": "park",
+      "camera": "medium",
+      "action": "Milo notices cap",
+      "narration_beat": "right where he used to sit.",
+      "characters": [
+        "Milo"
+      ],
+      "props": [
+        "bench",
+        "flat_cap"
+      ],
+      "atmosphere": "overcast"
+    },
+    {
+      "id": "31",
+      "act": 4,
+      "start": 75,
+      "end": 77.5,
+      "location": "park",
+      "camera": "medium",
+      "action": "Milo reaches for cap",
+      "narration_beat": "I picked it up carefully,",
+      "characters": [
+        "Milo"
+      ],
+      "props": [
+        "bench",
+        "flat_cap"
+      ],
+      "atmosphere": "overcast"
+    },
+    {
+      "id": "32",
+      "act": 4,
+      "start": 77.5,
+      "end": 80,
+      "location": "park",
+      "camera": "insert",
+      "action": "Milo holds cap securely",
+      "narration_beat": "and kept it safe for him.",
+      "characters": [
+        "Milo"
+      ],
+      "props": [
+        "bench",
+        "flat_cap"
+      ],
+      "atmosphere": "overcast"
+    },
+    {
+      "id": "33",
+      "act": 5,
+      "start": 80,
+      "end": 82.5,
+      "location": "park",
+      "camera": "wide",
+      "action": "grey morning path",
+      "narration_beat": "Days went by, and every morning",
+      "characters": [
+        "environment"
+      ],
+      "props": [
+        "bench"
+      ],
+      "atmosphere": "overcast"
+    },
+    {
+      "id": "34",
+      "act": 5,
+      "start": 82.5,
+      "end": 85,
+      "location": "park",
+      "camera": "medium",
+      "action": "Milo looks at empty seat",
+      "narration_beat": "I found that empty seat.",
+      "characters": [
+        "Milo"
+      ],
+      "props": [
+        "bench"
+      ],
+      "atmosphere": "overcast"
+    },
+    {
+      "id": "35",
+      "act": 5,
+      "start": 85,
+      "end": 87.5,
+      "location": "park",
+      "camera": "medium",
+      "action": "Milo seated",
+      "narration_beat": "I started sitting there myself,",
+      "characters": [
+        "Milo"
+      ],
+      "props": [
+        "bench"
+      ],
+      "atmosphere": "overcast"
+    },
+    {
+      "id": "36",
+      "act": 5,
+      "start": 87.5,
+      "end": 90,
+      "location": "park",
+      "camera": "insert",
+      "action": "cap alongside Milo",
+      "narration_beat": "his cap resting beside me.",
+      "characters": [
+        "Milo"
+      ],
+      "props": [
+        "bench",
+        "flat_cap"
+      ],
+      "atmosphere": "overcast"
+    },
+    {
+      "id": "37",
+      "act": 5,
+      "start": 90,
+      "end": 92.5,
+      "location": "park",
+      "camera": "insert",
+      "action": "pigeons gather",
+      "narration_beat": "The pigeons still came for breakfast,",
+      "characters": [
+        "Milo"
+      ],
+      "props": [
+        "bench",
+        "paper_bag",
+        "crumbs",
+        "pigeon"
+      ],
+      "atmosphere": "overcast"
+    },
+    {
+      "id": "38",
+      "act": 5,
+      "start": 92.5,
+      "end": 95,
+      "location": "park",
+      "camera": "medium",
+      "action": "Milo feeds pigeons",
+      "narration_beat": "so I brought crumbs for them.",
+      "characters": [
+        "Milo"
+      ],
+      "props": [
+        "bench",
+        "paper_bag",
+        "crumbs",
+        "pigeon"
+      ],
+      "atmosphere": "overcast"
+    },
+    {
+      "id": "39",
+      "act": 5,
+      "start": 95,
+      "end": 97.5,
+      "location": "park",
+      "camera": "close",
+      "action": "Milo looks up",
+      "narration_beat": "I kept looking down the path,",
+      "characters": [
+        "Milo"
+      ],
+      "props": [
+        "bench"
+      ],
+      "atmosphere": "overcast"
+    },
+    {
+      "id": "40",
+      "act": 5,
+      "start": 97.5,
+      "end": 100,
+      "location": "park",
+      "camera": "wide",
+      "action": "empty path",
+      "narration_beat": "hoping he'd appear around the corner.",
+      "characters": [
+        "environment"
+      ],
+      "props": [
+        "bench"
+      ],
+      "atmosphere": "overcast"
+    },
+    {
+      "id": "41",
+      "act": 6,
+      "start": 100,
+      "end": 102.5,
+      "location": "park",
+      "camera": "insert",
+      "action": "shadow on bench",
+      "narration_beat": "Then one grey morning, a shadow",
+      "characters": [
+        "Milo",
+        "Dad"
+      ],
+      "props": [
+        "bench"
+      ],
+      "atmosphere": "overcast"
+    },
+    {
+      "id": "42",
+      "act": 6,
+      "start": 102.5,
+      "end": 105,
+      "location": "park",
+      "camera": "close",
+      "action": "Milo surprised",
+      "narration_beat": "fell across the bench beside me.",
+      "characters": [
+        "Milo",
+        "Dad"
+      ],
+      "props": [
+        "bench"
+      ],
+      "atmosphere": "overcast"
+    },
+    {
+      "id": "43",
+      "act": 6,
+      "start": 105,
+      "end": 107.5,
+      "location": "park",
+      "camera": "medium",
+      "action": "Dad returns using cane",
+      "narration_beat": "It was him, moving more slowly,",
+      "characters": [
+        "Milo",
+        "Dad"
+      ],
+      "props": [
+        "bench",
+        "cane"
+      ],
+      "atmosphere": "overcast"
+    },
+    {
+      "id": "44",
+      "act": 6,
+      "start": 107.5,
+      "end": 110,
+      "location": "park",
+      "camera": "insert",
+      "action": "cane and jacket",
+      "narration_beat": "his coat loose, leaning on a cane.",
+      "characters": [
+        "Milo",
+        "Dad"
+      ],
+      "props": [
+        "bench",
+        "cane"
+      ],
+      "atmosphere": "overcast"
+    },
+    {
+      "id": "45",
+      "act": 6,
+      "start": 110,
+      "end": 112.5,
+      "location": "park",
+      "camera": "medium",
+      "action": "Dad sits and Milo offers cap",
+      "narration_beat": "He sat beside me; I handed",
+      "characters": [
+        "Milo",
+        "Dad"
+      ],
+      "props": [
+        "bench",
+        "flat_cap"
+      ],
+      "atmosphere": "morning"
+    },
+    {
+      "id": "46",
+      "act": 6,
+      "start": 112.5,
+      "end": 115,
+      "location": "park",
+      "camera": "close",
+      "action": "Dad dons cap",
+      "narration_beat": "him his cap, and he put it on.",
+      "characters": [
+        "Milo",
+        "Dad"
+      ],
+      "props": [
+        "bench",
+        "flat_cap"
+      ],
+      "atmosphere": "morning"
+    },
+    {
+      "id": "47",
+      "act": 6,
+      "start": 115,
+      "end": 117.5,
+      "location": "park",
+      "camera": "insert",
+      "action": "Dad takes two bags from coat",
+      "narration_beat": "Then he pulled out two paper bags,",
+      "characters": [
+        "Milo",
+        "Dad"
+      ],
+      "props": [
+        "bench",
+        "paper_bag",
+        "crumbs",
+        "pigeon"
+      ],
+      "atmosphere": "morning"
+    },
+    {
+      "id": "48",
+      "act": 6,
+      "start": 117.5,
+      "end": 120,
+      "location": "park",
+      "camera": "medium",
+      "action": "warm two-shot bag handoff and hold",
+      "narration_beat": "and handed one to me again.",
+      "characters": [
+        "Milo",
+        "Dad"
+      ],
+      "props": [
+        "bench",
+        "paper_bag",
+        "crumbs",
+        "pigeon"
+      ],
+      "atmosphere": "morning"
+    }
+  ],
+  "render": {
+    "width": 540,
+    "height": 960,
+    "engine": "EEVEE",
+    "denoising": false,
+    "samples": 32,
+    "frames": 2880
+  },
+  "status": "story plan only; no rendered evidence"
+}
