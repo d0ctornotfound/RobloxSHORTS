@@ -132,10 +132,10 @@ def main():
         if dog: m["animal_contact"]=resolve(conf["animal_pose"])(dog,spec["animal"]["motion"],su)
         bpy.context.view_layer.update()
         if spec.get("direction"):
-            performance(d.actors,spec["direction"],u,t)
+            performance(d.actors,spec["direction"],su if spec.get("segment_performance") else u,t)
         if action_tracks:m["declared_socket_contacts"]=action_tracks.after_performance(gf-unit_start)
         if spec.get("direction"):
-            direct_camera(scene,cam,d.actors,spec["direction"],u,frame,camera_state)
+            direct_camera(scene,cam,d.actors,spec["direction"],su if spec.get("segment_performance") else u,frame,camera_state)
         if gf<first:continue
         # Generic external vs own-character visibility; the full original ray
         # result is retained, never reclassified as a geometry pass.
@@ -146,7 +146,7 @@ def main():
             face=vis(scene,cam,[actor.face],7)
             external=vis(scene,cam,[actor.face],7,meshes(actor.root))
             quality[cid]={"bounds":list(b),"safe":safe(b),"vertical_coverage":b[3]-b[2],"face_all":face,"face_external":external,"own_ray_difference":max(0,face["blocked"]-external["blocked"])}
-        row={"frame":gf,"shot":shot["id"],"actor_qc":quality,"geometry":m,**({"direction":direction_sample(scene,cam,d.actors,spec["direction"],grade,vis,meshes)} if spec.get("direction") else {})}
+        row={"frame":gf,"shot":shot["id"],"unit_window":[unit_start,unit_end],"actor_qc":quality,"geometry":m,**({"direction":direction_sample(scene,cam,d.actors,spec["direction"],grade,vis,meshes)} if spec.get("direction") else {})}
         rows.append(row)
         if not a.preflight or gf in (first,(first+end)//2,end-1):
             path=out/f"frame_{gf:05d}.png";scene.render.filepath=str(path)
