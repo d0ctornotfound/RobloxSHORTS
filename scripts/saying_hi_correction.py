@@ -470,7 +470,7 @@ class CorrectedUnit(SceneUnit):
                 phase="standing" if f==0 else "sit" if f<1 else "seated"
                 sit_pose(a,art,"sit",f,t,yaw,targets,None,seat)
             art.shift(pos);cloth.sync();a.pose("happy")
-            a.set_bone("head",(.035*math.sin(t*4) if cid=="june" else 0,0,.12 if cid=="june" else -.12))
+            a.set_bone("head",(.035*math.sin(t*4) if cid=="june" and not getattr(self,"film_idle_calibrated",False) else 0,0,.12 if cid=="june" else -.12))
             bpy.context.view_layer.update()
             soles=art.soles();old=self.prev_feet.get(cid)
             hip=(a.armature.matrix_world@a.bones["torso"].matrix).translation

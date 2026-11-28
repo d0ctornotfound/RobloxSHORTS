@@ -21,5 +21,16 @@ def main():
     assert flow_report(rows()[:-1],expected_frames=30)["status"]=="unmeasured"
     gap=rows();gap.pop(10);assert flow_report(gap)["status"]=="unmeasured"
     assert flow_report([{"frame":0}],expected_frames=1)["status"]=="unmeasured"
+    # Idle can move the rendered pose arbitrarily and still contributes zero action.
+    calibrated=rows(background_moving=False)
+    for r in calibrated:
+        d=r["direction"];d["motion_schema"]="action_only_v1";d["idle_profile"]={"name":"calm_film_v1"}
+        for cid,a in d["actors"].items():
+            a["action_pose"]=a["pose"];a["action_state"]="action" if cid=="principal" else "idle";a["idle_profile"]="calm_film_v1"
+    q=flow_report(calibrated);assert q["status"]=="numeric_pass" and q["actors"]["background"]["action_coverage"] is None
+    for r in calibrated:r["direction"]["actors"]["principal"]["action_pose"]=[[0,0,0]]
+    q=flow_report(calibrated);assert not q["checks"]["principal_action_coverage"] and q["actors"]["principal"]["action_coverage"]==0
+    for r in calibrated:r["direction"]["actors"]["principal"]["action_state"]="intentional_stillness"
+    q=flow_report(calibrated);assert q["status"]=="numeric_pass" and q["actors"]["principal"]["longest_action_freeze_s"] is None
     print("flow contract tests passed")
 if __name__=="__main__":main()

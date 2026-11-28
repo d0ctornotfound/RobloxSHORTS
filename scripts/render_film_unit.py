@@ -10,7 +10,7 @@ from mathutils import Vector
 from PIL import Image
 import numpy as np
 from film_walk_to_mark import construct
-from film_direction import apply_grade, direct_camera, performance, directed_bounce, directed_hand_props, sample as direction_sample
+from film_direction import apply_grade, direct_camera, performance, directed_bounce, directed_hand_props, pose_signature, sample as direction_sample
 from library_locomotion import StrideLock
 from r6_imported_cycles import Retarget
 from character_motion_correction import apply_corrected,rear_hip
@@ -76,12 +76,17 @@ def main():
     a=p.parse_args(sys.argv[sys.argv.index("--")+1:]);out=Path(a.output).resolve();out.mkdir(parents=True,exist_ok=True)
     conf=json.loads(Path(a.config).read_text());task=json.loads(a.task);spec=task["stage"];plan=json.loads(Path(conf["plan"]).read_text())
     cast=json.loads(Path(plan["cast_path"]).read_text());stage=json.loads(Path(plan["staging_path"]).read_text())
+    idle=None
+    if conf.get("idle_profile")=="calm_film_v1":
+        from film_idle import FilmIdle,install_neutral_idle,PROFILE
+        install_neutral_idle();idle=FilmIdle()
     scene=resolve(conf["setup_function"])(540,960);scene.frame_end=round(plan["audio_duration"]*30);cam=resolve(conf["create_camera"])(scene)
     if spec.get("diagram"):
         from film_diagram_driver import DiagramDriver
         d=DiagramDriver(scene,cam,cast,spec,conf,task)
     else:
         base=resolve(spec.get("driver",conf["default_driver"]));d=make_driver(base,conf,task,scene,cam,cast,stage,a.map)
+    if idle:d.film_idle_calibrated=True
     actor_points=resolve(conf["actor_points"]);frame=resolve(conf["camera_function"])
     grade=apply_grade(scene,conf["grade_preset"]) if conf.get("grade_preset") else None
     vis=resolve(conf["visibility_function"]);meshes=resolve(conf["meshes_function"])
@@ -136,6 +141,7 @@ def main():
         shot=next(s for s in plan["shots"] if round(s["edit_in"]*30)<=gf<round(s["edit_out"]*30))
         n=int(shot["sentence_ids"][0]);u=(gf-round(shot["edit_in"]*30))/max(1,round(shot["edit_out"]*30)-round(shot["edit_in"]*30)-1);t=(gf-unit_start)/30
         if shot["id"]!=previous_shot:camera_state={};previous_shot=shot["id"]
+        if idle:idle.restore()
         scene.frame_set(gf+1)
         if spec.get("walk"):
             q=d.cross_camera;frame(scene,cam,q["position"],q["target"],q["lens"])
@@ -164,7 +170,7 @@ def main():
         if dog: m["animal_contact"]=resolve(conf["animal_pose"])(dog,spec["animal"]["motion"],su)
         bpy.context.view_layer.update()
         if spec.get("direction"):
-            performance(d.actors,spec["direction"],su if spec.get("segment_performance") else u,t)
+            performance(d.actors,spec["direction"],su if spec.get("segment_performance") else u,t,calm_idle=idle is not None)
         if action_tracks:m["declared_socket_contacts"]=action_tracks.after_performance(gf-unit_start)
         if spec.get("direction",{}).get("hand_props"):
             m["directed_hand_props"]=directed_hand_props(d.actors,spec["direction"],t)
@@ -173,6 +179,7 @@ def main():
         frame_grade=grade
         if spec.get("direction",{}).get("grade_fill"):
             frame_grade={**grade,"directed_bounce":directed_bounce(scene,cam,spec["direction"],d.actors)}
+        idle_records=idle.apply(d.actors,spec,m,gf/30,pose_signature) if idle else None
         if gf<first:continue
         for hp in spec.get("direction",{}).get("hand_props",[]):
             ob=bpy.data.objects[hp["object"]];hero=d.actors[hp["actor"]];prefix=hp.get("metric_prefix","hand_prop")
@@ -189,6 +196,10 @@ def main():
             external=vis(scene,cam,[actor.face],7,meshes(actor.root))
             quality[cid]={"bounds":list(b),"safe":safe(b),"vertical_coverage":b[3]-b[2],"face_all":face,"face_external":external,"own_ray_difference":max(0,face["blocked"]-external["blocked"])}
         row={"frame":gf,"shot":shot["id"],"unit_window":[unit_start,unit_end],"actor_qc":quality,"geometry":m,**({"direction":direction_sample(scene,cam,d.actors,spec["direction"],frame_grade,vis,meshes)} if spec.get("direction") else {})}
+        if idle_records is not None and "direction" in row:
+            row["direction"]["motion_schema"]="action_only_v1"
+            row["direction"]["idle_profile"]=PROFILE
+            for cid,record in idle_records.items():row["direction"]["actors"][cid].update(record)
         rows.append(row)
         if not a.preflight or gf in (first,(first+end)//2,end-1):
             path=out/f"frame_{gf:05d}.png";scene.render.filepath=str(path)

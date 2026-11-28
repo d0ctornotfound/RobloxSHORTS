@@ -5,7 +5,7 @@ import argparse,json,os,subprocess,hashlib
 from pathlib import Path
 from shutil import copytree,copy2
 from film_timeline import compile_tasks,read,write,check_video,sha,run
-from film_qc import flow_report
+from film_qc import flow_report, evaluate
 
 def tasks(c):
     ids={s for g in c["pilot_groups"] for s in g["shots"]}
@@ -20,6 +20,8 @@ def main():
     out=Path(c["output_dir"]);out.mkdir(parents=True,exist_ok=True);chunks=Path(a.chunks)
     if chunks.exists():copytree(chunks,out/"chunks",dirs_exist_ok=True)
     plan=read(c["plan"]);baseline=Path(c["pilot_baseline"])
+    before_label=c.get("pilot_before_label","round5");after_label=c.get("pilot_after_label","round6")
+    if c.get("pilot_baseline_sha256"):assert sha(baseline)==c["pilot_baseline_sha256"]
     report={"run_id":os.environ.get("GITHUB_RUN_ID"),"source_commit":os.environ.get("GITHUB_SHA"),"baseline":str(baseline),"groups":{},"visual_review_required":True,"full_render_authorized":False}
     for group in c["pilot_groups"]:
         name=group["name"];selected=[t for t in ts if t["shot"] in group["shots"]];rows={};clips=[];missing=[];quality={}
@@ -41,9 +43,10 @@ def main():
             gait_ok=all(w["metrics"]["pass"] and w["metrics"]["backward_frames"]==0 and w["metrics"]["stance_velocity_rms"]<=.03 and w["final_contact_error"]<=.05 and (w["final_plant"] if w.get("end_mode","stop")=="stop" else w.get("end_mode")=="moving_cut" and w.get("last_support") in (0,1) and w.get("last_forward_speed",0)>0) for w in walks) if walks else None
             face_blocks={cid:max(x["actor_qc"][cid]["face_external"]["blocked"] for x in rs if cid in x["actor_qc"]) for cid in sorted({cid for x in rs for cid in x["actor_qc"]})}
             g["shots"][sid]={"start":start,"end":end,"direction":flow,"external_face_ray_blocks_max":face_blocks,"native_near_black_max_percent":dark,"walk_evidence":walks,"gait_gate":gait_ok}
+            if c.get("idle_profile"):g["shots"][sid]["geometry_measurements"]=evaluate(rs,c.get("qc_rules",{}).get(sid,[]))
             if baseline.is_file():
                 for label,k in (("first",start),("middle",(start+end)//2),("last",end-1)):
-                    path=out/f"{sid}_round5_{label}.png"
+                    path=out/f"{sid}_{before_label}_{label}.png"
                     run(["ffmpeg","-y","-v","error","-i",str(baseline),"-vf",f"select=eq(n\\,{k})","-frames:v","1",str(path)])
         if not missing:
             concat=out/(name+"_concat.txt");concat.write_text("".join("file '"+str(p.resolve())+"'\n" for p in clips))
@@ -52,14 +55,23 @@ def main():
             check_video(film,end-start);g.update({"clip":str(film),"frames":end-start,"sha256":sha(film)})
             for sid,q in g["shots"].items():
                 for label,k in (("first",q["start"]),("middle",(q["start"]+q["end"])//2),("last",q["end"]-1)):
-                    run(["ffmpeg","-y","-v","error","-i",str(film),"-vf",f"select=eq(n\\,{k-start})","-frames:v","1",str(out/f"{sid}_round6_{label}.png")])
+                    run(["ffmpeg","-y","-v","error","-i",str(film),"-vf",f"select=eq(n\\,{k-start})","-frames:v","1",str(out/f"{sid}_{after_label}_{label}.png")])
+        if c.get("idle_profile") and not missing:
+            for sid in group["shots"]:
+                for label in ("first","middle","last"):
+                    run(["ffmpeg","-y","-v","error","-i",str(out/f"{sid}_{before_label}_{label}.png"),"-i",str(out/f"{sid}_{after_label}_{label}.png"),"-filter_complex","hstack=inputs=2","-frames:v","1",str(out/f"{sid}_pair_{label}.png")])
         report["groups"][name]=g
     report["numerical_pass"]=all(not g["missing_chunks"] and all(s["direction"]["status"]=="numeric_pass" and all(v==0 for v in s["external_face_ray_blocks_max"].values()) and s["native_near_black_max_percent"] is not None and s["native_near_black_max_percent"]<=2 and s["gait_gate"] is not False for s in g["shots"].values()) for g in report["groups"].values())
     write(out/"pilot_qc.json",report)
     with Path(c["review_path"]).open("a") as f:
-        f.write("\n## Round 6 direction pilot run "+str(report["run_id"])+"\n")
+        f.write("\n## "+after_label.title()+" direction pilot run "+str(report["run_id"])+"\n")
+        if c.get("idle_profile"):
+            f.write("Action-only metrics (active transitions only; intentional stillness excluded):\n")
+            for g in report["groups"].values():
+                for sid,q in g["shots"].items():
+                    d=q["direction"];p=d.get("actors",{}).get(d.get("principal")) or {};f.write(f"- {sid}: coverage={p.get('action_coverage')}, longest freeze s={p.get('longest_action_freeze_s')}, states={p.get('state_frames')}, profile={d.get('idle_profile')}\n")
         f.write("Pilot numerical pass: "+str(report["numerical_pass"])+". Actual visual/playback inspection still mandatory; full-film pass not authorized. Evidence: "+str(out/"pilot_qc.json")+"\n")
     paths=[p for p in sorted(out.rglob("*")) if p.is_file() and p.name!="SHA256SUMS"]
     (out/"SHA256SUMS").write_text("".join(sha(p)+"  "+str(p)+"\n" for p in paths))
-    with Path(c["inventory_path"]).open("a") as f:f.write("\nRound 6 pilot evidence:\n"+"\n".join(str(p) for p in paths+[out/"SHA256SUMS"])+"\n")
+    with Path(c["inventory_path"]).open("a") as f:f.write("\n"+after_label.title()+" pilot evidence:\n"+"\n".join(str(p) for p in paths+[out/"SHA256SUMS"])+"\n")
 if __name__=="__main__":main()

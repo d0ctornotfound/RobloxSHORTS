@@ -133,7 +133,7 @@ def sample(scene,cam,actors,spec,grade,visibility=None,meshes=None):
         result["landmarks"][name]={"pass":bool(passed),"width":width,"height":height,"ray":v}
     return result
 
-def performance(actors,spec,u,t):
+def performance(actors,spec,u,t,calm_idle=False):
     """Authored gestures are piecewise-linear pose keys, not arbitrary jitter.
     Explicit actor tracks only; no contact-bearing bone may be overwritten
     without a story-adapter contact recomputation.
@@ -158,7 +158,7 @@ def performance(actors,spec,u,t):
             actor.pose(expression)
     # Non-principal background business uses explicit authored group keys.
     # Head-only so seated support and carried props are not displaced.
-    for i,cid in enumerate(spec.get("background",[])):
+    for i,cid in enumerate([] if calm_idle else spec.get("background",[])):
         if cid not in actors:raise ValueError("missing background actor "+cid)
         a=actors[cid];phase=t*2.8+i*.81
         # Visible, staggered gaze shifts (not camera jitter). Batched using

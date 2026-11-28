@@ -71,9 +71,24 @@ def flow_report(rows, fps=30, expected_frames=None):
     # Absolute scene units: 1.5 mm if a scene unit is treated as one metre.
     # This is a pose-change proxy, not perceived performance or velocity.
     threshold=.0015
+    calibrated=all(x.get("motion_schema")=="action_only_v1" for x in d)
+    if any(x.get("motion_schema")=="action_only_v1" for x in d) and not calibrated:
+        return {"status":"unmeasured","reason":"mixed motion schemas"}
     def measure(cid):
         if len(d)<2 or any(cid not in x["actors"] for x in d):return None
-        sig=[x["actors"][cid]["pose"] for x in d]
+        data=[x["actors"][cid] for x in d]
+        if calibrated:
+            states=[x.get("action_state","unmeasured") for x in data]
+            sig=[x.get("action_pose") for x in data]
+            if "unmeasured" in states or any(not p for p in sig) or any(len(p)!=len(sig[0]) for p in sig):return None
+            active=[a==b=="action" for a,b in zip(states,states[1:])]
+            moved=[max(math.dist(x,y) for x,y in zip(a,b))>=threshold for a,b in zip(sig,sig[1:])]
+            count=sum(active);moving=sum(a and b for a,b in zip(active,moved));run=longest=0
+            for a,b in zip(active,moved):
+                run=run+1 if a and not b else 0;longest=max(longest,run)
+            applied={k:[max(abs(x.get("idle_applied_rad",{}).get(k,[0,0,0])[i]) for x in data) for i in range(3)] for k in ("head","torso")}
+            return {"action_coverage":moving/count if count else None,"action_coverage_whole_shot":moving/len(active),"longest_action_freeze_s":(longest+1)/fps if count else None,"action_transitions":count,"total_transitions":len(active),"state_frames":{k:states.count(k) for k in set(states)},"idle_profile":data[0]["idle_profile"],"max_applied_idle_rad":applied,"motion_coverage":moving/count if count else None,"held_pose_max_s":(longest+1)/fps if count else None,"start_in_motion":bool(active[0] and moved[0]),"end_in_motion":bool(active[-1] and moved[-1])}
+        sig=[x["pose"] for x in data]
         if not sig[0] or any(len(p)!=len(sig[0]) for p in sig):return None
         moving=[max(math.dist(x,y) for x,y in zip(a,b))>=threshold for a,b in zip(sig,sig[1:])]
         run=longest=0
@@ -88,7 +103,11 @@ def flow_report(rows, fps=30, expected_frames=None):
         if not (principal is None and kind=="geography" and all(x.get("pure_establishing",False) for x in d) and len(rows)/fps<=2):return {"status":"unmeasured","reason":"principal motion unavailable"}
         p={"motion_coverage":1,"start_in_motion":True,"end_in_motion":True}
     faces={cid:{"min_height":min(x["actors"][cid]["face_height"] for x in d),"safe_all":all(x["actors"][cid]["face_safe"] for x in d)} for cid in [principal]+d[0]["listeners"] if all(cid in x["actors"] for x in d)}
-    checks={"principal_motion":p["motion_coverage"]>=.8,"principal_edges":p["start_in_motion"] and p["end_in_motion"],"all_actor_holds":all(m is not None and m["held_pose_max_s"]<=.5 for m in metrics.values()),"grade_declared":all(x["grade"] and x["grade"]["preset"]=="warm_saturated_v1" for x in d)}
+    if calibrated:
+        intentional=p.get("action_transitions",0)==0 and not p.get("state_frames",{}).get("action",0)
+        checks={"principal_action_coverage":intentional or (p.get("action_coverage") is not None and p["action_coverage"]>=.8),"principal_action_freeze":intentional or (p.get("longest_action_freeze_s") is not None and p["longest_action_freeze_s"]<=.5),"grade_declared":all(x["grade"] and x["grade"]["preset"]=="warm_saturated_v1" for x in d)}
+    else:
+        checks={"principal_motion":p["motion_coverage"]>=.8,"principal_edges":p["start_in_motion"] and p["end_in_motion"],"all_actor_holds":all(m is not None and m["held_pose_max_s"]<=.5 for m in metrics.values()),"grade_declared":all(x["grade"] and x["grade"]["preset"]=="warm_saturated_v1" for x in d)}
     # Projection alone can pass for an edge-on or fully obstructed decal.
     # New native samples include facing dot and final-camera ray evidence.
     face_ids=[principal]+d[0]["listeners"] if kind=="interview" else [principal] if kind=="emotion" else []
@@ -115,4 +134,4 @@ def flow_report(rows, fps=30, expected_frames=None):
     if any(x.get("landmarks") for x in d):
         required=set().union(*(x.get("landmarks",{}) for x in d))
         checks["landmarks_visible"]=all(all(x.get("landmarks",{}).get(k,{}).get("pass",False) for k in required) for x in d)
-    return {"status":"numeric_pass" if all(checks.values()) else "flag","beat_type":kind,"principal":principal,"actors":metrics,"faces":faces,"checks":checks,"grade":d[0]["grade"],"threshold_scene_units":threshold,"visual_review_required":True}
+    return {"status":"numeric_pass" if all(checks.values()) else "flag","beat_type":kind,"principal":principal,"actors":metrics,"faces":faces,"checks":checks,"grade":d[0]["grade"],"threshold_scene_units":threshold,"motion_schema":"action_only_v1" if calibrated else "legacy_all_pose","idle_profile":d[0].get("idle_profile"),"visual_review_required":True}
