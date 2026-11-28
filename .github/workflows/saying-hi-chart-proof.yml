@@ -1,0 +1,120 @@
+name: Saying Hi — verified chart proof native chunks
+on:
+  push:
+    branches: ['production/saying-hi']
+    paths: ['.github/workflows/saying-hi-chart-proof.yml']
+  workflow_dispatch:
+permissions:
+  contents: write
+  actions: read
+concurrency:
+  group: saying-hi-chart-proof
+  cancel-in-progress: false
+jobs:
+  render:
+    if: github.ref == 'refs/heads/production/saying-hi'
+    runs-on: ubuntu-24.04
+    timeout-minutes: 35
+    strategy:
+      fail-fast: false
+      max-parallel: 6
+      matrix:
+        include:
+          - {unit: chart_initial, start: 203, end: 281}
+          - {unit: chart_initial, start: 281, end: 358}
+          - {unit: chart_initial, start: 358, end: 435}
+          - {unit: chart_initial, start: 435, end: 512}
+          - {unit: chart_final, start: 2861, end: 2901}
+          - {unit: chart_final, start: 2901, end: 2940}
+    env:
+      GH_TOKEN: ${{ github.token }}
+      LIBGL_ALWAYS_SOFTWARE: '1'
+      R6_KNEE_BLEND: '1'
+    steps:
+      - uses: actions/checkout@v4
+      - name: Verify actual reviewed final chart smoke and exact unit timing
+        run: |
+          gh run download 46103945256 --repo "$GITHUB_REPOSITORY" --name "saying-hi-preflight-${{ matrix.unit }}" --dir /tmp/chart-smoke
+          python3 - <<'PY'
+          import json
+          from pathlib import Path
+          p=Path('/tmp/chart-smoke');m=json.loads((p/'manifest.json').read_text());chart=m['metrics'][-1]['metrics']['chart'];unit='${{ matrix.unit }}'
+          assert m['unit']==unit and m['actual_rendered_frames']==1 and (p/'held_pose.png').stat().st_size>0
+          assert chart['arrows']==(10 if unit=='chart_initial' else 20)
+          assert {'from':'june','to':'kai'} in chart['links'] if unit=='chart_initial' else {'from':'narrator','to':'june'} in chart['links']
+          assert m['frame_window'][0]<=${{ matrix.start }}<${{ matrix.end }}<=m['frame_window'][1]
+          PY
+      - name: Install approved EEVEE environment and cast textures
+        run: |
+          for f in /etc/apt/sources.list.d/*; do
+            if [ -f "$f" ] && grep -q "packages.microsoft.com" "$f"; then sudo mv "$f" "$f.disabled"; fi
+          done
+          sudo apt-get update -o Acquire::Retries=3
+          sudo apt-get install -y --no-install-recommends blender python3-pil python3-numpy fonts-dejavu-core libegl1 libegl-mesa0 libgl1 libgl1-mesa-dri libgbm1
+          /usr/bin/python3 scripts/r6_faces.py --output assets/r6_faces
+          /usr/bin/python3 scripts/library_character_assets.py
+      - name: Render contiguous native chart chunk
+        run: |
+          set -o pipefail
+          mkdir -p review/chunk
+          timeout --kill-after=20s 28m blender -b --python-exit-code 1 --python scripts/render_saying_hi_shot.py -- --unit "${{ matrix.unit }}" --mode motion --frame-window ${{ matrix.start }} ${{ matrix.end }} --map /tmp/unused.gltf --lineup assets/saying_hi_review/smoke/round3/lineup --output review/chunk 2>&1 | tee review/chunk/render.log
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: chart-native-${{ matrix.unit }}-${{ matrix.start }}
+          path: review/chunk/
+          if-no-files-found: warn
+  publish:
+    if: always() && github.ref == 'refs/heads/production/saying-hi'
+    needs: render
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: production/saying-hi
+      - uses: actions/download-artifact@v4
+        with:
+          pattern: chart-native-*
+          path: /tmp/chart-chunks
+      - name: Merge complete contiguous proof units, retain partial logs
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y --no-install-recommends ffmpeg
+          OUT=assets/saying_hi_review
+          failed=0
+          for unit in chart_initial chart_final; do
+            target="$OUT/proofs/$unit"
+            mkdir -p "$target" "/tmp/merged/$unit"
+            for dir in /tmp/chart-chunks/chart-native-"$unit"-*; do
+              test -d "$dir" || continue
+              cp "$dir/render.log" "$target/${dir##*/}.log" || true
+              if test -f "$dir/manifest.json"; then cp "$dir/manifest.json" "$target/${dir##*/}.json"; fi
+            done
+            if python3 scripts/merge_saying_hi_chart_chunks.py --root /tmp/chart-chunks --unit "$unit" --out "/tmp/merged/$unit" && python3 scripts/encode_saying_hi_proof.py "/tmp/merged/$unit"; then
+              cp /tmp/merged/"$unit"/*.json /tmp/merged/"$unit"/*.mp4 "$target/"
+              python3 - "$unit" <<'PY'
+          import sys,shutil
+          from pathlib import Path
+          unit=sys.argv[1];source=Path('/tmp/merged')/unit;target=Path('assets/saying_hi_review/proofs')/unit
+          frames=sorted(source.glob('frame_*.png'))
+          for i in sorted(set([0,len(frames)//4,len(frames)//2,3*len(frames)//4,len(frames)-1])):
+              shutil.copyfile(frames[i],target/('sample_'+frames[i].name))
+          PY
+            else failed=1; fi
+          done
+          printf 'workflow_run_id=%s\nsource_commit=%s\nrender_result=%s\nmerge_failure=%s\n' "$GITHUB_RUN_ID" "$GITHUB_SHA" "${{ needs.render.result }}" "$failed" > "$OUT/proofs/chart_workflow_provenance.txt"
+          exit "$failed"
+      - name: Commit actual review media even on partial failure
+        if: always()
+        run: |
+          set -euo pipefail
+          OUT=assets/saying_hi_review
+          find "$OUT" -type f ! -name SHA256SUMS -print0 | sort -z | xargs -0 sha256sum > "$OUT/SHA256SUMS"
+          sha256sum stories/saying_hi_script.txt stories/saying_hi_plan.json >> "$OUT/SHA256SUMS"
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add "$OUT"
+          git commit -m "Publish actual native chart proofs and chunk evidence (partial if failed)"
+          git pull --rebase origin production/saying-hi
+          git push origin HEAD:refs/heads/production/saying-hi
