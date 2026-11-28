@@ -221,7 +221,7 @@ class SceneUnit:
         face=mesh_points(hero.face)
         center=sum(face,V((0,0,0)))/len(face)
         samples=[center]+[center.lerp(v,.55) for v in face]
-        deps=self.scene.evaluated_depsgraph_get();choices=[]
+        deps=bpy.context.evaluated_depsgraph_get();choices=[]
         for sign in (-1,1):
             for side_dist in (1.9,2.5,3.1):
                 for forward_dist in (1.9,2.5,3.1):
@@ -359,7 +359,7 @@ def main():
     ids=UNITS[a.unit] if a.unit else [a.shot];unit=a.unit or next((k for k,v in UNITS.items() if a.shot in v),f"still_{a.shot:02d}")
     shots=[plan["shots"][i-1] for i in ids];start=round(shots[0]["edit_in"]*FPS);end=round(shots[-1]["edit_out"]*FPS);count=end-start
     if a.mode=="motion" and not a.unit:raise ValueError("No full-film motion mode")
-    scene=setup(540,960);cam=create(scene)
+    scene=setup(540,960);scene.frame_end=round(plan['audio_duration']*FPS);cam=create(scene)
     driver=SceneUnit(scene,cam,c,stage,unit,ids,a.map,a.lineup,a.variant)
     # A still for sentence 21 uses its held end state, while crossing proof spans 20–21.
     if unit=="crossing":
