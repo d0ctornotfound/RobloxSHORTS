@@ -224,6 +224,7 @@ def main():
     atmosphere=Atmosphere(scene,target=(0,0,1.2));atmosphere.apply(shot["atmosphere"])
     area_light("Gentle story bounce",(4,-3,4),220,5,(1,.88,.76))
     area_light("Front facial fill",(-2,-4,3.4),380 if shot["atmosphere"]=="morning" else 240,5,(1,.96,.90))
+    if n==2:area_light("Walking trouser shadow fill",(-3,-2.8,1.5),260,3.5,(1,.94,.87))
     camera=create(scene,"The Bench camera",42)
     bags=[paper("Brown paper bag "+str(i+1),p) for i in range(2)]
     cap=flatcap(p);stick=cane(p)
@@ -272,7 +273,7 @@ def main():
         for i,(bird,head) in enumerate(birds):
             bird.location=(-1.8+i*.56,-1.20-.34*(i%3),0)
             # Keep pigeons out of the walking corridor in the corrected shots.
-            if n in (1,9,25,43,44):bird.location=(.10+i*.47,-.55-.11*(i%3),0)
+            if n in (1,2,9,17,25,43,44):bird.location=(.10+i*.47,-.55-.11*(i%3),0)
             bird.rotation_euler.z=.5*math.sin(i*2)+.15*math.sin(t+i)
             head.rotation_euler.x=.22+.66*max(0,math.sin(t*5+i))
         for i,c in enumerate(crumbs):
