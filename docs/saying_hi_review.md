@@ -401,3 +401,7 @@ Master: assets/saying_hi_review/round5/saying_hi.mp4
 | sh48 | 99.77–101.20 | 43 | No flagged measurement; human visual review pending. |
 
 Source motion sampling is independent at 30 Hz, EEVEE 32 spatial samples, denoising off. Artistic QC is advisory; missing or invalid native media is a technical failure.
+
+
+## Round 5 independent final handover
+Run [46132080197](https://github.com/d0ctornotfound/RobloxSHORTS/actions/runs/46132080197) completed SUCCESS; fresh remote checkout of 76f33c964b59f3421085f8d768f4711c05b0a341, independently recomputed SHA-256 b4e24648745bb6527687ac0de79096345393e34a979a871ba47fcfb0eb849585, Git blob 75c869da77a10da52e4e2f79614cc827e7ef8564, 8979317 bytes; ffprobe decoded 3036 frames at 540x960 30/1 fps, audio and video both 101.20 s; ffmpeg full decode with -xerror passed. Job 140939238303, probe artifact 15258212848 (1251 bytes). Evidence: assets/saying_hi_review/round5/independent_verification.json. 26 flagged shots, 22 without recorded flags (including 9 reuse slices); no human visual approval. No rerender or alteration of the master. General production lane demonstrated, arbitrary-script scene construction remains unproven.
