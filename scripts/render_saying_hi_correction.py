@@ -130,7 +130,7 @@ def main():
     # Every geometry sample has passed. Reset only the story-local state
     # and replay same clock/parameters for real through-camera evidence.
     if a.unit=="crossing":
-        ret=driver.lock.ret;driver.lock=StrideLock(ret,"walk_cycle",FPS,driver.stride_candidate["rate"],driver.start,driver.yaw)
+        ret=driver.lock.ret;driver.lock=driver.new_walk_lock(ret)
     if a.unit in ("dog_name","seating","closing"):
         driver.prev_feet={};driver.prev_hip={};driver.prev_phase={}
     render_start,render_end=(a.frame_window if a.frame_window else (start,end))
