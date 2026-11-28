@@ -44,7 +44,7 @@ jobs:
     timeout-minutes: 38
     strategy:
       fail-fast: false
-      max-parallel: 5
+      max-parallel: 10
       matrix:
         unit: [chart_initial, crossing, otis_eyes, june_question, june_answer, dog_name, seating, empty_wall, chart_final, closing]
     env:
@@ -97,14 +97,14 @@ jobs:
         run: |
           set -euo pipefail
           OUT=assets/saying_hi_review
-          mkdir -p "$OUT/preflight/round3"
+          mkdir -p "$OUT/preflight/round4"
           for src in /tmp/saying-hi-preflight/saying-hi-preflight-*; do
             test -d "$src" || continue
             unit=${src##*saying-hi-preflight-}
-            mkdir -p "$OUT/preflight/round3/$unit"
-            cp -a "$src"/. "$OUT/preflight/round3/$unit/"
+            mkdir -p "$OUT/preflight/round4/$unit"
+            cp -a "$src"/. "$OUT/preflight/round4/$unit/"
           done
-          printf 'workflow_run_id=%s\nsource_commit=%s\npreflight_result=%s\n' "$GITHUB_RUN_ID" "$GITHUB_SHA" "${{ needs.preflight.result }}" > "$OUT/preflight/round3/workflow_provenance.txt"
+          printf 'workflow_run_id=%s\nsource_commit=%s\npreflight_result=%s\n' "$GITHUB_RUN_ID" "$GITHUB_SHA" "${{ needs.preflight.result }}" > "$OUT/preflight/round4/workflow_provenance.txt"
           find "$OUT" -type f ! -name SHA256SUMS -print0 | sort -z | xargs -0 sha256sum > "$OUT/SHA256SUMS"
           sha256sum stories/saying_hi_script.txt stories/saying_hi_plan.json >> "$OUT/SHA256SUMS"
           git config user.name "github-actions[bot]"
