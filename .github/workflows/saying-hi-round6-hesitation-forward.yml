@@ -1,0 +1,102 @@
+name: Round 6 hesitation forward hand and pencil preflight
+on:
+  push:
+    branches: ['production/saying-hi']
+    paths: ['.github/workflows/saying-hi-round6-hesitation-forward.yml']
+  workflow_dispatch:
+permissions:
+  contents: write
+  actions: read
+jobs:
+  plan:
+    if: github.ref == 'refs/heads/production/saying-hi'
+    runs-on: ubuntu-24.04
+    timeout-minutes: 8
+    outputs:
+      matrix: ${{ steps.matrix.outputs.matrix }}
+    steps:
+      - uses: actions/checkout@v4
+      - id: matrix
+        run: |
+          set -euo pipefail
+          python3 scripts/validate_shot_plan.py stories/saying_hi_plan.json
+          python3 -m py_compile scripts/film_direction.py scripts/film_qc.py scripts/film_direction_preflight.py scripts/render_film_unit.py scripts/film_diagram_driver.py
+          python3 scripts/test_film_direction_qc.py
+          python3 scripts/film_direction_preflight.py --config stories/saying_hi_hesitation_forward_candidate.json matrix > matrix.json
+          echo "matrix=$(cat matrix.json)" >> "$GITHUB_OUTPUT"
+  preflight:
+    needs: plan
+    runs-on: ubuntu-24.04
+    timeout-minutes: 35
+    strategy:
+      fail-fast: false
+      max-parallel: 4
+      matrix: ${{ fromJSON(needs.plan.outputs.matrix) }}
+    env:
+      TASK: ${{ matrix.task }}
+      LIBGL_ALWAYS_SOFTWARE: '1'
+      R6_KNEE_BLEND: '1'
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install native renderer and pinned scenery
+        run: |
+          set -euo pipefail
+          for f in /etc/apt/sources.list.d/*; do
+            if [ -f "$f" ] && grep -q "packages.microsoft.com" "$f"; then sudo mv "$f" "$f.disabled"; fi
+          done
+          sudo apt-get update -o Acquire::Retries=3
+          sudo apt-get install -y --no-install-recommends blender ffmpeg python3-pil python3-numpy fonts-dejavu-core libegl1 libegl-mesa0 libgl1 libgl1-mesa-dri libgbm1
+          /usr/bin/python3 scripts/r6_faces.py --output assets/r6_faces
+          /usr/bin/python3 scripts/library_character_assets.py
+          curl --fail --location --retry 3 --max-time 180 https://raw.githubusercontent.com/AdityapalW/Roblox-skill/54b34ba1be2e3013a9de59e40db288d8f2ebda53/Itlay/Itlay.gltf -o /tmp/film-map.gltf
+          test "$(git hash-object /tmp/film-map.gltf)" = "20108af3a19fae6b5beaa5fac2e3305b56112a41"
+      - name: All-frame pose evaluation and first/middle/last native smoke
+        run: |
+          set -euo pipefail
+          mkdir -p preflight
+          timeout --kill-after=20s 27m blender -b --python-exit-code 1 --python scripts/render_film_unit.py -- --config stories/saying_hi_hesitation_forward_candidate.json --task "$TASK" --map /tmp/film-map.gltf --output preflight --preflight > preflight/render.log 2>&1
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: director-preflight-${{ matrix.key }}
+          path: preflight/
+          if-no-files-found: warn
+  publish:
+    needs: [plan,preflight]
+    if: always() && needs.plan.result == 'success'
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: production/saying-hi
+      - uses: actions/download-artifact@v4
+        continue-on-error: true
+        with:
+          pattern: director-preflight-*
+          path: /tmp/preflight-downloads
+      - name: Commit actual smoke, measured pose sequence and independent audit
+        run: |
+          set -euo pipefail
+          mkdir -p /tmp/preflight-chunks
+          for d in /tmp/preflight-downloads/director-preflight-*; do
+            test -d "$d" || continue
+            mv "$d" "/tmp/preflight-chunks/${d##*/director-preflight-}"
+          done
+          python3 scripts/film_direction_preflight.py --config stories/saying_hi_hesitation_forward_candidate.json publish --chunks /tmp/preflight-chunks
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add assets/saying_hi_review/round6/hesitation_forward_preflight docs/saying_hi_review.md docs/saying_hi_deliverable_paths.txt
+          git commit -m "Publish Round 6 corrected direction preflight $GITHUB_RUN_ID"
+          git pull --rebase origin production/saying-hi
+          git push origin HEAD:refs/heads/production/saying-hi
+      - name: Enforce unchanged pencil visibility and face criteria
+        run: |
+          python3 - <<'PY'
+          import json
+          p=json.load(open('assets/saying_hi_review/round6/hesitation_forward_preflight/preflight_qc.json'))
+          assert p['numerical_pass'], 'face or flow failed'
+          c=p['shots']['sh32']['extra']['camera_search']
+          q=next(q for q in c['candidates'] if q['override']==c['selected'])
+          assert q['safe'] and q['min_visibility']>=.85 and q['min_face_height']>=.40 and q['min_facing']>=.65 and q['max_external_blocks']==0 and q['min_pencil_visibility']>=.8421052631578947 and q['max_prop_external_blocks']==0, q
+          PY
