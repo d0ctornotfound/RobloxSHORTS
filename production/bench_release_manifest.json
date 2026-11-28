@@ -1,6 +1,6 @@
 {
   "status": "ready_for_assembly",
-  "note": "Pinned candidate selections; hold blocks release; final decoded darkness including captions <=2%; narration not supplied.",
+  "note": "All 48 final source versions pinned; exact successful production jobs and artifacts required, then full caption-inclusive decoded darkness <=2%. Corrected shot 44 sampled caption encode passed, final full render pending. No voice supplied.",
   "shots": [
     {
       "shot": 1,
@@ -304,11 +304,9 @@
     },
     {
       "shot": 44,
-      "production_run": 46090683630,
-      "preflight_run": 46089668735,
-      "source_commit": "9a8eb4c30ba4b8949a997264b9310c95d96a9928",
-      "sha256": "5617f7702af95f6cfb0d88b06e161465f941bfeb60747685d09341bf8bee5081",
-      "hold": "Captioned encoding failed at 2.117%; even charcoal CRF16 trial reaches 2.016%. Lighting repair preflight 46092157008; replace before assembly."
+      "production_run": 46093255401,
+      "preflight_run": 46092157008,
+      "source_commit": "2a1e17e6ae3d54b27fb2a7a13837c46f4f904c61"
     },
     {
       "shot": 45,
