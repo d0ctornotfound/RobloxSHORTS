@@ -38,7 +38,22 @@ def make_driver(base,conf,task,scene,cam,cast,stage,local_map):
             self.low_start=self.pickup_frames+2*(self.move_frames-1)//3
             frame(scene,cam,self.cross_camera["position"],self.cross_camera["target"],self.cross_camera["lens"])
             self.master_matrix=cam.matrix_world.copy();self.master_lens=cam.data.lens
-    cls=Driver if walk else base
+    class DeclaredDriver(base):
+        def setup_still(self,n):
+            # Scene geometry remains the adapter responsibility. Story-owned
+            # marks and explicit actor lists replace legacy template blocking.
+            scene_spec=spec["declared_scene"]
+            for cid in scene_spec.get("seated",[]):self.seat(cid)
+            for cid,m in scene_spec.get("standing",{}).items():
+                self.place(cid,m["position"],math.radians(m["yaw_deg"]),m.get("expression","neutral"))
+            for name in scene_spec.get("visible_props",[]):
+                ob=bpy.data.objects.get(name)
+                if ob is None:raise ValueError("missing declared visible prop "+name)
+                for child in [ob]+list(ob.children_recursive):child.hide_render=False
+            if not self.actors and not scene_spec.get("empty",False):raise ValueError("empty declared scene")
+            c=scene_spec.get("initial_camera",{"position":[0,1,2],"target":[0,4,1.25],"lens":35})
+            frame(scene,cam,c["position"],c["target"],c["lens"])
+    cls=Driver if walk else DeclaredDriver if spec.get("declared_scene") else base
     kw={}
     if spec.get("camera_cache"):kw["reviewed_camera"]=json.loads(Path(spec["camera_cache"]).read_text())["camera"]
     d=cls(scene,cam,cast,stage,spec["unit"],spec.get("setup_ids",task["sentence_ids"]),local_map,conf["lineup"],spec.get("variant"),**kw)
