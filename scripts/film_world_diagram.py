@@ -46,11 +46,14 @@ def build(spec,place):
             _label("label "+cid,actor.get("label",cid),(v.x+dx,v.y+dy,z),spec.get("font_size",.32),label_color,root)
         if group.get("heading"):
             _label("formation heading",group["heading"],group["heading_xyz"],spec.get("heading_size",.48),label_color,root)
+    if spec.get("title"):_label("diagram title",spec["title"],spec["title_xyz"],spec.get("title_size",.50),label_color,root)
     arrows=[];default_color=spec.get("arrow_color",(.72,.12,.08))
     for i,l in enumerate(spec["links"]):
         a=marks[l["from"]].copy();b=marks[l["to"]].copy()
         if (a-b).length<.01:raise ValueError("degenerate diagram link")
-        a.z=b.z=z;d=(b-a).normalized()
+        a.z=b.z=z
+        a+=Vector((*l.get("start_offset",[0,0]),0));b+=Vector((*l.get("end_offset",[0,0]),0))
+        d=(b-a).normalized()
         a+=d*l.get("start_clearance",.42);b-=d*l.get("end_clearance",.42)
         points=[a]+[Vector((p[0],p[1],z)) for p in l.get("waypoints",[])]+[b]
         if any((q-p).length<.01 for p,q in zip(points,points[1:])):raise ValueError("degenerate diagram route")
