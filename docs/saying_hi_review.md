@@ -29,3 +29,19 @@ Scope: additive branch only, Chapters 1–4 locked, no full-film render or paid 
 - Workflow is a planning verification only, not the requested full motion-proof pipeline. Supervisor must not authorize final film on this evidence.
 
 Planning verification results, if successful, are published by the branch-only workflow as explicit files under assets/saying_hi_review/. No further visual approval is implied.
+
+
+## Continuation — supervisor-authorized Itlay set
+
+The supervisor authorized the public scenery library and specifically directed use of the Italy plaza. This supersedes the earlier no-import decision. Source: [AdityapalW/Roblox-skill](https://github.com/AdityapalW/Roblox-skill), pinned commit `54b34ba1be2e3013a9de59e40db288d8f2ebda53`. Requested import is exactly `Itlay/Itlay.gltf`, git blob `20108af3a19fae6b5beaa5fac2e3305b56112a41` (22,608,734 bytes). The source `Itlay/manifest.json` describes an approximate procedural environment, no cast, Town camera target (0, 2.9, 1) in source coordinates. The source README identifies selected CC0 Poly Haven photo textures alongside procedural geometry/textures; individual texture names/URLs are not supplied by the manifest. No other set, Studio project, separate prop, or external dog is imported. Supervisor authorization is recorded; it is not a claim that the entire repository is CC0.
+
+`scripts/saying_hi_square.py` now imports the pinned glTF using Blender's native axis conversion, preserves its material assignments and adds the story-local support platform, well, tally wall and seats. GitHub workflow validates the source git blob before importing. Imported object counts, camera placement, ground alignment and actual group image are pending smoke evidence. The prior original-only square is superseded.
+
+New cast implementation `scripts/saying_hi_cast.py` constructs all 20 fixed IDs on the locked R6 rig, reuses Chapter 3 shell helpers, Chapter 4 hair geometry/texture helpers and Chapter 2 expression/blink system, and adds story-local shape/accessory/texture recipes. New looks, Brody's uniform scale, face framing, hair shapes, skirt/dress approximations (trousers used in current candidate) and support heights are not yet approved. The approved library files are not edited. `scripts/render_saying_hi_smoke.py` renders lineup rows and one imported-square group smoke. The standing/seated look and support geometry are under test; no contact measurements reported as passed.
+
+### Confirmed prior planning run
+
+Run 46101638425 succeeded. Actual audio validation: 48 sentences, 48 shots, 443 words, temporary narration 149.11315192743766 s. Deliberate failure: `SHOT PLAN FAIL: sh01: verbatim narration mismatch`, exit code 1. Actual repository evidence under `assets/saying_hi_review/`: `actual_audio_validation.json`, `draft_validation.json`, `deliberate_failure.log`, `temp_narration.wav`, `chart_initial_design.png`, `chart_replacement_design.png`, `SHA256SUMS`, `workflow_provenance.txt`. These design boards are not rendered cast charts. The 149.11 s read exceeds the 101.20 s reference and is not suitable for motion timing.
+
+New `--match-reference` retimer option uses local eSpeak NG at 250 wpm with per-sentence FFmpeg atempo and trailing PCM silence to match reference windows, without deliberately truncating speech. Sentence bounds measure paced PCM chunks, not individual phonemes; listen for unnatural speed before approving final audio. The new pace and smoke workflow [46101985666](https://github.com/d0ctornotfound/RobloxSHORTS/actions/runs/46101985666), source commit `32228156491d51e2a44c3d5b665ccb6192a372d0`, is in progress at this checkpoint. It publishes actual or partial smoke files, source provenance, and paced audio if valid. No full motion-proof jobs launched. No final film or paid TTS.
+
