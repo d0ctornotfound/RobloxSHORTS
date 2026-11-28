@@ -63,8 +63,9 @@ def direct_camera(scene,cam,actors,spec,u,frame,state=None):
     track root translation, not involuntary head wobble. Explicit authored
     camera axis is checked by actual front/visibility QC after positioning."""
     kind=spec["beat_type"]
-    ids=[spec["principal"]]+spec.get("listeners",[])
+    ids=[i for i in [spec["principal"]]+spec.get("listeners",[]) if i is not None]
     if any(i not in actors for i in ids):raise ValueError("missing directed actor")
+    if not ids and not (spec.get("pure_establishing") and spec.get("camera_path")):raise ValueError("actorless camera requires explicit establishing path")
     move=spec.get("camera_move")
     if not move or (move=="locked" and not spec.get("lock_reason")):raise ValueError("camera motivation missing")
     if move=="locked":return
