@@ -107,6 +107,10 @@ def flow_report(rows, fps=30, expected_frames=None):
     elif kind=="action":checks["action_body_scale"]=all(r.get("actor_qc",{}).get(principal,{}).get("vertical_coverage",0)>=.25 for r in rows)
     elif kind=="geography":
         checks["body_scale"]=all(r.get("actor_qc",{}).get(principal,{}).get("vertical_coverage",0)>=.25 for r in rows) or (len(rows)/fps<=2 and all(x.get("pure_establishing",False) for x in d))
+    if kind=="information":
+        diagrams=[r.get("geometry",{}).get("world_diagram") for r in rows]
+        checks["actual_cast_diagram"]=all(x is not None and x["actor_count"]==x["expected_actor_count"] and x["link_count"]==x["expected_link_count"] and len(set(x["actual_cast_ids"]))==x["actor_count"] for x in diagrams)
+        checks["diagram_framing"]=all(x and x.get("framing_bounds") and x["framing_bounds"][4]>0 and .025<=x["framing_bounds"][0]<=x["framing_bounds"][1]<=.975 and .025<=x["framing_bounds"][2]<=x["framing_bounds"][3]<=.975 for x in diagrams)
     if kind=="geography":checks["landmarks_declared"]=all(bool(x.get("landmarks")) for x in d)
     if any(x.get("landmarks") for x in d):
         required=set().union(*(x.get("landmarks",{}) for x in d))
