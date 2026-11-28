@@ -305,13 +305,17 @@ class CorrectedUnit(SceneUnit):
         target=pos+V((0,0,1.20));self.reverse_camera={}
         frame(self.scene,self.cam,pos+forward*3.3+side*1.5+V((0,0,2)),target,40)
         self.pose_june(32 if self.unit=="june_question" else 34,.5,.45)
+        # Lower reverse camera avoids the hero's own hat/hair silhouette.
+        # Rank against actual multiple animation phases rather than a single
+        # favorable pose. No visibility exceptions or changes to gate values.
         choices=[]
         for sign in (-1,1):
-            for d in (2.7,3.3,4.0,4.6):
-                for lateral in (1.45,1.8,2.2,2.6):
-                    for lens in (35,42,48):
-                        loc=pos+forward*d+side*lateral*sign+V((0,0,1.85))
-                        frame(self.scene,self.cam,loc,target,lens)
+            for d in (2.4,3.2,4.0):
+                for lateral in (1.4,1.9,2.4):
+                    for z in (1.05,1.35,1.60):
+                        loc=pos+forward*d+side*lateral*sign+V((0,0,z))
+                        frame(self.scene,self.cam,loc,target,35)
+                        self.pose_june(32 if self.unit=="june_question" else 34,.5,.45)
                         face=object_visibility(self.scene,self.cam,[hero.face],7)
                         body=object_visibility(self.scene,self.cam,meshes(hero.root),7,meshes(self.chart)+meshes(self.pencil))
                         dot=self.front_dot(hero);foreground=self.foreground_intrusion(hero)
@@ -319,11 +323,29 @@ class CorrectedUnit(SceneUnit):
                             pencil=object_visibility(self.scene,self.cam,meshes(self.pencil),9)
                             ext=object_visibility(self.scene,self.cam,meshes(self.pencil),9,meshes(a.root))
                         else:pencil={"visible_fraction":1,"safe":True,"samples":1};ext={"blocked":0,"samples":1}
-                        valid=face["samples"]>0 and face["blocked"]==0 and face["safe"] and dot>=.72 and body["safe"] and body["visible_fraction"]>=.90 and pencil["safe"] and pencil["visible_fraction"]>=.45 and ext["blocked"]==0 and ext["samples"]>0 and foreground["blocked"]==0
-                        score=(not valid,face["blocked"],ext["blocked"],foreground["blocked"],max(0,.72-dot),max(0,.45-pencil["visible_fraction"]),1-body["visible_fraction"],-dot,-(body["bounds"][3]-body["bounds"][2]))
-                        choices.append((score,loc.copy(),lens,face,body,dot,pencil,ext,foreground))
-        _,loc,lens,face,body,dot,pencil,ext,foreground=min(choices,key=lambda x:x[0]);frame(self.scene,self.cam,loc,target,lens)
-        self.reverse_camera={"location":list(loc),"target":list(target),"lens":lens,"setup_face":face,"setup_body":body,"setup_front_dot":dot,"setup_pencil":pencil,"setup_external_pencil":ext,"foreground":foreground}
+                        safe=face["safe"] and body["safe"] and pencil["safe"] and face["samples"]>0 and ext["samples"]>0
+                        score=(not safe,face["blocked"],ext["blocked"],foreground["blocked"],max(0,.72-dot),max(0,.90-body["visible_fraction"]),max(0,.45-pencil["visible_fraction"]),-dot)
+                        choices.append((score,loc.copy(),35))
+        choices.sort(key=lambda x:x[0]);checks=[]
+        for _,loc,lens in choices[:18]:
+            frame(self.scene,self.cam,loc,target,lens)
+            rows=[]
+            for u,t in ((0,0),(.18,.22),(.5,.45),(.72,1.0),(1,1.7),(1,3.4)):
+                self.pose_june(32 if self.unit=="june_question" else 34,u,t)
+                face=object_visibility(self.scene,self.cam,[hero.face],7)
+                body=object_visibility(self.scene,self.cam,meshes(hero.root),7,meshes(self.chart)+meshes(self.pencil))
+                dot=self.front_dot(hero);foreground=self.foreground_intrusion(hero)
+                if self.unit=="june_question":
+                    pencil=object_visibility(self.scene,self.cam,meshes(self.pencil),9)
+                    ext=object_visibility(self.scene,self.cam,meshes(self.pencil),9,meshes(a.root))
+                else:pencil={"visible_fraction":1,"safe":True,"samples":1};ext={"blocked":0,"samples":1}
+                rows.append(dict(face=face,body=body,dot=dot,pencil=pencil,ext=ext,foreground=foreground))
+            safe=all(q["face"]["safe"] and q["body"]["safe"] and q["pencil"]["safe"] and q["face"]["samples"]>0 and q["ext"]["samples"]>0 for q in rows)
+            score=(not safe,max(q["face"]["blocked"] for q in rows),max(q["ext"]["blocked"] for q in rows),max(q["foreground"]["blocked"] for q in rows),max(0,.72-min(q["dot"] for q in rows)),max(0,.90-min(q["body"]["visible_fraction"] for q in rows)),max(0,.45-min(q["pencil"]["visible_fraction"] for q in rows)),-min(q["dot"] for q in rows))
+            checks.append((score,loc.copy(),lens,rows))
+        score,loc,lens,rows=min(checks,key=lambda q:q[0]);frame(self.scene,self.cam,loc,target,lens)
+        self.reverse_camera={"location":list(loc),"target":list(target),"lens":lens,"multi_phase_score":list(score),"setup_samples":rows}
+        print("JUNE_MULTIPHASE_CAMERA",json.dumps(self.reverse_camera),flush=True)
     def foreground_intrusion(self,hero):
         # Actual scene ray grid: reject unrelated scenery between camera and
         # speaker, even outside the speaker silhouette (lamp/tree foreground).
@@ -385,14 +407,17 @@ class CorrectedUnit(SceneUnit):
         # Keep the previously measured clear dog line; fit wider lenses
         # at the same camera positions, with all full-body margins intact.
         cameras=[((2.8,-1.45,2.25),l) for l in (12,14,16,18,20)]+[((2.65,-2.4,2.4),l) for l in (14,17,20)]+[((3.1,2.6,2.5),l) for l in (16,20)]
+        if self.unit=="seating":
+            cameras=[((2.8+dx,-1.45+dy,2.25+dz),12) for dx,dy,dz in ((0,0,0),(0,-.12,0),(0,.12,0),(.12,0,0),(-.12,0,0),(0,0,.12),(0,0,-.12),(.08,-.08,.08),(-.08,-.08,.08),(.08,.08,.08),(0,-.24,0),(.18,0,.10))]
         marks=[(4.10,-1.28,0),(4.05,-.92,0)]
+        if self.unit=="seating":marks=[(4.10,-1.28,0)] # preserve published greeting/closing dog mark
         choices=[];target=V((4.60,-.87,1.00))
         for loc,lens in cameras:
             frame(self.scene,self.cam,loc,target,lens)
             for mark in marks:
                 self.dog[0].location=mark
                 worst=0;safe=True;min_samples=10000;actor_safe=True;min_cov=1;blocked_by=set()
-                for n,u in ((42,1),(43,0),(43,.25),(43,.5),(43,.75),(43,1),(48,1)):
+                for n,u in (((43,i/50) for i in range(51)) if self.unit=="seating" else ((42,1),(43,0),(43,.25),(43,.5),(43,.75),(43,1),(48,1))):
                     self.prev_feet={};self.prev_hip={};self.prev_phase={}
                     m=self.update_seating(n,u,u,True);v=m["dog_visibility"]
                     worst=max(worst,v["blocked"]);safe=safe and v["safe"];min_samples=min(min_samples,v["samples"]);blocked_by.update(v.get("blockers",[]))
