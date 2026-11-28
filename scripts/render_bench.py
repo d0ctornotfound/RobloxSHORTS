@@ -228,6 +228,7 @@ def main():
     area_light("Front facial fill",(-2,-4,3.4),380 if shot["atmosphere"]=="morning" else 240,5,(1,.96,.90))
     if n in (1,2):area_light("Walking trouser shadow fill",(-3,-2.8,1.5),340 if n==1 else 260,3.5,(1,.94,.87))
     if n in (43,44):area_light("Cane and trouser shadow fill",(2.0,-3.2,1.8),520,4.0,(.94,.96,1))
+    if n==43:area_light("Returning walk side fill",(-.8,-3.6,1.2),280,3.5,(.94,.96,1))
     if n==46:area_light("Cap donning trouser fill",(1.6,-3.0,1.4),220,3.5,(1,.95,.88))
     camera=create(scene,"The Bench camera",42)
     bags=[paper("Brown paper bag "+str(i+1),p) for i in range(2)]
@@ -289,6 +290,7 @@ def main():
     selected=set(range(num)) if args.mode=="render" else {0,num//2,num-1}
     if args.mode=="preflight" and n in (23,31,45,46,47,48):selected.update({num//4,3*num//4})
     if args.mode=="preflight" and n==1:selected.update({35,36,37,38}) # exact failed global frames 36–39
+    if args.mode=="preflight" and n==43:selected.update(range(11,19)) # exact at-risk frames 2532–2539
     records=[];geometry_records=[];started=time.monotonic();cap_attached=False;cap_mount=None;cane_length=None;pair_setup=None
     for f in range(num):
         global_frame=first+f;scene.frame_set(global_frame)
