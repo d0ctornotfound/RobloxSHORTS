@@ -10,6 +10,7 @@ from mathutils import Vector
 from PIL import Image
 import numpy as np
 from film_walk_to_mark import construct
+from film_direction import apply_grade, direct_camera, sample as direction_sample
 from library_locomotion import StrideLock
 from r6_imported_cycles import Retarget
 from character_motion_correction import apply_corrected,rear_hip
@@ -52,6 +53,7 @@ def main():
     scene=resolve(conf["setup_function"])(540,960);scene.frame_end=round(plan["audio_duration"]*30);cam=resolve(conf["create_camera"])(scene)
     base=resolve(spec.get("driver",conf["default_driver"]));d=make_driver(base,conf,task,scene,cam,cast,stage,a.map)
     actor_points=resolve(conf["actor_points"]);frame=resolve(conf["camera_function"])
+    grade=apply_grade(scene,conf["grade_preset"]) if conf.get("grade_preset") else None
     vis=resolve(conf["visibility_function"]);meshes=resolve(conf["meshes_function"])
     # Declarative generic animated props and performance tracks; no story IDs.
     roots={name:bpy.data.objects.get(name) for name in spec.get("translate_props",{})}
@@ -92,6 +94,8 @@ def main():
             if roots[name] is not None:roots[name].location=origin[name]+Vector(vec)*curve(su)
         if dog: m["animal_contact"]=resolve(conf["animal_pose"])(dog,spec["animal"]["motion"],su)
         bpy.context.view_layer.update()
+        if spec.get("direction"):
+            direct_camera(scene,cam,d.actors,spec["direction"],u,frame)
         if gf<first:continue
         # Generic external vs own-character visibility; the full original ray
         # result is retained, never reclassified as a geometry pass.
@@ -108,7 +112,7 @@ def main():
         bpy.ops.render.render(write_still=True)
         pix=np.asarray(Image.open(path).convert("RGB"))
         render={"frame":gf,"render_seconds":time.monotonic()-clock,"near_black_percent":100*float(np.mean(np.max(pix,axis=2)<=24))}
-        rendered.append(render);rows.append({"frame":gf,"shot":shot["id"],"actor_qc":quality,"geometry":m})
+        rendered.append(render);rows.append({"frame":gf,"shot":shot["id"],"actor_qc":quality,"geometry":m,**({"direction":direction_sample(scene,cam,d.actors,spec["direction"],grade)} if spec.get("direction") else {})})
         dump(out/"partial.json",{"rendered":rendered,"rows":rows})
         print("SMOKE_PASS" if gf==first else "FRAME_DONE",gf,flush=True)
     assert len(rendered)==end-first
