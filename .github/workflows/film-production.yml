@@ -1,0 +1,141 @@
+name: Reusable native film production
+on:
+  workflow_call:
+    inputs:
+      branch:
+        type: string
+        required: true
+      config:
+        type: string
+        required: true
+permissions:
+  contents: write
+  actions: read
+jobs:
+  plan:
+    if: github.ref == format('refs/heads/{0}', inputs.branch)
+    runs-on: ubuntu-24.04
+    timeout-minutes: 8
+    outputs:
+      matrix: ${{ steps.matrix.outputs.matrix }}
+      out: ${{ steps.matrix.outputs.out }}
+      map_url: ${{ steps.matrix.outputs.map_url }}
+      map_blob: ${{ steps.matrix.outputs.map_blob }}
+    steps:
+      - uses: actions/checkout@v4
+      - id: matrix
+        env:
+          CONFIG: ${{ inputs.config }}
+        run: |
+          set -euo pipefail
+          PLAN=$(python3 -c 'import json,os;print(json.load(open(os.environ["CONFIG"]))["plan"])')
+          python3 scripts/validate_shot_plan.py "$PLAN"
+          python3 -m py_compile scripts/film_timeline.py scripts/render_film_unit.py scripts/film_walk_to_mark.py scripts/publish_film_evidence.py
+          python3 scripts/film_timeline.py --config "$CONFIG" matrix > matrix.json
+          python3 - <<'PY'
+          import json,os
+          c=json.load(open(os.environ["CONFIG"]));m=json.load(open("matrix.json"))
+          assert 0<len(m["include"])<=256
+          with open(os.environ["GITHUB_OUTPUT"],"a") as f:
+              f.write("matrix="+json.dumps(m,separators=(",",":"))+"\n")
+              f.write("out="+c["output_dir"]+"\n")
+              f.write("map_url="+c["map"]["url"]+"\n")
+              f.write("map_blob="+c["map"]["git_blob"]+"\n")
+          PY
+      - uses: actions/upload-artifact@v4
+        with:
+          name: film-plan-matrix
+          path: matrix.json
+  render:
+    needs: plan
+    runs-on: ubuntu-24.04
+    timeout-minutes: 55
+    strategy:
+      fail-fast: false
+      max-parallel: 20
+      matrix: ${{ fromJSON(needs.plan.outputs.matrix) }}
+    env:
+      CONFIG: ${{ inputs.config }}
+      TASK: ${{ matrix.task }}
+      MAP_URL: ${{ needs.plan.outputs.map_url }}
+      MAP_BLOB: ${{ needs.plan.outputs.map_blob }}
+      LIBGL_ALWAYS_SOFTWARE: '1'
+      R6_KNEE_BLEND: '1'
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install EEVEE and pinned scenery
+        run: |
+          set -euo pipefail
+          for f in /etc/apt/sources.list.d/*; do
+            if [ -f "$f" ] && grep -q "packages.microsoft.com" "$f"; then sudo mv "$f" "$f.disabled"; fi
+          done
+          sudo apt-get update -o Acquire::Retries=3
+          sudo apt-get install -y --no-install-recommends blender ffmpeg python3-pil python3-numpy fonts-dejavu-core libegl1 libegl-mesa0 libgl1 libgl1-mesa-dri libgbm1
+          /usr/bin/python3 scripts/r6_faces.py --output assets/r6_faces
+          /usr/bin/python3 scripts/library_character_assets.py
+          curl --fail --location --retry 3 --max-time 180 "$MAP_URL" -o /tmp/film-map.gltf
+          test "$(git hash-object /tmp/film-map.gltf)" = "$MAP_BLOB"
+      - name: One-frame smoke then independent native samples and QC
+        run: |
+          set -euo pipefail
+          mkdir -p chunk
+          python3 scripts/film_timeline.py --config "$CONFIG" chunk --task "$TASK" --map /tmp/film-map.gltf --output chunk
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: film-chunk-${{ matrix.key }}
+          path: chunk/
+          if-no-files-found: warn
+  publish:
+    needs: [plan, render]
+    if: always() && needs.plan.result == 'success'
+    runs-on: ubuntu-24.04
+    timeout-minutes: 60
+    env:
+      CONFIG: ${{ inputs.config }}
+      OUT: ${{ needs.plan.outputs.out }}
+      BRANCH: ${{ inputs.branch }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ inputs.branch }}
+      - uses: actions/download-artifact@v4
+        continue-on-error: true
+        with:
+          pattern: film-chunk-*
+          path: /tmp/film-downloads
+      - name: Assemble actual source chunks, preserve failed evidence
+        run: |
+          set -euo pipefail
+          mkdir -p /tmp/film-chunks "$OUT"
+          for d in /tmp/film-downloads/film-chunk-*; do
+            test -d "$d" || continue
+            mv "$d" "/tmp/film-chunks/${d##*/film-chunk-}"
+          done
+          sudo apt-get update -o Acquire::Retries=3
+          sudo apt-get install -y --no-install-recommends ffmpeg
+          python3 scripts/film_timeline.py --config "$CONFIG" assemble --chunks /tmp/film-chunks --output "$OUT"
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: full-film-master-and-qc
+          path: |
+            ${{ needs.plan.outputs.out }}/*.mp4
+            ${{ needs.plan.outputs.out }}/*.json
+          if-no-files-found: warn
+      - name: Permanently commit film and evidence on the authorized branch
+        if: always()
+        run: |
+          set -euo pipefail
+          python3 scripts/publish_film_evidence.py --config "$CONFIG" --chunks /tmp/film-chunks
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add "$OUT"
+          python3 - <<'PY'
+          import json,os,subprocess
+          c=json.load(open(os.environ["CONFIG"]))
+          subprocess.run(["git","add",c["review_path"],c["inventory_path"]],check=True)
+          PY
+          git commit -m "Publish native film run $GITHUB_RUN_ID and measured QC"
+          git pull --rebase origin "$BRANCH"
+          git push origin "HEAD:refs/heads/$BRANCH"

@@ -1,0 +1,18 @@
+name: Saying Hi — Round 5 native full film acceptance test
+on:
+  push:
+    branches: ['production/saying-hi']
+    paths: ['.github/workflows/saying-hi-round5.yml']
+  workflow_dispatch:
+permissions:
+  contents: write
+  actions: read
+concurrency:
+  group: saying-hi-round5
+  cancel-in-progress: false
+jobs:
+  full-film:
+    uses: ./.github/workflows/film-production.yml
+    with:
+      branch: production/saying-hi
+      config: stories/saying_hi_film_stage.json

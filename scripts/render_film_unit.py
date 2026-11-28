@@ -67,6 +67,8 @@ def main():
         shot=next(s for s in plan["shots"] if round(s["edit_in"]*30)<=gf<round(s["edit_out"]*30))
         n=int(shot["sentence_ids"][0]);u=(gf-round(shot["edit_in"]*30))/max(1,round(shot["edit_out"]*30)-round(shot["edit_in"]*30)-1);t=(gf-unit_start)/30
         scene.frame_set(gf+1)
+        if spec.get("walk"):
+            q=d.cross_camera;frame(scene,cam,q["position"],q["target"],q["lens"])
         m=d.update(n,u,t,gf-unit_start,gf/30>=shot["audio_out"])
         if spec.get("walk") and gf-unit_start>=d.low_start:
             q=d.low_camera;frame(scene,cam,q["position"],q["target"],q["lens"])
@@ -111,7 +113,7 @@ def main():
         print("SMOKE_PASS" if gf==first else "FRAME_DONE",gf,flush=True)
     assert len(rendered)==end-first
     extra={}
-    if spec.get("walk"):
+    if spec.get("walk") and end==unit_end:
         report=d.lock.report();extra["walk"]={**d.stride_candidate,"metrics":{k:v for k,v in report.items() if k!="records"},"root_stop_error_to_plant":(d.lock.pos-d.end).length,"final_contact_error":(Vector(d.lock.records[-1]["contact_world"])-d.end).length,"complete_unit":end==unit_end}
     dump(out/"manifest.json",{"task":task,"engine":"EEVEE","denoising":False,"spatial_samples":32,"render_sampling_hz":30,"rendered":rendered,"rows":rows,"extra":extra,"missing_props":[n for n,o in roots.items() if o is None]})
 if __name__=="__main__":main()
