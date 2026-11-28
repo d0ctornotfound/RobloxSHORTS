@@ -1,6 +1,6 @@
 {
   "status": "partial_verified_not_release_ready",
-  "verified_shots": 35,
+  "verified_shots": 37,
   "shots": [
     {
       "shot": 2,
@@ -199,6 +199,20 @@
       "visual_status": "sampled production frames inspected; continuous playback pending"
     },
     {
+      "shot": 16,
+      "artifact_id": 15240509867,
+      "production_run": 46088390454,
+      "preflight_run": 46087958140,
+      "source_commit": "749057616ff364a80a14f5f3ca8ccd3677bfb2c5",
+      "frames": 60,
+      "duration": 2.5,
+      "encoded_max_near_black_percent": 1.9207175925925926,
+      "sha256": "b1088e801228bf1163c1c77898a351d828ed15eb227ccdf9ade53b82efce6ef6",
+      "passed": true,
+      "independent_checks": "SHA256, independent decoded count and darkness, geometry and PNG sequence",
+      "visual_status": "sampled frames inspected; continuous playback pending"
+    },
+    {
       "shot": 17,
       "artifact_id": 15241165278,
       "production_run": 46088958383,
@@ -225,6 +239,20 @@
       "passed": true,
       "independent_checks": "SHA-256, decoded darkness and frame count, raw PNG indices, exact geometry",
       "visual_status": "HOLD: two bags overlap; supersede with separated bag retest before release"
+    },
+    {
+      "shot": 20,
+      "artifact_id": 15241455369,
+      "production_run": 46088390454,
+      "preflight_run": 46087958140,
+      "source_commit": "749057616ff364a80a14f5f3ca8ccd3677bfb2c5",
+      "frames": 60,
+      "duration": 2.5,
+      "encoded_max_near_black_percent": 0.5625,
+      "sha256": "0d06c8b1511207a91f3c55195aa48ad50e6c8a06a230ad1af9ea4a4659d0b3fc",
+      "passed": true,
+      "independent_checks": "SHA256, independent decoded count and darkness, geometry and PNG sequence",
+      "visual_status": "Milo-focused framing; Dad partly cropped. Continuous playback pending"
     },
     {
       "shot": 22,
