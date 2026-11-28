@@ -307,23 +307,36 @@ class CorrectedUnit(SceneUnit):
         self.pose_june(32 if self.unit=="june_question" else 34,.5,.45)
         choices=[]
         for sign in (-1,1):
-            for d in (2.7,3.3,4.0):
-                for lateral in (1.45,1.8,2.2):
+            for d in (2.7,3.3,4.0,4.6):
+                for lateral in (1.45,1.8,2.2,2.6):
                     for lens in (35,42,48):
                         loc=pos+forward*d+side*lateral*sign+V((0,0,1.85))
                         frame(self.scene,self.cam,loc,target,lens)
                         face=object_visibility(self.scene,self.cam,[hero.face],7)
                         body=object_visibility(self.scene,self.cam,meshes(hero.root),7,meshes(self.chart)+meshes(self.pencil))
-                        dot=self.front_dot(hero)
+                        dot=self.front_dot(hero);foreground=self.foreground_intrusion(hero)
                         if self.unit=="june_question":
                             pencil=object_visibility(self.scene,self.cam,meshes(self.pencil),9)
                             ext=object_visibility(self.scene,self.cam,meshes(self.pencil),9,meshes(a.root))
                         else:pencil={"visible_fraction":1,"safe":True,"samples":1};ext={"blocked":0,"samples":1}
-                        valid=face["samples"]>0 and face["blocked"]==0 and face["safe"] and dot>=.72 and body["safe"] and body["visible_fraction"]>=.90 and pencil["safe"] and pencil["visible_fraction"]>=.45 and ext["blocked"]==0 and ext["samples"]>0
-                        score=(not valid,face["blocked"],ext["blocked"],max(0,.72-dot),max(0,.45-pencil["visible_fraction"]),1-body["visible_fraction"],-dot,-(body["bounds"][3]-body["bounds"][2]))
-                        choices.append((score,loc.copy(),lens,face,body,dot,pencil,ext))
-        _,loc,lens,face,body,dot,pencil,ext=min(choices,key=lambda x:x[0]);frame(self.scene,self.cam,loc,target,lens)
-        self.reverse_camera={"location":list(loc),"target":list(target),"lens":lens,"setup_face":face,"setup_body":body,"setup_front_dot":dot,"setup_pencil":pencil,"setup_external_pencil":ext}
+                        valid=face["samples"]>0 and face["blocked"]==0 and face["safe"] and dot>=.72 and body["safe"] and body["visible_fraction"]>=.90 and pencil["safe"] and pencil["visible_fraction"]>=.45 and ext["blocked"]==0 and ext["samples"]>0 and foreground["blocked"]==0
+                        score=(not valid,face["blocked"],ext["blocked"],foreground["blocked"],max(0,.72-dot),max(0,.45-pencil["visible_fraction"]),1-body["visible_fraction"],-dot,-(body["bounds"][3]-body["bounds"][2]))
+                        choices.append((score,loc.copy(),lens,face,body,dot,pencil,ext,foreground))
+        _,loc,lens,face,body,dot,pencil,ext,foreground=min(choices,key=lambda x:x[0]);frame(self.scene,self.cam,loc,target,lens)
+        self.reverse_camera={"location":list(loc),"target":list(target),"lens":lens,"setup_face":face,"setup_body":body,"setup_front_dot":dot,"setup_pencil":pencil,"setup_external_pencil":ext,"foreground":foreground}
+    def foreground_intrusion(self,hero):
+        # Actual scene ray grid: reject unrelated scenery between camera and
+        # speaker, even outside the speaker silhouette (lamp/tree foreground).
+        allowed=set(o for a in self.actors.values() for o in meshes(a.root))|set(meshes(self.chart)+meshes(self.pencil))
+        center=sum(mesh_points(hero.face),V((0,0,0)))/len(mesh_points(hero.face));distance=(center-self.cam.location).length-.55
+        f=self.cam.data.view_frame(scene=self.scene);xmin=min(v.x/v.z for v in f);xmax=max(v.x/v.z for v in f);ymin=min(v.y/v.z for v in f);ymax=max(v.y/v.z for v in f)
+        deps=bpy.context.evaluated_depsgraph_get();blocked=[]
+        for x in np.linspace(.03,.97,9):
+            for y in np.linspace(.16,.97,9):
+                ray=(self.cam.matrix_world.to_3x3()@V((-(xmax-(xmax-xmin)*x),-(ymax-(ymax-ymin)*y),-1))).normalized()
+                hit,p,_,_,ob,_=self.scene.ray_cast(deps,self.cam.location,ray,distance=max(.01,distance))
+                if hit and ob.original not in allowed and not ob.original.hide_render and p.z>.55:blocked.append(ob.original.name)
+        return {"blocked":len(blocked),"objects":sorted(set(blocked))}
     def front_dot(self,a):
         pts=mesh_points(a.face);center=sum(pts,V((0,0,0)))/len(pts)
         forward=(a.root.matrix_world.to_3x3()@V((0,-1,0))).normalized()
@@ -338,11 +351,15 @@ class CorrectedUnit(SceneUnit):
             a.aim_arm(0,(-.42+.04*math.sin(t*25),-.72,-.15+.08*math.sin(t*23)))
             bpy.context.view_layer.update()
             grip=a.grips[0].matrix_world.translation.copy()
-            self.pencil.rotation_euler=(.18,0,self.nyaw)
+            shoulder=(a.armature.matrix_world@a.arms[0].matrix).translation
+            arm_axis=(grip-shoulder).normalized()
+            # The pencil extends beyond the distal hand end cap, not backwards
+            # into the solid block. Preserve actual shaft size and anchor.
+            axis=(arm_axis+V((0,0,.32))).normalized()
+            orient=V((0,0,-1)).rotation_difference(axis).to_matrix().to_4x4()
+            self.pencil.matrix_world=Matrix.Translation(grip+axis*.105)@orient
             bpy.context.view_layer.update()
-            axis=(self.pencil.matrix_world.to_3x3()@V((0,0,1))).normalized()
-            self.pencil.location=grip+axis*.085;bpy.context.view_layer.update()
-            m["socket_alignment"]["pencil"]={"exposed_shaft_grip_anchor_error":(self.pencil.location-axis*.085-grip).length}
+            m["socket_alignment"]["pencil"]={"exposed_shaft_grip_anchor_error":(self.pencil.matrix_world.translation-axis*.105-grip).length}
             m["pencil_contact"]=hand_contact(a,0,self.pencil)
             m["pencil_projection"]=list(project(self.scene,self.cam,worldpts(meshes(self.pencil))))
         return m
@@ -354,6 +371,7 @@ class CorrectedUnit(SceneUnit):
         hero=a if self.unit=="june_question" else b
         m["speaker_visibility"]=object_visibility(self.scene,self.cam,[hero.face],7)
         m["speaker_front_dot"]=self.front_dot(hero)
+        m["foreground_intrusion"]=self.foreground_intrusion(hero)
         m["speaker_body_visibility"]=object_visibility(self.scene,self.cam,meshes(hero.root),7,meshes(self.chart)+meshes(self.pencil))
         if self.unit=="june_question":
             m["pencil_visibility"]=object_visibility(self.scene,self.cam,meshes(self.pencil),9)
