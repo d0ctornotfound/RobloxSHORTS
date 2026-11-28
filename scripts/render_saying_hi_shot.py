@@ -26,6 +26,7 @@ from saying_hi_cast import build_cast_actor
 from saying_hi_square import build_square
 from saying_hi_contacts import waffle,waffle_pose,carry_two,surface_tree
 from saying_hi_chart_render import portrait_board
+from facial_expressions import enable_blinking
 from render_saying_hi_smoke import load,setup,frame,actor_points,seat_actor
 
 ROOT=Path(__file__).resolve().parents[1];FPS=30
@@ -109,7 +110,9 @@ class SceneUnit:
         elif unit=="empty_wall":frame(scene,cam,(0,3.5,3.6),(0,8,.7),26)
         else:self.setup_still(shot_ids[0])
     def actor(self,cid):
-        if cid not in self.actors:self.actors[cid]=build_cast_actor(cid,self.cast["actors"][cid])
+        if cid not in self.actors:
+            self.actors[cid]=build_cast_actor(cid,self.cast["actors"][cid])
+            enable_blinking(self.scene,self.actors[cid],seed=sum(ord(ch) for ch in cid))
         return self.actors[cid]
     def mark(self,cid):
         return self.marks[("wall_" if cid in self.stage["layouts"]["initial"]["wall"] else "well_")+cid]
@@ -121,7 +124,7 @@ class SceneUnit:
         a=self.actor(cid);m=self.mark(cid);art,cloth,metrics=seat_actor(a,m);a.pose("happy" if cid in self.stage["layouts"]["initial"]["well"] else "neutral")
         self.static.append((cid,metrics));return a
     def setup_chart(self):
-        scene=self.scene;scene.world.color=(.5,.5,.5);area_light("Chart desk light",(0,-2,6),1200,5,(1,.95,.87))
+        scene=self.scene;scene.world.color=(.5,.5,.5);scene.view_settings.view_transform="Standard";area_light("Chart desk light",(0,-2,6),350,5,(1,.95,.87))
         p=self.p;cube("Otis desk",(0,0,.65),(2.5,3.5,1.30),p["wood2"],bevel=.03)
         cube("Chart paper backing",(0,0,1.315),(1.50,2.66,.025),p["paper"],bevel=.01)
         bpy.ops.mesh.primitive_plane_add(size=2,location=(0,0,1.331))
@@ -129,7 +132,7 @@ class SceneUnit:
         self.img=bpy.data.images.new("Otis chart artwork",1080,1920,alpha=True)
         mat=bpy.data.materials.new("Chart image");mat.use_nodes=True
         nt=mat.node_tree;bs=nt.nodes.get("Principled BSDF");tex=nt.nodes.new("ShaderNodeTexImage");tex.image=self.img
-        nt.links.new(tex.outputs["Color"],bs.inputs["Base Color"]);nt.links.new(tex.outputs["Color"],bs.inputs["Emission Color"]);bs.inputs["Emission Strength"].default_value=.5
+        em=nt.nodes.new("ShaderNodeEmission");nt.links.new(tex.outputs["Color"],em.inputs["Color"]);em.inputs["Strength"].default_value=1.;nt.links.new(em.outputs[0],nt.nodes.get("Material Output").inputs["Surface"])
         self.sheet.data.materials.append(mat);self.last_board=None
         a=self.actor("otis");self.chart,self.pencil=props(p);show(self.chart,False)
         # Otis is physically beside desk; crop deliberately allows pencil/arm at left.
@@ -144,9 +147,9 @@ class SceneUnit:
             img,info=portrait_board(self.stage,self.lineup,mode,progress);arr=np.array(img.convert("RGBA"),dtype=np.float32)[::-1]/255.
             self.img.pixels.foreach_set(arr.ravel());self.img.update();self.last_board=key;self.boardinfo=info
         a=self.place("otis",self.placement,self.chart_yaw,"smug",t=t)
-        target=(-.78,.35+.23*math.sin(t*5),1.37)
+        target=(-.92,.35+.23*math.sin(t*5),1.37)
         err=aim_world(a,0,target)
-        self.pencil.matrix_world=a.grips[0].matrix_world.copy();self.pencil.rotation_euler=(0,0,.2)
+        self.pencil.matrix_world=a.grips[0].matrix_world.copy();self.pencil.rotation_euler=(0,-math.pi/2,0)
         bpy.context.view_layer.update()
         return {"chart":self.boardinfo,"pencil_aim_residual":err,"pencil_to_arm":hand_contact(a,0,self.pencil),"note":"Artwork is animated on a physical paper surface; pencil gesture is not guaranteed to track every individual arrow."}
     def setup_crossing(self):
@@ -201,7 +204,7 @@ class SceneUnit:
         lo,hi=bounds(mesh_points(a.head));center=(lo+hi)/2
         w=ease(min(1,u*2.2));res=[]
         for i,limb in enumerate(self.eye_art.arms):
-            sign=(-1,1)[i];target=V((center.x+sign*.10,lo.y-.045,center.z+.07))
+            sign=(-1,1)[i];target=V((center.x+sign*.055,lo.y-.19,center.z+.12))
             hand=limb.lower.matrix_world@V((0,0,-limb.b));target=hand.lerp(target,w)
             end=self.eye_art.arm_target(i,target,V((sign,-.10,-.45)),0)
             res.append({"hand_target_gap":(end-target).length,"head_arm_overlap_pairs":len(tree_for_object(a.head).overlap(tree_for_object(limb.lower)))})
@@ -212,7 +215,30 @@ class SceneUnit:
         a=self.place("narrator",n,self.nyaw,"worried");b=self.place("june",j,self.jyaw,"happy")
         hero=a if self.unit=="june_question" else b;pos=n if hero==a else j;yaw=self.nyaw if hero==a else self.jyaw
         forward=V((math.sin(yaw),-math.cos(yaw),0));side=V((math.cos(yaw),math.sin(yaw),0))
-        frame(self.scene,self.cam,pos+forward*3.05+side*.80+V((0,0,1.63)),pos+V((0,0,1.43)),49)
+        # Select a genuine unobstructed reverse composition rather than
+        # the old near-axis OTS where the foreground actor hid the speaker.
+        target=pos+V((0,0,1.53))
+        face=mesh_points(hero.face)
+        center=sum(face,V((0,0,0)))/len(face)
+        samples=[center]+[center.lerp(v,.55) for v in face]
+        deps=self.scene.evaluated_depsgraph_get();choices=[]
+        for sign in (-1,1):
+            for side_dist in (1.9,2.5,3.1):
+                for forward_dist in (1.9,2.5,3.1):
+                    loc=pos+forward*forward_dist+side*sign*side_dist+V((0,0,1.72))
+                    frame(self.scene,self.cam,loc,target,44)
+                    blocked=0
+                    for sample in samples:
+                        ray=sample-loc;hit,*_=self.scene.ray_cast(deps,loc,ray.normalized(),distance=max(0,ray.length-.025))
+                        blocked+=int(hit)
+                    proj=project(self.scene,self.cam,face)
+                    safe=proj[4]>0 and .05<=proj[0]<=proj[1]<=.95 and .06<=proj[2]<=proj[3]<=.94
+                    score=100*blocked+1000*(not safe)+abs(side_dist/forward_dist-.95)*2-(proj[3]-proj[2])
+                    choices.append((score,blocked,loc.copy(),proj))
+        score,blocked,loc,proj=min(choices,key=lambda q:q[0])
+        frame(self.scene,self.cam,loc,target,44)
+        self.reverse_camera={"face_blocked_samples":blocked,"face_samples":len(samples),"location":list(loc),"face_projection":list(proj)}
+        if blocked:print("REVERSE_FACE_OCCLUSION",self.reverse_camera,flush=True)
     def update_june(self,n,u,t):
         a=self.place("narrator",self.np,self.nyaw,"worried" if self.unit=="june_question" else "neutral",t=t)
         b=self.place("june",self.jp,self.jyaw,"happy" if n==34 else "neutral",t=t)
@@ -223,8 +249,8 @@ class SceneUnit:
             a.aim_arm(1,(-.14,-.35,-.92));a.aim_arm(0,(.23+.04*math.sin(t*25),-.83,-.47+.045*math.sin(t*23)))
             carry=carry_two(self.chart,self.pencil,a.grips[1],a.grips[0]);self.chart.rotation_euler.z=self.nyaw;self.pencil.rotation_euler=(.20,0,self.nyaw)
             bpy.context.view_layer.update()
-            return {"pencil_shake_phase":math.sin(t*25),"socket_alignment":carry,"chart_contact":hand_contact(a,1,self.chart),"pencil_contact":hand_contact(a,0,self.pencil),"face_projection":list(project(self.scene,self.cam,mesh_points(a.face))),"pencil_projection":list(project(self.scene,self.cam,[v for o in self.pencil.children_recursive if o.type=="MESH" for v in mesh_points(o)]))}
-        return {"june_face_projection":list(project(self.scene,self.cam,mesh_points(b.face))),"head_reaction":True}
+            return {"pencil_shake_phase":math.sin(t*25),"socket_alignment":carry,"chart_contact":hand_contact(a,1,self.chart),"pencil_contact":hand_contact(a,0,self.pencil),"reverse_camera":self.reverse_camera,"face_projection":list(project(self.scene,self.cam,mesh_points(a.face))),"pencil_projection":list(project(self.scene,self.cam,[v for o in self.pencil.children_recursive if o.type=="MESH" for v in mesh_points(o)]))}
+        return {"reverse_camera":self.reverse_camera,"june_face_projection":list(project(self.scene,self.cam,mesh_points(b.face))),"head_reaction":True}
     def setup_seating(self):
         self.seat_data={};self.dog=waffle();self.dog[0].location=self.marks["waffle"]["xyz"]
         self.dog[0].rotation_euler.z=math.radians(self.marks["waffle"]["yaw_deg"])
@@ -343,7 +369,7 @@ def main():
         sim_start=whole_start;sim_end=whole_end
     else:sim_start=start;sim_end=end
     selected=set(range(start,end)) if a.mode=="motion" else {start+max(0,(count-1)//2)}
-    if unit=="dog_name" and a.mode!="motion":selected={end-1}
+    if unit in ("dog_name","chart_initial","chart_final") and a.mode!="motion":selected={end-1}
     rec=[];rendered=[]
     for gf in range(sim_start,sim_end):
         if gf>=end:break
