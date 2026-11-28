@@ -59,7 +59,7 @@ def build_cast_actor(cid,record):
     seed=sum(ord(c) for c in cid)
     for token,col,style,pat,sk in (("shirt",top,kind,pattern,None),("pants",bot,"jeans","solid",None),("sleeve",top,kind,pattern,srgb(skin))):
         m=cs._material(a," / "+token);replace_image(m,painted_atlas(col,style,seed,pat,sk,cut if sk else None))
-        cs._add_fabric_shader(m,"hoodie" if kind=="soft" else cs._fabric_profile.__name__ if False else ("jeans" if token=="pants" else "tee"))
+        cs._add_fabric_shader(m,"hoodie" if kind=="soft" else ("jeans" if token=="pants" else "tee"))
         if sk:cs._mask_sleeve_bump(m,cut)
     topmat=fabric(a,"private top",top,kind);accent=fabric(a,"private trim",top,kind,.72);pant=fabric(a,"private trousers",bot,"jeans")
     cs._cover_shoulder_caps(a,topmat);cs._make_shell(a,"shirt and sleeves",(cs.TORSO_GROUP,)+cs.ARM_GROUPS,arm_cutoff=cut)
