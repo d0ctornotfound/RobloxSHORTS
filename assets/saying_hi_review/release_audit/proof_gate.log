@@ -1,0 +1,10 @@
+FAIL crossing: LOCKED STRIDE FAIL in assets/saying_hi_review/preflight/round4/crossing/manifest.json: backward_frames=2, stance_rms=0.050997, stop_error=0.103938
+FAIL crossing: VISUAL HOLD: locked stride fails and actor too small for foot-contact judge; assets/saying_hi_review/preflight/round4/crossing/held_pose.png
+FAIL otis_eyes: head-arm surface overlap max=68 in assets/saying_hi_review/preflight/round4/otis_eyes/manifest.json; no approved contact exception
+FAIL otis_eyes: VISUAL HOLD: head-arm intersections persist at eye-cover contact; assets/saying_hi_review/preflight/round4/otis_eyes/held_pose.png
+FAIL june_question: VISUAL HOLD: face readable but foreground shoulder hides pencil; assets/saying_hi_review/preflight/round4/june_question/held_pose.png
+FAIL june_answer: VISUAL HOLD: speaker visible but standing stool intersects legs; assets/saying_hi_review/preflight/round4/june_answer/held_pose.png
+FAIL dog_name: VISUAL HOLD: dog visible after name but stool obscures part; assets/saying_hi_review/preflight/round4/dog_name/held_pose.png
+FAIL seating: VISUAL HOLD: Waffle head partly occluded, June sliding; assets/saying_hi_review/preflight/round4/seating/held_pose.png
+FAIL closing: VISUAL HOLD: Waffle partly obscured by existing stool; assets/saying_hi_review/preflight/round4/closing/held_pose.png
+RELEASE BLOCKED: 9 failed checks; no release marker authorized
