@@ -153,30 +153,60 @@ class SceneUnit:
         bpy.context.view_layer.update()
         return {"chart":self.boardinfo,"pencil_aim_residual":err,"pencil_to_arm":hand_contact(a,0,self.pencil),"note":"Artwork is animated on a physical paper surface; pencil gesture is not guaranteed to track every individual arrow."}
     def setup_crossing(self):
-        for cid in self.stage["layouts"]["initial"]["wall"]+self.stage["layouts"]["initial"]["well"]:
-            if cid!="narrator":self.seat(cid)
+        # Calibrate the locked native walk BEFORE constructing 19 spectators.
+        # The actual scenery remains present. No actor translation warp.
         self.a=self.actor("narrator");self.start=V(self.marks["cross_start"]["xyz"]);self.end=V(self.marks["cross_end"]["xyz"])
-        self.yaw=yaw_to(self.start,self.end)
-        self.pickup_frames=20
+        self.yaw=yaw_to(self.start,self.end);self.pickup_frames=20
         self.pickup_table=cube("Chart pickup ledge",tuple(self.start+V((-.8,.0,.54))),(.65,.52,1.08),self.p["wood2"],bevel=.02)
         self.chart_rest=self.start+V((-.83,0,1.13));self.pencil_rest=self.start+V((-.55,0,1.13))
-        frame(self.scene,self.cam,(10.8,-14.6,10.7),(0,4,1.1),24)
     def prepare_stride(self,nframes):
-        # Search only playback rate; never add an artificial path translation.
         movement=nframes-self.pickup_frames
         if movement<12:raise ValueError("Crossing window too short")
-        self.move_frames=movement;target=(self.end-self.start).length;best=None
-        lo,hi=.12,1.6
-        for _ in range(7):
-            rate=(lo+hi)/2;lock=StrideLock(Retarget(self.a),"walk_cycle",FPS,rate,self.start,self.yaw)
-            for i in range(movement):lock.step(i/FPS,settle=ease((i-(movement-10))/9))
-            distance=-(lock.rot.inverted()@(lock.pos-self.start)).y
-            error=abs(distance-target)
-            if best is None or error<best[0]:best=(error,rate,distance)
-            if distance>target:hi=rate
-            else:lo=rate
-        self.stride_candidate=best
-        self.lock=StrideLock(Retarget(self.a),"walk_cycle",FPS,best[1],self.start,self.yaw)
+        self.move_frames=movement;target=(self.end-self.start).length;ret=Retarget(self.a);duration=ret.clips["walk_cycle"]["duration"]
+        candidates=[]
+        def evaluate(rate,phase):
+            lock=StrideLock(ret,"walk_cycle",FPS,rate,self.start,self.yaw);offset=phase*duration/rate
+            for i in range(movement):lock.step(offset+i/FPS,settle=ease((i-(movement-10))/9))
+            report=lock.report();delta=lock.pos-self.end;stop=math.hypot(delta.x,delta.y)
+            # Locked pass is lexicographically mandatory, not a soft penalty.
+            row={"rate":rate,"phase":phase,"offset_seconds":offset,"stop_error_xy":stop,"pass":report["pass"],"backward_frames":report["backward_frames"],"stance_velocity_rms":report["stance_velocity_rms"],"max_contact_gap":report["max_contact_gap"],"max_floor_error":report["max_floor_error"]}
+            candidates.append(row);print("CROSSING_SEARCH",json.dumps(row),flush=True)
+            return row
+        rank=lambda q:(not q["pass"],q["backward_frames"],q["stop_error_xy"],q["stance_velocity_rms"])
+        for phase in (0,.125,.25,.375,.5,.625,.75,.875):evaluate(.20,phase)
+        best=min(candidates,key=rank)
+        for rate in (.17,.185,.195,.205,.215,.23,.245):evaluate(rate,best["phase"])
+        best=min(candidates,key=rank)
+        for rate in (max(.10,best["rate"]-.004),best["rate"]+.004):evaluate(rate,best["phase"])
+        best=min(candidates,key=rank)
+        self.stride_candidate=best;self.stride_search=candidates
+        self.stride_offset=best["offset_seconds"]
+        self.lock=StrideLock(ret,"walk_cycle",FPS,best["rate"],self.start,self.yaw)
+        for cid in self.stage["layouts"]["initial"]["wall"]+self.stage["layouts"]["initial"]["well"]:
+            if cid!="narrator":self.seat(cid)
+        # One locked camera: fit the whole geography and both ends of the
+        # crossing using actual spectator geometry and narrator route envelope.
+        pts=[v for cid,a in self.actors.items() if cid!="narrator" for v in actor_points(a)]
+        for p in (self.start,self.end):
+            pts.extend(p+V((x,y,z)) for x in (-.85,.85) for y in (-.4,.4) for z in (0,2.6))
+        lo,hi=bounds(pts);aim=(lo+hi)/2;choices=[]
+        for x in (-10.,-7.,7.,10.):
+            for y in (-10.,-7.,-4.):
+                for z in (6.,9.,12.):
+                    loc=aim+V((x,y,z))
+                    frame(self.scene,self.cam,loc,aim,35,ortho=12.)
+                    p=project(self.scene,self.cam,pts)
+                    needed=12.*max(abs(p[0]-.5),abs(p[1]-.5),abs(p[2]-.5),abs(p[3]-.5))/.455
+                    scale=max(6.8,needed)
+                    frame(self.scene,self.cam,loc,aim,35,ortho=scale)
+                    b=project(self.scene,self.cam,pts)
+                    # Larger actor pixels and less excess ground/sky.
+                    probe=project(self.scene,self.cam,[self.start+V((0,0,0)),self.start+V((0,0,2.3))])
+                    safe=b[4]>0 and .035<=b[0]<=b[1]<=.965 and .035<=b[2]<=b[3]<=.965
+                    score=1000*(not safe)-(probe[3]-probe[2])+abs(x)*.001
+                    choices.append((score,loc.copy(),scale,list(b),probe[3]-probe[2]))
+        _,loc,scale,box,coverage=min(choices,key=lambda q:q[0]);frame(self.scene,self.cam,loc,aim,35,ortho=scale)
+        self.cross_camera={"position":list(loc),"target":list(aim),"ortho_scale":scale,"group_bounds":box,"narrator_vertical_proxy":coverage}
     def update_crossing(self,index,u,t):
         a=self.a;show(self.chart,True);show(self.pencil,True)
         if index<self.pickup_frames:
@@ -188,7 +218,7 @@ class SceneUnit:
                 aim_world(a,i,a.grips[i].matrix_world.translation.lerp(target,w))
             if index<self.pickup_frames-2:return {"phase":"pickup reach","right_target_error":(a.grips[0].matrix_world.translation-self.pencil_rest).length,"left_target_error":(a.grips[1].matrix_world.translation-self.chart_rest).length}
         else:
-            k=index-self.pickup_frames;row=self.lock.step(k/FPS,settle=ease((k-(self.move_frames-10))/9));a.pose("worried" if k<self.move_frames*.75 else "neutral")
+            k=index-self.pickup_frames;row=self.lock.step(self.stride_offset+k/FPS,settle=ease((k-(self.move_frames-10))/9));a.pose("worried" if k<self.move_frames*.75 else "neutral")
         # Keep original lower body stride; only replace upper arm directions to carry.
         a.aim_arm(0,(.18,-.64,-.79));a.aim_arm(1,(-.20,-.40,-.92));bpy.context.view_layer.update()
         attachment=carry_two(self.chart,self.pencil,a.grips[1],a.grips[0])
@@ -387,7 +417,7 @@ def main():
     report={"unit":unit,"sentence_ids":ids,"mode":a.mode,"variant":a.variant,"engine":"EEVEE","denoising":False,"eevee_spatial_samples":32,"rendered_temporal_samples_per_second":30 if a.mode=="motion" else None,"encoded_fps_target":30 if a.mode=="motion" else None,"actual_rendered_frames":len(rendered),"expected_rendered_frames":len(selected),"frame_window":[start,end],"scenery":driver.scenery,"metrics":rec,"rendered":rendered,"review":"candidate, visual and metric approval pending"}
     if unit=="crossing":
         report["stride"]=driver.lock.report();report["target_stop_error"]=(driver.lock.pos-driver.end).length
-        report["calibration_candidate"]=driver.stride_candidate
+        report["calibration_candidate"]=driver.stride_candidate;report["stride_search"]=driver.stride_search;report["cross_camera"]=driver.cross_camera
     (out/"manifest.json").write_text(json.dumps(report,indent=2)+"\n")
     assert len(rendered)==len(selected)
     if a.mode!="motion" and rendered:
