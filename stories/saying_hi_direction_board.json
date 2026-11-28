@@ -1,0 +1,742 @@
+{
+  "schema_version": 1,
+  "status": "draft direction board only; not a render configuration or approval",
+  "source_plan": "stories/saying_hi_plan.json",
+  "unchanged_audio": "assets/saying_hi_review/temp_narration.wav",
+  "pilot_run": 46135821796,
+  "shots": [
+    {
+      "id": "sh01",
+      "round5_flagged": false,
+      "edit_in": 0,
+      "edit_out": 2.96,
+      "narration": "In this town, all of the girls like only the same three boys.",
+      "beat_type": "geography",
+      "principal": "narrator",
+      "listeners": [],
+      "camera_move": "reframe",
+      "composition": "Establish wall, well and full circle in an opening geography view <=2s, then close on narrator observing.",
+      "performance": "Begin with ongoing conversation at well; narrator glances across as cut begins; cut on glance.",
+      "reuse": "not_authorized_without_direction_evidence"
+    },
+    {
+      "id": "sh02",
+      "round5_flagged": true,
+      "edit_in": 2.96,
+      "edit_out": 4.08,
+      "narration": "It's called hypergamy.",
+      "beat_type": "interview",
+      "principal": "otis",
+      "listeners": [
+        "narrator"
+      ],
+      "camera_move": "push",
+      "composition": "Eye-level two-shot; readable real book heading, then Otis's face.",
+      "performance": "Otis already opening book; lifts and indicates heading, narrator's skeptical eyes track it.",
+      "reuse": "not_authorized_without_direction_evidence"
+    },
+    {
+      "id": "sh03",
+      "round5_flagged": true,
+      "edit_in": 4.08,
+      "edit_out": 6.78,
+      "narration": "My friend Otis found that word on the internet, and then he made a chart.",
+      "beat_type": "action",
+      "principal": "otis",
+      "listeners": [
+        "narrator"
+      ],
+      "camera_move": "drift",
+      "composition": "Table-side medium close; book-to-pencil-to-chart visible in one continuous action.",
+      "performance": "Book is moving down at entry; Otis picks up pencil and starts drawing, narrator leans toward sheet.",
+      "reuse": "not_authorized_without_direction_evidence"
+    },
+    {
+      "id": "sh04",
+      "round5_flagged": false,
+      "edit_in": 6.78,
+      "edit_out": 9.82,
+      "narration": "He put the ten girls in our class on the left, and the ten boys on the right.",
+      "beat_type": "information",
+      "principal": "otis",
+      "listeners": [],
+      "camera_move": "locked",
+      "composition": "Actual cast in two formations, world-space labels. Registration needed for diagram.",
+      "performance": "Reveal real figures and two formations, with actors shifting and looking.",
+      "lock_reason": "Preserve registration of timed world-space links",
+      "reuse": "not_authorized_without_direction_evidence"
+    },
+    {
+      "id": "sh05",
+      "round5_flagged": false,
+      "edit_in": 9.82,
+      "edit_out": 14.22,
+      "narration": "Then he drew one arrow for every girl, and all ten arrows went to Brody, Chase, and Kai.",
+      "beat_type": "information",
+      "principal": "otis",
+      "listeners": [],
+      "camera_move": "locked",
+      "composition": "Maintain overhead registration; draw exactly ten distinct links to three boys.",
+      "performance": "Arrows progressively enter; cast glance along arrows; end still revealing.",
+      "lock_reason": "Preserve registration of timed world-space links",
+      "reuse": "not_authorized_without_direction_evidence"
+    },
+    {
+      "id": "sh06",
+      "round5_flagged": false,
+      "edit_in": 14.22,
+      "edit_out": 15.98,
+      "narration": "The other seven of us got zero arrows.",
+      "beat_type": "information",
+      "principal": "narrator",
+      "listeners": [],
+      "camera_move": "push",
+      "composition": "Reframe to the seven unlinked actual boys in right formation; retain link context.",
+      "performance": "Boys react differently to absence of links, narrator turns down.",
+      "reuse": "not_authorized_without_direction_evidence"
+    },
+    {
+      "id": "sh07",
+      "round5_flagged": false,
+      "edit_in": 15.98,
+      "edit_out": 17.06,
+      "narration": "I'm the one at the bottom.",
+      "beat_type": "emotion",
+      "principal": "narrator",
+      "listeners": [],
+      "camera_move": "push",
+      "composition": "Face-filling narrator singled out at bottom of formation; no competing actors.",
+      "performance": "Narrator turns from chart toward camera, expression drops; cut on glance.",
+      "reuse": "not_authorized_without_direction_evidence"
+    },
+    {
+      "id": "sh08",
+      "round5_flagged": false,
+      "edit_in": 17.06,
+      "edit_out": 20.96,
+      "narration": "At lunch, those three sit by the well, and every girl in our class sits around them.",
+      "beat_type": "action",
+      "principal": "ava",
+      "listeners": [
+        "brody"
+      ],
+      "camera_move": "drift",
+      "composition": "Well-side medium group, three boys surrounded by girls; show water feature clearly.",
+      "performance": "Ongoing overlapping greetings, small varied gestures and reactions.",
+      "reuse": "not_authorized_without_direction_evidence"
+    },
+    {
+      "id": "sh09",
+      "round5_flagged": false,
+      "edit_in": 20.96,
+      "edit_out": 23.72,
+      "narration": "The seven of us sit on the wall across the square, and we watch.",
+      "beat_type": "action",
+      "principal": "narrator",
+      "listeners": [
+        "otis"
+      ],
+      "camera_move": "drift",
+      "composition": "Close wall group at eye level, well in reverse depth if possible.",
+      "performance": "Boys watching, shifting posture; narrator's head turns toward well.",
+      "reuse": "not_authorized_without_direction_evidence"
+    },
+    {
+      "id": "sh10",
+      "round5_flagged": true,
+      "edit_in": 23.72,
+      "edit_out": 26.04,
+      "narration": "On Valentine's Day, Brody had to borrow a wheelbarrow.",
+      "beat_type": "action",
+      "principal": "brody",
+      "listeners": [
+        "chase"
+      ],
+      "camera_move": "track",
+      "composition": "Medium tracking with actual wheelbarrow, hands and wheels grounded; Brody not a speck.",
+      "performance": "Enter with wheel already rolling; Brody pushes, Chase reacts to cards; exit rolling.",
+      "reuse": "not_authorized_without_direction_evidence"
+    },
+    {
+      "id": "sh11",
+      "round5_flagged": true,
+      "edit_in": 26.04,
+      "edit_out": 28.06,
+      "narration": "I got one card, and it was from my mom.",
+      "beat_type": "emotion",
+      "principal": "narrator",
+      "listeners": [],
+      "camera_move": "push",
+      "composition": "Close face with real Mom card opened beside face; readable signature in separate insert if necessary.",
+      "performance": "Card already opening; eyes drop, slight sad head/torso response, cut as card lowers.",
+      "reuse": "not_authorized_without_direction_evidence"
+    },
+    {
+      "id": "sh12",
+      "round5_flagged": false,
+      "edit_in": 28.06,
+      "edit_out": 28.9,
+      "narration": "Otis says it's science.",
+      "beat_type": "interview",
+      "principal": "otis",
+      "listeners": [
+        "narrator"
+      ],
+      "camera_move": "drift",
+      "composition": "Close wall-side two-shot with chart, speaker face and listener reaction.",
+      "performance": "Otis raises chart and taps; narrator reacts with doubt.",
+      "reuse": "not_authorized_without_direction_evidence"
+    },
+    {
+      "id": "sh13",
+      "round5_flagged": true,
+      "edit_in": 28.9,
+      "edit_out": 32.5,
+      "narration": "He says girls only pick the top three, so there is nothing the rest of us can do.",
+      "beat_type": "action",
+      "principal": "otis",
+      "listeners": [
+        "narrator"
+      ],
+      "camera_move": "reframe",
+      "composition": "Medium wall group; Otis's gesture points to actual well, chart and reaction readable.",
+      "performance": "Continue tap into outward gesture, boys react; no distant template wide.",
+      "reuse": "not_authorized_without_direction_evidence"
+    },
+    {
+      "id": "sh14",
+      "round5_flagged": false,
+      "edit_in": 32.5,
+      "edit_out": 33.64,
+      "narration": "But here is the weird part.",
+      "beat_type": "emotion",
+      "principal": "narrator",
+      "listeners": [],
+      "camera_move": "push",
+      "composition": "Face-filling skepticism, head turning toward popular boys.",
+      "performance": "Begin turning already, eyebrow/expression change then gaze offscreen.",
+      "reuse": "not_authorized_without_direction_evidence"
+    },
+    {
+      "id": "sh15",
+      "round5_flagged": false,
+      "edit_in": 33.64,
+      "edit_out": 35.18,
+      "narration": "They are not even the top three.",
+      "beat_type": "action",
+      "principal": "chase",
+      "listeners": [
+        "brody",
+        "kai"
+      ],
+      "camera_move": "drift",
+      "composition": "Medium trio with comparable stature; keep three faces separated.",
+      "performance": "Boys already conversing, staggered reactions, cut on Chase's turn.",
+      "reuse": "not_authorized_without_direction_evidence"
+    },
+    {
+      "id": "sh16",
+      "round5_flagged": false,
+      "edit_in": 35.18,
+      "edit_out": 37.18,
+      "narration": "Brody is the shortest boy in our class.",
+      "beat_type": "action",
+      "principal": "brody",
+      "listeners": [
+        "chase",
+        "kai"
+      ],
+      "camera_move": "reframe",
+      "composition": "Shared ground line, deliberately show Brody shorter without foreshortening.",
+      "performance": "Brody looks up, two taller boys respond; cut mid gesture.",
+      "reuse": "not_authorized_without_direction_evidence"
+    },
+    {
+      "id": "sh17",
+      "round5_flagged": true,
+      "edit_in": 37.18,
+      "edit_out": 39.82,
+      "narration": "Chase can't catch a ball, and Kai still eats crayons.",
+      "beat_type": "action",
+      "principal": "chase",
+      "listeners": [],
+      "camera_move": "track",
+      "composition": "Two distinct subshots: actual ball miss, then Kai raises crayon to mouth.",
+      "performance": "Ball already in motion; Chase reaches and misses; Kai raises crayon with physical contact, no unsupported floating prop.",
+      "reuse": "not_authorized_without_direction_evidence"
+    },
+    {
+      "id": "sh18",
+      "round5_flagged": true,
+      "edit_in": 39.82,
+      "edit_out": 43.64,
+      "narration": "I have liked June since the first grade, and on the chart, her arrow goes to Kai.",
+      "beat_type": "emotion",
+      "principal": "narrator",
+      "listeners": [],
+      "camera_move": "push",
+      "composition": "Brief actual world arrow June→Kai then close narrator watching June; preserve axis.",
+      "performance": "Narrator already looking; eyes move from chart to June, expression changes.",
+      "reuse": "not_authorized_without_direction_evidence"
+    },
+    {
+      "id": "sh19",
+      "round5_flagged": true,
+      "edit_in": 43.64,
+      "edit_out": 47.4,
+      "narration": "So I have sat on that wall for four years, and I have never said one word to her.",
+      "beat_type": "emotion",
+      "principal": "narrator",
+      "listeners": [],
+      "camera_move": "push",
+      "composition": "Wall close with reverse glance toward June, use geography match from previous cut.",
+      "performance": "Start mid glance; attempt to speak, look down, then begin to decide.",
+      "reuse": "not_authorized_without_direction_evidence"
+    },
+    {
+      "id": "sh20",
+      "round5_flagged": true,
+      "edit_in": 47.4,
+      "edit_out": 50.94,
+      "narration": "Last Friday, I took the chart and a pencil, and I walked across the square.",
+      "beat_type": "action",
+      "principal": "narrator",
+      "listeners": [],
+      "camera_move": "track",
+      "composition": "Crossing sequence: composed geography opening or clearly established preceding geography; tracking medium with legs/props readable.",
+      "performance": "Pickup in progress; walk with natural cycle rate, cut while still moving toward well.",
+      "reuse": "not_authorized_without_direction_evidence"
+    },
+    {
+      "id": "sh21",
+      "round5_flagged": true,
+      "edit_in": 50.94,
+      "edit_out": 52.62,
+      "narration": "Nobody from the wall had ever done that.",
+      "beat_type": "action",
+      "principal": "otis",
+      "listeners": [
+        "leo",
+        "max"
+      ],
+      "camera_move": "drift",
+      "composition": "Wall reaction reverse with clear direction toward well; narrator travel continues across cut.",
+      "performance": "Boys follow narrator with heads, shock spreads, cut into Otis covering eyes.",
+      "reuse": "not_authorized_without_direction_evidence"
+    },
+    {
+      "id": "sh22",
+      "round5_flagged": false,
+      "edit_in": 52.62,
+      "edit_out": 53.64,
+      "narration": "Otis covered his eyes.",
+      "beat_type": "emotion",
+      "principal": "otis",
+      "listeners": [],
+      "camera_move": "push",
+      "composition": "Close eye-cover gesture, both eyes actually covered; no face occlusion flag waiver except intentional hands.",
+      "performance": "Hands moving upward at entry; reaction continues through cut.",
+      "reuse": "not_authorized_without_direction_evidence"
+    },
+    {
+      "id": "sh23",
+      "round5_flagged": true,
+      "edit_in": 53.64,
+      "edit_out": 55.22,
+      "narration": "I asked every girl the same question.",
+      "beat_type": "action",
+      "principal": "narrator",
+      "listeners": [
+        "ava"
+      ],
+      "camera_move": "track",
+      "composition": "Approach Ava at well; real planted walking and chart grip.",
+      "performance": "Enter in walk, finish as narrator turns toward Ava; no teleport.",
+      "reuse": "not_authorized_without_direction_evidence"
+    },
+    {
+      "id": "sh24",
+      "round5_flagged": true,
+      "edit_in": 55.22,
+      "edit_out": 55.9,
+      "narration": "Why him?",
+      "beat_type": "interview",
+      "principal": "narrator",
+      "listeners": [
+        "ava"
+      ],
+      "camera_move": "drift",
+      "composition": "Close eye-level pair; well identifiable, chart and listener reaction.",
+      "performance": "Question in progress; narrator looks up from chart, Ava begins reply.",
+      "reuse": "not_authorized_without_direction_evidence"
+    },
+    {
+      "id": "sh25",
+      "round5_flagged": true,
+      "edit_in": 55.9,
+      "edit_out": 58.16,
+      "narration": "The first girl said, Brody asked me what my dog's name is.",
+      "beat_type": "interview",
+      "principal": "brody",
+      "listeners": [
+        "ava"
+      ],
+      "camera_move": "drift",
+      "composition": "Close pair on well side, photo held in physical hand, faces separated.",
+      "performance": "Brody turns toward photo and asks, Ava brightens; photo remains attached.",
+      "reuse": "not_authorized_without_direction_evidence"
+    },
+    {
+      "id": "sh26",
+      "round5_flagged": true,
+      "edit_in": 58.16,
+      "edit_out": 60.24,
+      "narration": "The second girl said, Chase saves me a seat.",
+      "beat_type": "interview",
+      "principal": "chase",
+      "listeners": [
+        "bella"
+      ],
+      "camera_move": "drift",
+      "composition": "Close pair then readable real chair/bag action; keep faces and contact.",
+      "performance": "Chase reaches to bag already in motion, clears seat, Bella begins sitting.",
+      "reuse": "not_authorized_without_direction_evidence"
+    },
+    {
+      "id": "sh27",
+      "round5_flagged": true,
+      "edit_in": 60.24,
+      "edit_out": 62.78,
+      "narration": "The third girl said, Kai said hi.",
+      "beat_type": "interview",
+      "principal": "kai",
+      "listeners": [
+        "cleo"
+      ],
+      "camera_move": "drift",
+      "composition": "Close two-shot with well between/behind, both bodies cheated toward camera without losing eye contact.",
+      "performance": "Kai waves in progress, Cleo turns then returns greeting; cut mid lowering.",
+      "reuse": "not_authorized_without_direction_evidence"
+    },
+    {
+      "id": "sh28",
+      "round5_flagged": true,
+      "edit_in": 62.78,
+      "edit_out": 64.46,
+      "narration": "Number four, he said hi.",
+      "beat_type": "interview",
+      "principal": "brody",
+      "listeners": [
+        "daisy"
+      ],
+      "camera_move": "drift",
+      "composition": "Different side of well, close faces and geography; not template wide.",
+      "performance": "Brody greets with small head nod, Daisy responds; cut mid reaction.",
+      "reuse": "not_authorized_without_direction_evidence"
+    },
+    {
+      "id": "sh29",
+      "round5_flagged": true,
+      "edit_in": 64.46,
+      "edit_out": 65.92,
+      "narration": "Number five, he asked about my dog.",
+      "beat_type": "interview",
+      "principal": "chase",
+      "listeners": [
+        "ella"
+      ],
+      "camera_move": "drift",
+      "composition": "Well-side close with visible dog photo; differentiated gesture from shot25.",
+      "performance": "Chase leans to see photo, Ella lifts it, he reacts.",
+      "reuse": "not_authorized_without_direction_evidence"
+    },
+    {
+      "id": "sh30",
+      "round5_flagged": true,
+      "edit_in": 65.92,
+      "edit_out": 69.6,
+      "narration": "Six, seven, eight, nine, hi, a seat, hi, hi.",
+      "beat_type": "interview",
+      "principal": "brody",
+      "listeners": [
+        "faye"
+      ],
+      "camera_move": "reframe",
+      "composition": "Four internal close subshots for Faye/Gia/Hana/Ivy, each distinct framing and reaction.",
+      "performance": "Four ongoing actions: hi, actual saved seat, hi, hi; cut on movements.",
+      "reuse": "not_authorized_without_direction_evidence"
+    },
+    {
+      "id": "sh31",
+      "round5_flagged": true,
+      "edit_in": 69.6,
+      "edit_out": 71.12,
+      "narration": "Then I got to number ten, and it was June.",
+      "beat_type": "interview",
+      "principal": "narrator",
+      "listeners": [
+        "june"
+      ],
+      "camera_move": "track",
+      "composition": "Approach June, two-shot preserving eyeline and chart, no teleport.",
+      "performance": "Narrator already walking, slows into position; June looks up.",
+      "reuse": "not_authorized_without_direction_evidence"
+    },
+    {
+      "id": "sh32",
+      "round5_flagged": true,
+      "edit_in": 71.12,
+      "edit_out": 72.4,
+      "narration": "My pencil was shaking.",
+      "beat_type": "emotion",
+      "principal": "narrator",
+      "listeners": [],
+      "camera_move": "push",
+      "composition": "Face fills >=40% frame height; shaking pencil also readable near face.",
+      "performance": "Pencil shaking from entry, worried expression deepens, head/torso react; cut while motion continues.",
+      "reuse": "not_authorized_without_direction_evidence"
+    },
+    {
+      "id": "sh33",
+      "round5_flagged": true,
+      "edit_in": 72.4,
+      "edit_out": 73.36,
+      "narration": "I said, Why Kai?",
+      "beat_type": "emotion",
+      "principal": "narrator",
+      "listeners": [],
+      "camera_move": "push",
+      "composition": "Same conversational axis, close on question with matching eyeline.",
+      "performance": "Start on inhale/head lift, ask, cut on look to June.",
+      "reuse": "not_authorized_without_direction_evidence"
+    },
+    {
+      "id": "sh34",
+      "round5_flagged": true,
+      "edit_in": 73.36,
+      "edit_out": 75.28,
+      "narration": "She said, He's the only boy who ever talks to me.",
+      "beat_type": "emotion",
+      "principal": "june",
+      "listeners": [
+        "narrator"
+      ],
+      "camera_move": "push",
+      "composition": "Reverse face-filling June close-up; narrator not competing; well geography established.",
+      "performance": "June's expression softens, nods while answering, cut on gentle reaction.",
+      "reuse": "not_authorized_without_direction_evidence"
+    },
+    {
+      "id": "sh35",
+      "round5_flagged": false,
+      "edit_in": 75.28,
+      "edit_out": 76.44,
+      "narration": "I looked back at the wall.",
+      "beat_type": "emotion",
+      "principal": "narrator",
+      "listeners": [],
+      "camera_move": "reframe",
+      "composition": "Close turn toward wall, motivated reframe follows head.",
+      "performance": "Eyes lead, head and torso follow; cut on matched wall eyeline.",
+      "reuse": "not_authorized_without_direction_evidence"
+    },
+    {
+      "id": "sh36",
+      "round5_flagged": false,
+      "edit_in": 76.44,
+      "edit_out": 78.96,
+      "narration": "Six boys, four years, zero words.",
+      "beat_type": "action",
+      "principal": "otis",
+      "listeners": [
+        "leo",
+        "max"
+      ],
+      "camera_move": "drift",
+      "composition": "Wall medium group, six boys deliberately staged with varying reactions.",
+      "performance": "Boys shift and glance, Otis lowers hands; no frozen tableau.",
+      "reuse": "not_authorized_without_direction_evidence"
+    },
+    {
+      "id": "sh37",
+      "round5_flagged": false,
+      "edit_in": 78.96,
+      "edit_out": 81.98,
+      "narration": "That's when I realized the girls don't only like three boys.",
+      "beat_type": "emotion",
+      "principal": "narrator",
+      "listeners": [],
+      "camera_move": "push",
+      "composition": "Face-filling realization; background soft/quiet.",
+      "performance": "Worried→understanding, head lifts and gaze changes; end still moving.",
+      "reuse": "not_authorized_without_direction_evidence"
+    },
+    {
+      "id": "sh38",
+      "round5_flagged": false,
+      "edit_in": 81.98,
+      "edit_out": 84.1,
+      "narration": "Only three boys had ever crossed the square.",
+      "beat_type": "geography",
+      "principal": "narrator",
+      "listeners": [],
+      "camera_move": "reframe",
+      "composition": "Composed geography shows wall, well and circle. Split pure establishing <=2s or keep principal >=25%.",
+      "performance": "Actual popular boys in animated conversation, wall boys reacting; match route axis.",
+      "reuse": "not_authorized_without_direction_evidence"
+    },
+    {
+      "id": "sh39",
+      "round5_flagged": true,
+      "edit_in": 84.1,
+      "edit_out": 86.04,
+      "narration": "The chart was never about the girls. It was about us.",
+      "beat_type": "information",
+      "principal": "otis",
+      "listeners": [],
+      "camera_move": "push",
+      "composition": "Living overhead cast diagram reframe to seven unlinked boys, not paper insert.",
+      "performance": "Reveal emphasis on boys' lack of outgoing approach; actual cast changes posture.",
+      "reuse": "not_authorized_without_direction_evidence"
+    },
+    {
+      "id": "sh40",
+      "round5_flagged": false,
+      "edit_in": 86.04,
+      "edit_out": 87.5,
+      "narration": "So I didn't go back to the wall.",
+      "beat_type": "emotion",
+      "principal": "narrator",
+      "listeners": [],
+      "camera_move": "reframe",
+      "composition": "Close turn back toward June, away from wall.",
+      "performance": "Already turning at cut; expression resolves, move toward June.",
+      "reuse": "not_authorized_without_direction_evidence"
+    },
+    {
+      "id": "sh41",
+      "round5_flagged": false,
+      "edit_in": 87.5,
+      "edit_out": 89.46,
+      "narration": "I said hi. What's your dog's name?",
+      "beat_type": "interview",
+      "principal": "narrator",
+      "listeners": [
+        "june"
+      ],
+      "camera_move": "drift",
+      "composition": "Eye-level two-shot, well in frame, clear faces.",
+      "performance": "Narrator greets then asks; June's expression responds during line.",
+      "reuse": "not_authorized_without_direction_evidence"
+    },
+    {
+      "id": "sh42",
+      "round5_flagged": false,
+      "edit_in": 89.46,
+      "edit_out": 90.42,
+      "narration": "She said waffle.",
+      "beat_type": "emotion",
+      "principal": "june",
+      "listeners": [
+        "narrator"
+      ],
+      "camera_move": "reframe",
+      "composition": "June close answering; cut/reveal actual dog only after spoken name.",
+      "performance": "June's face animates, eyes look down; dog enters on cue, not before.",
+      "reuse": "not_authorized_without_direction_evidence"
+    },
+    {
+      "id": "sh43",
+      "round5_flagged": true,
+      "edit_in": 90.42,
+      "edit_out": 92.14,
+      "narration": "And she moved over, and I sat down.",
+      "beat_type": "action",
+      "principal": "june",
+      "listeners": [
+        "narrator"
+      ],
+      "camera_move": "drift",
+      "composition": "Medium bench two-shot with seat, legs and Waffle visible; no clipping or float.",
+      "performance": "June shifts naturally to make room, narrator sits with planted feet and calibrated support; both continue reacting.",
+      "reuse": "not_authorized_without_direction_evidence"
+    },
+    {
+      "id": "sh44",
+      "round5_flagged": true,
+      "edit_in": 92.14,
+      "edit_out": 93.98,
+      "narration": "On Monday, two more boys came across.",
+      "beat_type": "action",
+      "principal": "leo",
+      "listeners": [
+        "max"
+      ],
+      "camera_move": "track",
+      "composition": "Two boys really walk the same route, distinct timings and planted feet.",
+      "performance": "Enter mid approach; continue through cut toward well; no snapped root.",
+      "reuse": "not_authorized_without_direction_evidence"
+    },
+    {
+      "id": "sh45",
+      "round5_flagged": false,
+      "edit_in": 93.98,
+      "edit_out": 95.36,
+      "narration": "By Friday, the wall was empty.",
+      "beat_type": "geography",
+      "principal": null,
+      "listeners": [],
+      "camera_move": "drift",
+      "composition": "Empty wall geography with visible well group if framing permits; pure establishing <=2s.",
+      "performance": "No occupants on wall; active conversation visible at well, camera moves.",
+      "reuse": "not_authorized_without_direction_evidence"
+    },
+    {
+      "id": "sh46",
+      "round5_flagged": false,
+      "edit_in": 95.36,
+      "edit_out": 98,
+      "narration": "Otis had to draw a new chart, and now it looks like a plate of spaghetti.",
+      "beat_type": "information",
+      "principal": "otis",
+      "listeners": [],
+      "camera_move": "locked",
+      "composition": "Actual cast formation with replacement world-space arrow network, maintain readable registration.",
+      "performance": "Reveal new links progressively including narrator→June, no paper substitute.",
+      "lock_reason": "Preserve registration of timed world-space links",
+      "reuse": "not_authorized_without_direction_evidence"
+    },
+    {
+      "id": "sh47",
+      "round5_flagged": true,
+      "edit_in": 98,
+      "edit_out": 99.78,
+      "narration": "He says it's still called hypergamy.",
+      "beat_type": "interview",
+      "principal": "otis",
+      "listeners": [
+        "narrator"
+      ],
+      "camera_move": "drift",
+      "composition": "Close two-shot with actual replacement chart as prop, not information insert.",
+      "performance": "Otis shrugs while speaking; narrator reacts with amused doubt.",
+      "reuse": "not_authorized_without_direction_evidence"
+    },
+    {
+      "id": "sh48",
+      "round5_flagged": false,
+      "edit_in": 99.78,
+      "edit_out": 101.2,
+      "narration": "June says it's called saying hi.",
+      "beat_type": "emotion",
+      "principal": "june",
+      "listeners": [
+        "narrator"
+      ],
+      "camera_move": "push",
+      "composition": "Close final June smile; briefly include narrator and Waffle without competing with answer.",
+      "performance": "June delivers line with smile/head response, narrator reacts; finish mid natural gesture.",
+      "reuse": "not_authorized_without_direction_evidence"
+    }
+  ]
+}
