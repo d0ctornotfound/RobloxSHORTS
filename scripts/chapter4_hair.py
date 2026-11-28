@@ -55,8 +55,15 @@ def apply_hair(actor, style="default"):
             front=max(0,-si)**4
             dz=(.40 if long else .10)*front if j==0 else ((.19*front) if long and j==1 else 0)
             zz=z+dz+.012*math.sin(5*a+.4)+.006*math.cos(11*a)
+            # Teacher-only bob: the cheek curtain is continuous with the cap.
+            # Preserve the central forehead opening; lower the front-side rim.
+            cheek=0.0
+            if role=="teacher" and long and j<3:
+                cheek=math.exp(-((abs(co)-.69)/.20)**2)*max(0,-si)**1.1
+                zz-=cheek*(.27,.14,.055)[j]
             if corrected and style=="side_part" and j>=2:zz+=.055*co
-            vs.append((rx*math.copysign(abs(co)**.58,co),ry*math.copysign(abs(si)**.58,si),zz))
+            vs.append((rx*math.copysign(abs(co)**.58,co)+math.copysign(.025*cheek,co),
+                       ry*math.copysign(abs(si)**.58,si)-.10*cheek,zz))
             uv.append((i/N,j/(len(rings)-1)))
     for j in range(len(rings)-1):
         for i in range(N):
@@ -171,7 +178,61 @@ def apply_hair(actor, style="default"):
             if style in ("spikes","messy_fringe") and front:z-=rng.uniform(.02,.14)
             lock((x*.72,y*.72,.67),(x*1.08,y*1.08,.54),(x*1.10,y*1.10,z),
                  rng.uniform(.052,.085),rng.uniform(.042,.070),rng.randrange(5))
-    if style in ("swept_bun","low_bun"):
+    if role=="teacher" and long:
+        # Rooted, overlapping face-framing panels bridge cap to cheek, not a detached band.
+        for sign in (-1,1):
+            for i in range(5):
+                q=i/4
+                lock((sign*(.43+.13*q),-.39+.08*q,.68-.04*q),
+                     (sign*(.73+.02*q),-.68+.08*q,.32),
+                     (sign*(.62+.065*q),-.68+.14*q,-.09+.035*q),
+                     .115-.025*q,.075-.012*q,2+i%2,blunt=.36,roll=sign*.22)
+    if role=="teacher" and style=="swept_bun":
+        # Two continuous interleaved spiral ribbons covering a smaller solid core.
+        # Parameterized on a rear-facing ellipsoid from buried root to crown centre.
+        z=.84
+        V=[];F=[];U=[];n=64;m=28
+        for j in range(m+1):
+            t=math.pi*j/m
+            for i in range(n):
+                a=math.tau*i/n
+                V.append((.278*math.sin(t)*math.cos(a),.735+.267*math.cos(t),
+                          z+.278*math.sin(t)*math.sin(a)))
+                U.append((i/n,j/m))
+        for j in range(m):
+            for i in range(n):
+                k=j*n+i;l=j*n+(i+1)%n;F.append((k,l,l+n,k+n))
+        mesh("recessed solid coil foundation",V,F,U,mats[0])
+        def center(t,phase):
+            polar=2.18*(1-t)+.035*t
+            ang=phase+math.tau*2.45*t+.10*math.sin(math.tau*t)
+            return Vector((.295*math.sin(polar)*math.cos(ang),
+                           .755+.288*math.cos(polar),
+                           z+.295*math.sin(polar)*math.sin(ang)))
+        for strand in range(2):
+            phase=math.pi*strand+.25
+            v=[];f=[];u=[];steps=221;sides=14
+            for j in range(steps):
+                t=j/(steps-1);p=center(t,phase)
+                tangent=(center(min(1,t+.003),phase)-center(max(0,t-.003),phase)).normalized()
+                normal=Vector((p.x,p.y-.755,p.z-z)).normalized()
+                cross=tangent.cross(normal).normalized()
+                normal=cross.cross(tangent).normalized()
+                width=(.060+.005*math.sin(17*t+phase))*(1-.67*max(0,(t-.86)/.14))
+                depth=.030*(1-.60*max(0,(t-.9)/.1))
+                for k in range(sides):
+                    q=math.tau*k/sides
+                    # Fine longitudinal grooves follow the entire wound ribbon.
+                    ripple=1+.045*math.cos(5*q+.2*math.sin(9*t))
+                    v.append(tuple(p+cross*(width*math.cos(q))+normal*(depth*math.sin(q)*ripple)))
+                    u.append((k/sides,t))
+            for j in range(steps-1):
+                for k in range(sides):
+                    i=j*sides+k;l=j*sides+(k+1)%sides;f.append((i,l,l+sides,i+sides))
+            f.append(tuple(reversed(range(sides))))
+            f.append(tuple((steps-1)*sides+k for k in range(sides)))
+            mesh("continuous spiral wrap "+str(strand),v,f,u,mats[2+strand])
+    elif style in ("swept_bun","low_bun"):
         # Filled ellipsoid beneath overlapping irregular coils.
         z=.84 if style=="swept_bun" else .46
         V=[];F=[];U=[];n=40;m=20
