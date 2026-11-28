@@ -55,5 +55,11 @@ def build_square(stage,gltf_path):
         m=stage["marks"]["well_"+cid];x,y,_=m["xyz"];h=m["seat_height"]
         ob=cube("seat "+cid,(x,y,h-.055),(.70,.58,.11),wood,root,bevel=.02);ob.rotation_euler.z=math.radians(m["yaw_deg"])
         cube("pedestal "+cid,(x,y,(h-.11)/2),(.40,.37,h-.11),stone,root,bevel=.01)
+    bench=stage.get("pair_bench")
+    if bench:
+        cx,cy,cz=bench["center"];dx,dy,dz=bench["dimensions"];top=bench["top"]
+        cube("Actual pair seat",(cx,cy,cz),(dx,dy,dz),wood,root,bevel=.025)
+        for side in (-1,1):
+            cube("Pair bench leg",(cx,cy+side*(dy/2-.23),(top-dz)/2),(.60,.18,top-dz),stone,root,bevel=.02)
     provenance["adaptation"]="Actual source fountain recentered/scaled as the sole central water feature; source cobbles and facades preserved. Story-local wall and seats calibrated from measured seated pose data. No duplicate fountain or replacement paving."
     return root,provenance
