@@ -226,6 +226,7 @@ def main():
     area_light("Front facial fill",(-2,-4,3.4),380 if shot["atmosphere"]=="morning" else 240,5,(1,.96,.90))
     if n in (1,2):area_light("Walking trouser shadow fill",(-3,-2.8,1.5),340 if n==1 else 260,3.5,(1,.94,.87))
     if n in (43,44):area_light("Cane and trouser shadow fill",(2.0,-3.2,1.8),520,4.0,(.94,.96,1))
+    if n==46:area_light("Cap donning trouser fill",(1.6,-3.0,1.4),220,3.5,(1,.95,.88))
     camera=create(scene,"The Bench camera",42)
     bags=[paper("Brown paper bag "+str(i+1),p) for i in range(2)]
     cap=flatcap(p);stick=cane(p)
@@ -312,9 +313,13 @@ def main():
         if n==19 and m and d:
             # Inner hands bring both bags into the same plane, with a physical gap.
             for actor,index,bag,side in ((m,1,bags[1],1),(d,0,bags[0],-1)):
-                limb=actor.art.arms[index];goal=limb.joint()+V((side*.12,-.88,-.36)).normalized()*(limb.a+limb.b)*.83
+                limb=actor.art.arms[index];goal=limb.joint()+V((-side*.30,-.88,-.36)).normalized()*(limb.a+limb.b)*.83
                 err=actor.aim(index,goal);bag.location=actor.hand(index);bag.scale=(1.25,1.25,1.25)
                 contacts.append({"event":"paper_bag_display","target_error":float(err),"socket_error":(bag.location-actor.hand(index)).length})
+            bpy.context.view_layer.update()
+            a0,a1=bounds(v for ob in bags[0].children_recursive if ob.type=="MESH" for v in mesh_points(ob))
+            b0,b1=bounds(v for ob in bags[1].children_recursive if ob.type=="MESH" for v in mesh_points(ob))
+            contacts.append({"event":"two_bag_separation","world_x_gap":float(max(a0.x-b1.x,b0.x-a1.x))})
         if n in (31,32) and m:
             # R3 missed the cap by >=.440 units. Use the approved seated pose
             # beside it and the inner arm; measure the actual nearest crown edge.
@@ -508,6 +513,11 @@ def main():
         geo=geometry(scene,camera,actors,heroes,kind)
         prop_roots={4:[bags[0]],5:[birds[0][0]],10:[bags[1]],19:bags,23:[birds[0][0]],24:[birds[0][0]],28:[birds[0][0]],29:[cap],31:[cap],32:[cap],36:[cap],37:[birds[0][0]],43:[stick],44:[stick],45:[cap],46:[cap],47:bags,48:[bags[1]]}.get(n,[])
         props={ob.name:prop_geometry(scene,camera,ob) for ob in prop_roots if any(not x.hide_render for x in ob.children_recursive if x.type=="MESH")}
+        if n==19 and len(props)==2:
+            boxes=[project(scene,camera,[v for ob in bag.children_recursive if ob.type=="MESH" for v in mesh_points(ob)]) for bag in bags]
+            gap=max(boxes[0][0]-boxes[1][1],boxes[1][0]-boxes[0][1]);contacts.append({"event":"two_bag_screen_separation","gap":float(gap)})
+            if gap<.025:
+                for p0 in props.values():p0["pass"]=False
         geometry_records.append({"frame":global_frame,"heroes":geo,"props":props,"contacts":contacts,"pass":all(x["pass"] for x in list(geo.values())+list(props.values()))})
         if f not in selected:continue
         projection=[]

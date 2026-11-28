@@ -1,6 +1,6 @@
 {
   "status": "partial_verified_not_release_ready",
-  "verified_shots": 16,
+  "verified_shots": 17,
   "shots": [
     {
       "shot": 3,
@@ -85,6 +85,20 @@
       "passed": true,
       "independent_checks": "SHA-256, decoded frame count, dimensions, raw frame sequence, geometry records",
       "visual_status": "first and last production frames inspected; final continuous playback pending"
+    },
+    {
+      "shot": 19,
+      "artifact_id": 15240284089,
+      "production_run": 46088390454,
+      "preflight_run": 46087343283,
+      "source_commit": "c88b009354b8be2a6c1386ca46c6679bd4c52714",
+      "frames": 60,
+      "duration": 2.5,
+      "encoded_max_near_black_percent": 1.0401234567901234,
+      "sha256": "4caa2db82bed6c28049ac90563f5b09c80ae413e0952770ead2e2c131e7e2678",
+      "passed": true,
+      "independent_checks": "SHA-256, decoded darkness and frame count, raw PNG indices, exact geometry",
+      "visual_status": "HOLD: two bags overlap; supersede with separated bag retest before release"
     },
     {
       "shot": 23,
