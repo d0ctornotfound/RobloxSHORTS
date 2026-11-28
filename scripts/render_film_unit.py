@@ -10,7 +10,7 @@ from mathutils import Vector
 from PIL import Image
 import numpy as np
 from film_walk_to_mark import construct
-from film_direction import apply_grade, direct_camera, sample as direction_sample
+from film_direction import apply_grade, direct_camera, performance, sample as direction_sample
 from library_locomotion import StrideLock
 from r6_imported_cycles import Retarget
 from character_motion_correction import apply_corrected,rear_hip
@@ -95,6 +95,7 @@ def main():
         if dog: m["animal_contact"]=resolve(conf["animal_pose"])(dog,spec["animal"]["motion"],su)
         bpy.context.view_layer.update()
         if spec.get("direction"):
+            performance(d.actors,spec["direction"],u,t)
             direct_camera(scene,cam,d.actors,spec["direction"],u,frame)
         if gf<first:continue
         # Generic external vs own-character visibility; the full original ray
