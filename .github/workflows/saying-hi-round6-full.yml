@@ -1,0 +1,16 @@
+name: Round 6 Saying Hi complete native film
+on:
+  push:
+    branches: ['production/saying-hi']
+    paths: ['.github/workflows/saying-hi-round6-full.yml']
+  workflow_dispatch:
+permissions:
+  contents: write
+  actions: read
+jobs:
+  film:
+    uses: ./.github/workflows/film-production.yml
+    with:
+      branch: production/saying-hi
+      config: stories/saying_hi_round6_full_stage.json
+      independent_direction_audit: true
