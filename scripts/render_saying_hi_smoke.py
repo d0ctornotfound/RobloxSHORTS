@@ -46,7 +46,13 @@ def seat_actor(a,mark):
     yaw=math.radians(mark["yaw_deg"]);art=Articulation(a,legs=True,arms=False)
     clothes=ArticulatedClothes(a,art);feet=neutral_feet(a,art,yaw);seat=seat_setup(a,art,yaw,feet)
     sit_pose(a,art,"sit",1,1.97,yaw,feet,None,seat);art.shift(Vector(mark["xyz"]));clothes.sync()
-    return art,clothes,{"hip_z":float(rear_hip(a)[0]),"foot_plane_gaps":[float(v.z) for v in art.soles()]}
+    top=float(rear_hip(a)[0]);center=seat[1]+Vector(mark["xyz"])
+    cid=a.root.name;fixture=bpy.data.objects.get("seat "+cid);pedestal=bpy.data.objects.get("pedestal "+cid)
+    if fixture is not None:
+        fixture.location=(center.x,center.y,top-.055);fixture.dimensions=(seat[2][0],seat[2][1],.11)
+        if pedestal:pedestal.location=(center.x,center.y,(top-.11)/2);pedestal.dimensions=(.40,.37,top-.11)
+    bpy.context.view_layer.update()
+    return art,clothes,{"hip_z":top,"calibrated_seat_center":list(center),"seat_footprint":list(seat[2]),"declared_top":mark["seat_height"],"hip_minus_declared_top":top-mark["seat_height"],"foot_plane_gaps":[float(v.z) for v in art.soles()]}
 
 def render(scene,out,name):
     path=out/(name+".png");scene.render.filepath=str(path)
@@ -58,7 +64,7 @@ def render(scene,out,name):
 def main():
     p=argparse.ArgumentParser();p.add_argument("--kind",choices=["lineup","square"],required=True);p.add_argument("--map");p.add_argument("--output",required=True)
     args=p.parse_args(sys.argv[sys.argv.index("--")+1:]);out=Path(args.output).resolve();out.mkdir(parents=True,exist_ok=True)
-    c,s=load();scene=setup(2200,1200) if args.kind=="lineup" else setup(1440,1080)
+    c,s=load();scene=setup(2800,1300) if args.kind=="lineup" else setup(1440,1080)
     camera=create(scene);manifest={"kind":args.kind,"engine":"EEVEE","denoising":False,"eevee_spatial_samples":32,"temporal_samples":1,"status":"candidate smoke","cast":{}}
     if args.kind=="square":
         _,provenance=build_square(s,args.map);manifest["scenery"]=provenance
@@ -67,7 +73,7 @@ def main():
             a=build_cast_actor(cid,record);mark=s["marks"][("wall_" if cid in s["layouts"]["initial"]["wall"] else "well_")+cid]
             art,clothes,metrics=seat_actor(a,mark);a.pose("happy" if cid in s["layouts"]["initial"]["well"] else "neutral")
             manifest["cast"][cid]={"scale":record["scale"],"mark":mark,"contact":metrics,"bounds":list(project(scene,camera,actor_points(a))) if False else None}
-        frame(scene,camera,(13.5,-15.5,11.8),(0,4,1.05),35)
+        frame(scene,camera,(-12.0,-15.5,11.8),(0,4,1.05),35)
         manifest["image"]=render(scene,out,"square_group_smoke")
     else:
         floor=material("neutral studio floor",(.19,.21,.23));cube("studio support",(0,0,-.08),(22,11,.16),floor,bevel=.01)
@@ -77,18 +83,18 @@ def main():
         for label,ids in (("girls",c["girls"]),("boys",c["boys"])):
             actors=[];before=set(bpy.data.objects)
             for i,cid in enumerate(ids):
-                a=build_cast_actor(cid,c["actors"][cid]);apply_corrected(a,"idle",.5,.5,((i-4.5)*1.30,0,0),0);a.pose("neutral");actors.append(a)
+                a=build_cast_actor(cid,c["actors"][cid]);apply_corrected(a,"idle",.5,.5,((i-4.5)*1.75,0,0),0);a.pose("neutral");actors.append(a)
                 lo,hi=bounds(actor_points(a));manifest["cast"][cid]={"height_with_hair":hi.z-lo.z,"scale":c["actors"][cid]["scale"]}
-            frame(scene,camera,(0,-15,2.0),(0,0,1.28),50,ortho=14.2)
-            scene.render.resolution_x=2200;scene.render.resolution_y=620
+            frame(scene,camera,(0,-15,2.0),(0,0,1.28),50,ortho=19.0)
+            scene.render.resolution_x=2800;scene.render.resolution_y=650
             rows.append(render(scene,out,"lineup_"+label))
             for ob in set(bpy.data.objects)-before:
                 ob.hide_render=True
         from PIL import ImageDraw,ImageFont
-        board=Image.new("RGB",(2200,1370),"#20262a");draw=ImageDraw.Draw(board);font=ImageFont.truetype("/usr/share/fonts/truetype/dejavu/DejaVuSans-Bold.ttf",26)
+        board=Image.new("RGB",(2800,1430),"#20262a");draw=ImageDraw.Draw(board);font=ImageFont.truetype("/usr/share/fonts/truetype/dejavu/DejaVuSans-Bold.ttf",26)
         for j,(label,ids) in enumerate((("girls",c["girls"]),("boys",c["boys"]))):
-            y=j*685;board.paste(Image.open(out/("lineup_"+label+".png")).convert("RGB"),(0,y))
-            for i,cid in enumerate(ids):draw.text((110+i*219,y+641),cid.title(),font=font,fill="white",anchor="mm")
+            y=j*715;board.paste(Image.open(out/("lineup_"+label+".png")).convert("RGB"),(0,y))
+            for i,cid in enumerate(ids):draw.text((round(2800*(.5+(i-4.5)*1.75/19.0)),y+673),cid.title(),font=font,fill="white",anchor="mm")
         board.save(out/"cast_lineup.png");manifest["images"]=rows;manifest["board"]="cast_lineup.png"
     (out/"manifest.json").write_text(json.dumps(manifest,indent=2)+"\n")
 if __name__=="__main__":main()
