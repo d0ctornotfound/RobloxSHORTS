@@ -1,0 +1,27 @@
+{
+  "unit": "otis_eyes",
+  "samples": 30,
+  "sampling_hz": 30,
+  "checks": {
+    "max_head_arm_intersections": {
+      "value": 0,
+      "limit": 0,
+      "pass": true
+    },
+    "covered_eye_samples_at_full_pose": {
+      "value": 2,
+      "limit": 2,
+      "pass": true
+    }
+  },
+  "pass": true,
+  "eye_solution": [
+    0.22,
+    0.48,
+    0.1,
+    0.4,
+    -1.0
+  ],
+  "search_candidates": [],
+  "max_hand_target_gap": 0.11868303298447334
+}
