@@ -1,0 +1,485 @@
+{
+  "run_id": "46135821796",
+  "source_commit": "370692f55f6db1a542ae4556a47e048824cd16c2",
+  "baseline": "assets/saying_hi_review/round5/saying_hi.mp4",
+  "groups": {
+    "crossing": {
+      "missing_chunks": [],
+      "shots": {
+        "sh20": {
+          "start": 1422,
+          "end": 1528,
+          "direction": {
+            "status": "flag",
+            "beat_type": "action",
+            "principal": "narrator",
+            "actors": {
+              "ava": {
+                "motion_coverage": 0.0,
+                "held_pose_max_s": 3.533333333333333,
+                "start_in_motion": false,
+                "end_in_motion": false,
+                "transitions": 105
+              },
+              "bella": {
+                "motion_coverage": 0.0,
+                "held_pose_max_s": 3.533333333333333,
+                "start_in_motion": false,
+                "end_in_motion": false,
+                "transitions": 105
+              },
+              "brody": {
+                "motion_coverage": 0.0,
+                "held_pose_max_s": 3.533333333333333,
+                "start_in_motion": false,
+                "end_in_motion": false,
+                "transitions": 105
+              },
+              "chase": {
+                "motion_coverage": 0.0,
+                "held_pose_max_s": 3.533333333333333,
+                "start_in_motion": false,
+                "end_in_motion": false,
+                "transitions": 105
+              },
+              "cleo": {
+                "motion_coverage": 0.0,
+                "held_pose_max_s": 3.533333333333333,
+                "start_in_motion": false,
+                "end_in_motion": false,
+                "transitions": 105
+              },
+              "daisy": {
+                "motion_coverage": 0.0,
+                "held_pose_max_s": 3.533333333333333,
+                "start_in_motion": false,
+                "end_in_motion": false,
+                "transitions": 105
+              },
+              "ella": {
+                "motion_coverage": 0.0,
+                "held_pose_max_s": 3.533333333333333,
+                "start_in_motion": false,
+                "end_in_motion": false,
+                "transitions": 105
+              },
+              "faye": {
+                "motion_coverage": 0.0,
+                "held_pose_max_s": 3.533333333333333,
+                "start_in_motion": false,
+                "end_in_motion": false,
+                "transitions": 105
+              },
+              "gia": {
+                "motion_coverage": 0.0,
+                "held_pose_max_s": 3.533333333333333,
+                "start_in_motion": false,
+                "end_in_motion": false,
+                "transitions": 105
+              },
+              "hana": {
+                "motion_coverage": 0.0,
+                "held_pose_max_s": 3.533333333333333,
+                "start_in_motion": false,
+                "end_in_motion": false,
+                "transitions": 105
+              },
+              "ivy": {
+                "motion_coverage": 0.0,
+                "held_pose_max_s": 3.533333333333333,
+                "start_in_motion": false,
+                "end_in_motion": false,
+                "transitions": 105
+              },
+              "june": {
+                "motion_coverage": 0.0,
+                "held_pose_max_s": 3.533333333333333,
+                "start_in_motion": false,
+                "end_in_motion": false,
+                "transitions": 105
+              },
+              "kai": {
+                "motion_coverage": 0.0,
+                "held_pose_max_s": 3.533333333333333,
+                "start_in_motion": false,
+                "end_in_motion": false,
+                "transitions": 105
+              },
+              "leo": {
+                "motion_coverage": 0.0,
+                "held_pose_max_s": 3.533333333333333,
+                "start_in_motion": false,
+                "end_in_motion": false,
+                "transitions": 105
+              },
+              "max": {
+                "motion_coverage": 0.0,
+                "held_pose_max_s": 3.533333333333333,
+                "start_in_motion": false,
+                "end_in_motion": false,
+                "transitions": 105
+              },
+              "narrator": {
+                "motion_coverage": 1.0,
+                "held_pose_max_s": 0.03333333333333333,
+                "start_in_motion": true,
+                "end_in_motion": true,
+                "transitions": 105
+              },
+              "noah": {
+                "motion_coverage": 0.0,
+                "held_pose_max_s": 3.533333333333333,
+                "start_in_motion": false,
+                "end_in_motion": false,
+                "transitions": 105
+              },
+              "otis": {
+                "motion_coverage": 0.0,
+                "held_pose_max_s": 3.533333333333333,
+                "start_in_motion": false,
+                "end_in_motion": false,
+                "transitions": 105
+              },
+              "ryan": {
+                "motion_coverage": 0.0,
+                "held_pose_max_s": 3.533333333333333,
+                "start_in_motion": false,
+                "end_in_motion": false,
+                "transitions": 105
+              },
+              "sam": {
+                "motion_coverage": 0.0,
+                "held_pose_max_s": 3.533333333333333,
+                "start_in_motion": false,
+                "end_in_motion": false,
+                "transitions": 105
+              }
+            },
+            "faces": {
+              "narrator": {
+                "min_height": 0.06640625,
+                "safe_all": true
+              }
+            },
+            "checks": {
+              "principal_motion": true,
+              "principal_edges": true,
+              "all_actor_holds": false,
+              "grade_declared": true
+            },
+            "grade": {
+              "preset": "warm_saturated_v1",
+              "look": "AgX - Medium High Contrast",
+              "exposure": -0.12,
+              "saturation": 1.18
+            },
+            "threshold_scene_units": 0.0015,
+            "visual_review_required": true
+          },
+          "external_face_ray_blocks_max": {
+            "narrator": 9
+          }
+        },
+        "sh21": {
+          "start": 1528,
+          "end": 1579,
+          "direction": {
+            "status": "flag",
+            "beat_type": "action",
+            "principal": "narrator",
+            "actors": {
+              "ava": {
+                "motion_coverage": 0.0,
+                "held_pose_max_s": 1.7,
+                "start_in_motion": false,
+                "end_in_motion": false,
+                "transitions": 50
+              },
+              "bella": {
+                "motion_coverage": 0.0,
+                "held_pose_max_s": 1.7,
+                "start_in_motion": false,
+                "end_in_motion": false,
+                "transitions": 50
+              },
+              "brody": {
+                "motion_coverage": 0.0,
+                "held_pose_max_s": 1.7,
+                "start_in_motion": false,
+                "end_in_motion": false,
+                "transitions": 50
+              },
+              "chase": {
+                "motion_coverage": 0.0,
+                "held_pose_max_s": 1.7,
+                "start_in_motion": false,
+                "end_in_motion": false,
+                "transitions": 50
+              },
+              "cleo": {
+                "motion_coverage": 0.0,
+                "held_pose_max_s": 1.7,
+                "start_in_motion": false,
+                "end_in_motion": false,
+                "transitions": 50
+              },
+              "daisy": {
+                "motion_coverage": 0.0,
+                "held_pose_max_s": 1.7,
+                "start_in_motion": false,
+                "end_in_motion": false,
+                "transitions": 50
+              },
+              "ella": {
+                "motion_coverage": 0.0,
+                "held_pose_max_s": 1.7,
+                "start_in_motion": false,
+                "end_in_motion": false,
+                "transitions": 50
+              },
+              "faye": {
+                "motion_coverage": 0.0,
+                "held_pose_max_s": 1.7,
+                "start_in_motion": false,
+                "end_in_motion": false,
+                "transitions": 50
+              },
+              "gia": {
+                "motion_coverage": 0.0,
+                "held_pose_max_s": 1.7,
+                "start_in_motion": false,
+                "end_in_motion": false,
+                "transitions": 50
+              },
+              "hana": {
+                "motion_coverage": 0.0,
+                "held_pose_max_s": 1.7,
+                "start_in_motion": false,
+                "end_in_motion": false,
+                "transitions": 50
+              },
+              "ivy": {
+                "motion_coverage": 0.0,
+                "held_pose_max_s": 1.7,
+                "start_in_motion": false,
+                "end_in_motion": false,
+                "transitions": 50
+              },
+              "june": {
+                "motion_coverage": 0.0,
+                "held_pose_max_s": 1.7,
+                "start_in_motion": false,
+                "end_in_motion": false,
+                "transitions": 50
+              },
+              "kai": {
+                "motion_coverage": 0.0,
+                "held_pose_max_s": 1.7,
+                "start_in_motion": false,
+                "end_in_motion": false,
+                "transitions": 50
+              },
+              "leo": {
+                "motion_coverage": 0.0,
+                "held_pose_max_s": 1.7,
+                "start_in_motion": false,
+                "end_in_motion": false,
+                "transitions": 50
+              },
+              "max": {
+                "motion_coverage": 0.0,
+                "held_pose_max_s": 1.7,
+                "start_in_motion": false,
+                "end_in_motion": false,
+                "transitions": 50
+              },
+              "narrator": {
+                "motion_coverage": 1.0,
+                "held_pose_max_s": 0.03333333333333333,
+                "start_in_motion": true,
+                "end_in_motion": true,
+                "transitions": 50
+              },
+              "noah": {
+                "motion_coverage": 0.0,
+                "held_pose_max_s": 1.7,
+                "start_in_motion": false,
+                "end_in_motion": false,
+                "transitions": 50
+              },
+              "otis": {
+                "motion_coverage": 0.0,
+                "held_pose_max_s": 1.7,
+                "start_in_motion": false,
+                "end_in_motion": false,
+                "transitions": 50
+              },
+              "ryan": {
+                "motion_coverage": 0.0,
+                "held_pose_max_s": 1.7,
+                "start_in_motion": false,
+                "end_in_motion": false,
+                "transitions": 50
+              },
+              "sam": {
+                "motion_coverage": 0.0,
+                "held_pose_max_s": 1.7,
+                "start_in_motion": false,
+                "end_in_motion": false,
+                "transitions": 50
+              }
+            },
+            "faces": {
+              "narrator": {
+                "min_height": 0.06639647483825684,
+                "safe_all": true
+              }
+            },
+            "checks": {
+              "principal_motion": true,
+              "principal_edges": true,
+              "all_actor_holds": false,
+              "grade_declared": true
+            },
+            "grade": {
+              "preset": "warm_saturated_v1",
+              "look": "AgX - Medium High Contrast",
+              "exposure": -0.12,
+              "saturation": 1.18
+            },
+            "threshold_scene_units": 0.0015,
+            "visual_review_required": true
+          },
+          "external_face_ray_blocks_max": {
+            "narrator": 11
+          }
+        }
+      },
+      "clip": "assets/saying_hi_review/round6/pilot/crossing.mp4",
+      "frames": 157,
+      "sha256": "daa0e961eaaa249670ba4da777b8b2898b44ec8ad2f187649ab7477a799d9573"
+    },
+    "interview": {
+      "missing_chunks": [],
+      "shots": {
+        "sh27": {
+          "start": 1807,
+          "end": 1883,
+          "direction": {
+            "status": "numeric_pass",
+            "beat_type": "interview",
+            "principal": "kai",
+            "actors": {
+              "cleo": {
+                "motion_coverage": 1.0,
+                "held_pose_max_s": 0.03333333333333333,
+                "start_in_motion": true,
+                "end_in_motion": true,
+                "transitions": 75
+              },
+              "kai": {
+                "motion_coverage": 1.0,
+                "held_pose_max_s": 0.03333333333333333,
+                "start_in_motion": true,
+                "end_in_motion": true,
+                "transitions": 75
+              }
+            },
+            "faces": {
+              "kai": {
+                "min_height": 0.205672949552536,
+                "safe_all": true
+              },
+              "cleo": {
+                "min_height": 0.209347665309906,
+                "safe_all": true
+              }
+            },
+            "checks": {
+              "principal_motion": true,
+              "principal_edges": true,
+              "all_actor_holds": true,
+              "grade_declared": true,
+              "two_face_bounds": true
+            },
+            "grade": {
+              "preset": "warm_saturated_v1",
+              "look": "AgX - Medium High Contrast",
+              "exposure": -0.12,
+              "saturation": 1.18
+            },
+            "threshold_scene_units": 0.0015,
+            "visual_review_required": true
+          },
+          "external_face_ray_blocks_max": {
+            "cleo": 2,
+            "kai": 2
+          }
+        }
+      },
+      "clip": "assets/saying_hi_review/round6/pilot/interview.mp4",
+      "frames": 76,
+      "sha256": "710610f3ffbc87e9452110a9cf1c25c9ce396aa9cdea5737be0629a350ec5574"
+    },
+    "hesitation": {
+      "missing_chunks": [],
+      "shots": {
+        "sh32": {
+          "start": 2134,
+          "end": 2172,
+          "direction": {
+            "status": "flag",
+            "beat_type": "emotion",
+            "principal": "narrator",
+            "actors": {
+              "june": {
+                "motion_coverage": 0.6486486486486487,
+                "held_pose_max_s": 0.3,
+                "start_in_motion": true,
+                "end_in_motion": true,
+                "transitions": 37
+              },
+              "narrator": {
+                "motion_coverage": 1.0,
+                "held_pose_max_s": 0.03333333333333333,
+                "start_in_motion": true,
+                "end_in_motion": true,
+                "transitions": 37
+              }
+            },
+            "faces": {
+              "narrator": {
+                "min_height": 0.32450586557388306,
+                "safe_all": true
+              }
+            },
+            "checks": {
+              "principal_motion": true,
+              "principal_edges": true,
+              "all_actor_holds": true,
+              "grade_declared": true,
+              "face_scale": false
+            },
+            "grade": {
+              "preset": "warm_saturated_v1",
+              "look": "AgX - Medium High Contrast",
+              "exposure": -0.12,
+              "saturation": 1.18
+            },
+            "threshold_scene_units": 0.0015,
+            "visual_review_required": true
+          },
+          "external_face_ray_blocks_max": {
+            "narrator": 6
+          }
+        }
+      },
+      "clip": "assets/saying_hi_review/round6/pilot/hesitation.mp4",
+      "frames": 38,
+      "sha256": "fc63522c15a49b7ef38f1c34b630112ce44bcade09062448676f323a5cc0589a"
+    }
+  },
+  "visual_review_required": true,
+  "full_render_authorized": false,
+  "numerical_pass": false
+}

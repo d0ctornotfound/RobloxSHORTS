@@ -409,3 +409,6 @@ Run [46132080197](https://github.com/d0ctornotfound/RobloxSHORTS/actions/runs/46
 
 ## Round 6 — director pilot submitted (not approved)
 Source run [46135821796](https://github.com/d0ctornotfound/RobloxSHORTS/actions/runs/46135821796), launch commit 370692f55f6db1a542ae4556a47e048824cd16c2. Directed pilot only: crossing sh20–21 (47.40–52.63), Kai/Cleo interview sh27 (60.23–62.77), narrator hesitation in June exchange sh32 (71.13–72.40). Pilot output target assets/saying_hi_review/round6/pilot/. No Round 6 complete film or approval at submission. Before/after motion measurements cannot be inferred from Round 5's missing skeletal samples. Actual frames/playback, scale, motion, hold length, grade comparison, contact and landmark/eyeline continuity are required for the pilot gate. No claim that the other 22 shots qualify for reuse. The 26 Round 5 weaknesses remain open until actual Round 6 evidence supersedes them; paper chart shots previously not flagged also need living diagram assessment. No changes to locked character chapters or baseline film.
+
+## Round 6 direction pilot run 46135821796
+Pilot numerical pass: False. Actual visual/playback inspection still mandatory; full-film pass not authorized. Evidence: assets/saying_hi_review/round6/pilot/pilot_qc.json
