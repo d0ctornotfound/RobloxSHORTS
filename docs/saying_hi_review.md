@@ -436,3 +436,15 @@ Geometry/flow preflight numerical pass: False. Three native still samples per sh
 
 ## Direction preflight pilot_retry3_preflight run 46138881373
 Geometry/flow preflight numerical pass: False. Three native still samples per shot, not full clips; visual review and native pilot still mandatory. Evidence: assets/saying_hi_review/round6/pilot_retry3_preflight/preflight_qc.json
+
+### Retry 2 and Retry 3 — committed evidence review
+Retry 2: run 46138050916 terminal success; commit c1f156247e272661a3be2d19e4dd1d5c418dafbe. Sh20 and sh21 direction numerical pass, sh27 Kai frame safety failed despite 14.91% / 14.93% face heights, sh32 fully obstructed by June (26 external blocks). No native clips in a preflight.
+Retry 3: run 46138881373 terminal success; commit 427f77753f633b79029620786478affedbf3c682. Three of four shots pass numerical direction. All actors in all four shots 100% pose coverage; max hold .0333s (surface-augmented motion signature).
+| Shot | Retry 2 | Retry 3 | Actual native smoke review |
+|---|---|---|---|
+| sh20 | External blocks 0 | External blocks 0; action body scale pass | Camera retained; gait backward=2, stance RMS=.006782, max gap=.005060, root-to-plant .842072. Not a locomotion approval. |
+| sh21 | Numerical pass | Numerical pass | Warm bounce needed: source near-black max 2.349%, above 2% legacy limit. |
+| sh27 | Kai unsafe, face heights 14.91/14.93% | Both safe, 12.94/12.92%, visibility >=92%, external blocks 0 | Committed midframe faces readable, but dark shadow fill and thin well visibility; source near-black max 9.640%. |
+| sh32 | External occlusion 26, visibility 0 | External blocks 0, face height 42.50%, facing >=.9193; own ray visibility .80 < .85 | Committed midframe readable face and complete beanie; pencil not clearly visible. Gate remains failed. |
+Retry 4 hesitation (run 46139498600; source 6b3f37e2672ffc6f4d38c06553aa5ae936d2fe44): lower camera to clear brim, still in speaker gap. Targeted gait diagnostic (run 46139408779; source 76a63bef9cffe8556ec5946c43200bb50adfd934): native source phase-only search, exact replay, no root warp or endpoint fitting. Warm grade candidate (run 46139567500; source ede9ca66071687d9b00e0bb652d7a0fbfdf81f72): physically motivated recorded warm bounce for sh21/sh27; no darkness-gate relaxation. These are preflights, not native approved clips.
+Full staging draft stories/saying_hi_round6_full_stage_draft.json (fc18d0d5fd9e085809c3b878400d056760f5414c): all 48 shots / 55 segments / 154 chunk tasks / 3036 frames, structural frame continuity check passed, all 26 flagged shots have explicit direction staging, no reused sources. Unvalidated candidate, not authorized or rendered. Existing Round 5 weak notes retained conservatively pending actual measured results; no claim that authored tracks solve contact or visual defects. New generic declared-scene adapter, montage-local time and per-segment QC, native follow/aim tracks, actual cast diagrams and before/after report generator require rendered acceptance evidence. Full production workflow now checks committed direction release evidence before launch. No changes to locked chapters. 
