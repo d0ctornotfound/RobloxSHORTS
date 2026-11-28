@@ -77,14 +77,14 @@ def build_cast_actor(cid,record):
                 for i in range(len(ob.data.materials)):ob.data.materials[i]=fiber_mat(cid+" hair "+str(i),hc)
     c=sum(a.head_bounds,Vector())/2;s=a.scale;hm=fiber_mat(cid+" custom locks",hc)
     def ball(name,p,dims,mat=hm):
-        ob=sphere(cid+" / "+name,tuple(c+s*Vector(p)),tuple(s*v for v in dims),mat);a.attach_mesh(ob,"head");return ob
+        ob=sphere(cid+" / "+name,tuple(c+s*Vector(p)),tuple(s*v for v in dims),mat);bpy.context.view_layer.update();a.attach_mesh(ob,"head");return ob
     def block(name,p,dims,mat=hm):
-        ob=cube(cid+" / "+name,tuple(c+s*Vector(p)),tuple(s*v for v in dims),mat,bevel=.035*s);a.attach_mesh(ob,"head");return ob
+        ob=cube(cid+" / "+name,tuple(c+s*Vector(p)),tuple(s*v for v in dims),mat,bevel=.035*s);bpy.context.view_layer.update();a.attach_mesh(ob,"head");return ob
     if cid=="otis":
         rim=matte("Otis round glasses",(.025,.021,.016))
         for x in (-.235,.235):
             bpy.ops.mesh.primitive_torus_add(major_segments=32,minor_segments=8,location=tuple(c+s*Vector((x,-.645,.13))),rotation=(math.pi/2,0,0),major_radius=.21*s,minor_radius=.025*s)
-            ob=bpy.context.object;ob.name="otis / round glasses";ob.data.materials.append(rim);a.attach_mesh(ob,"head")
+            ob=bpy.context.object;ob.name="otis / round glasses";ob.data.materials.append(rim);bpy.context.view_layer.update();a.attach_mesh(ob,"head")
         block("glasses bridge",(0,-.65,.13),(.10,.04,.035),rim)
     if cid=="june":
         rng=random.Random(882);beads=[matte("June bead "+str(i),col) for i,col in enumerate(((.9,.32,.10),(.8,.68,.10),(.8,.06,.35)))]
@@ -96,17 +96,27 @@ def build_cast_actor(cid,record):
                 ball("braid lock",(sign*.59,-.47,.23-k*.15),(.14,.14,.18))
             for k in range(3):ball("bead",(sign*.59,-.47,-.29-k*.09),(.16,.16,.11),beads[k])
     if cid in ("ava","hana","ella"):
+        # Distinguish silhouette from front as well as back: high, low, side.
+        if cid=="ava":ball("high ponytail top",(0,.30,.91),(.50,.50,.55))
+        elif cid=="hana":ball("side ponytail visible mass",(.70,.18,.34),(.43,.44,.76))
+        else:ball("low bun visible side",(-.48,.45,.24),(.40,.40,.40))
         x=.47 if cid=="hana" else 0;z=.80 if cid=="ava" else .38
         ball("tied ponytail or bun",(x,.56,z),(.55,.45,.64 if cid!="ella" else .45))
         if cid!="ella":block("ponytail length",(x,.67,.19),(.37,.30,.86))
     if cid in ("bella","ivy"):
         block("bob back",(0,.52,.07),(1.27,.31,.87 if cid=="bella" else .64))
-        for sign in (-1,1):block("bob side",(sign*.59,.05,.03),(.24,1.0,.81 if cid=="bella" else .58))
+        for sign in (-1,1):block("bob side",(sign*.59,-.10,.03),(.24,.94,.91 if cid=="bella" else .55))
     if cid in ("daisy","faye"):
         for sign in ((1,) if cid=="daisy" else (-1,1)):
-            for k in range(7):ball("braid",(sign*.53,.27,.22-k*.15),(.23,.23,.21))
+            for k in range(7):ball("braid",(sign*.62,-.24,.20-k*.15),(.23,.23,.21))
     if cid in ("chase","sam"):ball("swept quiff",(.10,-.22,.80),(.73,.58,.42))
     if cid=="brody":block("side part",(-.24,-.14,.70),(.66,.82,.22))
     if cid=="max":block("side part",(.28,-.09,.67),(.58,.81,.24))
+    if cid=="leo":block("flat crew cap",(0,0,.61),(1.12,1.11,.12))
+    if cid=="ryan":block("blond cropped fringe",(-.26,-.48,.46),(.44,.22,.19))
+    if cid=="gia":block("pixie swept side",(-.42,-.37,.52),(.37,.48,.24))
+    for ob in a.accessories:
+        for mod in list(ob.modifiers):
+            if mod.type=="WEIGHTED_NORMAL":ob.modifiers.remove(mod)
     bpy.context.view_layer.update()
     return a
