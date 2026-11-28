@@ -627,3 +627,60 @@ Counts are not comparable quality scores: Round 6 adds stricter direction measur
 New native staging and reusable adapters are candidate capabilities; this build demonstrates only what its actual committed renders and measured gates support. Unmeasured contact, failed geometry or unreviewed artistry is not certified.
 
 Source motion sampling is independent at 30 Hz, EEVEE 32 spatial samples, denoising off. Artistic QC is advisory; missing or invalid native media is a technical failure.
+
+## Independent Round 6 committed master audit
+
+Verified exact publication commit 1c4a4da57652338a05d0a8e3b692a27c13268541; 3036 frames, 101.20s, SHA-256 5257e73b9c6aba9f69d791df4c059cb15e07ea14ee792253786dc5d330812b23.
+
+| Shot | Round 5 declared scale | Round 6 beat scale | Principal motion | Max hold | Saturation before → after | QC |
+|---|---|---|---:|---:|---|---|
+| sh01 | wide (plan) | geography, emotion | 100.0% | 0.033s | 0.157 → 0.425 | flag; 3 flags |
+| sh02 | close (plan) | interview | 100.0% | 0.033s | 0.221 → 0.403 | flag; 6 flags |
+| sh03 | medium (plan) | action | 100.0% | 0.033s | 0.211 → 0.364 | numeric_pass; 5 flags |
+| sh04 | insert (plan) | information | 100.0% | 0.033s | 0.286 → 0.238 | numeric_pass; 0 flags |
+| sh05 | insert (plan) | information | 100.0% | 0.033s | 0.284 → 0.238 | numeric_pass; 0 flags |
+| sh06 | insert (plan) | information | 100.0% | 0.033s | 0.284 → 0.238 | numeric_pass; 0 flags |
+| sh07 | insert (plan) | information | 100.0% | 0.033s | 0.285 → 0.238 | numeric_pass; 0 flags |
+| sh08 | wide (plan) | action | 100.0% | 0.033s | 0.156 → 0.493 | flag; 6 flags |
+| sh09 | wide (plan) | action | 100.0% | 0.033s | 0.152 → 0.369 | numeric_pass; 0 flags |
+| sh10 | medium (plan) | action | 100.0% | 0.033s | 0.225 → 0.309 | numeric_pass; 2 flags |
+| sh11 | close (plan) | emotion | 100.0% | 0.033s | 0.238 → 0.677 | flag; 5 flags |
+| sh12 | medium (plan) | interview | 100.0% | 0.033s | 0.210 → 0.451 | flag; 5 flags |
+| sh13 | medium (plan) | action | 100.0% | 0.033s | 0.152 → 0.405 | numeric_pass; 1 flags |
+| sh14 | close (plan) | emotion | 100.0% | 0.033s | 0.259 → 0.667 | flag; 3 flags |
+| sh15 | medium (plan) | action | 100.0% | 0.033s | 0.209 → 0.297 | numeric_pass; 0 flags |
+| sh16 | medium (plan) | action | 100.0% | 0.033s | 0.217 → 0.344 | flag; 4 flags |
+| sh17 | medium (plan) | action, action | 100.0% | 0.033s | 0.198 → 0.310 | numeric_pass; 2 flags |
+| sh18 | insert (plan) | information, emotion | 100.0% | 0.033s | 0.284 → 0.487 | flag; 5 flags |
+| sh19 | medium (plan) | emotion | 99.1% | 0.067s | 0.152 → 0.661 | flag; 7 flags |
+| sh20 | wide (plan) | action | 100.0% | 0.033s | 0.266 → 0.395 | numeric_pass; 5 flags |
+| sh21 | wide (plan) | action | 100.0% | 0.033s | 0.276 → 0.299 | numeric_pass; 1 flags |
+| sh22 | close (plan) | action | 100.0% | 0.033s | 0.290 → 0.367 | numeric_pass; 2 flags |
+| sh23 | medium (plan) | action | 100.0% | 0.033s | 0.246 → 0.336 | numeric_pass; 1 flags |
+| sh24 | close (plan) | interview | 100.0% | 0.033s | 0.333 → 0.460 | flag; 3 flags |
+| sh25 | medium (plan) | interview | 100.0% | 0.033s | 0.318 → 0.394 | flag; 8 flags |
+| sh26 | medium (plan) | interview | 100.0% | 0.033s | 0.257 → 0.289 | flag; 8 flags |
+| sh27 | medium (plan) | interview | 100.0% | 0.033s | 0.217 → 0.372 | numeric_pass; 9 flags |
+| sh28 | medium (plan) | interview | 100.0% | 0.033s | 0.259 → 0.400 | flag; 7 flags |
+| sh29 | medium (plan) | interview | 100.0% | 0.033s | 0.293 → 0.346 | flag; 6 flags |
+| sh30 | medium (plan) | interview, interview, interview, interview | 100.0% | 0.033s | 0.260 → 0.356 | flag; 18 flags |
+| sh31 | medium (plan) | action | 100.0% | 0.033s | 0.288 → 0.343 | numeric_pass; 9 flags |
+| sh32 | close (plan) | emotion | 100.0% | 0.033s | 0.288 → 0.699 | numeric_pass; 5 flags |
+| sh33 | close (plan) | emotion | 100.0% | 0.033s | 0.286 → 0.696 | flag; 10 flags |
+| sh34 | close (plan) | emotion | 100.0% | 0.033s | 0.356 → 0.690 | numeric_pass; 9 flags |
+| sh35 | medium (plan) | emotion | 100.0% | 0.033s | 0.262 → 0.656 | flag; 3 flags |
+| sh36 | wide (plan) | action | 100.0% | 0.033s | 0.153 → 0.358 | numeric_pass; 0 flags |
+| sh37 | close (plan) | emotion | 100.0% | 0.033s | 0.261 → 0.663 | flag; 5 flags |
+| sh38 | wide (plan) | geography, action | 100.0% | 0.033s | 0.157 → 0.328 | flag; 2 flags |
+| sh39 | insert (plan) | information | 100.0% | 0.033s | 0.284 → 0.238 | numeric_pass; 1 flags |
+| sh40 | medium (plan) | emotion | 100.0% | 0.033s | 0.247 → 0.632 | flag; 3 flags |
+| sh41 | medium (plan) | interview | 100.0% | 0.033s | 0.247 → 0.495 | flag; 7 flags |
+| sh42 | close (plan) | action | 100.0% | 0.033s | 0.192 → 0.328 | numeric_pass; 0 flags |
+| sh43 | medium (plan) | action | 100.0% | 0.033s | 0.237 → 0.333 | numeric_pass; 4 flags |
+| sh44 | wide (plan) | action | 100.0% | 0.033s | 0.153 → 0.328 | flag; 4 flags |
+| sh45 | wide (plan) | geography | unmeasured | unmeasured | 0.144 → 0.203 | flag; 1 flags |
+| sh46 | insert (plan) | information | 100.0% | 0.033s | 0.284 → 0.244 | numeric_pass; 0 flags |
+| sh47 | medium (plan) | interview | 100.0% | 0.033s | 0.255 → 0.439 | flag; 8 flags |
+| sh48 | medium (plan) | action | 100.0% | 0.033s | 0.191 → 0.324 | numeric_pass; 0 flags |
+
+Round 5 motion and held-pose metrics are unmeasured; no invented zero or before/after improvement percentage. Saturation is a descriptive downscaled RGB statistic, composition dependent. All legacy flags and exact direction measurements remain in the JSON. No claim of general story-independent artistic mastery.
