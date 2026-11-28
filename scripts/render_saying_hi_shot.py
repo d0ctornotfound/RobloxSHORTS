@@ -261,18 +261,18 @@ class SceneUnit:
         centers=[item[4][1]+item[5] for item in self.seat_data.values()]
         top=min(item[4][0] for item in self.seat_data.values());center=sum(centers,V((0,0,0)))/2
         self.bench_top=top;self.bench_center=V((center.x,center.y,top))
-        self.bench=cube("Actual pair seat",(center.x,center.y,top-.07),(.74,2.10,.14),self.p["seat"],bevel=.025)
-        for y in (-.79,.79):cube("Actual pair bench leg",(center.x,center.y+y,(top-.14)/2),(.58,.16,top-.14),self.p["wood2"],bevel=.02)
+        self.bench=bpy.data.objects["Actual pair seat"]
+        self.bench.location.z=top-.07
         self.prev_feet={};self.prev_hip={}
-        frame(self.scene,self.cam,(6.4,-3.6,2.9),(center.x+.12,center.y,1.0),39)
+        frame(self.scene,self.cam,(1.5,-3.8,2.7),(4.8,-.88,1.08),36)
     def update_seating(self,n,u,t,after_name=True):
         records={}
         for cid,item in self.seat_data.items():
             a,art,cloth,feet,seat,pos,yaw=item
             if n==43:
                 f=ease(clamp((u-.20)/.75)) if cid=="narrator" else 1
-                offset=V((0,.36*(1-ease(min(1,u*2.7))),0)) if cid=="june" else V((0,0,0))
-            elif n==42:f=0 if cid=="narrator" else 1;offset=V((0,.36,0)) if cid=="june" else V((0,0,0))
+                offset=V((0,.24*(1-ease(min(1,u*2.7))),0)) if cid=="june" else V((0,0,0))
+            elif n==42:f=0 if cid=="narrator" else 1;offset=V((0,.24,0)) if cid=="june" else V((0,0,0))
             else:f=1;offset=V((0,0,0))
             sit_pose(a,art,"sit",f,t,yaw,feet,None,seat);art.shift(pos+offset);cloth.sync()
             a.pose("happy");a.set_bone("head",(0,0,.12 if cid=="june" else -.12))
