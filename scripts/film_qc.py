@@ -54,3 +54,41 @@ if __name__=="__main__":
     assert report[0]["value"]==.02 and report[0]["status"]=="flag" and report[0]["samples"]==2
     assert report[1]["status"]=="unmeasured"
     print("declarative QC self-test PASS")
+
+def flow_report(rows, fps=30, expected_frames=None):
+    """Evaluate chronological pose differences across chunk boundaries.
+    Missing/partial evidence is not a pass; camera motion never counts as actor motion.
+    The first frame has no preceding transition and is excluded from the motion denominator.
+    """
+    rows=sorted(rows,key=lambda r:r["frame"])
+    if not rows or any("direction" not in r for r in rows):
+        return {"status":"unmeasured","reason":"missing direction samples"}
+    if (expected_frames is not None and len(rows)!=expected_frames) or any(b["frame"]!=a["frame"]+1 for a,b in zip(rows,rows[1:])):
+        return {"status":"unmeasured","reason":"noncontiguous or incomplete direction samples"}
+    d=[r["direction"] for r in rows]; principal=d[0]["principal"]
+    if any(x["principal"]!=principal or x["beat_type"]!=d[0]["beat_type"] for x in d):
+        return {"status":"unmeasured","reason":"principal or beat type changes within shot"}
+    # Absolute scene units: 1.5 mm if a scene unit is treated as one metre.
+    # This is a pose-change proxy, not perceived performance or velocity.
+    threshold=.0015
+    def measure(cid):
+        if len(d)<2 or any(cid not in x["actors"] for x in d):return None
+        sig=[x["actors"][cid]["pose"] for x in d]
+        if not sig[0] or any(len(p)!=len(sig[0]) for p in sig):return None
+        moving=[max(math.dist(x,y) for x,y in zip(a,b))>=threshold for a,b in zip(sig,sig[1:])]
+        run=longest=0
+        for m in moving:
+            run=0 if m else run+1;longest=max(longest,run)
+        return {"motion_coverage":sum(moving)/len(moving),"held_pose_max_s":(longest+1)/fps,"start_in_motion":moving[0],"end_in_motion":moving[-1],"transitions":len(moving)}
+    actor_ids=sorted(set().union(*(x["actors"] for x in d)))
+    metrics={cid:measure(cid) for cid in actor_ids}
+    p=metrics.get(principal)
+    if p is None:return {"status":"unmeasured","reason":"principal motion unavailable"}
+    kind=d[0]["beat_type"]
+    faces={cid:{"min_height":min(x["actors"][cid]["face_height"] for x in d),"safe_all":all(x["actors"][cid]["face_safe"] for x in d)} for cid in [principal]+d[0]["listeners"] if all(cid in x["actors"] for x in d)}
+    checks={"principal_motion":p["motion_coverage"]>=.8,"principal_edges":p["start_in_motion"] and p["end_in_motion"],"all_actor_holds":all(m is not None and m["held_pose_max_s"]<=.5 for m in metrics.values()),"grade_declared":all(x["grade"] and x["grade"]["preset"]=="warm_saturated_v1" for x in d)}
+    if kind=="emotion":checks["face_scale"]=principal in faces and faces[principal]["min_height"]>=.40 and faces[principal]["safe_all"]
+    elif kind=="interview":checks["two_face_bounds"]=len(faces)>=2 and all(v["safe_all"] for v in faces.values())
+    elif kind=="geography":
+        checks["body_scale"]=all(r.get("actor_qc",{}).get(principal,{}).get("vertical_coverage",0)>=.25 for r in rows) or (len(rows)/fps<=2 and all(x.get("pure_establishing",False) for x in d))
+    return {"status":"numeric_pass" if all(checks.values()) else "flag","beat_type":kind,"principal":principal,"actors":metrics,"faces":faces,"checks":checks,"grade":d[0]["grade"],"threshold_scene_units":threshold,"visual_review_required":True}
