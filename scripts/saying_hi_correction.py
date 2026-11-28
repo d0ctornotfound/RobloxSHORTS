@@ -48,6 +48,17 @@ def object_visibility(scene,cam,objs,grid=7,allowed_extra=()):
     safe=p[4]>0 and .035<=p[0]<=p[1]<=.965 and .035<=p[2]<=p[3]<=.965
     return {"samples":tested,"blocked":blocked,"bounds":list(p),"safe":bool(safe),"visible_fraction":1-blocked/tested if tested else 0}
 
+def tally_visibility(scene,cam,objs):
+    # Every individual charcoal stroke must project safely and have at least
+    # one direct surface ray. The wall itself is not a visibility exception.
+    tested=blocked=0;safe=True;details=[]
+    for ob in objs:
+        q=object_visibility(scene,cam,[ob],5,objs)
+        tested+=q["samples"];blocked+=q["blocked"]
+        safe=safe and q["safe"] and q["samples"]>0
+        details.append({"name":ob.name,**q})
+    return {"samples":tested,"blocked":blocked,"safe":safe,"strokes":details,"visible_fraction":1-blocked/tested if tested else 0}
+
 def add_tallies():
     root=bpy.data.objects["Saying Hi story-local wall and seats"]
     mat=material("Wall tally charcoal",(.045,.029,.018));objs=[]
@@ -288,7 +299,7 @@ class CorrectedUnit(SceneUnit):
         # from all original ring fixtures. Camera faces pair from clear side.
         self.dog[0].location=(4.05,-.92,0)
         frame(self.scene,self.cam,(3.55,-4.5,2.65),(4.80,-.87,1.05),34)
-        self.prev_hip={}
+        self.prev_hip={};self.prev_phase={}
     def update_seating(self,n,u,t,after_name=True):
         # June stands, takes two small lateral steps, then re-sits. Her hip
         # is not translated during either seated phase or the sit itself.
@@ -333,5 +344,5 @@ class CorrectedUnit(SceneUnit):
         return {"seat_top":self.bench_top,"seat_contacts":records,"waffle":dog_metric,"dog_visible":visible,"dog_visibility":object_visibility(self.scene,self.cam,meshes(self.dog[0]),11) if visible else None,"note":"Separate rise, planted lateral steps, sit; no lateral root translation during sit."}
     def update(self,n,u,t,index,after_name=True):
         if self.unit=="empty_wall":
-            return {"tally_count":len(self.tallies),"wall_visibility":object_visibility(self.scene,self.cam,[bpy.data.objects["tally wall"]],9),"tally_visibility":object_visibility(self.scene,self.cam,self.tallies,15),"boys_on_wall":len(self.actors)}
+            return {"tally_count":len(self.tallies),"wall_visibility":object_visibility(self.scene,self.cam,[bpy.data.objects["tally wall"]],9,self.tallies),"tally_visibility":tally_visibility(self.scene,self.cam,self.tallies),"boys_on_wall":len(self.actors)}
         return super().update(n,u,t,index,after_name)
