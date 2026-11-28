@@ -1,0 +1,56 @@
+name: Bench — verified final assembly
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'production/bench_release_manifest.json'
+  workflow_dispatch:
+permissions:
+  contents: read
+  actions: read
+jobs:
+  assemble:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 45
+    steps:
+      - uses: actions/checkout@v4
+      - name: Require 48 explicit release entries
+        run: |
+          python3 - <<'PY'
+          import json
+          m=json.load(open('production/bench_release_manifest.json'))
+          assert m['status']=='ready_for_assembly'
+          a=m['shots']
+          assert sorted(e['shot'] for e in a)==list(range(1,49))
+          for e in a:
+              assert type(e['production_run']) is int and type(e['preflight_run']) is int
+              assert len(e['source_commit'])==40
+          PY
+      - name: Download each exact production artifact
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          mkdir -p chunks
+          python3 - <<'PY'
+          import json,subprocess
+          from pathlib import Path
+          a=json.load(open('production/bench_release_manifest.json'))['shots']
+          for e in a:
+              n=e['shot'];p=Path('chunks')/f'shot_{n:02d}'
+              p.mkdir()
+              subprocess.run(['gh','run','download',str(e['production_run']),'--name',f'bench-production-shot-{n}','--dir',str(p)],check=True)
+          PY
+      - name: Install encoding dependencies
+        run: sudo apt-get update && sudo apt-get install -y ffmpeg python3-pil fonts-dejavu-core
+      - name: Validate and assemble 120-second visual master
+        run: python3 scripts/assemble_bench_release.py --chunks chunks --release production/bench_release_manifest.json --output render/bench-final
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: bench-final-visual-master
+          path: |
+            render/bench-final/the_bench.mp4
+            render/bench-final/*.json
+            render/bench-final/act_*_contact.png
+          retention-days: 30
+          if-no-files-found: warn
