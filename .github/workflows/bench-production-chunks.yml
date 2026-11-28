@@ -1,0 +1,122 @@
+name: Bench — full-frame production chunks
+on:
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/bench-production-chunks.yml'
+      - 'production/bench_chunk_batch.json'
+  workflow_dispatch:
+permissions:
+  contents: read
+  actions: read
+jobs:
+  plan:
+    runs-on: ubuntu-24.04
+    outputs:
+      matrix: ${{ steps.matrix.outputs.matrix }}
+    steps:
+      - uses: actions/checkout@v4
+      - id: matrix
+        run: |
+          python3 - <<'PY' >> "$GITHUB_OUTPUT"
+          import json
+          a=json.load(open('production/bench_chunk_batch.json'))['include']
+          assert len(a)==len({x['shot'] for x in a})
+          assert all(1<=x['shot']<=48 and len(x['ref'])==40 and x['run']>0 for x in a)
+          print('matrix='+json.dumps({'include':a},separators=(',',':')))
+          PY
+  chunk:
+    needs: plan
+    runs-on: ubuntu-24.04
+    timeout-minutes: 50
+    strategy:
+      fail-fast: false
+      max-parallel: 12
+      matrix: ${{ fromJSON(needs.plan.outputs.matrix) }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ matrix.ref }}
+      - uses: actions/download-artifact@v4
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          run-id: ${{ matrix.run }}
+          name: bench-shot-${{ matrix.shot }}
+          path: evidence
+      - name: Verify actual preflight evidence
+        env:
+          SHOT: ${{ matrix.shot }}
+          HEROES: ${{ toJSON(matrix.heroes) }}
+        run: |
+          python3 - <<'PY'
+          import json,os
+          from pathlib import Path
+          p=Path('evidence')
+          m=json.loads((p/'manifest.json').read_text())
+          g=json.loads((p/'geometry_all_frames.json').read_text())
+          n=int(os.environ['SHOT']);h=json.loads(os.environ['HEROES'])
+          assert int(m['shot']['id'])==n and m['mode']=='preflight'
+          assert m['resolution']==[540,960] and m['fps']==24 and m['engine']=='EEVEE' and not m['denoising']
+          assert len(g)==60 and [r['frame'] for r in g]==list(range((n-1)*60+1,n*60+1))
+          assert m['geometry_pass'] and all(r['pass'] for r in g)
+          assert len(m['records'])>=3 and max(r['near_black_percent'] for r in m['records'])<=2
+          assert all(v['pass_tracking'] for r in m['records'] for v in r.get('garments',{}).values())
+          for actor in h:
+              v=m['visibility'][actor]
+              assert v['visible_fraction']>=.69 and v['projected_silhouette_pixels']>0 and v['pass']
+              assert all(r['heroes'][actor]['pass'] for r in g)
+          if n==23:
+              c=[c for r in g for c in r['contacts'] if c['event']=='pigeon_feet']
+              assert c and all(all(v is not None and abs(v)<=.015 for v in x['vertical_gaps']) for x in c)
+          print('PREFLIGHT_EVIDENCE_PASS',n,h)
+          PY
+      - name: Install Blender and dependencies
+        run: |
+          for f in /etc/apt/sources.list.d/*; do
+            if [ -f "$f" ] && grep -q "packages.microsoft.com" "$f"; then sudo mv "$f" "$f.disabled"; fi
+          done
+          sudo apt-get update -o Acquire::Retries=3
+          sudo apt-get install -y --no-install-recommends blender ffmpeg python3-pil python3-numpy fonts-dejavu-core libegl1 libegl-mesa0 libgl1 libgl1-mesa-dri libgbm1
+      - run: python3 scripts/library_character_assets.py
+      - name: Render complete isolated 60-frame production chunk
+        timeout-minutes: 35
+        env:
+          LIBGL_ALWAYS_SOFTWARE: "1"
+          R6_KNEE_BLEND: "1"
+        run: |
+          mkdir -p render/bench-chunk
+          set -o pipefail
+          timeout 32m blender -b --python-exit-code 1 --python scripts/render_bench.py -- --shot "${{ matrix.shot }}" --mode render --output render/bench-chunk 2>&1 | tee render/bench-chunk/render.log
+      - name: Validate complete raw and encoded chunk
+        env:
+          SHOT: ${{ matrix.shot }}
+          SOURCE: ${{ matrix.ref }}
+          PROOF_RUN: ${{ matrix.run }}
+        run: |
+          python3 - <<'PY'
+          import json,os,hashlib,subprocess
+          from pathlib import Path
+          import numpy as np
+          p=Path('render/bench-chunk');n=int(os.environ['SHOT']);first=(n-1)*60+1;last=n*60
+          m=json.loads((p/'manifest.json').read_text())
+          assert m['mode']=='render' and m['frames']==60 and m['geometry_pass']
+          assert m['engine']=='EEVEE' and m['resolution']==[540,960] and m['fps']==24 and not m['denoising']
+          files=sorted(p.glob('frame_*.png'));assert [int(f.stem.split('_')[-1]) for f in files]==list(range(first,last+1))
+          assert max(r['near_black_percent'] for r in m['records'])<=2
+          movie=p/'preview.mp4'
+          subprocess.run(['ffmpeg','-v','error','-y','-framerate','24','-start_number',str(first),'-i',str(p/'frame_%04d.png'),'-frames:v','60','-c:v','libx264','-crf','18','-pix_fmt','yuv420p','-movflags','+faststart',str(movie)],check=True)
+          data=subprocess.check_output(['ffmpeg','-v','error','-i',str(movie),'-f','rawvideo','-pix_fmt','rgb24','-'])
+          rgb=np.frombuffer(data,dtype=np.uint8).reshape(-1,960,540,3)
+          assert len(rgb)==60
+          darkness=(rgb.max(axis=3)<=24).mean(axis=(1,2))*100
+          report={'shot':n,'source_commit':os.environ['SOURCE'],'preflight_run':int(os.environ['PROOF_RUN']),'frames':60,'duration':2.5,'encoded_max_near_black_percent':float(max(darkness)),'sha256':hashlib.sha256(movie.read_bytes()).hexdigest(),'passed':bool(max(darkness)<=2)}
+          (p/'chunk_validation.json').write_text(json.dumps(report,indent=2))
+          print(report);assert report['passed'],'encoded darkness gate failed'
+          PY
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: bench-production-shot-${{ matrix.shot }}
+          path: render/bench-chunk/
+          retention-days: 30
+          if-no-files-found: warn

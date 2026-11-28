@@ -446,6 +446,7 @@ def main():
         if n in (3,6,21) and d:dist=3.28;lens=48
         if n in (4,10):
             obj=bags[0] if n==4 else bags[1];target=obj.location+V((0,-.02,-.17));dist=1.35;lens=45;angle=.10 if n==4 else -.12
+            if n==4:dist=.98;lens=49;angle=.16
         if n==19:
             target=(bags[0].location+bags[1].location)/2+V((0,0,-.16));dist=2.30;lens=42;angle=.02
         if n==2 and m and d:
@@ -463,7 +464,9 @@ def main():
             target=head_center.lerp(birds[0][0].location+V((0,0,.16)),.40);dist=2.50;lens=46;angle=-.30
         if n==25 and m:angle=.95
         if n==31 and m:
-            lo,hi=bounds(v for ob in m.meshes() for v in mesh_points(ob));target=(lo+hi)/2;target.x+=.13;dist=3.35;lens=48;angle=-.22
+            # Frame the entire hero and the actual cap throughout the attachment.
+            pts=[v for ob in m.meshes() for v in mesh_points(ob)]+[v for ob in cap.children_recursive if ob.type=="MESH" for v in mesh_points(ob)]
+            lo,hi=bounds(pts);target=(lo+hi)/2;dist=3.45;lens=48;angle=.48
         if n==32 and m:target=cap.location+V((0,0,.10));dist=1.65;lens=45;angle=-.13
         if n==35 and m:
             lo,hi=bounds(v for ob in m.meshes() for v in mesh_points(ob));target=(lo+hi)/2;target.z=1.02;dist=3.45;lens=49;angle=.10
