@@ -1,0 +1,4217 @@
+{
+  "unit": "closing",
+  "frame_window": [
+    2993,
+    3036
+  ],
+  "metrics": [
+    {
+      "global_frame": 2993,
+      "sentence": 48,
+      "metrics": {
+        "seat_top": 0.46482717990875244,
+        "seat_contacts": {
+          "june": {
+            "phase": "seated",
+            "seated_fraction_command": 1,
+            "signed_rear_hip_gap": 5.364418029785156e-07,
+            "signed_foot_gaps": [
+              0.0,
+              0.0
+            ],
+            "foot_step_drift": null,
+            "moving_feet": [
+              false,
+              false
+            ],
+            "lateral_hip_drift": 0.0,
+            "limbs": {
+              "max_segment_length_change": 4.046981429972618e-07,
+              "max_joint_gap": 4.777675730550706e-07
+            },
+            "hip_world": [
+              5.329071521759033,
+              -1.8000010251998901,
+              0.4648272395133972
+            ]
+          },
+          "narrator": {
+            "phase": "seated",
+            "seated_fraction_command": 1,
+            "signed_rear_hip_gap": 5.364418029785156e-07,
+            "signed_foot_gaps": [
+              0.0,
+              0.0
+            ],
+            "foot_step_drift": null,
+            "moving_feet": [
+              false,
+              false
+            ],
+            "lateral_hip_drift": 0.0,
+            "limbs": {
+              "max_segment_length_change": 4.0469814543975247e-07,
+              "max_joint_gap": 4.798544105322545e-07
+            },
+            "hip_world": [
+              5.329071521759033,
+              0.049998875707387924,
+              0.4648272395133972
+            ]
+          }
+        },
+        "waffle": {
+          "evaluated_min_z": -9.313225746154785e-10
+        },
+        "dog_visible": true,
+        "dog_visibility": {
+          "samples": 65,
+          "blocked": 0,
+          "bounds": [
+            0.4770234525203705,
+            0.5708250999450684,
+            0.3448392450809479,
+            0.45343977212905884,
+            1.5680315494537354
+          ],
+          "safe": true,
+          "visible_fraction": 1.0,
+          "blockers": []
+        },
+        "actor_bounds": {
+          "june": [
+            0.5262115597724915,
+            0.8019002676010132,
+            0.4253107011318207,
+            0.6072157621383667,
+            1.8805913925170898
+          ],
+          "narrator": [
+            0.3338910937309265,
+            0.5361536145210266,
+            0.4567694664001465,
+            0.606741189956665,
+            2.3449363708496094
+          ]
+        },
+        "note": "Separate rise, planted lateral steps, sit; no lateral root translation during sit."
+      }
+    },
+    {
+      "global_frame": 2994,
+      "sentence": 48,
+      "metrics": {
+        "seat_top": 0.46482717990875244,
+        "seat_contacts": {
+          "june": {
+            "phase": "seated",
+            "seated_fraction_command": 1,
+            "signed_rear_hip_gap": 5.364418029785156e-07,
+            "signed_foot_gaps": [
+              0.0,
+              0.0
+            ],
+            "foot_step_drift": [
+              0.0,
+              0.0
+            ],
+            "moving_feet": [
+              false,
+              false
+            ],
+            "lateral_hip_drift": 0.0,
+            "limbs": {
+              "max_segment_length_change": 4.046981429972618e-07,
+              "max_joint_gap": 4.777675730550706e-07
+            },
+            "hip_world": [
+              5.329071521759033,
+              -1.8000010251998901,
+              0.4648272395133972
+            ]
+          },
+          "narrator": {
+            "phase": "seated",
+            "seated_fraction_command": 1,
+            "signed_rear_hip_gap": 5.364418029785156e-07,
+            "signed_foot_gaps": [
+              0.0,
+              0.0
+            ],
+            "foot_step_drift": [
+              0.0,
+              0.0
+            ],
+            "moving_feet": [
+              false,
+              false
+            ],
+            "lateral_hip_drift": 0.0,
+            "limbs": {
+              "max_segment_length_change": 4.0469814543975247e-07,
+              "max_joint_gap": 4.798544105322545e-07
+            },
+            "hip_world": [
+              5.329071521759033,
+              0.049998875707387924,
+              0.4648272395133972
+            ]
+          }
+        },
+        "waffle": {
+          "evaluated_min_z": -9.313225746154785e-10
+        },
+        "dog_visible": true,
+        "dog_visibility": {
+          "samples": 65,
+          "blocked": 0,
+          "bounds": [
+            0.4770234525203705,
+            0.5708250999450684,
+            0.3448392450809479,
+            0.45344892144203186,
+            1.5680315494537354
+          ],
+          "safe": true,
+          "visible_fraction": 1.0,
+          "blockers": []
+        },
+        "actor_bounds": {
+          "june": [
+            0.5262115597724915,
+            0.8019002676010132,
+            0.4253107011318207,
+            0.6072105169296265,
+            1.8795359134674072
+          ],
+          "narrator": [
+            0.3338910937309265,
+            0.5361536145210266,
+            0.4567694664001465,
+            0.606741189956665,
+            2.3449363708496094
+          ]
+        },
+        "note": "Separate rise, planted lateral steps, sit; no lateral root translation during sit."
+      }
+    },
+    {
+      "global_frame": 2995,
+      "sentence": 48,
+      "metrics": {
+        "seat_top": 0.46482717990875244,
+        "seat_contacts": {
+          "june": {
+            "phase": "seated",
+            "seated_fraction_command": 1,
+            "signed_rear_hip_gap": 5.364418029785156e-07,
+            "signed_foot_gaps": [
+              0.0,
+              0.0
+            ],
+            "foot_step_drift": [
+              0.0,
+              0.0
+            ],
+            "moving_feet": [
+              false,
+              false
+            ],
+            "lateral_hip_drift": 0.0,
+            "limbs": {
+              "max_segment_length_change": 4.046981429972618e-07,
+              "max_joint_gap": 4.777675730550706e-07
+            },
+            "hip_world": [
+              5.329071521759033,
+              -1.8000010251998901,
+              0.4648272395133972
+            ]
+          },
+          "narrator": {
+            "phase": "seated",
+            "seated_fraction_command": 1,
+            "signed_rear_hip_gap": 5.364418029785156e-07,
+            "signed_foot_gaps": [
+              0.0,
+              0.0
+            ],
+            "foot_step_drift": [
+              0.0,
+              0.0
+            ],
+            "moving_feet": [
+              false,
+              false
+            ],
+            "lateral_hip_drift": 0.0,
+            "limbs": {
+              "max_segment_length_change": 4.0469814543975247e-07,
+              "max_joint_gap": 4.798544105322545e-07
+            },
+            "hip_world": [
+              5.329071521759033,
+              0.049998875707387924,
+              0.4648272395133972
+            ]
+          }
+        },
+        "waffle": {
+          "evaluated_min_z": -9.313225746154785e-10
+        },
+        "dog_visible": true,
+        "dog_visibility": {
+          "samples": 65,
+          "blocked": 0,
+          "bounds": [
+            0.4770234525203705,
+            0.5708250999450684,
+            0.3448392450809479,
+            0.4534749388694763,
+            1.5680315494537354
+          ],
+          "safe": true,
+          "visible_fraction": 1.0,
+          "blockers": []
+        },
+        "actor_bounds": {
+          "june": [
+            0.5262115597724915,
+            0.8019002676010132,
+            0.4253107011318207,
+            0.6072037220001221,
+            1.8785083293914795
+          ],
+          "narrator": [
+            0.3338910937309265,
+            0.5361536145210266,
+            0.4567694664001465,
+            0.606741189956665,
+            2.3449363708496094
+          ]
+        },
+        "note": "Separate rise, planted lateral steps, sit; no lateral root translation during sit."
+      }
+    },
+    {
+      "global_frame": 2996,
+      "sentence": 48,
+      "metrics": {
+        "seat_top": 0.46482717990875244,
+        "seat_contacts": {
+          "june": {
+            "phase": "seated",
+            "seated_fraction_command": 1,
+            "signed_rear_hip_gap": 5.364418029785156e-07,
+            "signed_foot_gaps": [
+              0.0,
+              0.0
+            ],
+            "foot_step_drift": [
+              0.0,
+              0.0
+            ],
+            "moving_feet": [
+              false,
+              false
+            ],
+            "lateral_hip_drift": 0.0,
+            "limbs": {
+              "max_segment_length_change": 4.046981429972618e-07,
+              "max_joint_gap": 4.777675730550706e-07
+            },
+            "hip_world": [
+              5.329071521759033,
+              -1.8000010251998901,
+              0.4648272395133972
+            ]
+          },
+          "narrator": {
+            "phase": "seated",
+            "seated_fraction_command": 1,
+            "signed_rear_hip_gap": 5.364418029785156e-07,
+            "signed_foot_gaps": [
+              0.0,
+              0.0
+            ],
+            "foot_step_drift": [
+              0.0,
+              0.0
+            ],
+            "moving_feet": [
+              false,
+              false
+            ],
+            "lateral_hip_drift": 0.0,
+            "limbs": {
+              "max_segment_length_change": 4.0469814543975247e-07,
+              "max_joint_gap": 4.798544105322545e-07
+            },
+            "hip_world": [
+              5.329071521759033,
+              0.049998875707387924,
+              0.4648272395133972
+            ]
+          }
+        },
+        "waffle": {
+          "evaluated_min_z": -9.313225746154785e-10
+        },
+        "dog_visible": true,
+        "dog_visibility": {
+          "samples": 65,
+          "blocked": 0,
+          "bounds": [
+            0.4770234525203705,
+            0.5708250999450684,
+            0.3448392450809479,
+            0.45351430773735046,
+            1.5680315494537354
+          ],
+          "safe": true,
+          "visible_fraction": 1.0,
+          "blockers": []
+        },
+        "actor_bounds": {
+          "june": [
+            0.5262115597724915,
+            0.8019002676010132,
+            0.4253107011318207,
+            0.6071956157684326,
+            1.8775262832641602
+          ],
+          "narrator": [
+            0.3338910937309265,
+            0.5361536145210266,
+            0.4567694664001465,
+            0.606741189956665,
+            2.3449363708496094
+          ]
+        },
+        "note": "Separate rise, planted lateral steps, sit; no lateral root translation during sit."
+      }
+    },
+    {
+      "global_frame": 2997,
+      "sentence": 48,
+      "metrics": {
+        "seat_top": 0.46482717990875244,
+        "seat_contacts": {
+          "june": {
+            "phase": "seated",
+            "seated_fraction_command": 1,
+            "signed_rear_hip_gap": 5.364418029785156e-07,
+            "signed_foot_gaps": [
+              0.0,
+              0.0
+            ],
+            "foot_step_drift": [
+              0.0,
+              0.0
+            ],
+            "moving_feet": [
+              false,
+              false
+            ],
+            "lateral_hip_drift": 0.0,
+            "limbs": {
+              "max_segment_length_change": 4.046981429972618e-07,
+              "max_joint_gap": 4.777675730550706e-07
+            },
+            "hip_world": [
+              5.329071521759033,
+              -1.8000010251998901,
+              0.4648272395133972
+            ]
+          },
+          "narrator": {
+            "phase": "seated",
+            "seated_fraction_command": 1,
+            "signed_rear_hip_gap": 5.364418029785156e-07,
+            "signed_foot_gaps": [
+              0.0,
+              0.0
+            ],
+            "foot_step_drift": [
+              0.0,
+              0.0
+            ],
+            "moving_feet": [
+              false,
+              false
+            ],
+            "lateral_hip_drift": 0.0,
+            "limbs": {
+              "max_segment_length_change": 4.0469814543975247e-07,
+              "max_joint_gap": 4.798544105322545e-07
+            },
+            "hip_world": [
+              5.329071521759033,
+              0.049998875707387924,
+              0.4648272395133972
+            ]
+          }
+        },
+        "waffle": {
+          "evaluated_min_z": -9.313225746154785e-10
+        },
+        "dog_visible": true,
+        "dog_visibility": {
+          "samples": 65,
+          "blocked": 0,
+          "bounds": [
+            0.4770234525203705,
+            0.5708250999450684,
+            0.3448392450809479,
+            0.45356205105781555,
+            1.5680315494537354
+          ],
+          "safe": true,
+          "visible_fraction": 1.0,
+          "blockers": []
+        },
+        "actor_bounds": {
+          "june": [
+            0.5262115597724915,
+            0.8019002676010132,
+            0.4253107011318207,
+            0.6071930527687073,
+            1.8766071796417236
+          ],
+          "narrator": [
+            0.3338910937309265,
+            0.5361536145210266,
+            0.4567694664001465,
+            0.606741189956665,
+            2.3449363708496094
+          ]
+        },
+        "note": "Separate rise, planted lateral steps, sit; no lateral root translation during sit."
+      }
+    },
+    {
+      "global_frame": 2998,
+      "sentence": 48,
+      "metrics": {
+        "seat_top": 0.46482717990875244,
+        "seat_contacts": {
+          "june": {
+            "phase": "seated",
+            "seated_fraction_command": 1,
+            "signed_rear_hip_gap": 5.364418029785156e-07,
+            "signed_foot_gaps": [
+              0.0,
+              0.0
+            ],
+            "foot_step_drift": [
+              0.0,
+              0.0
+            ],
+            "moving_feet": [
+              false,
+              false
+            ],
+            "lateral_hip_drift": 0.0,
+            "limbs": {
+              "max_segment_length_change": 4.046981429972618e-07,
+              "max_joint_gap": 4.777675730550706e-07
+            },
+            "hip_world": [
+              5.329071521759033,
+              -1.8000010251998901,
+              0.4648272395133972
+            ]
+          },
+          "narrator": {
+            "phase": "seated",
+            "seated_fraction_command": 1,
+            "signed_rear_hip_gap": 5.364418029785156e-07,
+            "signed_foot_gaps": [
+              0.0,
+              0.0
+            ],
+            "foot_step_drift": [
+              0.0,
+              0.0
+            ],
+            "moving_feet": [
+              false,
+              false
+            ],
+            "lateral_hip_drift": 0.0,
+            "limbs": {
+              "max_segment_length_change": 4.0469814543975247e-07,
+              "max_joint_gap": 4.798544105322545e-07
+            },
+            "hip_world": [
+              5.329071521759033,
+              0.049998875707387924,
+              0.4648272395133972
+            ]
+          }
+        },
+        "waffle": {
+          "evaluated_min_z": -9.313225746154785e-10
+        },
+        "dog_visible": true,
+        "dog_visibility": {
+          "samples": 65,
+          "blocked": 0,
+          "bounds": [
+            0.4770234525203705,
+            0.5708250999450684,
+            0.3448392450809479,
+            0.45361196994781494,
+            1.5680315494537354
+          ],
+          "safe": true,
+          "visible_fraction": 1.0,
+          "blockers": []
+        },
+        "actor_bounds": {
+          "june": [
+            0.5262115597724915,
+            0.8019002676010132,
+            0.4253107011318207,
+            0.6071929335594177,
+            1.875764012336731
+          ],
+          "narrator": [
+            0.3338910937309265,
+            0.5361536145210266,
+            0.4567694664001465,
+            0.606741189956665,
+            2.3449363708496094
+          ]
+        },
+        "note": "Separate rise, planted lateral steps, sit; no lateral root translation during sit."
+      }
+    },
+    {
+      "global_frame": 2999,
+      "sentence": 48,
+      "metrics": {
+        "seat_top": 0.46482717990875244,
+        "seat_contacts": {
+          "june": {
+            "phase": "seated",
+            "seated_fraction_command": 1,
+            "signed_rear_hip_gap": 5.364418029785156e-07,
+            "signed_foot_gaps": [
+              0.0,
+              0.0
+            ],
+            "foot_step_drift": [
+              0.0,
+              0.0
+            ],
+            "moving_feet": [
+              false,
+              false
+            ],
+            "lateral_hip_drift": 0.0,
+            "limbs": {
+              "max_segment_length_change": 4.046981429972618e-07,
+              "max_joint_gap": 4.777675730550706e-07
+            },
+            "hip_world": [
+              5.329071521759033,
+              -1.8000010251998901,
+              0.4648272395133972
+            ]
+          },
+          "narrator": {
+            "phase": "seated",
+            "seated_fraction_command": 1,
+            "signed_rear_hip_gap": 5.364418029785156e-07,
+            "signed_foot_gaps": [
+              0.0,
+              0.0
+            ],
+            "foot_step_drift": [
+              0.0,
+              0.0
+            ],
+            "moving_feet": [
+              false,
+              false
+            ],
+            "lateral_hip_drift": 0.0,
+            "limbs": {
+              "max_segment_length_change": 4.0469814543975247e-07,
+              "max_joint_gap": 4.798544105322545e-07
+            },
+            "hip_world": [
+              5.329071521759033,
+              0.049998875707387924,
+              0.4648272395133972
+            ]
+          }
+        },
+        "waffle": {
+          "evaluated_min_z": -9.313225746154785e-10
+        },
+        "dog_visible": true,
+        "dog_visibility": {
+          "samples": 64,
+          "blocked": 0,
+          "bounds": [
+            0.4770234525203705,
+            0.5708250999450684,
+            0.3448392450809479,
+            0.4536573886871338,
+            1.5680315494537354
+          ],
+          "safe": true,
+          "visible_fraction": 1.0,
+          "blockers": []
+        },
+        "actor_bounds": {
+          "june": [
+            0.5262115597724915,
+            0.8019002676010132,
+            0.4253107011318207,
+            0.6071919202804565,
+            1.8750109672546387
+          ],
+          "narrator": [
+            0.3338910937309265,
+            0.5361536145210266,
+            0.4567694664001465,
+            0.606741189956665,
+            2.3449363708496094
+          ]
+        },
+        "note": "Separate rise, planted lateral steps, sit; no lateral root translation during sit."
+      }
+    },
+    {
+      "global_frame": 3000,
+      "sentence": 48,
+      "metrics": {
+        "seat_top": 0.46482717990875244,
+        "seat_contacts": {
+          "june": {
+            "phase": "seated",
+            "seated_fraction_command": 1,
+            "signed_rear_hip_gap": 5.364418029785156e-07,
+            "signed_foot_gaps": [
+              0.0,
+              0.0
+            ],
+            "foot_step_drift": [
+              0.0,
+              0.0
+            ],
+            "moving_feet": [
+              false,
+              false
+            ],
+            "lateral_hip_drift": 0.0,
+            "limbs": {
+              "max_segment_length_change": 4.046981429972618e-07,
+              "max_joint_gap": 4.777675730550706e-07
+            },
+            "hip_world": [
+              5.329071521759033,
+              -1.8000010251998901,
+              0.4648272395133972
+            ]
+          },
+          "narrator": {
+            "phase": "seated",
+            "seated_fraction_command": 1,
+            "signed_rear_hip_gap": 5.364418029785156e-07,
+            "signed_foot_gaps": [
+              0.0,
+              0.0
+            ],
+            "foot_step_drift": [
+              0.0,
+              0.0
+            ],
+            "moving_feet": [
+              false,
+              false
+            ],
+            "lateral_hip_drift": 0.0,
+            "limbs": {
+              "max_segment_length_change": 4.0469814543975247e-07,
+              "max_joint_gap": 4.798544105322545e-07
+            },
+            "hip_world": [
+              5.329071521759033,
+              0.049998875707387924,
+              0.4648272395133972
+            ]
+          }
+        },
+        "waffle": {
+          "evaluated_min_z": -9.313225746154785e-10
+        },
+        "dog_visible": true,
+        "dog_visibility": {
+          "samples": 64,
+          "blocked": 0,
+          "bounds": [
+            0.4770234525203705,
+            0.5708250999450684,
+            0.3448392450809479,
+            0.4536917507648468,
+            1.5680315494537354
+          ],
+          "safe": true,
+          "visible_fraction": 1.0,
+          "blockers": []
+        },
+        "actor_bounds": {
+          "june": [
+            0.5262115597724915,
+            0.8019002676010132,
+            0.4253107011318207,
+            0.6071901917457581,
+            1.874359369277954
+          ],
+          "narrator": [
+            0.3338910937309265,
+            0.5361536145210266,
+            0.4567694664001465,
+            0.606741189956665,
+            2.3449363708496094
+          ]
+        },
+        "note": "Separate rise, planted lateral steps, sit; no lateral root translation during sit."
+      }
+    },
+    {
+      "global_frame": 3001,
+      "sentence": 48,
+      "metrics": {
+        "seat_top": 0.46482717990875244,
+        "seat_contacts": {
+          "june": {
+            "phase": "seated",
+            "seated_fraction_command": 1,
+            "signed_rear_hip_gap": 5.364418029785156e-07,
+            "signed_foot_gaps": [
+              0.0,
+              0.0
+            ],
+            "foot_step_drift": [
+              0.0,
+              0.0
+            ],
+            "moving_feet": [
+              false,
+              false
+            ],
+            "lateral_hip_drift": 0.0,
+            "limbs": {
+              "max_segment_length_change": 4.046981429972618e-07,
+              "max_joint_gap": 4.777675730550706e-07
+            },
+            "hip_world": [
+              5.329071521759033,
+              -1.8000010251998901,
+              0.4648272395133972
+            ]
+          },
+          "narrator": {
+            "phase": "seated",
+            "seated_fraction_command": 1,
+            "signed_rear_hip_gap": 5.364418029785156e-07,
+            "signed_foot_gaps": [
+              0.0,
+              0.0
+            ],
+            "foot_step_drift": [
+              0.0,
+              0.0
+            ],
+            "moving_feet": [
+              false,
+              false
+            ],
+            "lateral_hip_drift": 0.0,
+            "limbs": {
+              "max_segment_length_change": 4.0469814543975247e-07,
+              "max_joint_gap": 4.798544105322545e-07
+            },
+            "hip_world": [
+              5.329071521759033,
+              0.049998875707387924,
+              0.4648272395133972
+            ]
+          }
+        },
+        "waffle": {
+          "evaluated_min_z": -9.313225746154785e-10
+        },
+        "dog_visible": true,
+        "dog_visibility": {
+          "samples": 64,
+          "blocked": 0,
+          "bounds": [
+            0.4770234525203705,
+            0.5708250999450684,
+            0.3448392450809479,
+            0.45371001958847046,
+            1.5680315494537354
+          ],
+          "safe": true,
+          "visible_fraction": 1.0,
+          "blockers": []
+        },
+        "actor_bounds": {
+          "june": [
+            0.5262115597724915,
+            0.8019002676010132,
+            0.4253107011318207,
+            0.6071882247924805,
+            1.87381911277771
+          ],
+          "narrator": [
+            0.3338910937309265,
+            0.5361536145210266,
+            0.4567694664001465,
+            0.606741189956665,
+            2.3449363708496094
+          ]
+        },
+        "note": "Separate rise, planted lateral steps, sit; no lateral root translation during sit."
+      }
+    },
+    {
+      "global_frame": 3002,
+      "sentence": 48,
+      "metrics": {
+        "seat_top": 0.46482717990875244,
+        "seat_contacts": {
+          "june": {
+            "phase": "seated",
+            "seated_fraction_command": 1,
+            "signed_rear_hip_gap": 5.364418029785156e-07,
+            "signed_foot_gaps": [
+              0.0,
+              0.0
+            ],
+            "foot_step_drift": [
+              0.0,
+              0.0
+            ],
+            "moving_feet": [
+              false,
+              false
+            ],
+            "lateral_hip_drift": 0.0,
+            "limbs": {
+              "max_segment_length_change": 4.046981429972618e-07,
+              "max_joint_gap": 4.777675730550706e-07
+            },
+            "hip_world": [
+              5.329071521759033,
+              -1.8000010251998901,
+              0.4648272395133972
+            ]
+          },
+          "narrator": {
+            "phase": "seated",
+            "seated_fraction_command": 1,
+            "signed_rear_hip_gap": 5.364418029785156e-07,
+            "signed_foot_gaps": [
+              0.0,
+              0.0
+            ],
+            "foot_step_drift": [
+              0.0,
+              0.0
+            ],
+            "moving_feet": [
+              false,
+              false
+            ],
+            "lateral_hip_drift": 0.0,
+            "limbs": {
+              "max_segment_length_change": 4.0469814543975247e-07,
+              "max_joint_gap": 4.798544105322545e-07
+            },
+            "hip_world": [
+              5.329071521759033,
+              0.049998875707387924,
+              0.4648272395133972
+            ]
+          }
+        },
+        "waffle": {
+          "evaluated_min_z": -9.313225746154785e-10
+        },
+        "dog_visible": true,
+        "dog_visibility": {
+          "samples": 64,
+          "blocked": 0,
+          "bounds": [
+            0.4770234525203705,
+            0.5708250999450684,
+            0.3448392450809479,
+            0.4537099003791809,
+            1.5680315494537354
+          ],
+          "safe": true,
+          "visible_fraction": 1.0,
+          "blockers": []
+        },
+        "actor_bounds": {
+          "june": [
+            0.5262115597724915,
+            0.8019002676010132,
+            0.4253107011318207,
+            0.6071863770484924,
+            1.873396396636963
+          ],
+          "narrator": [
+            0.3338910937309265,
+            0.5361536145210266,
+            0.4567694664001465,
+            0.606741189956665,
+            2.3449363708496094
+          ]
+        },
+        "note": "Separate rise, planted lateral steps, sit; no lateral root translation during sit."
+      }
+    },
+    {
+      "global_frame": 3003,
+      "sentence": 48,
+      "metrics": {
+        "seat_top": 0.46482717990875244,
+        "seat_contacts": {
+          "june": {
+            "phase": "seated",
+            "seated_fraction_command": 1,
+            "signed_rear_hip_gap": 5.364418029785156e-07,
+            "signed_foot_gaps": [
+              0.0,
+              0.0
+            ],
+            "foot_step_drift": [
+              0.0,
+              0.0
+            ],
+            "moving_feet": [
+              false,
+              false
+            ],
+            "lateral_hip_drift": 0.0,
+            "limbs": {
+              "max_segment_length_change": 4.046981429972618e-07,
+              "max_joint_gap": 4.777675730550706e-07
+            },
+            "hip_world": [
+              5.329071521759033,
+              -1.8000010251998901,
+              0.4648272395133972
+            ]
+          },
+          "narrator": {
+            "phase": "seated",
+            "seated_fraction_command": 1,
+            "signed_rear_hip_gap": 5.364418029785156e-07,
+            "signed_foot_gaps": [
+              0.0,
+              0.0
+            ],
+            "foot_step_drift": [
+              0.0,
+              0.0
+            ],
+            "moving_feet": [
+              false,
+              false
+            ],
+            "lateral_hip_drift": 0.0,
+            "limbs": {
+              "max_segment_length_change": 4.0469814543975247e-07,
+              "max_joint_gap": 4.798544105322545e-07
+            },
+            "hip_world": [
+              5.329071521759033,
+              0.049998875707387924,
+              0.4648272395133972
+            ]
+          }
+        },
+        "waffle": {
+          "evaluated_min_z": -9.313225746154785e-10
+        },
+        "dog_visible": true,
+        "dog_visibility": {
+          "samples": 64,
+          "blocked": 0,
+          "bounds": [
+            0.4770234525203705,
+            0.5708250999450684,
+            0.3448392450809479,
+            0.4536929428577423,
+            1.5680315494537354
+          ],
+          "safe": true,
+          "visible_fraction": 1.0,
+          "blockers": []
+        },
+        "actor_bounds": {
+          "june": [
+            0.5262115597724915,
+            0.8019002676010132,
+            0.4253107011318207,
+            0.6071847677230835,
+            1.87309992313385
+          ],
+          "narrator": [
+            0.3338910937309265,
+            0.5361536145210266,
+            0.4567694664001465,
+            0.606741189956665,
+            2.3449363708496094
+          ]
+        },
+        "note": "Separate rise, planted lateral steps, sit; no lateral root translation during sit."
+      }
+    },
+    {
+      "global_frame": 3004,
+      "sentence": 48,
+      "metrics": {
+        "seat_top": 0.46482717990875244,
+        "seat_contacts": {
+          "june": {
+            "phase": "seated",
+            "seated_fraction_command": 1,
+            "signed_rear_hip_gap": 5.364418029785156e-07,
+            "signed_foot_gaps": [
+              0.0,
+              0.0
+            ],
+            "foot_step_drift": [
+              0.0,
+              0.0
+            ],
+            "moving_feet": [
+              false,
+              false
+            ],
+            "lateral_hip_drift": 0.0,
+            "limbs": {
+              "max_segment_length_change": 4.046981429972618e-07,
+              "max_joint_gap": 4.777675730550706e-07
+            },
+            "hip_world": [
+              5.329071521759033,
+              -1.8000010251998901,
+              0.4648272395133972
+            ]
+          },
+          "narrator": {
+            "phase": "seated",
+            "seated_fraction_command": 1,
+            "signed_rear_hip_gap": 5.364418029785156e-07,
+            "signed_foot_gaps": [
+              0.0,
+              0.0
+            ],
+            "foot_step_drift": [
+              0.0,
+              0.0
+            ],
+            "moving_feet": [
+              false,
+              false
+            ],
+            "lateral_hip_drift": 0.0,
+            "limbs": {
+              "max_segment_length_change": 4.0469814543975247e-07,
+              "max_joint_gap": 4.798544105322545e-07
+            },
+            "hip_world": [
+              5.329071521759033,
+              0.049998875707387924,
+              0.4648272395133972
+            ]
+          }
+        },
+        "waffle": {
+          "evaluated_min_z": -9.313225746154785e-10
+        },
+        "dog_visible": true,
+        "dog_visibility": {
+          "samples": 64,
+          "blocked": 0,
+          "bounds": [
+            0.4770234525203705,
+            0.5708250999450684,
+            0.3448392450809479,
+            0.4536648392677307,
+            1.5680315494537354
+          ],
+          "safe": true,
+          "visible_fraction": 1.0,
+          "blockers": []
+        },
+        "actor_bounds": {
+          "june": [
+            0.5262115597724915,
+            0.8019002676010132,
+            0.4253107011318207,
+            0.6071838736534119,
+            1.8729312419891357
+          ],
+          "narrator": [
+            0.3338910937309265,
+            0.5361536145210266,
+            0.4567694664001465,
+            0.606741189956665,
+            2.3449363708496094
+          ]
+        },
+        "note": "Separate rise, planted lateral steps, sit; no lateral root translation during sit."
+      }
+    },
+    {
+      "global_frame": 3005,
+      "sentence": 48,
+      "metrics": {
+        "seat_top": 0.46482717990875244,
+        "seat_contacts": {
+          "june": {
+            "phase": "seated",
+            "seated_fraction_command": 1,
+            "signed_rear_hip_gap": 5.364418029785156e-07,
+            "signed_foot_gaps": [
+              0.0,
+              0.0
+            ],
+            "foot_step_drift": [
+              0.0,
+              0.0
+            ],
+            "moving_feet": [
+              false,
+              false
+            ],
+            "lateral_hip_drift": 0.0,
+            "limbs": {
+              "max_segment_length_change": 4.046981429972618e-07,
+              "max_joint_gap": 4.777675730550706e-07
+            },
+            "hip_world": [
+              5.329071521759033,
+              -1.8000010251998901,
+              0.4648272395133972
+            ]
+          },
+          "narrator": {
+            "phase": "seated",
+            "seated_fraction_command": 1,
+            "signed_rear_hip_gap": 5.364418029785156e-07,
+            "signed_foot_gaps": [
+              0.0,
+              0.0
+            ],
+            "foot_step_drift": [
+              0.0,
+              0.0
+            ],
+            "moving_feet": [
+              false,
+              false
+            ],
+            "lateral_hip_drift": 0.0,
+            "limbs": {
+              "max_segment_length_change": 4.0469814543975247e-07,
+              "max_joint_gap": 4.798544105322545e-07
+            },
+            "hip_world": [
+              5.329071521759033,
+              0.049998875707387924,
+              0.4648272395133972
+            ]
+          }
+        },
+        "waffle": {
+          "evaluated_min_z": -9.313225746154785e-10
+        },
+        "dog_visible": true,
+        "dog_visibility": {
+          "samples": 64,
+          "blocked": 0,
+          "bounds": [
+            0.4770234525203705,
+            0.5708250999450684,
+            0.3448392450809479,
+            0.4536791145801544,
+            1.5680315494537354
+          ],
+          "safe": true,
+          "visible_fraction": 1.0,
+          "blockers": []
+        },
+        "actor_bounds": {
+          "june": [
+            0.5262115597724915,
+            0.8019002676010132,
+            0.4253107011318207,
+            0.6071836948394775,
+            1.8728946447372437
+          ],
+          "narrator": [
+            0.3338910937309265,
+            0.5361536145210266,
+            0.4567694664001465,
+            0.606741189956665,
+            2.3449363708496094
+          ]
+        },
+        "note": "Separate rise, planted lateral steps, sit; no lateral root translation during sit."
+      }
+    },
+    {
+      "global_frame": 3006,
+      "sentence": 48,
+      "metrics": {
+        "seat_top": 0.46482717990875244,
+        "seat_contacts": {
+          "june": {
+            "phase": "seated",
+            "seated_fraction_command": 1,
+            "signed_rear_hip_gap": 5.364418029785156e-07,
+            "signed_foot_gaps": [
+              0.0,
+              0.0
+            ],
+            "foot_step_drift": [
+              0.0,
+              0.0
+            ],
+            "moving_feet": [
+              false,
+              false
+            ],
+            "lateral_hip_drift": 0.0,
+            "limbs": {
+              "max_segment_length_change": 4.046981429972618e-07,
+              "max_joint_gap": 4.777675730550706e-07
+            },
+            "hip_world": [
+              5.329071521759033,
+              -1.8000010251998901,
+              0.4648272395133972
+            ]
+          },
+          "narrator": {
+            "phase": "seated",
+            "seated_fraction_command": 1,
+            "signed_rear_hip_gap": 5.364418029785156e-07,
+            "signed_foot_gaps": [
+              0.0,
+              0.0
+            ],
+            "foot_step_drift": [
+              0.0,
+              0.0
+            ],
+            "moving_feet": [
+              false,
+              false
+            ],
+            "lateral_hip_drift": 0.0,
+            "limbs": {
+              "max_segment_length_change": 4.0469814543975247e-07,
+              "max_joint_gap": 4.798544105322545e-07
+            },
+            "hip_world": [
+              5.329071521759033,
+              0.049998875707387924,
+              0.4648272395133972
+            ]
+          }
+        },
+        "waffle": {
+          "evaluated_min_z": -9.313225746154785e-10
+        },
+        "dog_visible": true,
+        "dog_visibility": {
+          "samples": 64,
+          "blocked": 0,
+          "bounds": [
+            0.4770234525203705,
+            0.5708250999450684,
+            0.3448392450809479,
+            0.4536909759044647,
+            1.5680315494537354
+          ],
+          "safe": true,
+          "visible_fraction": 1.0,
+          "blockers": []
+        },
+        "actor_bounds": {
+          "june": [
+            0.5262115597724915,
+            0.8019002676010132,
+            0.4253107011318207,
+            0.6071842312812805,
+            1.8729894161224365
+          ],
+          "narrator": [
+            0.3338910937309265,
+            0.5361536145210266,
+            0.4567694664001465,
+            0.606741189956665,
+            2.3449363708496094
+          ]
+        },
+        "note": "Separate rise, planted lateral steps, sit; no lateral root translation during sit."
+      }
+    },
+    {
+      "global_frame": 3007,
+      "sentence": 48,
+      "metrics": {
+        "seat_top": 0.46482717990875244,
+        "seat_contacts": {
+          "june": {
+            "phase": "seated",
+            "seated_fraction_command": 1,
+            "signed_rear_hip_gap": 5.364418029785156e-07,
+            "signed_foot_gaps": [
+              0.0,
+              0.0
+            ],
+            "foot_step_drift": [
+              0.0,
+              0.0
+            ],
+            "moving_feet": [
+              false,
+              false
+            ],
+            "lateral_hip_drift": 0.0,
+            "limbs": {
+              "max_segment_length_change": 4.046981429972618e-07,
+              "max_joint_gap": 4.777675730550706e-07
+            },
+            "hip_world": [
+              5.329071521759033,
+              -1.8000010251998901,
+              0.4648272395133972
+            ]
+          },
+          "narrator": {
+            "phase": "seated",
+            "seated_fraction_command": 1,
+            "signed_rear_hip_gap": 5.364418029785156e-07,
+            "signed_foot_gaps": [
+              0.0,
+              0.0
+            ],
+            "foot_step_drift": [
+              0.0,
+              0.0
+            ],
+            "moving_feet": [
+              false,
+              false
+            ],
+            "lateral_hip_drift": 0.0,
+            "limbs": {
+              "max_segment_length_change": 4.0469814543975247e-07,
+              "max_joint_gap": 4.798544105322545e-07
+            },
+            "hip_world": [
+              5.329071521759033,
+              0.049998875707387924,
+              0.4648272395133972
+            ]
+          }
+        },
+        "waffle": {
+          "evaluated_min_z": -9.313225746154785e-10
+        },
+        "dog_visible": true,
+        "dog_visibility": {
+          "samples": 64,
+          "blocked": 0,
+          "bounds": [
+            0.4770234525203705,
+            0.5708250999450684,
+            0.3448392450809479,
+            0.45369285345077515,
+            1.5680315494537354
+          ],
+          "safe": true,
+          "visible_fraction": 1.0,
+          "blockers": []
+        },
+        "actor_bounds": {
+          "june": [
+            0.5262115597724915,
+            0.8019002676010132,
+            0.4253107011318207,
+            0.607185423374176,
+            1.8732142448425293
+          ],
+          "narrator": [
+            0.3338910937309265,
+            0.5361536145210266,
+            0.4567694664001465,
+            0.606741189956665,
+            2.3449363708496094
+          ]
+        },
+        "note": "Separate rise, planted lateral steps, sit; no lateral root translation during sit."
+      }
+    },
+    {
+      "global_frame": 3008,
+      "sentence": 48,
+      "metrics": {
+        "seat_top": 0.46482717990875244,
+        "seat_contacts": {
+          "june": {
+            "phase": "seated",
+            "seated_fraction_command": 1,
+            "signed_rear_hip_gap": 5.364418029785156e-07,
+            "signed_foot_gaps": [
+              0.0,
+              0.0
+            ],
+            "foot_step_drift": [
+              0.0,
+              0.0
+            ],
+            "moving_feet": [
+              false,
+              false
+            ],
+            "lateral_hip_drift": 0.0,
+            "limbs": {
+              "max_segment_length_change": 4.046981429972618e-07,
+              "max_joint_gap": 4.777675730550706e-07
+            },
+            "hip_world": [
+              5.329071521759033,
+              -1.8000010251998901,
+              0.4648272395133972
+            ]
+          },
+          "narrator": {
+            "phase": "seated",
+            "seated_fraction_command": 1,
+            "signed_rear_hip_gap": 5.364418029785156e-07,
+            "signed_foot_gaps": [
+              0.0,
+              0.0
+            ],
+            "foot_step_drift": [
+              0.0,
+              0.0
+            ],
+            "moving_feet": [
+              false,
+              false
+            ],
+            "lateral_hip_drift": 0.0,
+            "limbs": {
+              "max_segment_length_change": 4.0469814543975247e-07,
+              "max_joint_gap": 4.798544105322545e-07
+            },
+            "hip_world": [
+              5.329071521759033,
+              0.049998875707387924,
+              0.4648272395133972
+            ]
+          }
+        },
+        "waffle": {
+          "evaluated_min_z": -9.313225746154785e-10
+        },
+        "dog_visible": true,
+        "dog_visibility": {
+          "samples": 64,
+          "blocked": 0,
+          "bounds": [
+            0.4770234525203705,
+            0.5708250999450684,
+            0.3448392450809479,
+            0.453684538602829,
+            1.5680315494537354
+          ],
+          "safe": true,
+          "visible_fraction": 1.0,
+          "blockers": []
+        },
+        "actor_bounds": {
+          "june": [
+            0.5262115597724915,
+            0.8019002676010132,
+            0.4253107011318207,
+            0.6071871519088745,
+            1.8735666275024414
+          ],
+          "narrator": [
+            0.3338910937309265,
+            0.5361536145210266,
+            0.4567694664001465,
+            0.606741189956665,
+            2.3449363708496094
+          ]
+        },
+        "note": "Separate rise, planted lateral steps, sit; no lateral root translation during sit."
+      }
+    },
+    {
+      "global_frame": 3009,
+      "sentence": 48,
+      "metrics": {
+        "seat_top": 0.46482717990875244,
+        "seat_contacts": {
+          "june": {
+            "phase": "seated",
+            "seated_fraction_command": 1,
+            "signed_rear_hip_gap": 5.364418029785156e-07,
+            "signed_foot_gaps": [
+              0.0,
+              0.0
+            ],
+            "foot_step_drift": [
+              0.0,
+              0.0
+            ],
+            "moving_feet": [
+              false,
+              false
+            ],
+            "lateral_hip_drift": 0.0,
+            "limbs": {
+              "max_segment_length_change": 4.046981429972618e-07,
+              "max_joint_gap": 4.777675730550706e-07
+            },
+            "hip_world": [
+              5.329071521759033,
+              -1.8000010251998901,
+              0.4648272395133972
+            ]
+          },
+          "narrator": {
+            "phase": "seated",
+            "seated_fraction_command": 1,
+            "signed_rear_hip_gap": 5.364418029785156e-07,
+            "signed_foot_gaps": [
+              0.0,
+              0.0
+            ],
+            "foot_step_drift": [
+              0.0,
+              0.0
+            ],
+            "moving_feet": [
+              false,
+              false
+            ],
+            "lateral_hip_drift": 0.0,
+            "limbs": {
+              "max_segment_length_change": 4.0469814543975247e-07,
+              "max_joint_gap": 4.798544105322545e-07
+            },
+            "hip_world": [
+              5.329071521759033,
+              0.049998875707387924,
+              0.4648272395133972
+            ]
+          }
+        },
+        "waffle": {
+          "evaluated_min_z": -9.313225746154785e-10
+        },
+        "dog_visible": true,
+        "dog_visibility": {
+          "samples": 64,
+          "blocked": 0,
+          "bounds": [
+            0.4770234525203705,
+            0.5708250999450684,
+            0.3448392450809479,
+            0.45365962386131287,
+            1.5680315494537354
+          ],
+          "safe": true,
+          "visible_fraction": 1.0,
+          "blockers": []
+        },
+        "actor_bounds": {
+          "june": [
+            0.5262115597724915,
+            0.8019002676010132,
+            0.4253107011318207,
+            0.6071891188621521,
+            1.8740413188934326
+          ],
+          "narrator": [
+            0.3338910937309265,
+            0.5361536145210266,
+            0.4567694664001465,
+            0.606741189956665,
+            2.3449363708496094
+          ]
+        },
+        "note": "Separate rise, planted lateral steps, sit; no lateral root translation during sit."
+      }
+    },
+    {
+      "global_frame": 3010,
+      "sentence": 48,
+      "metrics": {
+        "seat_top": 0.46482717990875244,
+        "seat_contacts": {
+          "june": {
+            "phase": "seated",
+            "seated_fraction_command": 1,
+            "signed_rear_hip_gap": 5.364418029785156e-07,
+            "signed_foot_gaps": [
+              0.0,
+              0.0
+            ],
+            "foot_step_drift": [
+              0.0,
+              0.0
+            ],
+            "moving_feet": [
+              false,
+              false
+            ],
+            "lateral_hip_drift": 0.0,
+            "limbs": {
+              "max_segment_length_change": 4.046981429972618e-07,
+              "max_joint_gap": 4.777675730550706e-07
+            },
+            "hip_world": [
+              5.329071521759033,
+              -1.8000010251998901,
+              0.4648272395133972
+            ]
+          },
+          "narrator": {
+            "phase": "seated",
+            "seated_fraction_command": 1,
+            "signed_rear_hip_gap": 5.364418029785156e-07,
+            "signed_foot_gaps": [
+              0.0,
+              0.0
+            ],
+            "foot_step_drift": [
+              0.0,
+              0.0
+            ],
+            "moving_feet": [
+              false,
+              false
+            ],
+            "lateral_hip_drift": 0.0,
+            "limbs": {
+              "max_segment_length_change": 4.0469814543975247e-07,
+              "max_joint_gap": 4.798544105322545e-07
+            },
+            "hip_world": [
+              5.329071521759033,
+              0.049998875707387924,
+              0.4648272395133972
+            ]
+          }
+        },
+        "waffle": {
+          "evaluated_min_z": -9.313225746154785e-10
+        },
+        "dog_visible": true,
+        "dog_visibility": {
+          "samples": 64,
+          "blocked": 0,
+          "bounds": [
+            0.4770234525203705,
+            0.5708250999450684,
+            0.3448392450809479,
+            0.4536947011947632,
+            1.5680315494537354
+          ],
+          "safe": true,
+          "visible_fraction": 1.0,
+          "blockers": []
+        },
+        "actor_bounds": {
+          "june": [
+            0.5262115597724915,
+            0.8019002676010132,
+            0.4253107011318207,
+            0.6071909666061401,
+            1.8746323585510254
+          ],
+          "narrator": [
+            0.3338910937309265,
+            0.5361536145210266,
+            0.4567694664001465,
+            0.606741189956665,
+            2.3449363708496094
+          ]
+        },
+        "note": "Separate rise, planted lateral steps, sit; no lateral root translation during sit."
+      }
+    },
+    {
+      "global_frame": 3011,
+      "sentence": 48,
+      "metrics": {
+        "seat_top": 0.46482717990875244,
+        "seat_contacts": {
+          "june": {
+            "phase": "seated",
+            "seated_fraction_command": 1,
+            "signed_rear_hip_gap": 5.364418029785156e-07,
+            "signed_foot_gaps": [
+              0.0,
+              0.0
+            ],
+            "foot_step_drift": [
+              0.0,
+              0.0
+            ],
+            "moving_feet": [
+              false,
+              false
+            ],
+            "lateral_hip_drift": 0.0,
+            "limbs": {
+              "max_segment_length_change": 4.046981429972618e-07,
+              "max_joint_gap": 4.777675730550706e-07
+            },
+            "hip_world": [
+              5.329071521759033,
+              -1.8000010251998901,
+              0.4648272395133972
+            ]
+          },
+          "narrator": {
+            "phase": "seated",
+            "seated_fraction_command": 1,
+            "signed_rear_hip_gap": 5.364418029785156e-07,
+            "signed_foot_gaps": [
+              0.0,
+              0.0
+            ],
+            "foot_step_drift": [
+              0.0,
+              0.0
+            ],
+            "moving_feet": [
+              false,
+              false
+            ],
+            "lateral_hip_drift": 0.0,
+            "limbs": {
+              "max_segment_length_change": 4.0469814543975247e-07,
+              "max_joint_gap": 4.798544105322545e-07
+            },
+            "hip_world": [
+              5.329071521759033,
+              0.049998875707387924,
+              0.4648272395133972
+            ]
+          }
+        },
+        "waffle": {
+          "evaluated_min_z": -9.313225746154785e-10
+        },
+        "dog_visible": true,
+        "dog_visibility": {
+          "samples": 64,
+          "blocked": 0,
+          "bounds": [
+            0.4770234525203705,
+            0.5708250999450684,
+            0.3448392450809479,
+            0.45371225476264954,
+            1.5680315494537354
+          ],
+          "safe": true,
+          "visible_fraction": 1.0,
+          "blockers": []
+        },
+        "actor_bounds": {
+          "june": [
+            0.5262115597724915,
+            0.8019002676010132,
+            0.4253107011318207,
+            0.6071924567222595,
+            1.875328779220581
+          ],
+          "narrator": [
+            0.3338910937309265,
+            0.5361536145210266,
+            0.4567694664001465,
+            0.606741189956665,
+            2.3449363708496094
+          ]
+        },
+        "note": "Separate rise, planted lateral steps, sit; no lateral root translation during sit."
+      }
+    },
+    {
+      "global_frame": 3012,
+      "sentence": 48,
+      "metrics": {
+        "seat_top": 0.46482717990875244,
+        "seat_contacts": {
+          "june": {
+            "phase": "seated",
+            "seated_fraction_command": 1,
+            "signed_rear_hip_gap": 5.364418029785156e-07,
+            "signed_foot_gaps": [
+              0.0,
+              0.0
+            ],
+            "foot_step_drift": [
+              0.0,
+              0.0
+            ],
+            "moving_feet": [
+              false,
+              false
+            ],
+            "lateral_hip_drift": 0.0,
+            "limbs": {
+              "max_segment_length_change": 4.046981429972618e-07,
+              "max_joint_gap": 4.777675730550706e-07
+            },
+            "hip_world": [
+              5.329071521759033,
+              -1.8000010251998901,
+              0.4648272395133972
+            ]
+          },
+          "narrator": {
+            "phase": "seated",
+            "seated_fraction_command": 1,
+            "signed_rear_hip_gap": 5.364418029785156e-07,
+            "signed_foot_gaps": [
+              0.0,
+              0.0
+            ],
+            "foot_step_drift": [
+              0.0,
+              0.0
+            ],
+            "moving_feet": [
+              false,
+              false
+            ],
+            "lateral_hip_drift": 0.0,
+            "limbs": {
+              "max_segment_length_change": 4.0469814543975247e-07,
+              "max_joint_gap": 4.798544105322545e-07
+            },
+            "hip_world": [
+              5.329071521759033,
+              0.049998875707387924,
+              0.4648272395133972
+            ]
+          }
+        },
+        "waffle": {
+          "evaluated_min_z": -9.313225746154785e-10
+        },
+        "dog_visible": true,
+        "dog_visibility": {
+          "samples": 64,
+          "blocked": 0,
+          "bounds": [
+            0.4770234525203705,
+            0.5708250999450684,
+            0.3448392450809479,
+            0.4536876380443573,
+            1.5680315494537354
+          ],
+          "safe": true,
+          "visible_fraction": 1.0,
+          "blockers": []
+        },
+        "actor_bounds": {
+          "june": [
+            0.5262115597724915,
+            0.8019002676010132,
+            0.4253107011318207,
+            0.6071931719779968,
+            1.876123070716858
+          ],
+          "narrator": [
+            0.3338910937309265,
+            0.5361536145210266,
+            0.4567694664001465,
+            0.606741189956665,
+            2.3449363708496094
+          ]
+        },
+        "note": "Separate rise, planted lateral steps, sit; no lateral root translation during sit."
+      }
+    },
+    {
+      "global_frame": 3013,
+      "sentence": 48,
+      "metrics": {
+        "seat_top": 0.46482717990875244,
+        "seat_contacts": {
+          "june": {
+            "phase": "seated",
+            "seated_fraction_command": 1,
+            "signed_rear_hip_gap": 5.364418029785156e-07,
+            "signed_foot_gaps": [
+              0.0,
+              0.0
+            ],
+            "foot_step_drift": [
+              0.0,
+              0.0
+            ],
+            "moving_feet": [
+              false,
+              false
+            ],
+            "lateral_hip_drift": 0.0,
+            "limbs": {
+              "max_segment_length_change": 4.046981429972618e-07,
+              "max_joint_gap": 4.777675730550706e-07
+            },
+            "hip_world": [
+              5.329071521759033,
+              -1.8000010251998901,
+              0.4648272395133972
+            ]
+          },
+          "narrator": {
+            "phase": "seated",
+            "seated_fraction_command": 1,
+            "signed_rear_hip_gap": 5.364418029785156e-07,
+            "signed_foot_gaps": [
+              0.0,
+              0.0
+            ],
+            "foot_step_drift": [
+              0.0,
+              0.0
+            ],
+            "moving_feet": [
+              false,
+              false
+            ],
+            "lateral_hip_drift": 0.0,
+            "limbs": {
+              "max_segment_length_change": 4.0469814543975247e-07,
+              "max_joint_gap": 4.798544105322545e-07
+            },
+            "hip_world": [
+              5.329071521759033,
+              0.049998875707387924,
+              0.4648272395133972
+            ]
+          }
+        },
+        "waffle": {
+          "evaluated_min_z": -9.313225746154785e-10
+        },
+        "dog_visible": true,
+        "dog_visibility": {
+          "samples": 65,
+          "blocked": 0,
+          "bounds": [
+            0.4770234525203705,
+            0.5708250999450684,
+            0.3448392450809479,
+            0.45360037684440613,
+            1.5680315494537354
+          ],
+          "safe": true,
+          "visible_fraction": 1.0,
+          "blockers": []
+        },
+        "actor_bounds": {
+          "june": [
+            0.5262115597724915,
+            0.8019002676010132,
+            0.4253107011318207,
+            0.6071927547454834,
+            1.8770008087158203
+          ],
+          "narrator": [
+            0.3338910937309265,
+            0.5361536145210266,
+            0.4567694664001465,
+            0.606741189956665,
+            2.3449363708496094
+          ]
+        },
+        "note": "Separate rise, planted lateral steps, sit; no lateral root translation during sit."
+      }
+    },
+    {
+      "global_frame": 3014,
+      "sentence": 48,
+      "metrics": {
+        "seat_top": 0.46482717990875244,
+        "seat_contacts": {
+          "june": {
+            "phase": "seated",
+            "seated_fraction_command": 1,
+            "signed_rear_hip_gap": 5.364418029785156e-07,
+            "signed_foot_gaps": [
+              0.0,
+              0.0
+            ],
+            "foot_step_drift": [
+              0.0,
+              0.0
+            ],
+            "moving_feet": [
+              false,
+              false
+            ],
+            "lateral_hip_drift": 0.0,
+            "limbs": {
+              "max_segment_length_change": 4.046981429972618e-07,
+              "max_joint_gap": 4.777675730550706e-07
+            },
+            "hip_world": [
+              5.329071521759033,
+              -1.8000010251998901,
+              0.4648272395133972
+            ]
+          },
+          "narrator": {
+            "phase": "seated",
+            "seated_fraction_command": 1,
+            "signed_rear_hip_gap": 5.364418029785156e-07,
+            "signed_foot_gaps": [
+              0.0,
+              0.0
+            ],
+            "foot_step_drift": [
+              0.0,
+              0.0
+            ],
+            "moving_feet": [
+              false,
+              false
+            ],
+            "lateral_hip_drift": 0.0,
+            "limbs": {
+              "max_segment_length_change": 4.0469814543975247e-07,
+              "max_joint_gap": 4.798544105322545e-07
+            },
+            "hip_world": [
+              5.329071521759033,
+              0.049998875707387924,
+              0.4648272395133972
+            ]
+          }
+        },
+        "waffle": {
+          "evaluated_min_z": -9.313225746154785e-10
+        },
+        "dog_visible": true,
+        "dog_visibility": {
+          "samples": 65,
+          "blocked": 0,
+          "bounds": [
+            0.4770234525203705,
+            0.5708250999450684,
+            0.3448392450809479,
+            0.45343977212905884,
+            1.5680315494537354
+          ],
+          "safe": true,
+          "visible_fraction": 1.0,
+          "blockers": []
+        },
+        "actor_bounds": {
+          "june": [
+            0.5262115597724915,
+            0.8019002676010132,
+            0.4253107011318207,
+            0.6071993112564087,
+            1.8779499530792236
+          ],
+          "narrator": [
+            0.3338910937309265,
+            0.5361536145210266,
+            0.4567694664001465,
+            0.606741189956665,
+            2.3449363708496094
+          ]
+        },
+        "note": "Separate rise, planted lateral steps, sit; no lateral root translation during sit."
+      }
+    },
+    {
+      "global_frame": 3015,
+      "sentence": 48,
+      "metrics": {
+        "seat_top": 0.46482717990875244,
+        "seat_contacts": {
+          "june": {
+            "phase": "seated",
+            "seated_fraction_command": 1,
+            "signed_rear_hip_gap": 5.364418029785156e-07,
+            "signed_foot_gaps": [
+              0.0,
+              0.0
+            ],
+            "foot_step_drift": [
+              0.0,
+              0.0
+            ],
+            "moving_feet": [
+              false,
+              false
+            ],
+            "lateral_hip_drift": 0.0,
+            "limbs": {
+              "max_segment_length_change": 4.046981429972618e-07,
+              "max_joint_gap": 4.777675730550706e-07
+            },
+            "hip_world": [
+              5.329071521759033,
+              -1.8000010251998901,
+              0.4648272395133972
+            ]
+          },
+          "narrator": {
+            "phase": "seated",
+            "seated_fraction_command": 1,
+            "signed_rear_hip_gap": 5.364418029785156e-07,
+            "signed_foot_gaps": [
+              0.0,
+              0.0
+            ],
+            "foot_step_drift": [
+              0.0,
+              0.0
+            ],
+            "moving_feet": [
+              false,
+              false
+            ],
+            "lateral_hip_drift": 0.0,
+            "limbs": {
+              "max_segment_length_change": 4.0469814543975247e-07,
+              "max_joint_gap": 4.798544105322545e-07
+            },
+            "hip_world": [
+              5.329071521759033,
+              0.049998875707387924,
+              0.4648272395133972
+            ]
+          }
+        },
+        "waffle": {
+          "evaluated_min_z": -9.313225746154785e-10
+        },
+        "dog_visible": true,
+        "dog_visibility": {
+          "samples": 65,
+          "blocked": 0,
+          "bounds": [
+            0.4770234525203705,
+            0.5708250999450684,
+            0.3448392450809479,
+            0.45320945978164673,
+            1.5680315494537354
+          ],
+          "safe": true,
+          "visible_fraction": 1.0,
+          "blockers": []
+        },
+        "actor_bounds": {
+          "june": [
+            0.5262115597724915,
+            0.8019002676010132,
+            0.4253107011318207,
+            0.6072069406509399,
+            1.8789530992507935
+          ],
+          "narrator": [
+            0.3338910937309265,
+            0.5361536145210266,
+            0.4567694664001465,
+            0.606741189956665,
+            2.3449363708496094
+          ]
+        },
+        "note": "Separate rise, planted lateral steps, sit; no lateral root translation during sit."
+      }
+    },
+    {
+      "global_frame": 3016,
+      "sentence": 48,
+      "metrics": {
+        "seat_top": 0.46482717990875244,
+        "seat_contacts": {
+          "june": {
+            "phase": "seated",
+            "seated_fraction_command": 1,
+            "signed_rear_hip_gap": 5.364418029785156e-07,
+            "signed_foot_gaps": [
+              0.0,
+              0.0
+            ],
+            "foot_step_drift": [
+              0.0,
+              0.0
+            ],
+            "moving_feet": [
+              false,
+              false
+            ],
+            "lateral_hip_drift": 0.0,
+            "limbs": {
+              "max_segment_length_change": 4.046981429972618e-07,
+              "max_joint_gap": 4.777675730550706e-07
+            },
+            "hip_world": [
+              5.329071521759033,
+              -1.8000010251998901,
+              0.4648272395133972
+            ]
+          },
+          "narrator": {
+            "phase": "seated",
+            "seated_fraction_command": 1,
+            "signed_rear_hip_gap": 5.364418029785156e-07,
+            "signed_foot_gaps": [
+              0.0,
+              0.0
+            ],
+            "foot_step_drift": [
+              0.0,
+              0.0
+            ],
+            "moving_feet": [
+              false,
+              false
+            ],
+            "lateral_hip_drift": 0.0,
+            "limbs": {
+              "max_segment_length_change": 4.0469814543975247e-07,
+              "max_joint_gap": 4.798544105322545e-07
+            },
+            "hip_world": [
+              5.329071521759033,
+              0.049998875707387924,
+              0.4648272395133972
+            ]
+          }
+        },
+        "waffle": {
+          "evaluated_min_z": -9.313225746154785e-10
+        },
+        "dog_visible": true,
+        "dog_visibility": {
+          "samples": 65,
+          "blocked": 0,
+          "bounds": [
+            0.4770234525203705,
+            0.5708250999450684,
+            0.3448392450809479,
+            0.4529542922973633,
+            1.5680315494537354
+          ],
+          "safe": true,
+          "visible_fraction": 1.0,
+          "blockers": []
+        },
+        "actor_bounds": {
+          "june": [
+            0.5262115597724915,
+            0.8019002676010132,
+            0.4253107011318207,
+            0.6072130799293518,
+            1.879995584487915
+          ],
+          "narrator": [
+            0.3338910937309265,
+            0.5361536145210266,
+            0.4567694664001465,
+            0.606741189956665,
+            2.3449363708496094
+          ]
+        },
+        "note": "Separate rise, planted lateral steps, sit; no lateral root translation during sit."
+      }
+    },
+    {
+      "global_frame": 3017,
+      "sentence": 48,
+      "metrics": {
+        "seat_top": 0.46482717990875244,
+        "seat_contacts": {
+          "june": {
+            "phase": "seated",
+            "seated_fraction_command": 1,
+            "signed_rear_hip_gap": 5.364418029785156e-07,
+            "signed_foot_gaps": [
+              0.0,
+              0.0
+            ],
+            "foot_step_drift": [
+              0.0,
+              0.0
+            ],
+            "moving_feet": [
+              false,
+              false
+            ],
+            "lateral_hip_drift": 0.0,
+            "limbs": {
+              "max_segment_length_change": 4.046981429972618e-07,
+              "max_joint_gap": 4.777675730550706e-07
+            },
+            "hip_world": [
+              5.329071521759033,
+              -1.8000010251998901,
+              0.4648272395133972
+            ]
+          },
+          "narrator": {
+            "phase": "seated",
+            "seated_fraction_command": 1,
+            "signed_rear_hip_gap": 5.364418029785156e-07,
+            "signed_foot_gaps": [
+              0.0,
+              0.0
+            ],
+            "foot_step_drift": [
+              0.0,
+              0.0
+            ],
+            "moving_feet": [
+              false,
+              false
+            ],
+            "lateral_hip_drift": 0.0,
+            "limbs": {
+              "max_segment_length_change": 4.0469814543975247e-07,
+              "max_joint_gap": 4.798544105322545e-07
+            },
+            "hip_world": [
+              5.329071521759033,
+              0.049998875707387924,
+              0.4648272395133972
+            ]
+          }
+        },
+        "waffle": {
+          "evaluated_min_z": -9.313225746154785e-10
+        },
+        "dog_visible": true,
+        "dog_visibility": {
+          "samples": 65,
+          "blocked": 0,
+          "bounds": [
+            0.4770234525203705,
+            0.5708250999450684,
+            0.3448392450809479,
+            0.4526952803134918,
+            1.5680315494537354
+          ],
+          "safe": true,
+          "visible_fraction": 1.0,
+          "blockers": []
+        },
+        "actor_bounds": {
+          "june": [
+            0.5262115597724915,
+            0.8019002676010132,
+            0.4253107011318207,
+            0.60721755027771,
+            1.8810582160949707
+          ],
+          "narrator": [
+            0.3338910937309265,
+            0.5361536145210266,
+            0.4567694664001465,
+            0.606741189956665,
+            2.3449363708496094
+          ]
+        },
+        "note": "Separate rise, planted lateral steps, sit; no lateral root translation during sit."
+      }
+    },
+    {
+      "global_frame": 3018,
+      "sentence": 48,
+      "metrics": {
+        "seat_top": 0.46482717990875244,
+        "seat_contacts": {
+          "june": {
+            "phase": "seated",
+            "seated_fraction_command": 1,
+            "signed_rear_hip_gap": 5.364418029785156e-07,
+            "signed_foot_gaps": [
+              0.0,
+              0.0
+            ],
+            "foot_step_drift": [
+              0.0,
+              0.0
+            ],
+            "moving_feet": [
+              false,
+              false
+            ],
+            "lateral_hip_drift": 0.0,
+            "limbs": {
+              "max_segment_length_change": 4.046981429972618e-07,
+              "max_joint_gap": 4.777675730550706e-07
+            },
+            "hip_world": [
+              5.329071521759033,
+              -1.8000010251998901,
+              0.4648272395133972
+            ]
+          },
+          "narrator": {
+            "phase": "seated",
+            "seated_fraction_command": 1,
+            "signed_rear_hip_gap": 5.364418029785156e-07,
+            "signed_foot_gaps": [
+              0.0,
+              0.0
+            ],
+            "foot_step_drift": [
+              0.0,
+              0.0
+            ],
+            "moving_feet": [
+              false,
+              false
+            ],
+            "lateral_hip_drift": 0.0,
+            "limbs": {
+              "max_segment_length_change": 4.0469814543975247e-07,
+              "max_joint_gap": 4.798544105322545e-07
+            },
+            "hip_world": [
+              5.329071521759033,
+              0.049998875707387924,
+              0.4648272395133972
+            ]
+          }
+        },
+        "waffle": {
+          "evaluated_min_z": -9.313225746154785e-10
+        },
+        "dog_visible": true,
+        "dog_visibility": {
+          "samples": 65,
+          "blocked": 0,
+          "bounds": [
+            0.4770234525203705,
+            0.5708250999450684,
+            0.3448392450809479,
+            0.45244449377059937,
+            1.5680315494537354
+          ],
+          "safe": true,
+          "visible_fraction": 1.0,
+          "blockers": []
+        },
+        "actor_bounds": {
+          "june": [
+            0.5262115597724915,
+            0.8019002676010132,
+            0.4253107011318207,
+            0.6072203516960144,
+            1.8821219205856323
+          ],
+          "narrator": [
+            0.3338910937309265,
+            0.5361536145210266,
+            0.4567694664001465,
+            0.606741189956665,
+            2.3449363708496094
+          ]
+        },
+        "note": "Separate rise, planted lateral steps, sit; no lateral root translation during sit."
+      }
+    },
+    {
+      "global_frame": 3019,
+      "sentence": 48,
+      "metrics": {
+        "seat_top": 0.46482717990875244,
+        "seat_contacts": {
+          "june": {
+            "phase": "seated",
+            "seated_fraction_command": 1,
+            "signed_rear_hip_gap": 5.364418029785156e-07,
+            "signed_foot_gaps": [
+              0.0,
+              0.0
+            ],
+            "foot_step_drift": [
+              0.0,
+              0.0
+            ],
+            "moving_feet": [
+              false,
+              false
+            ],
+            "lateral_hip_drift": 0.0,
+            "limbs": {
+              "max_segment_length_change": 4.046981429972618e-07,
+              "max_joint_gap": 4.777675730550706e-07
+            },
+            "hip_world": [
+              5.329071521759033,
+              -1.8000010251998901,
+              0.4648272395133972
+            ]
+          },
+          "narrator": {
+            "phase": "seated",
+            "seated_fraction_command": 1,
+            "signed_rear_hip_gap": 5.364418029785156e-07,
+            "signed_foot_gaps": [
+              0.0,
+              0.0
+            ],
+            "foot_step_drift": [
+              0.0,
+              0.0
+            ],
+            "moving_feet": [
+              false,
+              false
+            ],
+            "lateral_hip_drift": 0.0,
+            "limbs": {
+              "max_segment_length_change": 4.0469814543975247e-07,
+              "max_joint_gap": 4.798544105322545e-07
+            },
+            "hip_world": [
+              5.329071521759033,
+              0.049998875707387924,
+              0.4648272395133972
+            ]
+          }
+        },
+        "waffle": {
+          "evaluated_min_z": -9.313225746154785e-10
+        },
+        "dog_visible": true,
+        "dog_visibility": {
+          "samples": 65,
+          "blocked": 0,
+          "bounds": [
+            0.4770234525203705,
+            0.5708250999450684,
+            0.3448392450809479,
+            0.45223480463027954,
+            1.5680315494537354
+          ],
+          "safe": true,
+          "visible_fraction": 1.0,
+          "blockers": []
+        },
+        "actor_bounds": {
+          "june": [
+            0.5262115597724915,
+            0.8019002676010132,
+            0.4253107011318207,
+            0.6072214841842651,
+            1.8831684589385986
+          ],
+          "narrator": [
+            0.3338910937309265,
+            0.5361536145210266,
+            0.4567694664001465,
+            0.606741189956665,
+            2.3449363708496094
+          ]
+        },
+        "note": "Separate rise, planted lateral steps, sit; no lateral root translation during sit."
+      }
+    },
+    {
+      "global_frame": 3020,
+      "sentence": 48,
+      "metrics": {
+        "seat_top": 0.46482717990875244,
+        "seat_contacts": {
+          "june": {
+            "phase": "seated",
+            "seated_fraction_command": 1,
+            "signed_rear_hip_gap": 5.364418029785156e-07,
+            "signed_foot_gaps": [
+              0.0,
+              0.0
+            ],
+            "foot_step_drift": [
+              0.0,
+              0.0
+            ],
+            "moving_feet": [
+              false,
+              false
+            ],
+            "lateral_hip_drift": 0.0,
+            "limbs": {
+              "max_segment_length_change": 4.046981429972618e-07,
+              "max_joint_gap": 4.777675730550706e-07
+            },
+            "hip_world": [
+              5.329071521759033,
+              -1.8000010251998901,
+              0.4648272395133972
+            ]
+          },
+          "narrator": {
+            "phase": "seated",
+            "seated_fraction_command": 1,
+            "signed_rear_hip_gap": 5.364418029785156e-07,
+            "signed_foot_gaps": [
+              0.0,
+              0.0
+            ],
+            "foot_step_drift": [
+              0.0,
+              0.0
+            ],
+            "moving_feet": [
+              false,
+              false
+            ],
+            "lateral_hip_drift": 0.0,
+            "limbs": {
+              "max_segment_length_change": 4.0469814543975247e-07,
+              "max_joint_gap": 4.798544105322545e-07
+            },
+            "hip_world": [
+              5.329071521759033,
+              0.049998875707387924,
+              0.4648272395133972
+            ]
+          }
+        },
+        "waffle": {
+          "evaluated_min_z": -9.313225746154785e-10
+        },
+        "dog_visible": true,
+        "dog_visibility": {
+          "samples": 65,
+          "blocked": 0,
+          "bounds": [
+            0.4770234525203705,
+            0.5708250999450684,
+            0.3448392450809479,
+            0.45209118723869324,
+            1.5680315494537354
+          ],
+          "safe": true,
+          "visible_fraction": 1.0,
+          "blockers": []
+        },
+        "actor_bounds": {
+          "june": [
+            0.5262115597724915,
+            0.8019002676010132,
+            0.4253107011318207,
+            0.6072211265563965,
+            1.8841768503189087
+          ],
+          "narrator": [
+            0.3338910937309265,
+            0.5361536145210266,
+            0.4567694664001465,
+            0.606741189956665,
+            2.3449363708496094
+          ]
+        },
+        "note": "Separate rise, planted lateral steps, sit; no lateral root translation during sit."
+      }
+    },
+    {
+      "global_frame": 3021,
+      "sentence": 48,
+      "metrics": {
+        "seat_top": 0.46482717990875244,
+        "seat_contacts": {
+          "june": {
+            "phase": "seated",
+            "seated_fraction_command": 1,
+            "signed_rear_hip_gap": 5.364418029785156e-07,
+            "signed_foot_gaps": [
+              0.0,
+              0.0
+            ],
+            "foot_step_drift": [
+              0.0,
+              0.0
+            ],
+            "moving_feet": [
+              false,
+              false
+            ],
+            "lateral_hip_drift": 0.0,
+            "limbs": {
+              "max_segment_length_change": 4.046981429972618e-07,
+              "max_joint_gap": 4.777675730550706e-07
+            },
+            "hip_world": [
+              5.329071521759033,
+              -1.8000010251998901,
+              0.4648272395133972
+            ]
+          },
+          "narrator": {
+            "phase": "seated",
+            "seated_fraction_command": 1,
+            "signed_rear_hip_gap": 5.364418029785156e-07,
+            "signed_foot_gaps": [
+              0.0,
+              0.0
+            ],
+            "foot_step_drift": [
+              0.0,
+              0.0
+            ],
+            "moving_feet": [
+              false,
+              false
+            ],
+            "lateral_hip_drift": 0.0,
+            "limbs": {
+              "max_segment_length_change": 4.0469814543975247e-07,
+              "max_joint_gap": 4.798544105322545e-07
+            },
+            "hip_world": [
+              5.329071521759033,
+              0.049998875707387924,
+              0.4648272395133972
+            ]
+          }
+        },
+        "waffle": {
+          "evaluated_min_z": -9.313225746154785e-10
+        },
+        "dog_visible": true,
+        "dog_visibility": {
+          "samples": 65,
+          "blocked": 0,
+          "bounds": [
+            0.4770234525203705,
+            0.5708250999450684,
+            0.3448392450809479,
+            0.45202693343162537,
+            1.5680315494537354
+          ],
+          "safe": true,
+          "visible_fraction": 1.0,
+          "blockers": []
+        },
+        "actor_bounds": {
+          "june": [
+            0.5262115597724915,
+            0.8019002676010132,
+            0.4253107011318207,
+            0.607219398021698,
+            1.8851289749145508
+          ],
+          "narrator": [
+            0.3338910937309265,
+            0.5361536145210266,
+            0.4567694664001465,
+            0.606741189956665,
+            2.3449363708496094
+          ]
+        },
+        "note": "Separate rise, planted lateral steps, sit; no lateral root translation during sit."
+      }
+    },
+    {
+      "global_frame": 3022,
+      "sentence": 48,
+      "metrics": {
+        "seat_top": 0.46482717990875244,
+        "seat_contacts": {
+          "june": {
+            "phase": "seated",
+            "seated_fraction_command": 1,
+            "signed_rear_hip_gap": 5.364418029785156e-07,
+            "signed_foot_gaps": [
+              0.0,
+              0.0
+            ],
+            "foot_step_drift": [
+              0.0,
+              0.0
+            ],
+            "moving_feet": [
+              false,
+              false
+            ],
+            "lateral_hip_drift": 0.0,
+            "limbs": {
+              "max_segment_length_change": 4.046981429972618e-07,
+              "max_joint_gap": 4.777675730550706e-07
+            },
+            "hip_world": [
+              5.329071521759033,
+              -1.8000010251998901,
+              0.4648272395133972
+            ]
+          },
+          "narrator": {
+            "phase": "seated",
+            "seated_fraction_command": 1,
+            "signed_rear_hip_gap": 5.364418029785156e-07,
+            "signed_foot_gaps": [
+              0.0,
+              0.0
+            ],
+            "foot_step_drift": [
+              0.0,
+              0.0
+            ],
+            "moving_feet": [
+              false,
+              false
+            ],
+            "lateral_hip_drift": 0.0,
+            "limbs": {
+              "max_segment_length_change": 4.0469814543975247e-07,
+              "max_joint_gap": 4.798544105322545e-07
+            },
+            "hip_world": [
+              5.329071521759033,
+              0.049998875707387924,
+              0.4648272395133972
+            ]
+          }
+        },
+        "waffle": {
+          "evaluated_min_z": -9.313225746154785e-10
+        },
+        "dog_visible": true,
+        "dog_visibility": {
+          "samples": 65,
+          "blocked": 0,
+          "bounds": [
+            0.4770234525203705,
+            0.5708250999450684,
+            0.3448392450809479,
+            0.4520425498485565,
+            1.5680315494537354
+          ],
+          "safe": true,
+          "visible_fraction": 1.0,
+          "blockers": []
+        },
+        "actor_bounds": {
+          "june": [
+            0.5262115597724915,
+            0.8019002676010132,
+            0.4253107011318207,
+            0.6072167754173279,
+            1.88600492477417
+          ],
+          "narrator": [
+            0.3338910937309265,
+            0.5361536145210266,
+            0.4567694664001465,
+            0.606741189956665,
+            2.3449363708496094
+          ]
+        },
+        "note": "Separate rise, planted lateral steps, sit; no lateral root translation during sit."
+      }
+    },
+    {
+      "global_frame": 3023,
+      "sentence": 48,
+      "metrics": {
+        "seat_top": 0.46482717990875244,
+        "seat_contacts": {
+          "june": {
+            "phase": "seated",
+            "seated_fraction_command": 1,
+            "signed_rear_hip_gap": 5.364418029785156e-07,
+            "signed_foot_gaps": [
+              0.0,
+              0.0
+            ],
+            "foot_step_drift": [
+              0.0,
+              0.0
+            ],
+            "moving_feet": [
+              false,
+              false
+            ],
+            "lateral_hip_drift": 0.0,
+            "limbs": {
+              "max_segment_length_change": 4.046981429972618e-07,
+              "max_joint_gap": 4.777675730550706e-07
+            },
+            "hip_world": [
+              5.329071521759033,
+              -1.8000010251998901,
+              0.4648272395133972
+            ]
+          },
+          "narrator": {
+            "phase": "seated",
+            "seated_fraction_command": 1,
+            "signed_rear_hip_gap": 5.364418029785156e-07,
+            "signed_foot_gaps": [
+              0.0,
+              0.0
+            ],
+            "foot_step_drift": [
+              0.0,
+              0.0
+            ],
+            "moving_feet": [
+              false,
+              false
+            ],
+            "lateral_hip_drift": 0.0,
+            "limbs": {
+              "max_segment_length_change": 4.0469814543975247e-07,
+              "max_joint_gap": 4.798544105322545e-07
+            },
+            "hip_world": [
+              5.329071521759033,
+              0.049998875707387924,
+              0.4648272395133972
+            ]
+          }
+        },
+        "waffle": {
+          "evaluated_min_z": -9.313225746154785e-10
+        },
+        "dog_visible": true,
+        "dog_visibility": {
+          "samples": 65,
+          "blocked": 0,
+          "bounds": [
+            0.4770234525203705,
+            0.5708250999450684,
+            0.3448392450809479,
+            0.4521275758743286,
+            1.5680315494537354
+          ],
+          "safe": true,
+          "visible_fraction": 1.0,
+          "blockers": []
+        },
+        "actor_bounds": {
+          "june": [
+            0.5262115597724915,
+            0.8019002676010132,
+            0.4253107011318207,
+            0.60721355676651,
+            1.8867881298065186
+          ],
+          "narrator": [
+            0.3338910937309265,
+            0.5361536145210266,
+            0.4567694664001465,
+            0.606741189956665,
+            2.3449363708496094
+          ]
+        },
+        "note": "Separate rise, planted lateral steps, sit; no lateral root translation during sit."
+      }
+    },
+    {
+      "global_frame": 3024,
+      "sentence": 48,
+      "metrics": {
+        "seat_top": 0.46482717990875244,
+        "seat_contacts": {
+          "june": {
+            "phase": "seated",
+            "seated_fraction_command": 1,
+            "signed_rear_hip_gap": 5.364418029785156e-07,
+            "signed_foot_gaps": [
+              0.0,
+              0.0
+            ],
+            "foot_step_drift": [
+              0.0,
+              0.0
+            ],
+            "moving_feet": [
+              false,
+              false
+            ],
+            "lateral_hip_drift": 0.0,
+            "limbs": {
+              "max_segment_length_change": 4.046981429972618e-07,
+              "max_joint_gap": 4.777675730550706e-07
+            },
+            "hip_world": [
+              5.329071521759033,
+              -1.8000010251998901,
+              0.4648272395133972
+            ]
+          },
+          "narrator": {
+            "phase": "seated",
+            "seated_fraction_command": 1,
+            "signed_rear_hip_gap": 5.364418029785156e-07,
+            "signed_foot_gaps": [
+              0.0,
+              0.0
+            ],
+            "foot_step_drift": [
+              0.0,
+              0.0
+            ],
+            "moving_feet": [
+              false,
+              false
+            ],
+            "lateral_hip_drift": 0.0,
+            "limbs": {
+              "max_segment_length_change": 4.0469814543975247e-07,
+              "max_joint_gap": 4.798544105322545e-07
+            },
+            "hip_world": [
+              5.329071521759033,
+              0.049998875707387924,
+              0.4648272395133972
+            ]
+          }
+        },
+        "waffle": {
+          "evaluated_min_z": -9.313225746154785e-10
+        },
+        "dog_visible": true,
+        "dog_visibility": {
+          "samples": 65,
+          "blocked": 0,
+          "bounds": [
+            0.4770234525203705,
+            0.5708250999450684,
+            0.3448392450809479,
+            0.45226413011550903,
+            1.5680315494537354
+          ],
+          "safe": true,
+          "visible_fraction": 1.0,
+          "blockers": []
+        },
+        "actor_bounds": {
+          "june": [
+            0.5262115597724915,
+            0.8019002676010132,
+            0.4253107011318207,
+            0.6072101593017578,
+            1.8874636888504028
+          ],
+          "narrator": [
+            0.3338910937309265,
+            0.5361536145210266,
+            0.4567694664001465,
+            0.606741189956665,
+            2.3449363708496094
+          ]
+        },
+        "note": "Separate rise, planted lateral steps, sit; no lateral root translation during sit."
+      }
+    },
+    {
+      "global_frame": 3025,
+      "sentence": 48,
+      "metrics": {
+        "seat_top": 0.46482717990875244,
+        "seat_contacts": {
+          "june": {
+            "phase": "seated",
+            "seated_fraction_command": 1,
+            "signed_rear_hip_gap": 5.364418029785156e-07,
+            "signed_foot_gaps": [
+              0.0,
+              0.0
+            ],
+            "foot_step_drift": [
+              0.0,
+              0.0
+            ],
+            "moving_feet": [
+              false,
+              false
+            ],
+            "lateral_hip_drift": 0.0,
+            "limbs": {
+              "max_segment_length_change": 4.046981429972618e-07,
+              "max_joint_gap": 4.777675730550706e-07
+            },
+            "hip_world": [
+              5.329071521759033,
+              -1.8000010251998901,
+              0.4648272395133972
+            ]
+          },
+          "narrator": {
+            "phase": "seated",
+            "seated_fraction_command": 1,
+            "signed_rear_hip_gap": 5.364418029785156e-07,
+            "signed_foot_gaps": [
+              0.0,
+              0.0
+            ],
+            "foot_step_drift": [
+              0.0,
+              0.0
+            ],
+            "moving_feet": [
+              false,
+              false
+            ],
+            "lateral_hip_drift": 0.0,
+            "limbs": {
+              "max_segment_length_change": 4.0469814543975247e-07,
+              "max_joint_gap": 4.798544105322545e-07
+            },
+            "hip_world": [
+              5.329071521759033,
+              0.049998875707387924,
+              0.4648272395133972
+            ]
+          }
+        },
+        "waffle": {
+          "evaluated_min_z": -9.313225746154785e-10
+        },
+        "dog_visible": true,
+        "dog_visibility": {
+          "samples": 65,
+          "blocked": 0,
+          "bounds": [
+            0.4770234525203705,
+            0.5708250999450684,
+            0.3448392450809479,
+            0.4524312913417816,
+            1.5680315494537354
+          ],
+          "safe": true,
+          "visible_fraction": 1.0,
+          "blockers": []
+        },
+        "actor_bounds": {
+          "june": [
+            0.5262115597724915,
+            0.8019002676010132,
+            0.4253107011318207,
+            0.6072069406509399,
+            1.8880157470703125
+          ],
+          "narrator": [
+            0.3338910937309265,
+            0.5361536145210266,
+            0.4567694664001465,
+            0.606741189956665,
+            2.3449363708496094
+          ]
+        },
+        "note": "Separate rise, planted lateral steps, sit; no lateral root translation during sit."
+      }
+    },
+    {
+      "global_frame": 3026,
+      "sentence": 48,
+      "metrics": {
+        "seat_top": 0.46482717990875244,
+        "seat_contacts": {
+          "june": {
+            "phase": "seated",
+            "seated_fraction_command": 1,
+            "signed_rear_hip_gap": 5.364418029785156e-07,
+            "signed_foot_gaps": [
+              0.0,
+              0.0
+            ],
+            "foot_step_drift": [
+              0.0,
+              0.0
+            ],
+            "moving_feet": [
+              false,
+              false
+            ],
+            "lateral_hip_drift": 0.0,
+            "limbs": {
+              "max_segment_length_change": 4.046981429972618e-07,
+              "max_joint_gap": 4.777675730550706e-07
+            },
+            "hip_world": [
+              5.329071521759033,
+              -1.8000010251998901,
+              0.4648272395133972
+            ]
+          },
+          "narrator": {
+            "phase": "seated",
+            "seated_fraction_command": 1,
+            "signed_rear_hip_gap": 5.364418029785156e-07,
+            "signed_foot_gaps": [
+              0.0,
+              0.0
+            ],
+            "foot_step_drift": [
+              0.0,
+              0.0
+            ],
+            "moving_feet": [
+              false,
+              false
+            ],
+            "lateral_hip_drift": 0.0,
+            "limbs": {
+              "max_segment_length_change": 4.0469814543975247e-07,
+              "max_joint_gap": 4.798544105322545e-07
+            },
+            "hip_world": [
+              5.329071521759033,
+              0.049998875707387924,
+              0.4648272395133972
+            ]
+          }
+        },
+        "waffle": {
+          "evaluated_min_z": -9.313225746154785e-10
+        },
+        "dog_visible": true,
+        "dog_visibility": {
+          "samples": 65,
+          "blocked": 0,
+          "bounds": [
+            0.4770234525203705,
+            0.5708250999450684,
+            0.3448392450809479,
+            0.4526088535785675,
+            1.5680315494537354
+          ],
+          "safe": true,
+          "visible_fraction": 1.0,
+          "blockers": []
+        },
+        "actor_bounds": {
+          "june": [
+            0.5262115597724915,
+            0.8019002676010132,
+            0.4253107011318207,
+            0.607204258441925,
+            1.8884344100952148
+          ],
+          "narrator": [
+            0.3338910937309265,
+            0.5361536145210266,
+            0.4567694664001465,
+            0.606741189956665,
+            2.3449363708496094
+          ]
+        },
+        "note": "Separate rise, planted lateral steps, sit; no lateral root translation during sit."
+      }
+    },
+    {
+      "global_frame": 3027,
+      "sentence": 48,
+      "metrics": {
+        "seat_top": 0.46482717990875244,
+        "seat_contacts": {
+          "june": {
+            "phase": "seated",
+            "seated_fraction_command": 1,
+            "signed_rear_hip_gap": 5.364418029785156e-07,
+            "signed_foot_gaps": [
+              0.0,
+              0.0
+            ],
+            "foot_step_drift": [
+              0.0,
+              0.0
+            ],
+            "moving_feet": [
+              false,
+              false
+            ],
+            "lateral_hip_drift": 0.0,
+            "limbs": {
+              "max_segment_length_change": 4.046981429972618e-07,
+              "max_joint_gap": 4.777675730550706e-07
+            },
+            "hip_world": [
+              5.329071521759033,
+              -1.8000010251998901,
+              0.4648272395133972
+            ]
+          },
+          "narrator": {
+            "phase": "seated",
+            "seated_fraction_command": 1,
+            "signed_rear_hip_gap": 5.364418029785156e-07,
+            "signed_foot_gaps": [
+              0.0,
+              0.0
+            ],
+            "foot_step_drift": [
+              0.0,
+              0.0
+            ],
+            "moving_feet": [
+              false,
+              false
+            ],
+            "lateral_hip_drift": 0.0,
+            "limbs": {
+              "max_segment_length_change": 4.0469814543975247e-07,
+              "max_joint_gap": 4.798544105322545e-07
+            },
+            "hip_world": [
+              5.329071521759033,
+              0.049998875707387924,
+              0.4648272395133972
+            ]
+          }
+        },
+        "waffle": {
+          "evaluated_min_z": -9.313225746154785e-10
+        },
+        "dog_visible": true,
+        "dog_visibility": {
+          "samples": 65,
+          "blocked": 0,
+          "bounds": [
+            0.4770234525203705,
+            0.5708250999450684,
+            0.3448392450809479,
+            0.45278021693229675,
+            1.5680315494537354
+          ],
+          "safe": true,
+          "visible_fraction": 1.0,
+          "blockers": []
+        },
+        "actor_bounds": {
+          "june": [
+            0.5262115597724915,
+            0.8019002676010132,
+            0.4253107011318207,
+            0.6072023510932922,
+            1.888710379600525
+          ],
+          "narrator": [
+            0.3338910937309265,
+            0.5361536145210266,
+            0.4567694664001465,
+            0.606741189956665,
+            2.3449363708496094
+          ]
+        },
+        "note": "Separate rise, planted lateral steps, sit; no lateral root translation during sit."
+      }
+    },
+    {
+      "global_frame": 3028,
+      "sentence": 48,
+      "metrics": {
+        "seat_top": 0.46482717990875244,
+        "seat_contacts": {
+          "june": {
+            "phase": "seated",
+            "seated_fraction_command": 1,
+            "signed_rear_hip_gap": 5.364418029785156e-07,
+            "signed_foot_gaps": [
+              0.0,
+              0.0
+            ],
+            "foot_step_drift": [
+              0.0,
+              0.0
+            ],
+            "moving_feet": [
+              false,
+              false
+            ],
+            "lateral_hip_drift": 0.0,
+            "limbs": {
+              "max_segment_length_change": 4.046981429972618e-07,
+              "max_joint_gap": 4.777675730550706e-07
+            },
+            "hip_world": [
+              5.329071521759033,
+              -1.8000010251998901,
+              0.4648272395133972
+            ]
+          },
+          "narrator": {
+            "phase": "seated",
+            "seated_fraction_command": 1,
+            "signed_rear_hip_gap": 5.364418029785156e-07,
+            "signed_foot_gaps": [
+              0.0,
+              0.0
+            ],
+            "foot_step_drift": [
+              0.0,
+              0.0
+            ],
+            "moving_feet": [
+              false,
+              false
+            ],
+            "lateral_hip_drift": 0.0,
+            "limbs": {
+              "max_segment_length_change": 4.0469814543975247e-07,
+              "max_joint_gap": 4.798544105322545e-07
+            },
+            "hip_world": [
+              5.329071521759033,
+              0.049998875707387924,
+              0.4648272395133972
+            ]
+          }
+        },
+        "waffle": {
+          "evaluated_min_z": -9.313225746154785e-10
+        },
+        "dog_visible": true,
+        "dog_visibility": {
+          "samples": 65,
+          "blocked": 0,
+          "bounds": [
+            0.4770234525203705,
+            0.5708250999450684,
+            0.3448392450809479,
+            0.4529338479042053,
+            1.5680315494537354
+          ],
+          "safe": true,
+          "visible_fraction": 1.0,
+          "blockers": []
+        },
+        "actor_bounds": {
+          "june": [
+            0.5262115597724915,
+            0.8019002676010132,
+            0.4253107011318207,
+            0.6072014570236206,
+            1.8888370990753174
+          ],
+          "narrator": [
+            0.3338910937309265,
+            0.5361536145210266,
+            0.4567694664001465,
+            0.606741189956665,
+            2.3449363708496094
+          ]
+        },
+        "note": "Separate rise, planted lateral steps, sit; no lateral root translation during sit."
+      }
+    },
+    {
+      "global_frame": 3029,
+      "sentence": 48,
+      "metrics": {
+        "seat_top": 0.46482717990875244,
+        "seat_contacts": {
+          "june": {
+            "phase": "seated",
+            "seated_fraction_command": 1,
+            "signed_rear_hip_gap": 5.364418029785156e-07,
+            "signed_foot_gaps": [
+              0.0,
+              0.0
+            ],
+            "foot_step_drift": [
+              0.0,
+              0.0
+            ],
+            "moving_feet": [
+              false,
+              false
+            ],
+            "lateral_hip_drift": 0.0,
+            "limbs": {
+              "max_segment_length_change": 4.046981429972618e-07,
+              "max_joint_gap": 4.777675730550706e-07
+            },
+            "hip_world": [
+              5.329071521759033,
+              -1.8000010251998901,
+              0.4648272395133972
+            ]
+          },
+          "narrator": {
+            "phase": "seated",
+            "seated_fraction_command": 1,
+            "signed_rear_hip_gap": 5.364418029785156e-07,
+            "signed_foot_gaps": [
+              0.0,
+              0.0
+            ],
+            "foot_step_drift": [
+              0.0,
+              0.0
+            ],
+            "moving_feet": [
+              false,
+              false
+            ],
+            "lateral_hip_drift": 0.0,
+            "limbs": {
+              "max_segment_length_change": 4.0469814543975247e-07,
+              "max_joint_gap": 4.798544105322545e-07
+            },
+            "hip_world": [
+              5.329071521759033,
+              0.049998875707387924,
+              0.4648272395133972
+            ]
+          }
+        },
+        "waffle": {
+          "evaluated_min_z": -9.313225746154785e-10
+        },
+        "dog_visible": true,
+        "dog_visibility": {
+          "samples": 65,
+          "blocked": 0,
+          "bounds": [
+            0.4770234525203705,
+            0.5708250999450684,
+            0.3448392450809479,
+            0.45306336879730225,
+            1.5680315494537354
+          ],
+          "safe": true,
+          "visible_fraction": 1.0,
+          "blockers": []
+        },
+        "actor_bounds": {
+          "june": [
+            0.5262115597724915,
+            0.8019002676010132,
+            0.4253107011318207,
+            0.6072016358375549,
+            1.8888139724731445
+          ],
+          "narrator": [
+            0.3338910937309265,
+            0.5361536145210266,
+            0.4567694664001465,
+            0.606741189956665,
+            2.3449363708496094
+          ]
+        },
+        "note": "Separate rise, planted lateral steps, sit; no lateral root translation during sit."
+      }
+    },
+    {
+      "global_frame": 3030,
+      "sentence": 48,
+      "metrics": {
+        "seat_top": 0.46482717990875244,
+        "seat_contacts": {
+          "june": {
+            "phase": "seated",
+            "seated_fraction_command": 1,
+            "signed_rear_hip_gap": 5.364418029785156e-07,
+            "signed_foot_gaps": [
+              0.0,
+              0.0
+            ],
+            "foot_step_drift": [
+              0.0,
+              0.0
+            ],
+            "moving_feet": [
+              false,
+              false
+            ],
+            "lateral_hip_drift": 0.0,
+            "limbs": {
+              "max_segment_length_change": 4.046981429972618e-07,
+              "max_joint_gap": 4.777675730550706e-07
+            },
+            "hip_world": [
+              5.329071521759033,
+              -1.8000010251998901,
+              0.4648272395133972
+            ]
+          },
+          "narrator": {
+            "phase": "seated",
+            "seated_fraction_command": 1,
+            "signed_rear_hip_gap": 5.364418029785156e-07,
+            "signed_foot_gaps": [
+              0.0,
+              0.0
+            ],
+            "foot_step_drift": [
+              0.0,
+              0.0
+            ],
+            "moving_feet": [
+              false,
+              false
+            ],
+            "lateral_hip_drift": 0.0,
+            "limbs": {
+              "max_segment_length_change": 4.0469814543975247e-07,
+              "max_joint_gap": 4.798544105322545e-07
+            },
+            "hip_world": [
+              5.329071521759033,
+              0.049998875707387924,
+              0.4648272395133972
+            ]
+          }
+        },
+        "waffle": {
+          "evaluated_min_z": -9.313225746154785e-10
+        },
+        "dog_visible": true,
+        "dog_visibility": {
+          "samples": 65,
+          "blocked": 0,
+          "bounds": [
+            0.4770234525203705,
+            0.5708250999450684,
+            0.3448392450809479,
+            0.45318400859832764,
+            1.5680315494537354
+          ],
+          "safe": true,
+          "visible_fraction": 1.0,
+          "blockers": []
+        },
+        "actor_bounds": {
+          "june": [
+            0.5262115597724915,
+            0.8019002676010132,
+            0.4253107011318207,
+            0.6072028279304504,
+            1.8886395692825317
+          ],
+          "narrator": [
+            0.3338910937309265,
+            0.5361536145210266,
+            0.4567694664001465,
+            0.606741189956665,
+            2.3449363708496094
+          ]
+        },
+        "note": "Separate rise, planted lateral steps, sit; no lateral root translation during sit."
+      }
+    },
+    {
+      "global_frame": 3031,
+      "sentence": 48,
+      "metrics": {
+        "seat_top": 0.46482717990875244,
+        "seat_contacts": {
+          "june": {
+            "phase": "seated",
+            "seated_fraction_command": 1,
+            "signed_rear_hip_gap": 5.364418029785156e-07,
+            "signed_foot_gaps": [
+              0.0,
+              0.0
+            ],
+            "foot_step_drift": [
+              0.0,
+              0.0
+            ],
+            "moving_feet": [
+              false,
+              false
+            ],
+            "lateral_hip_drift": 0.0,
+            "limbs": {
+              "max_segment_length_change": 4.046981429972618e-07,
+              "max_joint_gap": 4.777675730550706e-07
+            },
+            "hip_world": [
+              5.329071521759033,
+              -1.8000010251998901,
+              0.4648272395133972
+            ]
+          },
+          "narrator": {
+            "phase": "seated",
+            "seated_fraction_command": 1,
+            "signed_rear_hip_gap": 5.364418029785156e-07,
+            "signed_foot_gaps": [
+              0.0,
+              0.0
+            ],
+            "foot_step_drift": [
+              0.0,
+              0.0
+            ],
+            "moving_feet": [
+              false,
+              false
+            ],
+            "lateral_hip_drift": 0.0,
+            "limbs": {
+              "max_segment_length_change": 4.0469814543975247e-07,
+              "max_joint_gap": 4.798544105322545e-07
+            },
+            "hip_world": [
+              5.329071521759033,
+              0.049998875707387924,
+              0.4648272395133972
+            ]
+          }
+        },
+        "waffle": {
+          "evaluated_min_z": -9.313225746154785e-10
+        },
+        "dog_visible": true,
+        "dog_visibility": {
+          "samples": 65,
+          "blocked": 0,
+          "bounds": [
+            0.4770234525203705,
+            0.5708250999450684,
+            0.3448392450809479,
+            0.4532816708087921,
+            1.5680315494537354
+          ],
+          "safe": true,
+          "visible_fraction": 1.0,
+          "blockers": []
+        },
+        "actor_bounds": {
+          "june": [
+            0.5262115597724915,
+            0.8019002676010132,
+            0.4253107011318207,
+            0.6072050333023071,
+            1.8883180618286133
+          ],
+          "narrator": [
+            0.3338910937309265,
+            0.5361536145210266,
+            0.4567694664001465,
+            0.606741189956665,
+            2.3449363708496094
+          ]
+        },
+        "note": "Separate rise, planted lateral steps, sit; no lateral root translation during sit."
+      }
+    },
+    {
+      "global_frame": 3032,
+      "sentence": 48,
+      "metrics": {
+        "seat_top": 0.46482717990875244,
+        "seat_contacts": {
+          "june": {
+            "phase": "seated",
+            "seated_fraction_command": 1,
+            "signed_rear_hip_gap": 5.364418029785156e-07,
+            "signed_foot_gaps": [
+              0.0,
+              0.0
+            ],
+            "foot_step_drift": [
+              0.0,
+              0.0
+            ],
+            "moving_feet": [
+              false,
+              false
+            ],
+            "lateral_hip_drift": 0.0,
+            "limbs": {
+              "max_segment_length_change": 4.046981429972618e-07,
+              "max_joint_gap": 4.777675730550706e-07
+            },
+            "hip_world": [
+              5.329071521759033,
+              -1.8000010251998901,
+              0.4648272395133972
+            ]
+          },
+          "narrator": {
+            "phase": "seated",
+            "seated_fraction_command": 1,
+            "signed_rear_hip_gap": 5.364418029785156e-07,
+            "signed_foot_gaps": [
+              0.0,
+              0.0
+            ],
+            "foot_step_drift": [
+              0.0,
+              0.0
+            ],
+            "moving_feet": [
+              false,
+              false
+            ],
+            "lateral_hip_drift": 0.0,
+            "limbs": {
+              "max_segment_length_change": 4.0469814543975247e-07,
+              "max_joint_gap": 4.798544105322545e-07
+            },
+            "hip_world": [
+              5.329071521759033,
+              0.049998875707387924,
+              0.4648272395133972
+            ]
+          }
+        },
+        "waffle": {
+          "evaluated_min_z": -9.313225746154785e-10
+        },
+        "dog_visible": true,
+        "dog_visibility": {
+          "samples": 65,
+          "blocked": 0,
+          "bounds": [
+            0.4770234525203705,
+            0.5708250999450684,
+            0.3448392450809479,
+            0.4533534049987793,
+            1.5680315494537354
+          ],
+          "safe": true,
+          "visible_fraction": 1.0,
+          "blockers": []
+        },
+        "actor_bounds": {
+          "june": [
+            0.5262115597724915,
+            0.8019002676010132,
+            0.4253107011318207,
+            0.6072078943252563,
+            1.8878562450408936
+          ],
+          "narrator": [
+            0.3338910937309265,
+            0.5361536145210266,
+            0.4567694664001465,
+            0.606741189956665,
+            2.3449363708496094
+          ]
+        },
+        "note": "Separate rise, planted lateral steps, sit; no lateral root translation during sit."
+      }
+    },
+    {
+      "global_frame": 3033,
+      "sentence": 48,
+      "metrics": {
+        "seat_top": 0.46482717990875244,
+        "seat_contacts": {
+          "june": {
+            "phase": "seated",
+            "seated_fraction_command": 1,
+            "signed_rear_hip_gap": 5.364418029785156e-07,
+            "signed_foot_gaps": [
+              0.0,
+              0.0
+            ],
+            "foot_step_drift": [
+              0.0,
+              0.0
+            ],
+            "moving_feet": [
+              false,
+              false
+            ],
+            "lateral_hip_drift": 0.0,
+            "limbs": {
+              "max_segment_length_change": 4.046981429972618e-07,
+              "max_joint_gap": 4.777675730550706e-07
+            },
+            "hip_world": [
+              5.329071521759033,
+              -1.8000010251998901,
+              0.4648272395133972
+            ]
+          },
+          "narrator": {
+            "phase": "seated",
+            "seated_fraction_command": 1,
+            "signed_rear_hip_gap": 5.364418029785156e-07,
+            "signed_foot_gaps": [
+              0.0,
+              0.0
+            ],
+            "foot_step_drift": [
+              0.0,
+              0.0
+            ],
+            "moving_feet": [
+              false,
+              false
+            ],
+            "lateral_hip_drift": 0.0,
+            "limbs": {
+              "max_segment_length_change": 4.0469814543975247e-07,
+              "max_joint_gap": 4.798544105322545e-07
+            },
+            "hip_world": [
+              5.329071521759033,
+              0.049998875707387924,
+              0.4648272395133972
+            ]
+          }
+        },
+        "waffle": {
+          "evaluated_min_z": -9.313225746154785e-10
+        },
+        "dog_visible": true,
+        "dog_visibility": {
+          "samples": 65,
+          "blocked": 0,
+          "bounds": [
+            0.4770234525203705,
+            0.5708250999450684,
+            0.3448392450809479,
+            0.45340216159820557,
+            1.5680315494537354
+          ],
+          "safe": true,
+          "visible_fraction": 1.0,
+          "blockers": []
+        },
+        "actor_bounds": {
+          "june": [
+            0.5262115597724915,
+            0.8019002676010132,
+            0.4253107011318207,
+            0.6072112321853638,
+            1.8872637748718262
+          ],
+          "narrator": [
+            0.3338910937309265,
+            0.5361536145210266,
+            0.4567694664001465,
+            0.606741189956665,
+            2.3449363708496094
+          ]
+        },
+        "note": "Separate rise, planted lateral steps, sit; no lateral root translation during sit."
+      }
+    },
+    {
+      "global_frame": 3034,
+      "sentence": 48,
+      "metrics": {
+        "seat_top": 0.46482717990875244,
+        "seat_contacts": {
+          "june": {
+            "phase": "seated",
+            "seated_fraction_command": 1,
+            "signed_rear_hip_gap": 5.364418029785156e-07,
+            "signed_foot_gaps": [
+              0.0,
+              0.0
+            ],
+            "foot_step_drift": [
+              0.0,
+              0.0
+            ],
+            "moving_feet": [
+              false,
+              false
+            ],
+            "lateral_hip_drift": 0.0,
+            "limbs": {
+              "max_segment_length_change": 4.046981429972618e-07,
+              "max_joint_gap": 4.777675730550706e-07
+            },
+            "hip_world": [
+              5.329071521759033,
+              -1.8000010251998901,
+              0.4648272395133972
+            ]
+          },
+          "narrator": {
+            "phase": "seated",
+            "seated_fraction_command": 1,
+            "signed_rear_hip_gap": 5.364418029785156e-07,
+            "signed_foot_gaps": [
+              0.0,
+              0.0
+            ],
+            "foot_step_drift": [
+              0.0,
+              0.0
+            ],
+            "moving_feet": [
+              false,
+              false
+            ],
+            "lateral_hip_drift": 0.0,
+            "limbs": {
+              "max_segment_length_change": 4.0469814543975247e-07,
+              "max_joint_gap": 4.798544105322545e-07
+            },
+            "hip_world": [
+              5.329071521759033,
+              0.049998875707387924,
+              0.4648272395133972
+            ]
+          }
+        },
+        "waffle": {
+          "evaluated_min_z": -9.313225746154785e-10
+        },
+        "dog_visible": true,
+        "dog_visibility": {
+          "samples": 65,
+          "blocked": 0,
+          "bounds": [
+            0.4770234525203705,
+            0.5708250999450684,
+            0.3448392450809479,
+            0.4534304141998291,
+            1.5680315494537354
+          ],
+          "safe": true,
+          "visible_fraction": 1.0,
+          "blockers": []
+        },
+        "actor_bounds": {
+          "june": [
+            0.5262115597724915,
+            0.8019002676010132,
+            0.4253107011318207,
+            0.607214629650116,
+            1.8865536451339722
+          ],
+          "narrator": [
+            0.3338910937309265,
+            0.5361536145210266,
+            0.4567694664001465,
+            0.606741189956665,
+            2.3449363708496094
+          ]
+        },
+        "note": "Separate rise, planted lateral steps, sit; no lateral root translation during sit."
+      }
+    },
+    {
+      "global_frame": 3035,
+      "sentence": 48,
+      "metrics": {
+        "seat_top": 0.46482717990875244,
+        "seat_contacts": {
+          "june": {
+            "phase": "seated",
+            "seated_fraction_command": 1,
+            "signed_rear_hip_gap": 5.364418029785156e-07,
+            "signed_foot_gaps": [
+              0.0,
+              0.0
+            ],
+            "foot_step_drift": [
+              0.0,
+              0.0
+            ],
+            "moving_feet": [
+              false,
+              false
+            ],
+            "lateral_hip_drift": 0.0,
+            "limbs": {
+              "max_segment_length_change": 4.046981429972618e-07,
+              "max_joint_gap": 4.777675730550706e-07
+            },
+            "hip_world": [
+              5.329071521759033,
+              -1.8000010251998901,
+              0.4648272395133972
+            ]
+          },
+          "narrator": {
+            "phase": "seated",
+            "seated_fraction_command": 1,
+            "signed_rear_hip_gap": 5.364418029785156e-07,
+            "signed_foot_gaps": [
+              0.0,
+              0.0
+            ],
+            "foot_step_drift": [
+              0.0,
+              0.0
+            ],
+            "moving_feet": [
+              false,
+              false
+            ],
+            "lateral_hip_drift": 0.0,
+            "limbs": {
+              "max_segment_length_change": 4.0469814543975247e-07,
+              "max_joint_gap": 4.798544105322545e-07
+            },
+            "hip_world": [
+              5.329071521759033,
+              0.049998875707387924,
+              0.4648272395133972
+            ]
+          }
+        },
+        "waffle": {
+          "evaluated_min_z": -9.313225746154785e-10
+        },
+        "dog_visible": true,
+        "dog_visibility": {
+          "samples": 65,
+          "blocked": 0,
+          "bounds": [
+            0.4770234525203705,
+            0.5708250999450684,
+            0.3448392450809479,
+            0.45343977212905884,
+            1.5680315494537354
+          ],
+          "safe": true,
+          "visible_fraction": 1.0,
+          "blockers": []
+        },
+        "actor_bounds": {
+          "june": [
+            0.5262115597724915,
+            0.8019002676010132,
+            0.4253107011318207,
+            0.6072177290916443,
+            1.8857388496398926
+          ],
+          "narrator": [
+            0.3338910937309265,
+            0.5361536145210266,
+            0.4567694664001465,
+            0.606741189956665,
+            2.3449363708496094
+          ]
+        },
+        "note": "Separate rise, planted lateral steps, sit; no lateral root translation during sit."
+      }
+    }
+  ]
+}
