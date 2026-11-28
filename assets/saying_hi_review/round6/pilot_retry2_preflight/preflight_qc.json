@@ -1,0 +1,598 @@
+{
+  "run_id": "46138050916",
+  "source_commit": "997846eb48f673122ac5a9e5039057585278efa2",
+  "status": "preflight_only",
+  "shots": {
+    "sh20": {
+      "status": "pass",
+      "direction": {
+        "status": "numeric_pass",
+        "beat_type": "action",
+        "principal": "narrator",
+        "actors": {
+          "ava": {
+            "motion_coverage": 1.0,
+            "held_pose_max_s": 0.03333333333333333,
+            "start_in_motion": true,
+            "end_in_motion": true,
+            "transitions": 105
+          },
+          "bella": {
+            "motion_coverage": 1.0,
+            "held_pose_max_s": 0.03333333333333333,
+            "start_in_motion": true,
+            "end_in_motion": true,
+            "transitions": 105
+          },
+          "brody": {
+            "motion_coverage": 1.0,
+            "held_pose_max_s": 0.03333333333333333,
+            "start_in_motion": true,
+            "end_in_motion": true,
+            "transitions": 105
+          },
+          "chase": {
+            "motion_coverage": 1.0,
+            "held_pose_max_s": 0.03333333333333333,
+            "start_in_motion": true,
+            "end_in_motion": true,
+            "transitions": 105
+          },
+          "cleo": {
+            "motion_coverage": 1.0,
+            "held_pose_max_s": 0.03333333333333333,
+            "start_in_motion": true,
+            "end_in_motion": true,
+            "transitions": 105
+          },
+          "daisy": {
+            "motion_coverage": 1.0,
+            "held_pose_max_s": 0.03333333333333333,
+            "start_in_motion": true,
+            "end_in_motion": true,
+            "transitions": 105
+          },
+          "ella": {
+            "motion_coverage": 1.0,
+            "held_pose_max_s": 0.03333333333333333,
+            "start_in_motion": true,
+            "end_in_motion": true,
+            "transitions": 105
+          },
+          "faye": {
+            "motion_coverage": 1.0,
+            "held_pose_max_s": 0.03333333333333333,
+            "start_in_motion": true,
+            "end_in_motion": true,
+            "transitions": 105
+          },
+          "gia": {
+            "motion_coverage": 1.0,
+            "held_pose_max_s": 0.03333333333333333,
+            "start_in_motion": true,
+            "end_in_motion": true,
+            "transitions": 105
+          },
+          "hana": {
+            "motion_coverage": 1.0,
+            "held_pose_max_s": 0.03333333333333333,
+            "start_in_motion": true,
+            "end_in_motion": true,
+            "transitions": 105
+          },
+          "ivy": {
+            "motion_coverage": 1.0,
+            "held_pose_max_s": 0.03333333333333333,
+            "start_in_motion": true,
+            "end_in_motion": true,
+            "transitions": 105
+          },
+          "june": {
+            "motion_coverage": 1.0,
+            "held_pose_max_s": 0.03333333333333333,
+            "start_in_motion": true,
+            "end_in_motion": true,
+            "transitions": 105
+          },
+          "kai": {
+            "motion_coverage": 1.0,
+            "held_pose_max_s": 0.03333333333333333,
+            "start_in_motion": true,
+            "end_in_motion": true,
+            "transitions": 105
+          },
+          "leo": {
+            "motion_coverage": 1.0,
+            "held_pose_max_s": 0.03333333333333333,
+            "start_in_motion": true,
+            "end_in_motion": true,
+            "transitions": 105
+          },
+          "max": {
+            "motion_coverage": 1.0,
+            "held_pose_max_s": 0.03333333333333333,
+            "start_in_motion": true,
+            "end_in_motion": true,
+            "transitions": 105
+          },
+          "narrator": {
+            "motion_coverage": 1.0,
+            "held_pose_max_s": 0.03333333333333333,
+            "start_in_motion": true,
+            "end_in_motion": true,
+            "transitions": 105
+          },
+          "noah": {
+            "motion_coverage": 1.0,
+            "held_pose_max_s": 0.03333333333333333,
+            "start_in_motion": true,
+            "end_in_motion": true,
+            "transitions": 105
+          },
+          "otis": {
+            "motion_coverage": 1.0,
+            "held_pose_max_s": 0.03333333333333333,
+            "start_in_motion": true,
+            "end_in_motion": true,
+            "transitions": 105
+          },
+          "ryan": {
+            "motion_coverage": 1.0,
+            "held_pose_max_s": 0.03333333333333333,
+            "start_in_motion": true,
+            "end_in_motion": true,
+            "transitions": 105
+          },
+          "sam": {
+            "motion_coverage": 1.0,
+            "held_pose_max_s": 0.03333333333333333,
+            "start_in_motion": true,
+            "end_in_motion": true,
+            "transitions": 105
+          }
+        },
+        "faces": {
+          "narrator": {
+            "min_height": 0.1157960295677185,
+            "safe_all": true
+          }
+        },
+        "checks": {
+          "principal_motion": true,
+          "principal_edges": true,
+          "all_actor_holds": true,
+          "grade_declared": true,
+          "action_body_scale": true
+        },
+        "grade": {
+          "preset": "warm_saturated_v1",
+          "look": "AgX - Medium High Contrast",
+          "exposure": -0.12,
+          "saturation": 1.18
+        },
+        "threshold_scene_units": 0.0015,
+        "visual_review_required": true
+      },
+      "external_face_ray_blocks_max": {
+        "narrator": 0
+      },
+      "smoke_frames": [
+        {
+          "frame": 1422,
+          "render_seconds": 45.59020513600001,
+          "near_black_percent": 1.1548996913580247
+        },
+        {
+          "frame": 1475,
+          "render_seconds": 20.789825381000014,
+          "near_black_percent": 0.527391975308642
+        },
+        {
+          "frame": 1527,
+          "render_seconds": 21.275919056999953,
+          "near_black_percent": 0.2152777777777778
+        }
+      ],
+      "extra": {
+        "walk": {
+          "cycle_count": 1,
+          "phase": 0.008333333333333333,
+          "rate": 0.28823529271518483,
+          "offset_seconds": 0.02361111111111111,
+          "start_support": 0,
+          "final_support": 1,
+          "same_foot": false,
+          "final_plant": true,
+          "destination": [
+            0.23908011615276337,
+            3.2705540657043457,
+            0.0050603291019797325
+          ],
+          "root_destination": [
+            -0.0029819458723068237,
+            4.076966762542725,
+            -0.008692316710948944
+          ],
+          "source_transition_indices": [
+            1,
+            59,
+            121,
+            179
+          ],
+          "method": "fixed phase-grid transition observation, whole-cycle playback; no endpoint fit",
+          "original_destination": [
+            0.0,
+            3.9000000953674316,
+            0.0
+          ],
+          "planned_mark_change": 0.6733403328501824,
+          "metrics": {
+            "cycle": "walk_cycle",
+            "fps": 30,
+            "rate": 0.28823529271518483,
+            "mean_forward_speed": 1.0316587673390614,
+            "derived_stride": 2.9230331741273403,
+            "stance_samples": 82,
+            "stance_velocity_rms": 0.006782247767422966,
+            "max_continuing_velocity": 0.06141563953190725,
+            "max_contact_gap": 0.0050603291019797325,
+            "max_floor_error": 6.409526349671069e-07,
+            "backward_frames": 2,
+            "flight_frames": 0,
+            "max_airborne_height": 0,
+            "max_penetration": 6.409526349671069e-07,
+            "pass": false
+          },
+          "root_stop_error_to_plant": 0.8420716313337975,
+          "final_contact_error": 0.0,
+          "complete_unit": true
+        }
+      }
+    },
+    "sh21": {
+      "status": "pass",
+      "direction": {
+        "status": "numeric_pass",
+        "beat_type": "action",
+        "principal": "otis",
+        "actors": {
+          "ava": {
+            "motion_coverage": 1.0,
+            "held_pose_max_s": 0.03333333333333333,
+            "start_in_motion": true,
+            "end_in_motion": true,
+            "transitions": 50
+          },
+          "bella": {
+            "motion_coverage": 1.0,
+            "held_pose_max_s": 0.03333333333333333,
+            "start_in_motion": true,
+            "end_in_motion": true,
+            "transitions": 50
+          },
+          "brody": {
+            "motion_coverage": 1.0,
+            "held_pose_max_s": 0.03333333333333333,
+            "start_in_motion": true,
+            "end_in_motion": true,
+            "transitions": 50
+          },
+          "chase": {
+            "motion_coverage": 1.0,
+            "held_pose_max_s": 0.03333333333333333,
+            "start_in_motion": true,
+            "end_in_motion": true,
+            "transitions": 50
+          },
+          "cleo": {
+            "motion_coverage": 1.0,
+            "held_pose_max_s": 0.03333333333333333,
+            "start_in_motion": true,
+            "end_in_motion": true,
+            "transitions": 50
+          },
+          "daisy": {
+            "motion_coverage": 1.0,
+            "held_pose_max_s": 0.03333333333333333,
+            "start_in_motion": true,
+            "end_in_motion": true,
+            "transitions": 50
+          },
+          "ella": {
+            "motion_coverage": 1.0,
+            "held_pose_max_s": 0.03333333333333333,
+            "start_in_motion": true,
+            "end_in_motion": true,
+            "transitions": 50
+          },
+          "faye": {
+            "motion_coverage": 1.0,
+            "held_pose_max_s": 0.03333333333333333,
+            "start_in_motion": true,
+            "end_in_motion": true,
+            "transitions": 50
+          },
+          "gia": {
+            "motion_coverage": 1.0,
+            "held_pose_max_s": 0.03333333333333333,
+            "start_in_motion": true,
+            "end_in_motion": true,
+            "transitions": 50
+          },
+          "hana": {
+            "motion_coverage": 1.0,
+            "held_pose_max_s": 0.03333333333333333,
+            "start_in_motion": true,
+            "end_in_motion": true,
+            "transitions": 50
+          },
+          "ivy": {
+            "motion_coverage": 1.0,
+            "held_pose_max_s": 0.03333333333333333,
+            "start_in_motion": true,
+            "end_in_motion": true,
+            "transitions": 50
+          },
+          "june": {
+            "motion_coverage": 1.0,
+            "held_pose_max_s": 0.03333333333333333,
+            "start_in_motion": true,
+            "end_in_motion": true,
+            "transitions": 50
+          },
+          "kai": {
+            "motion_coverage": 1.0,
+            "held_pose_max_s": 0.03333333333333333,
+            "start_in_motion": true,
+            "end_in_motion": true,
+            "transitions": 50
+          },
+          "leo": {
+            "motion_coverage": 1.0,
+            "held_pose_max_s": 0.03333333333333333,
+            "start_in_motion": true,
+            "end_in_motion": true,
+            "transitions": 50
+          },
+          "max": {
+            "motion_coverage": 1.0,
+            "held_pose_max_s": 0.03333333333333333,
+            "start_in_motion": true,
+            "end_in_motion": true,
+            "transitions": 50
+          },
+          "narrator": {
+            "motion_coverage": 1.0,
+            "held_pose_max_s": 0.03333333333333333,
+            "start_in_motion": true,
+            "end_in_motion": true,
+            "transitions": 50
+          },
+          "noah": {
+            "motion_coverage": 1.0,
+            "held_pose_max_s": 0.03333333333333333,
+            "start_in_motion": true,
+            "end_in_motion": true,
+            "transitions": 50
+          },
+          "otis": {
+            "motion_coverage": 1.0,
+            "held_pose_max_s": 0.03333333333333333,
+            "start_in_motion": true,
+            "end_in_motion": true,
+            "transitions": 50
+          },
+          "ryan": {
+            "motion_coverage": 1.0,
+            "held_pose_max_s": 0.03333333333333333,
+            "start_in_motion": true,
+            "end_in_motion": true,
+            "transitions": 50
+          },
+          "sam": {
+            "motion_coverage": 1.0,
+            "held_pose_max_s": 0.03333333333333333,
+            "start_in_motion": true,
+            "end_in_motion": true,
+            "transitions": 50
+          }
+        },
+        "faces": {
+          "otis": {
+            "min_height": 0.07827901840209961,
+            "safe_all": true
+          }
+        },
+        "checks": {
+          "principal_motion": true,
+          "principal_edges": true,
+          "all_actor_holds": true,
+          "grade_declared": true,
+          "action_body_scale": true
+        },
+        "grade": {
+          "preset": "warm_saturated_v1",
+          "look": "AgX - Medium High Contrast",
+          "exposure": -0.12,
+          "saturation": 1.18
+        },
+        "threshold_scene_units": 0.0015,
+        "visual_review_required": true
+      },
+      "external_face_ray_blocks_max": {
+        "otis": 0
+      },
+      "smoke_frames": [
+        {
+          "frame": 1528,
+          "render_seconds": 44.67246673200003,
+          "near_black_percent": 2.306520061728395
+        },
+        {
+          "frame": 1553,
+          "render_seconds": 20.570610578000014,
+          "near_black_percent": 2.2629243827160495
+        },
+        {
+          "frame": 1578,
+          "render_seconds": 20.631178874,
+          "near_black_percent": 2.3466435185185186
+        }
+      ],
+      "extra": {}
+    },
+    "sh27": {
+      "status": "flag",
+      "direction": {
+        "status": "flag",
+        "beat_type": "interview",
+        "principal": "kai",
+        "actors": {
+          "cleo": {
+            "motion_coverage": 1.0,
+            "held_pose_max_s": 0.03333333333333333,
+            "start_in_motion": true,
+            "end_in_motion": true,
+            "transitions": 75
+          },
+          "kai": {
+            "motion_coverage": 1.0,
+            "held_pose_max_s": 0.03333333333333333,
+            "start_in_motion": true,
+            "end_in_motion": true,
+            "transitions": 75
+          }
+        },
+        "faces": {
+          "kai": {
+            "min_height": 0.14911580085754395,
+            "safe_all": false,
+            "min_facing_dot": 0.9293294745730236,
+            "min_ray_visibility": 0.92,
+            "max_external_blocks": 0,
+            "min_ray_samples": 25
+          },
+          "cleo": {
+            "min_height": 0.14927631616592407,
+            "safe_all": true,
+            "min_facing_dot": 0.9215872040949762,
+            "min_ray_visibility": 0.92,
+            "max_external_blocks": 0,
+            "min_ray_samples": 25
+          }
+        },
+        "checks": {
+          "principal_motion": true,
+          "principal_edges": true,
+          "all_actor_holds": true,
+          "grade_declared": true,
+          "readable_faces": true,
+          "two_face_bounds": false
+        },
+        "grade": {
+          "preset": "warm_saturated_v1",
+          "look": "AgX - Medium High Contrast",
+          "exposure": -0.12,
+          "saturation": 1.18
+        },
+        "threshold_scene_units": 0.0015,
+        "visual_review_required": true
+      },
+      "external_face_ray_blocks_max": {
+        "cleo": 0,
+        "kai": 0
+      },
+      "smoke_frames": [
+        {
+          "frame": 1807,
+          "render_seconds": 33.73441472900004,
+          "near_black_percent": 11.01929012345679
+        },
+        {
+          "frame": 1845,
+          "render_seconds": 11.67971111299994,
+          "near_black_percent": 10.96508487654321
+        },
+        {
+          "frame": 1882,
+          "render_seconds": 11.634819023999967,
+          "near_black_percent": 11.088927469135802
+        }
+      ],
+      "extra": {}
+    },
+    "sh32": {
+      "status": "flag",
+      "direction": {
+        "status": "flag",
+        "beat_type": "emotion",
+        "principal": "narrator",
+        "actors": {
+          "june": {
+            "motion_coverage": 1.0,
+            "held_pose_max_s": 0.03333333333333333,
+            "start_in_motion": true,
+            "end_in_motion": true,
+            "transitions": 37
+          },
+          "narrator": {
+            "motion_coverage": 1.0,
+            "held_pose_max_s": 0.03333333333333333,
+            "start_in_motion": true,
+            "end_in_motion": true,
+            "transitions": 37
+          }
+        },
+        "faces": {
+          "narrator": {
+            "min_height": 0.4188130497932434,
+            "safe_all": true,
+            "min_facing_dot": 0.9926489600911736,
+            "min_ray_visibility": 0.0,
+            "max_external_blocks": 26,
+            "min_ray_samples": 25
+          }
+        },
+        "checks": {
+          "principal_motion": true,
+          "principal_edges": true,
+          "all_actor_holds": true,
+          "grade_declared": true,
+          "readable_faces": false,
+          "face_scale": true
+        },
+        "grade": {
+          "preset": "warm_saturated_v1",
+          "look": "AgX - Medium High Contrast",
+          "exposure": -0.12,
+          "saturation": 1.18
+        },
+        "threshold_scene_units": 0.0015,
+        "visual_review_required": true
+      },
+      "external_face_ray_blocks_max": {
+        "narrator": 26
+      },
+      "smoke_frames": [
+        {
+          "frame": 2134,
+          "render_seconds": 44.25813919899997,
+          "near_black_percent": 0.0
+        },
+        {
+          "frame": 2153,
+          "render_seconds": 15.709275971000011,
+          "near_black_percent": 0.0
+        },
+        {
+          "frame": 2171,
+          "render_seconds": 15.677375502000018,
+          "near_black_percent": 0.0
+        }
+      ],
+      "extra": {}
+    }
+  },
+  "native_pilot_authorized": false,
+  "numerical_pass": false
+}
