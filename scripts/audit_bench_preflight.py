@@ -31,7 +31,7 @@ def check(root,full=False):
             if n==31:
                 pickup=[(f,c) for f,c in contact_all if c.get('event')=='cap_pickup']
                 attached=[(f,c) for f,c in pickup if c.get('attached')]
-                if len(pickup)!=last-first+1 or not attached or attached[-1][0]!=last or any(c.get('grip_error',math.inf)>1e-5 for _,c in attached):
+                if len(pickup)!=last-first+1 or not attached or attached[-1][0]!=last or any(c.get('grip_error',math.inf)>1e-5 or c.get('surface_gap') is None or c['surface_gap']>.008 for _,c in attached):
                     issues.append('continuous cap pickup/grip missing or failed')
             if n==48:
                 handoff=[f for f,c in contact_all if c.get('event')=='bag' and c.get('handoff')]

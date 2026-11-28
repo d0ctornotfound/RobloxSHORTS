@@ -230,18 +230,18 @@ def main():
     birds=[pigeon("Pigeon %02d"%i,p) for i in range(6)]
     rng=random.Random(201)
     crumbs=[ell("Bread crumb %02d"%i,(0,0,0),(.025,.020,.018),p["crumb"]) for i in range(20)]
-    actors={};milo_seated=n in (18,19,20,21,22,23,24,35,36,37,38,39,41,42,45,46,47,48)
+    actors={};milo_seated=n in (18,19,20,21,22,23,24,31,32,35,36,37,38,39,41,42,45,46,47,48)
     dad_seated=n in tuple(range(1,25))+(45,46,47,48)
     show_m=n not in (3,4,5,6,8,12,15,16,27,28,29,37,40,41,43,44,47)
     show_d=(n<=24 and n not in (7,9,10,11,12,14,17)) or n>=43 or n==41
     if n==26:show_m=False
     if n==33:show_m=False
     if show_m:
-        mode="walk" if n in (1,2,9,17,25) else "reach" if n==31 else "sit_down" if n==35 else "sit" if milo_seated else "idle"
+        mode="walk" if n in (1,2,9,17,25) else "sit_down" if n==35 else "sit" if milo_seated else "idle"
         pos=(-3.6,-1.42,0) if n==2 else (-3.2,-1.55,0) if mode=="walk" else (-.83,0,0) if milo_seated else (-.65,-.9,0)
         # Pickup is staged beside the seat, using the existing reach motion and a separate articulated hand target.
-        if n==31:pos=(.55,cy-.83,0)
-        yaw=math.pi/2 if mode=="walk" else 2.55 if n==31 else .12 if milo_seated else .25
+        if n in (31,32):pos=(-.24,0,0)
+        yaw=math.pi/2 if mode=="walk" else 0 if n in (31,32) else .12 if milo_seated else .25
         actors["Milo"]=Actor("Milo","lead",mode,pos,yaw,.40 if n==2 else .6)
     if show_d:
         mode="walk" if n in (41,43,44) else "sit_down" if n==45 else "sit" if dad_seated else "idle"
@@ -272,7 +272,7 @@ def main():
         for i,(bird,head) in enumerate(birds):
             bird.location=(-1.8+i*.56,-1.20-.34*(i%3),0)
             # Keep pigeons out of the walking corridor in the corrected shots.
-            if n in (1,9):bird.location=(.10+i*.47,-.55-.11*(i%3),0)
+            if n in (1,9,25):bird.location=(.10+i*.47,-.55-.11*(i%3),0)
             bird.rotation_euler.z=.5*math.sin(i*2)+.15*math.sin(t+i)
             head.rotation_euler.x=.22+.66*max(0,math.sin(t*5+i))
         for i,c in enumerate(crumbs):
@@ -284,9 +284,7 @@ def main():
             hide(cap,False)
             wear_cap(cap,d)
         if n in (36,38,39,41,42):cap.location=(.65,cy,top+.01)
-        if n==31 and m:
-            cap.location=(.83,cy-.15,top+.015)
-        if n==32 and m:cap.location=m.hand(0)+V((0,.15,-.04))
+        if n in (31,32) and m:cap.location=(.83,cy,top+.015)
         if n>=47 and d:
             wear_cap(cap,d)
         if d and n<=24:
@@ -309,16 +307,30 @@ def main():
                 limb=actor.art.arms[index];goal=limb.joint()+V((side*.12,-.88,-.36)).normalized()*(limb.a+limb.b)*.83
                 err=actor.aim(index,goal);bag.location=actor.hand(index);bag.scale=(1.25,1.25,1.25)
                 contacts.append({"event":"paper_bag_display","target_error":float(err),"socket_error":(bag.location-actor.hand(index)).length})
-        if n==31 and m:
-            # Match the seat edge with a real articulated hand. Do not attach on a timer alone.
-            grip_offset=V((0,.15,-.04));goal=cap.location-grip_offset
-            reach_weight=ease((u-.12)/.30)
-            if not cap_attached:
-                error=m.aim(0,m.hand(0).lerp(goal,reach_weight))
-                gap=(m.hand(0)-goal).length
-                if .35<=u<=.72 and gap<=.035:cap_attached=True
-            if cap_attached:cap.location=m.hand(0)+grip_offset
-            contacts.append({"event":"cap_pickup","attached":cap_attached,"pre_contact_gap":None if cap_attached else float(gap),"grip_error":(cap.location-m.hand(0)-grip_offset).length if cap_attached else None})
+        if n in (31,32) and m:
+            # R3 missed the cap by >=.440 units. Use the approved seated pose
+            # beside it and the inner arm; measure the actual nearest crown edge.
+            # The cap stays on its support until the physical target is reached.
+            bpy.context.view_layer.update()
+            crown=next(ob for ob in cap.children_recursive if ob.type=="MESH" and "Wool crown" in ob.name)
+            points=mesh_points(crown);goal=min(points,key=lambda v:v.x).copy()
+            grip_offset=cap.location.copy()-goal
+            index=1;limb=m.art.arms[index];shoulder=limb.joint();length=limb.a+limb.b
+            carry=shoulder+V((.12,-.66,-.55)).normalized()*length*.71
+            if n==32:
+                err=m.aim(index,carry);cap.location=m.hand(index)+grip_offset
+                contacts.append({"event":"cap_carry","socket_error":(cap.location-m.hand(index)-grip_offset).length,"target_error":float(err)})
+            else:
+                gap=None;reach_weight=ease((u-.04)/.30)
+                if not cap_attached:
+                    err=m.aim(index,m.hand(index).lerp(goal,reach_weight));gap=(m.hand(index)-goal).length
+                    if .34<=u<=.66 and gap<=.008:cap_attached=True
+                if cap_attached:
+                    target=goal.lerp(carry,ease((u-.66)/.34))
+                    err=m.aim(index,target);cap.location=m.hand(index)+grip_offset
+                bpy.context.view_layer.update()
+                nearest=tree_for_object(crown).find_nearest(m.hand(index))
+                contacts.append({"event":"cap_pickup","attached":cap_attached,"pre_contact_gap":None if cap_attached else float(gap),"grip_error":(cap.location-m.hand(index)-grip_offset).length if cap_attached else None,"surface_gap":None if nearest[0] is None else float(nearest[3]),"arm_reach":float(length),"goal_distance":float((goal-shoulder).length),"target_error":float(err)})
         if n==46 and d:
             # Cap lift and donning use a real hand target at the visor edge; record inability to reach.
             hide(cap,False)
@@ -440,10 +452,18 @@ def main():
             target=mc;target.z=mc.z+.03;dist=3.65;lens=48;angle=.88
         if n==16 and d:
             lo,hi=bounds(v for ob in d.meshes() for v in mesh_points(ob));target=V(((lo.x+hi.x)/2,(lo.y+hi.y)/2,hi.z-.38));dist=1.82;lens=49;angle=-.18
-        if n in (22,23) and m:
+        if n==22 and m:
             surface,_=m.hand_surface(0);target=surface+V((.12,0,.14));dist=1.48;lens=43;angle=-.45
+        if n==23 and m:
+            # Follow the actual bird during approach rather than cropping its first 20 frames.
+            target=birds[0][0].location+V((0,-.025,.12));dist=1.72;lens=43;angle=-.45
+        if n==24 and m:
+            lo,hi=bounds(mesh_points(m.a.head));head_center=(lo+hi)/2
+            target=head_center.lerp(birds[0][0].location+V((0,0,.16)),.40);dist=2.50;lens=46;angle=-.30
+        if n==25 and m:angle=.95
         if n==31 and m:
-            lo,hi=bounds(v for ob in m.meshes() for v in mesh_points(ob));target=(lo+hi)/2;target.z=target.z+.02;dist=3.5;lens=46;angle=1.37
+            lo,hi=bounds(v for ob in m.meshes() for v in mesh_points(ob));target=(lo+hi)/2;target.x+=.13;dist=3.35;lens=48;angle=-.22
+        if n==32 and m:target=cap.location+V((0,0,.10));dist=1.65;lens=45;angle=-.13
         if n==35 and m:
             lo,hi=bounds(v for ob in m.meshes() for v in mesh_points(ob));target=(lo+hi)/2;target.z=1.02;dist=3.45;lens=49;angle=.10
         if n in (45,48) and m:
@@ -455,7 +475,7 @@ def main():
             _,location,target,lens=pair_setup
         camera.location=location;camera.data.lens=lens;point_at(camera,target);bpy.context.view_layer.update()
         geo=geometry(scene,camera,actors,heroes,kind)
-        prop_roots={4:[bags[0]],5:[birds[0][0]],10:[bags[1]],19:bags,23:[birds[0][0]],28:[birds[0][0]],29:[cap],32:[cap],36:[cap],37:[birds[0][0]],44:[stick],47:bags}.get(n,[])
+        prop_roots={4:[bags[0]],5:[birds[0][0]],10:[bags[1]],19:bags,23:[birds[0][0]],24:[birds[0][0]],28:[birds[0][0]],29:[cap],31:[cap],32:[cap],36:[cap],37:[birds[0][0]],44:[stick],47:bags}.get(n,[])
         props={ob.name:prop_geometry(scene,camera,ob) for ob in prop_roots if any(not x.hide_render for x in ob.children_recursive if x.type=="MESH")}
         geometry_records.append({"frame":global_frame,"heroes":geo,"props":props,"contacts":contacts,"pass":all(x["pass"] for x in list(geo.values())+list(props.values()))})
         if f not in selected:continue
