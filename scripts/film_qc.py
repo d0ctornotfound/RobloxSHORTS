@@ -105,4 +105,8 @@ def flow_report(rows, fps=30, expected_frames=None):
     elif kind=="action":checks["action_body_scale"]=all(r.get("actor_qc",{}).get(principal,{}).get("vertical_coverage",0)>=.25 for r in rows)
     elif kind=="geography":
         checks["body_scale"]=all(r.get("actor_qc",{}).get(principal,{}).get("vertical_coverage",0)>=.25 for r in rows) or (len(rows)/fps<=2 and all(x.get("pure_establishing",False) for x in d))
+    if kind=="geography":checks["landmarks_declared"]=all(bool(x.get("landmarks")) for x in d)
+    if any(x.get("landmarks") for x in d):
+        required=set().union(*(x.get("landmarks",{}) for x in d))
+        checks["landmarks_visible"]=all(all(x.get("landmarks",{}).get(k,{}).get("pass",False) for k in required) for x in d)
     return {"status":"numeric_pass" if all(checks.values()) else "flag","beat_type":kind,"principal":principal,"actors":metrics,"faces":faces,"checks":checks,"grade":d[0]["grade"],"threshold_scene_units":threshold,"visual_review_required":True}
