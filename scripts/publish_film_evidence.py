@@ -24,6 +24,8 @@ def main():
         lines.extend(["","| Shot | Timeline (s) | Native frames delivered | Measured flags / specific known fixes |","|---|---|---:|---|"])
         for shot,s in q["shots"].items():
             flags="; ".join(s["flags"]) or "No flagged measurement; human visual review pending."
+            vals="; ".join(f"{m['name']}={m['value']} ({m['status']}, n={m['samples']})" for m in s.get("measurements",[]))
+            if vals:flags+="; Measurements: "+vals
             lines.append(f"| {shot} | {s['start']/30:.2f}–{s['end']/30:.2f} | {s['frames']} | {flags.replace('|','/')} |")
     else:lines.append("Per-shot QC report absent; inspect partial render logs.")
     lines.append("\nSource motion sampling is independent at 30 Hz, EEVEE 32 spatial samples, denoising off. Artistic QC is advisory; missing or invalid native media is a technical failure.")

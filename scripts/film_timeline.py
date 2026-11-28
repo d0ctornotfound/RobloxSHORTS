@@ -4,6 +4,7 @@ Technical integrity is mandatory; measured artistic QC is advisory.
 import argparse,hashlib,json,os,subprocess,sys
 from pathlib import Path
 from fractions import Fraction
+from film_qc import evaluate as evaluate_qc
 def read(p):return json.loads(Path(p).read_text())
 def write(p,v):Path(p).write_text(json.dumps(v,indent=2)+"\n")
 def run(cmd):subprocess.run(cmd,check=True)
@@ -51,7 +52,7 @@ def chunk(c,t,config,out,local_map):
         else:p.unlink()
 def assemble(c,tasks,chunks,out):
     out.mkdir(parents=True,exist_ok=True);work=out/"segments";work.mkdir(exist_ok=True)
-    ledger=[];missing=[];qc={};plan=read(c["plan"])
+    ledger=[];missing=[];qc={};samples={};plan=read(c["plan"])
     for t in tasks:
         n=t["end"]-t["start"];key=t["key"];target=work/(key+".mp4")
         q=qc.setdefault(t["shot"],{"start":t["start"],"end":t["end"],"frames":0,"flags":[],"chunks":[]})
@@ -68,6 +69,7 @@ def assemble(c,tasks,chunks,out):
             source=chunks/t["key"]
             if not (source/"clip.mp4").is_file() or not (source/"manifest.json").is_file():missing.append(key);q["flags"].append("missing native chunk "+key);continue
             m=read(source/"manifest.json");check_video(source/"clip.mp4",n)
+            samples.setdefault(t["shot"],[]).extend(m["rows"])
             assert [x["frame"] for x in m["rendered"]]==list(range(t["start"],t["end"]))
             target=source/"clip.mp4";dark=max(x["near_black_percent"] for x in m["rendered"])
             if dark>2:q["flags"].append(f"{key}: near-black {dark:.5f}% >2%")
@@ -86,13 +88,16 @@ def assemble(c,tasks,chunks,out):
         check_video(target,n);q["frames"]+=n;ledger.append({**row,"key":key,"start":t["start"],"end":t["end"],"path":str(target.resolve())})
     for s in plan["shots"]:
         q=qc[s["id"]];q["flags"]+=c.get("known_weaknesses",{}).get(s["id"],[])
+        q["measurements"]=evaluate_qc(samples.get(s["id"],[]),c.get("qc_rules",{}).get(s["id"],[]))
+        for m in q["measurements"]:
+            if m["status"]!="pass":q["flags"].append(f"{m['name']}: {m['value']} (limit {m['operator']} {m['limit']}; {m['status']})")
         q["flags"]=list(dict.fromkeys(q["flags"]))
     write(out/"qc.json",{"shot_count":len(qc),"sampling_hz":30,"encoded_target_fps":30,"missing":missing,"shots":qc})
     write(out/"timeline.json",ledger)
     if missing:raise RuntimeError("Technical incompleteness; no substitute frames: "+str(missing))
     concat=out/"concat.txt";concat.write_text("".join("file '"+x["path"]+"'\n" for x in ledger))
     film=out/c["film_name"]
-    run(["ffmpeg","-y","-v","error","-f","concat","-safe","0","-i",str(concat),"-i",plan["narration_audio"],"-map","0:v:0","-map","1:a:0","-c:v","libx264","-crf","19","-pix_fmt","yuv420p","-c:a","aac","-b:a","128k","-movflags","+faststart",str(film)])
+    run(["ffmpeg","-y","-v","error","-f","concat","-safe","0","-i",str(concat),"-i",plan["narration_audio"],"-map","0:v:0","-map","1:a:0","-vf","setpts=N/(30*TB)","-fps_mode","passthrough","-c:v","libx264","-crf","19","-pix_fmt","yuv420p","-c:a","aac","-b:a","128k","-movflags","+faststart",str(film)])
     total=round(plan["audio_duration"]*30);check_video(film,total)
     ff=probe(film);audio=next(x for x in ff["streams"] if x["codec_type"]=="audio")
     assert abs(float(audio["duration"])-plan["audio_duration"])<.08

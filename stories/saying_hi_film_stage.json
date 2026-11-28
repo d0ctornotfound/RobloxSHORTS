@@ -1974,5 +1974,388 @@
     "git_blob": "20108af3a19fae6b5beaa5fac2e3305b56112a41"
   },
   "review_path": "docs/saying_hi_review.md",
-  "inventory_path": "docs/saying_hi_deliverable_paths.txt"
+  "inventory_path": "docs/saying_hi_deliverable_paths.txt",
+  "qc_rules": {
+    "sh20": [
+      {
+        "name": "wide body height",
+        "selector": "geometry.actor_bounds",
+        "op": "min",
+        "limit": 0.25,
+        "reduce": "min",
+        "transform": "vertical_span"
+      },
+      {
+        "name": "wide support rays blocked",
+        "selector": "geometry.foot_visible",
+        "op": "eq",
+        "limit": 0,
+        "reduce": "count_false"
+      }
+    ],
+    "sh21": [
+      {
+        "name": "low body height",
+        "selector": "geometry.low_camera.actor_bounds",
+        "op": "min",
+        "limit": 0.25,
+        "reduce": "min",
+        "transform": "vertical_span"
+      },
+      {
+        "name": "low support rays blocked",
+        "selector": "geometry.low_camera.foot_visible",
+        "op": "eq",
+        "limit": 0,
+        "reduce": "count_false"
+      }
+    ],
+    "sh31": [
+      {
+        "name": "standing-seat intersections",
+        "selector": "geometry.standing_seat_intersections",
+        "op": "eq",
+        "limit": 0,
+        "reduce": "max"
+      },
+      {
+        "name": "speaker facing dot",
+        "selector": "geometry.speaker_front_dot",
+        "op": "min",
+        "limit": 0.72,
+        "reduce": "min"
+      },
+      {
+        "name": "speaker body visibility",
+        "selector": "geometry.speaker_body_visibility.visible_fraction",
+        "op": "min",
+        "limit": 0.9,
+        "reduce": "min"
+      },
+      {
+        "name": "speaker body safe",
+        "selector": "geometry.speaker_body_visibility.safe",
+        "op": "eq",
+        "limit": true,
+        "reduce": "all"
+      },
+      {
+        "name": "unrelated foreground ray blocks",
+        "selector": "geometry.foreground_intrusion.blocked",
+        "op": "eq",
+        "limit": 0,
+        "reduce": "max"
+      },
+      {
+        "name": "pencil external rays blocked",
+        "selector": "geometry.pencil_external_visibility.blocked",
+        "op": "eq",
+        "limit": 0,
+        "reduce": "max"
+      },
+      {
+        "name": "pencil visible fraction",
+        "selector": "geometry.pencil_visibility.visible_fraction",
+        "op": "min",
+        "limit": 0.8421052631578947,
+        "reduce": "min"
+      },
+      {
+        "name": "pencil safe frame",
+        "selector": "geometry.pencil_external_visibility.safe",
+        "op": "eq",
+        "limit": true,
+        "reduce": "all"
+      }
+    ],
+    "sh32": [
+      {
+        "name": "standing-seat intersections",
+        "selector": "geometry.standing_seat_intersections",
+        "op": "eq",
+        "limit": 0,
+        "reduce": "max"
+      },
+      {
+        "name": "speaker facing dot",
+        "selector": "geometry.speaker_front_dot",
+        "op": "min",
+        "limit": 0.72,
+        "reduce": "min"
+      },
+      {
+        "name": "speaker body visibility",
+        "selector": "geometry.speaker_body_visibility.visible_fraction",
+        "op": "min",
+        "limit": 0.9,
+        "reduce": "min"
+      },
+      {
+        "name": "speaker body safe",
+        "selector": "geometry.speaker_body_visibility.safe",
+        "op": "eq",
+        "limit": true,
+        "reduce": "all"
+      },
+      {
+        "name": "unrelated foreground ray blocks",
+        "selector": "geometry.foreground_intrusion.blocked",
+        "op": "eq",
+        "limit": 0,
+        "reduce": "max"
+      },
+      {
+        "name": "pencil external rays blocked",
+        "selector": "geometry.pencil_external_visibility.blocked",
+        "op": "eq",
+        "limit": 0,
+        "reduce": "max"
+      },
+      {
+        "name": "pencil visible fraction",
+        "selector": "geometry.pencil_visibility.visible_fraction",
+        "op": "min",
+        "limit": 0.8421052631578947,
+        "reduce": "min"
+      },
+      {
+        "name": "pencil safe frame",
+        "selector": "geometry.pencil_external_visibility.safe",
+        "op": "eq",
+        "limit": true,
+        "reduce": "all"
+      }
+    ],
+    "sh33": [
+      {
+        "name": "standing-seat intersections",
+        "selector": "geometry.standing_seat_intersections",
+        "op": "eq",
+        "limit": 0,
+        "reduce": "max"
+      },
+      {
+        "name": "speaker facing dot",
+        "selector": "geometry.speaker_front_dot",
+        "op": "min",
+        "limit": 0.72,
+        "reduce": "min"
+      },
+      {
+        "name": "speaker body visibility",
+        "selector": "geometry.speaker_body_visibility.visible_fraction",
+        "op": "min",
+        "limit": 0.9,
+        "reduce": "min"
+      },
+      {
+        "name": "speaker body safe",
+        "selector": "geometry.speaker_body_visibility.safe",
+        "op": "eq",
+        "limit": true,
+        "reduce": "all"
+      },
+      {
+        "name": "unrelated foreground ray blocks",
+        "selector": "geometry.foreground_intrusion.blocked",
+        "op": "eq",
+        "limit": 0,
+        "reduce": "max"
+      },
+      {
+        "name": "pencil external rays blocked",
+        "selector": "geometry.pencil_external_visibility.blocked",
+        "op": "eq",
+        "limit": 0,
+        "reduce": "max"
+      },
+      {
+        "name": "pencil visible fraction",
+        "selector": "geometry.pencil_visibility.visible_fraction",
+        "op": "min",
+        "limit": 0.8421052631578947,
+        "reduce": "min"
+      },
+      {
+        "name": "pencil safe frame",
+        "selector": "geometry.pencil_external_visibility.safe",
+        "op": "eq",
+        "limit": true,
+        "reduce": "all"
+      }
+    ],
+    "sh34": [
+      {
+        "name": "standing-seat intersections",
+        "selector": "geometry.standing_seat_intersections",
+        "op": "eq",
+        "limit": 0,
+        "reduce": "max"
+      },
+      {
+        "name": "speaker facing dot",
+        "selector": "geometry.speaker_front_dot",
+        "op": "min",
+        "limit": 0.72,
+        "reduce": "min"
+      },
+      {
+        "name": "speaker body visibility",
+        "selector": "geometry.speaker_body_visibility.visible_fraction",
+        "op": "min",
+        "limit": 0.9,
+        "reduce": "min"
+      },
+      {
+        "name": "speaker body safe",
+        "selector": "geometry.speaker_body_visibility.safe",
+        "op": "eq",
+        "limit": true,
+        "reduce": "all"
+      },
+      {
+        "name": "unrelated foreground ray blocks",
+        "selector": "geometry.foreground_intrusion.blocked",
+        "op": "eq",
+        "limit": 0,
+        "reduce": "max"
+      }
+    ],
+    "sh43": [
+      {
+        "name": "dog occlusion",
+        "selector": "geometry.dog_visibility.blocked",
+        "op": "eq",
+        "limit": 0,
+        "reduce": "max"
+      },
+      {
+        "name": "dog safe frame",
+        "selector": "geometry.dog_visibility.safe",
+        "op": "eq",
+        "limit": true,
+        "reduce": "all"
+      },
+      {
+        "name": "dog width",
+        "selector": "geometry.dog_visibility.bounds",
+        "op": "min",
+        "limit": 0.12,
+        "reduce": "min",
+        "transform": "horizontal_span"
+      },
+      {
+        "name": "dog height",
+        "selector": "geometry.dog_visibility.bounds",
+        "op": "min",
+        "limit": 0.055,
+        "reduce": "min",
+        "transform": "vertical_span"
+      },
+      {
+        "name": "dog floor gap",
+        "selector": "geometry.waffle.evaluated_min_z",
+        "op": "max",
+        "limit": 0.002,
+        "reduce": "max",
+        "transform": "abs"
+      },
+      {
+        "name": "seated hip gap",
+        "selector": "geometry.seat_contacts.*.signed_rear_hip_gap",
+        "op": "max",
+        "limit": 0.015,
+        "reduce": "max",
+        "transform": "abs",
+        "when": {
+          "selector": "geometry.seat_contacts.*.phase",
+          "equals": "seated"
+        }
+      },
+      {
+        "name": "settled facing",
+        "selector": "geometry.readability_faces.*.facing_dot",
+        "op": "min",
+        "limit": 0.5,
+        "reduce": "min",
+        "when": {
+          "selector": "geometry.seat_contacts.*.phase",
+          "equals": "seated"
+        }
+      },
+      {
+        "name": "settled all-face ray blocks (incl own)",
+        "selector": "geometry.readability_faces.*.visibility.blocked",
+        "op": "eq",
+        "limit": 0,
+        "reduce": "max",
+        "when": {
+          "selector": "geometry.seat_contacts.*.phase",
+          "equals": "seated"
+        }
+      },
+      {
+        "name": "named seat surface safe",
+        "selector": "geometry.seat_readability.surface.safe",
+        "op": "eq",
+        "limit": true,
+        "reduce": "all",
+        "when": {
+          "selector": "geometry.seat_contacts.*.phase",
+          "equals": "seated"
+        }
+      },
+      {
+        "name": "named seat surface visibility",
+        "selector": "geometry.seat_readability.surface.visible_fraction",
+        "op": "min",
+        "limit": 0.0001,
+        "reduce": "min",
+        "when": {
+          "selector": "geometry.seat_contacts.*.phase",
+          "equals": "seated"
+        }
+      },
+      {
+        "name": "hips over seat surface",
+        "selector": "geometry.seat_readability.hips_over_surface.*",
+        "op": "eq",
+        "limit": true,
+        "reduce": "all",
+        "when": {
+          "selector": "geometry.seat_contacts.*.phase",
+          "equals": "seated"
+        }
+      },
+      {
+        "name": "raised support height",
+        "selector": "geometry.seat_readability.raised_height",
+        "op": "min",
+        "limit": 0.14,
+        "reduce": "min",
+        "when": {
+          "selector": "geometry.seat_contacts.*.phase",
+          "equals": "seated"
+        }
+      },
+      {
+        "name": "seat supports reach ground",
+        "selector": "geometry.seat_readability.support_reaches_ground",
+        "op": "eq",
+        "limit": true,
+        "reduce": "all",
+        "when": {
+          "selector": "geometry.seat_contacts.*.phase",
+          "equals": "seated"
+        }
+      },
+      {
+        "name": "move-over displacement",
+        "selector": "geometry.seat_contacts.june.hip_world.1",
+        "op": "min",
+        "limit": 0.2,
+        "reduce": "delta"
+      }
+    ]
+  }
 }
