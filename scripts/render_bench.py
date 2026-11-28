@@ -19,7 +19,7 @@ from library_camera import create,project
 from library_locomotion import StrideLock
 from r6_imported_cycles import Retarget
 from character_motion_correction import apply_corrected
-from chapter1_articulation import Articulation
+from chapter1_articulation import Articulation,tree_for_object
 from chapter1_round2 import neutral_feet,seat_setup,pose as sit_pose
 from chapter1_round3 import pose as reach_pose
 from clothing_articulation import ArticulatedClothes,clearance_metrics
@@ -47,8 +47,8 @@ def paper(name,p):
     return r
 def flatcap(p):
     r=empty("Old man's flat cap",(0,0,0))
-    ell("Wool crown",(0,.02,.075),(.61,.49,.19),p["cap"],r)
-    ell("Short front visor",(0,-.20,.027),(.53,.26,.065),p["cap_dark"],r)
+    ell("Wool crown",(0,.02,.085),(.76,.66,.23),p["cap"],r)
+    ell("Short front visor",(0,-.24,.018),(.65,.34,.065),p["cap_dark"],r)
     return r
 def pigeon(name,p):
     r=empty(name,(0,0,0))
@@ -135,8 +135,28 @@ class Actor:
             delta=self.a.root.matrix_world.to_3x3().inverted()@(V(target)-shoulder)
             self.a.aim_arm(i,delta);end=self.hand(i)
         return (end-V(target)).length
+    def hand_surface(self,i):
+        # The wrist/end socket is not the dorsal skin surface. Raycast down onto the distal hand itself.
+        limb=self.art.arms[i]
+        center=limb.lower.matrix_world@V((0,0,-limb.b*.88))
+        tree=tree_for_object(limb.lower)
+        hit=tree.ray_cast(center+V((0,0,1)),V((0,0,-1)),2)
+        if hit[0] is None:raise RuntimeError("No distal hand support")
+        return hit[0],tree
     def meshes(self):
         return [o for o in self.objects if o.type=="MESH" and o.name in bpy.data.objects and not o.hide_render]
+
+def wear_cap(cap,actor):
+    # Story-local wardrobe layering only: the cap covers the crown locks, not the face/fringe.
+    # The character rig, hair meshes, material assets and locked clothes remain unmodified on disk.
+    for ob in actor.objects:
+        if ob.type!="MESH" or "strand lock " not in ob.name:continue
+        try:index=int(ob.name.rsplit("strand lock ",1)[1].split(".")[0])
+        except ValueError:continue
+        if index<24:ob.hide_render=True
+    lo,hi=bounds(mesh_points(actor.a.head));c=(lo+hi)/2
+    cap.location=(c.x,c.y,hi.z+.018)
+    cap.rotation_euler.z=actor.yaw
 
 def calibrate():
     before=set(bpy.data.objects)
@@ -166,7 +186,8 @@ def main():
     # Bench slats sit beneath the measured rear-hip support, not an arbitrary chair height.
     bench.location.y=cy-.36
     atmosphere=Atmosphere(scene,target=(0,0,1.2));atmosphere.apply(shot["atmosphere"])
-    area_light("Gentle story bounce",(4,-3,4),120,5,(1,.88,.76))
+    area_light("Gentle story bounce",(4,-3,4),220,5,(1,.88,.76))
+    area_light("Front facial fill",(-2,-4,3.4),380 if shot["atmosphere"]=="morning" else 240,5,(1,.96,.90))
     camera=create(scene,"The Bench camera",42)
     bags=[paper("Brown paper bag "+str(i+1),p) for i in range(2)]
     cap=flatcap(p);stick=cane(p)
@@ -181,8 +202,10 @@ def main():
     if n==33:show_m=False
     if show_m:
         mode="walk" if n in (1,2,9,17,25) else "reach" if n==31 else "sit_down" if n==35 else "sit" if milo_seated else "idle"
-        pos=(-3.2,-1.55,0) if mode=="walk" else (-.83,0,0) if milo_seated else (-.65,-.9,0)
-        actors["Milo"]=Actor("Milo","lead",mode,pos,math.pi/2 if mode=="walk" else .12 if milo_seated else .25)
+        pos=(-3.6,-1.42,0) if n==2 else (-3.2,-1.55,0) if mode=="walk" else (-.83,0,0) if milo_seated else (-.65,-.9,0)
+        # Pickup is staged beside the seat, using the existing reach motion and a separate articulated hand target.
+        if n==31:pos=(.16,-.79,0)
+        actors["Milo"]=Actor("Milo","lead",mode,pos,math.pi/2 if mode=="walk" else .12 if milo_seated else .25,.40 if n==2 else .6)
     if show_d:
         mode="walk" if n in (43,44) else "sit_down" if n==45 else "sit" if dad_seated else "idle"
         pos=(3.1,-.75,0) if mode=="walk" else (.83,0,0)
@@ -218,32 +241,45 @@ def main():
             hide(cap,False)
         if n<=24 and d:
             hide(cap,False)
-            _,hi=bounds(mesh_points(d.a.head))
-            cap.location=(hi.x-.27,d.a.head.matrix_world.translation.y,hi.z-.025)
-            cap.rotation_euler.z=d.yaw
+            wear_cap(cap,d)
         if n in (36,38,39,41,42):cap.location=(.65,cy,top+.01)
         if n==31 and m:
-            if u>.43:cap.location=m.hand(0)
-        if n==32 and m:cap.location=m.hand(0)
+            # The cap starts on the bench. Only attach when the existing reach hand reaches its edge.
+            if u>.43:cap.location=m.hand(0)+V((0,-.11,.045))
+        if n==32 and m:cap.location=m.hand(0)+V((0,-.11,.045))
         if n>=46 and d:
-            lo,hi=bounds(mesh_points(d.a.head));cap.location=((lo.x+hi.x)/2,(lo.y+hi.y)/2,hi.z+.015)
-            cap.rotation_euler.z=d.yaw
+            wear_cap(cap,d)
         if d and n<=24:
             hide(bags[0],False);bags[0].location=d.hand(1);bags[0].rotation_euler=(0,0,0)
-        if m and (9<=n<=24 or 35<=n<=39 or n>=45):
-            hide(bags[1],False);bags[1].location=m.hand(0);bags[1].rotation_euler=(0,0,0)
+        if m and (9<=n<=24 or 35<=n<=39):
+            hide(bags[1],False);bags[1].location=m.hand(1 if n in (22,23,24) else 0);bags[1].rotation_euler=(0,0,0)
         contacts=[]
         if n in (6,21,22,23,38):
             who=d if n in (6,21) else m
             if who:
                 hand=who.hand(0);goal=hand+V((0,-.18,.12))
+                if n in (22,23):
+                    # Reach forward and outward. Keep the elbow below the hand and expose the dorsal skin.
+                    limb=who.art.arms[0];shoulder=limb.joint();length=limb.a+limb.b
+                    goal=shoulder+V((-.32,-.86,-.22)).normalized()*length*.83
                 contacts.append({"event":"offer_hand","target_error":who.aim(0,goal)})
                 hand=who.hand(0)
                 if n in (22,23):
-                    bird,head=birds[0];a=ease(u) if n==23 else 0
-                    bird.location=V((-1.35,-1.45,0)).lerp(hand+V((0,-.03,.015)),a)
-                    if n==23:bird.location.z+=.24*math.sin(math.pi*a)
-                    head.rotation_euler.x=.55+.35*math.sin(t*8)
+                    bird,head=birds[0];a=ease(min(1,u/.70)) if n==23 else 0
+                    surface,tree=who.hand_surface(0)
+                    bird.scale=(.66,.66,.66);bird.rotation_euler.z=0
+                    landing=surface+V((0,0,.005))
+                    # Land on evaluated distal-hand skin, not the socket centre or sleeve volume.
+                    bird.location=V((-1.35,-1.45,0)).lerp(landing,a)
+                    if n==23:bird.location.z+=.27*math.sin(math.pi*a)
+                    head.rotation_euler.x=.45+.35*math.sin(t*8)
+                    if a>=.999:
+                        gaps=[]
+                        for x in (-.039,.039):
+                            foot=bird.location+V((x*.66,-.025*.66,0))
+                            hit=tree.ray_cast(foot+V((0,0,.5)),V((0,0,-1)),1)[0]
+                            gaps.append(None if hit is None else foot.z-hit.z)
+                        contacts.append({"event":"pigeon_feet","vertical_gaps":gaps,"surface":list(surface)})
                 else:
                     for i,c in enumerate(crumbs[:7]):
                         a=(u+i*.12)%1;c.location=hand.lerp(V((hand.x+(i-3)*.07,hand.y-.3,.015)),a)
@@ -255,14 +291,22 @@ def main():
         if n in (45,48) and m and d:
             # Contact choreography is story-specific, not a modification to the locked motion functions.
             mh,dh=m.hand(1),d.hand(0)
-            target=(mh+dh)/2+V((0,-.13,.16))
-            weight=ease(u if n==48 else max(0,(u-.55)/.45))
-            if weight>.01:
-                m.aim(1,mh.lerp(target,weight));d.aim(0,dh.lerp(target,weight))
+            target=(mh+dh)/2+V((0,-.25,.19))
+            # Both hands arrive before ownership changes. Separate the two grip surfaces across the prop width.
+            start=.55 if n==45 else .0;arrive=.76 if n==45 else .38;release=.91 if n==45 else .64
+            weight=ease((u-start)/max(.01,arrive-start))
+            # Releasing hand retreats; receiving hand holds at transfer position through the cut.
+            mw=weight*(1-ease((u-release)/.09)) if n==45 else weight
+            dw=weight if n==45 else weight*(1-ease((u-release)/.25))
+            gap=.12 if n==45 else .085
+            mt=target+V((-gap,0,0));dt=target+V((gap,0,0))
+            m.aim(1,mh.lerp(mt,mw));d.aim(0,dh.lerp(dt,dw))
             mh,dh=m.hand(1),d.hand(0)
             prop=cap if n==45 else bags[1];hide(prop,False)
-            prop.location=mh.lerp(dh,ease((u-.72)/.18)) if n==45 else dh.lerp(mh,ease((u-.42)/.18))
-            contacts.append({"event":"cap" if n==45 else "bag","socket_separation":(mh-dh).length,"handoff":.72<=u<=.90 if n==45 else .42<=u<=.60})
+            # The prop remains attached to the giving grip until both hands reach the anchor.
+            a=ease((u-arrive)/max(.01,release-arrive))
+            prop.location=(mh+V((gap,0,0))).lerp(dh-V((gap,0,0)),a) if n==45 else (dh-V((gap,0,0))).lerp(mh+V((gap,0,0)),a)
+            contacts.append({"event":"cap" if n==45 else "bag","socket_separation":(mh-dh).length,"giver_receiver_target_error":max((mh-mt).length,(dh-dt).length),"handoff":arrive<=u<=release})
         if n in (47,48) and d:
             for i,bag in enumerate(bags):
                 hide(bag,False)
@@ -276,8 +320,8 @@ def main():
         if actor_target:
             lo,hi=bounds(v for ob in actor_target.meshes() for v in mesh_points(ob));center=(lo+hi)/2
             target=center;target.z=1.05 if actor_target.mode=="walk" else center.z+.12
-            if kind=="medium":dist=4.2;lens=48
-            if kind=="close":target=(lo+hi)/2;target.z=hi.z-.28;dist=2.1;lens=52
+            if kind=="medium":dist=3.75;lens=48;target.z=center.z+.02
+            if kind=="close":target=(lo+hi)/2;target.z=hi.z-.30;dist=2.0;lens=52
         if n in (13,18,20,45,48):target=V((0,.04,1.08));dist=5.4;lens=39;angle=-.08
         if kind=="wide":dist=7.1;lens=36;target=V((0,-.35,1.02));angle=.16
         if kind=="insert":
@@ -288,6 +332,20 @@ def main():
             if n==41:target=V((.78,cy,top+.12))
             if n==22 and m:target=m.hand(0)
             target.z+=.10;dist=1.85 if n not in (19,27,41) else 3.4;lens=40;angle=.25
+        # Portrait-specific hero/prop camera overrides, never changing the locked rigs.
+        if n==2 and m and d:
+            mc=(bounds(v for ob in m.meshes() for v in mesh_points(ob))[0]+bounds(v for ob in m.meshes() for v in mesh_points(ob))[1])/2
+            target=mc.lerp(V((.83,0,1.05)),.39);target.z=1.16;dist=5.4;lens=42;angle=.62
+        if n==16 and d:
+            lo,hi=bounds(v for ob in d.meshes() for v in mesh_points(ob));target=V(((lo.x+hi.x)/2,(lo.y+hi.y)/2,hi.z-.18));dist=1.95;lens=49;angle=-.18
+        if n in (22,23) and m:
+            surface,_=m.hand_surface(0);target=surface+V((.12,0,.14));dist=1.48;lens=43;angle=-.45
+        if n==31 and m:
+            lo,hi=bounds(v for ob in m.meshes() for v in mesh_points(ob));target=(lo+hi)/2;target.z=1.16;dist=3.4;lens=46;angle=-.24
+        if n==35 and m:
+            lo,hi=bounds(v for ob in m.meshes() for v in mesh_points(ob));target=(lo+hi)/2;target.z=1.02;dist=3.45;lens=49;angle=.10
+        if n in (45,48):
+            target=V((0,-.17,1.16));dist=4.15;lens=48;angle=.16
         location=target+V((math.sin(angle)*dist,-math.cos(angle)*dist,.32 if kind!="insert" else .65))
         camera.location=location;camera.data.lens=lens;point_at(camera,target);bpy.context.view_layer.update()
         projection=[]
