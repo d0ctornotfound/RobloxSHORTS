@@ -175,6 +175,7 @@ def hero_names(n,kind,actors):
     # remain physically present outside the portrait composition.
     if kind=="insert":return []
     if n==18:return ["Milo"]  # focal single; next shot establishes both bags
+    if n==48:return ["Milo","Dad"]  # intentional two-face closing composition
     # Opening narration is about Milo walking to school. Dad is established in shot 03.
     if n==1:return ["Milo"]
     if n in (3,6,8,15,16,21,43,46):return ["Dad"] if "Dad" in actors else []
@@ -208,7 +209,8 @@ def pair_camera(scene,cam,actors):
 def main():
     ap=argparse.ArgumentParser();ap.add_argument("--shot",type=int,required=True);ap.add_argument("--output",required=True);ap.add_argument("--mode",choices=["preflight","render"],default="preflight")
     args=ap.parse_args(sys.argv[sys.argv.index("--")+1:]);n=args.shot
-    story=json.loads((ROOT/"stories/the_bench_plan.json").read_text());shot=story["shots"][n-1]
+    story=json.loads((ROOT/"stories/the_bench_plan.json").read_text());shot=dict(story["shots"][n-1])
+    if n==48:shot.update(camera="close",camera_note="Intentional two-person closing portrait; both heads and both bags must remain inside frame. Waist/legs may be cropped.")
     out=Path(args.output).resolve();out.mkdir(parents=True,exist_ok=True)
     bpy.ops.object.select_all(action="SELECT");bpy.ops.object.delete(use_global=False)
     scene=bpy.context.scene;scene.render.engine="BLENDER_EEVEE";scene.render.resolution_x=540;scene.render.resolution_y=960;scene.render.resolution_percentage=100
@@ -405,7 +407,7 @@ def main():
         if n in (45,48) and m and d:
             # Contact choreography is story-specific, not a modification to the locked motion functions.
             mh,dh=m.hand(1),d.hand(0)
-            target=(mh+dh)/2+V((0,-.25,.19))
+            target=(mh+dh)/2+V((0,-.43 if n==48 else -.25,.14 if n==48 else .19))
             # Both hands arrive before ownership changes. Separate the two grip surfaces across the prop width.
             start=.55 if n==45 else .0;arrive=.76 if n==45 else .18;release=.91 if n==45 else .35
             weight=ease((u-start)/max(.01,arrive-start))
@@ -498,12 +500,30 @@ def main():
             # Both actual prop meshes must remain inside the portrait margins as arms open.
             pts=[v for bag in bags for ob in bag.children_recursive if ob.type=="MESH" for v in mesh_points(ob)]
             lo,hi=bounds(pts);target=(lo+hi)/2;dist=3.25;lens=46;angle=.08
-        if n in (45,48) and m:
-            # Center exact hero bounds plus the transfer prop, then use a modestly wider lens.
-            prop=cap if n==45 else bags[1]
-            pts=[v for ob in m.meshes() for v in mesh_points(ob)]+[v for ob in prop.children_recursive if ob.type=="MESH" for v in mesh_points(ob)]
-            lo,hi=bounds(pts);target=(lo+hi)/2;dist=3.55;lens=48;angle=.40 if n==45 else .32
-        location=target+V((math.sin(angle)*dist,-math.cos(angle)*dist,.32 if kind!="insert" else .65))
+        if n==45 and m:
+            pts=[v for ob in m.meshes() for v in mesh_points(ob)]+[v for ob in cap.children_recursive if ob.type=="MESH" for v in mesh_points(ob)]
+            lo,hi=bounds(pts);target=(lo+hi)/2;dist=3.55;lens=48;angle=.40
+        if n==48 and m and d:
+            # Search a fixed closing portrait at the first frame. Include both heads
+            # and both props, with conservative edge margin; do not optimize away Dad.
+            if pair_setup is None:
+                groups=[mesh_points(a.a.head) for a in (m,d)]+[[v for ob in bag.children_recursive if ob.type=="MESH" for v in mesh_points(ob)] for bag in bags]
+                lo,hi=bounds(v for group in groups for v in group);aim=(lo+hi)/2
+                best=None
+                for ang in (0,.20,-.20,.35,-.35,.5,-.5,.65,-.65):
+                    for ds in (3.7,4.1,4.5,4.9,5.3,5.8,6.3):
+                        for ln in (42,48):
+                            loc=aim+V((math.sin(ang)*ds,-math.cos(ang)*ds,.12));camera.location=loc;camera.data.lens=ln;point_at(camera,aim);bpy.context.view_layer.update()
+                            bb=[project(scene,camera,g) for g in groups]
+                            if min(b[4] for b in bb)<=0:continue
+                            excess=sum(max(0,.07-b[0])+max(0,b[1]-.93)+max(0,.07-b[2])+max(0,b[3]-.93) for b in bb)
+                            gap=max(bb[0][0]-bb[1][1],bb[1][0]-bb[0][1]);headsize=min(b[3]-b[2] for b in bb[:2])
+                            score=100*excess+8*max(0,.035-gap)-headsize+.02*abs(ang)
+                            if best is None or score<best[0]:best=(score,loc.copy(),aim.copy(),ln)
+                if best is None:raise RuntimeError("No closing portrait proposal")
+                pair_setup=best
+            _,pair_location,target,lens=pair_setup
+        location=pair_location if n==48 and pair_setup is not None else target+V((math.sin(angle)*dist,-math.cos(angle)*dist,.32 if kind!="insert" else .65))
         camera.location=location;camera.data.lens=lens;point_at(camera,target);bpy.context.view_layer.update()
         if n==31:
             # R7 proved the hero safely framed on all 60 frames and the cap
@@ -513,7 +533,7 @@ def main():
             shift=right*.13
             camera.location+=shift;target+=shift;point_at(camera,target);bpy.context.view_layer.update()
         geo=geometry(scene,camera,actors,heroes,kind)
-        prop_roots={4:[bags[0]],5:[birds[0][0]],10:[bags[1]],19:bags,23:[birds[0][0]],24:[birds[0][0]],28:[birds[0][0]],29:[cap],31:[cap],32:[cap],36:[cap],37:[birds[0][0]],43:[stick],44:[stick],45:[cap],46:[cap],47:bags,48:[bags[1]]}.get(n,[])
+        prop_roots={4:[bags[0]],5:[birds[0][0]],10:[bags[1]],19:bags,23:[birds[0][0]],24:[birds[0][0]],28:[birds[0][0]],29:[cap],31:[cap],32:[cap],36:[cap],37:[birds[0][0]],43:[stick],44:[stick],45:[cap],46:[cap],47:bags,48:bags}.get(n,[])
         props={ob.name:prop_geometry(scene,camera,ob) for ob in prop_roots if any(not x.hide_render for x in ob.children_recursive if x.type=="MESH")}
         if n==19 and len(props)==2:
             boxes=[project(scene,camera,[v for ob in bag.children_recursive if ob.type=="MESH" for v in mesh_points(ob)]) for bag in bags]

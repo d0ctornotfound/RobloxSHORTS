@@ -1,6 +1,6 @@
 {
   "status": "partial_verified_not_release_ready",
-  "verified_shots": 20,
+  "verified_shots": 22,
   "shots": [
     {
       "shot": 3,
@@ -59,6 +59,20 @@
       "visual_status": "sampled production frames inspected; continuous playback pending"
     },
     {
+      "shot": 8,
+      "artifact_id": 15240488670,
+      "production_run": 46088390454,
+      "preflight_run": 46087958140,
+      "source_commit": "749057616ff364a80a14f5f3ca8ccd3677bfb2c5",
+      "frames": 60,
+      "duration": 2.5,
+      "encoded_max_near_black_percent": 1.8352623456790125,
+      "sha256": "2c1f4350fa95fe983e90b9a1f6ffb0ff0ad29f61cf2acd0c49140469149e8f1e",
+      "passed": true,
+      "independent_checks": "SHA-256, independent decode and darkness, geometry and raw frame indices",
+      "visual_status": "sampled production frames inspected; continuous playback pending"
+    },
+    {
       "shot": 9,
       "artifact_id": 15239964217,
       "production_run": 46088390454,
@@ -84,6 +98,20 @@
       "sha256": "d37436435b9d8e5747b823d8488237246a3de0f3b52b9e810e73e26b6aec7f76",
       "passed": true,
       "independent_checks": "SHA-256, independently decoded darkness and frame count, profile, raw PNG indices, exact geometry",
+      "visual_status": "sampled production frames inspected; continuous playback pending"
+    },
+    {
+      "shot": 11,
+      "artifact_id": 15240643117,
+      "production_run": 46088390454,
+      "preflight_run": 46087958140,
+      "source_commit": "749057616ff364a80a14f5f3ca8ccd3677bfb2c5",
+      "frames": 60,
+      "duration": 2.5,
+      "encoded_max_near_black_percent": 0.19039351851851852,
+      "sha256": "8525c7a15f1e7a683b1750f0aecbf8efac0a0f07730a642f92c509eb19706fb2",
+      "passed": true,
+      "independent_checks": "SHA-256, independent decode and darkness, geometry and raw frame indices",
       "visual_status": "sampled production frames inspected; continuous playback pending"
     },
     {
@@ -282,5 +310,18 @@
       "independent_checks": "SHA-256, independently decoded darkness and frame count, profile, raw PNG indices, exact geometry",
       "visual_status": "sampled production frames inspected; continuous playback pending"
     }
-  ]
+  ],
+  "preview_excerpt": {
+    "first_shot": 22,
+    "last_shot": 29,
+    "source_time": [
+      52.5,
+      72.5
+    ],
+    "frames": 480,
+    "duration": 20,
+    "encoded_max_near_black_percent": 1.4822530864197532,
+    "sha256": "4a7218b25e7c3a85f1918f686d165cf5d1f8606611acc6800caa502ca52f2a6e",
+    "note": "local QA concatenation of actual verified clips, no synthetic frames, silent and uncaptioned"
+  }
 }
