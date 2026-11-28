@@ -11,6 +11,10 @@ on:
       config:
         type: string
         required: true
+      independent_direction_audit:
+        type: boolean
+        default: false
+        required: false
 permissions:
   contents: write
   actions: read
@@ -149,3 +153,39 @@ jobs:
           git pull --rebase origin "$BRANCH"
           git push origin "HEAD:refs/heads/$BRANCH"
           echo "sha=$(git rev-parse HEAD)" >> "$GITHUB_OUTPUT"
+
+  verify-direction:
+    needs: [plan,publish]
+    if: inputs.independent_direction_audit && needs.publish.outputs.evidence_commit != ''
+    runs-on: ubuntu-24.04
+    timeout-minutes: 25
+    env:
+      CONFIG: ${{ inputs.config }}
+      OUT: ${{ needs.plan.outputs.out }}
+      EVIDENCE: ${{ needs.publish.outputs.evidence_commit }}
+      BRANCH: ${{ inputs.branch }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ needs.publish.outputs.evidence_commit }}
+      - name: Verify committed master and all before-after shot metrics
+        run: |
+          set -euo pipefail
+          sudo apt-get update -o Acquire::Retries=3
+          sudo apt-get install -y --no-install-recommends ffmpeg
+          python3 scripts/film_full_direction_verify.py --config "$CONFIG" --evidence "$EVIDENCE"
+      - name: Commit independent verification and updated review
+        run: |
+          set -euo pipefail
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add "$OUT/independent"
+          python3 - <<'PY'
+          import os,json,subprocess
+          c=json.load(open(os.environ["CONFIG"]))
+          subprocess.run(["git","add",c["review_path"],c["inventory_path"]],check=True)
+          PY
+          git commit -m "Verify Round 6 committed film $GITHUB_RUN_ID with per-shot evidence"
+          git fetch origin "$BRANCH"
+          git rebase "origin/$BRANCH"
+          git push origin "HEAD:refs/heads/$BRANCH"
