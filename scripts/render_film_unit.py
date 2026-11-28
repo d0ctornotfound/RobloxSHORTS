@@ -29,7 +29,7 @@ def make_driver(base,conf,task,scene,cam,cast,stage,local_map):
         def prepare_stride(self,nframes):
             self.move_frames=nframes-self.pickup_frames
             original=self.end.copy()
-            self.lock,sol=construct(Retarget(self.a),self.start,original-self.start,self.move_frames,cycles=walk.get("cycles",1))
+            self.lock,sol=construct(Retarget(self.a),self.start,original-self.start,self.move_frames,cycles=walk.get("cycles",1),phase_strategy=walk.get("phase_strategy","transition"))
             self.end=Vector(sol["destination"]);self.stride_offset=sol["offset_seconds"]
             self.yaw=self.lock.yaw;self.settle_len=0;self.hold=1;self.settle_frames=1
             self.stride_candidate={**sol,"original_destination":list(original),"planned_mark_change":(original-self.end).length}
